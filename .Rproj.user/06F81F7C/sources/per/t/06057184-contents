@@ -1,0 +1,130 @@
+--- 
+title: "Quran Analytics with R"
+subtitle: "A Practical Introduction"
+author: "Wan M Hasni and Azman Hussin"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+always_allow_html: true
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+biblio-style: apalike
+---
+
+```{r, echo=FALSE, message=FALSE,warning=FALSE}
+## load all libraries to be used in the book
+library(knitr)
+if(!knitr:::is_html_output())
+{
+  options("width"=56)
+  knitr::opts_chunk$set(tidy.opts=list(width.cutoff=56, indent = 2), tidy = TRUE)
+ # knitr::opts_chunk$set(fig.pos = 'H')
+}
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, results = 'hide')
+extrafont::loadfonts()  # this is required for theme_graph() and some ggraph functions
+options(width = 100)
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(igraph)
+library(ggraph)
+library(graphlayouts)
+library(quRan)
+library(quanteda)
+library(readtext)
+library(topicmodels)
+library(udpipe)
+library(textrank)
+library(wordcloud)
+library(scales) 
+library(widyr)
+library(grid)
+library(png)
+library(jpeg)
+library(quanteda.textmodels)
+```
+\addcontentsline{toc}{chapter}{Preamble}
+
+# Acknowledgements {-}
+
+We wish to acknowledge the __R__ programming community for their contributions to many wonderful packages which are well documented and supported by the developers. The packages are a significant contribution to the work of __data science__.
+
+We also acknowledge _RPubs_ which is an open publishing platform for HTML documents produced using RMarkdown from within RStudio, which we use to publish our blog articles.
+
+We also acknowledge __R__ package _bookdown_ through which the formatting and integrating with _Latex_ and preparations for this book is possible. Of course, a special thanks to the author of the __quRan__ package, without which we would not have started this project.
+
+We thank our families for their enduring patience and support.
+
+As always, the truth is only from Allah, and all errors are solely ours. Lastly, we submit our gratitude to Allah (SWT) knowing that we can never thank Him (SWT) enough for having helped us in this project.
+
+# Preface From the First Author {-}
+
+> "Nun. By the Pen (Al-Qalam) and what they inscribe" [Al-Qalam:1]}
+
+
+My journey into the Quran and Islamic knowledge started way back during the university days through the self-learning of Arabic while I was doing my first degree in Statistics and Actuarial Science. I was engaged with data and numbers, statistics and modeling, and applications in risk studies, economic, and finance during my student years until the Ph.D. Today, the field that I was engaged in is called "Applied Data Science". The term data science was nonexistent then. During those days, I took the study of Al-Quran and Islamic knowledge as a private passion. Applying knowledge to Islamic finance was my main preoccupation.
+
+What struck me then was how easy it was to learn Arabic, particularly if the interest is Classical Arabic or Quranic Arabic. Arabic is an extremely structured language; once you grasp the structure, the rest is just about acquiring more vocabularies and meaning or contexts. I relied heavily on the texts available then, namely the abridged version of Tafseer Ibnu Kathir, which came in three volumes, and Hans-Wehr Arabic-English dictionary. Within a short time, I can read most of the Classical Arabic texts with little problem. However, despite all of the effort, whatever I do is only to benefit my knowledge and enrichment. I know that to be well versed as a scholar in the field is way beyond my reach, and I was deeply engaged in my professional works at all times.
+
+My data science journey continued as I discovered the __R__ programming language in its early days in 2001 when I worked on economic data. What strikes me was many functionalities of R are similar to what I was working with at the University of Iowa, namely the Minitab statistical program and the Wolfram Mathematica. Moreover, to a large degree, R has similarities to the C++ program, the primary programming language I was using for my doctorate research work.
+
+From 2010 onwards, I saw the rise of Machine Learning and Artificial Intelligence as a new field.  I then took a deep dive into ML and AI algorithms, which took me to various fields of Statistical Learning, Machine Learning, Neural Networks, Deep Learning, and finally into Graph Theory and Network Science. In this journey, I refresh myself back into several prime areas in my doctorate days, namely in Game Theory, Behavioral Economics, and Systems Theory. Over the last decade, my occupation is in Data Science, and apply them within market applications under Data Analytics and Artificial Intelligence. While doing all of these, Data Science and Artificial Intelligence applications on Islamic knowledge have always been my penultimate target.
+
+Usage of modern tools to uncover or rediscover the Truth is an apparent necessity. We may not be able to produce a new Imam Al-Shafi'e or Imam Al-Bukhari, but we may be able to replicate some of what they had accomplished. However, this is possible (at least for now) by relooking the Islamic sciences using new lenses. These new lenses are what we are starting to do here. Namely, to start a new work on Islamic Knowledge Analytics, beginning with Quran Analytics. I start this with the verse "Nun. By the Pen (Al-Qalam) what they inscribe".
+
+As in anything else, the starting point is the hardest; and I know that I cannot do it alone. It must be based on many people's collaborative network, from many domains of expertise, regardless of their creed or belief, as long as the Truth is what he/she is after. I thank Dr. Azman Hussin, my co-author for joining me in this work. His encouragement is extremely appreciated.
+
+I welcome you on board this journey. The reward is from the owner of the Truth when you meet Him.
+
+```{r fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F}
+grid.raster(readJPEG("images/dwh.jpeg"))
+```
+
+# Preface From the Second Author {-}
+
+> "The best of you are those who learn the Quran and teach it."
+
+There is no other motivation that drives this humble work except the above saying of Prophet Muhammad (SAW). It is an honor to give an added dimension to "learning" the Quran through data analytics. It is also proof of the eternal relevance of the Quran as a book of knowledge in that using new tools like text analytics reveals new knowledge and understanding about the Quran. The second part of the above saying motivated us to document our work and make it freely available in digital form. In keeping with the tradition of the prestigious scholars of the Quran, we humbly present our work as a gift to the world, particularly the "data generation". We sincerely hope others will improve upon this work.
+
+We formally started our #qurananalytics project to accompany our #learnbydoing approach to #networkscience by defining some objectives and methods.^[Introduction to Quran Analytics, https://www.linkedin.com/pulse/introduction-quran-analytics-azman-hussin] The main trigger was when we came across a well prepared [dataset of the Holy Quran]( https://CRAN.R-project.org/package=quRan) which was quite recently published. The obvious idea came to apply the current tools and methods in text analysis with the Quran datasets. In research, different methods used on the same data often yield different results. So, we thought that using the new methods and tools of #datascience, #textanalytics, and #networkscience to "learn the Quran" should be interesting. The Quran is also a subject matter that we have some knowledge of since both of us have a working knowledge of written Arabic and continue to deepen and broaden our own understanding of the Quran. It seems an ideal combination to build knowledge of the tools while applying them to a familiar subject matter.
+
+Later on, the learning and encouraging feedback we got from the blog postings led us to further explore the application of these tools on the classical works of Tafseer, the interpretation of the Quran. We had some ideas how #networkscience tools can help us visualize the classical method of Tafseer al-Quran bi al-Quran (Interpretation of the Quran with the Quran). It is considered the best method to interpret the verses of the Quran. We showed some features of network graphs that enable us to visualize aspects of the Tafseer that is almost impossible to do manually and difficult to do without a network graph model. We discuss this in Chapter 9 of this book where we present our preliminary findings using network analysis applied to the best of the classical works of Tafseer, Tafseer Ibnu Katheer. Simple network concepts like "in-degrees", "out-degrees" and "ego networks" proved valuable in analyzing Tafseer Ibnu Katheer.
+
+```{r fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F}
+grid.raster(readPNG("images/union2_255and16_90a.png"))
+```
+
+Along the way, we also developed some customized tutorials on the tools that we used. These tutorials cover selected individual Surahs (Chapters) of the Quran like Surah Yusuf, Surah Taa Haa, and Surah Al-Kahfi - all of which are covered in different Chapters of the book. We hope our readers can learn the tools within the subject of "learning the Quran".
+
+In the initial project brief^[Introduction to Quran Analytics, https://www.linkedin.com/pulse/introduction-quran-analytics-azman-hussin], we wrote under the "Objectives" section,
+
+> We hope that this work will result in a book or manual on how to do Quran Analytics.
+
+Alhamdulillah, the hope became a reality. I sincerely thank my co-author, Dr. Wan Hasni, for introducing me to #networkscience and lending me the many books he had on the subject. He painstakingly corrected and converted the R Markdown files I passed to him to be part of the contents of the book. I also would like to thank the reviewers for their valuable comments.
+
+This book is designed as an introductory manual on #qurananalytics using R. It includes customized tutorials on the tools we used, sample codes, data wrangling techniques, and analysis of the results. This will help others interested in the subject to pick up the related skills and knowledge, comment on the findings, and to develop it further. In the final chapter, we included a "to-do" list that interested readers can further explore.
+
+We can only express our sincere gratitude to our Lord and Creator for giving us this honor to add a drop in the ocean of knowledge related to His Book. Our salutations to the beloved Prophet Muhammad (SAW) whose saying motivated us in this work. We pray that our readers benefit from this humble gift and continue adding value to the chain of the Quranic knowledge.
+
+> "And our Lord is the Beneficent Allah, Whose help is sought" [Quran, 21:112]
+
+```{r fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F}
+grid.raster(png::readPNG("images/AzmanSSM01.png"))
+```
+
+# Preamble {-}
+
+This book originates from a compilation of joint works by both authors published in RPubs under (https://rpubs.com/azmanH/). The works began as an exploratory exercise, which emanates from our interest in #networkscience which lead us to #qurananalytics. We admit that this is a new field that is relatively less explored. It requires domain expertise in linguistics, particularly language in Islamic religious texts, data programming language, statistics and machine learning, and Natural Language Processing (NLP). Furthermore, the Quran is the sacred religious text for Muslims, which makes the task requires careful considerations and treatment.
+
+We decided to compile them into a book while knowingly that the work is far from complete and at best still at exploratory stages. It dawns on us that even in exploratory stages, the amount of works required to complete the project is vast and requires massive collaboration efforts by people from various domains of expertise. The fastest way to get the interest and others to join us in this journey is to publish our works thus far and present them to as wide an audience as possible, through a book.
+
+In this book, which we plan to be a series of books in the future, we will present an introduction to the subject of Quran Analytics, with focuses on using tools of NLP, deploying __R__ programming language. The purpose is threefold, introducing the subject of Quran Analytics, exploring NLP tools, and use the R programming environment as the tool of choice.
+
+Our wish is for many other researchers to follow our track, collaborate with us in our efforts - especially for people with expertise or knowledge in one of the domains, but lacking expertise in the other domain. The journey is not that hard if a person already knows one of the domains. For example, many experts in the sciences of Al Quran do not have exposure to the computing environment, and hence do not understand NLP deeply; our argument is NLP is first and foremost is about linguistics, cast within computational linguistics. As far as __R__ programming language, despite being an uphill task for beginners to be familiar with its working environment, over the years of development, it had been made easy with many recent works on it, such as the __R Studio__ environment as its IDE. It is just like riding a bicycle, if you know how to ride one, then almost any bicycle is the same. R is among the simplest bicycle around.
+
+We plan this book to be an open-source concept. It is prepared using the bookdown package in R (https://bookdown.org/yihui/bookdown/). All the data and codes will available at in a __github__ site to be added in the future. Some of our future works will be posted on the RPubs site (https://rpubs.com/azmanH/). Eventually, we will also produce some packages in R, which will be posted on CRAN.
+
+

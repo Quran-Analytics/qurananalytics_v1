@@ -1,0 +1,683 @@
+```{r include = FALSE}
+library(knitr)
+if(!knitr:::is_html_output())
+{
+  options("width"=56)
+  knitr::opts_chunk$set(tidy.opts=list(width.cutoff=56, indent = 2), tidy = TRUE)
+#  knitr::opts_chunk$set(fig.pos = 'H')
+}
+ knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, results = 'hide')
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(igraph)
+library(ggraph)
+library(graphlayouts)
+library(quRan)
+library(quanteda)
+library(readtext)
+library(topicmodels)
+library(udpipe)
+library(textrank)
+library(wordcloud)
+library(scales) 
+library(widyr)
+library(grid)
+library(png)
+library(jpeg)
+library(quanteda.textmodels)
+```
+
+# Word Frequency Analysis {#word-frequency-analysis}
+
+The first task in word analytics in a corpus is to study the words' statistical properties. Words represent the building block of sentences, which form the building block of a corpus, a collection of texts. Words are the primary form of "data" and hence convertible to frequencies. The most straightforward analysis for frequencies will be through analyzing its statistical properties.
+
+Before we perform the analysis, we must first convert the words into __tokens__.  In the process, we have to clean up all non-words in the texts, such as punctuations, symbols, and other characters, and convert all texts into lowercase.  After that, we convert all the texts into tokens and create the annotations for those tokens. The annotations are markers such as a sentence, which part of a sentence, and which corpus.
+
+In __R__, we can use many ready-made packages, such as _tm_ [@tm] (stands for text mining) and _tidytext_ [@tidytext], to perform the annotation works. _tidytext_'s advantage is that it automatically performs all the cleaning works needed and formats them into _tidy data_. For this chapter, we will use _tidytext_ as the package of choice. For reference on _tidytext_, please refer to _Text Mining with R: A Tidy Approach_ [@silge2017], and for a comprehensive introduction to the word statistical analysis, please refer to _Foundations of Statistical Natural Language Processing_ [@manning1999]. For plotting, we will use _ggplot2_ [@ggplot2] package throughout the whole book as our standard of "grammar of graphics".
+
+The objective of our work in this chapter is to introduce some of the statistical analysis on words. In particular, we want to analyze two versions of the English translation of Al-Quran, namely _Quran Saheeh International_ [@saheeh1997], _The Meaning of the Holy Quran by Abdullah Yusuf Ali_ [@yusufali2003], and a Malay translation obtained from https://www.surah.my. Saheeh is published in 1997 by Dar Abul Qasim, Saudi Arabia, translations by three American ladies using what is termed as "un-archaic" language. On the other hand, Yusuf Ali is published for the first time in 1937 from the work of Abdullah Yusuf Ali, who is a Shia in the Dawoodi Bohra tradition^[https://en.wikipedia.org/wiki/Abdullah_Yusuf_Ali] using British English of the time. The Malay translation originates from _Tafseer Pimpinan Ar-Rahman_ by Abdullah Basmieh, a well-known and widely accepted Al-Quran translation for the Malay language.
+
+Since all translations are from the same source of Al-Quran in Arabic, based on different times and styles (for English) and in another separate language (for Malay), it is interesting to study them using word statistical analysis. We may ask the questions, are these translations, in terms of words, different or similar, from a word statistical analysis point of view. These are the types of analysis we intend to accomplish in this chapter.
+
+## R packages and data used {#R-packages-and-data-used}
+
+We will use the _tidytext_ package in __R__. For the data, we will use the data from the _quRan_ package developed by [@quRan], which contains four sets of data, namely: _quran_ar_ (Quran Arabic), _quran_ar_min)_ (Quran Arabic minimized), _quran_en_sahih_ (Sahih), and _quran_en_yusufali_ (Yusuf Ali). We will use our dataset for the Malay translation which we generate directly from the source through a parser. We combined all the datasets into a single dataset, called _quran_trans.csv_.
+
+\footnotesize
+``` {r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
+library(tidyverse)
+library(tidytext)
+library(readr)
+library(quRan)
+library(ggplot2)
+
+quran_all = read_csv("data/quran_trans.csv") %>% 
+              select(surah_id, ayah_id, surah_title_en, 
+                     surah_title_en_trans, revelation_type,
+                     ayah_title,
+                     malay,saheeh,yusufali)
+```
+\normalsize
+
+To work with the data as a tidy dataset, we need to restructure it in the one-token-per-row format.  We will use the _unnest_tokens()_ function from the _tidytext_ package. Tokenization is the first step in word analytics.
+
+\footnotesize
+``` {r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
+tidyESI <- quran_all %>%
+  unnest_tokens(word, saheeh) %>% select(-malay,-yusufali)
+tidyEYA <- quran_all %>%
+  unnest_tokens(word, yusufali) %>% select(-malay,-saheeh)
+tidyMAB <- quran_all %>%
+  unnest_tokens(word, malay) %>% select(-saheeh,-yusufali)
+```
+\normalsize
+
+The _unnest_tokens_ function uses the _tokenizers_ package to separate each line of text in the original data frame into tokens. The default tokenizing is for _words_, but other options include _characters_, _n-grams_, _sentences_, _lines_, _paragraphs_, or separation around a regex pattern. The total number of tokens represents the total number of words in the whole corpus, from the first to last. After tokenization, we can calculate for each corpus the number of tokens present:  `r comma(nrow(tidyESI))` tokens for Saheeh, `r comma(nrow(tidyEYA))` for Yusuf Ali, and `r comma(nrow(tidyMAB))` for Malay. The comparable number for the original Al-Quran Arabic is 77,430 words (tokens)^[@dukes2010]. Overall comparison with the Arabic texts, clearly indicates that Saheeh, Yusuf Ali (the English corpora), and Malay (the Malay corpus) are much more verbose (more than double for the English, and almost triple for the Malay).
+
+We can see that for Saheeh and Yusuf Ali, while both translate the same original Quran, the number of total words differs by `r comma(nrow(tidyEYA) - nrow(tidyESI))`. This is an indication that Yusuf Ali is more verbose than Sahih by `r round(100*(nrow(tidyEYA) - nrow(tidyESI))/nrow(tidyESI),2)` percent. Why is Yusuf Ali much more verbose? Probably the style of the English language and method of translation is different between the two. In contrast, the total number of words for Malay exceed Saheeh by `r comma(nrow(tidyMAB) - nrow(tidyESI))`, or about 30 percent more verbose than the Saheeh's English.^[This may indicate that in general, the Malay language is more verbose than the English language or the author may have included some commentaries within the text of the verse, usually in parenthesis.] 
+
+## Wordclouds analysis {#wordcloud-analysis}
+
+Wordcloud analysis is a simple visual representation of word occurrence frequency within a set of text. A wordcloud visual is a tool to identify keywords, whereby a larger image shows a more common word. It is extremely useful for analyzing a large body of texts, especially unstructured text data. It is commonly used when we have to analyze large amounts of texts in big data applications.
+
+In __R__, there are many packages useful for wordcloud analysis, the easiest one is the _wordcloud_ package. We will show how to use them here.
+
+\footnotesize
+```{r ch2fig201,fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Wordcloud for Saheeh translation"}
+library(wordcloud)
+library(RColorBrewer) 
+set.seed(1234)
+tidyESI %>%
+  count(word) %>%
+  with(wordcloud(words = word, 
+                 freq = n, 
+                 max.words = 200,
+                 random.order = FALSE,
+                 rot.per = 0.35,
+                 colors=brewer.pal(8,"Dark2")))
+```
+
+```{r ch2fig202, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Wordcloud for Yusuf Ali translation"}
+set.seed(1234)
+tidyEYA %>%
+  count(word) %>%
+  with(wordcloud(words = word, 
+                 freq = n, 
+                 max.words = 200,
+                 random.order = FALSE,
+                 rot.per = 0.35,
+                 colors=brewer.pal(8,"Dark2")))
+```
+
+```{r ch2fig203, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Wordcloud for Malay translation"}
+set.seed(1234)
+tidyMAB %>%
+  count(word) %>%
+  with(wordcloud(words = word, 
+                 freq = n, 
+                 max.words = 200,
+                 random.order = FALSE,
+                 rot.per = 0.35,
+                 colors=brewer.pal(8,"Dark2")))
+```
+\normalsize
+
+For Saheeh, the wordcloud plot is in Figure \@ref(fig:ch2fig201); for Yusuf Ali, the wordcloud plot is in Figure \@ref(fig:ch2fig202); and for the Malay, the wordcloud plot is in Figure \@ref(fig:ch2fig203).
+
+Obviously, the words such as "the" and "and" dominate the English versions, and "yang" and "dan" dominate the Malay version. These are "stopwords" in the languages, which we will deal with later. An English linguist may be able to discern the styles between Saheeh (which is American English) and Yusuf Ali (which is slightly older Engish) by observing the dominant usages of these stopwords.
+
+Wordcloud tool is an easy and convenient way of visualizing word frequencies which we will be using throughout the book.
+
+## Analyzing word and document frequency {#analyzing-word-and-document-frequency}
+
+A central question in text mining and Natural Language Processing (NLP) is how to quantify what a document is all about. We can do this by looking at the words that make up the document. One measure of the importance of any word is its term frequency (tf), how frequently a word occurs in a document. There are words in a document that occur many times but may not be of any importance; in English, these are probably words like "the", "is", "of", and so forth; in Malay, these are words like "dan" and "yang". We might take the approach of adding words like these to a list of stopwords and removing them before analysis, but some of these words might be more important in some documents than others. A list of stopwords is not a very sophisticated approach for adjusting the term frequency for commonly used words.
+
+Another approach is to look at a term's inverse document frequency (idf), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. We can use the term frequency to calculate its tf-idf (the two quantities multiplied together), a measure of the term's frequency adjusted for how rarely it occurs in the whole text.
+
+The tf-idf statistic is a measure of how important a word is to a document in a collection (or corpus) of documents, for example, to one novel in a collection of novels or one website in a collection of websites. In the case of the Quran, we can compare its properties between Surahs or Juz or Hizb.
+
+The tf-idf is a rule-of-thumb or heuristic quantity. Simultaneously, it has proved useful in text mining and search engines. Its theoretical foundations are considered less than firm by information theory experts. The inverse document frequency for any given term is defined as:
+
+$$idf(term) = \frac{ln[(number  of  documents)]}{(number  of  documents containing  term)}$$
+
+and tf-idf is defined as:
+
+$$tf-idf(term) = tf(term) * idf(term)$$
+
+We can use tidy data principles to approach tf-idf analysis and use consistent, practical tools to quantify how various important terms are in a document that is part of a collection.
+
+### Term frequency in English Quran
+
+We start by looking at the Surahs of the Quran and examine first term frequency, and then tf-idf. We can start just by using _dplyr_ verbs such as _group_by()_ and _join()_.  We also calculate the total words in each Surah here, for later use.
+
+\
+\footnotesize
+``` {r,message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+surah_wordsESI <- quran_all %>%
+  unnest_tokens(word, saheeh) %>% 
+  count(surah_title_en, word, sort = TRUE)
+surah_wordsEYA <- quran_all %>%
+  unnest_tokens(word, yusufali) %>% 
+  count(surah_title_en, word, sort = TRUE)
+surah_wordsMAB <- quran_all %>%
+  unnest_tokens(word, malay) %>% 
+  count(surah_title_en, word, sort = TRUE)
+
+total_wordsESI <- surah_wordsESI %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+total_wordsEYA <- surah_wordsEYA %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+total_wordsMAB <- surah_wordsMAB %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+
+surah_wordsESI <- left_join(surah_wordsESI, total_wordsESI)
+surah_wordsEYA <- left_join(surah_wordsEYA, total_wordsEYA)
+surah_wordsMAB <- left_join(surah_wordsMAB, total_wordsMAB)
+```
+\normalsize
+
+In the above codes, we create _data.frame_ _surah_wordsESI_, _surah_wordsEYA_, and _surah_wordsMAB_, for each word-surah combination; _n_ is the number of times that word is used in the Surah and _total_ is the total words in the Surah. The usual suspects with the highest _n_ are “the”, “and”, “to” (for English), and "dan", "maka" (for Malay). 
+
+In the following figures, we look at the distribution of $\frac{n}{total}$ for surahs grouped by the Surahs' length. The term frequency is the number of times a word appears in a surah divided by the total number of terms (words) in that Surah.
+
+We start first with the short Surahs at the end of Al-Quran, then to the medium length Surahs, and finally to the long Surahs (similar to when we normally start to learn Al-Quran, starting to learn reading Al-Quran by learning the shorter ones first, followed by the longer ones).
+
+\
+\footnotesize
+```{r,message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+last6_surahs = c("An-Naas", "Al-Falaq", "Al-Ikhlaas", "Al-Masad",
+                 "An-Nasr", "Al-Kaafiroon")
+hamim_surahs = c("Ghafir", "Fussilat", "Ash-Shura", "Az-Zukhruf", 
+                 "Ad-Dukhaan", "Al-Jaathiya")
+long_surahs = c("Al-Baqara", "Aal-i-Imraan", "An-Nisaa", "Al-Maaida", 
+                "Al-An'aam", "Al-A'raaf")
+```
+\normalsize
+
+\footnotesize
+```{r,message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+tf_plotter = function(df,surah_group,title_label,x_lim){
+  df %>% 
+  filter(surah_title_en %in% surah_group) %>%
+  ggplot(aes(n/total, fill = surah_title_en)) +
+  geom_histogram(show.legend = FALSE) +
+  xlim(NA,x_lim) +
+  facet_wrap(~surah_title_en, ncol = 2, scales = "free_y") +
+  labs(title = title_label,
+       x = "term frequency",
+       y = NULL)
+}
+```
+```{r ch2fig204, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Saheeh"}
+tf_plotter(df = surah_wordsESI, 
+           surah_group = last6_surahs, 
+           title_label = "Saheeh",
+           x_lim = 0.10)
+```
+```{r ch2fig205, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Yusuf Ali"}
+tf_plotter(df = surah_wordsEYA, 
+           surah_group = last6_surahs, 
+           title_label = "Yusuf Ali",
+           x_lim = 0.10)
+```
+```{r ch2fig206, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Malay"}
+tf_plotter(df = surah_wordsMAB, 
+           surah_group = last6_surahs, 
+           title_label = "Malay",
+           x_lim = 0.10)
+```
+\normalsize
+
+\footnotesize
+```{r ch2fig207, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Saheeh"}
+tf_plotter(df = surah_wordsESI, 
+           surah_group = hamim_surahs, 
+           title_label = "Saheeh",
+           x_lim = 0.01)
+```
+```{r ch2fig208, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Yusuf Ali"}
+tf_plotter(df = surah_wordsEYA, 
+           surah_group = hamim_surahs, 
+           title_label = "Yusuf Ali",
+           x_lim = 0.01)
+```
+```{r ch2fig209, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Malay"}
+tf_plotter(df = surah_wordsMAB, 
+           surah_group = hamim_surahs, 
+           title_label = "Malay",
+           x_lim = 0.01)
+```
+
+```{r ch2fig210, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Saheeh"}
+tf_plotter(df = surah_wordsESI, 
+           surah_group = long_surahs, 
+           title_label = "Saheeh",
+           x_lim = 0.002)
+```
+
+```{r ch2fig211, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Yusuf Ali"}
+tf_plotter(df = surah_wordsEYA, 
+           surah_group = long_surahs, 
+           title_label = "Yusuf Ali",
+           x_lim = 0.002)
+```
+
+```{r ch2fig212, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Malay"}
+tf_plotter(df = surah_wordsMAB, 
+           surah_group = long_surahs, 
+           title_label = "Malay",
+           x_lim = 0.002)
+```
+\normalsize
+
+From these plots of "term frequency" starting with the short Surahs (Figure \@ref(fig:ch2fig204), Figure \@ref(fig:ch2fig205), and Figure \@ref(fig:ch2fig206)), followed by the medium Surahs (Figure \@ref(fig:ch2fig207), Figure \@ref(fig:ch2fig208), and Figure \@ref(fig:ch2fig209)), and the long Surahs (Figure \@ref(fig:ch2fig210), Figure \@ref(fig:ch2fig211), and Figure \@ref(fig:ch2fig212)), there are many insights and lessons about the language of the translation of Al-Quran.
+
+For example,  we can observe that the term frequencies for all the translations showed "scale-invariant properties" to the language and terminologies used to translate the Quran. Scale-invariant refers to the fact that despite different filters used (a translation is a filtering method), the resulting outputs exhibit similar properties; this is an important observation about the structure of the original texts of the Quran in Arabic. An example of scale-invariancy is the sign languages for deft and mute people - whereby it is known to be language-specific independent. Are the translated messages in the Quran, aside from the original text, language-independent?
+
+There are many more analyses open to the researchers by studying the various structures and properties of the word frequencies in the original texts against the translated texts of Al-Quran. We leave this for future work and research.
+
+To have a broader view of the observations made, let us look at the plot for the percentages of unique words (tokens) against the total number of words (tokens) within each Surah for all the translations.
+
+\
+\footnotesize
+```{r, echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
+ESI_count_toks = surah_wordsESI %>% group_by(surah_title_en) %>% 
+                    count()
+ESI_total_toks = surah_wordsESI %>% distinct(surah_title_en,total) %>% 
+                    left_join(ESI_count_toks, by = "surah_title_en") %>% 
+                    mutate(percentage = round(n/total,2))
+EYA_count_toks = surah_wordsEYA %>% group_by(surah_title_en) %>% 
+                    count()
+EYA_total_toks = surah_wordsEYA %>% distinct(surah_title_en,total) %>% 
+                    left_join(EYA_count_toks, by = "surah_title_en") %>% 
+                    mutate(percentage = round(n/total,2))
+MAB_count_toks = surah_wordsMAB %>% group_by(surah_title_en) %>% 
+                    count()
+MAB_total_toks = surah_wordsMAB %>% distinct(surah_title_en,total) %>% 
+                    left_join(MAB_count_toks, by = "surah_title_en") %>% 
+                    mutate(percentage = round(n/total,2))
+```
+
+\footnotesize
+```{r ch2fig213, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Percentage of unique words in the Surahs"}
+library(reshape2)
+EQT_total_toks = data.frame("Surah" = 1:nrow(ESI_total_toks), 
+                            "Saheeh" = ESI_total_toks$percentage, 
+                            "YusufAli" = EYA_total_toks$percentage,
+                            "Malay" = MAB_total_toks$percentage)
+EQT_total_toks_melt = melt(EQT_total_toks, 
+                           id.vars = "Surah", 
+                           variable.name = "Translation", 
+                           value.name = "Percentage")
+EQT_total_toks_melt %>% ggplot() + 
+                            geom_point(aes(x = Surah, 
+                                           y = Percentage, 
+                                           shape = Translation, 
+                                           color = Translation))  + 
+                            labs(x = "Surah number", 
+                                 y = "Percentage") 
+```
+\normalsize
+
+The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure \@ref(fig:ch2fig213) shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
+
+We can see that while all the translations differ in the languages and styles, the lexical varieties in the shorter Surahs are consistently higher. An implication of this is that, while many of the Surahs in Al-Quran may be short, they convey distinctively different messages.
+
+### The _bind_tf_idf_ function
+
+The concept of tf-idf is to measure the degree of importance of words within the content of each group of texts, such as a Surah, by decreasing the weight for commonly used words and increasing the weight for words used less. We want to detect commonly occurring words, but not too common. In general textual analysis, these words represent a topic of interest, the headlines, the themes, or a subject that stands above other surrounding texts. It is an essential tool for understanding text structures and uncovering the messages in texts.
+
+The idf's and thus tf-idf's for the highly used words, such as the word "the", is zero. These are all words that appear in all 114 Quran Surahs, so the idf term (which will then be the natural log of 1) is zero. It is also very low (near zero) for words that occur in many documents (i.e., Surahs) in a corpus.  Furthermore, the inverse document frequency will be higher for words that occur in fewer of the sub-set of documents (i.e., Surahs) in the corpus. Therefore, words of which idf's and tf-idf's are near zero, and yet not near enough are what we are looking for.
+
+The _bind_tf_idf_ function in the _tidytext_ package takes a _tidytext_ dataset as input with one row per token (term), per document. One column (a column named _word_) contains the terms/tokens, one column contains the documents (Surah in this case), and the last necessary column contains the counts, how many times each document contains each term (_n_ in this example). 
+
+First, let us plot the tf-idf for all three translations and make some observations.
+
+\
+\footnotesize
+``` {r,message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+surah_wordsESI <- surah_wordsESI %>%
+  bind_tf_idf(word, surah_title_en, n)
+surah_wordsEYA <- surah_wordsEYA %>%
+  bind_tf_idf(word, surah_title_en, n)
+surah_wordsMAB <- surah_wordsMAB %>%
+  bind_tf_idf(word, surah_title_en, n)
+ESI_tf_idf = surah_wordsESI %>% 
+                select(-total) %>% arrange(desc(tf_idf))
+EYA_tf_idf = surah_wordsEYA %>%
+                select(-total) %>% arrange(desc(tf_idf)) 
+MAB_tf_idf = surah_wordsMAB %>%
+                select(-total) %>% arrange(desc(tf_idf)) 
+
+tfidf_plotter = function(df_plot,title_label,color){
+                ggplot() + 
+                geom_point(aes(x = 1:length(df_plot$tf_idf), 
+                       y = log(df_plot$tf_idf)), color = "red", 
+                       size = 0.05) +
+                labs(title = title_label, x = "n", y = "tf_idf")}
+```
+\normalsize
+
+\footnotesize
+```{r ch2fig214, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="tf-idf for the translations"}
+p1 = tfidf_plotter(ESI_tf_idf,"Saheeh","red")
+p2 = tfidf_plotter(EYA_tf_idf,"Yusuf Ali","blue")
+p3 = tfidf_plotter(MAB_tf_idf,"Malay","green")
+
+cowplot::plot_grid(p1,p2,p3, nrow = 1)
+```
+\normalsize
+
+We can see from Figure \@ref(fig:ch2fig214), the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
+
+Let us look at a visualization for these high tf-idf words. These are shown in Figure \@ref(fig:ch2fig215), Figure \@ref(fig:ch2fig216), Figure \@ref(fig:ch2fig217), Figure \@ref(fig:ch2fig218), Figure \@ref(fig:ch2fig219), Figure \@ref(fig:ch2fig220), Figure \@ref(fig:ch2fig221), Figure \@ref(fig:ch2fig222), and Figure \@ref(fig:ch2fig223). 
+
+\
+\footnotesize
+```{r fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F}
+tfidf_plotter = function(df, surah_group,title_label,top_n_words) {
+  df %>%
+  filter(surah_title_en %in% surah_group) %>%
+  arrange(desc(tf_idf)) %>%
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  group_by(surah_title_en) %>% 
+  top_n(top_n_words) %>% ungroup() %>%
+  ggplot(aes(word, tf_idf, fill = surah_title_en)) +
+  geom_col(show.legend = FALSE) +
+  labs(title = title_label, x = NULL, y = "tf-idf") +
+  theme(axis.ticks = element_blank(),axis.text.x = element_blank()) +
+  facet_wrap(~surah_title_en, ncol = 2, scales = "free") +
+  coord_flip()
+}
+```
+\normalsize
+
+\footnotesize
+```{r ch2fig215, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Saheeh"}
+tfidf_plotter(df = surah_wordsESI, 
+           surah_group = last6_surahs, 
+           title_label = "Saheeh",
+           top_n_words = 7)
+```
+```{r ch2fig216, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Yusuf Ali"}
+tfidf_plotter(df = surah_wordsEYA, 
+           surah_group = last6_surahs, 
+           title_label = "Yusuf Ali",
+           top_n_words = 7)
+```
+```{r ch2fig217, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Malay"}
+tfidf_plotter(df = surah_wordsMAB, 
+           surah_group = last6_surahs, 
+           title_label = "Malay",
+           top_n_words = 7)
+```
+\normalsize
+
+\footnotesize
+```{r ch2fig218, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Saheeh"}
+tfidf_plotter(df = surah_wordsESI, 
+           surah_group = hamim_surahs, 
+           title_label = "Saheeh",
+           top_n_words = 7)
+```
+```{r ch2fig219, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Yusuf Ali"}
+tfidf_plotter(df = surah_wordsEYA, 
+           surah_group = hamim_surahs, 
+           title_label = "Yusuf Ali",
+           top_n_words = 7)
+```
+```{r ch2fig220, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Malay"}
+tfidf_plotter(df = surah_wordsMAB, 
+           surah_group = hamim_surahs, 
+           title_label = "Malay",
+           top_n_words = 7)
+```
+\normalsize
+
+\footnotesize
+```{r ch2fig221, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Saheeh"}
+tfidf_plotter(df = surah_wordsESI, 
+           surah_group = last6_surahs, 
+           title_label = "Saheeh",
+           top_n_words = 7)
+```
+```{r ch2fig222,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Yusuf Ali"}
+tfidf_plotter(df = surah_wordsEYA, 
+           surah_group = last6_surahs, 
+           title_label = "Yusuf Ali",
+           top_n_words = 7)
+```
+```{r ch2fig223,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Malay"}
+tfidf_plotter(df = surah_wordsMAB, 
+           surah_group = last6_surahs, 
+           title_label = "Malay",
+           top_n_words = 7)
+```
+\normalsize
+
+As measured by the tf-idf, these words are the most important to each Surah, and most readers would likely agree. It identifies words that are important to one document within a collection of documents. Furthermore, we can see that Saheeh's translation used different words than Yusuf Ali; this is obvious in the top tf_idf terms where they differ significantly.
+
+The shape of the tf-idf curves has many similarities between the translations; the terms (or words) they use are not the same, while clearly, they are only translations of the same Arabic verses. These observations raise a question: do different translation methods bring different meanings to the readers? Will this alter the message contained in the original texts?
+
+## Zipf's law {#zipfs-law}
+
+Zipf's law states that the frequency of a word's appearance is inversely proportional to the rank of its frequency for a given corpus. In general, Zipf's law states that the frequency distributions of words in a corpus follow a Power Law behavior [@zipf1949]. The words such as "allah" in the translations, for which the term frequency is high, are inversely related to its rank, which is low. A Power Law distribution from a statistical perspective is a distribution with both a fat tail and a long tail simultaneously. Power Law has many implications for statistical testing and scale-free network behaviors (a subject beyond the current discussion).
+
+Here we present the Zipf's plots for the translations, indicating whether they follow Zipf's law (and hence power-law) and test the translations' similarities.
+
+\
+\footnotesize
+```{r ch2fig224,fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Zipf's plot"}
+freq_by_rank_ESI <- surah_wordsESI %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+freq_by_rank_EYA <- surah_wordsEYA %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+freq_by_rank_MAB <- surah_wordsMAB %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+
+zipf_plotter = function(freq_rank_df,title_label){
+  freq_rank_df %>% 
+  ggplot(aes(rank, `term frequency`, color = surah_title_en)) + 
+  geom_line(size = 0.5, alpha = 0.8, show.legend = FALSE) + 
+  geom_abline(intercept = -0.62, slope = -1.1, 
+              color = "black", linetype = 2) +
+  scale_x_log10() +
+  scale_y_log10() + 
+  labs(title = title_label, 
+       x = "log of rank", 
+       y = "log of term frequency")
+}
+p1 = zipf_plotter(freq_by_rank_ESI,"Saheeh")
+p2 = zipf_plotter(freq_by_rank_EYA,"Yusuf Ali")
+p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
+cowplot::plot_grid(p1,p2,p3, nrow = 1)
+```
+\normalsize
+
+Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
+
+## Words of high occurrence and stopwords {#words-of-high-occurrence-and-stopwords}
+
+From the wordcloud plots in Figure \@ref(fig:ch2fig201), Figure \@ref(fig:ch2fig202), and Figure \@ref(fig:ch2fig203), we can see consistently the connecting terms emerged as high frequency terms for all versions of translation. The question is, how do we treat some words which occur in high frequencies, such as these connecting words, and at the same time, having low inverse ranking? Should these words remain in the texts or removed for the (statistical) analysis since their roles are more as word connectors rather than carrying any meaning? Is the decision to take out these words justified?
+
+Most analyses of texts in English will take the option of removing these stopwords. While maybe acceptable in most circumstances, such an approach is not as straightforward when applied to Al-Quran translations. In the coming chapters, we will revisit the subject again. Let us redo Zipf's plot with all the stopwords removed and see what the removal of stopwords means.
+
+\
+\footnotesize
+```{r ch2fig225,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Zipf's plot without stopwords"}
+stop_words = tidytext::stop_words
+stop_words_malay = read_csv("data/kata_henti.csv")
+surah_wordsESI <- quran_all %>%
+  unnest_tokens(word, saheeh) %>% 
+  filter(!word %in% stop_words$word) %>% 
+  count(surah_title_en, word, sort = TRUE)
+surah_wordsEYA <- quran_all %>%
+  unnest_tokens(word, yusufali) %>% 
+  filter(!word %in% stop_words$word) %>% 
+  count(surah_title_en, word, sort = TRUE)
+surah_wordsMAB <- quran_all %>%
+  unnest_tokens(word, malay) %>% 
+  filter(!word %in% stop_words_malay$rmwords) %>% 
+  count(surah_title_en, word, sort = TRUE)
+
+total_wordsESI <- surah_wordsESI %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+total_wordsEYA <- surah_wordsEYA %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+total_wordsMAB <- surah_wordsMAB %>% 
+  group_by(surah_title_en) %>% summarize(total = sum(n))
+
+surah_wordsESI <- left_join(surah_wordsESI, total_wordsESI)
+surah_wordsEYA <- left_join(surah_wordsEYA, total_wordsEYA)
+surah_wordsMAB <- left_join(surah_wordsMAB, total_wordsMAB)
+
+freq_by_rank_ESI <- surah_wordsESI %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+freq_by_rank_EYA <- surah_wordsEYA %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+freq_by_rank_MAB <- surah_wordsMAB %>% 
+  group_by(surah_title_en) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+
+p1 = zipf_plotter(freq_by_rank_ESI,"Saheeh")
+p2 = zipf_plotter(freq_by_rank_EYA,"Yusuf Ali")
+p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
+cowplot::plot_grid(p1,p2,p3,nrow = 1)
+```
+\normalsize
+
+From the plots in Figure \@ref(fig:ch2fig225), compared to the previous Zipf's plot in Figure \@ref(fig:ch2fig221), we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
+
+We have to caution the readers that we have been rather casual in some of the claims without rigorously providing statistical tests or proofs. Instead, we rely only on the visualizations provided and let the "data illustrate itself". Our purpose is to highlight various indications for future work and research and at the same time, allow readers with no statistical background, to understand the concepts and approach. The need for a full and proper test of the hypothesis as indicated above is one example case of precaution required before concluding.
+
+## Words of rare occurrence {#words-of-rare-occurrence}
+
+Another method of analysis in word statistical analysis for corpus linguistics is to study __hapax legomenon__ (singular) or __hapax legomena__ (plural). It is about words that occur only once or extremely infrequently within the corpus. Examples of this in Al Quran are:  "harut", "marut",  and "zanjabil".^[https://en.wikipedia.org/wiki/Hapax_legomenon#Arabic_examples] Studying hapax legomena helps us in understanding how different authors' (in our case here, translators) approach the usage of dictionary and vocabulary.
+
+The subject of __hapax legomena__ in linguistics requires a much more in-depth analysis, which we do not intend to perform in this book.^[In R, there are a few packages which are useful for the analysis, a notable one is _qdap_ (http://trinker.github.io/qdap/vignettes/qdap_vignette.html) which stands for "Quantitative Discourse Analysis Package".] Here we will do a simple explanatory analysis demonstrating the uses of _hapax legomena_ in text analysis.
+
+The table below describes a summary of the number of (words) tokens and unique tokens (words). Please note the numbers for the Al-Quran Arabic for comparison.
+
+|   Item                  |  Al-Quran^[@dukes2010] |  Saheeh                  | Yusuf Ali                | Malay |             
+|-------------------------|-----------|-------------------------------|--------------------------|--------|
+| Total number of tokens        |   77,430| `r comma(nrow(tidyESI))`                 | `r comma(nrow(tidyEYA))` | `r comma(nrow(tidyMAB))` |
+| Total number of unique tokens |   18,994  |  `r comma(length(unique(tidyESI$word)))`  |`r comma(length(unique(tidyEYA$word)))` | `r comma(length(unique(tidyMAB$word)))` |
+
+Unique tokens are similar to vocabulary in some sense. It is the library of words used in the corpus. Comparing English and Malay versus Arabic, indicates clearly that the structure of language is starkly different. Arabic consists of much lower tokens (less verbose) and yet higher unique tokens (larger library), while Saheeh and Yusuf Ali are the opposite (more verbose, smaller library); and Malay on the other hand needs much more words (much more verbose) with smaller library than Arabic, and larger than the English corpora. (The Malay translation often includes explanations in the main text. That may explain the larger number of tokens used compared to the number of unique tokens.)
+
+As we have described before, in the corpora, few words occur in high frequencies, and few words occur in very low frequencies at both extremes. We will plot the statistical density of the distribution (in log scale) of the term frequencies in both translations to observe this phenomenon.
+
+\
+\footnotesize
+```{r ch2fig226, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Density plot of term frequency"}
+tf_combined = rbind(
+                data.frame( "term_frequency" = freq_by_rank_ESI$`term frequency`, 
+                            "transl" = rep("1: Saheeh", nrow(freq_by_rank_ESI))),
+                data.frame( "term_frequency" = freq_by_rank_EYA$`term frequency`, 
+                            "transl" = rep("2: Yusuf Ali", nrow(freq_by_rank_EYA))),
+                data.frame( "term_frequency" = freq_by_rank_MAB$`term frequency`, 
+                            "transl" = rep("3: Malay", nrow(freq_by_rank_MAB))))
+tf_combined %>% ggplot(aes(x = log(term_frequency))) + 
+    geom_density(color = "steelblue") + 
+    labs(x = "log of term frequency") +
+    facet_wrap(~transl) 
+```
+\normalsize
+
+The term frequencies (using a log scale for visualization) for both translations in Figure \@ref(fig:ch2fig226) show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
+
+An important observation is why the density curves have multiple "peaks"; there are two lower peaks on the left, and a few peaks in the middle, and a fat tail to the right. Is this structure common in any English corpus or Malay corpus? Or this is true only in the case of translations of Al-Quran. Comparisons between the corpora under study with other common corpora are required to confirm this phenomenon.^[We will leave this subject as a research question.]
+
+The subject of vocabulary and rare word usage is essential and extensive by itself. In particular, term frequencies analysis of rare occurrence words may yield insights of its own, which revolves around why and how  _hapax legomena_ exists in communications and vocabulary development in languages. As a case in point, usage of words with multiple synonyms, such as "abrogate" versus "evade"; which one is a more appropriate choice for a given original Arabic word? Comparing these words against its original Arabic word would be interesting since the Arabic may carry its distinctive meaning, while in contrast, the English word equivalent may carry its content or context.
+
+We would like to show some of the types of analysis of rare words which may carry significant meanings, such as the word "trustworthy" and "trust". "Trustworthy" occurs only 13 times in Saheeh and 3 times in Yusuf Ali, while "trust" occurs only 3 times in Saheeh and many times in Yusuf Ali. The exact occurrences are shown below:
+
+\
+\footnotesize
+```{r}
+freq_by_rank_ESI %>% filter(word == "trustworthy")
+freq_by_rank_EYA %>% filter(word == "trustworthy")
+freq_by_rank_ESI %>% filter(word == "trust")
+freq_by_rank_EYA %>% filter(word == "trust")
+```
+\normalsize
+
+Only three occurrences of "trustworthy", in Surah Al-A'raaf, Al-Baqara, and Luqman, coincide in both translations. In Saheeh's Surah Ash-Shu'araa, it occurs six times and is not present in Yusuf Ali. Further checks reveal that in Yusuf Ali's Surah Ash-Shu'araa, instead of Saheeh's "trustworthy", "worthy of trust" is used in its place. Why Yusuf Ali prefers the word "trust" more than Saheeh is a subject worthy of understanding by itself. Furthermore, as we can see from the outputs, the tf-idf measures reveal the words' positions within the Surah and the corpus, which is an indicator of its own understanding.
+
+We showed here many dimensions of analysis using words, word frequencies, inverse frequencies, word positions within a sub-set of texts (i.e., Surahs), and the whole corpus, across corpora. These analyses are rich in understanding and knowledge of linguistics, meanings, and contexts. We also showed the intricacies involved in word selection for translations like the case for "trust", "trustworthy", and "worthy of trust".
+
+## Words with medium occurrence {#words-with-medium-occurrence}
+
+What do words of non-high occurrence and non-rare occurrence, hence medium occurrence, represent? For once we know that these words represent the largest part of the vocabulary library for each corpus.
+
+Let us take Saheeh as our example. The highest rank is "allah" (rank = 1), and among the lowest rank is "wombs" (rank = 1199). Let us check what are the words in the middle rank, rank around 600.
+
+\
+\footnotesize
+```{r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+freq_by_rank_ESI %>% filter(rank > 601 & rank < 608 ) %>% head()
+```
+\normalsize
+
+We can see words, such as "oaths", which describe an action, occurs `r t = freq_by_rank_ESI %>% filter(word == "oaths") %>% count(); t[1]` times in the Saheeh corpus. Similarly the name of the Prophet Noah, which occurs `r t = freq_by_rank_ESI %>% filter(word == "noah") %>% count(); t[1]` times; which case is different since the word is a special name. Another word, such as "masjid" which generally means the mosque, occurs `r t = freq_by_rank_ESI %>% filter(word == "masjid") %>% count(); t[1]` times. We can see that these middle-frequency words are non-trivial since they do hold a special purpose within a certain context and meaning; for example, we have a very strong action, which is an oath, a special name, which is the Prophet Noah, and a special place, a Mosque.
+
+Words of mid-frequency occurrence become very important when we need to go deeper into the context and meaning of words, sentences, groups of sentences (such as Surahs) - a subject that we will revisit in later chapters.
+
+## Summary {#summary}
+
+While seemingly simple, statistical word analysis yields many insights into issues relating to a corpus of texts.  In this chapter, we have shown examples of how the analysis is useful for many linguistic studies of Al-Quran translations. We also compared different translations of the English language (Saheeh and Yusuf Ali) and different languages (English and Malay). 
+
+Analysis using term frequency (tf) and inverse document frequency (idf) allows us to find word characteristics for one document within a collection of documents. Exploring term frequency on its own can give us insight into how language is used in a collection of natural language and give us tools to reason about term frequency. The proper noun "Allah" ranks very high on almost all the statistics of the English Quran which confirms that "Allah" is the central and most important subject matter of the Quran, a topic that one of the authors will cover in an upcoming book [@alsuwaidan2021]. 
+
+Statistical analysis of words from the Quran is a good and "easy" start to Quran Analytics. It is general and robust, requires no or little manual effort, and is “surprisingly” powerful. As we have indicated in this chapter's various suggestions, the subject requires further research. Among the issues raised is about translations of Al Quran into another language, such as the English and Malay language (as the case here), which has its structural dependencies. Will the usage of different structure results in a difference in meaning and understanding? Is there any better way to detect and compare different writing styles to ensure or reflect accurate meaning to the readers? How does the usage of infrequent words add to the vocabulary richness of the texts? The words statistical analysis is a starting point to answer these types of questions and many other questions a researcher of Al-Quran may explore.
+
+We leave this chapter and many of the issues raised for future research works. The following is an incomprehensive list of what's possible:
+
+1. Statistical NLP, which is based on word frequencies, has a lot to offer. Within a language, across languages, for purposes of translations between languages, are open examples. Al-Quran, a sacred text for the Muslims, must be translated with care. The various authors have done all existing translations based on their styles and understanding of both the original texts (in Arabic) and the language of translation. There is a need to revisit this subject using NLP tools to provide a reflective meaning suitable for the current time.
+
+2. Word frequency analysis is among the simplest tool available yet provides many insightful understandings of language. We also covered Zipf's law, scale-free, power-law distributions of word frequencies. We showed how words of high occurrence, which are stopwords and words of importance, reveal many insights about the language and the messages in texts; while words of extremely low occurrence, _hapax legomena_, direct towards vocabulary usages and special meanings. All of these mentioned items can be extended as a research subject by themselves.
+
+3. An example of classical work in Arabic for Al-Quran word-by-word references is _Al-Mu'jam Al-Mufahras Li Alfaz Al-Quran Al-Kareem_ by Muhammad Fu'ad Abdul-Baqi (@mujam1945). If the works in _Al-Mu'jam_ are converted to tokens' data structures as we have done for the English or non-Arabic texts, cross-referencing can be quickly done. Using this tool, any Quranic scholar can check the accuracy or appropriateness of the Quranic translations with ease. It is among the examples of why we need the tools of NLP for Quran Analytics.
+
+4. The simplest tools of data science, namely simple statistical tests, have not been explored to their full potentials. The power of data visualizations using programming languages such as __R__, as we have done here, is enormous.
+
+The room to improve and expand on "word frequency analysis" is tremendous. We are just at its beginning stage.
+
+## Further readings {-}
+
+Abdul-Baqi, M. F. _Al-Mu’jam Al-Mufahras Li Alfaz Al-Quran Al-Kareem._ Dar Ahi’a Al-Tirath Al-Arabi, Beirut, Lebanon, 1945. [@mujam1945]
+
+Alsuwaidan, T. and Hussin, A. _Islam Simplified: A Holistic View of the Quran._ To be published manuscript, 2021 [@alsuwaidan2021] 
+
+Zipf, G. K. _Human Behavior and the Principle of Least Effort._ Addison-Wesley, New York, New York, 1949. [@zipf1949]
+
+_tidytext_ package in __R__. [@tidytext]
+
+_ggplot2_ package in __R__. [@ggplot2]
+
+_quRan_ package in __R__. [@quRan]
+
+Tidy text mining website: https://www.tidytextmining.com/tidytext.html
+ 
+
+
+
+

@@ -1,0 +1,205 @@
+\contentsline {section}{Acknowledgements}{4}{section*.2}%
+\contentsline {section}{Preface From the First Author}{4}{section*.3}%
+\contentsline {section}{Preface From the Second Author}{5}{section*.4}%
+\contentsline {section}{Preamble}{7}{section*.5}%
+\contentsline {section}{\numberline {1}Introducing Quran Analytics}{8}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Quran Analytics}{10}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Quranic Studies}{11}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Quranic language and linguistic studies}{11}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Computational Linguistics}{12}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Natural Language Processing (NLP)}{12}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Programming language in NLP}{13}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Advancements in NLP and Quran Analytics}{14}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.7.1}Common NLP tasks}{14}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}Available resources for digital Quranic studies}{16}{subsubsection.1.7.2}%
+\contentsline {subsubsection}{\numberline {1.7.3}NLP works on English translations of Al-Quran}{16}{subsubsection.1.7.3}%
+\contentsline {subsubsection}{\numberline {1.7.4}Complex NLP tasks for Quran Analytics}{17}{subsubsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.8}Why use R?}{17}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Focus of this book}{18}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Further readings}{19}{subsection.1.10}%
+\contentsline {section}{Analysis of Words by its Frequencies}{19}{section*.6}%
+\contentsline {section}{\numberline {2}Word Frequency Analysis}{20}{section.2}%
+\contentsline {subsection}{\numberline {2.1}R packages and data used}{21}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Wordclouds analysis}{22}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Analyzing word and document frequency}{24}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Term frequency in English Quran}{24}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}The \emph {bind\_tf\_idf} function}{30}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Zipf's law}{37}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Words of high occurrence and stopwords}{39}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Words of rare occurrence}{40}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Words with medium occurrence}{41}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Summary}{42}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Further readings}{43}{subsection.2.9}%
+\contentsline {section}{\numberline {3}Word Scoring Analysis}{43}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Preprocessing the data}{44}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sentiment analysis with tidy data}{45}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Sentiment scoring models}{46}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}\emph {bing} scoring model}{46}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}\emph {AFINN} scoring model}{47}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Sentiment analysis within the Surahs}{49}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Wordcloud analysis}{52}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}Statistics of sentiment score}{53}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Sentiment scoring frequencies}{55}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Building dedicated sentiment scoring model}{56}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Summary}{57}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Further readings}{57}{subsection.3.8}%
+\contentsline {section}{Analysis of Words by its Cooccurences}{58}{section*.7}%
+\contentsline {section}{\numberline {4}Word Collocations}{58}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analyzing word collocations}{59}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Analyzing bi-grams}{59}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Visualizing a network of bigrams with \emph {ggraph}}{60}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Tri-grams}{63}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Bigrams co-ocurrences and correlations}{63}{subsubsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.5}Visualizing correlations of bigrams of keywords}{64}{subsubsection.4.1.5}%
+\contentsline {subsubsection}{\numberline {4.1.6}Summarizing ngrams}{64}{subsubsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.2}Lexical analysis}{65}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Basic frequency statistics}{66}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.3}Word cooccurrences using POS}{67}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Nouns, adjectives, and verbs used in same sentence}{67}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Words that follow one another using POS}{69}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Word correlations using POS}{69}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Finding keyword combinations using POS}{70}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Using RAKE}{71}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Using Pointwise Mutual Information Collocations}{71}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Using a sequence of POS tags (noun phrases)}{71}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Textrank}{74}{subsubsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.5}Dependency parsing}{74}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Collocations and co-occurences}{77}{subsubsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.6}Summary}{77}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Further readings}{77}{subsection.4.7}%
+\contentsline {subsection}{Appendix}{79}{section*.8}%
+\contentsline {section}{\numberline {5}Graph Representations of Word Cooccurences}{79}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Statistical analysis of word positions}{80}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Comparison between Saheeh and Yusuf Ali}{80}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Comparison against the Arabic text}{83}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Focus on Surah Yusuf}{86}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Arc method of visualization}{88}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Circular method of visualization}{88}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Grouping of co-occurences}{90}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}A short tutorial on graphs in \textbf {R}}{93}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Graph creation}{95}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Graph plots}{96}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Graph layouts}{101}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Graph algorithms}{110}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}Graph analysis}{112}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.6}Using ggraph}{113}{subsubsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.4}Fun with network graphs}{122}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Working with a bigger graph}{125}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Taking the largest component}{129}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Community structure detection}{129}{subsubsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.5}Summary}{130}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Further readings}{131}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Word Cooccurences of Surah Taa Haa}{131}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Data preprocessing}{131}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Network analysis and characteristics}{133}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Network characteristics}{133}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Centrality measures (node-level measures)}{134}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Degree and strength}{135}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.4}Degree distribution}{136}{subsubsection.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.5}Degree and degree distribution for directed graph}{137}{subsubsection.6.2.5}%
+\contentsline {subsubsection}{\numberline {6.2.6}Why do we care about degree?}{137}{subsubsection.6.2.6}%
+\contentsline {subsubsection}{\numberline {6.2.7}Betweenness}{139}{subsubsection.6.2.7}%
+\contentsline {subsubsection}{\numberline {6.2.8}Degree centrality for undirected graph}{140}{subsubsection.6.2.8}%
+\contentsline {subsubsection}{\numberline {6.2.9}Outdegree centrality and indegree prestige}{140}{subsubsection.6.2.9}%
+\contentsline {subsubsection}{\numberline {6.2.10}Closeness centrality for undirected graph}{141}{subsubsection.6.2.10}%
+\contentsline {subsubsection}{\numberline {6.2.11}Correlation analysis among centrality measures for the \emph {gu} network}{141}{subsubsection.6.2.11}%
+\contentsline {subsubsection}{\numberline {6.2.12}Assembling a dataset of node-level measures for gd network}{142}{subsubsection.6.2.12}%
+\contentsline {subsection}{\numberline {6.3}Network-level measures}{144}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Size and density}{144}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Components}{145}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Degree distributions}{145}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Average path length and diameter}{148}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Path distance distribution}{149}{subsubsection.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.6}Path distance distribution for directed graph}{149}{subsubsection.6.3.6}%
+\contentsline {subsubsection}{\numberline {6.3.7}Why do we care about path?}{149}{subsubsection.6.3.7}%
+\contentsline {subsubsection}{\numberline {6.3.8}Clustering coefficient (Transitivity) distribution}{149}{subsubsection.6.3.8}%
+\contentsline {subsubsection}{\numberline {6.3.9}Why do we care about clustering coefficient?}{150}{subsubsection.6.3.9}%
+\contentsline {subsection}{\numberline {6.4}Community structure and assortment}{150}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Modularity and community detection}{150}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Modularity and community detection: a simple example}{151}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Another example of clustering}{153}{subsubsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {6.4.4}Assortment (homophily)}{153}{subsubsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.5}Analyzing using \emph {tidygraph}}{155}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}Direct ggraph integration}{155}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Use selected measures from \emph {tidygraph} and plot}{156}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}Example combining selected node and edge measures from \emph {tidygraph}}{159}{subsubsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.4}Who is the most important influencer?}{161}{subsubsection.6.5.4}%
+\contentsline {subsubsection}{\numberline {6.5.5}Build communities and calculate measures}{161}{subsubsection.6.5.5}%
+\contentsline {subsubsection}{\numberline {6.5.6}Visualize the network}{162}{subsubsection.6.5.6}%
+\contentsline {subsubsection}{\numberline {6.5.7}Concentric layouts}{163}{subsubsection.6.5.7}%
+\contentsline {subsection}{\numberline {6.6}Summary}{169}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Further readings}{171}{subsection.6.7}%
+\contentsline {section}{Text and Knowledge Modeling}{171}{section*.9}%
+\contentsline {section}{\numberline {7}Texts Network Analysis}{172}{section.7}%
+\contentsline {subsection}{\numberline {7.1}A brief on \emph {quanteda}}{173}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Analyzing word cooccurrence as a network}{175}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Network dynamics: growth of word co-occurrence network}{175}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Word co-occurrence network statistics}{177}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Diameter and average distance}{179}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Connectedness}{179}{subsubsection.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.5}Degree distributions}{180}{subsubsection.7.2.5}%
+\contentsline {subsubsection}{\numberline {7.2.6}Clustering coefficients}{181}{subsubsection.7.2.6}%
+\contentsline {subsubsection}{\numberline {7.2.7}Modularity}{181}{subsubsection.7.2.7}%
+\contentsline {subsubsection}{\numberline {7.2.8}Betweenness}{184}{subsubsection.7.2.8}%
+\contentsline {subsubsection}{\numberline {7.2.9}Prestige centrality}{185}{subsubsection.7.2.9}%
+\contentsline {subsubsection}{\numberline {7.2.10}Summary}{185}{subsubsection.7.2.10}%
+\contentsline {subsection}{\numberline {7.3}Dive into selected Surahs}{185}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Word collocations statistical method}{189}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Word keyness comparisons}{190}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Lexical diversity and dispersion}{190}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Viewing the network as dendrogram}{193}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Words similarity in verses}{193}{subsection.7.8}%
+\contentsline {subsection}{\numberline {7.9}Words dissimilarity in verses}{198}{subsection.7.9}%
+\contentsline {subsection}{\numberline {7.10}Summary}{199}{subsection.7.10}%
+\contentsline {subsection}{\numberline {7.11}Further readings}{200}{subsection.7.11}%
+\contentsline {section}{\numberline {8}Text Classification Models}{200}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Brief outline of text modeling}{200}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}General setting}{201}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Supervised and unsupervised learning methods}{203}{subsubsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.3}Topic modeling for Quran Analytics}{203}{subsubsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.2}Unsupervised learning models}{204}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Latent Dirichlet Allocation (LDA) model}{204}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Structural Topic Models (STM)}{204}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Latent Semantic Analysis model}{205}{subsubsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.4}Labeling the data}{205}{subsubsection.8.2.4}%
+\contentsline {subsubsection}{\numberline {8.2.5}Latent Dirichlet Allocation (LDA)}{205}{subsubsection.8.2.5}%
+\contentsline {subsubsection}{\numberline {8.2.6}Structural Topic Models (STM)}{208}{subsubsection.8.2.6}%
+\contentsline {subsubsection}{\numberline {8.2.7}Latent Semantic Analysis (LSA)}{212}{subsubsection.8.2.7}%
+\contentsline {subsubsection}{\numberline {8.2.8}Summarizing unsupervised learning model}{214}{subsubsection.8.2.8}%
+\contentsline {subsection}{\numberline {8.3}Supervised learning models}{216}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Naive Bayes (NB)}{216}{subsubsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.2}Support Vector Machines (SVM)}{217}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Summarizing supervised learning model}{217}{subsubsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.4}Ideological difference models}{217}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Word embeddings models}{219}{subsection.8.5}%
+\contentsline {subsubsection}{\numberline {8.5.1}Summarizing word embedding model methods}{223}{subsubsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.6}Summary}{223}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Further readings}{224}{subsection.8.7}%
+\contentsline {section}{\numberline {9}Knowledge Through Verse Network}{224}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Tafseer Ibnu Katheer as Knowledge Graphs}{226}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Preparing the data and settings}{226}{subsubsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.2}Katheer Graph network}{227}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Katheer Graph visualizations}{227}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Katheer Graph network statistics}{228}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Katheer Graph network degree}{229}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}Katheer Graph network paths and traversals}{230}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}Network traversals using statistical properties}{232}{subsubsection.9.2.5}%
+\contentsline {subsection}{\numberline {9.3}Traversals in Surah Al-A'laa \{\#traversals-in-Surah-Al-A'laa\}}{233}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Themes of Surah Al-A'laa}{234}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Surah Al-A'laa network}{235}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}View from the perspectives of the entire Ibnu Katheer network}{236}{subsubsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {9.3.4}Summary}{236}{subsubsection.9.3.4}%
+\contentsline {subsection}{\numberline {9.4}Traversing verse 13 Surah Al-A'laa \{\#traversing-verse-13-Surah-Al-A'laa\}}{237}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Traversals in verses 2:255 and 16:90}{241}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Word cooccurrences from Katheer Graph}{246}{subsection.9.6}%
+\contentsline {subsubsection}{\numberline {9.6.1}Setting the text data}{246}{subsubsection.9.6.1}%
+\contentsline {subsubsection}{\numberline {9.6.2}What words co-occur together}{246}{subsubsection.9.6.2}%
+\contentsline {subsection}{\numberline {9.7}Summary}{247}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Further readings}{248}{subsection.9.8}%
+\contentsline {subsection}{Appendix}{249}{section*.10}%
+\contentsline {section}{\numberline {10}Way Forward}{255}{section.10}%
+\contentsline {subsection}{New tools for studying Al-Quran}{256}{section*.11}%
+\contentsline {subsection}{Limitations}{257}{section*.12}%
+\contentsline {subsection}{Direction of future works}{257}{section*.13}%
+\contentsline {subsection}{Concluding remarks}{257}{section*.14}%
+\contentsline {section}{References}{258}{section*.15}%

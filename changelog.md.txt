@@ -1,0 +1,27 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## 1.0 2024-04-04
+
+By; Dr Wan Hasni
+
+### Changed
+- Syntax of old codes
+- Standardization of Repository
+
+### Fixed
+- Corrected portions of old codes that no longer works from 2021. This includes;
+  - Adding new Quanteda packages for functions that has split into new packages
+  - Fixed LaTex files so that it can render which includes installation of latest LaTex from https://www.tug.org/texlive/windows.html
+  - Fixed style.css to ensure no crashes on LaTex render
+  - Added front and back cover
+
+## 1.1 2024-04-15
+
+### Changed
+- Standardizing spelling and grammar according to the edited physical book version
+
+## 1.2 2024-04-16
+
+### Fixed
