@@ -1,8 +1,8 @@
-#Quran Analytics V1
+# Quran Analytics V1
 
-This is the official repository consisting codes from the ![Quran Analytics Book](https://www.amazon.com/Quran-Analytics-R-Practical-Introduction/dp/B093SN84T4). This book was completed in 2021 and was slightly edited in 2024, mainly spellings, improvisation of graphs and code refactoring.
+This is the official repository consisting codes from the [Quran Analytics Book](https://www.amazon.com/Quran-Analytics-R-Practical-Introduction/dp/B093SN84T4). This book was completed in 2021 and was slightly edited in 2024, mainly spellings, improvisation of graphs and code refactoring. You may access the **bookdown version** [here](https://quran-analytics.github.io/qurananalytics_v1/)
 
-### Repository Structure
+## Repository Structure
 
 This book is written in bookdown. The order of the codes are as follow:
 
@@ -21,17 +21,17 @@ This book is written in bookdown. The order of the codes are as follow:
 13.  12-Ch9KnowledgeGraph.Rmd
 14.  13-WayForward.Rmd
 
-The files associated with bookdown output are as follow:
+The files associated with **bookdown** output are as follow:
 1.  _bookdown.yml
 2.  _output.yml
 
-The files associated with LaTex output / references are as follow:
+The files associated with **LaTex** output / references are as follow:
 1.  book.bib
 2.  packages.bib
 3.  preamble.tex
 4.  qurananalytics.tex
 
-The files associated with historical reference to the repository are as follow:
+The files associated with **historical reference** to the repository are as follow:
 1.  sessioninfo.md
 2.  changelog.md
 
@@ -41,12 +41,16 @@ Others:
 3.  /images
 4.  aux/log/out/pdf : Files related to LaTex
 
-### Run Code
+## Run Code
 
 To run the codes from the book, follow these instructions. These steps are assuming user have R and Rstudio installed on their device;
 
 1.  Open QuranAnalytics.Rproj
-2.  Check our Session Info (sessioninfo.md) to crosscheck user's package version with ours. Huge gaps between versions might cause an error.
+2.  Check our [Session Info](https://github.com/Quran-Analytics/qurananalytics_v1/blob/main/sessioninfo.md) to crosscheck user's package version with ours. Huge gaps between versions might cause an error.
 3.  Open the desired topic via rMarkdown.
 4.  Run.
 
+## Contact
+
+If you face any unsure error and would like us to debug, feel free to leave an issue on Github or contact us via email abdullahzubair.wh@gmail.com
+Should you have any questions regarding the approach, you can also email abdullahzubair.wh@gmail.com where he will forward your questions to the authors.
