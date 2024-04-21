@@ -66,8 +66,15 @@ By; Zubair Wan
 - Changed color in one of the plots for better differentiation
 
 [08-CH6WordLocNetAnal.Rmd]
-- Moved texts to accomodate vis
- 
+- Moved texts to accomodate vis. Changed some legend positions and increased some sizes
+
+[10-Ch7TextNetAnal.Rmd]
+ - Increased some plot sizes.
+ - Changed colors to make plots more visible
+
+[11-CH8TextClassModels.Rmd]
+ - Redo a diagram
+- 
 
 ### Fixed
 
@@ -80,3 +87,7 @@ By; Zubair Wan
 
 [07-Ch5WordLocStatAnal.Rmd]
 - Deleted a few lines of head(cooccur) due to error message
+
+[10-Ch7TextNetAnal.Rmd]
+ - Fixed a chunk of code to that previously was an error. It was fixed by DWH but it didn't represent the same graph.
+
