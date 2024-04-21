@@ -21,7 +21,25 @@ This book is written in bookdown. The order of the codes are as follow:
 13.  12-Ch9KnowledgeGraph.Rmd
 14.  13-WayForward.Rmd
 
+The files associated with bookdown output are as follow:
+1.  _bookdown.yml
+2.  _output.yml
 
+The files associated with LaTex output / references are as follow:
+1.  book.bib
+2.  packages.bib
+3.  preamble.tex
+4.  qurananalytics.tex
+
+The files associated with historical reference to the repository are as follow:
+1.  sessioninfo.md
+2.  changelog.md
+
+Others:
+1.  /data : Folder to store data
+2.  /docs : Folder to hold output of bookdown
+3.  /images
+4.  aux/log/out/pdf : Files related to LaTex
 
 ### Run Code
 
