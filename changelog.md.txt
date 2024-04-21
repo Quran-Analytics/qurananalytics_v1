@@ -19,9 +19,64 @@ By; Dr Wan Hasni
 
 ## 1.1 2024-04-15
 
+By; Zubair Wan
+
 ### Changed
 - Standardizing spelling and grammar according to the edited physical book version
 
 ## 1.2 2024-04-16
 
+By; Zubair Wan
+
+### Changed
+- Changed 00-index.RMD name to index.Rmd for bookdown build feature in RStudio
+- Added bookdown build feature in RStudio via Tools and Project Settings
+- Removed trailing spaces in between texts in all RMD
+- Added theme to plots whenever and wherever necessary
+
+[bookdown.yml]
+- Added directory to store bookdown files to tidy main directory
+
+[03-Ch2WordFrequency.RMD]
+- Added border and theme to tf_plotter
+- Improved title for those associated to tf_plotter
+- Added title for TF-IDF plots
+- Improve XY labels and added border for Zipf's Plots
+- Disabled 'results=hide' from chunk settings
+- Removed redundant package loading (Double)
+- Disabled a chunk due to code not tallying with writing
+
+[04-Ch3WordScoring.Rmd]
+- Changed color and theme to ch3_plotter1
+- Added width to ch3_bing_plot
+- Reorder bars from high to low for ch3_bing_plot
+- Added border and plot title to ch3_afinn_plot
+- Changed plot color to red/green to imply negativity/positive on ch3_bing_plot2
+- Added title and theme whilst limiting size of Sentiment Frequency plot
+- Added border to sent_plotter
+
+[06-Ch4WordLocCollCooc.Rmd]
+- Added themes, titles and borders.
+- Increase size plots for some
+- Disabled 'results=hide' from chunk settings
+- Displayed codes where it is presumably wrongly hidden
+
+[07-Ch5WordLocStatAnal.Rmd]
+- Changed Y axis percentage
+- Changed color in one of the plots for better differentiation
+
+[08-CH6WordLocNetAnal.Rmd]
+- Moved texts to accomodate vis
+ 
+
 ### Fixed
+
+[04-Ch3WordScoring.Rmd]
+- Fixed colors not working as intended
+- Fixed incorrect facetting
+
+[06-Ch4WordLocCollCooc.Rmd]
+- Removed a line of code that provides error but doesnt crash compiling
+
+[07-Ch5WordLocStatAnal.Rmd]
+- Deleted a few lines of head(cooccur) due to error message

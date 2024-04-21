@@ -87,15 +87,10 @@ In network analysis, we use various methods of display or visualization of the n
 
 1. _Fruchterman-Reingold_ layout visualization
 
-
-
-
 ```{r ch9fig901, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Ibnu Katheer verse network: Fructherman Reingold layout"}
 img1 = readJPEG("images/Kathir04.jpeg")
 grid.raster(img1)
 ```
-
-
 
 First, we calculate the modularity classes for the network (based on a resolution scale of 1.0) and color each class distinctly. As observed in the image, the various 115 communities are spread out throughout the verses in the entire Al-Quran. What this implies is that the method of interpretations of Ibnu Katheer is expanding the grouping of verses which are interpreted by each other (i.e. networked with each other), spanning across a large space encompassing many verses from other parts of Al-Quran (e.g., from other verses within the same Surah as well as from other Surahs). The visuals also imply that it took many verses to explain a verse, or in another way, many verses linked together give a much wider interpretation of the verse, and vice-versa.
 
@@ -105,15 +100,10 @@ The largest modularity class, which stood at 5.65% of verses (nodes) is a group 
 
 2. Add _Force Atlas 2_ layout to existing graph
 
-
-
-
 ```{r ch9fig902, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Ibnu Katheer verse network: Force Atlas layout"}
 img3 = readJPEG("images/Kathir03.jpeg")
 grid.raster(img3)
 ```
-
-
 
 Now we can observe that if we "re-arrange" the visualizations (by adding the Force Atlas algorithm), the groupings are more distinctly clearer. What this means is those different methods of visualizing provide views of various dimensions of the network. In fact, there are numerous methods of layout layerings that are easily applied within a network structure. All these layouts are based on certain "graph spring" algorithms, whereby each algorithm (logics) brings in another dimension to the graph (or knowledge representations). Again, we leave the subject for future work.
 
@@ -149,14 +139,9 @@ The degree of the network represents the concept of "links between ideas" (we wi
 
 The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This contrasts with normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
 
-
-
-
 ```{r ch9fig903, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Plot of the Katheer Graph degree"}
 cowplot::plot_grid(fig901a,fig901b,nrow = 1)
 ```
-
-
 
 To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal, and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
 
@@ -166,25 +151,15 @@ What we have is a massively dense citation network. Every verse is an important 
 
 Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure \@ref(fig:ch9fig904). This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of `r round(average.path.length(kg),2)`. A verse on the network is about `r round(average.path.length(kg),0)` links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
 
-
-
-
 ```{r ch9fig904, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Plot of the Katheer Graph path lengths distributions"}
 fig902
 ```
 
-
-
 To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure \@ref(fig:ch9fig905) says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
-
-
-
 
 ```{r ch9fig905, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Verse 6:25 distances from other verses"}
 cowplot::plot_grid(fig903a,fig903b, nrow = 1)
 ```
-
-
 
 We emphasize again that this observation is important, the network exhibits the small world property. A simple estimate of the small world property is measured by $log(N)/mean(d)$, which is `r round(log(6236)/mean(degree(kg)),2)`. It means that in real terms, a verse is only about `r round(log(6236)/mean(degree(kg)),0)` links or steps away from "each other".^[Note that distance is the measure of a verse from any other verse; whereas the small word property measure is "how far away" each verse truly is.]
 
@@ -198,27 +173,17 @@ Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 
 
 How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it.
 
-
-
-
 ```{r ch9fig906,echo=F, fig.align="center",fig.height=4,fig.width=6,warning=F, fig.cap="Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness"}
 fig903c
 ```
-
-
 
 __Verse 2_255__
 
 A plot of this is shown in Figure \@ref(fig:ch9fig906). We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Compared to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure \@ref(fig:ch9fig906)). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
 
-
-
-
 ```{r ch9fig907,echo=F, fig.align="center",fig.height=4,fig.width=6,warning=F, fig.cap="Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority"}
 fig904
 ```
-
-
 
 __Al-Rahman__
 
@@ -270,14 +235,9 @@ We cannot confirm either.
 
 How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure \@ref(fig:ch9fig908), which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
 
-
-
-
 ```{r ch9fig908,echo=F,fig.align="center",fig.height=4,fig.width=6,warning=F,fig.cap="Verses links towards verses in Surah Al-A'laa, up to 5 levels"}
 grid::grid.raster(png::readPNG("images/s87_net.png"))
 ```
-
-
 
 We create the graph using the _igraph_ function and tabulate the summary statistics:
 
@@ -338,13 +298,9 @@ On the other hand, verse 87:13 is pointed towards two verses: 20:74 and 43:77. N
 
 So far we have traversed through the first layer, which is a simulation of direct reading of Ibnu Katheer: read verse 87:13, look at the annotations, then read verse 35:36 and 43:77. We will only know that verse 87:13 is being referred to by verse 20:27 by reading verse 20:27 and finding its annotations, and similarly for verse 43:77. To go beyond this step, will involve repeating the process all over again from each verse mentioned. The process is tedious, lengthy, and maybe confusing, but that is what is exactly required without any shortcuts. We hope the readers appreciate the difficulty involved that we are trying to emphasize here.
 
-
-
 ```{r ch9fig909, echo=F,fig.align="center",fig.height=8,fig.width=12,warning=F, fig.cap="The verse map for V87:13"}
 fig_egos87
 ```
-
-
 
 Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure \@ref(fig:ch9fig909). We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
 
@@ -356,25 +312,15 @@ Furthermore, based on our earlier point of "small word properties" of Katheer Gr
 
 Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner from seeing other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
 
-
-
-
 ```{r ch9fig907b,echo=F,fig.align="center",fig.height=6,fig.width=8,warning=F,fig.cap="Verse 87:13 ego network directed with clusters"}
 grid::grid.raster(png::readPNG("images/fig907x.png"))
 ```
 
-
-
 Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure \@ref(fig:ch9fig907b) using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
-
-
-
 
 ```{r ch9fig909b,echo=F,fig.align="center",fig.height=8,fig.width=12,warning=F, fig.cap="Inverse of verse 87:13 ego network"}
 fig909
 ```
-
-
 
 Figure \@ref(fig:ch9fig909b) uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
 
@@ -392,47 +338,27 @@ We will take a different approach where 2:255 will be an "outwardly" moving netw
 
 The "map from" 2:255 is in Figure \@ref(fig:ch9fig910). We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages.
 
-
-
-
 ```{r ch9fig910,echo=F, fig.align="center",fig.height=8,fig.width=12,warning=F,fig.cap="Verse 2:255 ego network outwardly"}
 fig910
 ```
 
-
-
 The "map towards" 16:90 is in Figure \@ref(fig:ch9fig911). The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
-
-
-
 
 ```{r ch9fig911,echo=F, fig.align="center",fig.height=8,fig.width=12,warning=F, fig.cap="Verse 16:90 ego network inwardly"}
 fig911
 ```
 
-
-
 We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure \@ref(fig:ch9fig912). Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
-
-
-
 
 ```{r ch9fig912,echo=F, fig.align="center",fig.height=8,fig.width=12,warning=F, fig.cap="Outwardly map from verse 2:255 towards verse 16:90"}
 fig912
 ```
 
-
-
 Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure \@ref(fig:ch9fig913). The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
-
-
-
 
 ```{r ch9fig913,echo=F, fig.align="center",fig.height=8,fig.width=12,warning=F, fig.cap="Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree"}
 fig913
 ```
-
-
 
 __Summary__
 
@@ -590,47 +516,52 @@ ik_gephi = read_csv("data/ik1_nodes.csv")
 kg_degree = data.frame("verse"=1:6236, "degree"= degree(kg))
 fig901a = kg_degree %>%  ggplot() + 
   geom_point(aes(x=verse,y=degree), color = "steelblue", alpha = 0.75) +
-  labs(title="A: Degree of verses")
+  labs(title="A: Degree of verses",x = "Verse", y = "Degree")
 
 kg_degree_ranked = kg_degree[rev(order(kg_degree$degree)),]
 
 fig901b = kg_degree_ranked %>% group_by(degree) %>% count() %>% 
-    ggplot(aes(x=log(degree), y=log(n))) + 
-    geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
-    geom_path() +
-    labs(title = "B: Rank frequency distributions", 
-         x = "log of degree", 
-         y = "log of rank frequency")
+  ggplot(aes(x=log(degree), y=log(n))) + 
+  geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
+  geom_path() +
+  labs(title = "B: Rank frequency distributions", 
+       x = "Log of Degree", 
+       y = "Log of Rank Frequency")
 
 kg_dist_table = distance_table(kg)
 
-fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), color = "steelblue") +
-  labs(x = "distance", y = "frequency")
+fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), fill = "steelblue",color = 'black') +
+  labs(x = "Distance", y = "Frequency")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(title = "Katheer Graph Path Lengths Distributions")+
+  theme_bw()
 
 kgd = distances(kg, v = V(kg), to = V(kg), mode = "in")
+# kgsp = shortest_paths(kg,from = "6:25", to = V(kg), mode = "in")
+fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_point(aes(x,y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")
 
-fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% 
-  ggplot() + geom_point(aes(x,y), color="steelblue") +
-  labs(x = "verses", y = "distance")
-
-fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% 
-  ggplot() + geom_density(aes(y), color="steelblue") +
-  labs(x = "verses", y = "distance")  
+fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_density(aes(y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")  
 
 ## fig903: Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness
-fig903c = ik_gephi %>% 
-                ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
-                    geom_point(color = "cyan4") +
-                    geom_text(label=ik_gephi$Id, size = 3,
-                              nudge_x = 0.05, nudge_y = 0.05, 
-                              check_overlap = T) +
-                    labs(x = "prestige centrality", y = "betweenness centrality")
+fig903c = ik_gephi %>% ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
+  geom_point(color = "cyan4") +
+  geom_text(label=ik_gephi$Id, size = 3,
+            nudge_x = 0.05, nudge_y = 0.05, 
+            check_overlap = T) +
+  labs(x = "Prestige Centrality", y = "Betweenness Centrality",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Prestige vs Betweeness")+
+  theme_bw()
 ## fig904: Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority
 fig904 = ik_gephi %>% ggplot( aes(x=pageranks, y=Authority)) +
-                      geom_point(size = 1, color = "cyan4") + 
-                      geom_text( aes(label=ik_gephi$Id), size = 3, 
-                                 check_overlap = T) +
-                      labs(x = "pageranks", y = "Authority")
+  geom_point(size = 1, color = "cyan4") + 
+  geom_text( aes(label=ik_gephi$Id), size = 3, check_overlap = T) +
+  labs(x = "Pageranks", y = "Authority",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Pageranks vs Authority")+
+  theme_bw()
 
 ## TRAVERSALS IN SURAH AL-A'ALAA
 

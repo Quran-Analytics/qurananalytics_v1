@@ -1,0 +1,973 @@
+
+
+
+
+# Knowledge Through Verse Network {#knowledge-through-verse-network}
+
+Knowledge graphs (KG) have been a major area of research since 2012, after its introduction by Google when they enhanced their search engine as a semantic search, upgrading from strings search process [@googlekg2012]. Formally defining knowledge graphs, however, is challenging, since almost any form of representations of relationships, mathematically can be structured fitting a graph definition. Generically, it is "a network of all kinds of things relevant to a specific domain, not limited to abstract concepts and relations but can also contain instances of things like documents and datasets"[@blumauer2016].
+
+The early development of knowledge graphs was focused on gathering and organizing information from the web onto a knowledge graph framework. The leaders were Google, Yahoo, and major search engines of the web. Later on, the development moved towards knowledge extraction processes from semi-structured web knowledge bases such as Wikipedia, and towards the development of Semantic Web as well as the development of schema.org [@paulheim2016]. The main challenges involve the methodologies of building the "graph from knowledge", and "defining knowledge itself".
+
+Within the field of Information Retrieval(IR), the application of knowledge graph is growing, due to the instrumental role of semantic search enabling of KG. Within IR, among the key tasks are understanding queries and documents, matching and returning direct and clear answers as well as actionable entities or relationships, for any form of subject or domain of interest. The main issue facing both subjects is the intertwining directions between "knowledge graphs for information retrieval" and "information retrieval for knowledge graphs"[@reinada2020]. In graph theory, this problem is couched in the term of reference for a graph, defining which are the nodes and which are the edges. For example, do we represent "documents" as nodes and "entities" as edges or the reverse.^[Inverting a graph is not a simple and direct mathematical process.]
+
+The subject of KG, IR, and combinations of both is among the latest research works which provide advancements in knowledge theory, towards building expert systems and knowledge retrieval. Quran Analytics as we envisage is aiming towards creating an open system for Quranic knowledge retrieval and related learning systems as the end goal.
+
+The first and foremost challenge in creating KG and developing IR systems on top of it is "annotating" the knowledge. Interestingly though, within Islamic sciences, "annotating" the knowledge has been practiced by Islamic scholars from its very early time as a very strict discipline. We can see how the classical books are documented in an extremely meticulous way linking information, in forms of interpretations of verses of Al-Quran and the sayings or traditions of the Prophet (s.a.w). This is evident in the compendium of exegeses, such as by Imam Ibnu Katheer (Tafseer Ibnu Katheer), Imam Al-Razi (Al-Tafseer Al-Kabeer, The Large Commentary), and Imam Al-Tabari (Tafseer Al-Tabari). In Al-Hadith, we have the Sunan Sittah (the six major compendiums of Al-Hadith), which disciplines were established by Imam Malik (in Al-Muwatta'), and Imam Al-Bukhari (Saheeh Al-Bukhari) followed by Imam Muslim (Saheeh Muslim), and others.
+
+The knowledge of these classical Islamic scholars (and many others for that matter) has been "preserved" in their annotations, labeling, documenting the source, interpretation, and links as provided by the writings and records of the Classical texts of Islamic sciences. What they had established in essence is knowledge retrieval systems, combining both the methodologies of KG and IR, and resolving some of the major issues between the "documents" and "entities" - where the entities are the source of knowledge (for example the narrators in Al-Hadith), and the documents (for example the Matan, or body of the Hadith).
+
+The task for Quran Analytics, therefore, in the first instance is to convert all these "information" into a graph framework, as envisaged by the Knowledge Graph concept, to allow us to "extract knowledge" from the sources (such as from the verses) and transform them into learning. Since the field is extremely vast and challenging, the first focus of our Quran Analytics project is on the major exegesis of Al-Quran.
+
+Another interesting issue is, how do we learn what are in the "mind" of the classical scholars of exegesis of Al-Quran? Many of their ideas and thoughts are "hidden" from a direct naked reading of their writings. It would be almost impossible to memorize and link all concepts and aspects presented by these scholars, especially ideas which are not "explicitly written", except through annotations. For example, when a reference is made, say for a verse that is interpreted by other verses, the reasoning for such references may be inexplicitly stated, for reasons known only to the author. Uncovering this "hidden knowledge" is exactly what later scholars did when they relied on the classical sources and combined them with their own knowledge. (i.e., interpreting interpretations with their own interpretations). We can see this in the work of Imam Ibn Hajar, for example, in providing a detailed exegesis of the Sahih Al-Bukhari. This is exactly what is happening to the translations of Al-Quran, which in essence is interpretations of Al-Quran, into another language by the author.
+
+Among the major requirements for Quran Analytics is to build "translation engines" for "interpretations" (i.e. translations) of Al-Quran in other languages, including Modern Standard Arabic language,^[Our views as to why the need applies to MSA is due to the fallacious assumptions that Arabic speaking people knows the Quranic language. The subject is controversial as far as we know since it is a subject imbued within the domain of linguistic and Islamic knowledge.] besides the obvious commonly used languages such as the English language and other major languages. In the case of the Malay language, the authors' mother tongue, the need is rather acute, at least based on our own experience of learning Al-Quran. The distance between Malay speaking people with their own mother tongue is diverging, the distance with the Arabic language is even wider, and the teaching of Al-Quran is relegated towards memorization and less towards understanding.^[The authors' personal views.]
+
+## Tafseer Ibnu Katheer as Knowledge Graphs {#tafseer-Ibnu-Katheer-as-knowledge-graphs}
+
+Tafseer Ibnu Katheer is a classical Quranic exegesis, using a methodology that is considered by many scholars as to the "gold standard" of interpretations of Al-Quran, that is "Interpretation of the Quran with the Quran" (Tafseer Al-Quran bi Al-Quran).^[Tafseer Ibn Katheer, https://en.wikipedia.org/wiki/Ibn_Kathir]  What Ibnu Katheer did was to provide links between a verse to other verses which interpret the verse. By doing so, what is documented is his views on how each verse is linked to other verses, and in turn, implicitly, these verses are also linked to other verses and so on. The network of links between these verses then forms a massive network of links between all possible verses to all other possible verses.
+
+In network terms, we say that each verse is a "node", and each of the links is an "edge", and the total network formed is a "graph". The information provided by the graph is called a "knowledge graph". In this case, the full knowledge graph of the Tafseer represents what Imam Ibnu Katheer recorded as his way of interpreting not only just each verse of Al-Quran but the entire verses of Al-Quran in totality. Whether that had been implicitly intended by him, or it is what his complete understanding of the whole Al-Quran is not explicitly expressed. Once we convert his whole interpretation into the form of a network as described, we can see the structures of his "knowledge" and get the deeper meanings of the knowledge representations of his methodologies and hence its deeper and broader understanding.
+
+In this chapter, we will do an expanded analysis of Tafseer Ibnu Katheer, using the tools and methods explored in previous chapters.
+ 
+Open-source network visualization tools are handy when we deal with large networks. There are several open-source tools available such as _Gephi_^[https://gephi.org], _Cytoscape_^[https://cytoscape.org], and _Pajek_^[http://mrvar.fdv.uni-lj.si/pajek/]. For interested readers, please refer to the manuals in _Gephi_ for the methods of applying the visualizations presented here.
+
+The codes used for this chapter are in the Appendix.
+
+### Preparing the data and settings
+
+We will start with general network visualizations. Network visualizations are useful for general analysis where the objective is to observe any "emergent" structures discernable from the observed patterns from the network. Here we will utilize plotting packages from __R__, namely _ggplot2_, and _ggraph_; we will also deploy _Gephi_, which is open-source software for large-scale network visualizations and network statistical computations.
+
+Furthermore, we will use some of the tools from previous chapters to do deeper analysis on the network data, and explore some examples of "deep diving" into a Surah, or a verse, or a group of verses. We will use the graph theory and visualizations in Chapter 5, Chapter 6, text modeling techniques of Chapter 7, and Chapter 8. In essence, we will glue together the works from previous chapters into our analysis.
+
+The dataset which provides the annotations for the Tafseer Ibnu Katheer is from http://textminingthequran.com/.^[Note that we have not verified the accuracy of the dataset, and we will use it as is where is basis.] The dataset contains 7,679 rows and two columns, a column for the reference verse and the "interpreting" verse in the second column. These two columns are the "vertices" or "nodes" and a row represents an "edge". 
+
+Notationally speaking, we have $K_G = set(N,E)$, where $K_g$ is the _Katheer Graph_, and $N$ are the nodes (i.e., verses) in the graph, and $E$ are the edges or directed links (i.e., the relationship) between the nodes (verses), which therefore means that the graph is a _directed_ graph.^[This is a formal definition of a graph in Graph Theory] 
+
+Using _igraph_, we convert the dataset to a graph object and we are ready to explore the Katheer Graph.
+
+## Katheer Graph network {#Katheer-graph-network}
+
+### Katheer Graph visualizations
+
+In network analysis, we use various methods of display or visualization of the network, which is called the layout. What each layout does is expand the network visually for visual observations. Here we provide a few samples of visuals followed by short interpretations.
+
+1. _Fruchterman-Reingold_ layout visualization
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig901-1.png" alt="Ibnu Katheer verse network: Fructherman Reingold layout" width="384" />
+<p class="caption">(\#fig:ch9fig901)Ibnu Katheer verse network: Fructherman Reingold layout</p>
+</div>
+
+First, we calculate the modularity classes for the network (based on a resolution scale of 1.0) and color each class distinctly. As observed in the image, the various 115 communities are spread out throughout the verses in the entire Al-Quran. What this implies is that the method of interpretations of Ibnu Katheer is expanding the grouping of verses which are interpreted by each other (i.e. networked with each other), spanning across a large space encompassing many verses from other parts of Al-Quran (e.g., from other verses within the same Surah as well as from other Surahs). The visuals also imply that it took many verses to explain a verse, or in another way, many verses linked together give a much wider interpretation of the verse, and vice-versa.
+
+This is indeed a magnificent view of what Ibnu Katheer had in mind. If we want to do this manually, it will take a great effort to annotate and make notes of each verse, grouping, and link altogether.
+
+The largest modularity class, which stood at 5.65% of verses (nodes) is a group of verses (community) consisting of about 300 verses. What it normally means is that these verses are from a common theme or subject. If we want to know what the themes are, we must extract the entire "sub-network" and do the types of analysis which were shown in earlier chapters (word network, co-occurrence network, topic models, sentiment analysis, etc.). Furthermore, the sub-network itself may consist of smaller sub-networks. We can keep repeating the process until we reach its most elementary form. Since our work here is for exploratory purposes, we will leave these details for future work.
+
+2. Add _Force Atlas 2_ layout to existing graph
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig902-1.png" alt="Ibnu Katheer verse network: Force Atlas layout" width="384" />
+<p class="caption">(\#fig:ch9fig902)Ibnu Katheer verse network: Force Atlas layout</p>
+</div>
+
+Now we can observe that if we "re-arrange" the visualizations (by adding the Force Atlas algorithm), the groupings are more distinctly clearer. What this means is those different methods of visualizing provide views of various dimensions of the network. In fact, there are numerous methods of layout layerings that are easily applied within a network structure. All these layouts are based on certain "graph spring" algorithms, whereby each algorithm (logics) brings in another dimension to the graph (or knowledge representations). Again, we leave the subject for future work.
+
+### Katheer Graph network statistics
+
+First, we summarize the network properties of _Katheer Graph_ and comment on its general structure.^[References for a mathematical and clear understanding of network structure and its properties is available in @barabasi2016.]
+
+\footnotesize
+|  Katheer Graph Network             | Statistics                             |
+|------------------------------------|----------------------------------------|
+| Total number of possible nodes     | 6,236                                  |
+| Number of source nodes             | 2,445 |
+| Number of target nodes             | 3,279   |
+| Number of edges                    | 7,679                |
+| Average degree                     | 2.46          |
+| Average path length                | 14.82   |
+| Diameter                           | 51                       |
+| Modularity (resolution 1.0)        | 115                                    |
+| Node average clustering            | 0.064                                  |
+\normalsize
+
+A quick observation from the table tells us that not all verses from the 6,236 verses are represented, or we can say that there are nodes without any edges. Mathematically speaking we have 19,440,730 possible one-to-one combinations between the verses. We have only 0% of the possible links, which means that the network is "linearly sparse" in the first layer. 
+
+This implies that Ibnu Katheer viewed that not all verses are linked directly to other verses, and possibly a link or few links are sufficient to transmit the message. However, the average path length tells us something else, the message is carried through quite a long path, which on average is 14.82 "hops" or "steps". In another word, a path, denoted by $p$ is represented by: $V_{p,n}$ > $V_{p,n-1}$ ...> $V_{p,0}$, representing a long message passing process. Verse $V_{p,n}$ is interpreting Verse $V_{p,0}$ through a sequence of verses. Note that the number of possible paths can be exploding exponentially (i.e., $i = 1,2,...m$).
+
+Are these path sequences random or are they part of the inherent structure of Ibnu Katheer? If the sequence is random, then message passing is also random, which logically cannot be true. If it is true, then we can say that Ibnu Katheer's method does not have "knowledge value". We will show later that true enough to the status of its exegesis, the brilliance of Ibnu Katheer is par excellence beyond imagination. Instead of having to annotate the links for each of $V_{p,n}$, $V_{p,n-1}$,.. to $V_{p,0}$ directly, the message in $V_{p,n}$ can be traced through the paths to $V_{p,0}$. However, a beginner learner needs to read the Tafseer and traverse through all those available paths, many times before he can learn the full message contained in a verse.^[In database search terms, we call this sequential search process. Sequentially, this process will take $O^Z$ times, where both $O$ and $Z$ are large numbers. Which means that a person may take even his lifetime to complete the search of Ibnu Katheer, sequentially.] We know this by the fact that the largest $p$ is 51, the _diameter_ of the network.
+
+Given such an enormous structure of the Katheer Graph or knowledge network of verses, it deserves a thorough analysis, which we will do subject by subject next.
+
+### Katheer Graph network degree
+
+The degree of the network represents the concept of "links between ideas" (we will use "message", instead of "idea"). If a verse is a "link" to another verse, it means that the "message" contained in the "source" verses explains the message in the "target" verse. The network shows that on average, a verse is connected to (interpreted directly by) 2.46 verses. However, as normally understood in statistics, an average is meaningless without understanding the shape of the entire distribution; which is shown in Figure \@ref(fig:ch9fig903).
+
+The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This contrasts with normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig903-1.png" alt="Plot of the Katheer Graph degree" width="576" />
+<p class="caption">(\#fig:ch9fig903)Plot of the Katheer Graph degree</p>
+</div>
+
+To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal, and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
+
+What we have is a massively dense citation network. Every verse is an important message (literature) and is compactly present in the citation network. This fact is an amazing phenomenon! What this implies as well is that every verse (message) is important, not only on its own, but also within a peculiar way in the network. You can take out a verse randomly, it contains messages in many other verses within it. And if you take a group of connected verses, without one of its members, the message linkages are very unlikely to be broken.^[This is the same phenomenon in the Internet routers network; redundancies, alternate routings, etc., ensure that the network cannot fail. You can be connected to one of the routers and be accessible to the network, and yet if your router is broken (taken out), still the rest of the network operates smoothly.]
+
+### Katheer Graph network paths and traversals
+
+Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure \@ref(fig:ch9fig904). This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of 14.82. A verse on the network is about 15 links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig904-1.png" alt="Plot of the Katheer Graph path lengths distributions" width="576" />
+<p class="caption">(\#fig:ch9fig904)Plot of the Katheer Graph path lengths distributions</p>
+</div>
+
+To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure \@ref(fig:ch9fig905) says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig905-1.png" alt="Verse 6:25 distances from other verses" width="576" />
+<p class="caption">(\#fig:ch9fig905)Verse 6:25 distances from other verses</p>
+</div>
+
+We emphasize again that this observation is important, the network exhibits the small world property. A simple estimate of the small world property is measured by $log(N)/mean(d)$, which is 3.55. It means that in real terms, a verse is only about 4 links or steps away from "each other".^[Note that distance is the measure of a verse from any other verse; whereas the small word property measure is "how far away" each verse truly is.]
+
+This may imply that the messages within the verses are only a few steps away. We will demonstrate this observation later in the chapter. Another way to say it is that even though the paths of interpretation can be quite long for some cases (can be as long as 51 steps), we do not need to go that "far back" in the traversals. Probably 4 steps are sufficient.
+
+### Network traversals using statistical properties
+
+Analyzing network statistical properties is important in the sense that it describes the overall "behaviors" of the network. In network science, these behaviors reveal many "emergent" properties which are interesting and useful for explanatory purposes. We can plot and study various properties as we demonstrate next.
+
+Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 0.5$) in interpreting other verses; and yet many of these verses are not necessarily contained within a grouping of verses (sub-networks) (i.e., $closeness centrality < 0.5$). There are only a few verses that are both "prestigious" and at the same time have a high level of importance in their own groupings (i.e., $eigen centrality > 0.5$ and $closeness centrality > 0.5$). Which are these verses? And how can we interpret these properties? If we dive deeper into the verses and the relations, we might have a better meaning of what they mean.
+
+How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig906-1.png" alt="Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness" width="576" />
+<p class="caption">(\#fig:ch9fig906)Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness</p>
+</div>
+
+__Verse 2_255__
+
+A plot of this is shown in Figure \@ref(fig:ch9fig906). We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Compared to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure \@ref(fig:ch9fig906)). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907-1.png" alt="Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority" width="576" />
+<p class="caption">(\#fig:ch9fig907)Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority</p>
+</div>
+
+__Al-Rahman__
+
+Figure \@ref(fig:ch9fig907) compares the _Authority_ and _pageranks_ for the network. What can we learn from it? The group of verses from 19:88-93 (Surah Maryam v88-93) are high in terms of _Authority_, and yet low in terms of _pageranks_. What is the content of these verses? It contains the name of Allah, "Al-Rahman", befitting such knowledge that Al-Rahman is the most "authoritative" name of Allah (measured by _Authority_) but is mentioned not as often (measured by _pageranks_).
+
+__The Messengers and the message__
+
+How about Verse 16:36 (An-Nahl, verse 36)? Why is its "mentioned" status among the highest? A further look into the verse reveals that it is about the messenger (Prophets) with the message: _"Worship Allah and shun false gods"._
+
+There are countless ways and methods we can traverse the network using the network statistical properties as we have demonstrated above, depending on the contexts and objectives. What we demonstrate here is just a sampling of what's possible. The method of visualization is just one of the simple ways to present a pictorial view of the subject. Tracing these links and traversing from one verse to another may yield new meanings and interpretations. The network graph model is a useful tool in analyzing the work of Ibnu Katheer.
+
+## Traversals in Surah Al-A'laa {#traversals-in-Surah-Al-A'laa}
+
+In this section, we will demonstrate an example of how the Ibnu Katheer network can be used within a study of a specific Surah, namely Surah Al-A'laa (Surah no 87). It is a short Surah with known virtues as noted by Imam Ibnu Katheer himself.^[http://www.recitequran.com/tafsir/en.ibn-kathir/87:14]
+
+The first step we have to do is to "extract out" the Surah from the entire network. This is important since we cannot build the network for the Surah in isolation, without linking it to the entire network. We must attempt to understand the Surah within the total framework, instead of a localized framework. A first pass exercise (or linear search) will be to go through each verse of the Surah, and observe the annotations by Ibnu Katheer for each of the verses, which is fine. But how about the second level search, which are the verses being referred to, how are they being referred to other verses at their own level? And we move to the next level, the same question arises, until the end of the traversal process.
+
+This is achieved simply by combining the verses which point to any verse in Surah Al-A'laa (i.e. $E_i > 87_{1:19}$); then combine all the edges pointing to these verses ($E_j > E_i$) and move back up to five steps. The combination of edges creates the Surah Al-A'laa graph.
+
+There are 44 verses pointing to the 15 verses (level 1); then there are 29 other verses pointing to the 44 verses (level 2); then there are 54 verses pointing to the 29 verses (level 3); then there are 135 verses pointing to the 54 verses (level 4); then there are 228 verses pointing to the 135 verses (level 5). We can continue as far as we want until there are no nodes and edges to be added onto the network which may reach 51 levels (the network diameter of the entire Ibnu Kahtheer network). Up to level 5, we have 490 edges with 231 nodes (verses).
+
+What we want to do next depends on our objective. Let us say our objective is to understand how Ibnu Katheer interpreted Surah Al-A'laa, then we have to go through a few steps of questions and answers, as we will do next.
+
+### Themes of Surah Al-A'laa
+
+What is/are the main theme(s) of the Surah? And in which larger theme(s) is it in? To answer the question we stack the network to 5 levels deep and we tabulate the results from STM topic modeling for various levels in the table below:
+
+| Level | No of verses  |     STM Top topic                                           |
+|-------|---------------|-------------------------------------------------------------|
+|  0    | 15                                   | brings pasture scriptures lord name abraham former indeed moses avoid  |
+|  1    | 34 | life hereafter worldly enjoyment except o revealed fire muhammad purifies  |
+|  2    | 65 | men women one believing day therein let say fire death  |
+|  3    | 109 | allah say o life except death fire know worldly better  |
+|  4    | 201 | allah indeed say life people o among many believed except  |
+|  5    | 331 | allah indeed lord people say us upon believed o know  |
+
+Based on the English translation usage of wordings in Saheeh, we may say that the theme for the Surah is about: \textit{"Allah say upon us to believe that (there is) life after death, (and) there is hell fire; and what is revealed through Prophet Muhammad (saw), (that we need to) purify and except (avoid) worldly enjoyment; and the (message is) in the scriptures of Abraham and Moses"}.
+
+How to make up the meaning of this sentence is up to an interpreter of Al-Quran. In fact, we can construct the sentence even better if we have the proper language model to put the proper ranking of the words (i.e. probabilistically). This is a subject we exclude from our current work. But the point is, we do have all the "data" necessary from the model (if we assume that the model is working), to construct a more organized sentence, semantically, syntactically, and grammatically.
+
+We do not wish to pursue this direction for now at least due to two reasons:
+
+a) we need to work with a language model of English which is suitable for the task.
+b) we have to assume the accuracy of Saheeh's interpretation is in full congruency with Ibnu Katheer's exegesis.
+
+We cannot confirm either.
+
+### Surah Al-A'laa network
+
+How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure \@ref(fig:ch9fig908), which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig908-1.png" alt="Verses links towards verses in Surah Al-A'laa, up to 5 levels" width="576" />
+<p class="caption">(\#fig:ch9fig908)Verses links towards verses in Surah Al-A'laa, up to 5 levels</p>
+</div>
+
+We create the graph using the _igraph_ function and tabulate the summary statistics:
+
+\footnotesize
+|   Statistics                 | Surah Al-A'laa network             |   Surah Al-Kahf    | Surah Maryam |
+|------------------------------|------------------------------------|--------------------|--------------|
+| Nodes                        | 231                      | NA | NA |
+| Edges                        | 490               | NA | NA |
+| Average degree               | 4.24          |  21.8 | 17.41 |
+| Diameter                     | 8                       |  7 | 7 |
+| Average Path Length          | 3.67   | 3.06 | 3.24 |
+| Transitivity                 | 0.15          | 0.28 | 0.33 |
+\normalsize
+
+We can benchmark the results from the above table with similar tables in Chapter 7 for Surah Al-Kahf and Surah Maryam. Note that the measures are for word co-occurrences network, which is a different framework than what we have here.
+
+We calculate the network statistical measures and use STM to extract the topics in the top ten verses under each category. The results are tabulated below:
+
+\footnotesize
+|   Measures       | Topics results from STM on top ten verses of Surah Al-A'laa network |   
+|------------------|---------------------------------------------------------------------|
+| By Al-A'laa network top degree    |  allah, righteousness, death, gives, may, one, promise, true, angels, ask                                     |
+| By Al-A'laa network betweenness   |  allah, believing, errs, gives, guided, promise, true, righteousness, whoever, one                                     |
+\normalsize
+
+From the table, we can see the various word rankings in the network; depending on what perspective one wants to see, as an example, verses which are the most referred to (top degree), or the most referred to as in between references (betweenness). We can do the same for verses referred to less frequently but hold an important role (prestige), or by its high references using _pageranks_ and numerous other measures (not shown here). Each of the settings has its own meaning as it represents one of the dimensions of "knowledge" through the rankings of words within the top topics.
+
+### View from the perspectives of the entire Ibnu Katheer network
+
+We have not addressed other approaches like instead of looking "within the neighbors" of Surah Al-A'laa network, or we can traverse from the "neighbors outside" of Surah Al-A'laa, or within groupings of Surah such as the short Surahs. We can traverse outwardly or inwardly, depending on the objectives of learning.
+
+Instead of using Al-A'laa network statistics to get the topics, we use the statistics obtained from the entire network of Ibnu Katheer Graph; and use STM to extract the topics. The results are tabulated below:
+
+\footnotesize
+|   Measures       |  Topics extracted based on entire network measures   |
+|------------------|----------------------------------------------------------------|
+| By entire network top degree    |  merciful, allah, entirely, especially, name, fear, guided, soul, aided, compensation                   |
+| By entire network betweenness   |  whoever, call, earth, let, wills, indeed, lord, fire, like, truth                       |
+\normalsize
+
+We can see that the order of the words changed (in the topic for the top ten verses), when we use the "original measures" from the entire network, instead of the measures from the "internal network" of Surah Al-A'laa. These changes are by no means trivial and have their own dimensions. A simple example may help: a person's status within his family members tells something about him, and at the same time his status in relation to all other people's status in their own families means something else. The topics of verses within a sub-network may tell us something, and if we measure relative to the entire network, those topics may rank differently.
+
+How to interpret the results as presented is beyond our current discussion for similar reasons that we made before: the STM model may suffer from small sample problems, and semantically we do not know the styles of language used in Saheeh translations. Therefore, we will leave the subject as it is and let the readers think for themselves as to what the results may imply. What we demonstrated are the methods and approaches for the extraction of information, via text topic modeling, relying on the network dimensions.
+
+### Summary
+
+We can summarize for now that the possibilities of diving deeper into the "meaning" and "learning" from the Ibnu Katheer's interpretations of Al-Quran, by representing the verse-to-verse method of interpretations, are made easy when we transform the "knowledge" into "graphs". The network graph now allows the learner to traverse through the layers of verses, links across verses, etc., which is very difficult to do otherwise. What we have shown here is still "raw" in the sense that, the extraction of meanings is based on the Saheeh English translations, and the semantic meaning is what we may be after.
+
+Despite these shortcomings, we need to say that as far as the verses are concerned, the network we have shown and used for the traversals and explorations does not rely on the Arabic language at all. Furthermore, we do not rely on the comments made by Imam Ibnu Katheer in his exegesis. We rely solely on the data based on annotations made on the Tafseer.
+
+## Traversing verse 13 Surah Al-A'laa {#traversing-verse-13-Surah-Al-A'laa}
+
+We choose a specific verse from a specific Surah to show how we can traverse from one verse to other verses in the network. This is slightly different from the previous section where we looked at a group of verses, namely the whole Surah Al-A'laa.
+
+The verse 87:13 reads _"Neither dying therein nor living."_ The phrase _"neither dying therein nor living"_ is an important metaphor, which requires interpretation. Direct reading of Ibnu Katheer says that this verse is interpreted by verses 35:36 and 43:77. Verse 35:36 reads _"And for those who disbelieve will be the fire of Hell. [Death] is not decreed for them so they may die, nor will its torment be lightened for them. Thus do we recompense every ungrateful one."_  and verse 43:77 reads _"And they will call, "O Malik, let your Lord put an end to us!" He will say, "Indeed, you will remain.""_
+    
+On the other hand, verse 87:13 is pointed towards two verses: 20:74 and 43:77. Notice that 43:77 is also pointed to 87:13, which is a circular loop, meaning that both interpret the other jointly. From the text of verse 43:77, it says about the Lord decreeing a judgement _"Indeed, you will remain"_,_"neither dying therein not living"_, and inversely, _"neither dying therein not living"_, _"Indeed, you will remain"_.
+
+So far we have traversed through the first layer, which is a simulation of direct reading of Ibnu Katheer: read verse 87:13, look at the annotations, then read verse 35:36 and 43:77. We will only know that verse 87:13 is being referred to by verse 20:27 by reading verse 20:27 and finding its annotations, and similarly for verse 43:77. To go beyond this step, will involve repeating the process all over again from each verse mentioned. The process is tedious, lengthy, and maybe confusing, but that is what is exactly required without any shortcuts. We hope the readers appreciate the difficulty involved that we are trying to emphasize here.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909-1.png" alt="The verse map for V87:13" width="1152" />
+<p class="caption">(\#fig:ch9fig909)The verse map for V87:13</p>
+</div>
+
+Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure \@ref(fig:ch9fig909). We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
+
+By observing further, we can see that verse 20:74 does not have such deeper networks emanating from it. Why? Apparently, the wordings of 20:74 are similar to 87:13, as verse 20:74 reads _"Indeed, whoever comes to his Lord as a criminal - indeed, for him is Hell; he will neither die therein nor live."_ It is almost an exact word for word matching with verse 87:13.
+
+How can a learner of Ibnu Katheer use this "map"? Firstly, he can easily draw the links between a verse to all the verses which point towards its interpretation. Secondly, the "map" presents the "message" or "knowledge" flows. As an example, reading verse 35:36 would likely confirm it is about the disbelievers and the torment of hellfire. The network around it probably presents a similar subject. Similarly, verse 43:77 is about the Lord's judgement on the disbelievers, a subject of the group of verses that relates to it, and so on.
+
+Furthermore, based on our earlier point of "small word properties" of Katheer Graph, it is obviously clear where in the case of verse 87:13 network, that it is "only four or so steps away" from the rest of the verses. A way to understand this is just like your house is only four roads away from the main highway and the main highway defines the neighbourhood of your house. The interpretation of verse 87:13 can be obtained from the four hops exercise because beyond that the meaning is already apparent.
+
+Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner from seeing other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907b-1.png" alt="Verse 87:13 ego network directed with clusters" width="768" />
+<p class="caption">(\#fig:ch9fig907b)Verse 87:13 ego network directed with clusters</p>
+</div>
+
+Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure \@ref(fig:ch9fig907b) using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909b-1.png" alt="Inverse of verse 87:13 ego network" width="1152" />
+<p class="caption">(\#fig:ch9fig909b)Inverse of verse 87:13 ego network</p>
+</div>
+
+Figure \@ref(fig:ch9fig909b) uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
+
+Verse 17:15 reads: _"Whoever is guided is only guided for [the benefit of] his soul. And whoever errs only errs against it. And no bearer of burdens will bear the burden of another. And never would We punish until We sent a messenger."_ It is about the subject of "guidance" and "no soul is burdened with the sin of others". What this message implies should be of interest to a learner of the verse, within the context of verse 87:13, inversely.
+
+__Summary__
+
+How we can traverse the various paths, groupings, clusterings, just based on pointers and layouts as we have presented can be extensive and exhaustive. Thus far, we do not impose our own views on the interpretations of the verse, but instead, allow the "data to speak for itself". Furthermore, we also show how unsupervised learning models such as the STM model can be applied in combination with knowledge graphs. This is the power of knowledge graphs, and what we have demonstrated is about the tremendous amount of "knowledge" represented by the graph, just for a relatively short verse. We hope that the exercise convinces learners of Al-Quran of the strength and benefit of knowledge graph representations towards the knowledge retrieval process. We envisaged this to be a subject of paramount importance for Quran Analytics.
+
+## Traversals in verses 2:255 and 16:90 {#traversals-in-verses-2:255-and-16:90}
+
+In this section, we will show another approach of graph traversals and clustering by joining the networks of two distant verses. The exercise is akin to independently looking at the interpretations of two separate verses together (reading different pages separated by quite a distance). We choose verses "2:255" (Ayat al-Kursi) and "16:90". "2:255" is well known for its virtues^[http://www.recitequran.com/tafsir/en.ibn-kathir/2:255] and "16:90" is the command to be fair and just^[http://www.recitequran.com/tafsir/en.ibn-kathir/16:90]. "2:255" describes many of the beautiful attributes of Allah (SWT). "16:90" summarizes the essence of Akhlaq or morals in Islam. "2:255" is about belief or faith (Iman) and "16:90" is about morals (Akhlaq).
+
+We will take a different approach where 2:255 will be an "outwardly" moving network - that is which other verses 2:255 point to; and for 16:90, we look at which are the verses that interpret it (inwardly). Then we will combine the two networks together.
+
+The "map from" 2:255 is in Figure \@ref(fig:ch9fig910). We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig910-1.png" alt="Verse 2:255 ego network outwardly" width="1152" />
+<p class="caption">(\#fig:ch9fig910)Verse 2:255 ego network outwardly</p>
+</div>
+
+The "map towards" 16:90 is in Figure \@ref(fig:ch9fig911). The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig911-1.png" alt="Verse 16:90 ego network inwardly" width="1152" />
+<p class="caption">(\#fig:ch9fig911)Verse 16:90 ego network inwardly</p>
+</div>
+
+We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure \@ref(fig:ch9fig912). Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig912-1.png" alt="Outwardly map from verse 2:255 towards verse 16:90" width="1152" />
+<p class="caption">(\#fig:ch9fig912)Outwardly map from verse 2:255 towards verse 16:90</p>
+</div>
+
+Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure \@ref(fig:ch9fig913). The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
+
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig913-1.png" alt="Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree" width="1152" />
+<p class="caption">(\#fig:ch9fig913)Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree</p>
+</div>
+
+__Summary__
+
+The various traversals between the two verses which we have shown are another example of how we can use a knowledge graph representation in an unlimited number of ways. The most important point is the learner must set the objectives of learning and then follow a traversal path from the network that emanates from a selected verse. The original written text of Ibnu Katheer only provides the first degree or layer of connections inwardly. With a graph network, we can traverse inwardly or outwardly across many degrees, although "four hops" or "four degrees" will, on average, bring us back to the starting verse. From the path we have chosen, we can then apply some of the "learning algorithms" that we have shown like STM, combined with some of the centrality properties of the network like betweenness.
+
+## Word cooccurrences from Katheer Graph {#word-cooccurrences-from-Katheer-graph}
+
+Word co-occurrences play a major role in language modeling in NLP, as we have explained in Chapters 5, 6, and 7. In fact, when Imam Ibnu Katheer made his commentaries, referring a verse to another, it is a referral based on parts or chunks of the verses. A chunk of a verse, interpreting another chunk. A chunk usually contains a few words. In some ways, we can think of it as like a synonym dictionary. The base of the chunk are words forming the sub-sentence. And when these chunks are "matched" together, we have the words to "co-occur" together. If we take this perspective, what will the word co-occurrence framework look like? Can we learn new things out of it?
+
+Since the subject of the inquiry is a major one, we will not attempt to provide conclusive answers. Instead, we will work through some examples and demonstrate what are the possibilities offered by the methods we present in this book.
+
+First and foremost, we need to note that the "normal" method of word co-occurrences by counting the frequencies of n-grams, as we have shown in Chapter 3, will not be applicable. Instead, we rely on the GloVe model of _word-2-vec_ algorithms. The _word-2-vec_ does not suffer from the problems of "localized" positions of n-grams; wherein n-grams, the exact position of the word in a sequence of sentences and documents matter. GloVe instead creates "global vectors" (as the name represents), where what we want to know is the position of a word in a global sense, and hence less on exact positional sense. Furthermore, GloVe is a dynamic model, where we can change and alter what we set as "global". The alterations depend on the objective and problem setting the researcher has.
+
+We will apply the GloVe model and see how it works, with a note of caution. We rely on Saheeh's English translation, which confounds the analysis by an unknown degree since the translation methods and linguistic styles will enter into consideration when we want to interpret the results. Nevertheless, this is sufficient to demonstrate our objectives.
+
+### Setting the text data
+
+We will again revisit and choose Surah Al-A'laa as our sample data. We will choose the network of verses up to five hops or levels inwardly and combine with five levels outwardly. In total, we have ten levels altogether. For demonstration, we will split the data into "inwardly" and "outwardly", and finally combine the data as a complete set.
+
+### What words co-occur together
+
+First, we work with the "inwardly" network. We know from verse 87:13, the words "dying" and "living" are the keywords. Let us study the messages through word co-occurrences using the GloVe model as tabulated below:^[The codes are in the Appendix.] 
+
+\footnotesize
+__Inward network Surah Al-A'laa topical word co-occurrences__
+
+|  Topics  |  word cooccurrences         |
+|----------|-----------------------------|
+| "allah"  | allah, bring, knowing, messenger, forget, people, subjugator                  |
+| "lord"   | lord, desire, believed, truth, nearer, break, sky                 |
+| "living" | living, mention, revealed, eliminates, fine, unquestionably, bedouins                  |
+| "dying"  | dying, preceded, affairs, alteration, accepting, sharp, sheep                  |
+| "purify" | purify, dwellings, warners, intercession, orphans, resurrection, moderate                  |
+| "hell"   | hell, revelation, ruin, unquestionably, hoof, invented, needy                  |
+| combined | allah, lord, revealed, subjugator, believed, purify, dying                   |
+\normalsize
+
+The results in the table above, say that for the words in the inward text networks, for example, _"allah, bring, knowing, messenger, forget, people, subjugator"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"bring" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
+
+\footnotesize
+__Outward network Surah Al-A'laa topical word co-occurrences__
+
+|   Topics |  word cooccurrences          |
+|----------|------------------------------|
+| "allah"  | allah, reached, messenger, remember, soul, truth, forgiving                  |
+| "lord"   | lord, worlds, submissive, worship, exalted, gathering, kinds                 |
+| "living" | living, traveling, afford, dying, close, afternoon, creation                  |
+| "dying"  | dying, ra, heads, subside, month, increase, living                  |
+| "purify" | purify, stranded, desire, brought, heels, blame, revealed                  |
+| "hell"   | hell, load, fire, painful, patient, compulsion, beasts                  |
+| combined | allah, living, dying, fear, lord, purify, truth                   |
+\normalsize
+
+The results in the table above, say that for the words in the outward text networks, for example, _"dying, ra, heads, subside, month, increase, living"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, ra, heads, subside"_. This is one way to look at it. Readers can see for themselves the remaining topics.
+
+\footnotesize
+__Combined network Surah Al-A'laa topical word co-occurrences__
+
+| Topics   |  word cooccurrences          |
+|----------|------------------------------|
+| "allah"  | allah, people, knowing, enemy, change, messenger, bring                  |
+| "lord"   | lord, truth, inclining, return, fear, worlds, believed                 |
+| "living" | living, shaving, pardoned, submits, delusion, shout, extends                  |
+| "dying"  | dying, makkah, wandering, painful, lied, stories, exemplary                  |
+| "purify" | purify, told, mouths, seeking, dwellings, messenger, house                  |
+| "hell"   | hell, fire, relative, concluded, needy, designated, blessings                  |
+| combined | allah, lord, fear, inclining, truth, provision, intend                   |
+\normalsize
+
+The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, fire, relative, concluded, needy, designated, blessings"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, fire, relative, concluded"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
+
+It is not our intention to use all of these exercises to __interpret__ Surah Al-A'laa. What we show is just a methodology to extract information based on a defined objective. The objective is set based on the assumptions that words in a language tend to occur together, and jointly they provide semantical and ontological meaning to the subject of the texts.
+
+## Summary {#summary-chapter-9}
+
+This chapter glues together many concepts, ideas, and methods of NLP tasks, that we have introduced in the earlier chapters based on __R__ and the selected packages.
+
+Programming in __R__ is not too hard, and the credit mainly goes to the many developers of packages related to NLP. The _igraph_, _ggraph_,  and the plotting functions of _ggplot2_ are of extreme benefit when we deal with graph objects and their statistical calculations, as well as graph algorithms. For someone with moderate programming experience, a few months of training will get him to a sufficient level to run all the codes we have used here. Someone proficient in any programming language should take less than a month.
+
+Knowledge graphs as representations of a network of information such as the Ibnu Katheer exegesis show both the brilliance and knowledge of Imam Ibnu Katheer and the easiness for us to understand his brilliance and knowledge.
+
+The work we have shown here for Imam Ibnu Katheer Graph for "Tafseer Al-Quran bi Al-Quran" barely scratches the surface. Our intention is to demonstrate the knowledge graph for Quran Analytics and use Tafseer Ibnu Katheer as a sample. It is our view that the many possible further avenues of research are way beyond what we have worked out. Albeit, our purpose was to introduce, rather than to conclude. 
+
+For our benefit and the readers, we list what we think are the areas of further research based on some of the results of this chapter:
+
+1. The full work of Katheer Graph needs to be analyzed using the Arabic language as its source of text. Note that in the work of this chapter, we use the English translations only when we want to provide some textual results based on the verses groupings. The main results, which are "numbers and pointers" do not assume any language. It is just data as is. Everything that we have done, can be performed in Arabic without any problem. Even the GloVe model is language independent. This is what we meant by non-parametric models of NLP where the dependency on any pre-built model is avoided.
+
+2. There are more methods of discovery for the Katheer Graph which we have not tried. Exploring these methods certainly involves advanced research that is suitable for Ph.D. thesis and research papers. The brilliance and knowledge of Imam Ibnu Katheer of Al-Quran and his methodologies are hidden gems. The fastest method to do this is to apply knowledge graphs on a larger scale; that is to convert and annotate at the "words" level, on top, and above the verse level. This can be combined with his annotations of Al-Hadith, and his commentaries. Only then, we will have a full appreciation of the exegesis work by Imam Ibnu Katheer.
+
+3. Utilization of unsupervised learning models for NLP tasks, like GloVe algorithms, deep learning, and Graph NLP, is still among the fresh fields of knowledge and discovery. Applications to Quran Analytics using these new tools are scarce. We envisage that combining Knowledge Graph, Graph Theory, Systems Theory, Unsupervised Learning NLP modeling, combined with Artificial Intelligence and Machine Learning computing algorithms will be among the potent and powerful tools for studies of Al-Quran and Islamic knowledge and sciences.
+
+Quran Analytics will be the starting point for us to develop and implement full-scale knowledge extraction systems from classical sources and writings on Al-Quran. We feel that the day for realizing this is coming very soon.
+
+
+## Further readings
+
+Barabasi, A.-L. (2016). _Network Science_. Cambridge University Press, Cambridge, Massachussetts
+
+Blumauer, A. (2016). _From taxonomies over ontologies to knowledge graphs._ Available at https://semantic-web.com/2014/07/15/from-taxonomies-overontologies-to-knowledge-graphs/ (2021/02/16). 
+Paulheim, H. (2016). _Knowledge graph refinement: A survey of approaches and evaluation methods._ Semantic Web Journal, Preprint:1–20.
+
+Reinanda, R.,Meij,E., and de Rijke, M.(2020). _Knowledge graphs: An information retrieval perspective._ Foundations and Trends in Information Retrieval, 14(4):289–444.
+
+Singhal, A. (2012). _Introducing the knowledge graph: things, not strings._ Available at https://blog.google/products/search/introducing-knowledge-graphthings-not/ (2021/02/16).
+
+
+\newpage
+## Appendix {-}
+
+Codes for Chapter 9
+
+\scriptsize
+
+```r
+### Source for Chapter 9 codes
+## Wan M Hasni and Azman Hussin
+## This codes will be run prior to running the Rmd files for Chapter 9
+
+## load quran sahih 
+kvertices <- quran_en_sahih %>% 
+  select(ayah_title, surah_id, ayah, ayah_id,
+         surah_title_en, revelation_type, text)
+
+## load ibnu_kathir and process
+kathir <- read_csv("data/ibn_kathir_similarity.csv", 
+                   col_types = cols(ID = col_integer(), 
+                                    Source_Sura = col_integer(), 
+                                    Source_Verse = col_integer(), 
+                                    Target_verse = col_integer(), 
+                                    common_roots = col_integer(), 
+                                    relevance_degree = col_integer(), 
+                                    target_sura = col_integer()))
+kathir <- kathir %>% 
+  rename(SourceSura = Source_Sura, SourceAyah = Source_Verse,
+         TargetSura = target_sura, TargetAyah = Target_verse)
+
+kathir <- kathir %>% 
+  drop_na() %>%  
+  mutate(from = str_c(as.character(SourceSura),
+                      as.character(SourceAyah),sep = ":"),
+         to = str_c(as.character(TargetSura),
+                    as.character(TargetAyah),sep = ":")) %>%
+  rename(weight = relevance_degree)
+
+## create edge-list
+kedges <- kathir %>% 
+                select(from, to, SourceSura, SourceAyah, TargetSura, 
+                       TargetAyah, common_roots, weight)
+
+kg = graph_from_data_frame(kedges, directed = TRUE, vertices = kvertices)
+
+## read files for nodes and attributes from gephi output
+ik_gephi = read_csv("data/ik1_nodes.csv")
+
+## Katheer Graph Network stats
+kg_degree = data.frame("verse"=1:6236, "degree"= degree(kg))
+fig901a = kg_degree %>%  ggplot() + 
+  geom_point(aes(x=verse,y=degree), color = "steelblue", alpha = 0.75) +
+  labs(title="A: Degree of verses",x = "Verse", y = "Degree")
+
+kg_degree_ranked = kg_degree[rev(order(kg_degree$degree)),]
+
+fig901b = kg_degree_ranked %>% group_by(degree) %>% count() %>% 
+  ggplot(aes(x=log(degree), y=log(n))) + 
+  geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
+  geom_path() +
+  labs(title = "B: Rank frequency distributions", 
+       x = "Log of Degree", 
+       y = "Log of Rank Frequency")
+
+kg_dist_table = distance_table(kg)
+
+fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), fill = "steelblue",color = 'black') +
+  labs(x = "Distance", y = "Frequency")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(title = "Katheer Graph Path Lengths Distributions")+
+  theme_bw()
+
+kgd = distances(kg, v = V(kg), to = V(kg), mode = "in")
+# kgsp = shortest_paths(kg,from = "6:25", to = V(kg), mode = "in")
+fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_point(aes(x,y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")
+
+fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_density(aes(y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")  
+
+## fig903: Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness
+fig903c = ik_gephi %>% ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
+  geom_point(color = "cyan4") +
+  geom_text(label=ik_gephi$Id, size = 3,
+            nudge_x = 0.05, nudge_y = 0.05, 
+            check_overlap = T) +
+  labs(x = "Prestige Centrality", y = "Betweenness Centrality",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Prestige vs Betweeness")+
+  theme_bw()
+## fig904: Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority
+fig904 = ik_gephi %>% ggplot( aes(x=pageranks, y=Authority)) +
+  geom_point(size = 1, color = "cyan4") + 
+  geom_text( aes(label=ik_gephi$Id), size = 3, check_overlap = T) +
+  labs(x = "Pageranks", y = "Authority",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Pageranks vs Authority")+
+  theme_bw()
+
+## TRAVERSALS IN SURAH AL-A'ALAA
+
+## create the df for edges
+surah87_l1 = kedges %>% filter(str_detect(to,"87:")) %>% select(from,to)
+surah87_l2 = kedges %>% filter(to %in% surah87_l1$from) %>% select(from,to)
+surah87_l3 = kedges %>% filter(to %in% surah87_l2$from) %>% select(from,to)
+surah87_l4 = kedges %>% filter(to %in% surah87_l3$from) %>% select(from,to)
+surah87_l5 = kedges %>% filter(to %in% surah87_l4$from) %>% select(from,to)
+
+## Topic modeling within the verses
+
+# 1. create a function to be used
+## Use STM model for topics, get Topics as output
+surah87_topics = function(txt87){
+                    dfm_txt87 = quanteda::tokens(txt87,"word",remove_punct = T,
+                               remove_symbols=T,
+                               remove_numbers=T) %>% 
+                    quanteda::tokens_tolower() %>% 
+                    quanteda::tokens_remove(quanteda::stopwords("en")) %>%  
+                    quanteda::dfm()
+                    stmdfm_txt87 = quanteda::convert(dfm_txt87, to = "stm") 
+                    stm_txt87 = stm::stm(stmdfm_txt87$documents, 
+                                         stmdfm_txt87$vocab, K = 3, verbose = F,
+                                         data = stmdfm_txt87$meta, 
+                                         init.type = "Spectral")
+                    stm::labelTopics(stm_txt87, c(1), n = 10)}
+
+## 2. Run using the function
+
+txt87 = quran_en_sahih %>% filter(ayah_title %in% surah87_l1$to) %>% pull(text)
+topics_l0 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+surah87n_l1 = surah87_l1
+txt87 = quran_en_sahih %>% filter(ayah_title %in% 
+                                    c(surah87n_l1$from,surah87n_l1$to)) %>% pull(text)
+topics_l1 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+surah87n_l2 = bind_rows(surah87_l1,surah87_l2)
+txt87 = quran_en_sahih %>% filter(ayah_title %in% 
+                                    c(surah87n_l2$from,surah87n_l2$to)) %>% pull(text)
+topics_l2 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+surah87n_l3 = bind_rows(surah87_l1,surah87_l2,surah87_l3)
+txt87 = quran_en_sahih %>% filter(ayah_title %in% 
+                                    c(surah87n_l3$from,surah87n_l3$to)) %>% pull(text)
+topics_l3 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+surah87n_l4 = bind_rows(surah87_l1,surah87_l2,surah87_l3,surah87_l4)
+txt87 = quran_en_sahih %>% filter(ayah_title %in% 
+                                    c(surah87n_l4$from,surah87n_l4$to)) %>% pull(text)
+topics_l4 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+surah87n_l5 = bind_rows(surah87_l1,surah87_l2,surah87_l3,surah87_l4,surah87_l5)
+txt87 = quran_en_sahih %>% filter(ayah_title %in% 
+                                    c(surah87n_l5$from,surah87n_l5$to)) %>% pull(text)
+topics_l5 = paste(surah87_topics(txt87)[["prob"]][1,], collapse = " ")
+
+## outputs are: topics_l1,..,l5
+
+## 3. create igraph from edge list created above
+
+surah87_net = graph_from_edgelist(as.matrix(surah87n_l5), directed = TRUE)
+
+## then create measures to be quoted inside Rmd texts
+ayat_topdegree = degree(surah87_net)
+ayat_topdegree = ayat_topdegree[rev(order(ayat_topdegree))]
+ayat_topdegree = names(ayat_topdegree[1:10])
+
+ayat_topbtwn = betweenness(surah87_net)
+ayat_topbtwn = ayat_topbtwn[rev(order(ayat_topbtwn))]
+ayat_topbtwn = names(ayat_topbtwn[1:10])
+
+ayat_topevcent = eigen_centrality(surah87_net)$vector
+ayat_topevcent = ayat_topevcent[rev(order(ayat_topevcent))]
+ayat_topevcent = names(ayat_topevcent[1:10])
+
+
+## make some changes to the data, replace _ with :
+ik_gephi$idnew =str_replace(ik_gephi$Id, "_",":") # change the separator
+
+## create more variables to use for the tables in Rmd document
+ayat_ovtdg = ik_gephi %>% filter(idnew %in% c(surah87n_l5$from,surah87n_l5$to)) %>% 
+                              select(idnew, Degree,eigencentrality,betweenesscentrality) 
+ayatdg = ayat_ovtdg[rev(order(ayat_ovtdg$Degree)),]
+ayatbw = ayat_ovtdg[rev(order(ayat_ovtdg$betweenesscentrality)),]
+ayatev = ayat_ovtdg[rev(order(ayat_ovtdg$eigencentrality)),]
+
+## topics for top 10 grouped by Surah 87 net measures
+
+topd10txt = quran_en_sahih %>% filter(ayah_title %in% ayat_topdegree) %>% pull(text)
+td10 = surah87_topics(topd10txt)
+topb10txt = quran_en_sahih %>% filter(ayah_title %in% ayat_topbtwn) %>% pull(text)
+tb10 = surah87_topics(topb10txt)
+
+ayatd10txt = quran_en_sahih %>% filter(ayah_title %in% ayatdg$idnew[1:10]) %>% pull(text)
+ad10 = surah87_topics(ayatd10txt)
+ayatb10txt = quran_en_sahih %>% filter(ayah_title %in% ayatbw$idnew[1:10]) %>% pull(text)
+ab10 = surah87_topics(ayatb10txt)
+## outputs used inside the Rmd text
+
+#######################
+## Traversing verse 13 Surah Al-A'laa 
+
+## capture the edges for Surah Al-A'laa
+vs8713 = kvertices %>% filter(ayah_title=="87:13") %>% pull(text)
+vs3536 = kvertices %>% filter(ayah_title=="35:36") %>% pull(text)
+vs4377 = kvertices %>% filter(ayah_title=="43:77") %>% pull(text)
+vs2074 = kvertices %>% filter(ayah_title=="20:74") %>% pull(text)
+vs1715 = kvertices %>% filter(ayah_title=="17:15") %>% pull(text)
+
+# Making and plotting ego graphs
+verse <- which(V(surah87_net)$name=="87:13")
+v_name = V(surah87_net)$name
+fig_egos87 = ggraph(surah87_net, layout = "focus", focus = verse) +
+  draw_circle(col = "darkblue", use = "focus",max.circle = 10) +
+  geom_edge_link0(aes(edge_width = 1),edge_colour = "grey66") +
+  geom_node_point(aes(fill="red", size=3), shape = 21) +
+  geom_node_text(size = 3,label = v_name,
+                 family = "serif", repel=T) +
+  scale_edge_width_continuous(range = c(0.1,2.0)) +
+  scale_size_continuous(range = c(1,5)) +
+  coord_fixed() +
+  theme_graph() +
+  theme(legend.position = "none")
+
+## Clustering measures
+cld <- cluster_edge_betweenness(surah87_net, weights = NULL)
+mem <- membership(cld)
+com <- communities(cld)
+
+# Verse 87:13 ego network directed with clusters
+
+## Figure 9.7 "map based brtweeness centrality
+my_palette <- c("red", "blue", "green", "gold", "cyan4", "deeppink", "tomato", "yellow")
+cld <- clusters(surah87_net)
+V(surah87_net)$clu <- as.character(cld$membership)
+V(surah87_net)$size <- graph.strength(surah87_net)
+
+verse <- which(V(surah87_net)$name=="87:13")
+v_name = V(surah87_net)$name
+fig907x = ggraph(surah87_net,layout = "focus", focus = verse) +
+    draw_circle(col = "darkblue", use = "focus",max.circle = 10) +
+    geom_edge_link0(aes(edge_width=1), edge_color="grey66") +
+    geom_node_point(aes(fill="red", size=size), shape=21, col="grey25") +
+    geom_node_text(aes(size=2.5, label=v_name), family = "serif", repel=T) +
+    scale_edge_width_continuous(range=c(0.1, 2.0)) +
+    scale_size_continuous(range=c(1,10)) +
+    # scale_fill_manual(values=my_palette) +
+    theme_graph(title_size = 16, subtitle_size = 14) +
+    theme(legend.position = "bottom")
+
+## Verse 87:13 undirected ego network with centrality layout, clusters strength"}
+kgu <- simplify(as.undirected(surah87_net))
+clu <- cluster_louvain(kgu)
+V(kgu)$clu <- as.character(clu$membership)
+V(kgu)$size <- graph.strength(kgu)
+
+fig909 = ggraph(kgu, "centrality", cent=graph.strength(kgu)) +
+  draw_circle(col = "darkblue", use = "focus", max.circle = 10) +
+  geom_edge_link0(edge_color="grey66") +
+  geom_node_point(aes(fill=clu, size=size), shape=21, col="grey25") +
+  geom_node_text(aes(size=2.5,label=name), repel=T) +
+  scale_edge_width_continuous(range=c(0.1,2.0)) +
+  scale_size_continuous(range=c(1,10)) +
+  theme_graph(title_size = 16, subtitle_size = 14) +
+    theme(legend.position = "bottom")
+
+## Combining verses up to 4 layers outwards
+
+v2255_l1 = kedges %>% filter(str_detect(from,"2:255")) %>% select(from,to)
+v2255_l2 = kedges %>% filter(from %in% v2255_l1$to) %>% select(from,to)
+v2255_l3 = kedges %>% filter(from %in% v2255_l2$to) %>% select(from,to)
+v2255_l4 = kedges %>% filter(from %in% v2255_l3$to) %>% select(from,to)
+#v2255_l5 = kedges %>% filter(to %in% v2255_l4$from) %>% select(from,to)
+
+v2255 = bind_rows(v2255_l1,v2255_l2,v2255_l3,v2255_l4)
+v2255_net = graph_from_edgelist(as.matrix(v2255), directed = TRUE)
+
+v1690_l1 = kedges %>% filter(str_detect(from,"16:90")) %>% select(from,to)
+v1690_l2 = kedges %>% filter(to %in% v1690_l1$from) %>% select(from,to)
+v1690_l3 = kedges %>% filter(to %in% v1690_l2$from) %>% select(from,to)
+v1690_l4 = kedges %>% filter(to %in% v1690_l3$from) %>% select(from,to)
+v1690_l5 = kedges %>% filter(from %in% v1690_l4$to) %>% select(from,to)
+
+v1690 = bind_rows(v1690_l1,v1690_l2,v1690_l3,v1690_l4,v1690_l5)
+v1690_net = graph_from_edgelist(as.matrix(v1690), directed = TRUE)
+
+verse <- which(V(v2255_net)$name=="2:255")
+v_name = V(v2255_net)$name
+fig910 = ggraph(v2255_net, layout = "focus", focus = verse) +
+  draw_circle(col = "darkblue", use = "focus",max.circle = 4) +
+  geom_edge_link0(aes(edge_width = 1),edge_colour = "grey66") +
+  geom_node_point(aes(fill="red", size=3), shape = 21) +
+  geom_node_text(size = 3,label = v_name,
+                 family = "serif", repel=T) +
+  scale_edge_width_continuous(range = c(0.1,2.0)) +
+  scale_size_continuous(range = c(1,5)) +
+  coord_fixed() +
+  theme_graph() +
+  theme(legend.position = "none")
+
+verse <- which(V(v1690_net)$name=="16:90")
+v_name = V(v1690_net)$name
+fig911 = ggraph(v1690_net, layout = "focus", focus = verse) +
+  draw_circle(col = "darkblue", use = "focus",max.circle = 4) +
+  geom_edge_link0(aes(edge_width = 1),edge_colour = "grey66") +
+  geom_node_point(aes(fill="red", size=3), shape = 21) +
+  geom_node_text(size = 3,label = v_name,
+                 family = "serif", repel=T) +
+  scale_edge_width_continuous(range = c(0.1,2.0)) +
+  scale_size_continuous(range = c(1,5)) +
+  coord_fixed() +
+  theme_graph() +
+  theme(legend.position = "none")
+
+v_combined = bind_rows(v2255,v1690)
+vcomb_net = graph_from_edgelist(as.matrix(v_combined), directed = TRUE)
+
+vcomb_net = graph.union(v2255_net,v1690_net)
+verse <- which(V(vcomb_net)$name=="2:255")
+v_name = V(vcomb_net)$name
+fig912 = ggraph(vcomb_net, layout = "focus", focus = verse) +
+  draw_circle(col = "darkblue", use = "focus",max.circle = 4) +
+  geom_edge_link0(aes(edge_width = 1),edge_colour = "grey66") +
+  geom_node_point(aes(fill="red", size=3), shape = 21) +
+  geom_node_text(size = 3,label = v_name,
+                 family = "serif", repel=T) +
+  scale_edge_width_continuous(range = c(0.1,2.0)) +
+  scale_size_continuous(range = c(1,5)) +
+  coord_fixed() +
+  theme_graph() +
+  theme(legend.position = "none")
+
+verse <- which(V(vcomb_net)$name=="16:90")
+v_name = V(vcomb_net)$name
+fig913 = ggraph(vcomb_net, layout = "focus", focus = verse) +
+  draw_circle(col = "darkblue", use = "focus",max.circle = 4) +
+  geom_edge_link0(aes(edge_width = 1),edge_colour = "grey66") +
+  geom_node_point(aes(fill="red", size=3), shape = 21) +
+  geom_node_text(size = 3,label = v_name,
+                 family = "serif", repel=T) +
+  scale_edge_width_continuous(range = c(0.1,2.0)) +
+  scale_size_continuous(range = c(1,5)) +
+  coord_fixed() +
+  theme_graph() +
+  theme(legend.position = "none")
+
+#### Word co-occurrence KG
+library(text2vec)
+
+## get the texts
+
+surah87_o1 = kedges %>% filter(str_detect(from,"87:")) %>% select(from,to)
+surah87_o2 = kedges %>% filter(from %in% surah87_o1$to) %>% select(from,to)
+surah87_o3 = kedges %>% filter(from %in% surah87_o2$to) %>% select(from,to)
+surah87_o4 = kedges %>% filter(from %in% surah87_o3$to) %>% select(from,to)
+surah87_o5 = kedges %>% filter(from %in% surah87_o4$to) %>% select(from,to)
+surah87_out = bind_rows(surah87_o1,surah87_o2,surah87_o3,surah87_o4,surah87_o5)
+
+ala_intxt = quran_en_sahih %>% filter(ayah_title %in% 
+                            c(surah87n_l5$from,surah87n_l5$to)) %>% pull(text)
+ala_outxt = quran_en_sahih %>% filter(ayah_title %in% 
+                                        c(surah87_out$from,surah87_out$to)) %>% pull(text)
+## clean the texts
+alain = tolower(ala_intxt)
+alain = gsub("[^[:alnum:]\\-\\.\\s]", " ", alain)
+alain = gsub("\\.", "", alain)
+alain= trimws(alain)
+## 1. tokenize
+alain_ktoks = space_tokenizer(alain)
+alain_itktoks = itoken(alain_ktoks, n_chunks = 10L)
+stopw = stop_words$word
+## 2. create vocabulary
+alain_kvocab = create_vocabulary(alain_itktoks, stopwords = stopw)
+## 3. vectorize the vocabulary
+alain_k2vec = vocab_vectorizer(alain_kvocab)
+## 4. create the tcm
+alain_ktcm = create_tcm(alain_itktoks, alain_k2vec, skip_grams_window = 5L)
+## 5. generate the Global Vector with rank = 50L
+alain_kglove = GlobalVectors$new(rank = 50, x_max = 6)
+## 6. Fit the GloVE model
+alain_wv_main = alain_kglove$fit_transform(alain_ktcm, n_iter = 20)
+## Use the model for prediction
+alain_wv_context = alain_kglove$components
+## This is in data.table format
+alain_word_vec = alain_wv_main + t(alain_wv_context)
+
+topic0 = alain_word_vec["allah",,drop = FALSE] 
+topic00 = alain_word_vec["lord",,drop = FALSE] 
+topic1 = alain_word_vec["living",,drop = FALSE] 
+topic2 = alain_word_vec["dying",,drop = FALSE] 
+topic3 = alain_word_vec["purify",,drop = FALSE] 
+topic4 = alain_word_vec["hell",,drop = FALSE] 
+
+topic5 = alain_word_vec["allah",,drop = FALSE] + 
+  alain_word_vec["lord",,drop = FALSE] +
+  alain_word_vec["living",,drop = FALSE] + 
+  alain_word_vec["dying",,drop = FALSE] + 
+  alain_word_vec["purify",,drop = FALSE] +
+  alain_word_vec["hell",,drop = FALSE] 
+
+t0_sim = sim2(x = alain_word_vec, y = topic0, method = "cosine")
+htin0 = names(head(sort(t0_sim[,1], decreasing = T),7))
+t00_sim = sim2(x = alain_word_vec, y = topic00, method = "cosine")
+htin00 = names(head(sort(t00_sim[,1], decreasing = T),7))
+t1_sim = sim2(x = alain_word_vec, y = topic1, method = "cosine")
+htin1 = names(head(sort(t1_sim[,1], decreasing = T),7))
+t2_sim = sim2(x = alain_word_vec, y = topic2, method = "cosine")
+htin2 = names(head(sort(t2_sim[,1], decreasing = T),7))
+t3_sim = sim2(x = alain_word_vec, y = topic3, method = "cosine")
+htin3 = names(head(sort(t3_sim[,1], decreasing = T),7))
+t4_sim = sim2(x = alain_word_vec, y = topic4, method = "cosine")
+htin4 = names(head(sort(t4_sim[,1], decreasing = T),7))
+t5_sim = sim2(x = alain_word_vec, y = topic5, method = "cosine")
+htin5 = names(head(sort(t5_sim[,1], decreasing = T),7))
+
+## clean the texts
+alain = tolower(ala_outxt)
+alain = gsub("[^[:alnum:]\\-\\.\\s]", " ", alain)
+alain = gsub("\\.", "", alain)
+alain= trimws(alain)
+## 1. tokenize
+alain_ktoks = space_tokenizer(alain)
+alain_itktoks = itoken(alain_ktoks, n_chunks = 10L)
+stopw = stop_words$word
+## 2. create vocabulary
+alain_kvocab = create_vocabulary(alain_itktoks, stopwords = stopw)
+## 3. vectorize the vocabulary
+alain_k2vec = vocab_vectorizer(alain_kvocab)
+## 4. create the tcm
+alain_ktcm = create_tcm(alain_itktoks, alain_k2vec, skip_grams_window = 5L)
+## 5. generate the Global Vector with rank = 50L
+alain_kglove = GlobalVectors$new(rank = 50, x_max = 6)
+## 6. Fit the GloVE model
+alain_wv_main = alain_kglove$fit_transform(alain_ktcm, n_iter = 20)
+## Use the model for prediction
+alain_wv_context = alain_kglove$components
+## This is in data.table format
+alain_word_vec = alain_wv_main + t(alain_wv_context)
+
+topic0 = alain_word_vec["allah",,drop = FALSE] 
+topic00 = alain_word_vec["lord",,drop = FALSE] 
+topic1 = alain_word_vec["living",,drop = FALSE] 
+topic2 = alain_word_vec["dying",,drop = FALSE] 
+topic3 = alain_word_vec["purify",,drop = FALSE] 
+topic4 = alain_word_vec["hell",,drop = FALSE] 
+
+topic5 = alain_word_vec["allah",,drop = FALSE] + 
+  alain_word_vec["lord",,drop = FALSE] +
+  alain_word_vec["living",,drop = FALSE] + 
+  alain_word_vec["dying",,drop = FALSE] + 
+  alain_word_vec["purify",,drop = FALSE] +
+  alain_word_vec["hell",,drop = FALSE] 
+
+t0_sim = sim2(x = alain_word_vec, y = topic0, method = "cosine")
+htout0 = names(head(sort(t0_sim[,1], decreasing = T),7))
+t00_sim = sim2(x = alain_word_vec, y = topic00, method = "cosine")
+htout00 = names(head(sort(t00_sim[,1], decreasing = T),7))
+t1_sim = sim2(x = alain_word_vec, y = topic1, method = "cosine")
+htout1 = names(head(sort(t1_sim[,1], decreasing = T),7))
+t2_sim = sim2(x = alain_word_vec, y = topic2, method = "cosine")
+htout2 = names(head(sort(t2_sim[,1], decreasing = T),7))
+t3_sim = sim2(x = alain_word_vec, y = topic3, method = "cosine")
+htout3 = names(head(sort(t3_sim[,1], decreasing = T),7))
+t4_sim = sim2(x = alain_word_vec, y = topic4, method = "cosine")
+htout4 = names(head(sort(t4_sim[,1], decreasing = T),7))
+t5_sim = sim2(x = alain_word_vec, y = topic5, method = "cosine")
+htout5 = names(head(sort(t5_sim[,1], decreasing = T),7))
+
+## clean the texts
+ala_ctext = c(ala_intxt,ala_outxt)
+alain = tolower(ala_ctext)
+alain = gsub("[^[:alnum:]\\-\\.\\s]", " ", alain)
+alain = gsub("\\.", "", alain)
+alain= trimws(alain)
+## 1. tokenize
+alain_ktoks = space_tokenizer(alain)
+alain_itktoks = itoken(alain_ktoks, n_chunks = 10L)
+stopw = stop_words$word
+## 2. create vocabulary
+alain_kvocab = create_vocabulary(alain_itktoks, stopwords = stopw)
+## 3. vectorize the vocabulary
+alain_k2vec = vocab_vectorizer(alain_kvocab)
+## 4. create the tcm
+alain_ktcm = create_tcm(alain_itktoks, alain_k2vec, skip_grams_window = 5L)
+## 5. generate the Global Vector with rank = 50L
+alain_kglove = GlobalVectors$new(rank = 50, x_max = 6)
+## 6. Fit the GloVE model
+alain_wv_main = alain_kglove$fit_transform(alain_ktcm, n_iter = 20)
+## Use the model for prediction
+alain_wv_context = alain_kglove$components
+## This is in data.table format
+alain_word_vec = alain_wv_main + t(alain_wv_context)
+
+topic0 = alain_word_vec["allah",,drop = FALSE] 
+topic00 = alain_word_vec["lord",,drop = FALSE] 
+topic1 = alain_word_vec["living",,drop = FALSE] 
+topic2 = alain_word_vec["dying",,drop = FALSE] 
+topic3 = alain_word_vec["purify",,drop = FALSE] 
+topic4 = alain_word_vec["hell",,drop = FALSE] 
+
+topic5 = alain_word_vec["allah",,drop = FALSE] + 
+  alain_word_vec["lord",,drop = FALSE] +
+  alain_word_vec["living",,drop = FALSE] + 
+  alain_word_vec["dying",,drop = FALSE] + 
+  alain_word_vec["purify",,drop = FALSE] +
+  alain_word_vec["hell",,drop = FALSE] 
+
+t0_sim = sim2(x = alain_word_vec, y = topic0, method = "cosine")
+htino0 = names(head(sort(t0_sim[,1], decreasing = T),7))
+t00_sim = sim2(x = alain_word_vec, y = topic00, method = "cosine")
+htino00 = names(head(sort(t00_sim[,1], decreasing = T),7))
+t1_sim = sim2(x = alain_word_vec, y = topic1, method = "cosine")
+htino1 = names(head(sort(t1_sim[,1], decreasing = T),7))
+t2_sim = sim2(x = alain_word_vec, y = topic2, method = "cosine")
+htino2 = names(head(sort(t2_sim[,1], decreasing = T),7))
+t3_sim = sim2(x = alain_word_vec, y = topic3, method = "cosine")
+htino3 = names(head(sort(t3_sim[,1], decreasing = T),7))
+t4_sim = sim2(x = alain_word_vec, y = topic4, method = "cosine")
+htino4 = names(head(sort(t4_sim[,1], decreasing = T),7))
+t5_sim = sim2(x = alain_word_vec, y = topic5, method = "cosine")
+htino5 = names(head(sort(t5_sim[,1], decreasing = T),7))
+```
+\normalsize
+
+
+

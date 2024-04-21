@@ -6,7 +6,7 @@ if(!knitr:::is_html_output())
   knitr::opts_chunk$set(tidy.opts=list(width.cutoff=56, indent = 2), tidy = TRUE)
 #  knitr::opts_chunk$set(fig.pos = 'H')
 }
-knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, results = 'hide')
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 library(tidyverse)
 library(tidytext)
 library(ggplot2)
@@ -26,6 +26,9 @@ library(grid)
 library(png)
 library(jpeg)
 library(quanteda.textmodels)
+```
+
+```{r echo=FALSE}
 quran_all = read_csv("data/quran_trans.csv") %>% 
               select(surah_id, ayah_id, surah_title_en, 
                      surah_title_en_trans, revelation_type,
@@ -54,7 +57,7 @@ The simplest relationship between words in sentences is "its neighbour(s)", word
 In __R__ we can use the _tidytext_ package and apply the tokenization function with the addition of _token = "ngrams"_ option to _unnest_tokens()_ function. When we set $n = 2$, we are examining pairs of two consecutive words, which is called “bi-grams”. We show this below:
 
 \footnotesize
-``` {r,  message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
+``` {r,  message = FALSE, warning = FALSE, error = FALSE}
 ESI_bigrams <- quran_all %>%
   unnest_tokens(bigram, saheeh, token = "ngrams", n = 2)
 ```
@@ -100,11 +103,12 @@ ESI_bigrams_united <- ESI_bigrams_filtered %>%
 This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most common word with "allah" mentioned in each Surah. The result is presented in Figure \@ref(fig:ch4fig401).
 
 \footnotesize
-``` {r, eval= FALSE}
+``` {r, eval= FALSE, results = 'hide'}
 ESI_bigrams_filtered %>%
         filter(word1 == "allah") %>%
         count(surah_title_en, word2, sort = TRUE)
 ```
+
 ```{r ch4fig401, fig.align="center",fig.height=4,fig.width=6, echo=F, warning=F, fig.cap="Top words with 'Allah' in the Quran"}
 ESI_bigrams_filtered %>%
    filter(word1 == "allah") %>%
@@ -113,22 +117,21 @@ ESI_bigrams_filtered %>%
    filter(num >= 5) %>%
    mutate(word2 = reorder(word2, num)) %>%
    ggplot(aes(x = word2, y = num)) +
-   geom_col(fill = "#79ad95") +
+   geom_col(fill = "#79ad95",color = 'black') +
    coord_flip() +
+   theme_bw()+
    theme(axis.text = element_text( 
      angle = 0, 
      color="blue", 
      size=10)) +
-   labs(x = NULL, y = "Counts")
+   labs(x = NULL, y = "Counts",title = "Top Words in Relation with 'Allah' in the Quran")
 ```
 \normalsize
 
 A bigram can also be treated as a term in a document in the same way that we treat individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure \@ref(fig:ch4fig402).
 
 
-
-
-```{r ch4fig402, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Top word pairs tf-idf in the long Surahs"}
+```{r ch4fig402, fig.align="center",fig.height=6,fig.width=8, echo=F,warning=F, fig.cap="Top word pairs tf-idf in the long Surahs"}
 ESI_bigram_tf_idf <- ESI_bigrams_united %>%
                       filter(surah_title_en %in% 
                       c("Al-Baqara", "Aal-i-Imraan", "An-Nisaa", "Al-Maaida", 
@@ -146,11 +149,9 @@ ESI_bigram_tf_idf %>%
         geom_col(show.legend = FALSE) +
         labs(x = NULL, y = "tf-idf") +
         facet_wrap(~surah_title_en, ncol = 2, scales = "free") +
-        coord_flip()
+        coord_flip()+
+        theme(strip.background = element_rect(color = "black"))
 ```
-
-
-
 
 
 There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or "sacred" separately). owever, the per-bigram counts are also sparser: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.
@@ -176,25 +177,21 @@ ESI_bigram_graph <- ESI_bigram_counts %>%
 _igraph_ has built-in plotting functions, but many other packages have developed better visualization methods for graph objects. The _ggraph_ package [@ggraph] implements these visualizations in terms of the grammar of graphics. We can convert an _igraph_ object into a _ggraph_ with the _ggraph_ function, after which we add layers to it, much like adding layers in _ggplot2_. For example, for a basic graph, we need to add three layers: nodes, edges, and text.
 
 
-
 ```{r ch4fig403, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Common bi-grams in Saheeh"}
 library(ggraph)
 set.seed(2017)
 ggraph(ESI_bigram_graph, layout = "fr") +
   geom_edge_link(color = "gray") +
   geom_node_point(color = "steelblue") +
-  geom_node_text(aes(label = name), vjust = 1, hjust = 1, color = "black")
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1, color = "black")+
+  theme_void()+
+  theme(plot.background = element_rect(color = "black"))
 ```
-
-
-
 
 
 Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Saheeh's translation. From here we can make some observations, like the word "allah" having a dominant role, and some known concepts in Islam like "straight path" and "establish prayer". "perpetual residence", "rivers flow", "gardens beneath" are known rewards for those who "enter paradise".
 
 We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure \@ref(fig:ch4fig404).
-
-
 
 
 ```{r ch4fig404, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Common bi-grams in Saheeh with ggraph format"}
@@ -204,11 +201,9 @@ ggraph(ESI_bigram_graph, layout = "fr") +
                  edge_colour = "deeppink", show.legend = FALSE) +
   geom_node_point(color = "blue", size = 2) +
   geom_node_text(aes(label = name), repel = TRUE, size = 4) +
-  theme_void() 
+  theme_void()+
+  theme(plot.background = element_rect(color = "black"))
 ```
-
-
-
 
 
 It may take some experimentation with ggraph to get your networks into a presentable format, but network visualization is a useful and flexible way to look at relational tidy data.
@@ -238,7 +233,7 @@ ESI_trigrams_united <- ESI_trigram_counts %>%
 The result is viewed with:
 
 \footnotesize
-```{r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
+```{r, message = FALSE, warning = FALSE, error = FALSE}
 head(ESI_trigrams_united)
 ```
 \normalsize
@@ -274,8 +269,6 @@ head(word_pairs)
 Let us create a graph network of these co-occurring words so we can see the relationships better. The filter will determine the size of the graph.
 
 
-
-
 ```{r ch4fig405, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Common word pairs in Saheeh"}
 Gquran <- word_pairs %>%
   filter(n >= 30) %>%
@@ -290,11 +283,9 @@ Gquran %>%
   geom_node_point(aes(size = node_size), 
                   colour = "#e384dd") +
   geom_node_text(aes(label = name), repel = TRUE, size = 2) +
-  theme_void ()
+  theme_void()+
+  theme(plot.background = element_rect(color = "black"))
 ```
-
-
-
 
 
 Figure \@ref(fig:ch4fig405) exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word "allah", "lord" as expected. However, we can see many other words (nodes) such as "prayer", which is highly linked to the center words (such as "allah"). Network visualization is a good starting point to make these types of observations.
@@ -315,8 +306,6 @@ keyword_cors <- surah_wordsESI %>%
 Let us visualize the network of keyword correlations.
 
 
-
-
 ```{r ch4fig406, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Common keyword correlations in Saheeh"}
 set.seed(1234)
 Gquran <- keyword_cors %>%
@@ -328,11 +317,9 @@ Gquran %>% ggraph(layout = "fr") +
                      edge_width = correlation), edge_colour = "#a7f2dc") +
   geom_node_point(size = 0.5*igraph::degree(Gquran), colour = "#e384dd") +
   geom_node_text(aes(label = name), repel = TRUE) +
-  theme_void()
+  theme_void()+
+  theme(plot.background = element_rect(color = "black"))
 ```
-
-
-
 
 
 From Figure \@ref(fig:ch4fig406), we can visualize all the keywords and their relations with other keywords. Note that the word "allah" and "lord" while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind "keyword in context" (kwic) which we will cover in a later part of the book.
@@ -380,27 +367,20 @@ The resulting _data.frame_ has a field called upos which is the Universal Parts 
 In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).^[For a detailed list of all POS tags, please visit https://universaldependencies.org/u/pos/index.html] The results of the frequencies are shown in Figure \@ref(fig:ch4fig407).
 
 
-
-
 ```{r ch4fig407, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="UPOS (Universal Parts of Speech) in Surah Yusuf"}
 stats <- txt_freq(x$upos)
 stats$key <- factor(stats$key, levels = rev(stats$key))
 
 stats %>% ggplot() + 
-  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95",color = 'black') + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Frequency",
        x = "Keywords")
 ```
 
 
-
-
-
 Parts of Speech (POS) tags allow us to extract easily the words we like to plot. We may not need stopwords for doing this, we just select nouns or verbs or adjectives and we have the most relevant parts for basic frequency analysis.
-
-
 
 
 ```{r ch4fig408, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Most occurring nouns in Surah Yusuf"}
@@ -409,20 +389,15 @@ stats <- txt_freq(stats$token)
 stats$key <- factor(stats$key, levels = rev(stats$key))
 stats %>% head(20) %>% ggplot() + 
   geom_bar(aes(x = key, y = freq), 
-           stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+           stat = "identity", fill = "#79ad95",color = 'black') + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Frequency",
        x = "Keywords")
 ```
 
 
-
-
-
 The NOUN and PROPN frequency plot in Figure \@ref(fig:ch4fig408) correctly reflect Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran [@alsuwaidan2021]. The noticeable noun missing in the plot is "prison". The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure \@ref(fig:ch4fig409) and Figure \@ref(fig:ch4fig410).
-
-
 
 
 ```{r ch4fig409, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Most occuring adjectives in Surah Yusuf"}
@@ -431,16 +406,12 @@ stats <- txt_freq(stats$token)
 stats$key <- factor(stats$key, levels = rev(stats$key))
 
 stats %>% head(20) %>% ggplot() + 
-  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95",color = 'black') + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Frequency",
        x = "Keywords")
 ```
-
-
-
-
 
 
 ```{r ch4fig410, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Most occuring verbs in Surah Yusuf"}
@@ -449,15 +420,12 @@ stats <- txt_freq(stats$token)
 stats$key <- factor(stats$key, levels = rev(stats$key))
 
 stats %>% head(20) %>% ggplot() + 
-  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95",color = 'black') + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Frequency",
        x = "Keywords")
 ```
-
-
-
 
 
 ## Word cooccurrences using POS {#word-cooccurrences-using-POS}
@@ -475,14 +443,10 @@ We look at how many times nouns, proper nouns, adjectives, verbs, and adverbs ar
 cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB", "ADJ")), 
                      term = "lemma", 
                      group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur)
 ```
 \normalsize
 
 The result can be easily visualized using the _igraph_ and _ggraph_ packages. This is shown in Figure \@ref(fig:ch4fig411).
-
-
-
 
 ```{r ch4fig411, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Co-occurence of Nouns, Names, Adjectives and Verbs"}
 library(igraph)
@@ -494,9 +458,6 @@ ggraph(wordnetwork, layout = "fr") +
   geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_colour = "#ed9de9") +
   geom_node_text(aes(label = name), col = "darkblue", size = 3)
 ```
-
-
-
 
 
 The story is revealed by Allah (SWT). The main characters are Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez). So the verb "say" dominates since it is a narrated story. It is interesting to note the strong link and occurrence of "know" with "Allah".
@@ -515,9 +476,6 @@ cooccur <- cooccurrence(x$lemma,
 
 Once we have these co-occurrences, we can easily do the same plots as before. (See Figure \@ref(fig:ch4fig412)).
 
-
-
-
 ```{r ch4fig412, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Words following one another in Surah Yusuf"}
 wordnetwork <- head(cooccur, 100)
 wordnetwork <- graph_from_data_frame(wordnetwork)
@@ -527,9 +485,6 @@ ggraph(wordnetwork, layout = "fr") +
 ```
 
 
-
-
-
 ### Word correlations using POS
 
 Keyword correlations indicate how terms are just together in the same document/sentence. While co-occurrences focus on frequency, correlation measures between 2 terms can also be high even if 2 terms occur only a small number of times but always appear together.
@@ -537,7 +492,7 @@ Keyword correlations indicate how terms are just together in the same document/s
 We show how nouns, proper nouns, verbs, adverbs, and adjectives are correlated within each verse of Surah Yusuf.
 
 \footnotesize
-``` {r,message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+``` {r,message = FALSE, warning = FALSE, error = FALSE}
 x$id <- unique_identifier(x, fields = c("sentence_id", "doc_id"))
 dtm <- subset(x, upos %in% c("NOUN", "PROPN", "VERB", "ADV", "ADJ"))
 dtm <- document_term_frequencies(dtm, document = "id", term = "lemma")
@@ -587,25 +542,18 @@ stats <- keywords_rake(x = x,
             term = "lemma", 
             group = "doc_id", 
             relevant = x$upos %in% c("NOUN", "PROPN", "VERB", "ADV", "ADJ"))
-head(stats)
-head(stats)
 ```
 
 
-
-
-```{r ch4fig413, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Keywords identified by RAKE in Surah Yusuf"}
+```{r ch4fig413, fig.align="center",fig.height=4,fig.width=6,echo=F,warning=F, fig.cap="Keywords identified by RAKE in Surah Yusuf"}
 stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 head(subset(stats, freq > 2), 30) %>% ggplot() + 
   geom_bar(aes(x = key, y = rake), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Rake",
        x = "Keywords")
 ```
-
-
-
 
 
 ### Using Pointwise Mutual Information Collocations
@@ -618,24 +566,18 @@ The result is in Figure \@ref(fig:ch4fig414).
 x$word <- tolower(x$token)
 stats <- keywords_collocation(x = x, term = "word", group = "doc_id")
 stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
-head(stats)
 ```
 \normalsize
-
-
 
 
 ```{r ch4fig414, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Keywords identified by PMI Collocation in Surah Yusuf"}
 head(subset(stats, freq > 2), 30) %>% ggplot() + 
   geom_bar(aes(x = key, y = pmi), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "PMI (Pointwise Mutual Information)",
        x = "Keywords")
 ```
-
-
-
 
 
 ### Using a sequence of POS tags (noun phrases)
@@ -654,14 +596,13 @@ POS tags are re-coded to one of the following one-letters:
 This simple example maps the various UPOS re-coded using letters.
 
 \footnotesize
-``` {r}
+``` {r results='hide'}
 y <- c("PROPN", "SCONJ", "ADJ", "NOUN", "VERB", "INTJ", "DET", "AUX", "NUM", "X", "PRON", "PUNCT", "ADP", "CCONJ")
 as_phrasemachine(y)
 ```
 \normalsize
 
 We then define a regular expression to indicate a sequence of POS tags which we want to extract from the text. Extracting noun phrases from a text can be done easily by defining a sequence of UPOS tags. For example, this sequence of UPOS tags can be seen as a noun phrase: Adjective, Noun, Preposition, Noun. After which identifying a simple noun phrase can be just expressed by using the following regular expression (A|N)*N(P+D*(A|N)*N)* which says start with adjective or noun, another noun, a preposition, determiner adjective or noun and next to a noun again.^[https://www.rdocumentation.org/packages/udpipe/versions/0.8.5/topics/keywords_phrases] The result is in Figure \@ref(fig:ch4fig415).
-
 
 
 ``` {r}
@@ -675,20 +616,14 @@ head(stats)
 ```
 
 
-
-
-
 ```{r ch4fig415, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Keywords - simple noun phrases in Surah Yusuf"}
 head(stats, 30) %>% ggplot() + 
   geom_bar(aes(x = key, y = freq), stat = "identity", fill = "#79ad95") + 
-  theme_minimal() + 
+  theme_bw() + 
   coord_flip() +
   labs(y = "Frequency",
        x = "Keywords")
 ```
-
-
-
 
 
 ### Textrank
@@ -706,14 +641,9 @@ head(stats)
 \normalsize
 
 
-
-
 ```{r ch4fig416, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Textrank wordcloud for Surah Yusuf"}
 wordcloud::wordcloud(words = stats$keyword, freq = stats$freq)
 ```
-
-
-
 
 
 Figure \@ref(fig:ch4fig416) shows that the keywords combine words into multi-word expressions. Again, we see the dominance of the verb *"say"* since Surah Yusuf is a narrated story. It is welcoming to note that "fear Allah" and "do good" are in fact the top moral lessons from this Surah.
@@ -756,23 +686,14 @@ data.frame("keyword"= stats$keyword,"left" = stats$left,
 
 We can visualize the dependency in a wordcloud plot.
 
-
-
-
 ```{r ch4fig417, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Dependency parsing wordcloud for Surah Yusuf"}
 wordcloud::wordcloud(words = stats$key, freq = stats$freq, min.freq = 2, max.words = 100,
           random.order = FALSE, colors = RColorBrewer::brewer.pal(6, "Dark2"))
 ```
 
 
-
-
-
 The plot in Figure \@ref(fig:ch4fig417) confirms the comment we made earlier about "say". Another known moral lesson from Surah Yusuf, "patience fitting", now appears. 
 We have shown how to use the _dep_rel_ parameter that is part of the annotation output from the _udpipe_ package. For visualizing the relationships between the words which were found, we can just use the _ggraph_ package. Now we introduce a basic function that selects the relevant columns from the annotation and puts it into a graph as guided by @udpipe ^[http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe]. The code for the function is reproduced as a reference in the Appendix at the end of the chapter.
-
-
-
 
 ```{r, echo=FALSE}
 library(igraph)
@@ -804,12 +725,7 @@ plot_annotation <- function(x, size = 3){
 }
 ```
 
-
-
 We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure \@ref(fig:ch4fig418). And a longer verse, verse 12:31. (See Figure \@ref(fig:ch4fig419)).
-
-
-
 
 ```{r ch4fig418, fig.align="center",fig.height=3,fig.width=6, echo=F,warning=F, fig.cap="Dependency parsing udpipe output Verse 12:16"}
 verse <- Q01 %>% filter(ayah_title == "12:16")
@@ -818,20 +734,11 @@ plot_annotation(verse, size = 4)
 ```
 
 
-
-
-
-
-
-
 ```{r ch4fig419, fig.align="center",fig.height=3,fig.width=6, echo=F,warning=F, fig.cap="Dependency parsing udpipe output Verse 12:31"}
 verse <- Q01 %>% filter(ayah_title == "12:18")
 verse <- udpipe(verse$text, "english")
 plot_annotation(verse, size = 3)
 ```
-
-
-
 
 
 With dependency parsing, we can now see, for example, how nouns relate to the adjectives with nominal subject as the type of relationship.

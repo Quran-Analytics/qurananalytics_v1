@@ -2,7 +2,7 @@
 title: "Quran Analytics with R"
 subtitle: "A Practical Introduction"
 author: "Wan M Hasni and Azman Hussin"
-date: "2024-04-04"
+date: "2024-04-21"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 always_allow_html: true
@@ -33,21 +33,21 @@ As always, the truth is only from Allah, and all errors are solely ours. Lastly,
 > "Nun. By the Pen (Al-Qalam) and what they inscribe" [Al-Qalam:1]
 
 
-My journey into the Quran and Islamic knowledge started way back during the university days through the self-learning of Arabic while I was doing my first degree in Statistics and Actuarial Science. I was engaged with data and numbers, statistics and modeling, and applications in risk studies, economic, and finance during my student years until the Ph.D. Today, the field that I was engaged in is called "Applied Data Science". The term data science was nonexistent then. During those days, I took the study of Al-Quran and Islamic knowledge as a private passion. Applying knowledge to Islamic finance was my main preoccupation.
+My journey into the Quran and Islamic knowledge started way back during the university days through the self-learning of Arabic while I was doing my first degree in Statistics and Actuarial Science. I was engaged with data and numbers, statistics and modeling, and applications in risk studies, economics, and finance during my student years until the Ph.D. Today, the field that I was engaged in is called “Applied Data Science”. The term data science was nonexistent then. During those days, I took the study of Al-Quran and Islamic knowledge as a private passion. Applying knowledge to Islamic finance was my main preoccupation.
 
-What struck me then was how easy it was to learn Arabic, particularly if the interest is Classical Arabic or Quranic Arabic. Arabic is an extremely structured language; once you grasp the structure, the rest is just about acquiring more vocabularies and meaning or contexts. I relied heavily on the texts available then, namely the abridged version of Tafseer Ibnu Kathir, which came in three volumes, and Hans-Wehr Arabic-English dictionary. Within a short time, I can read most of the Classical Arabic texts with little problem. However, despite all of the effort, whatever I do is only to benefit my knowledge and enrichment. I know that to be well versed as a scholar in the field is way beyond my reach, and I was deeply engaged in my professional works at all times.
+What struck me then was how easy it was to learn Arabic, particularly if the interest is Classical Arabic or Quranic Arabic. Arabic is an extremely structured language; once you grasp the structure, the rest is just about acquiring more vocabulary and meaning or contexts. I relied heavily on the texts available then, namely the abridged version of Tafseer Ibnu Kathir, which came in three volumes, and Hans-Wehr Arabic-English dictionary. Within a short time, I can read most of the Classical Arabic texts with little problem. However, despite all of the effort, whatever I do is only to benefit my knowledge and enrichment. I know that to be well versed as a scholar in the field is way beyond my reach, and I was deeply engaged in my professional works at all times.
 
 My data science journey continued as I discovered the __R__ programming language in its early days in 2001 when I worked on economic data. What strikes me was many functionalities of R are similar to what I was working with at the University of Iowa, namely the Minitab statistical program and the Wolfram Mathematica. Moreover, to a large degree, R has similarities to the C++ program, the primary programming language I was using for my doctorate research work.
 
 From 2010 onwards, I saw the rise of Machine Learning and Artificial Intelligence as a new field.  I then took a deep dive into ML and AI algorithms, which took me to various fields of Statistical Learning, Machine Learning, Neural Networks, Deep Learning, and finally into Graph Theory and Network Science. In this journey, I refresh myself back into several prime areas in my doctorate days, namely in Game Theory, Behavioral Economics, and Systems Theory. Over the last decade, my occupation is in Data Science, and apply them within market applications under Data Analytics and Artificial Intelligence. While doing all of these, Data Science and Artificial Intelligence applications on Islamic knowledge have always been my penultimate target.
 
-Usage of modern tools to uncover or rediscover the Truth is an apparent necessity. We may not be able to produce a new Imam Al-Shafi'e or Imam Al-Bukhari, but we may be able to replicate some of what they had accomplished. However, this is possible (at least for now) by relooking the Islamic sciences using new lenses. These new lenses are what we are starting to do here. Namely, to start a new work on Islamic Knowledge Analytics, beginning with Quran Analytics. I start this with the verse "Nun. By the Pen (Al-Qalam) what they inscribe".
+Usage of modern tools to uncover or rediscover the Truth is an apparent necessity. We may not be able to produce a new Imam Al-Shafi'e or Imam Al-Bukhari, but we may be able to replicate some of what they have accomplished. However, this is possible (at least for now) by relooking the Islamic sciences using new lenses. These new lenses are what we are starting to do here. Namely, to start a new work on Islamic Knowledge Analytics, beginning with Quran Analytics. I start this with the verse "Nun. By the Pen (Al-Qalam) what they inscribe".
 
-As in anything else, the starting point is the hardest; and I know that I cannot do it alone. It must be based on many people's collaborative network, from many domains of expertise, regardless of their creed or belief, as long as the Truth is what he/she is after. I thank Dr. Azman Hussin, my co-author for joining me in this work. His encouragement is extremely appreciated.
+As in anything else, the starting point is the hardest; and I know that I cannot do it alone. It must be based on many people's collaborative network, from many domains of expertise, regardless of their creed or belief, as long as the Truth is what he/she is after. I thank Dr. Azman Hussin, my co-author, for joining me in this work. His encouragement is extremely appreciated.
 
 I welcome you on board this journey. The reward is from the owner of the Truth when you meet Him.
 
-![](00-index_files/figure-docx/unnamed-chunk-2-1.png)
+<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
 
 # Preface From the Second Author {-}
 
@@ -57,9 +57,9 @@ There is no other motivation that drives this humble work except the above sayin
 
 We formally started our #qurananalytics project to accompany our #learnbydoing approach to #networkscience by defining some objectives and methods.^[Introduction to Quran Analytics, https://www.linkedin.com/pulse/introduction-quran-analytics-azman-hussin] The main trigger was when we came across a well prepared [dataset of the Holy Quran]( https://CRAN.R-project.org/package=quRan) which was quite recently published. The obvious idea came to apply the current tools and methods in text analysis with the Quran datasets. In research, different methods used on the same data often yield different results. So, we thought that using the new methods and tools of #datascience, #textanalytics, and #networkscience to "learn the Quran" should be interesting. The Quran is also a subject matter that we have some knowledge of since both of us have a working knowledge of written Arabic and continue to deepen and broaden our own understanding of the Quran. It seems an ideal combination to build knowledge of the tools while applying them to a familiar subject matter.
 
-Later on, the learning and encouraging feedback we got from the blog postings led us to further explore the application of these tools on the classical works of Tafseer, the interpretation of the Quran. We had some ideas how #networkscience tools can help us visualize the classical method of Tafseer al-Quran bi al-Quran (Interpretation of the Quran with the Quran). It is considered the best method to interpret the verses of the Quran. We showed some features of network graphs that enable us to visualize aspects of the Tafseer that is almost impossible to do manually and difficult to do without a network graph model. We discuss this in Chapter 9 of this book where we present our preliminary findings using network analysis applied to the best of the classical works of Tafseer, Tafseer Ibnu Katheer. Simple network concepts like "in-degrees", "out-degrees" and "ego networks" proved valuable in analyzing Tafseer Ibnu Katheer.
+Later, the learning and encouraging feedback we got from the blog postings led us to further explore the application of these tools on the classical works of Tafseer, the interpretation of the Quran. We had some ideas how #networkscience tools can help us visualize the classical method of Tafseer al-Quran bi al-Quran (Interpretation of the Quran with the Quran). It is considered the best method to interpret the verses of the Quran. We showed some features of network graphs that enable us to visualize aspects of the Tafseer that are almost impossible to do manually and difficult to do without a network graph model. We discuss this in Chapter 9 of this book where we present our preliminary findings using network analysis applied to the best of the classical works of Tafseer, Tafseer Ibnu Katheer. Simple network concepts like "in-degrees", "out-degrees" and "ego networks" proved valuable in analyzing Tafseer Ibnu Katheer.
 
-![](00-index_files/figure-docx/unnamed-chunk-3-1.png)
+<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
 
 Along the way, we also developed some customized tutorials on the tools that we used. These tutorials cover selected individual Surahs (Chapters) of the Quran like Surah Yusuf, Surah Taa Haa, and Surah Al-Kahfi - all of which are covered in different Chapters of the book. We hope our readers can learn the tools within the subject of "learning the Quran".
 
@@ -75,23 +75,23 @@ We can only express our sincere gratitude to our Lord and Creator for giving us 
 
 > "And our Lord is the Beneficent Allah, Whose help is sought" [Quran, 21:112]
 
-![](00-index_files/figure-docx/unnamed-chunk-4-1.png)
+<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="384" style="display: block; margin: auto;" />
 
 # Preamble {-}
 
-This book originates from a compilation of joint works by both authors published in RPubs under (https://rpubs.com/azmanH/). The works began as an exploratory exercise, which emanates from our interest in #networkscience which lead us to #qurananalytics. We admit that this is a new field that is relatively less explored. It requires domain expertise in linguistics, particularly language in Islamic religious texts, data programming language, statistics and machine learning, and Natural Language Processing (NLP). Furthermore, the Quran is the sacred religious text for Muslims, which makes the task requires careful considerations and treatment.
+This book originates from a compilation of joint works by both authors published in RPubs under (https://rpubs.com/azmanH/). The work began as an exploratory exercise, which emanates from our interest in #networkscience which lead us to #qurananalytics. We admit that this is a new field that is relatively less explored. It requires domain expertise in linguistics, particularly language in Islamic religious texts, data programming language, statistics and machine learning, and Natural Language Processing (NLP). Furthermore, the Quran is the sacred religious text for Muslims, which makes the task requires careful considerations and treatment.
 
-We decided to compile them into a book while knowingly that the work is far from complete and at best still at exploratory stages. It dawns on us that even in exploratory stages, the amount of works required to complete the project is vast and requires massive collaboration efforts by people from various domains of expertise. The fastest way to get the interest and others to join us in this journey is to publish our works thus far and present them to as wide an audience as possible, through a book.
+We decided to compile them into a book while knowing that the work is far from complete and at best still at exploratory stages. It dawns on us that even in exploratory stages, the amount of work required to complete the project is vast and requires massive collaboration efforts by people from various domains of expertise. The fastest way to get the interest and others to join us in this journey is to publish our works thus far and present them to as wide an audience as possible, through a book.
 
-In this book, which we plan to be a series of books in the future, we will present an introduction to the subject of Quran Analytics, with focuses on using tools of NLP, deploying __R__ programming language. The purpose is threefold, introducing the subject of Quran Analytics, exploring NLP tools, and use the R programming environment as the tool of choice.
+In this book, which we plan to be a series of books in the future, we will present an introduction to the subject of Quran Analytics, with focuses on using tools of NLP, deploying __R__ programming language. The purpose is threefold, introducing the subject of Quran Analytics, exploring NLP tools, and using the R programming environment as the tool of choice.
 
-Our wish is for many other researchers to follow our track, collaborate with us in our efforts - especially for people with expertise or knowledge in one of the domains, but lacking expertise in the other domain. The journey is not that hard if a person already knows one of the domains. For example, many experts in the sciences of Al Quran do not have exposure to the computing environment, and hence do not understand NLP deeply; our argument is NLP is first and foremost is about linguistics, cast within computational linguistics. As far as __R__ programming language, despite being an uphill task for beginners to be familiar with its working environment, over the years of development, it had been made easy with many recent works on it, such as the __R Studio__ environment as its IDE. It is just like riding a bicycle, if you know how to ride one, then almost any bicycle is the same. R is among the simplest bicycle around.
+Our wish is for many other researchers to follow our track, collaborate with us in our efforts - especially for people with expertise or knowledge in one of the domains, but lacking expertise in the other domain. The journey is not that hard if a person already knows one of the domains. For example, many experts in the sciences of Al Quran do not have exposure to the computing environment, and hence do not understand NLP deeply; our argument is NLP is first and foremost is about linguistics, cast within computational linguistics. As far as __R__ programming language, despite being an uphill task for beginners to be familiar with its working environment, over the years of development, it had been made easy with many recent works on it, such as the __R Studio__ environment as its IDE. It is just like riding a bicycle, if you know how to ride one, then almost any bicycle is the same. R is among the simplest bicycles around.
 
-We plan this book to be an open-source concept. It is prepared using the bookdown package in R (https://bookdown.org/yihui/bookdown/). All the data and codes will available at in a __github__ site to be added in the future. Some of our future works will be posted on the RPubs site (https://rpubs.com/azmanH/). Eventually, we will also produce some packages in R, which will be posted on CRAN.
+We plan this book to be an open-source concept. It is prepared using the bookdown package in R (https://bookdown.org/yihui/bookdown/). All the data and codes will be available at in a __github__ site to be added in the future. Some of our future works will be posted on the RPubs site (https://rpubs.com/azmanH/). Eventually, we will also produce some packages in R, which will be posted on CRAN.
 
 
 
-<!--chapter:end:00-index.Rmd-->
+<!--chapter:end:index.Rmd-->
 
 
 
@@ -103,31 +103,30 @@ Learning and teaching Al-Quran is one of the greatest virtues in Islam. It is an
 
 With advancements in technology, is it possible for the new generation to learn Al-Quran beyond the traditional methods and tools? Does the digital revolution allow us to use technologies for learning and teaching Al-Quran? The answer is most clearly a yes. However, people with knowledge of technology understand that the use of technology is beyond just browsing webpages and manipulating mobile applications within our devices. It is also beyond simple webpage creation and publication of YouTube videos. All these means of teaching and learning, while laudable, bring along many unintended consequences.
 
-The question we want to pose is, is it possible to put everything about teaching and learning Al-Quran as a comprehensive and all-encompassing system using digital technology of the day? If this quest is possible, then we have to start the subject right from the very beginning - that is to cast the objective of the envisaged system within the domain of scientific discovery.
+The question we want to pose is, is it possible to put everything about teaching and learning Al-Quran as a comprehensive and all-encompassing system using digital technology of the day? If this quest is possible, then we must start the subject right from the very beginning - that is to cast the objective of the envisaged system within the domain of scientific discovery.
 
-The logic of knowledge (or scientific discovery) provides an analysis of testing systems of theories against experience by observation and experiment [@popper1992].  Analyzing is one mechanism to produce reliability based on evidence.  Evidence comes in the form of data, and testing is through inference. Inference, on the other hand, is understood through the theory of probability.
+The logic of knowledge (or scientific discovery) provides an analysis of testing systems of theories against experience by observation and experiment [@popper1992]. Analyzing is one mechanism to produce reliability based on evidence. Evidence comes in the form of data, and testing is through inference. Inference, on the other hand, is understood through the theory of probability.
 
-The question is, can we put the same rigor of testing to Al-Quran as a way for us to get to the truth or true belief? Al-Quran to Muslims is a sacred religious text, the "word of Allah," a divine revelation, and is the final truth. For many  Muslims, Al-Quran studies must be through traditional learning and knowledge discovery methods. First and foremost, we hold to the view that as Muslims, believing in the finality of the truth of Al-Quran is one of the pillars of our faith; and there is no question about it. Therefore, we believe that the question of "testing" the truth of Al-Quran does not arise; in fact, it should reaffirm any believer in the veracity of its truth.
+The question is, can we put the same rigor of testing Al-Quran as a way for us to get to the truth or true belief? Al-Quran to Muslims is a sacred religious text, the “word of Allah,” a divine revelation, and is the final truth. For many Muslims, Al-Quran studies must be through traditional learning and knowledge discovery methods. First and foremost, we hold to the view that as Muslims, believing in the finality of the truth of Al-Quran is one of the pillars of our faith; and there is no question about it. Therefore, we believe that the question of “testing” the truth of Al-Quran does not arise; in fact, it should reaffirm any believer in the veracity of its truth.
 
-The basic principle must be that what we seek is knowledge itself. Knowledge and discovery of knowledge do not have any limit. As a believer, we must have a firm believe in the miraculousness of the language of Al-Quran; but to be able to appreciate this miraculousness with reason is what we lack. Without formal training in the Classical Arabic language and Islamic studies, many of us are at the mercy of those who claimed authority over the subject. Is there a way for those in this category to acquire this knowledge using modern tools, directly from the original and classical sources of the Quranic knowledge? Answering this is what Quran Analytics is all about.
+The basic principle must be that what we seek is knowledge itself. Knowledge and discovery of knowledge do not have any limit. As a believer, we must have a firm belief in the miraculousness of the language of Al-Quran; but to be able to appreciate this miraculousness with reason is what we lack. Without formal training in the Classical Arabic language and Islamic studies, many of us are at the mercy of those who claimed authority over the subject. Is there a way for those in this category to acquire this knowledge using modern tools, directly from the original and classical sources of the Quranic knowledge? Answering this is what Quran Analytics is all about.
 
 Modern tools in knowledge discovery and acquisition are computational methods, data science, artificial intelligence, and algorithms - combined with scientific methods of analysis and domain expertise - applied in computing environments. Examples of this are information retrieval, knowledge extractions, knowledge graphs, and many other applications in various fields of studies in natural and social sciences. The web, as we know it today, is a massive body of information and knowledge. Extracting knowledge from the web is impossible without relying on these modern tools.
 
-Quranic knowledge is vast from many aspects; "the language is a captivating beauty, boundless expressiveness, eloquence, rhythm, magic, and distinction."[@saeh2015] It benefited from the "turath" of many scholars of the past with voluminous texts. These scholars came across many geographic regions of the world over more than one thousand years. The question is, how do we gain knowledge from this vast sea of knowledge? The answer is, we need modern tools for knowledge acquisition in the form of Quran Analytics.
+Quranic knowledge is vast from many aspects; “the language is a captivating beauty, boundless expressiveness, eloquence, rhythm, magic, and distinction.”[@saeh2015] It benefited from the “turath” of many scholars of the past with voluminous texts. These scholars came across many geographic regions of the world over more than one thousand years. The question is, how do we gain knowledge from this vast sea of knowledge? The answer is, we need modern tools for knowledge acquisition in the form of Quran Analytics.
 
 The earlier scholars of Islam's approach to Quranic knowledge were eminently clear. They start with a thorough mastery of the language, and secondly through the acquisition of knowledge via memorization of everything in its original form (i.e., language in words and speech, as well as in context) and from total comprehension of knowledge through understanding the various teachings. However, as time progresses, the subject of language is becoming more distant, especially for many of the non-Arabic speaking people (due to the language barrier) and Arabic speaking people (due to diglossic behavior). The distance of Quranic knowledge from the people is growing.
 
-Furthermore, the path of knowledge development among the early Islamic scholars took different trajectories; for example, there are distinct paths taken among scholars from the Arabic peninsula, the Levant, Central Asia, North Africa, the Turk regions, the sub-continent, and Southeast Asia.  As the knowledge is being transmitted and spread, many changes happened, and the eventual form of understanding may have diverged significantly. An example of this is the Mazhabs (sects), wherein Southeast Asia ascribes to Shafie, the Persians to Shi'a, the Turks to Hanafi. Tracing these various paths of knowledge development by itself is a significant task, not counting the content and context of the knowledge itself.
+Furthermore, the path of knowledge development among the early Islamic scholars took different trajectories; for example, there are distinct paths taken among scholars from the Arabic peninsula, the Levant, Central Asia, North Africa, the Turk regions, the sub-continent, and Southeast Asia. As the knowledge is being transmitted and spread, many changes happened, and the eventual form of understanding may have diverged significantly. An example of this is the Mazhabs (sects), wherein Southeast Asia ascribes to Shafie, the Persians to Shi'a, the Turks to Hanafi. Tracing these various paths of knowledge development by itself is a significant task, not counting the content and context of the knowledge itself.
 
 Written texts possess something that others do not, namely, it is a form of data and carries the language with the contexts and meaning and knowledge dissemination. With advancements in computing, these texts are available in digitized form and further digitalized in a machine-readable format. With the advancements in the tools of annotation and textual analysis together with Big Data availability, the process of analyzing becomes less daunting.
 
-Quran Analytics is a new term without a clear scholarly definition. We know that it is a combination of various disciplines - including Quranic sciences (Ulum Al-Quran), language and linguistics, and broader Islamic sciences. The relationship and interdependencies between these fields are both _complicated_ and _complex_. Our exploratory attempt to provide a diagrammatic relation between the various fields of knowledge is shown in Figure <a href="#fig:ch1fig1">1.1</a>.
+Quran Analytics is a new term without a clear scholarly definition. We know that it is a combination of various disciplines - including Quranic sciences (Ulum Al-Quran), language and linguistics, and broader Islamic sciences. The relationship and interdependencies between these fields are both _complicated_ and _complex_. Our exploratory attempt to provide a diagrammatic relation between the various fields of knowledge is shown in Figure \@ref(fig:ch1fig1).
 
-
-
-![<span id="fig:ch1fig1"></span>Figure 1.1: Complexity of Quran Analytics](01-Ch1Introduction_files/figure-docx/ch1fig1-1.png)
-
-
+<div class="figure">
+<img src="01-Ch1Introduction_files/figure-html/ch1fig1-1.png" alt="Complexity of Quran Analytics" width="672" />
+<p class="caption">(\#fig:ch1fig1)Complexity of Quran Analytics</p>
+</div>
 
 The "relationships" shown are examples of the relations and intersections of multi-disciplinary requirements for Quran Analytics.
 
@@ -139,7 +138,7 @@ Our search for the term "quran analytics" in Google Scholar, yields 2,480 result
 
 The most comprehensive reference that we found on the subject is based on the works of Prof. Eric Atwell and his students at Leeds University. Over a decade, they have been working on annotating the Quranic texts in Arabic, using the Buckwalter transliteration engines for Arabic textual language, generating various statistical measures for the Quranic words, and creating meta-data for words and verses of the Quran. While there are many recent scholarly articles such as publications of the peer-reviewed Journal of Qur'anic Studies by the University of Edinburgh, Quranic Analytics is a subject not extensively covered; whether it is labeled as "Quran NLP", "Quran Analytics", or anything similar. After reading and scanning the works, we still could not find definitive definitions of Quran Analytics.
 
-In the absence of a clearly defined terminology, we propose that the term, Quran Analytics, means the works of combining the science of Quranic studies, language and linguistic studies, and computational linguistics, for the knowledge acquisition and extraction from the Quran. 
+In the absence of a clearly defined terminology, we propose that the term, Quran Analytics, means the works of combining the science of Quranic studies, language and linguistic studies, and computational linguistics, for the knowledge acquisition and extraction from the Quran.
 
 Defining exactly what is meant by Quran Analytics will be a major challenge; a subject which we intend to develop and expand extensively in our research. For now, we would say that our approach to Quran Analytics is about utilizing the tools of computational linguistics applied non-parametrically to the studies of the sciences of Al-Quran. What we mean by non-parametric is that, by design, the analysis does not assume any pre-existing models of the sciences of Al-Quran. Another way to express this is akin to the terminology of "unsupervised learning" in machine learning algorithms. And borrowing the term from network or graph theory, we perform analysis to allow self-emergent structures to emerge and be detected in the process.
 
@@ -159,13 +158,13 @@ Our view is that, to date, most of the incomprehension of CL applications to the
 
 ## Quranic language and linguistic studies {#quranic-language-and-studies}
 
-Language studies is a very old field, as old as humanity itself. Language as a subject is difficult to be described in simple terms, as it is inter-related with many fields of literature, philology, anthropology, sociology, as well as biology. The Quranic language furthermore is unique in the sense that, we believe that it is the word of Allah, revealed through Prophet Muhammad (SAW), in Arabic language, one thousand two hundred years ago. As a language, traditional and contemporary scholars have argued that the Quranic language stands alone, apart even from the Classical Arabic of the time, and distinctly clear from the Colloquial Arabic.
+Language studies is a very old field, as old as humanity itself. Language as a subject is difficult to describe in simple terms, as it is interrelated with many fields of literature, philology, anthropology, sociology, as well as biology. The Quranic language furthermore is unique in the sense that, we believe that it is the word of Allah, revealed through Prophet Muhammad (SAW), in Arabic language, one thousand two hundred years ago. As a language, traditional and contemporary scholars have argued that the Quranic language stands alone, apart even from the Classical Arabic of the time, and distinctly clear from the Colloquial Arabic.
 
-Our position is that the Quranic language has to be the first priority in the pecking order. It should be the rule which governs the meaning of the language. As an example, the Quranic language uses the "past tense" in English meaning something that is perpetual (e.g. the word "kaana"), in which case, its common usage of Arabic grammar (Classical or Colloquial) will never be the same as Quranic Arabic. Quran also introduces new terms and names or gives meanings to these terms and names. The same term and meanings do not change in Quranic Arabic but may change in the usage in the society (i.e. natural language). An example of this is "Riba". A recent reference on the subject is found in [@saeh2015].
+Our position is that the Quranic language has to be the first priority in the pecking order. It should be the rule which governs the meaning of the language. As an example, the Quranic language uses the "past tense" in English meaning something that is perpetual (e.g. the word "kaana"), in which case, its common usage of Arabic grammar (Classical or Colloquial) will never be the same as Quranic Arabic. Al Quran also introduces new terms and names or gives meanings to these terms and names. The same term and meanings do not change in Quranic Arabic but may change in the usage in the society (i.e. natural language). An example of this is "Riba". A recent reference on the subject is found in [@saeh2015].
 
 Since the subject of Quranic language is beyond our scope here, we simply state our stand on it, namely: the Quranic language is unique and stands by itself (as a mu'jizah), hence it must be treated as such. Our task and duty are to rediscover and uncover more of its uniqueness and meaning, through the knowledge extraction process of Quran Analytics.
 
-Linguistics is the scientific study of language. It involves an analysis of language form, language meaning, and language in context, as well as an analysis of the social, cultural, historical, and political factors that influence language.^[https://en.wikipedia.org/wiki/Linguistics] It is a vast field of sciences, with research covering the sub-field of sociolinguistics, neurolinguistics, translations, and many others. The particular field of interest for us is the latest development in computational linguistics. Our current focus will be on the applications of computational linguistics for Quranic studies.
+Linguistics is the scientific study of language. It involves an analysis of language form, language meaning, and language in context, as well as an analysis of the social, cultural, historical, and political factors that influence language.^[https://en.wikipedia.org/wiki/Linguistics] It is a vast field of sciences, with research covering the sub-field of sociolinguistics, neurolinguistics, translations, and many others. A particular field of interest for us is the latest development in computational linguistics. Our current focus will be on the applications of computational linguistics for Quranic studies.
 
 ## Computational Linguistics {#computational-linguistics}
 
@@ -173,7 +172,7 @@ _"Computational linguistics is the scientific and engineering discipline concern
 
 The quotes above from the Stanford Encyclopedia of Philosophy reflect the definition of computational linguistics (CL) as a (sub) field of linguistics. The focus of CL is to perform syntactic parsing, word disambiguation, semantic representation and interpretation, making sense of textual representation, and acquisition of knowledge from the language (texts or speeches). The philosophical basis of CL originates from the works of Noam Chomsky, under the generative grammar theory, which claims that grammar in languages follows innate grammatical structures.
 
-The importance of this philosophical basis is to provide scientific justification for us to convert words and sentences, into data, through the filters of grammatical rules. Once this is performed, then we will be able to carry out analytical works using traditional tools of probability and statistics. For this reason, in the early days, the subject is called "statistical linguistics", which today is transformed to "statistical Natural Language Processing (NLP)", or "Natural Language Processing".
+The importance of this philosophical basis is to provide scientific justification for us to convert words and sentences into data, through the filters of grammatical rules. Once this is performed, then we will be able to carry out analytical works using traditional tools of probability and statistics. For this reason, in the early days, the subject was called “statistical linguistics”, which today is transformed to “statistical Natural Language Processing (NLP)”, or “Natural Language Processing”.
 
 ## Natural Language Processing (NLP) {#natural-language-processing}
 
@@ -181,13 +180,13 @@ Natural Language Processing (NLP) is a combination of linguistics and data scien
 
 NLP has been largely developed over the last few decades and gained large popularity in part due to the development of various algorithms for language processing - from text mining, development of large corpora, all the way to the development of AI applications to language.
 
-The basics in NLP generally cover text parsing and mining, lexical and grammar analysis, semantic analysis. The higher-order works in NLP are pragmatic analysis, socio-linguistics, Machine Learning, and Artificial Intelligence on linguistics - which in turn are used in a variety of applications - from the simplest such as chatbots, all the way to information retrieval and knowledge extraction.
+The basics in NLP generally cover text parsing and mining, lexical and grammar analysis, semantic analysis. The higher-order works in NLP are pragmatic analysis, sociolinguistics, Machine Learning, and Artificial Intelligence on linguistics - which in turn are used in a variety of applications - from the simplest such as chatbots, all the way to information retrieval and knowledge extraction.
 
-Most text mining is done on ASCII-based alphabets based on UTF-8 Unicode encoding of characters. Particularly, almost all programming languages are based on the English language for its syntax, which drives the easiness of text mining applied to similar characters which are normally or universally used in a computing environment. Despite the availability of UTF-8 for Arabic characters, text mining is just beginning and is still way behind in comparison to the English language. The most important area which is almost relatively unexplored is on cross-language and multi-language text mining, in particular between Arabic and English, Arabic and Malay, Malay and English with particular focus on sacred religious text such as Al-Quran and Al-Hadith.
+Most text mining is done on ASCII-based alphabets based on UTF-8 Unicode encoding of characters. Particularly, almost all programming languages are based on the English language for its syntax, which drives the easiness of text mining applied to similar characters which are normally or universally used in a computing environment. Despite the availability of UTF-8 for Arabic characters, text mining is just beginning and is still way behind in comparison to the English language. The most important area which is almost relatively unexplored is on cross-language and multi-language text mining, between Arabic and English, Arabic and Malay, Malay and English with particular focus on sacred religious text such as Al-Quran and Al-Hadith.
 
 ## Programming language in NLP {#programming-language-in-NLP}
 
-Google Trends represents an "unbiased sample" of Google search data, which was made available to the public, representing trillions of searches on the Internet that took place every year. The strength of the tool lies in the availability of historical data, granularized to the details of time (daily) and geographic location (cities) for the whole world.^[Google Trends: (https://medium.com/google-news-lab/what-is-google-trends-data-and-what-does-it-mean-b48f07342ee8)] We will use this tool for exploratory views on the usages of computer programming languages in Natural Language Processing (NLP).
+Google Trends represents an "unbiased sample" of Google search data, which was made available to the public, representing trillions of searches on the Internet that take place every year. The strength of the tool lies in the availability of historical data, granularized to the details of time (daily) and geographic location (cities) for the whole world.^[Google Trends: (https://medium.com/google-news-lab/what-is-google-trends-data-and-what-does-it-mean-b48f07342ee8)] We will use this tool for exploratory views on the usages of computer programming languages in Natural Language Processing (NLP).
 
 Google search for "Top programming language for NLP" reveals that it revolves around five programming languages: MATLAB, R, Python, and Java.^[Google search on 24 January 2021] Further inspection of trends shows that Python is the most popular by far overtaking all other languages combined.^[Google trend analysis on 24 January 2021. The search was done on the trends of "web search" on "MATLAB NLP", "R NLP", "Python NLP", and "Java NLP" as the search term for the whole world for the past 5 years.] Leading the trend was "Stanford NLP" in Java since Java was used in the Stanford NLP project, "PyTorch" and "spaCy" for Python, since "PyTorch" and "spaCy" are the two most comprehensive and usable libraries for NLP works in Python, and the highest rise of usage is from China. For R, "NLP in R" is the only notable term, reflecting R's lack of a single comprehensive package for NLP.
 
@@ -202,7 +201,7 @@ The latest trends indicate that interest in NLP among the programming languages 
 | "NLP in Java"     | 9.9 million |
 | "NLP in MATLAB"   | 1.47 million|
 
-Regular expressions also called _regex_, is an extremely powerful tool for computational linguistics. It is a programming language of its own, which relies on the logic of strings manipulations at the byte level. Regex allows the programmer to manipulate the texts at the rudimentary level, whether to do character search (using byte search) or removal/replacement of characters from text sources based on any structures.
+Regular expressions, also called _regex_, is an extremely powerful tool for computational linguistics. It is a programming language of its own, which relies on the logic of strings manipulations at the byte level. Regex allows the programmer to manipulate the texts at the rudimentary level, whether to do character search (using byte search) or removal/replacement of characters from text sources based on any structures.
 
 The drawback of regex however is its logic and highly cumbersome codes. Availability of string manipulations libraries, such as "spaCy" in Python or "stringi" in R, makes the use of regex less important in these languages. The basis of the logic applied in most of these libraries originates from regex. This is why regex could prove to be extremely useful in dealing with languages that are not based on Latin-based scripts such as Chinese or Arabic scripts.
 
@@ -210,11 +209,11 @@ The latest trends in programming languages for NLP are encouraging where most so
 
 ## Advancements in NLP and Quran Analytics {#advancements-in-NLP-and-quran-analytics}
 
-Advancements in NLP over the last decade have progressed from simple and basic tasks into Machine Learning, Deep Learning, and Artificial Intelligence with significant success in achieving many complex and complicated operational goals. One of the key areas of success is in transforming data into knowledge. With large amounts of unstructured data, it is extremely difficult to process and convert those data into meaningful representations that humans can derive useful conclusions. What the machine does is to take as input large amounts of data, process them in machine forms using rules generated by NLP tools, and finally present them to humans with the domain knowledge, to interpret them for people with less expertise of the domain concerned.
+Advancements in NLP over the last decade have progressed from simple and basic tasks into Machine Learning, Deep Learning, and Artificial Intelligence with significant success in achieving many complex and complicated operational goals. One of the key areas of success is in transforming data into knowledge. With large amounts of unstructured data, it is extremely difficult to process and convert those data into meaningful representations that humans can derive useful conclusions from. What the machine does is to take as input large amounts of data, process them in machine forms using rules generated by NLP tools, and finally present them to humans with the domain knowledge, to interpret them for people with less expertise of the domain concerned.
 
-An example of this is anomaly detection, where given large amounts of data (for example collections of Quranic exegesis), the only way for a human being to detect any "false interpretation" is by reading the texts in detail of all possible collections of exegesis which are considered authentic. The checks must involve all aspects, all possible sources of the interpretation, the methodology used in any specific exegesis, exact context and contents of the interpretation, contextual issues in linguistics, and all relevant notes and pointers attributed by the interpreter. Given the vast amount of exegesis available, what had been done traditionally is to commit everything to memory, and checks are done through memory. Why is this the only possible method? Because even readings on a textual basis will miss small details of anything - such as the exact context of the interpretation, the references used such as other verses, Hadiths, and traditions used. This is almost humanly impossible in this day and age (except for whoever is given the gifts of memorization). Is it possible to use the advancements in NLP to perform this feat? This is an example of applying NLP to a problem in Quranic interpretations.
+An example of this is anomaly detection, where given large amounts of data (for example collections of Quranic exegesis), the only way for a human being to detect any "false interpretation" is by reading the texts in detail of all possible collections of exegesis which are considered authentic. The checks must involve all aspects, all possible sources of the interpretation, the methodology used in any specific exegesis, exact context and contents of the interpretation, contextual issues in linguistics, and all relevant notes and pointers attributed by the interpreter. Given the vast amount of exegesis available, what had been done traditionally is to commit everything to memory, and checks are done through memory. Why is this the only possible method? Because even readings on a textual basis will miss small details of anything - such as the exact context of the interpretation, the references used such as other verses, Hadiths, and traditions used. This is almost humanly impossible today (except for whoever is given gifts of memorization). Is it possible to use the advancements in NLP to perform this feat? This is an example of applying NLP to a problem in Quranic interpretations.
 
-There are many examples of recent achievements in NLP which are extremely encouraging for a wide range of applications within common usages, such as speech recognition, speech-to-text, information retrieval systems, and others. Since our objective here is to introduce Quran Analytics, we will cover some of the advances particularly towards its potential applications within this field. We have to admit that the coverage on the subject of NLP is very wide and encompasses many domains, therefore our suggestions here remain a preliminary exploration of the subject matter. For further readings on the subject, we recommend that readers refer to the materials suggested at the end of the chapter. 
+There are many examples of recent achievements in NLP which are extremely encouraging for a wide range of applications within common usages, such as speech recognition, speech-to-text, information retrieval systems, and others. Since our objective here is to introduce Quran Analytics, we will cover some of the advances particularly towards its potential applications within this field. We must admit that the coverage about NLP is very wide and encompasses many domains, therefore our suggestions here remain a preliminary exploration of the subject matter. For further readings on the subject, we recommend that readers refer to the materials suggested at the end of the chapter.
 
 ### Common NLP tasks {#common-NLP-tasks}
 
@@ -227,16 +226,16 @@ Common NLP tasks are generalized into the following:
 
 All the tasks listed above are cast within the linguistic domain, which is based on the notion that language is "generative" in nature. This implies that natural language, whether in the form of speech or textual, is convertible to machine-readable form as data. Once the natural language is converted to data, various algorithms and computing models are applied to generate the tasks in an inference framework. This framework is called "Statistical Natural Language Processing". There are many established references for NLP as a subject, notable among them are @manning1999, @manning2009, @jurafsky2000.
 
-The key aspect of NLP is the statistical analysis, and the tools for it are available in abundance. However, the deeper meaning of the text and inference language is context-dependent. For the English language, this area has been well developed over many decades. Whilst for other languages, it is unclear, in particular the Arabic language, which has its diglossia of colloquial Arabic and Classical Arabic. The Malay language is similar, with its own diglossic dichotomy between Malaysian Malay and Indonesian Malay. All these deeper dimensions may confound statistical inference, and many inferences may suffer from small sample problems.
+The key aspect of NLP is the statistical analysis, and the tools for it are available in abundance. However, the deeper meaning of the text and inference language is context-dependent. For the English language, this area has been well developed over many decades. Whilst for other languages, it is unclear, particularly the Arabic language, which has its diglossia of colloquial Arabic and Classical Arabic. The Malay language is similar, with its own diglossic dichotomy between Malaysian Malay and Indonesian Malay. All these deeper dimensions may confound statistical inference, and many inferences may suffer from small sample problems.
 
 Lexical analysis is one of the most advanced areas in NLP, due to the digitalization of language as textual data. Lexical analysis relies on two major steps:
 
 a) lexicalization which includes _tokenization_, _lemmatization_, and _word cleaning_ process, and 
 b) analyzing the objects (in this case tokens), within their contexts, such as _syntactic structures_, _grammar analysis_, and others.
 
-Semantic analysis is about relations between structures derived from the data as an outcome of lexical process or engines into the phrases, clauses, sentences, group of sentences as well as the whole text and corpora. 
+Semantic analysis is about relations between structures derived from the data as an outcome of lexical process or engines into the phrases, clauses, sentences, group of sentences as well as the whole text and corpora.
 
-Among the early works for NLP is corpus building. The task is to convert text and generate a large corpus of speech and textual data. There are many notable efforts for public corpus development such as Project Guttenberg^[https://www.gutenberg.org], American National Corpus^[http://www.anc.org], British National Corpus^[https://www.english-corpora.org/bnc/], BYU corpus linguistics^[https://lcl.byu.edu], and others. A good list is available on Wikipedia.^[https://en.wikipedia.org/wiki/List_of_text_corpora] A paid version program for corpora in many languages is developed by Sketch Engine^[https://www.sketchengine.eu] which has a variety of language capabilities. A sample list for Arabic language corpora is  provided by Eddakrouri.^[https://sites.google.com/a/aucegypt.edu/infoguistics/directory/Corpus-Linguistics/arabic-corpora]
+Among the early works for NLP is corpus building. The task is to convert text and generate a large corpus of speech and textual data. There are many notable efforts for public corpus development such as Project Guttenberg^[https://www.gutenberg.org], American National Corpus^[http://www.anc.org], British National Corpus^[https://www.english-corpora.org/bnc/], BYU corpus linguistics^[https://lcl.byu.edu], and others. A good list is available on Wikipedia.^[https://en.wikipedia.org/wiki/List_of_text_corpora] A paid version program for corpora in many languages is developed by Sketch Engine^[https://www.sketchengine.eu] which has a variety of language capabilities. A sample list for Arabic language corpora is provided by Eddakrouri.^[https://sites.google.com/a/aucegypt.edu/infoguistics/directory/Corpus-Linguistics/arabic-corpora]
 
 In the past decade, most programming languages have expanded their capabilities to deal with most programming tasks. Furthermore, the works by groups like Stanford NLP, IBM, Google, Baidu, as well as Facebook, generated many language models and treebanks. For example, Stanford NLP through Stanza provided language models for almost all major languages of the world.^[https://stanfordnlp.github.io/stanza/available_models.html] For treebanks, the famous one is the Penn Treebank project of the University of Pennsylvania, ^[https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu/~treebank/] which includes a variety of languages including the Arabic language.^[https://catalog.ldc.upenn.edu/LDC2005T20] Of late, is the development of semantic treebanks, which are collections of natural language annotated with meaning representations. An example of this is the Groningen Meaning Bank^[https://gmb.let.rug.nl] by the University of Groningen, Netherlands.
 
@@ -248,7 +247,7 @@ Since the last decade, many solution providers have developed Quranic studies us
 
 _Quran Gateway_ ^[https://info.qurangateway.org/about/] is another digital effort, which is provided as a paid version, developed originally by Dr. Andrew Bannister and Dr. Daniel Brubaker. The theme of their works is based on "An Oral-Formulaic Study of the Quran", originally a Ph.D. thesis that was published as a book in [@bannister2014]. The approach is by taking NLP methods and applying them to the studies of Al-Quran, using both the original Quran in Arabic and various English translations.
 
-Thus far our research reveals that these are the only two works that qualify as comprehensive works on Quranic studies which deploy NLP computing tools for its development. Between the two, the work from the Leeds University working group is more comprehensive and covers wider ranges of applications, and was made to be open source. Quran gateway on the other hand relies on a specific method (or models) which opens it to criticism as narrow-based solutions.
+Thus far our research reveals that these are the only two works that qualify as comprehensive works on Quranic studies which deploy NLP computing tools for its development. Between the two, the work from the Leeds University working group is more comprehensive and covers a wider range of applications, and was made to be open source. Quran gateway on the other hand relies on a specific method (or models) which opens it to criticism as narrow-based solutions.
 
 As far as compilations for the translations of Al-Quran, most of the texts (i.e., corpus) are available from www.tanzil.net for various languages. 
 
@@ -268,7 +267,7 @@ In our view, the bigger challenge for Quran Analytics will be in the new advance
 
 Information extraction is a technique of extracting structured information from unstructured text. This is a difficult problem due to the complex nature of the human language, whereby words have different meanings when put in different contexts. Active learning on the other hand is important for the tasks of automation in annotation works - which reduces the time for high accuracy annotations tasks. A knowledge graph is a way of storing data that resulted from an information extraction task. It transforms the information data into what is termed a "graph database" concept. Argumentation mining focuses on analyzing argumentation in text and developing tools to automatically extract, aggregate, summarize and reason about arguments in natural language. This in turn provides tools for inference and predictions.
 
-Knowledge base systems (KBS) involve the creation of algorithms that uses knowledge for solving complex problems. An example of this is a set of knowledge settings, such as Islamic rulings (fatwas); a KBS for this purpose is a system of collection of knowledge on all resources relating to the basis of rulings (i.e., Al-Quran, Al-Hadith, etc.). Finally, probabilistic models of language deal with fundamental cognitive questions of how humans structure, process and acquire language. In particular, applications of Deep Learning algorithms and complicated language modeling such as Hidden Markov Models (HMM) are entrenched in this domain.
+Knowledge base systems (KBS) involve the creation of algorithms that use knowledge for solving complex problems. An example of this is a set of knowledge settings, such as Islamic rulings (fatwas); a KBS for this purpose is a system of collection of knowledge on all resources relating to the basis of rulings (i.e., Al-Quran, Al-Hadith, etc.). Finally, probabilistic models of language deal with fundamental cognitive questions of how humans’ structure, process and acquire language. Applications of Deep Learning algorithms and complicated language modeling such as Hidden Markov Models (HMM) are entrenched in this domain.
 
 There are numerous other areas of development within the field of NLP which are not possible to be covered here. What's important is that all these advancements provide massive learning examples which give researchers new and novel methods of exploring NLP further. We are sure that these learning examples are useful tools and resources for Quran Analytics as we envisaged.
 
@@ -280,7 +279,7 @@ R is exceptional for research – visualizing the data, telling the story, produ
 
 __R__ originated as a statistical programming language. This is the reason why it is favored by scientists and researchers more than Python, which is geared more towards programmers. However, it really does not matter which one to choose between Python and __R__, since both are highly interoperable. What is needed is high proficiency in at least one. Most libraries available in Python will have their equivalent in __R__, and vice versa. If it is not available in one, you can simply run the Python program in __R__ directly.
 
-We view that in computational linguistics, in particular NLP, __R__ is well-positioned to undertake the heavy lifting works required. In particular, the flexibility of __R__ as a Massively Objected Oriented Programming (MOOP) language with its advanced data structures, gives us flexibilities to construct our own data structures fitting the problem at hand. This will become handy when we have to deal with complex concepts and methods for the Quranic language, in particular the Quranic Arabic. As far as the Arabic scripts are concerned, they can be dealt with quite easily; and usage of regular expressions is extremely straightforward in __R__.
+We view that in computational linguistics, in particular NLP, __R__ is well-positioned to undertake the heavy lifting works required. In particular, the flexibility of __R__ as a Massively Objected Oriented Programming (MOOP) language with its advanced data structures, gives us flexibility to construct our own data structures fitting the problem at hand. This will become handy when we deal with complex concepts and methods for the Quranic language, in particular the Quranic Arabic. As far as the Arabic scripts are concerned, they can be dealt with quite easily; and usage of regular expressions is extremely straightforward in __R__.
 
 More importantly, developers have built massive libraries (called packages) in __R__, from a very broad discipline of subjects and applications. As of today, there are more than 10,000 packages that have been developed and maintained by CRAN, which is the common __R__ codes repository, available for download and usage. Of course, this is a far cry from Python, which has more than 200,000 packages, hosted by PyPI. The advantage of __R__ and _CRAN_ is that all packages in the repository are well maintained, versioned, and well documented. In __R__, the most popular IDE (Integrated Development Environment) is _R Studio_, which is easy to use, and all documents are designed for reproducibility through _R Markdown_.
 
@@ -298,7 +297,7 @@ We intend to achieve three indirect objectives in this book:
 
 The more direct objectives of our exploratory work are to:
 
-1. Demonstrate the usage of various tools within the context of the English language for the Quran English translations, and provide indications in terms of applications within the original text of Al-Quran.
+1. Demonstrate the usage of various tools within the context of the English language for the Quran English translations and provide indications in terms of applications within the original text of Al-Quran.
 2. Suggest various paths of research and development that can be further expanded based on the lessons learned from dealing with the English language. These are noted at the end of each chapter as conclusions providing further direction of research.
 3. Showcase various existing open-source models of language, in particular the English language. This will be shown through various comparative analyses.
 
@@ -339,19 +338,15 @@ Wickham, Hadley and Garret Grolemund. _R for Data Science._ O'Reilly Media, Inc,
 
 > "What are the common patterns that occur in language use?” The major tool which we use to identify these patterns is counting things, otherwise known as statistics" [@manning1999, pg. 4]
 
-The most basic element of text corpora is the word. Words form sentences. Sentences are organized as groups of words. A corpus consists of sentences assembled together as paragraphs, sections, chapters as a set of documents. The elementary first step of Quran Analytics is to deal with the arrangement of words in the corpus. This is to reveal its basic structure, frequencies, in which part of the corpus the word appears, and any other particular observation of interest. This exercise is a generic statistical analysis in NLP.
+The most basic element of text corpora is the word. Words form sentences. Sentences are organized as groups of words. A corpus consists of sentences assembled as paragraphs, sections, chapters as a set of documents. The elementary first step of Quran Analytics is to deal with the arrangement of words in the corpus. This is to reveal its basic structure, frequencies, in which part of the corpus the word appears, and any other observation of interest. This exercise is a generic statistical analysis in NLP.
 
-Al-Quran consists of 77,430 words, 6,236 verses, and 114 Surahs - arranged in a specific order from the first word and verse, to the last verse and word. The verses differ in length as well as the Surahs. Any translation of Al-Quran follows a similar structure, except for the words in each verse that may differ, based on the language and style of the authors.
+Al-Quran consists of 77,430 words, 6,236 verses, and 114 Surahs - arranged in a specific order from the first word and verse to the last verse and word. The verses differ in length as well as the Surahs. Any translation of Al-Quran follows a similar structure, except for the words in each verse that may differ, based on the language and style of the authors.
 
 Due to this unique arrangement, it is important to investigate the structures of the translations of Al-Quran (i.e., a corpus), in any language, sourced from the same original texts. These structures reveal the linguistic styles and the messages (or knowledge) transmission process of the texts.
 
-This part consists of two chapters, Chapter 2 and Chapter 3. In Chapter 2 we will cover the statistical analysis of translations of Al-Quran. In Chapter 3 we choose one of the methods to deal with words by applying selected word scoring models, namely sentiment scoring. A full exercise for both tasks requires lengthy expositions, which is not our intention. Instead, we provide a sketch of ideas of possible works as a guide for full-scale analysis.
+This part consists of two chapters, Chapter 2 and Chapter 3. In Chapter 2 we will cover the statistical analysis of translations of Al-Quran. In Chapter 3 we choose one of the methods to deal with words by applying selected word scoring models, namely sentiment scoring. A full exercise for both tasks require lengthy expositions, which is not our intention. Instead, we provide a sketch of ideas of possible works as a guide for full-scale analysis.
 
 We will utilize __R__ programming language, introduce some of the packages, and utilize some of the functions within these packages. We attach some of the codes wherever relevant and focus on visualizations of the results.
-
-
-
-
 
 <!--chapter:end:02-Part1.Rmd-->
 
@@ -361,13 +356,13 @@ We will utilize __R__ programming language, introduce some of the packages, and 
 
 The first task in word analytics in a corpus is to study the words' statistical properties. Words represent the building block of sentences, which form the building block of a corpus, a collection of texts. Words are the primary form of "data" and hence convertible to frequencies. The most straightforward analysis for frequencies will be through analyzing its statistical properties.
 
-Before we perform the analysis, we must first convert the words into __tokens__.  In the process, we have to clean up all non-words in the texts, such as punctuations, symbols, and other characters, and convert all texts into lowercase.  After that, we convert all the texts into tokens and create the annotations for those tokens. The annotations are markers such as a sentence, which part of a sentence, and which corpus.
+Before we perform the analysis, we must first convert the words into __tokens__.  In the process, we clean up all non-words in the texts, such as punctuations, symbols, and other characters, and convert all texts into lowercase. After that, we convert all the texts into tokens and create the annotations for those tokens. The annotations are markers such as a sentence, which part of a sentence, and which corpus.
 
 In __R__, we can use many ready-made packages, such as _tm_ [@tm] (stands for text mining) and _tidytext_ [@tidytext], to perform the annotation works. _tidytext_'s advantage is that it automatically performs all the cleaning works needed and formats them into _tidy data_. For this chapter, we will use _tidytext_ as the package of choice. For reference on _tidytext_, please refer to _Text Mining with R: A Tidy Approach_ [@silge2017], and for a comprehensive introduction to the word statistical analysis, please refer to _Foundations of Statistical Natural Language Processing_ [@manning1999]. For plotting, we will use _ggplot2_ [@ggplot2] package throughout the whole book as our standard of "grammar of graphics".
 
 The objective of our work in this chapter is to introduce some of the statistical analysis on words. In particular, we want to analyze two versions of the English translation of Al-Quran, namely _Quran Saheeh International_ [@saheeh1997], _The Meaning of the Holy Quran by Abdullah Yusuf Ali_ [@yusufali2003], and a Malay translation obtained from https://www.surah.my. Saheeh is published in 1997 by Dar Abul Qasim, Saudi Arabia, translations by three American ladies using what is termed as "un-archaic" language. On the other hand, Yusuf Ali is published for the first time in 1937 from the work of Abdullah Yusuf Ali, who is a Shia in the Dawoodi Bohra tradition^[https://en.wikipedia.org/wiki/Abdullah_Yusuf_Ali] using British English of the time. The Malay translation originates from _Tafseer Pimpinan Ar-Rahman_ by Abdullah Basmieh, a well-known and widely accepted Al-Quran translation for the Malay language.
 
-Since all translations are from the same source of Al-Quran in Arabic, based on different times and styles (for English) and in another separate language (for Malay), it is interesting to study them using word statistical analysis. We may ask the questions, are these translations, in terms of words, different or similar, from a word statistical analysis point of view. These are the types of analysis we intend to accomplish in this chapter.
+Since all translations are from the same source of Al-Quran in Arabic, based on different times and styles (for English) and in another separate language (for Malay), it is interesting to study them using word statistical analysis. We may ask the question, are these translations, in terms of words, different or similar, from a word statistical analysis point of view. These are the types of analysis we intend to accomplish in this chapter.
 
 ## R packages and data used {#R-packages-and-data-used}
 
@@ -376,12 +371,6 @@ We will use the _tidytext_ package in __R__. For the data, we will use the data 
 \footnotesize
 
 ```r
-library(tidyverse)
-library(tidytext)
-library(readr)
-library(quRan)
-library(ggplot2)
-
 quran_all = read_csv("data/quran_trans.csv") %>% 
               select(surah_id, ayah_id, surah_title_en, 
                      surah_title_en_trans, revelation_type,
@@ -390,7 +379,7 @@ quran_all = read_csv("data/quran_trans.csv") %>%
 ```
 \normalsize
 
-To work with the data as a tidy dataset, we need to restructure it in the one-token-per-row format.  We will use the _unnest_tokens()_ function from the _tidytext_ package. Tokenization is the first step in word analytics.
+To work with the data as a tidy dataset, we need to restructure it in the one-token-per-row format. We will use the _unnest_tokens()_ function from the _tidytext_ package. Tokenization is the first step in word analytics.
 
 \footnotesize
 
@@ -416,11 +405,7 @@ In __R__, there are many packages useful for wordcloud analysis, the easiest one
 
 
 
-
-
 ```r
-library(wordcloud)
-library(RColorBrewer) 
 set.seed(1234)
 tidyESI %>%
   count(word) %>%
@@ -432,23 +417,23 @@ tidyESI %>%
                  colors=brewer.pal(8,"Dark2")))
 ```
 
-![<span id="fig:ch2fig201"></span>Figure 2.1: Wordcloud for Saheeh translation](03-Ch2WordFrequency_files/figure-docx/ch2fig201-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig201-1.png" alt="Wordcloud for Saheeh translation" width="384" />
+<p class="caption">(\#fig:ch2fig201)Wordcloud for Saheeh translation</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig202-1.png" alt="Wordcloud for Yusuf Ali translation" width="384" />
+<p class="caption">(\#fig:ch2fig202)Wordcloud for Yusuf Ali translation</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig203-1.png" alt="Wordcloud for Malay translation" width="384" />
+<p class="caption">(\#fig:ch2fig203)Wordcloud for Malay translation</p>
+</div>
 
-![<span id="fig:ch2fig202"></span>Figure 2.2: Wordcloud for Yusuf Ali translation](03-Ch2WordFrequency_files/figure-docx/ch2fig202-1.png)
-
-
-
-
-![<span id="fig:ch2fig203"></span>Figure 2.3: Wordcloud for Malay translation](03-Ch2WordFrequency_files/figure-docx/ch2fig203-1.png)
-
-
-
-
-
-For Saheeh, the wordcloud plot is in Figure <a href="#fig:ch2fig201">2.1</a>; for Yusuf Ali, the wordcloud plot is in Figure <a href="#fig:ch2fig202">2.2</a>; and for the Malay, the wordcloud plot is in Figure <a href="#fig:ch2fig203">2.3</a>.
+For Saheeh, the wordcloud plot is in Figure \@ref(fig:ch2fig201); for Yusuf Ali, the wordcloud plot is in Figure \@ref(fig:ch2fig202); and for the Malay, the wordcloud plot is in Figure \@ref(fig:ch2fig203).
 
 Obviously, the words such as "the" and "and" dominate the English versions, and "yang" and "dan" dominate the Malay version. These are "stopwords" in the languages, which we will deal with later. An English linguist may be able to discern the styles between Saheeh (which is American English) and Yusuf Ali (which is slightly older Engish) by observing the dominant usages of these stopwords.
 
@@ -528,72 +513,77 @@ tf_plotter = function(df,surah_group,title_label,x_lim){
   xlim(NA,x_lim) +
   facet_wrap(~surah_title_en, ncol = 2, scales = "free_y") +
   labs(title = title_label,
-       x = "term frequency",
-       y = NULL)
+       x = "Term Frequency",
+       y = NULL)+ 
+  theme(plot.title = element_text(size=12),
+        # panel.border = element_rect(colour = "black", fill=NA),
+        strip.background = element_rect(color = "black"),
+        plot.background = element_rect(color = "black"))
 }
 ```
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig204-1.png" alt="Short Surahs term frequency in Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig204)Short Surahs term frequency in Saheeh</p>
+</div>
 
 
-![<span id="fig:ch2fig204"></span>Figure 2.4: Short Surahs term frequency in Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig204-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig205-1.png" alt="Short Surahs term frequency in Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig205)Short Surahs term frequency in Yusuf Ali</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig206-1.png" alt="Short Surahs term frequency in Malay" width="576" />
+<p class="caption">(\#fig:ch2fig206)Short Surahs term frequency in Malay</p>
+</div>
 
 
-![<span id="fig:ch2fig205"></span>Figure 2.5: Short Surahs term frequency in Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig205-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig207-1.png" alt="Hamim Surahs term frequency in Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig207)Hamim Surahs term frequency in Saheeh</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig208-1.png" alt="Hamim Surahs term frequency in Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig208)Hamim Surahs term frequency in Yusuf Ali</p>
+</div>
 
 
-![<span id="fig:ch2fig206"></span>Figure 2.6: Short Surahs term frequency in Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig206-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig209-1.png" alt="Hamim Surahs term frequency in Malay" width="576" />
+<p class="caption">(\#fig:ch2fig209)Hamim Surahs term frequency in Malay</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig210-1.png" alt="Long Surahs term frequency in Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig210)Long Surahs term frequency in Saheeh</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig211-1.png" alt="Long Surahs term frequency in Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig211)Long Surahs term frequency in Yusuf Ali</p>
+</div>
 
 
-![<span id="fig:ch2fig207"></span>Figure 2.7: Hamim Surahs term frequency in Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig207-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig212-1.png" alt="Long Surahs term frequency in Malay" width="576" />
+<p class="caption">(\#fig:ch2fig212)Long Surahs term frequency in Malay</p>
+</div>
 
 
+From these plots of "term frequency" starting with the short Surahs (Figure \@ref(fig:ch2fig204), Figure \@ref(fig:ch2fig205), and Figure \@ref(fig:ch2fig206)), followed by the medium Surahs (Figure \@ref(fig:ch2fig207), Figure \@ref(fig:ch2fig208), and Figure \@ref(fig:ch2fig209)), and the long Surahs (Figure \@ref(fig:ch2fig210), Figure \@ref(fig:ch2fig211), and Figure \@ref(fig:ch2fig212)), there are many insights and lessons about the language of the translation of Al-Quran.
 
-
-![<span id="fig:ch2fig208"></span>Figure 2.8: Hamim Surahs term frequency in Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig208-1.png)
-
-
-
-
-![<span id="fig:ch2fig209"></span>Figure 2.9: Hamim Surahs term frequency in Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig209-1.png)
-
-
-
-
-![<span id="fig:ch2fig210"></span>Figure 2.10: Long Surahs term frequency in Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig210-1.png)
-
-
-
-
-![<span id="fig:ch2fig211"></span>Figure 2.11: Long Surahs term frequency in Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig211-1.png)
-
-
-
-
-![<span id="fig:ch2fig212"></span>Figure 2.12: Long Surahs term frequency in Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig212-1.png)
-
-
-
-
-
-From these plots of "term frequency" starting with the short Surahs (Figure <a href="#fig:ch2fig204">2.4</a>, Figure <a href="#fig:ch2fig205">2.5</a>, and Figure <a href="#fig:ch2fig206">2.6</a>), followed by the medium Surahs (Figure <a href="#fig:ch2fig207">2.7</a>, Figure <a href="#fig:ch2fig208">2.8</a>, and Figure <a href="#fig:ch2fig209">2.9</a>), and the long Surahs (Figure <a href="#fig:ch2fig210">2.10</a>, Figure <a href="#fig:ch2fig211">2.11</a>, and Figure <a href="#fig:ch2fig212">2.12</a>), there are many insights and lessons about the language of the translation of Al-Quran.
-
-For example,  we can observe that the term frequencies for all the translations showed "scale-invariant properties" to the language and terminologies used to translate the Quran. Scale-invariant refers to the fact that despite different filters used (a translation is a filtering method), the resulting outputs exhibit similar properties; this is an important observation about the structure of the original texts of the Quran in Arabic. An example of scale-invariancy is the sign languages for deft and mute people - whereby it is known to be language-specific independent. Are the translated messages in the Quran, aside from the original text, language-independent?
+For example,  we can observe that the term frequencies for all the translations showed "scale-invariant properties" to the language and terminologies used to translate the Quran. Scale-invariant refers to the fact that despite different filters used (a translation is a filtering method), the resulting outputs exhibit similar properties; this is an important observation about the structure of the original texts of the Quran in Arabic. An example of scale-invariancy is sign languages for deft and mute people - whereby it is known to be language-specific independent. Are the translated messages in the Quran, aside from the original text, language-independent?
 
 There are many more analyses open to the researchers by studying the various structures and properties of the word frequencies in the original texts against the translated texts of Al-Quran. We leave this for future work and research.
 
 To have a broader view of the observations made, let us look at the plot for the percentages of unique words (tokens) against the total number of words (tokens) within each Surah for all the translations.
-
-
-
 
 
 
@@ -616,16 +606,19 @@ EQT_total_toks_melt %>% ggplot() +
                                            shape = Translation, 
                                            color = Translation))  + 
                             labs(x = "Surah number", 
-                                 y = "Percentage") 
+                                 y = "Percentage",
+                                 title = "Percentage of Unique Words in Surah") +
+  scale_y_continuous(labels = scales::percent)+
+  theme(panel.border = element_rect(colour = "black", fill=NA))
 ```
 
-![<span id="fig:ch2fig213"></span>Figure 2.13: Percentage of unique words in the Surahs](03-Ch2WordFrequency_files/figure-docx/ch2fig213-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig213-1.png" alt="Percentage of unique words in the Surahs" width="576" />
+<p class="caption">(\#fig:ch2fig213)Percentage of unique words in the Surahs</p>
+</div>
 
 
-
-
-
-The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure <a href="#fig:ch2fig213">2.13</a> shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
+The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure \@ref(fig:ch2fig213) shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
 
 We can see that while all the translations differ in the languages and styles, the lexical varieties in the shorter Surahs are consistently higher. An implication of this is that, while many of the Surahs in Al-Quran may be short, they convey distinctively different messages.
 
@@ -633,9 +626,9 @@ We can see that while all the translations differ in the languages and styles, t
 
 The concept of tf-idf is to measure the degree of importance of words within the content of each group of texts, such as a Surah, by decreasing the weight for commonly used words and increasing the weight for words used less. We want to detect commonly occurring words, but not too common. In general textual analysis, these words represent a topic of interest, the headlines, the themes, or a subject that stands above other surrounding texts. It is an essential tool for understanding text structures and uncovering the messages in texts.
 
-The idf's and thus tf-idf's for the highly used words, such as the word "the", is zero. These are all words that appear in all 114 Quran Surahs, so the idf term (which will then be the natural log of 1) is zero. It is also very low (near zero) for words that occur in many documents (i.e., Surahs) in a corpus.  Furthermore, the inverse document frequency will be higher for words that occur in fewer of the sub-set of documents (i.e., Surahs) in the corpus. Therefore, words of which idf's and tf-idf's are near zero, and yet not near enough are what we are looking for.
+The idf's and thus tf-idf's for the highly used words, such as the word "the", is zero. These are all words that appear in all 114 Quran Surahs, so the idf term (which will then be the natural log of 1) is zero. It is also very low (near zero) for words that occur in many documents (i.e., Surahs) in a corpus. Furthermore, the inverse document frequency will be higher for words that occur in fewer of the sub-set of documents (i.e., Surahs) in the corpus. Therefore, words of which idf's and tf-idf's are near zero, and yet not near enough are what we are looking for.
 
-The _bind_tf_idf_ function in the _tidytext_ package takes a _tidytext_ dataset as input with one row per token (term), per document. One column (a column named _word_) contains the terms/tokens, one column contains the documents (Surah in this case), and the last necessary column contains the counts, how many times each document contains each term (_n_ in this example). 
+The _bind_tf_idf_ function in the _tidytext_ package takes a _tidytext_ dataset as input with one row per token (term), per document. One column (a column named _word_) contains the terms/tokens, one column contains the documents (Surah in this case), and the last necessary column contains the counts, how many times each document contains each term (_n_ in this example).
 
 First, let us plot the tf-idf for all three translations and make some observations.
 
@@ -660,81 +653,79 @@ tfidf_plotter = function(df_plot,title_label,color){
                 geom_point(aes(x = 1:length(df_plot$tf_idf), 
                        y = log(df_plot$tf_idf)), color = "red", 
                        size = 0.05) +
-                labs(title = title_label, x = "n", y = "tf_idf")}
+                labs(title = title_label, x = "n", y = "tf_idf")+
+                theme(panel.border = element_rect(colour = "black", fill=NA),
+                      axis.text.x = element_text(angle = 45,vjust = 0.5))
+  }
 ```
 \normalsize
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig214-1.png" alt="tf-idf for the translations" width="576" />
+<p class="caption">(\#fig:ch2fig214)tf-idf for the translations</p>
+</div>
 
+We can see from Figure \@ref(fig:ch2fig214), the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
 
-
-![<span id="fig:ch2fig214"></span>Figure 2.14: tf-idf for the translations](03-Ch2WordFrequency_files/figure-docx/ch2fig214-1.png)
-
-
-
-
-
-
-We can see from Figure <a href="#fig:ch2fig214">2.14</a>, the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
-
-Let us look at a visualization for these high tf-idf words. These are shown in Figure <a href="#fig:ch2fig215">2.15</a>, Figure <a href="#fig:ch2fig216">2.16</a>, Figure <a href="#fig:ch2fig217">2.17</a>, Figure <a href="#fig:ch2fig218">2.18</a>, Figure <a href="#fig:ch2fig219">2.19</a>, Figure <a href="#fig:ch2fig220">2.20</a>, Figure <a href="#fig:ch2fig221">2.21</a>, Figure <a href="#fig:ch2fig222">2.22</a>, and Figure <a href="#fig:ch2fig223">2.23</a>. 
+Let us look at a visualization for these high tf-idf words. These are shown in Figure \@ref(fig:ch2fig215), Figure \@ref(fig:ch2fig216), Figure \@ref(fig:ch2fig217), Figure \@ref(fig:ch2fig218), Figure \@ref(fig:ch2fig219), Figure \@ref(fig:ch2fig220), Figure \@ref(fig:ch2fig221), Figure \@ref(fig:ch2fig222), and Figure \@ref(fig:ch2fig223). 
 
 \footnotesize
 
 \normalsize
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig215-1.png" alt="Short Surahs tf-idf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig215)Short Surahs tf-idf for Saheeh</p>
+</div>
 
 
-
-![<span id="fig:ch2fig215"></span>Figure 2.15: Short Surahs tf-idf for Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig215-1.png)
-
-
-
-
-![<span id="fig:ch2fig216"></span>Figure 2.16: Short Surahs tf-idf for Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig216-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig216-1.png" alt="Short Surahs tf-idf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig216)Short Surahs tf-idf for Yusuf Ali</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig217-1.png" alt="Short Surahs tf-idf for Malay" width="576" />
+<p class="caption">(\#fig:ch2fig217)Short Surahs tf-idf for Malay</p>
+</div>
 
 
-![<span id="fig:ch2fig217"></span>Figure 2.17: Short Surahs tf-idf for Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig217-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig218-1.png" alt="Medium Surahs tf-idf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig218)Medium Surahs tf-idf for Saheeh</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig219-1.png" alt="Medium Surahs tf-idf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig219)Medium Surahs tf-idf for Yusuf Ali</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig220-1.png" alt="Medium Surahs tf-idf for Malay" width="576" />
+<p class="caption">(\#fig:ch2fig220)Medium Surahs tf-idf for Malay</p>
+</div>
 
 
-![<span id="fig:ch2fig218"></span>Figure 2.18: Medium Surahs tf-idf for Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig218-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig221-1.png" alt="Long Surahs tf-idf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch2fig221)Long Surahs tf-idf for Saheeh</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig222-1.png" alt="Long Surahs tf-idf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch2fig222)Long Surahs tf-idf for Yusuf Ali</p>
+</div>
 
 
-![<span id="fig:ch2fig219"></span>Figure 2.19: Medium Surahs tf-idf for Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig219-1.png)
-
-
-
-
-![<span id="fig:ch2fig220"></span>Figure 2.20: Medium Surahs tf-idf for Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig220-1.png)
-
-
-
-
-
-
-![<span id="fig:ch2fig221"></span>Figure 2.21: Long Surahs tf-idf for Saheeh](03-Ch2WordFrequency_files/figure-docx/ch2fig221-1.png)
-
-
-
-
-![<span id="fig:ch2fig222"></span>Figure 2.22: Long Surahs tf-idf for Yusuf Ali](03-Ch2WordFrequency_files/figure-docx/ch2fig222-1.png)
-
-
-
-
-![<span id="fig:ch2fig223"></span>Figure 2.23: Long Surahs tf-idf for Malay](03-Ch2WordFrequency_files/figure-docx/ch2fig223-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig223-1.png" alt="Long Surahs tf-idf for Malay" width="576" />
+<p class="caption">(\#fig:ch2fig223)Long Surahs tf-idf for Malay</p>
+</div>
 
 As measured by the tf-idf, these words are the most important to each Surah, and most readers would likely agree. It identifies words that are important to one document within a collection of documents. Furthermore, we can see that Saheeh's translation used different words than Yusuf Ali; this is obvious in the top tf_idf terms where they differ significantly.
 
@@ -745,8 +736,6 @@ The shape of the tf-idf curves has many similarities between the translations; t
 Zipf's law states that the frequency of a word's appearance is inversely proportional to the rank of its frequency for a given corpus. In general, Zipf's law states that the frequency distributions of words in a corpus follow a Power Law behavior [@zipf1949]. The words such as "allah" in the translations, for which the term frequency is high, are inversely related to its rank, which is low. A Power Law distribution from a statistical perspective is a distribution with both a fat tail and a long tail simultaneously. Power Law has many implications for statistical testing and scale-free network behaviors (a subject beyond the current discussion).
 
 Here we present the Zipf's plots for the translations, indicating whether they follow Zipf's law (and hence power-law) and test the translations' similarities.
-
-
 
 
 
@@ -776,8 +765,9 @@ zipf_plotter = function(freq_rank_df,title_label){
   scale_x_log10() +
   scale_y_log10() + 
   labs(title = title_label, 
-       x = "log of rank", 
-       y = "log of term frequency")
+       x = "Log of Rank", 
+       y = "Log of Term Frequency")+
+    theme(panel.border = element_rect(colour = "black", fill=NA))
 }
 p1 = zipf_plotter(freq_by_rank_ESI,"Saheeh")
 p2 = zipf_plotter(freq_by_rank_EYA,"Yusuf Ali")
@@ -785,32 +775,29 @@ p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
 
-![<span id="fig:ch2fig224"></span>Figure 2.24: Zipf's plot](03-Ch2WordFrequency_files/figure-docx/ch2fig224-1.png)
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig224-1.png" alt="Zipf's plot" width="576" />
+<p class="caption">(\#fig:ch2fig224)Zipf's plot</p>
+</div>
 
-
-
-
-
-Note that the plot in Figure <a href="#fig:ch2fig224">2.24</a> is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
+Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
 
 ## Words of high occurrence and stopwords {#words-of-high-occurrence-and-stopwords}
 
-From the wordcloud plots in Figure <a href="#fig:ch2fig201">2.1</a>, Figure <a href="#fig:ch2fig202">2.2</a>, and Figure <a href="#fig:ch2fig203">2.3</a>, we can see consistently the connecting terms emerged as high frequency terms for all versions of translation. The question is, how do we treat some words which occur in high frequencies, such as these connecting words, and at the same time, having low inverse ranking? Should these words remain in the texts or removed for the (statistical) analysis since their roles are more as word connectors rather than carrying any meaning? Is the decision to take out these words justified?
+From the wordcloud plots in Figure \@ref(fig:ch2fig201), Figure \@ref(fig:ch2fig202), and Figure \@ref(fig:ch2fig203), we can see consistently the connecting terms emerged as high frequency terms for all versions of translation. The question is, how do we treat some words which occur in high frequencies, such as these connecting words, and at the same time, having low inverse ranking? Should these words remain in the texts or removed for the (statistical) analysis since their roles are more as word connectors rather than carrying any meaning? Is the decision to take out these words justified?
 
 Most analyses of texts in English will take the option of removing these stopwords. While maybe acceptable in most circumstances, such an approach is not as straightforward when applied to Al-Quran translations. In the coming chapters, we will revisit the subject again. Let us redo Zipf's plot with all the stopwords removed and see what the removal of stopwords means.
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig225-1.png" alt="Zipf's plot without stopwords" width="576" />
+<p class="caption">(\#fig:ch2fig225)Zipf's plot without stopwords</p>
+</div>
 
 
-![<span id="fig:ch2fig225"></span>Figure 2.25: Zipf's plot without stopwords](03-Ch2WordFrequency_files/figure-docx/ch2fig225-1.png)
+From the plots in Figure \@ref(fig:ch2fig225), compared to the previous Zipf's plot in Figure \@ref(fig:ch2fig221), we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
 
-
-
-
-
-From the plots in Figure <a href="#fig:ch2fig225">2.25</a>, compared to the previous Zipf's plot in Figure <a href="#fig:ch2fig221">2.21</a>, we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
-
-We have to caution the readers that we have been rather casual in some of the claims without rigorously providing statistical tests or proofs. Instead, we rely only on the visualizations provided and let the "data illustrate itself". Our purpose is to highlight various indications for future work and research and at the same time, allow readers with no statistical background, to understand the concepts and approach. The need for a full and proper test of the hypothesis as indicated above is one example case of precaution required before concluding.
+We caution the readers that we have been rather casual in some of the claims without rigorously providing statistical tests or proofs. Instead, we rely only on the visualizations provided and let the "data illustrate itself". Our purpose is to highlight various indications for future work and research and at the same time, allow readers with no statistical background, to understand the concepts and approach. The need for a full and proper test of the hypothesis as indicated above is one example case of precaution required before concluding.
 
 ## Words of rare occurrence {#words-of-rare-occurrence}
 
@@ -830,15 +817,13 @@ Unique tokens are similar to vocabulary in some sense. It is the library of word
 As we have described before, in the corpora, few words occur in high frequencies, and few words occur in very low frequencies at both extremes. We will plot the statistical density of the distribution (in log scale) of the term frequencies in both translations to observe this phenomenon.
 
 
+<div class="figure" style="text-align: center">
+<img src="03-Ch2WordFrequency_files/figure-html/ch2fig226-1.png" alt="Density plot of term frequency" width="576" />
+<p class="caption">(\#fig:ch2fig226)Density plot of term frequency</p>
+</div>
 
 
-![<span id="fig:ch2fig226"></span>Figure 2.26: Density plot of term frequency](03-Ch2WordFrequency_files/figure-docx/ch2fig226-1.png)
-
-
-
-
-
-The term frequencies (using a log scale for visualization) for both translations in Figure <a href="#fig:ch2fig226">2.26</a> show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
+The term frequencies (using a log scale for visualization) for both translations in Figure \@ref(fig:ch2fig226) show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
 
 An important observation is why the density curves have multiple "peaks"; there are two lower peaks on the left, and a few peaks in the middle, and a fat tail to the right. Is this structure common in any English corpus or Malay corpus? Or this is true only in the case of translations of Al-Quran. Comparisons between the corpora under study with other common corpora are required to confirm this phenomenon.^[We will leave this subject as a research question.]
 
@@ -850,9 +835,67 @@ We would like to show some of the types of analysis of rare words which may carr
 
 ```r
 freq_by_rank_ESI %>% filter(word == "trustworthy")
+```
+
+```
+## # A tibble: 8 × 6
+##   surah_title_en word            n total  rank `term frequency`
+##   <chr>          <chr>       <int> <int> <int>            <dbl>
+## 1 Ash-Shu'araa   trustworthy     6   729    20         0.00823 
+## 2 Ad-Dukhaan     trustworthy     1   209   141         0.00478 
+## 3 Al-A'raaf      trustworthy     1  1838   764         0.000544
+## 4 Al-Baqara      trustworthy     1  3401  1166         0.000294
+## 5 Al-Qasas       trustworthy     1   753   388         0.00133 
+## 6 An-Naml        trustworthy     1   631   359         0.00158 
+## 7 At-Takwir      trustworthy     1    79    68         0.0127  
+## 8 Luqman         trustworthy     1   318   195         0.00314
+```
+
+```r
 freq_by_rank_EYA %>% filter(word == "trustworthy")
+```
+
+```
+## # A tibble: 3 × 6
+##   surah_title_en word            n total  rank `term frequency`
+##   <chr>          <chr>       <int> <int> <int>            <dbl>
+## 1 Al-A'raaf      trustworthy     1  2326   925         0.000430
+## 2 Al-Baqara      trustworthy     1  4120  1383         0.000243
+## 3 Luqman         trustworthy     1   384   233         0.00260
+```
+
+```r
 freq_by_rank_ESI %>% filter(word == "trust")
+```
+
+```
+## # A tibble: 3 × 6
+##   surah_title_en word      n total  rank `term frequency`
+##   <chr>          <chr> <int> <int> <int>            <dbl>
+## 1 Aal-i-Imraan   trust     1  2025   737         0.000494
+## 2 Al-Ahzaab      trust     1   793   387         0.00126 
+## 3 Al-Baqara      trust     1  3401  1165         0.000294
+```
+
+```r
 freq_by_rank_EYA %>% filter(word == "trust")
+```
+
+```
+## # A tibble: 27 × 6
+##    surah_title_en word      n total  rank `term frequency`
+##    <chr>          <chr> <int> <int> <int>            <dbl>
+##  1 Ash-Shu'araa   trust     6   929    26         0.00646 
+##  2 Aal-i-Imraan   trust     5  2448    88         0.00204 
+##  3 Yusuf          trust     5  1195    36         0.00418 
+##  4 Al-Anfaal      trust     4   893    36         0.00448 
+##  5 Al-Baqara      trust     4  4120   233         0.000971
+##  6 Ibrahim        trust     4   639    21         0.00626 
+##  7 Al-Ahzaab      trust     3   928    62         0.00323 
+##  8 Hud            trust     3  1314   108         0.00228 
+##  9 Yunus          trust     3  1171    97         0.00256 
+## 10 Al-Maaida      trust     2  1995   301         0.00100 
+## # ℹ 17 more rows
 ```
 \normalsize
 
@@ -868,9 +911,6 @@ Let us take Saheeh as our example. The highest rank is "allah" (rank = 1), and a
 
 \footnotesize
 
-```r
-freq_by_rank_ESI %>% filter(rank > 601 & rank < 608 ) %>% head()
-```
 \normalsize
 
 We can see words, such as "oaths", which describe an action, occurs 13 times in the Saheeh corpus. Similarly the name of the Prophet Noah, which occurs 28 times; which case is different since the word is a special name. Another word, such as "masjid" which generally means the mosque, occurs 9 times. We can see that these middle-frequency words are non-trivial since they do hold a special purpose within a certain context and meaning; for example, we have a very strong action, which is an oath, a special name, which is the Prophet Noah, and a special place, a Mosque.
@@ -879,7 +919,7 @@ Words of mid-frequency occurrence become very important when we need to go deepe
 
 ## Summary {#chapter-2-summary}
 
-While seemingly simple, statistical word analysis yields many insights into issues relating to a corpus of texts.  In this chapter, we have shown examples of how the analysis is useful for many linguistic studies of Al-Quran translations. We also compared different translations of the English language (Saheeh and Yusuf Ali) and different languages (English and Malay). 
+While seemingly simple, statistical word analysis yields many insights into issues relating to a corpus of texts. In this chapter, we have shown examples of how the analysis is useful for many linguistic studies of Al-Quran translations. We also compared different translations of the English language (Saheeh and Yusuf Ali) and different languages (English and Malay).
 
 Analysis using term frequency (tf) and inverse document frequency (idf) allows us to find word characteristics for one document within a collection of documents. Exploring term frequency on its own can give us insight into how language is used in a collection of natural language and give us tools to reason about term frequency. The proper noun "Allah" ranks very high on almost all the statistics of the English Quran which confirms that "Allah" is the central and most important subject matter of the Quran, a topic that one of the authors will cover in an upcoming book [@alsuwaidan2021]. 
 
@@ -912,11 +952,6 @@ _ggplot2_ package in __R__. [@ggplot2]
 _quRan_ package in __R__. [@quRan]
 
 Tidy text mining website: https://www.tidytextmining.com/tidytext.html
- 
-
-
-
-
 
 <!--chapter:end:03-Ch2WordFrequency.Rmd-->
 
@@ -934,14 +969,13 @@ In this chapter, we will explore sentiment analysis on the Saheeh and Yusuf Ali 
 
 One fundamental theme of Al-Quran is "Basheeran" and "Nazeeran", bringing "glad tidings" and "warnings" to all mankind, as denoted by verse 2:119 and verse 34:28, quoted above.^[Verses with "Basheeran" (glad tidings) appears 18 times, and "Nazeeran" (warnings) appears 58 times. By the number of counts of words, the emphasis of "warning" is greater than "glad tidings".] From a sentiment analysis perspective, "glad tidings" is equated with "positive sentiments" and "warnings" is equated with "negative sentiments". In this chapter, we will explore sentiment analysis to view how these sentiments are reflected in the English translations of Al-Quran.
 
-We will explore a few types of sentiment scoring models and few methods of application to enable us to understand how sentiment analysis work. Any model will have its own assumptions, hence results may differ based on using different models. One of the reasons why this is the case depends on how the scoring model was derived. For example, the _bing_ model is based on "-1" and "+1" scores; the _nrc_ model is based on a binary of "yes" and "no"; while the _AFINN_ model is based on scores between -5 to +5. In reality, we can build our own sentiment scoring model given enough datasets (or collection of corpus), based on the subject concerned. This subject is beyond the scope of the current work and left for future research.
+We will explore a few types of sentiment scoring models and a few methods of application to enable us to understand how sentiment analysis work. Any model will have its own assumptions; hence results may differ based on using different models. One of the reasons why this is the case depends on how the scoring model was derived. For example, the _bing_ model is based on "-1" and "+1" scores; the _nrc_ model is based on a binary of "yes" and "no"; while the _AFINN_ model is based on scores between -5 to +5. We can build our own sentiment scoring model given enough datasets (or collection of corpora), based on the subject concerned. This subject is beyond the scope of the current work and left for future research.
 
 Since we will use the same dataset that as in Chapter 2, and the _tidytext_ package, readers can assume that the computing environment in Chapter 2 is continued here. 
 
 ## Preprocessing the data {#preprocessing-the-data}
 
-All the works in __R__ for this chapter are just a continuation of the previous computing environment. Before we proceed, we have to decide whether to remove stopwords from the texts or to retain them. The reasons for removing stopwords are explained in Chapter 2, to remove frequently occurring words that carry no further meaning, except for continuation of the sentence. In _tidytext_ the English stopwords are pre-prepared from three lexicons as _stop_words_ variable. We can use them all together, as we have here, or use the _filter()_ functions to only use one set of stop words if that is more appropriate for certain analysis.
-
+All the works in __R__ for this chapter are just a continuation of the previous computing environment. Before we proceed, we decide whether to remove stopwords from the texts or to retain them. The reasons for removing stopwords are explained in Chapter 2, to remove frequently occurring words that carry no further meaning, except for continuation of the sentence. In _tidytext_ the English stopwords are pre-prepared from three lexicons as _stop_words_ variable. We can use them all together, as we have here, or use the _filter()_ functions to only use one set of stop words if that is more appropriate for certain analysis.
 
 
 
@@ -981,18 +1015,16 @@ ch3_plotter1 = function(df,title_label) {
       filter(n > 150) %>%
       mutate(word = reorder(word, n)) %>%
       ggplot(aes(x = word, y = n)) +
-      geom_col() +
+      geom_col(fill = '#1FA4CC',color = 'black') +
       labs(title = title_label, x = NULL, y = "number") +
       coord_flip() +
       theme(axis.text = element_text( 
             angle = 0, 
             color="blue", 
-            size=10))
+            size=10))+theme_bw()
 }
 ```
 \normalsize
-
-
 
 
 
@@ -1002,12 +1034,13 @@ p2 = ch3_plotter1(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-![<span id="fig:ch3fig301"></span>Figure 3.1: Top common words in the translations](04-Ch3WordScoring_files/figure-docx/ch3fig301-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig301-1.png" alt="Top common words in the translations" width="576" />
+<p class="caption">(\#fig:ch3fig301)Top common words in the translations</p>
+</div>
 
 
-
-
-Now we can see from Figure <a href="#fig:ch3fig301">3.1</a> that the term "Allah" is indeed the highest occurring term by a large count, followed by the term "Lord". This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term "Muhammad" (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term "messenger" appears in both with different rankings. There are other observations on other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations. 
+Now we can see from Figure \@ref(fig:ch3fig301) that the term "Allah" is indeed the highest occurring term by a large count, followed by the term "Lord". This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term "Muhammad" (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term "messenger" appears in both with different rankings. There are other observations in other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations. 
 
 ## Sentiment analysis with tidy data {#sentiment-analysis-with-tidy-data}
 
@@ -1015,7 +1048,7 @@ In Chapter 2, we explored the tidy text format and showed it can easily be used 
 
 Now let us address the topic of opinion mining or sentiment analysis. We can use the tools of text mining to approach the emotional content of text programmatically.
 
-One way to analyze the sentiment of a text is to consider the text as a combination of its individual words and the sentiment content of the whole text as the sum of the sentiment content of the individual words. There are other approaches but this approach can easily take advantage of the tidy tools.
+One way to analyze the sentiment of a text is to consider the text as a combination of its individual words and the sentiment content of the whole text as the sum of the sentiment content of the individual words. There are other approaches, but this approach can easily take advantage of the tidy tools.
 
 ### Sentiment scoring models
 
@@ -1044,7 +1077,6 @@ This can be shown visually, and we can pipe straight into _ggplot2_, if we like,
 
 
 
-
 ```r
 bing_word_counts_ESIC <- tidyESIC %>%
   inner_join(get_sentiments("bing")) %>%
@@ -1068,7 +1100,9 @@ ch3_bing_plot = function(sent_df,title_label){
       theme(axis.text = element_text(
                         angle = 0,
                         color = "blue",
-                        size = 10))
+                        size = 10),
+            strip.text.x = element_text(size = 12,face = 'bold'),
+            plot.background = element_rect(color = "black"))
 }
 p1 = ch3_bing_plot(bing_word_counts_ESIC,"Saheeh")
 p2 = ch3_bing_plot(bing_word_counts_EYAC,"Yusuf Ali")
@@ -1076,35 +1110,34 @@ p2 = ch3_bing_plot(bing_word_counts_EYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-![<span id="fig:ch3fig302"></span>Figure 3.2: Bing's top negative and positive words](04-Ch3WordScoring_files/figure-docx/ch3fig302-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig302-1.png" alt="Bing's top negative and positive words" width="768" />
+<p class="caption">(\#fig:ch3fig302)Bing's top negative and positive words</p>
+</div>
 
 
+Figure \@ref(fig:ch3fig302) interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, "fear" and "evil", but for positive they differ: "merciful" and "righteous" for Saheeh, and "faith" and "mercy" for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.
 
-
-Figure <a href="#fig:ch3fig302">3.2</a> interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, "fear" and "evil", but for positive they differ: "merciful" and "righteous" for Saheeh, and "faith" and "mercy" for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.
-
-This indicates that while translating from the same source, using the _bing_ sentiment model, the sentiments expressed by the words in English as translated, reflect different intonations from a sentiment point of view. Whether this is due to the sentiment model or the writing is not known, until further investigations. The way to do this is by running the same analysis using a different scoring model. The results show that the scoring is "model-dependent", as we will show next.
+This indicates that while translating from the same source, using the _bing_ sentiment model, the sentiments expressed by the words in English as translated, reflect different intonations from a sentiment point of view. Whether this is due to the sentiment model, or the writing is not known, until further investigations. The way to do this is by running the same analysis using a different scoring model. The results show that the scoring is "model-dependent", as we will show next.
 
 ### _AFINN_ scoring model
 
 Now let us compare with the _AFINN_ scoring model and observe if there are any major changes to the findings using the _bing_ model.
 
 
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig303-1.png" alt="AFINN scoring model on Saheeh" width="576" />
+<p class="caption">(\#fig:ch3fig303)AFINN scoring model on Saheeh</p>
+</div>
 
 
-![<span id="fig:ch3fig303"></span>Figure 3.3: AFINN scoring model on Saheeh](04-Ch3WordScoring_files/figure-docx/ch3fig303-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig304-1.png" alt="AFINN scoring model on Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch3fig304)AFINN scoring model on Yusuf Ali</p>
+</div>
 
 
-
-
-
-![<span id="fig:ch3fig304"></span>Figure 3.4: AFINN scoring model on Yusuf Ali](04-Ch3WordScoring_files/figure-docx/ch3fig304-1.png)
-
-
-
-
-
-We can see that the dimensions of sentiment are different in the _AFINN_ model as compared to _bing_. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure <a href="#fig:ch3fig303">3.3</a>, the plots for Saheeh compared to Figure <a href="#fig:ch3fig304">3.4</a>, the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply. 
+We can see that the dimensions of sentiment are different in the _AFINN_ model as compared to _bing_. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure \@ref(fig:ch3fig303), the plots for Saheeh compared to Figure \@ref(fig:ch3fig304), the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply.
 
 There are many other ready-made sentiment scoring models available. We will leave it to the readers to try on their own.
 
@@ -1113,8 +1146,6 @@ There are many other ready-made sentiment scoring models available. We will leav
 Since Al-Quran is arranged by Surahs or chapters, we would like to investigate if we can use sentiment scoring models to score each of the Surahs and measure which Surahs use the most "negative" words ("warnings") and the most "positive" words ("glad tidings").
 
 We can apply the _bing_ model as follows:
-
-
 
 
 
@@ -1138,14 +1169,14 @@ ch3_bing_plot2 = function(sent_df,title_label){
       left_join(wordcountsESIC, by = c("surah_title_en")) %>%
       mutate(ratio = negativewords/words) %>%
       top_n(20) %>%
-      ggplot(aes(x = surah_title_en, y = ratio)) +
-        geom_col() +
-        labs(title = title_label, x = NULL) +
+      ggplot(aes(x = reorder(surah_title_en,ratio), y = ratio)) +
+        geom_col(fill = 'firebrick',color = 'black') +
+        labs(title = title_label, x = NULL,y = "Ratio") +
         coord_flip() +
         theme(axis.text = element_text( 
               angle = 0, 
               color="blue", 
-              size=10))
+              size=10))+theme_bw()
 }
 
 p1 = ch3_bing_plot2(tidyESIC,"Saheeh")
@@ -1154,30 +1185,26 @@ p2 = ch3_bing_plot2(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-![<span id="fig:ch3fig305"></span>Figure 3.5: Negative Surahs scoring](04-Ch3WordScoring_files/figure-docx/ch3fig305-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig305-1.png" alt="Negative Surahs scoring" width="576" />
+<p class="caption">(\#fig:ch3fig305)Negative Surahs scoring</p>
+</div>
 
 
-
-
-
-Figure <a href="#fig:ch3fig305">3.5</a> shows the Surahs or chapters with the most "negative" words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.
+Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative" words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.
 
 Let us repeat for "positive" Surahs.
 
 
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig306-1.png" alt="Positive Surahs scoring" width="576" />
+<p class="caption">(\#fig:ch3fig306)Positive Surahs scoring</p>
+</div>
 
 
-![<span id="fig:ch3fig306"></span>Figure 3.6: Positive Surahs scoring](04-Ch3WordScoring_files/figure-docx/ch3fig306-1.png)
-
-
-
-
-
-It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure <a href="#fig:ch3fig306">3.6</a>.
+It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure \@ref(fig:ch3fig306).
 
 Now let us study the sentiment within a Surah, such as Surah Yusuf, which is a middle-length Surah for comparison. The idea here is to observe the sentiment scores as we move along the Surah.
-
-
 
 
 
@@ -1194,8 +1221,8 @@ ch3_syplot = function(sy_df,title_label,col_disp){
         ggplot(aes(x = 1:nrow(sy_df), y = value )) +
           geom_col(show.legend = FALSE, color = col_disp) +
           labs(title = title_label, 
-               x = "word order",
-               y = "sentiment score")
+               x = "Word Order",
+               y = "Sentiment Score")+theme_bw()
 }
 
 p1 = ch3_syplot(Surah_yusuf_ESIC,"Saheeh","magenta")
@@ -1204,19 +1231,17 @@ p2 = ch3_syplot(Surah_yusuf_EYAC,"Yusuf Ali","darkgreen")
 cowplot::plot_grid(p1,p2)
 ```
 
-![<span id="fig:ch3fig307"></span>Figure 3.7: Sentiment scoring within Surah Yusuf](04-Ch3WordScoring_files/figure-docx/ch3fig307-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig307-1.png" alt="Sentiment scoring within Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch3fig307)Sentiment scoring within Surah Yusuf</p>
+</div>
 
 
-
-
-
-Here in Figure <a href="#fig:ch3fig307">3.7</a>, we use the _AFFIN_ model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.^[For example, see sentiment narrative in Jane Austen's novels in @silge2017.] If we take the meaning of giving "good tidings" (Basheeran) and "warnings" (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.
+Here in Figure \@ref(fig:ch3fig307), we use the _AFFIN_ model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.^[For example, see sentiment narrative in Jane Austen's novels in @silge2017.] If we take the meaning of giving "good tidings" (Basheeran) and "warnings" (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.
 
 ### Wordcloud analysis
 
 Wordcloud is also useful for doing sentiment analysis by deploying _comparison.cloud()_ function. To use this we need to turn the data frame into a matrix with _reshape2_’s _acast()_ function. Many steps can all be done with _joins_, _%>%_ (piping), and _dplyr_ because the data is in _tidy_ format.
-
-
 
 
 
@@ -1232,18 +1257,19 @@ tidyESIC %>%
                    rot.per = 0.35)
 ```
 
-![<span id="fig:ch3fig308"></span>Figure 3.8: Comparison cloud for Saheeh translation](04-Ch3WordScoring_files/figure-docx/ch3fig308-1.png)
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig308-1.png" alt="Comparison cloud for Saheeh translation" width="384" />
+<p class="caption">(\#fig:ch3fig308)Comparison cloud for Saheeh translation</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig309-1.png" alt="Comparison cloud for Yusuf Ali translation" width="384" />
+<p class="caption">(\#fig:ch3fig309)Comparison cloud for Yusuf Ali translation</p>
+</div>
 
 
-![<span id="fig:ch3fig309"></span>Figure 3.9: Comparison cloud for Yusuf Ali translation](04-Ch3WordScoring_files/figure-docx/ch3fig309-1.png)
-
-
-
-
-
-The output for Saheeh is in Figure <a href="#fig:ch3fig308">3.8</a>, and for Yusuf Ali is in Figure <a href="#fig:ch3fig309">3.9</a>. We can observe clearly the words "fear", "evil", "hell", dominate the negative sentiments; while the words "faith", "righteous", "mercy" dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.
+The output for Saheeh is in Figure \@ref(fig:ch3fig308), and for Yusuf Ali is in Figure \@ref(fig:ch3fig309). We can observe clearly the words "fear", "evil", "hell", dominate the negative sentiments; while the words "faith", "righteous", "mercy" dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.
 
 ## Statistics of sentiment score {#statistics-of-sentiment-score}
 
@@ -1340,31 +1366,28 @@ Sentiment scoring originates from the information theory of signaling. Each word
 Let us look into the entire corpus of Saheeh and the _bing_ sentiment model to visualize the signals.
 
 
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig310-1.png" alt="Sentiment frequency in Saheeh corpus" width="576" />
+<p class="caption">(\#fig:ch3fig310)Sentiment frequency in Saheeh corpus</p>
+</div>
 
-![<span id="fig:ch3fig310"></span>Figure 3.10: Sentiment frequency in Saheeh corpus](04-Ch3WordScoring_files/figure-docx/ch3fig310-1.png)
 
-
-
-
-
-Figure <a href="#fig:ch3fig310">3.10</a> clearly shows the "signals" in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.^[We leave this subject as a research question.]
+Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.^[We leave this subject as a research question.]
 
 The signaling approach of sentiment analysis is also useful to investigate messages within a selected verse or group of verses, such as a Surah. Let us do this for a few selected Surahs: "Yaseen", "Al-Fath", "Al-Mulk", "Al-Muddaththir", "Al-Waaqia", and "Al-Qiyaama". We will choose Saheeh as our source of texts and _bing_ as our model.
 
 
+<div class="figure" style="text-align: center">
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig311-1.png" alt="Sentiment frequency in selected Surahs" width="576" />
+<p class="caption">(\#fig:ch3fig311)Sentiment frequency in selected Surahs</p>
+</div>
 
 
-![<span id="fig:ch3fig311"></span>Figure 3.11: Sentiment frequency in selected Surahs](04-Ch3WordScoring_files/figure-docx/ch3fig311-1.png)
+We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, particularly Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known "strong" messages, such as Surah "Al-Waaqia" and "Al-Qiyaama". 
 
+From Figure \@ref(fig:ch3fig311), we can see how these different Surahs "signals" are reflected throughout the Surah. "Yaseen" is balanced between positive and negative. "Al-Fath" (victory) is with many positives and few large negatives. "Al-Waaqia" is with intermittent positives and negatives. "Al-Qiyaama" is dominantly negative, in particular towards the end of the Surah.
 
-
-
-
-We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, in particular Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known "strong" messages, such as Surah "Al-Waaqia" and "Al-Qiyaama". 
-
-From Figure <a href="#fig:ch3fig311">3.11</a>, we can see how these different Surahs "signals" are reflected throughout the Surah. "Yaseen" is balanced between positive and negative. "Al-Fath" (victory) is with many positives and few large negatives. "Al-Waaqia" is with intermittent positives and negatives. "Al-Qiyaama" is dominantly negative, in particular towards the end of the Surah.
-
-The comments we made are in a way, generalized trends of these signals without reference to the content of the Surah and interpretations of these Surahs. Again we leave this as a research question. 
+The comments we made are in a way, generalized trends of these signals without reference to the content of the Surah and interpretations of these Surahs. Again, we leave this as a research question. 
 
 ## Building dedicated sentiment scoring model {#building-dedicated-sentiment-scoring-model}
 
@@ -1427,15 +1450,15 @@ _sentimentr_ package in __R__. [@sentimentr]
 
 Words of common features appear together. Words to other words have relations in linguistic terms. The relations depend on the context, whether in a grammatical sense or sense of meaning. Grammatical rules have their own structures; while meaning also has its own structures, which is further divided as meaning in the sense of grammar and meaning in the sense of semantics.
 
-Locations of words within a sentence, within a group of sentences, within a corpus greatly matters. In particular, for the case of Al-Quran Arabic, the exact location of any word, or for that matter any alphabet, is precisely fixed and determined. In NLP, the relationship between words is a major undertaking, with recognized advancements of its own in certain languages such as the English language. In Quran Analytics, we consider this as a subject of its own. Since we are focused on analyzing the translations of Al-Quran, we will deal with the subject using the translated corpora of Al-Quran.
+Locations of words within a sentence, within a group of sentences, within a corpus greatly matters. For the case of Al-Quran Arabic, the exact location of any word, or for that matter any alphabet, is precisely fixed and determined. In NLP, the relationship between words is a major undertaking, with recognized advancements of its own in certain languages such as the English language. In Quran Analytics, we consider this as a subject of our own. Since we are focused on analyzing the translations of Al-Quran, we will deal with the subject using the translated corpora of Al-Quran.
 
-As an introduction to the subject, in the next three chapters, we will address the subject of the relationship between words from three different perspectives. The first perspective is from the locations of words with other words in the corpus, or "collocations" and "co-occurrences" (Chapter 4). The second perspective is to look at these relations from statistical aspects, namely the correlations and other statistical measures (Chapter 5). The third perspective is to look at the relationship from a holistic or global approach, namely by looking at all of the words as a network of words (Chapter 6)).
+As an introduction to the subject, in the next three chapters, we will address the subject of the relationship between words from three different perspectives. The first perspective is from the locations of words with other words in the corpus, or "collocations" and "co-occurrences" (Chapter 4). The second perspective is to look at these relations from statistical aspects, namely the correlations and other statistical measures (Chapter 5). The third perspective is to look at the relationship from a holistic or global approach, namely by looking at all the words as a network of words (Chapter 6)).
 
 The three chapters will be introductory materials for the subject of roles of words within a much wider and complex subject. There are many advancements made along these lines in recent studies of Computational Linguistics which we will not cover in this book. We will leave these issues as notes for further research.
 
-
-
 <!--chapter:end:05-Part2.Rmd-->
+
+
 
 
 
@@ -1445,7 +1468,7 @@ The word is among the most elementary units of language. It forms the vocabulary
 
 In this chapter, we will cover the broad ideas on the role of words forming the building blocks of grammatical and lexical structures of the sentence, with a particular focus on word collocations.
 
-Al-Quran, as a preserved text, is precise in its word arrangements, from the first verse to the last. Nothing has changed from the beginning. Nothing can be altered. The Quranic structure of the words is an integral part of the Quran. When translated into another language, the contextual meaning of the translated text must follow the structures of the original text to a large degree; therefore the word relationship structure should be preserved as much as possible within the translations.
+Al-Quran, as a preserved text, is precise in its word arrangements, from the first verse to the last. Nothing has changed from the beginning. Nothing can be altered. The Quranic structure of the words is an integral part of the Quran. When translated into another language, the contextual meaning of the translated text must follow the structures of the original text to a large degree; therefore, the word relationship structure should be preserved as much as possible within the translations.
 
 In this chapter, we will explore some of the analysis on the relationship between words in the English translations of Al-Quran, namely the Saheeh and Yusuf Ali, as was the approach in the previous chapters. We explore some of the methods _tidytext_ [@tidytext] package offers for calculating and visualizing relationships between words in these translations. The analysis includes understanding the structure of words occurring together (called n-grams), which words tend to follow another word (word correlations), how various words relate to each other (word network), and words appearance within sentences or a selected group of texts (such as a Surah or Hizb). Furthermore, we will introduce methods of lexical analysis whereby all the processes of lexical annotation, tagging, and lemmatization are applied to Surah Yusuf as a sample analysis.
 
@@ -1506,7 +1529,7 @@ ESI_bigrams_united <- ESI_bigrams_filtered %>%
 ```
 \normalsize
 
-This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most common word with "allah" mentioned in each Surah. The result is presented in Figure <a href="#fig:ch4fig401">4.1</a>.
+This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most common word with "allah" mentioned in each Surah. The result is presented in Figure \@ref(fig:ch4fig401).
 
 \footnotesize
 
@@ -1515,21 +1538,23 @@ ESI_bigrams_filtered %>%
         filter(word1 == "allah") %>%
         count(surah_title_en, word2, sort = TRUE)
 ```
-![<span id="fig:ch4fig401"></span>Figure 4.1: Top words with 'Allah' in the Quran](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig401-1.png)
+
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig401-1.png" alt="Top words with 'Allah' in the Quran" width="576" />
+<p class="caption">(\#fig:ch4fig401)Top words with 'Allah' in the Quran</p>
+</div>
 \normalsize
 
-A bigram can also be treated as a term in a document in the same way that we treated individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure <a href="#fig:ch4fig402">4.2</a>.
+A bigram can also be treated as a term in a document in the same way that we treat individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure \@ref(fig:ch4fig402).
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig402-1.png" alt="Top word pairs tf-idf in the long Surahs" width="768" />
+<p class="caption">(\#fig:ch4fig402)Top word pairs tf-idf in the long Surahs</p>
+</div>
 
 
-![<span id="fig:ch4fig402"></span>Figure 4.2: Top word pairs tf-idf in the long Surahs](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig402-1.png)
-
-
-
-
-
-There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or "sacred" separately). However, the per-bigram counts are also more sparse: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.
+There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or "sacred" separately). owever, the per-bigram counts are also sparser: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.
 
 ### Visualizing a network of bigrams with _ggraph_
 
@@ -1553,24 +1578,21 @@ ESI_bigram_graph <- ESI_bigram_counts %>%
 _igraph_ has built-in plotting functions, but many other packages have developed better visualization methods for graph objects. The _ggraph_ package [@ggraph] implements these visualizations in terms of the grammar of graphics. We can convert an _igraph_ object into a _ggraph_ with the _ggraph_ function, after which we add layers to it, much like adding layers in _ggplot2_. For example, for a basic graph, we need to add three layers: nodes, edges, and text.
 
 
-
-![<span id="fig:ch4fig403"></span>Figure 4.3: Common bi-grams in Saheeh](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig403-1.png)
-
-
-
-
-
-Figure <a href="#fig:ch4fig403">4.3</a> shows all the top bi-grams (count above 10) for Saheeh's translation. From here we can make some observations, like the word "allah" having a dominant role, and some known concepts in Islam like "straight path" and "establish prayer". "perpetual residence", "rivers flow", "gardens beneath" are known rewards for those who "enter paradise".
-
-We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure <a href="#fig:ch4fig404">4.4</a>.
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig403-1.png" alt="Common bi-grams in Saheeh" width="576" />
+<p class="caption">(\#fig:ch4fig403)Common bi-grams in Saheeh</p>
+</div>
 
 
+Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Saheeh's translation. From here we can make some observations, like the word "allah" having a dominant role, and some known concepts in Islam like "straight path" and "establish prayer". "perpetual residence", "rivers flow", "gardens beneath" are known rewards for those who "enter paradise".
+
+We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure \@ref(fig:ch4fig404).
 
 
-![<span id="fig:ch4fig404"></span>Figure 4.4: Common bi-grams in Saheeh with ggraph format](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig404-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig404-1.png" alt="Common bi-grams in Saheeh with ggraph format" width="576" />
+<p class="caption">(\#fig:ch4fig404)Common bi-grams in Saheeh with ggraph format</p>
+</div>
 
 
 It may take some experimentation with ggraph to get your networks into a presentable format, but network visualization is a useful and flexible way to look at relational tidy data.
@@ -1605,9 +1627,21 @@ The result is viewed with:
 ```r
 head(ESI_trigrams_united)
 ```
+
+```
+## # A tibble: 6 × 2
+##   trigram                          n
+##   <chr>                        <int>
+## 1 al masjid al                    16
+## 2 masjid al haram                 15
+## 3 defiantly disobedient people    10
+## 4 people worship allah            10
+## 5 firmly set mountains             9
+## 6 alif lam meem                    8
+```
 \normalsize
 
-Similar analyses performed for bigrams may be repeated for trigrams as well. We leave this subject for readers to try. 
+Similar analyses performed for bigrams may be repeated for trigrams as well. We leave this subject for readers to try.
 
 ### Bigrams co-ocurrences and correlations
 
@@ -1629,15 +1663,13 @@ head(word_pairs)
 Let us create a graph network of these co-occurring words so we can see the relationships better. The filter will determine the size of the graph.
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig405-1.png" alt="Common word pairs in Saheeh" width="576" />
+<p class="caption">(\#fig:ch4fig405)Common word pairs in Saheeh</p>
+</div>
 
 
-![<span id="fig:ch4fig405"></span>Figure 4.5: Common word pairs in Saheeh](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig405-1.png)
-
-
-
-
-
-Figure <a href="#fig:ch4fig405">4.5</a> exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word "allah", "lord" as expected. However, we can see many other words (nodes) such as "prayer", which is highly linked to the center words (such as "allah"). Network visualization is a good starting point to make these types of observations.
+Figure \@ref(fig:ch4fig405) exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word "allah", "lord" as expected. However, we can see many other words (nodes) such as "prayer", which is highly linked to the center words (such as "allah"). Network visualization is a good starting point to make these types of observations.
 
 ### Visualizing correlations of bigrams of keywords
 
@@ -1656,23 +1688,21 @@ keyword_cors <- surah_wordsESI %>%
 Let us visualize the network of keyword correlations.
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig406-1.png" alt="Common keyword correlations in Saheeh" width="576" />
+<p class="caption">(\#fig:ch4fig406)Common keyword correlations in Saheeh</p>
+</div>
 
 
-![<span id="fig:ch4fig406"></span>Figure 4.6: Common keyword correlations in Saheeh](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig406-1.png)
-
-
-
-
-
-From Figure <a href="#fig:ch4fig406">4.6</a>, we can visualize all the keywords and their relations with other keywords. Note that the word "allah" and "lord" while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind "keyword in context" (kwic) which we will cover in a later part of the book.
+From Figure \@ref(fig:ch4fig406), we can visualize all the keywords and their relations with other keywords. Note that the word "allah" and "lord" while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind "keyword in context" (kwic) which we will cover in a later part of the book.
 
 ### Summarizing ngrams
 
-We have shown some methods of creating bigrams and analyzing them. Bigrams are the simplest relations between words, and the statistical properties of bigrams are rather straightforward. However, once we start to add more than two words, the complications grow exponentially. Let's say that we have a window of five words (5-grams); what we have now is a space of four preceding words and four succeeding words, where the window is a moving window. Every time we move one word ahead, we move along the window and calculate the relations four steps backward and four steps forward. This is a very tedious and compute-heavy exercise. The same analyses done on bigrams explode into bigger scale computations when extended to a larger number of words and visual analyses are no longer possible. 
+We have shown some methods of creating bigrams and analyzing them. Bigrams are the simplest relations between words, and the statistical properties of bigrams are rather straightforward. However, once we start to add more than two words, the complications grow exponentially. Let's say that we have a window of five words (5-grams); what we have now is a space of four preceding words and four succeeding words, where the window is a moving window. Every time we move one word ahead, we move along the window and calculate the relations four steps backward and four steps forward. This is a very tedious and compute-heavy exercise. The same analyses done on bigrams explode into bigger scale computations when extended to a larger number of words and visual analyses are no longer possible.
 
 Besides n-grams, we also have "skip-grams". In skip-grams, instead of looking at words next to each other, we look at words within a distance to each other, such as three words away. Skip grams have their own purpose and use in analytics.
 
-There are powerful algorithms used in NLP which utilize fast-speed mechanisms to convert words into compact vector representations. The development of these algorithms is to overcome computer memory problems, where when we have a large number of words in big corpora (such as the Internet), computing n-grams, skip-grams, will take too much memory space, and hence require compact space representations. This is especially when we want to apply learning models in Machine Learning algorithms such as Neural Network models. 
+There are powerful algorithms used in NLP which utilize fast-speed mechanisms to convert words into compact vector representations. The development of these algorithms is to overcome computer memory problems, where when we have a large number of words in big corpora (such as the Internet), computing n-grams, skip-grams, will take too much memory space, and hence require compact space representations. This is especially when we want to apply learning models in Machine Learning algorithms such as Neural Network models.
 
 ## Lexical analysis {#lexical-analysis}
 
@@ -1708,44 +1738,37 @@ The resulting _data.frame_ has a field called upos which is the Universal Parts 
 
 ### Basic frequency statistics
 
-In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).^[For a detailed list of all POS tags, please visit https://universaldependencies.org/u/pos/index.html] The results of the frequencies are shown in Figure <a href="#fig:ch4fig407">4.7</a>.
+In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).^[For a detailed list of all POS tags, please visit https://universaldependencies.org/u/pos/index.html] The results of the frequencies are shown in Figure \@ref(fig:ch4fig407).
 
 
-
-
-![<span id="fig:ch4fig407"></span>Figure 4.7: UPOS (Universal Parts of Speech) in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig407-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig407-1.png" alt="UPOS (Universal Parts of Speech) in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig407)UPOS (Universal Parts of Speech) in Surah Yusuf</p>
+</div>
 
 
 Parts of Speech (POS) tags allow us to extract easily the words we like to plot. We may not need stopwords for doing this, we just select nouns or verbs or adjectives and we have the most relevant parts for basic frequency analysis.
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig408-1.png" alt="Most occurring nouns in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig408)Most occurring nouns in Surah Yusuf</p>
+</div>
 
 
-![<span id="fig:ch4fig408"></span>Figure 4.8: Most occurring nouns in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig408-1.png)
+The NOUN and PROPN frequency plot in Figure \@ref(fig:ch4fig408) correctly reflect Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran [@alsuwaidan2021]. The noticeable noun missing in the plot is "prison". The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure \@ref(fig:ch4fig409) and Figure \@ref(fig:ch4fig410).
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig409-1.png" alt="Most occuring adjectives in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig409)Most occuring adjectives in Surah Yusuf</p>
+</div>
 
 
-
-The NOUN and PROPN frequency plot in Figure <a href="#fig:ch4fig408">4.8</a> correctly reflects Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran [@alsuwaidan2021]. The noticeable noun missing in the plot is "prison". The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure <a href="#fig:ch4fig409">4.9</a> and Figure <a href="#fig:ch4fig410">4.10</a>.
-
-
-
-
-![<span id="fig:ch4fig409"></span>Figure 4.9: Most occuring adjectives in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig409-1.png)
-
-
-
-
-
-
-![<span id="fig:ch4fig410"></span>Figure 4.10: Most occuring verbs in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig410-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig410-1.png" alt="Most occuring verbs in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig410)Most occuring verbs in Surah Yusuf</p>
+</div>
 
 
 ## Word cooccurrences using POS {#word-cooccurrences-using-POS}
@@ -1764,19 +1787,15 @@ We look at how many times nouns, proper nouns, adjectives, verbs, and adverbs ar
 cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB", "ADJ")), 
                      term = "lemma", 
                      group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur)
 ```
 \normalsize
 
-The result can be easily visualized using the _igraph_ and _ggraph_ packages. This is shown in Figure <a href="#fig:ch4fig411">4.11</a>.
+The result can be easily visualized using the _igraph_ and _ggraph_ packages. This is shown in Figure \@ref(fig:ch4fig411).
 
-
-
-
-![<span id="fig:ch4fig411"></span>Figure 4.11: Co-occurence of Nouns, Names, Adjectives and Verbs](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig411-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig411-1.png" alt="Co-occurence of Nouns, Names, Adjectives and Verbs" width="576" />
+<p class="caption">(\#fig:ch4fig411)Co-occurence of Nouns, Names, Adjectives and Verbs</p>
+</div>
 
 
 The story is revealed by Allah (SWT). The main characters are Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez). So the verb "say" dominates since it is a narrated story. It is interesting to note the strong link and occurrence of "know" with "Allah".
@@ -1794,15 +1813,12 @@ cooccur <- cooccurrence(x$lemma,
 ```
 \normalsize
 
-Once we have these co-occurrences, we can easily do the same plots as before. (See Figure <a href="#fig:ch4fig412">4.12</a>).
+Once we have these co-occurrences, we can easily do the same plots as before. (See Figure \@ref(fig:ch4fig412)).
 
-
-
-
-![<span id="fig:ch4fig412"></span>Figure 4.12: Words following one another in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig412-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig412-1.png" alt="Words following one another in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig412)Words following one another in Surah Yusuf</p>
+</div>
 
 
 ### Word correlations using POS
@@ -1825,13 +1841,23 @@ y <- subset(y, term1 < term2 & abs(cooc) > 0.2)
 y <- y[order(abs(y$cooc), decreasing = TRUE), ]
 head(y)
 ```
+
+```
+##               term1   term2      cooc
+## 1126         seduce    seek 0.7056591
+## 681             eat   other 0.6153136
+## 1179           back   shirt 0.5354312
+## 1402 interpretation   teach 0.4927311
+## 49              bag brother 0.4850995
+## 581            give measure 0.4298162
+```
 \normalsize
 
 The above pairings indeed reflect the story of Prophet Joseph.
 
 ## Finding keyword combinations using POS {#finding-keyword-combinations-using-POS}
 
-Frequency statistics of words are nice but many words only make sense in combination with other words. Thus we want to find keywords that are a combination of words. The steps here follow the example from _An overview of keyword extraction techniques_.^[https://www.r-bloggers.com/2018/04/an-overview-of-keyword-extraction-techniques/] The steps are as follows:
+Frequency statistics of words are nice, but many words only make sense in combination with other words. Thus, we want to find keywords that are a combination of words. The steps here follow the example from _An overview of keyword extraction techniques_.^[https://www.r-bloggers.com/2018/04/an-overview-of-keyword-extraction-techniques/] The steps are as follows:
 
 1. by doing Parts of Speech tagging to identify nouns
 2. based on Collocations and Co-occurrences
@@ -1848,14 +1874,14 @@ Currently, the _udpipe_ package provides three methods to identify keywords in t
 
 ### Using RAKE
 
-RAKE is one of the most popular (unsupervised machine learning) algorithms for extracting keywords. It is a domain-independent keyword extraction algorithm that tries to determine key phrases in a body of text by analyzing the frequency of word appearance and its co-occurrence with other words in the text. 
+RAKE is one of the most popular (unsupervised machine learning) algorithms for extracting keywords. It is a domain-independent keyword extraction algorithm that tries to determine key phrases in a body of text by analyzing the frequency of word appearance and its co-occurrence with other words in the text.
 
-RAKE looks for keywords by looking to a contiguous sequence of words that do not contain irrelevant words by calculating a score for each word that is part of any candidate keyword. This is done by
+RAKE looks for keywords by looking to a contiguous sequence of words that do not contain irrelevant words by calculating a score for each word that is part of any candidate keyword. This is done by:
 
-* among the words of the candidate keywords, the algorithm looks at how many times each word is occurring and how many times it co-occurs with other words
-* each word gets a score which is the ratio of the word degree (how many times it co-occurs with other words) to the word frequency
+* among the words of the candidate keywords, the algorithm looks at how many times each word is occurring and how many times it co-occurs with other words.
+* each word gets a score which is the ratio of the word degree (how many times it co-occurs with other words) to the word frequency.
 
-A RAKE score for the full candidate keyword is calculated by summing up the scores of each of the words which define the candidate keyword. The result is in Figure <a href="#fig:ch4fig413">4.13</a>.
+A RAKE score for the full candidate keyword is calculated by summing up the scores of each of the words which define the candidate keyword. The result is in Figure \@ref(fig:ch4fig413).
 
 
 
@@ -1864,22 +1890,18 @@ stats <- keywords_rake(x = x,
             term = "lemma", 
             group = "doc_id", 
             relevant = x$upos %in% c("NOUN", "PROPN", "VERB", "ADV", "ADJ"))
-head(stats)
-head(stats)
 ```
 
 
-
-
-![<span id="fig:ch4fig413"></span>Figure 4.13: Keywords identified by RAKE in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig413-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig413-1.png" alt="Keywords identified by RAKE in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig413)Keywords identified by RAKE in Surah Yusuf</p>
+</div>
 
 
 ### Using Pointwise Mutual Information Collocations
 
-The result is in Figure <a href="#fig:ch4fig414">4.14</a>.
+The result is in Figure \@ref(fig:ch4fig414).
 
 
 \scriptsize
@@ -1888,17 +1910,14 @@ The result is in Figure <a href="#fig:ch4fig414">4.14</a>.
 x$word <- tolower(x$token)
 stats <- keywords_collocation(x = x, term = "word", group = "doc_id")
 stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
-head(stats)
 ```
 \normalsize
 
 
-
-
-![<span id="fig:ch4fig414"></span>Figure 4.14: Keywords identified by PMI Collocation in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig414-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig414-1.png" alt="Keywords identified by PMI Collocation in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig414)Keywords identified by PMI Collocation in Surah Yusuf</p>
+</div>
 
 
 ### Using a sequence of POS tags (noun phrases)
@@ -1924,8 +1943,7 @@ as_phrasemachine(y)
 ```
 \normalsize
 
-We then define a regular expression to indicate a sequence of POS tags which we want to extract from the text. Extracting noun phrases from a text can be done easily by defining a sequence of UPOS tags. For example, this sequence of UPOS tags can be seen as a noun phrase: Adjective, Noun, Preposition, Noun. After which identifying a simple noun phrase can be just expressed by using the following regular expression (A|N)*N(P+D*(A|N)*N)* which says start with adjective or noun, another noun, a preposition, determiner adjective or noun and next to a noun again.^[https://www.rdocumentation.org/packages/udpipe/versions/0.8.5/topics/keywords_phrases] The result is in Figure <a href="#fig:ch4fig415">4.15</a>.
-
+We then define a regular expression to indicate a sequence of POS tags which we want to extract from the text. Extracting noun phrases from a text can be done easily by defining a sequence of UPOS tags. For example, this sequence of UPOS tags can be seen as a noun phrase: Adjective, Noun, Preposition, Noun. After which identifying a simple noun phrase can be just expressed by using the following regular expression (A|N)*N(P+D*(A|N)*N)* which says start with adjective or noun, another noun, a preposition, determiner adjective or noun and next to a noun again.^[https://www.rdocumentation.org/packages/udpipe/versions/0.8.5/topics/keywords_phrases] The result is in Figure \@ref(fig:ch4fig415).
 
 
 
@@ -1939,19 +1957,26 @@ stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 head(stats)
 ```
 
+```
+##        keyword ngram freq         key
+## 28   those who     2   10   those who
+## 29 his brother     2    9 his brother
+## 31     my lord     2    9     my lord
+## 33  our father     2    8  our father
+## 39   which you     2    6   which you
+## 46   his shirt     2    5   his shirt
+```
 
 
-
-
-![<span id="fig:ch4fig415"></span>Figure 4.15: Keywords - simple noun phrases in Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig415-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig415-1.png" alt="Keywords - simple noun phrases in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig415)Keywords - simple noun phrases in Surah Yusuf</p>
+</div>
 
 
 ### Textrank
 
-Textrank is a word network ordered by Google Pagerank as implemented in the _textrank_ [@textrank] package.^[https://cran.r-project.org/web/packages/textrank/index.html] The algorithm allows to summarize text and extract keywords. This is done by constructing a word network by looking if words are following one another. On top of that network, the 'Google Pagerank' algorithm is applied to extract relevant words after which other relevant words which are following one another are combined to get keywords. In the example below, we are interested in finding keywords using that algorithm of either "NOUN", "PROPN", "VERB", "ADJ" following one another.
+Textrank is a word network ordered by Google Pagerank as implemented in the _textrank_ [@textrank] package.^[https://cran.r-project.org/web/packages/textrank/index.html] The algorithm allows to summarize text and extract keywords. This is done by constructing a word network by looking to see if words are following one another. On top of that network, the 'Google Pagerank' algorithm is applied to extract relevant words after which other relevant words which are following one another are combined to get keywords. In the example below, we are interested in finding keywords using that algorithm of either "NOUN", "PROPN", "VERB", "ADJ" following one another.
 
 \footnotesize
 
@@ -1962,18 +1987,26 @@ stats <- textrank::textrank_keywords(x$lemma,
 stats <- subset(stats$keywords, ngram > 1 & freq >= 2)
 head(stats)
 ```
+
+```
+##       keyword ngram freq
+## 7      he say     2   24
+## 13 he brother     2   10
+## 21    he have     2    6
+## 22   have see     2    5
+## 28   he shirt     2    4
+## 32     eat he     2    3
+```
 \normalsize
 
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig416-1.png" alt="Textrank wordcloud for Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch4fig416)Textrank wordcloud for Surah Yusuf</p>
+</div>
 
 
-![<span id="fig:ch4fig416"></span>Figure 4.16: Textrank wordcloud for Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig416-1.png)
-
-
-
-
-
-Figure <a href="#fig:ch4fig416">4.16</a> shows that the keywords combine words into multi-word expressions. Again we see the dominance of the verb *"say"* since Surah Yusuf is a narrated story. It is welcoming to note that "fear Allah" and "do good" are in fact the top moral lessons from this Surah.
+Figure \@ref(fig:ch4fig416) shows that the keywords combine words into multi-word expressions. Again, we see the dominance of the verb *"say"* since Surah Yusuf is a narrated story. It is welcoming to note that "fear Allah" and "do good" are in fact the top moral lessons from this Surah.
 
 > "We relate to you the best of stories through Our revelation of this Quran, though before this you were totally unaware of them." [12:3]
 
@@ -2010,47 +2043,37 @@ stats <- udpipe::txt_freq(stats$term)
 data.frame("keyword"= stats$keyword,"left" = stats$left, 
            "right"= stats$right, "pmi" = stats$pmi )
 ```
+
+```
+## data frame with 0 columns and 0 rows
+```
 \normalsize
 
 We can visualize the dependency in a wordcloud plot.
 
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig417-1.png" alt="Dependency parsing wordcloud for Surah Yusuf" width="384" />
+<p class="caption">(\#fig:ch4fig417)Dependency parsing wordcloud for Surah Yusuf</p>
+</div>
 
 
-
-![<span id="fig:ch4fig417"></span>Figure 4.17: Dependency parsing wordcloud for Surah Yusuf](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig417-1.png)
-
-
-
-
-
-The plot in Figure <a href="#fig:ch4fig417">4.17</a> confirms the comment we made earlier about "say". Another known moral lesson from Surah Yusuf, "patience fitting", now appears. 
+The plot in Figure \@ref(fig:ch4fig417) confirms the comment we made earlier about "say". Another known moral lesson from Surah Yusuf, "patience fitting", now appears. 
 We have shown how to use the _dep_rel_ parameter that is part of the annotation output from the _udpipe_ package. For visualizing the relationships between the words which were found, we can just use the _ggraph_ package. Now we introduce a basic function that selects the relevant columns from the annotation and puts it into a graph as guided by @udpipe ^[http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe]. The code for the function is reproduced as a reference in the Appendix at the end of the chapter.
 
 
 
+We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure \@ref(fig:ch4fig418). And a longer verse, verse 12:31. (See Figure \@ref(fig:ch4fig419)).
+
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig418-1.png" alt="Dependency parsing udpipe output Verse 12:16" width="576" />
+<p class="caption">(\#fig:ch4fig418)Dependency parsing udpipe output Verse 12:16</p>
+</div>
 
 
-
-
-
-We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure <a href="#fig:ch4fig418">4.18</a>. And a longer verse, verse 12:31. (See Figure <a href="#fig:ch4fig419">4.19</a>).
-
-
-
-
-![<span id="fig:ch4fig418"></span>Figure 4.18: Dependency parsing udpipe output Verse 12:16](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig418-1.png)
-
-
-
-
-
-
-
-
-![<span id="fig:ch4fig419"></span>Figure 4.19: Dependency parsing udpipe output Verse 12:31](06-Ch4WordLocCollCooc_files/figure-docx/ch4fig419-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig419-1.png" alt="Dependency parsing udpipe output Verse 12:31" width="576" />
+<p class="caption">(\#fig:ch4fig419)Dependency parsing udpipe output Verse 12:31</p>
+</div>
 
 
 With dependency parsing, we can now see, for example, how nouns relate to the adjectives with nominal subject as the type of relationship.
@@ -2059,26 +2082,26 @@ With dependency parsing, we can now see, for example, how nouns relate to the ad
 
 Once we have performed the dependency parsing (i.e., all the taggings) for the corpus (or selected subset within the corpus), we can redo all the exercises done in the earlier part of the chapter; namely the collocation measures of "n-grams", "skip-grams", and the co-occurrence measures such as words correlations, and fitting them into a network.
 
-Now that we have classified each word as "NOUN", "PRONOUN", "VERB", etc., we can perform the exercises such as collocations among nouns and pronouns; between verbs, or combing noun and verbs. The permutations are almost limitless. Since our intent is only to introduce the subject and the tools available, we will leave it for further research, in particular for researchers with a background in linguistics.
+Now that we have classified each word as "NOUN", "PRONOUN", "VERB", etc., we can perform the exercises such as collocations among nouns and pronouns, between verbs, or combing noun and verbs. The permutations are almost limitless. Since our intent is only to introduce the subject and the tools available, we will leave it for researchers with a background in linguistics.
 
 ## Summary {#chapter-4-summary}
 
 This initial exploration of the _udpipe_ package with just one of the 114 Surahs in Saheeh translation of Al-Quran has indeed shown some interesting and unique analysis. The results confirm many familiar lessons for those acquainted with the Quran and Surah Yusuf, in particular.
 
-The study also opens other investigation avenues like 
+The study also opens other investigation avenues like
 
 1. Looking into other Surahs of the Quran,
 2. Other translations,
 3. Other use cases of _udpipe_,
 4. Most importantly, analyzing the original Arabic Quran.
 
-The first in the "to-do" list should be easy since the codes can be repeated by just changing the selected Surah to analyze. We encourage our readers to pursue this. 
+The first in the "to-do" list should be easy since the codes can be repeated by just changing the selected Surah to analyze. We encourage our readers to pursue this.
 
-The second can also be easily tested with other English translations of the Quran like what we have shown in Chapter 2 and Chapter 3. Again we leave this to our readers. It can also be repeated with translations of the Quran in other languages that are supported by udpipe.^[https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html]
+The second can also be easily tested with other English translations of the Quran like what we have shown in Chapter 2 and Chapter 3. Again, we leave this to our readers. It can also be repeated with translations of the Quran in other languages that are supported by udpipe.^[https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html]
 
-We will explore the third item in the coming chapters. The final "to-do" item is massive and extremely valuable. We must define a full project scope for it. Applying the NLP tools that we have covered so far, is the easier part, but interpreting the results will be the real challenge. Much of this work has been done by Corpus Quran project^[https://corpus.quran.com]; the work of which still requires intensive development and verification of its accuracies and appropriateness.^[Accuracies of the work is still a work in progress, as claimed by the developers, posted on its message board (https://corpus.quran.com/messageboard.jsp)]
+We will explore the third item in the coming chapters. The final "to-do" item is massive and extremely valuable. We must define a full project scope for it. Applying the NLP tools that we have covered so far is the easier part, but interpreting the results will be the real challenge. Much of this work has been done by Corpus Quran project^[https://corpus.quran.com]; the work of which still requires intensive development and verification of its accuracies and appropriateness.^[Accuracies of the work is still a work in progress, as claimed by the developers, posted on its message board (https://corpus.quran.com/messageboard.jsp)]
 
-In the next chapter, we will go deeper into the tools of network graphs in __R__. We have used it quite heavily in this chapter and also in some of the earlier chapters. Our work on Quran Analytics will use these tools frequently. As such, a simple tutorial on these tools using examples from the Quran should be useful.
+In the next chapter, we will go deeper into the tools of network graphs in __R__. We have used it quite heavily in this chapter and in some of the earlier chapters. Our work on Quran Analytics will use these tools frequently. As such, a simple tutorial on these tools using examples from the Quran should be useful.
 
 ## Further readings
 
@@ -2146,7 +2169,7 @@ plot_annotation <- function(x, size = 3){
 
 # Graph Representations of Word Cooccurences {#graph-representations-of-word-cooccurrences}
 
-Word collocations and co-occurrences as explained in Chapter 4 reveal certain dimensions of relations between words. The process allows us to capture and analyze the appearances of words together. This allows linguists to understand what are the meanings of the existence of these words together, from a general linguistic point of view as well as from grammatical perspectives. This is the simplest and most basic method of analyzing word relations (i.e., through collocations and co-occurrences).
+Word collocations and co-occurrences as explained in Chapter 4 reveal certain dimensions of relations between words. The process allows us to capture and analyze the appearances of words together. This allows linguists to understand what the meanings of the existence of these words are together, from a general linguistic point of view as well as from grammatical perspectives. This is the simplest and most basic method of analyzing word relations (i.e., through collocations and co-occurrences).
 
 Stylistically expressive elements in a text can be identified at the word-level (lexical), in the way sentences are structured (syntactic), and by analyzing the attributes of the core meaning that is conveyed (semantic) [@dimarco1988]. An example of lexical elements is the choice of words between synonyms, e.g. "residence" versus "home". An example of syntactic elements is sentence compounding, e.g. "We have never been to Asia, nor have we visited Africa", where a coordinating conjunction is required for two independent clauses to relate. An example of semantic elements in style and expression, is "John attended Oxford, which is the best university in the UK" versus "Oxford, the best university in the UK attended by John".  In the first sentence, the emphasis is on John, while the second emphasizes Oxford.
 
@@ -2187,42 +2210,45 @@ pos_plotter = function(df_udp, surah_no_input,title_label){
                         legend.position = "top") +
                   ylim(0,0.35) +
                   labs(title = title_label,
-                     x = "UPOS", y = "percentage")
+                     x = "UPOS", y = "Percentage")+
+    theme(plot.background = element_rect(color = "black"))+
+    scale_y_continuous(labels = scales::percent)
+    
 }
 ```
 \normalsize
 
 First, let us plot the POS percentages for the entire text.
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig501-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for the entire text" width="768" />
+<p class="caption">(\#fig:ch5fig501)Percentage of POS categories in Saheeh and Yusuf Ali for the entire text</p>
+</div>
 
 
-![<span id="fig:ch5fig501"></span>Figure 5.1: Percentage of POS categories in Saheeh and Yusuf Ali for the entire text](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig501-1.png)
+From Figure \@ref(fig:ch5fig501), we can see that both Saheeh and Yusuf Ali prominently use nouns, pronouns, verbs, and adpositions almost similarly (based on the observation for the texts, the full sample size). However, in the case of punctuation, Yusuf Ali tends to be higher than Saheeh. As indicated by linguists, usage of more punctuation indicates the possible difference between the literary English of Yusuf Ali compared to Saheeh (possibly due to the American English of Saheeh).
+
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig502-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig502)Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs</p>
+</div>
 
 
-
-From Figure <a href="#fig:ch5fig501">5.1</a>, we can see that both Saheeh and Yusuf Ali prominently use nouns, pronouns, verbs, and adpositions almost similarly (based on the observation for the texts, the full sample size). However, in the case of punctuation, Yusuf Ali tends to be higher than Saheeh. As indicated by linguists, usage of more punctuation indicates the possible difference between the literary English of Yusuf Ali compared to Saheeh (possibly due to the American English of Saheeh).
-
-
-
-
-![<span id="fig:ch5fig502"></span>Figure 5.2: Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig502-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig503-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig503)Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs</p>
+</div>
 
 
-
-![<span id="fig:ch5fig503"></span>Figure 5.3: Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig503-1.png)
-
-
-
-
-![<span id="fig:ch5fig504"></span>Figure 5.4: Percentage of POS in Saheeh and Yusuf Ali for last Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig504-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig504-1.png" alt="Percentage of POS in Saheeh and Yusuf Ali for last Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig504)Percentage of POS in Saheeh and Yusuf Ali for last Surahs</p>
+</div>
 
 
+The plots resulting from the codes are in Figure \@ref(fig:ch5fig502), Figure \@ref(fig:ch5fig503), and Figure \@ref(fig:ch5fig504). They refer to the long Surahs, medium Surahs, and short Surahs (the last few). We will make some observations based on just visualizing the plots. 
 
-
-
-The plots resulting from the codes are in Figure <a href="#fig:ch5fig502">5.2</a>, Figure <a href="#fig:ch5fig503">5.3</a>, and Figure <a href="#fig:ch5fig504">5.4</a>. They refer to the long Surahs, medium Surahs, and short Surahs (the last few). We will make some observations based on just visualizing the plots. 
-
-In general, we can conclude that, based on the statistics of POS tags, Saheeh and Yusuf Ali differ to some degree from a lexical perspective. A clear trend emerges where, as the Surahs become shorter, the compositions of _upos_ tags vary with higher variability. This re-confirms our earlier observations from Figure <a href="#fig:ch2fig213">2.13</a> in Chapter 2, which shows that the lexical variety increases as the Surah becomes shorter. 
+In general, we can conclude that, based on the statistics of POS tags, Saheeh and Yusuf Ali differ to some degree from a lexical perspective. A clear trend emerges where, as the Surahs become shorter, the compositions of _upos_ tags vary with higher variability. This re-confirms our earlier observations from Figure \@ref(fig:ch2fig213) in Chapter 2, which shows that the lexical variety increases as the Surah becomes shorter.
 
 Furthermore, the lexical differences between the translations may extend into the semantics as well the pragmatics, which indicate differences in meaning or interpretation. Again, this is a non-trivial issue, since over the years many attempts to produce reliable interpretations of Al-Quran have been attempted by many scholars. They need to be re-looked upon since it may seriously affect the teaching of Al-Quran using interpretations based upon non-Quranic native languages.
 
@@ -2232,7 +2258,7 @@ We will compare the POS taggings with the Arabic text, for the purpose of benchm
 
 
 
-First we need to load the Arabic POS tagging data^[The data is obtained from running _udpipe_ Arabic padt model on the _quran_ar_min_ dataset from the _quRan_ package.] into the environment and then we can make the comparisons.
+First,we need to load the Arabic POS tagging data^[The data is obtained from running _udpipe_ Arabic padt model on the _quran_ar_min_ dataset from the _quRan_ package.] into the environment and then we can make the comparisons.
 
 We first tabulate the data in numbers for a quick overview.
 
@@ -2250,36 +2276,37 @@ We first tabulate the data in numbers for a quick overview.
 
 Yusuf Ali is consistently higher than Saheeh in most categories: punctuation, nouns, pronouns, verbs, and adpositions. If we benchmark the English translations against the Arabic, we can see that both use fewer nouns and pronouns combined. Even the verbs are greater in Arabic compared to the English translations.
 
-Clearly, the English translation (represented by Saheeh and Yusuf Ali) is starkly different compared to the Arabic when it comes to the lexical composition (which is probably obvious, due to the difference between English and Arabic). However, is the difference due to the efforts of translating compact Arabic texts to English, or is it due to the compactness of meaning? The first difference is purely a question of lexical styles, whilst the second one is a question of semantics and pragmatics of the language and texts. The answer to this question is definitely non-trivial and requires deeper research.
+Clearly, the English translation (represented by Saheeh and Yusuf Ali) is starkly different compared to the Arabic when it comes to the lexical composition (which is probably obvious, due to the difference between English and Arabic). However, is the difference due to the efforts of translating compact Arabic texts to English, or is it due to the compactness of meaning? The first difference is purely a question of lexical styles, whilst the second one is a question of semantics and pragmatics of the language and texts. The answer to this question is non-trivial and requires deeper research.
 
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig505-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the entire text" width="768" />
+<p class="caption">(\#fig:ch5fig505)Percentage of POS categories in Saheeh and Arabic for the entire text</p>
+</div>
 
 
-![<span id="fig:ch5fig505"></span>Figure 5.5: Percentage of POS categories in Saheeh and Arabic for the entire text](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig505-1.png)
+Based on the analysis here, we can provide some suggestions, which are evident (visually) through the plots of the statistics of the POS tags as presented in Figure \@ref(fig:ch5fig505). For this purpose, we made some comparisons between Saheeh and Arabic (we left out Yusuf Ali for brevity) and included comparisons for the various Surahs' groupings in Figure \@ref(fig:ch5fig506), Figure \@ref(fig:ch5fig507), and Figure \@ref(fig:ch5fig508) for the readers to make some sense out of it.
 
 
-
-Based on the analysis here, we can provide some suggestions, which are evident (visually) through the plots of the statistics of the POS tags as presented in Figure <a href="#fig:ch5fig505">5.5</a>. For this purpose, we made some comparisons between Saheeh and Arabic (we left out Yusuf Ali for brevity) and included comparisons for the various Surahs' groupings in Figure <a href="#fig:ch5fig506">5.6</a>, Figure <a href="#fig:ch5fig507">5.7</a>, and Figure <a href="#fig:ch5fig508">5.8</a> for the readers to make some sense out of it.
-
-
-
-![<span id="fig:ch5fig506"></span>Figure 5.6: Percentage of POS categories in Saheeh and Arabic for the early Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig506-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig506-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the early Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig506)Percentage of POS categories in Saheeh and Arabic for the early Surahs</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig507-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the middle Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig507)Percentage of POS categories in Saheeh and Arabic for the middle Surahs</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig508-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the last Surahs" width="768" />
+<p class="caption">(\#fig:ch5fig508)Percentage of POS categories in Saheeh and Arabic for the last Surahs</p>
+</div>
 
-![<span id="fig:ch5fig507"></span>Figure 5.7: Percentage of POS categories in Saheeh and Arabic for the middle Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig507-1.png)
+Finally, we leave with the following question: what do all these meant when translating the Quranic Arabic to the English language (and other languages for that matter)? At least we may say so from the semantic styles point of view, as indicated by many Islamic scholars that Al-Quran has a special language [@saeh2015]. But is it also true for lexical and syntactic styles? Furthermore, does the semantic richness of the Arabic used in Al-Quran, together with the lexical and syntactic richness combined, result in texts which produce higher-level meanings, implying that to learn Al-Quran, one must rely only on the original Arabic text?
 
-
-
-
-![<span id="fig:ch5fig508"></span>Figure 5.8: Percentage of POS categories in Saheeh and Arabic for the last Surahs](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig508-1.png)
-
-
-
-Finally, we leave with the following question: what do all of these mean when translating the Quranic Arabic to the English language (and other languages for that matter)? At least we may say so from the semantic styles point of view, as indicated by many Islamic scholars that Al-Quran has a special language [@saeh2015]. But, is it also true for lexical and syntactic styles? Furthermore, does the semantic richness of the Arabic used in Al-Quran, together with the lexical and syntactic richness combined, result in texts which produce higher-level meanings, implying that to learn Al-Quran, one must rely only on the original Arabic text?
-
-General comparisons as provided in this section open up more questions than answers. This is exactly the purpose of our book, to ask questions from the exploratory findings, from which we suggest other research topics.
+General comparisons as provided in this section open more questions than answers. This is exactly the purpose of our book, to ask questions from the exploratory findings, from which we suggest other research topics.
 
 ## Focus on Surah Yusuf {#focus-on-surah-Yusuf}
 
@@ -2287,13 +2314,12 @@ Now we will explore in more detail the observations made in the previous section
 
 We will start by plotting the POS tags statistics for the Surah Yusuf from Saheeh and Yusuf Ali.
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig509-1.png" alt="Percentage of POS categories in Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch5fig509)Percentage of POS categories in Surah Yusuf</p>
+</div>
 
-
-![<span id="fig:ch5fig509"></span>Figure 5.9: Percentage of POS categories in Surah Yusuf](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig509-1.png)
-
-
-
-As evident from Figure <a href="#fig:ch5fig509">5.9</a>, the differences in lexical styles between Saheeh and Yusuf Ali are not that obvious, except for the fact that Yusuf Ali used more punctuations, which is the same observation made for the entire Quran (as in Figure <a href="#fig:ch5fig501">5.1</a>).
+As evident from Figure \@ref(fig:ch5fig509), the differences in lexical styles between Saheeh and Yusuf Ali are not that obvious, except for the fact that Yusuf Ali used more punctuations, which is the same observation made for the entire Quran (as in Figure \@ref(fig:ch5fig501)).
 
 Now we will start to compute the co-occurrences in Surah Yusuf for the Saheeh and Yusuf Ali.
 
@@ -2331,28 +2357,21 @@ gg_plotter1 = function(grf_plot){
 ```
 \normalsize
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig510-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch5fig510)Co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig511-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch5fig511)Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
+</div>
 
-
-
-![<span id="fig:ch5fig510"></span>Figure 5.10: Co-occurrence network for top relations in Surah Yusuf for Saheeh](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig510-1.png)
-
-
-
-
-
-![<span id="fig:ch5fig511"></span>Figure 5.11: Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig511-1.png)
-
-
-
-The plots in Figure <a href="#fig:ch5fig510">5.10</a> and Figure <a href="#fig:ch5fig511">5.11</a> are networks of words that co-occur frequently within Surah Yusuf. The nodes (the words), which are sized to their frequency of appearances, are linked by the edges, which are sized to the number of times the co-occurrence occurs. Clearly in the Saheeh and Yusuf Ali version, "say", "Allah" and "Joseph" are higher by both counts. This is similar to the bigrams we did earlier with one major difference: we tag the words in accordance to its dependency parser and no stopwords are removed from the texts.^[This is an important point to be made since we alluded to earlier that removal of stopwords while being practiced frequently in NLP analysis, is non-trivial; and should only be used as a last resort rather than by default.]
+The plots in Figure \@ref(fig:ch5fig510) and Figure \@ref(fig:ch5fig511) are networks of words that co-occur frequently within Surah Yusuf. The nodes (the words), which are sized to their frequency of appearances, are linked by the edges, which are sized to the number of times the co-occurrence occurs. Clearly in the Saheeh and Yusuf Ali version, "say", "Allah" and "Joseph" are higher by both counts. This is similar to the bigrams we did earlier with one major difference: we tag the words in accordance to its dependency parser and no stopwords are removed from the texts.^[This is an important point to be made since we alluded to earlier that removal of stopwords while being practiced frequently in NLP analysis, is non-trivial; and should only be used as a last resort rather than by default.]
 
 ### Arc method of visualization
 
-Graphs in the sense of graph theory, represent a powerful mathematical concept as well as a beautiful way of visualizing data. Here we present a few different ways of presenting the same data but using different layouts.
-
-
-
+Graphs, in the sense of graph theory, represent a powerful mathematical concept as well as a beautiful way of visualizing data. Here we present a few different ways of presenting the same data but using different layouts.
 
 
 ```r
@@ -2363,31 +2382,26 @@ ggraph(QSI_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-![<span id="fig:ch5fig512"></span>Figure 5.12: Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig512-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig512-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="384" />
+<p class="caption">(\#fig:ch5fig512)Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig513-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="384" />
+<p class="caption">(\#fig:ch5fig513)Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
+</div>
 
-
-
-
-![<span id="fig:ch5fig513"></span>Figure 5.13: Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig513-1.png)
-
-
-
-Figure <a href="#fig:ch5fig512">5.12</a> and Figure <a href="#fig:ch5fig513">5.13</a>, are "arc" layouts, which organize the links in a "conversational" manner. We can observe that Saheeh's groupings of relations differ from Yusuf Ali's (from the organization of the arcs). The question is which one is nearer to the original texts (as shown in Figure <a href="#fig:ch5fig514">5.14</a>). We let the readers make their own judgment!
+Figure \@ref(fig:ch5fig512) and Figure \@ref(fig:ch5fig513), are "arc" layouts, which organize the links in a "conversational" manner. We can observe that Saheeh's groupings of relations differ from Yusuf Ali's (from the organization of the arcs). The question is which one is nearer to the original texts (as shown in Figure \@ref(fig:ch5fig514)). We let the readers make their own judgment!
 
 What we want to show is there are many tools besides pure statistical analysis to see the lexical styles of texts, and possibly the semantic styles, by just observations through visualizations.
 
-
-
-
-![<span id="fig:ch5fig514"></span>Figure 5.14: Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig514-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig514-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic" width="384" />
+<p class="caption">(\#fig:ch5fig514)Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic</p>
+</div>
 
 ### Circular method of visualization
-
-
-
 
 
 ```r
@@ -2400,37 +2414,30 @@ ggraph(QSI_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-![<span id="fig:ch5fig515"></span>Figure 5.15: Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig515-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig515-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch5fig515)Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig516-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch5fig516)Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
+</div>
 
+Figure \@ref(fig:ch5fig515) and Figure \@ref(fig:ch5fig516), are circular layouts that provide another perspective of viewing, like a round-table discussion. Do the two "round tables" (Saheeh versus Yusuf Ali) look the same? We can say that they are close, but not  the same. This is an example of the subtle differences in the "semantic meaning" (and may also be pragmatic meaning) of the texts.
 
+For benchmarking, let us just compare both to the Arabic version in Figure \@ref(fig:ch5fig517) and we let the readers make their own judgment.
 
-![<span id="fig:ch5fig516"></span>Figure 5.16: Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig516-1.png)
-
-
-
-
-
-Figure <a href="#fig:ch5fig515">5.15</a> and Figure <a href="#fig:ch5fig516">5.16</a>, are circular layouts that provide another perspective of viewing, like a round-table discussion. Do the two "round tables" (Saheeh versus Yusuf Ali) look the same? We can say that they are close, but not exactly the same. This is an example of the subtle differences in the "semantic meaning" (and may also be pragmatic meaning) of the texts. 
-
-For benchmarking, let us just compare both to the Arabic version in Figure <a href="#fig:ch5fig517">5.17</a> and we let the readers make their own judgment.
-
-
-
-
-![<span id="fig:ch5fig517"></span>Figure 5.17: Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig517-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig517-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts" width="576" />
+<p class="caption">(\#fig:ch5fig517)Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts</p>
+</div>
 
 ### Grouping of co-occurences
 
 Next, we can ask, do these words which co-occur highly have their groupings? We know offhand that there are few nodes (words) that will have links to many other words, but we want to see whether all these "smaller" nodes (words of lesser prominence) are grouped in a certain manner.
 
 This is easily visualized through graph clustering algorithms. We will show two different methods of "graph clustering", one is based on the _fastgreedy_ algorithm.
-
-
 
 
 
@@ -2447,9 +2454,10 @@ plot(QSI_cooc_g, vertex.color=vertex_attr(QSI_cooc_g)$cor,
       mark.border=NA)
 ```
 
-![<span id="fig:ch5fig518"></span>Figure 5.18: Groupings by fastgreedy in Surah Yusuf for Saheeh](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig518-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig518-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Saheeh" width="576" />
+<p class="caption">(\#fig:ch5fig518)Groupings by fastgreedy in Surah Yusuf for Saheeh</p>
+</div>
 
 
 
@@ -2466,13 +2474,12 @@ plot(QYA_cooc_g, vertex.color=vertex_attr(QYA_cooc_g)$cor,
       mark.border=NA)
 ```
 
-![<span id="fig:ch5fig519"></span>Figure 5.19: Groupings by fastgreedy in Surah Yusuf for Yusuf Ali](07-Ch5WordLocStatAnal_files/figure-docx/ch5fig519-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig519-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Yusuf Ali" width="576" />
+<p class="caption">(\#fig:ch5fig519)Groupings by fastgreedy in Surah Yusuf for Yusuf Ali</p>
+</div>
 
-
-
-
-
-Figure <a href="#fig:ch5fig518">5.18</a> and Figure <a href="#fig:ch5fig519">5.19</a> show the groupings by the colors. To interpret these visuals, we use the analogy of people in a large ballroom having conversations or hearing conversations. Are there any groupings between the people (denoted by the color schemes)? The larger nodes represent people who speak more than the smaller nodes, and a set of colors represent the sub-groupings of people. Based on this analogy, we can see that Saheeh differs from Yusuf Ali to some degree. What this implies is that the differences between Saheeh and Yusuf Ali are beyond lexical, syntactic, and semantic, rather it goes towards pragmatic (i.e. dynamics of conversations) as well.
+Figure \@ref(fig:ch5fig518) and Figure \@ref(fig:ch5fig519) show the groupings by the colors. To interpret these visuals, we use the analogy of people in a large ballroom having conversations or hearing conversations. Are there any groupings between the people (denoted by the color schemes)? The larger nodes represent people who speak more than the smaller nodes, and a set of colors represent the sub-groupings of people. Based on this analogy, we can see that Saheeh differs from Yusuf Ali to some degree. What this implies is that the differences between Saheeh and Yusuf Ali are beyond lexical, syntactic, and semantic, rather it goes towards pragmatic (i.e. dynamics of conversations) as well.
 
 There are so many ways to show these dynamics using graph theory mathematics, but for now, it suffices to leave the readers with visual impressions. For this reason, in the next section, we present a short tutorial on graphs in __R__. We want the readers to use some of the methods of graphing and learn to see many other dimensions of the relations using graph algorithms.
 
@@ -2490,14 +2497,10 @@ cooccur <- cooccurrence(x = subset(x,upos %in% c("NOUN", "PROPN", "VERB",
                                                 "ADJ", "ADV", "NUM")), 
                         term = "lemma", 
                         group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur,10)
 ```
 \normalsize
 
 The result can be easily visualized using the _igraph_ and _ggraph_ R packages as we have seen earlier.
-
-
-
 
 
 ```r
@@ -2516,10 +2519,10 @@ ggraph(wordnetwork, layout = "fr") +
        caption = "Surah Yusuf (Sahih International)")
 ```
 
-![<span id="fig:ch5tut1"></span>Figure 5.20: Co-occurence within sentence](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut1-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut1-1.png" alt="Co-occurence within sentence" width="576" />
+<p class="caption">(\#fig:ch5tut1)Co-occurence within sentence</p>
+</div>
 
 
 The network graph shows the main words used in the Surah as nodes. The nouns and proper nouns like Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez) make up the main characters in this revealed story. The strength or influence of each word (node) is visualized by the size of the circle representing the words (nodes) and the thickness of the links with other nodes. The verb "say" is a node that dominates since Surah Yusuf is a narrated story. It is interesting to see the strong link and occurrence of "know" with "Allah".
@@ -2547,7 +2550,6 @@ __Create graph__
 \footnotesize
 
 ```r
-head(cooccur, 10)
 wordnetwork <- head(cooccur, 50)
 gm <- graph_from_data_frame(wordnetwork)
 ```
@@ -2610,23 +2612,20 @@ __Using igraph plots__
 * There are sufficient plotting functions in _igraph_ to begin with. 
 
 
-
-
-
 ```r
 plot(gm)
 ```
 
-![<span id="fig:ch5tut2"></span>Figure 5.21: First plot of tutorial word network](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut2-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut2-1.png" alt="First plot of tutorial word network" width="576" />
+<p class="caption">(\#fig:ch5tut2)First plot of tutorial word network</p>
+</div>
 
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut2">5.21</a>.
+Plot output is in Figure \@ref(fig:ch5tut2).
 
 __Plotting parameters__
 
-Figure <a href="#fig:ch5tut2">5.21</a> is not a pretty picture! The network plots in _igraph_ have a wide set of parameters we can set. These include node options (starting with _vertex_) and edge options (starting with _edge_). A list of selected options is included below, but we can also check out by typing _?igraph.plotting_ at the console prompt for more information.
+Figure \@ref(fig:ch5tut2) is not a pretty picture! The network plots in _igraph_ have a wide set of parameters we can set. These include node options (starting with _vertex_) and edge options (starting with _edge_). A list of selected options is included below, but we can also check out by typing _?igraph.plotting_ at the console prompt for more information.
 
 1. For the _nodes_, the command is with _vertex.xxxx_, where _xxxx_ are options, such as _color_, _label_, etc.
 2. For the _edges_, the command is with _edge.xxxx_, where _yyyy_ are options, such as _color_, _label_, etc.
@@ -2634,33 +2633,26 @@ Figure <a href="#fig:ch5tut2">5.21</a> is not a pretty picture! The network plot
 
 __Plot with curved edges (edge.curved=.1) and reduce arrow size:__
 
-* We can set the node and edge options in two ways. 
+* We can set the node and edge options in two ways.
     + first one is to specify them in the plot() function, as we do below.
 * Note that using curved edges will allow you to see multiple links between two nodes (e.g. links going in either direction or multiplex links)
-
-
-
 
 
 ```r
 plot(gm, edge.arrow.size=.4, edge.curved=.1)
 ```
 
-![<span id="fig:ch5tut3"></span>Figure 5.22: Adjust some edge parameters](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut3-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut3-1.png" alt="Adjust some edge parameters" width="576" />
+<p class="caption">(\#fig:ch5tut3)Adjust some edge parameters</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut3">5.22</a>.
+Plot output is in Figure \@ref(fig:ch5tut3).
 
 __Set edge color to red, the node color to yellow:__
 
 * We can set colors by name or hex code.
 * Replace the vertex label with the node names stored in "Label"
-
-
-
 
 
 ```r
@@ -2669,15 +2661,14 @@ plot(gm, edge.arrow.size=.2, edge.color="red",
       vertex.label=V(gm)$Label, vertex.label.color="black")
 ```
 
-![<span id="fig:ch5tut4"></span>Figure 5.23: Adjust colors](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut4-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut4-1.png" alt="Adjust colors" width="576" />
+<p class="caption">(\#fig:ch5tut4)Adjust colors</p>
+</div>
 
-
-
-Plot output is in Figure <a href="#fig:ch5tut4">5.23</a>.
+Plot output is in Figure \@ref(fig:ch5tut4).
 
 __Compute node degrees (number of links) and use that to set node size:__
-
-
 
 
 
@@ -2687,11 +2678,12 @@ V(gm)$size <- deg
 plot(gm, vertex.label=V(gm)$Label)
 ```
 
-![<span id="fig:ch5tut5"></span>Figure 5.24: Adjust node size based on its degree](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut5-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut5-1.png" alt="Adjust node size based on its degree" width="576" />
+<p class="caption">(\#fig:ch5tut5)Adjust node size based on its degree</p>
+</div>
 
-
-
-Plot output is in Figure <a href="#fig:ch5tut5">5.24</a>.
+Plot output is in Figure \@ref(fig:ch5tut5).
 
 
 ```r
@@ -2700,18 +2692,14 @@ V(gm)$size <- deg
 plot(gm, vertex.size=igraph::degree(gm), vertex.label=NA)
 ```
 
-![<span id="fig:ch5tut6"></span>Figure 5.25: Remove node labels](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut6-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut6-1.png" alt="Remove node labels" width="576" />
+<p class="caption">(\#fig:ch5tut6)Remove node labels</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut6">5.25</a>.
+Plot output is in Figure \@ref(fig:ch5tut6).
 
 __Set edge width based on number of co-occurrences:__
-
-
-
 
 
 ```r
@@ -2721,19 +2709,14 @@ E(gm)$width[1:10]
 plot(gm)
 ```
 
-![<span id="fig:ch5tut7"></span>Figure 5.26: Adjust edge width based on number of co-occurrences](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut7-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut7-1.png" alt="Adjust edge width based on number of co-occurrences" width="576" />
+<p class="caption">(\#fig:ch5tut7)Adjust edge width based on number of co-occurrences</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut7">5.26</a>.
+Plot output is in Figure \@ref(fig:ch5tut7).
 
 We change the arrow size and edge color. We introduce and set the network layout in the next code. We will show other layouts later.
-
-
-
-
 
 
 ```r
@@ -2744,18 +2727,14 @@ graph_attr(gm, "layout") <- layout_with_fr
 plot(gm) 
 ```
 
-![<span id="fig:ch5tut8"></span>Figure 5.27: Adjust edge color and set layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut8-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut8-1.png" alt="Adjust edge color and set layout" width="576" />
+<p class="caption">(\#fig:ch5tut8)Adjust edge color and set layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut8">5.27</a>.
+Plot output is in Figure \@ref(fig:ch5tut8).
 
 Sometimes, especially with semantic networks, we plot only the labels of the nodes:
-
-
-
 
 
 ```r
@@ -2764,13 +2743,12 @@ plot(gm, vertex.shape="none", vertex.label=V(gm)$name,
       vertex.label.cex=.7, edge.color="gray85")
 ```
 
-![<span id="fig:ch5tut9"></span>Figure 5.28: Adjust nodes highlighting only labels](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut9-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut9-1.png" alt="Adjust nodes highlighting only labels" width="576" />
+<p class="caption">(\#fig:ch5tut9)Adjust nodes highlighting only labels</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut9">5.28</a>.
+Plot output is in Figure \@ref(fig:ch5tut9).
 
 __Color edges of graph based on their source node color:__
 
@@ -2779,26 +2757,20 @@ __Color edges of graph based on their source node color:__
     + names parameter controls whether the function returns edge names or IDs.
 
 
-
-
 ```r
 edge.start <- ends(gm, es=E(gm), names=F)[,1]
 edge.col <- V(gm)$color[edge.start]
 plot(gm, edge.color=edge.col, edge.curved=.1)  
 ```
 
-![<span id="fig:ch5tut10"></span>Figure 5.29: Adjust edge color based on the source node](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut10-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut10-1.png" alt="Adjust edge color based on the source node" width="576" />
+<p class="caption">(\#fig:ch5tut10)Adjust edge color based on the source node</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut10">5.29</a>.
+Plot output is in Figure \@ref(fig:ch5tut10).
 
 __Color edges of graph based on the number of co-occurrences:__
-
-
-
 
 
 ```r
@@ -2808,16 +2780,12 @@ E(gm)[cooc > 10]$color <- "green"
 plot(gm)
 ```
 
-![<span id="fig:ch5tut11"></span>Figure 5.30: Adjust edge color based on formula](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut11-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut11-1.png" alt="Adjust edge color based on formula" width="576" />
+<p class="caption">(\#fig:ch5tut11)Adjust edge color based on formula</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut11">5.30</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut11).
 
 
 ```r
@@ -2826,13 +2794,12 @@ plot(gm, vertex.size=5,
      vertex.label=NA)
 ```
 
-![<span id="fig:ch5tut12"></span>Figure 5.31: Adjust layout and remove label](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut12-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut12-1.png" alt="Adjust layout and remove label" width="576" />
+<p class="caption">(\#fig:ch5tut12)Adjust layout and remove label</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut12">5.31</a>.
+Plot output is in Figure \@ref(fig:ch5tut12).
 
 ### Graph layouts
 
@@ -2842,9 +2809,6 @@ Change the graph layout according to some algorithms already implemented in _igr
 * layout_with_fr
 * layout_with_kk
 * layout_with_sugiyama
-
-
-
 
 
 ```r
@@ -2857,16 +2821,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
       layout=l)
 ```
 
-![<span id="fig:ch5tut13"></span>Figure 5.32: Using dh layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut13-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut13-1.png" alt="Using dh layout" width="576" />
+<p class="caption">(\#fig:ch5tut13)Using dh layout</p>
+</div>
 
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut13">5.32</a>.
+Plot output is in Figure \@ref(fig:ch5tut13).
 
 __Other cool layouts:__
-
-
 
 
 ```r
@@ -2878,15 +2840,12 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,vertex.label=NA,
      layout=layout_in_circle, main="layout_in_circle")
 ```
 
-![<span id="fig:ch5tut14"></span>Figure 5.33: Layout in circle](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut14-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut14-1.png" alt="Layout in circle" width="576" />
+<p class="caption">(\#fig:ch5tut14)Layout in circle</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut14">5.33</a>.
-
-
+Plot output is in Figure \@ref(fig:ch5tut14).
 
 
 ```r
@@ -2897,16 +2856,12 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_tree, main="layout_as_tree")
 ```
 
-![<span id="fig:ch5tut15"></span>Figure 5.34: Layout as tree](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut15-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut15-1.png" alt="Layout as tree" width="576" />
+<p class="caption">(\#fig:ch5tut15)Layout as tree</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut15">5.34</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut15).
 
 
 ```r
@@ -2917,20 +2872,17 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_star, main="layout_as_star")
 ```
 
-![<span id="fig:ch5tut16"></span>Figure 5.35: Layout as star](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut16-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut16-1.png" alt="Layout as star" width="576" />
+<p class="caption">(\#fig:ch5tut16)Layout as star</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut16">5.35</a>.
+Plot output is in Figure \@ref(fig:ch5tut16).
 
 __Additional layouts:__
 
 * Use a simple program
 * List the available layouts and then grep to select
-
-
 
 
 ```r
@@ -2946,19 +2898,21 @@ for (layout in layouts) {
            main=layout) }
 ```
 
-![<span id="fig:ch5tut17-1"></span>Figure 5.36: Additional layouts](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut17-1.png)![(\#fig:ch5tut17-2)Additional layouts](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut17-2.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-1.png" alt="Additional layouts" width="576" />
+<p class="caption">(\#fig:ch5tut17-1)Additional layouts</p>
+</div><div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-2.png" alt="Additional layouts" width="576" />
+<p class="caption">(\#fig:ch5tut17-2)Additional layouts</p>
+</div>
 
 __Fruchterman-Reingold:__
 
 * One of the most used force-directed layout algorithms out there.
 * Force-directed layouts try to get a nice-looking graph where edges are similar in length and cross each other as little as possible.
 * They simulate the graph as a physical system.
-    + Nodes are electrically charged particles that repel each other when they get too close. 
-    + Edges act as springs that attract connected nodes closer together. 
+    + Nodes are electrically charged particles that repel each other when they get too close.
+    + Edges act as springs that attract connected nodes closer together.
     + Thus nodes are evenly distributed through the chart area, and the layout is intuitive in that nodes that share more connections are closer to each other.
 * The disadvantage of these algorithms is that they are rather slow and therefore less often used in graphs larger than about 1000 nodes.
 * With force-directed layouts, you can use the _niter_ parameter to control the number of iterations to perform.
@@ -2967,24 +2921,17 @@ __Fruchterman-Reingold:__
 * The layout can also interpret edge weights. You can set the “weights” parameter which increases the attraction forces among nodes connected by heavier edges.
 
 
-
-
-
 ```r
 l <- layout_with_fr(gm)
 plot(gm, layout=l)
 ```
 
-![<span id="fig:ch5tut18"></span>Figure 5.38: Using fr layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut18-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut18-1.png" alt="Using fr layout" width="576" />
+<p class="caption">(\#fig:ch5tut18)Using fr layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut18">5.38</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut18).
 
 
 ```r
@@ -2992,16 +2939,12 @@ l <- layout_with_fr(gm, niter=50)
 plot(gm, layout=l)
 ```
 
-![<span id="fig:ch5tut19"></span>Figure 5.39: Using fr layout with 50 iterations](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut19-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut19-1.png" alt="Using fr layout with 50 iterations" width="576" />
+<p class="caption">(\#fig:ch5tut19)Using fr layout with 50 iterations</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut19">5.39</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut19).
 
 
 ```r
@@ -3010,13 +2953,12 @@ lw <- layout_with_fr(gm, weights=ws)
 plot(gm, layout=lw)
 ```
 
-![<span id="fig:ch5tut20"></span>Figure 5.40: Using fr layout different weights](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut20-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut20-1.png" alt="Using fr layout different weights" width="576" />
+<p class="caption">(\#fig:ch5tut20)Using fr layout different weights</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut20">5.40</a>.
+Plot output is in Figure \@ref(fig:ch5tut20).
 
 __Fruchterman-Reingold Non-Deterministic:__
 
@@ -3024,11 +2966,8 @@ __Fruchterman-Reingold Non-Deterministic:__
     - different runs will result in slightly different configurations.
     - Saving the layout in _l_ allows us to get the exact same result multiple times, which can be helpful if you want to plot the time evolution of a graph or different relationships – and want nodes to stay in the same place in multiple plots.
 * By default, the coordinates of the plots are rescaled to the [-1,1] interval for both x and y. 
-    - change that with the parameter _rescale=FALSE_ and rescale plot manually by multiplying the coordinates by a scalar. 
+    - change that with the parameter _rescale=FALSE_ and rescale plot manually by multiplying the coordinates by a scalar.
     - use _norm_coords_ to normalize the plot with the boundaries you want. This way you can create more compact or spread out layout versions.
-
-
-
 
 
 ```r
@@ -3039,16 +2978,12 @@ plot(gm, layout=l)
 plot(gm, layout=l)
 ```
 
-![<span id="fig:ch5tut21"></span>Figure 5.41: Each fr layout call with different outcomes](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut21-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut21-1.png" alt="Each fr layout call with different outcomes" width="576" />
+<p class="caption">(\#fig:ch5tut21)Each fr layout call with different outcomes</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut21">5.41</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut21).
 
 
 ```r
@@ -3062,13 +2997,12 @@ plot(gm, rescale=F, layout=l*0.8)
 plot(gm, rescale=F, layout=l*1.0)
 ```
 
-![<span id="fig:ch5tut22"></span>Figure 5.42: Using fr layout call with manual rescaling](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut22-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut22-1.png" alt="Using fr layout call with manual rescaling" width="576" />
+<p class="caption">(\#fig:ch5tut22)Using fr layout call with manual rescaling</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut22">5.42</a>.
+Plot output is in Figure \@ref(fig:ch5tut22).
 
 __Kamada Kawai:__
 
@@ -3076,21 +3010,17 @@ __Kamada Kawai:__
 * Like Fruchterman Reingold, it attempts to minimize the energy in a spring system.
 
 
-
-
-
 ```r
 l <- layout_with_kk(gm)
 plot(gm, layout=l)
 ```
 
-![<span id="fig:ch5tut23"></span>Figure 5.43: Using kk layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut23-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut23-1.png" alt="Using kk layout" width="576" />
+<p class="caption">(\#fig:ch5tut23)Using kk layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut23">5.43</a>.
+Plot output is in Figure \@ref(fig:ch5tut23).
 
 __Graphopt:__
 
@@ -3103,26 +3033,18 @@ __Graphopt:__
 * Tweaking those can lead to considerably different graph layouts.
 
 
-
-
-
 ```r
 l <- layout_with_graphopt(gm)
 plot(gm, layout=l)
 ```
 
-![<span id="fig:ch5tut24"></span>Figure 5.44: Using graphopt layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut24-1.png)
-
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut24">5.44</a>.
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut24-1.png" alt="Using graphopt layout" width="576" />
+<p class="caption">(\#fig:ch5tut24)Using graphopt layout</p>
+</div>
+Plot output is in Figure \@ref(fig:ch5tut24).
 
 The charge parameter below changes node repulsion:
-
-
-
 
 
 ```r
@@ -3134,13 +3056,12 @@ plot(gm, layout=l1)
 plot(gm, layout=l2)
 ```
 
-![<span id="fig:ch5tut25"></span>Figure 5.45: Using graphopt layout with different charge](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut25-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut25-1.png" alt="Using graphopt layout with different charge" width="576" />
+<p class="caption">(\#fig:ch5tut25)Using graphopt layout with different charge</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut25">5.45</a>.
+Plot output is in Figure \@ref(fig:ch5tut25).
 
 ### Graph algorithms
 
@@ -3150,22 +3071,18 @@ __LGL algorithm:__
 * Here you can also specify a root, a node that will be placed in the middle of the layout.
 
 
-
-
-
 ```r
 par(mfrow=c(1,2), mar=c(1,1,1,1))
 plot(gm, layout=layout_with_lgl, root = 1)
 plot(gm, layout=layout_with_lgl, root = 5)
 ```
 
-![<span id="fig:ch5tut26"></span>Figure 5.46: Using lgl layout with different roots](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut26-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut26-1.png" alt="Using lgl layout with different roots" width="576" />
+<p class="caption">(\#fig:ch5tut26)Using lgl layout with different roots</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut26">5.46</a>.
+Plot output is in Figure \@ref(fig:ch5tut26).
 
 __The MDS (multidimensional scaling) algorithm:__
 
@@ -3176,20 +3093,16 @@ __The MDS (multidimensional scaling) algorithm:__
 * The problem with them is visual clarity: nodes often overlap, or are placed on top of each other.
 
 
-
-
-
 ```r
 plot(gm, layout=layout_with_mds)
 ```
 
-![<span id="fig:ch5tut27"></span>Figure 5.47: Using mds layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut27-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut27-1.png" alt="Using mds layout" width="576" />
+<p class="caption">(\#fig:ch5tut27)Using mds layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut27">5.47</a>.
+Plot output is in Figure \@ref(fig:ch5tut27).
 
 ### Graph analysis
 
@@ -3203,9 +3116,6 @@ Plot output is in Figure <a href="#fig:ch5tut27">5.47</a>.
     + It is obvious from the previous plots that the nodes **"seek"** and **"seduce"** are unconnected with the rest.
     + The code below shows how to use the delete_vertices() function.
     
-
-
-
 
 ```r
 gm1 <- delete_vertices(gm, "seek")
@@ -3223,20 +3133,16 @@ plot(gm1, vertex.color=vertex_attr(gm1)$cor,
      mark.border=NA)
 ```
 
-![<span id="fig:ch5tut28"></span>Figure 5.48: Communities or clusters in tutorial word network](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut28-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut28-1.png" alt="Communities or clusters in tutorial word network" width="576" />
+<p class="caption">(\#fig:ch5tut28)Communities or clusters in tutorial word network</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut28">5.48</a>.
+Plot output is in Figure \@ref(fig:ch5tut28).
 
 __Calculate and plot the shortest path between two nodes:__
 
-* To emphasize the path between them, we have to create a new color vector for interactions (edges) the same way we did before for the nodes/vertices:
-
-
-
+* To emphasize the path between them, we create a new color vector for interactions (edges) the same way we did before for the nodes/vertices:
 
 
 ```r
@@ -3256,13 +3162,12 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=l)
 ```
 
-![<span id="fig:ch5tut29"></span>Figure 5.49: Path from one node to another](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut29-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut29-1.png" alt="Path from one node to another" width="576" />
+<p class="caption">(\#fig:ch5tut29)Path from one node to another</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut29">5.49</a>.
+Plot output is in Figure \@ref(fig:ch5tut29).
 
 ### Using ggraph
 
@@ -3271,10 +3176,6 @@ Plot output is in Figure <a href="#fig:ch5tut29">5.49</a>.
 * The _ggraph_ package takes this principle and extends it to network data. In this section, we will only cover the basics.
 * We can use our _igraph_ objects directly with the _ggraph_ package.
 * The following code gets the data and adds separate layers for nodes and links.
-
-
-
-
 
 
 ```r
@@ -3286,18 +3187,14 @@ ggraph(lay) +
   theme_graph()
 ```
 
-![<span id="fig:ch5tut30"></span>Figure 5.50: Using ggraph with minimal parameters set](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut30-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut30-1.png" alt="Using ggraph with minimal parameters set" width="576" />
+<p class="caption">(\#fig:ch5tut30)Using ggraph with minimal parameters set</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut30">5.50</a>.
+Plot output is in Figure \@ref(fig:ch5tut30).
 
 __Add node names and edge type:__
-
-
-
 
 
 ```r
@@ -3308,18 +3205,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-![<span id="fig:ch5tut31"></span>Figure 5.51: ggraph with node and edge parameters set](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut31-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut31-1.png" alt="ggraph with node and edge parameters set" width="576" />
+<p class="caption">(\#fig:ch5tut31)ggraph with node and edge parameters set</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut31">5.51</a>.
+Plot output is in Figure \@ref(fig:ch5tut31).
 
 __Plot node degree as node size (and alpha):__
-
-
-
 
 
 ```r
@@ -3331,18 +3224,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-![<span id="fig:ch5tut32"></span>Figure 5.52: ggraph with node size and alpha based on degree](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut32-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut32-1.png" alt="ggraph with node size and alpha based on degree" width="576" />
+<p class="caption">(\#fig:ch5tut32)ggraph with node size and alpha based on degree</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut32">5.52</a>.
+Plot output is in Figure \@ref(fig:ch5tut32).
 
 __Plot edge weight as edge alpha:__
-
-
-
 
 
 ```r
@@ -3351,13 +3240,12 @@ ggraph(lay) +
   geom_node_point()
 ```
 
-![<span id="fig:ch5tut33"></span>Figure 5.53: ggraph with edge width and alpha based on number of co-occurrences](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut33-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut33-1.png" alt="ggraph with edge width and alpha based on number of co-occurrences" width="576" />
+<p class="caption">(\#fig:ch5tut33)ggraph with edge width and alpha based on number of co-occurrences</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut33">5.53</a>.
+Plot output is in Figure \@ref(fig:ch5tut33).
 
 __Layouts in ggraph:__
 
@@ -3366,11 +3254,8 @@ __Layouts in ggraph:__
 * We can use geom_edge_link() for straight edges, geom_edge_arc() for curved ones, and geom_edge_fan() when we want to make sure any overlapping multiplex edges will be fanned out.
 * We can set visual properties for the network plot by using key function parameters.
     + Nodes have color, fill, shape, size, and stroke.
-    + Edges have color, width, and linetype. 
+    + Edges have color, width, and linetype.
     + alpha parameter controls transparency.
-    
-
-
 
 
 ```r
@@ -3382,22 +3267,18 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-![<span id="fig:ch5tut34"></span>Figure 5.54: Using ggraph with layout kk](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut34-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut34-1.png" alt="Using ggraph with layout kk" width="576" />
+<p class="caption">(\#fig:ch5tut34)Using ggraph with layout kk</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut34">5.54</a>.
+Plot output is in Figure \@ref(fig:ch5tut34).
 
 __Different themes:__
 
 * As in _ggplot2_, we can add different themes to the plot.
     + For a cleaner look, we can use a minimal or empty theme with theme_minimal() or theme_void().
     
-
-
-
 
 ```r
 ggraph(gm, layout = 'linear') + 
@@ -3407,21 +3288,18 @@ ggraph(gm, layout = 'linear') +
     theme_void()
 ```
 
-![<span id="fig:ch5tut35"></span>Figure 5.55: Using ggraph with linear layout and void theme](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut35-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut35-1.png" alt="Using ggraph with linear layout and void theme" width="576" />
+<p class="caption">(\#fig:ch5tut35)Using ggraph with linear layout and void theme</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut35">5.55</a>.
+Plot output is in Figure \@ref(fig:ch5tut35).
 
 __Mapping aesthetics:__
 
-* The _ggraph_ package also uses the traditional _ggplot2_ way of mapping aesthetics: specifying which elements of the data should correspond to different visual properties of the graphic. 
+* The _ggraph_ package also uses the traditional _ggplot2_ way of mapping aesthetics: specifying which elements of the data should correspond to different visual properties of the graphic.
 * It is done using the aes() function that matches visual parameters with attribute names from the data.
 * In the code below, the edge attribute type and node attribute audience.size are taken from our data as they are included in the _igraph_ object.
-
-
 
 
 
@@ -3432,21 +3310,17 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-![<span id="fig:ch5tut36"></span>Figure 5.56: Using ggraph with kk layout and aes setting](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut36-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut36-1.png" alt="Using ggraph with kk layout and aes setting" width="576" />
+<p class="caption">(\#fig:ch5tut36)Using ggraph with kk layout and aes setting</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut36">5.56</a>.
+Plot output is in Figure \@ref(fig:ch5tut36).
 
 __Legends:__
 
 * One great thing about _ggplot2_ and _ggraph_ we can see above is that they automatically generate a legend which makes plots easier to interpret.
 * We can add a layer with node labels using geom_node_text() or geom_node_label() which correspond to similar functions in _ggplot2_.
-
-
-
 
 
 ```r
@@ -3458,19 +3332,16 @@ ggraph(gm,  layout = 'kk') +
   theme_void()
 ```
 
-![<span id="fig:ch5tut37"></span>Figure 5.57: Using ggraph with various parameter settings](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut37-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut37-1.png" alt="Using ggraph with various parameter settings" width="576" />
+<p class="caption">(\#fig:ch5tut37)Using ggraph with various parameter settings</p>
+</div>
 
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut37">5.57</a>.
+Plot output is in Figure \@ref(fig:ch5tut37).
 
 __Arc and Coord:__
 
 * _ggraph_ provides some new layout types and algorithms for our drawing pleasure
-
-
-
 
 
 ```r
@@ -3481,13 +3352,12 @@ ggraph(gm, layout = 'linear',  circular = TRUE) +
                     repel=T)
 ```
 
-![<span id="fig:ch5tut38"></span>Figure 5.58: Using ggraph with linear layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut38-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut38-1.png" alt="Using ggraph with linear layout" width="576" />
+<p class="caption">(\#fig:ch5tut38)Using ggraph with linear layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut38">5.58</a>.
+Plot output is in Figure \@ref(fig:ch5tut38).
 
 __Fan:__
 
@@ -3500,8 +3370,6 @@ __Fan:__
     
 
 
-
-
 ```r
 ggraph(gm, layout = 'kk') + 
      geom_edge_fan(aes(color = cooc, width = cooc)) +
@@ -3510,21 +3378,18 @@ ggraph(gm, layout = 'kk') +
                     repel=T)
 ```
 
-![<span id="fig:ch5tut39"></span>Figure 5.59: Using ggraph with edge fan](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut39-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut39-1.png" alt="Using ggraph with edge fan" width="576" />
+<p class="caption">(\#fig:ch5tut39)Using ggraph with edge fan</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut39">5.59</a>.
+Plot output is in Figure \@ref(fig:ch5tut39).
 
 __Density:__
 
 * Consider the case where it is of interest to see which types of edges dominate certain areas of the graph.
 * We can color the edges, but edges can tend to get overplotted, thus reducing readability.
 * geom_edge_density() lets us add shading to our plot based on the density of edges in a certain area:
-
-
 
 
 ```r
@@ -3534,21 +3399,17 @@ ggraph(gm, layout = 'kk') +
      geom_node_point(color="#de4e96", aes(size = igraph::degree(gm)))
 ```
 
-![<span id="fig:ch5tut40"></span>Figure 5.60: Using ggraph with edge density](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut40-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut40-1.png" alt="Using ggraph with edge density" width="576" />
+<p class="caption">(\#fig:ch5tut40)Using ggraph with edge density</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut40">5.60</a>.
+Plot output is in Figure \@ref(fig:ch5tut40).
 
 __Other ways to represent a network:__
 
 * _ggraph_ offers several other interesting ways to represent networks, including dendrograms, treemaps, hive plots, and circle plots.
 * We show below a simple heatmap of our network matrix.
-
-
-
 
 
 ```r
@@ -3560,19 +3421,16 @@ heatmap(netm[,17:1], Rowv = NA, Colv = NA, col = palf(100),
         scale="none", margins=c(10,10) )
 ```
 
-![<span id="fig:ch5tut41"></span>Figure 5.61: Heatmap of word network](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut41-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut41-1.png" alt="Heatmap of word network" width="576" />
+<p class="caption">(\#fig:ch5tut41)Heatmap of word network</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut41">5.61</a>.
+Plot output is in Figure \@ref(fig:ch5tut41).
 
 __Plot the degree distribution for our network:__
 
 * Depending on what properties of the network or its nodes and edges are most important to us, simple graphs can often be more informative.
-
-
 
 
 
@@ -3582,22 +3440,18 @@ plot( x=0:max(degree(gm)), y=1-deg.dist, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency")
 ```
 
-![<span id="fig:ch5tut42"></span>Figure 5.62: Degree distribution of word network](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut42-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut42-1.png" alt="Degree distribution of word network" width="576" />
+<p class="caption">(\#fig:ch5tut42)Degree distribution of word network</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut42">5.62</a>.
+Plot output is in Figure \@ref(fig:ch5tut42).
 
 ## Fun with network graphs {#fun-with-network-graphs}
 
 Let us have some light moments working with network graphs. We have seen the various network layout options, and also for geom_edge_density, geom_edge_link, geom_node_point, geom_node_text. Different combinations of these options can result in interesting and fun ways to represent network graph data.
 
 Digital art is one interesting aspect of visualizing data. We will show an example in this section. For that, we increase the network size of the word co-occurrences in Surah Yusuf and explore.
-
-
-
 
 
 ```r
@@ -3611,12 +3465,12 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-![<span id="fig:ch5tut43"></span>Figure 5.63: Larger network density with labels](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut43-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut43-1.png" alt="Larger network density with labels" width="576" />
+<p class="caption">(\#fig:ch5tut43)Larger network density with labels</p>
+</div>
 
-
-
-Plot output is in Figure <a href="#fig:ch5tut43">5.63</a>.
-
+Plot output is in Figure \@ref(fig:ch5tut43).
 
 
 ```r
@@ -3628,18 +3482,14 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-![<span id="fig:ch5tut44"></span>Figure 5.64: Larger network density without labels](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut44-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut44-1.png" alt="Larger network density without labels" width="576" />
+<p class="caption">(\#fig:ch5tut44)Larger network density without labels</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut44">5.64</a>.
+Plot output is in Figure \@ref(fig:ch5tut44).
 
 We remove the title and legend. We encourage our readers to try different combinations of colors, alphas, and network size. Surah Yusuf is a beautiful Surah. The word co-occurrence network of this Surah looks quite pretty too.
-
-
-
 
 
 ```r
@@ -3650,18 +3500,14 @@ ggraph(gm1, layout = 'kk') +
                       colour = "#a83268", show.legend = FALSE)
 ```
 
-![<span id="fig:ch5tut45"></span>Figure 5.65: Digital art from Surah Yusuf](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut45-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut45-1.png" alt="Digital art from Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch5tut45)Digital art from Surah Yusuf</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut45">5.65</a>.
+Plot output is in Figure \@ref(fig:ch5tut45).
 
 We now use the linear layout with the circular parameter set to TRUE to give a circular effect.
-
-
-
 
 
 ```r
@@ -3674,19 +3520,16 @@ ggraph(gm1, layout = 'linear', circular = TRUE) +
      ggtitle("Network of Top 100 Words")
 ```
 
-![<span id="fig:ch5tut46"></span>Figure 5.66: Word network with circular layout](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut46-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut46-1.png" alt="Word network with circular layout" width="576" />
+<p class="caption">(\#fig:ch5tut46)Word network with circular layout</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut46">5.66</a>.
+Plot output is in Figure \@ref(fig:ch5tut46).
 
 ### Working with a bigger graph
 
 We increase the word network for Surah Yusuf to 2000 co-occurrences or edges.
-
-
 
 
 ```r
@@ -3701,17 +3544,14 @@ ggraph(jg, layout = 'kk') +
       ggtitle("Data Art of Top 2000 Coccurrences")
 ```
 
-![<span id="fig:ch5tut47"></span>Figure 5.67: Larger word network with kk layout and edge density](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut47-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut47-1.png" alt="Larger word network with kk layout and edge density" width="576" />
+<p class="caption">(\#fig:ch5tut47)Larger word network with kk layout and edge density</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut47">5.67</a>.
+Plot output is in Figure \@ref(fig:ch5tut47).
 
 Does the plot above show all the 421 nodes as connected? We can do other analyses.
-
-
 
 
 ```r
@@ -3724,24 +3564,17 @@ max(degree(jg, mode="all"))
 ```
 
 
-
-
-
 ```r
 # In-degree distribution
 plot(degree.distribution(jg, mode="in"), log="xy")
 ```
 
-![<span id="fig:ch5tut48"></span>Figure 5.68: Larger word network with kk layout and edge-in density](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut48-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut48-1.png" alt="Larger word network with kk layout and edge-in density" width="576" />
+<p class="caption">(\#fig:ch5tut48)Larger word network with kk layout and edge-in density</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut48">5.68</a>.
-
-
-
+Plot output is in Figure \@ref(fig:ch5tut48).
 
 
 ```r
@@ -3749,19 +3582,14 @@ Plot output is in Figure <a href="#fig:ch5tut48">5.68</a>.
 plot(degree.distribution(jg, mode="out"), log="xy")
 ```
 
-![<span id="fig:ch5tut49"></span>Figure 5.69: Larger word network with kk layout and edge-out density](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut49-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut49-1.png" alt="Larger word network with kk layout and edge-out density" width="576" />
+<p class="caption">(\#fig:ch5tut49)Larger word network with kk layout and edge-out density</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut49">5.69</a>.
-
+Plot output is in Figure \@ref(fig:ch5tut49).
 
 _is.connected(jg)_ being FALSE says that there are some nodes that are not connected.
-
-
-
 
 
 ```r
@@ -3772,13 +3600,13 @@ ggraph(lay) +
    geom_node_text(aes(label = name), size = 3)
 ```
 
-![<span id="fig:ch5tut50"></span>Figure 5.70: One big cluster and unconnected nodes](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut50-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut50-1.png" alt="One big cluster and unconnected nodes" width="576" />
+<p class="caption">(\#fig:ch5tut50)One big cluster and unconnected nodes</p>
+</div>
 
 
-
-
-
-The rather ugly Figure <a href="#fig:ch5tut50">5.70</a> shows the 4 nodes. Let us delete and repeat the cluster analysis. But instead of using the delete_vertices() function like in an earlier example, we just use the main component. First, we find the components and then subset the graph based on those components. In _igraph_ the largest component is not always the first one with id == 1.
+The rather ugly Figure \@ref(fig:ch5tut50) shows the 4 nodes. Let us delete and repeat the cluster analysis. But instead of using the delete_vertices() function like in an earlier example, we just use the main component. First, we find the components and then subset the graph based on those components. In _igraph_ the largest component is not always the first one with id == 1.
 
 ### Taking the largest component
 
@@ -3807,9 +3635,6 @@ E(jg2)[6:10]
 ### Community structure detection
 
 
-
-
-
 ```r
 fc <- fastgreedy.community(simplify(as.undirected(jg2)))
 plot(jg2, vertex.color=vertex_attr(jg2)$cor,
@@ -3822,13 +3647,12 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-![<span id="fig:ch5tut51"></span>Figure 5.71: Communities within the large fully connected network](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut51-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut51-1.png" alt="Communities within the large fully connected network" width="576" />
+<p class="caption">(\#fig:ch5tut51)Communities within the large fully connected network</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut51">5.71</a>.
+Plot output is in Figure \@ref(fig:ch5tut51).
 
 The _igraph_ documentation^[https://igraph.org/r/doc/] lists the following for clusters and communities. Interested readers can explore the different functions following the example above.
 
@@ -3846,9 +3670,6 @@ The _igraph_ documentation^[https://igraph.org/r/doc/] lists the following for c
 Let us explore cluster_edge_betweenness. We can see a pleasing digital art representing the words in Surah Yusuf.
 
 
-
-
-
 ```r
 fc <- cluster_edge_betweenness(simplify(as.undirected(jg2)))
 plot(jg2, vertex.color=vertex_attr(jg2)$cor,
@@ -3861,22 +3682,20 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-![<span id="fig:ch5tut52"></span>Figure 5.72: Another piece of art from Surah Yusuf](07-Ch5WordLocStatAnal_files/figure-docx/ch5tut52-1.png)
+<div class="figure" style="text-align: center">
+<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut52-1.png" alt="Another piece of art from Surah Yusuf" width="576" />
+<p class="caption">(\#fig:ch5tut52)Another piece of art from Surah Yusuf</p>
+</div>
 
-
-
-
-
-Plot output is in Figure <a href="#fig:ch5tut52">5.72</a>.
+Plot output is in Figure \@ref(fig:ch5tut52).
 
 ## Summary {#chapter-5-summary}
 
 Our work on Quran Analytics relies heavily on the use of network graphs. In this chapter, we introduced the tools available in R for creating, plotting, and analyzing network graphs. We have a more complete version of this tutorial.^[https://rpubs.com/azmanH/696047]
 
-We strongly recommend our users experiment with the different parameters and functions from _ggraph_ based on the sample network graphs from Surah Yusuf that we showed how to create in this chapter. It is important to have a working knowledge of network graphs to follow the coming chapters. Network graphs have applications in many other subject matters, so our readers will benefit much from this knowledge.  
+We strongly recommend our users experiment with the different parameters and functions from _ggraph_ based on the sample network graphs from Surah Yusuf that we showed how to create in this chapter. It is important to have a working knowledge of network graphs to follow the coming chapters. Network graphs have applications in many other subject matters, so our readers will benefit much from this knowledge.
 
-We will explore the _tidygraph_ package and also some of the numerical analysis on network graphs like measures of centrality, in the next chapter. We have seen in the final example, concepts like “hub” (most central node) and “spread” for our Surah Yusuf word co-occurrence network that is similar to virus networks. 
-
+We will explore the _tidygraph_ package and also some of the numerical analysis on network graphs like measures of centrality, in the next chapter. We have seen in the final example, concepts like “hub” (most central node) and “spread” for our Surah Yusuf word co-occurrence network that is similar to virus networks.
 
 ## Further readings
 
@@ -3909,7 +3728,7 @@ In the summary section of Chapter 4, we mentioned that the study opens other inv
 
 ## Data preprocessing {#data-preprocessing}
 
-We repeat the same sequence of steps as in Chapter 5  except that we filter to select Surah Taa-Haa from the Saheeh International Quran _data.frame_ (quran_en_sahih %>% filter(surah == 20)).
+We repeat the same sequence of steps as in Chapter 5 except that we filter to select Surah Taa-Haa from the Saheeh International Quran _data.frame_ (quran_en_sahih %>% filter(surah == 20)).
 
 \footnotesize
 
@@ -3942,14 +3761,10 @@ cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB",
                                                   "ADJ", "ADV", "NUM")), 
                      term = "lemma", 
                      group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur)
 ```
 \normalsize
 
 The result can be easily visualized using the _igraph_ and _ggraph_ packages. We chose the top 50 occurrences for the tutorial so the plots do not clutter.
-
-
-
 
 
 ```r
@@ -3965,10 +3780,10 @@ ggraph(wordnetwork, layout = "kk") +
        subtitle = "Top 50 Nouns, Names, Adjectives, Verbs, Adverbs")
 ```
 
-![<span id="fig:ch6fig601"></span>Figure 6.1: First plot of tutorial word network](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig601-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig601-1.png" alt="First plot of tutorial word network" width="768" />
+<p class="caption">(\#fig:ch6fig601)First plot of tutorial word network</p>
+</div>
 
 
 The base wordnetwork graph is a directed network with 41 nodes and 50 edges *(DN-- 41 50 -- )*. The nodes have the *name* attribute. The edges have the *cooc* attribute (+ attr: name (v/c), cooc (e/n))
@@ -3979,7 +3794,7 @@ The story is revealed by Allah (SWT). The main characters are Mose, his brother 
 
 This introductory tutorial should be useful for those new to network graphs.^[http://networksciencebook.com] We will be using the network graph tools frequently in our work, thus a tutorial on the network characteristics using an example from the Quran should be helpful.
 
-We will be looking at various functions related to 
+We will be looking at various functions related to
 
 * [graph_measures: Graph measurements](https://rdrr.io/cran/tidygraph/man/graph_measures.html)
 * [centrality: Calculate node and edge centrality](https://rdrr.io/cran/tidygraph/man/centrality.html)
@@ -4009,19 +3824,16 @@ E(gu)[5:8]
 
 The _igraph_ notation for directed edges uses -> (Mose ->say) and -- for undirected edges (Mose --Allah).
 
-Generally speaking, we can measure network properties at the level of nodes (centrality measures) or at the level of the network (global measures). If we are interested in the position of nodes within a network, then we are measuring something at the node level. If we want to understand the structure of the network as a whole, we are measuring something at the network level. Network analysis often combines both.
+We can measure network properties at the level of nodes (centrality measures) or at the level of the network (global measures). If we are interested in the position of nodes within a network, then we are measuring something at the node level. If we want to understand the structure of the network as a whole, we are measuring something at the network level. Network analysis often combines both.
 
 We will use the two networks, *gu* and *gd*, that we created in this section. For the early examples, we will mainly use the _igraph_ package and the basic plot functions. In the later sections, we will show some of the same examples together with new ones using the _tidygraph_ and _ggraph_ packages.
 
-Re-plotting of *gd* graph is in Figure <a href="#fig:ch6fig602">6.2</a>.
+Re-plotting of *gd* graph is in Figure \@ref(fig:ch6fig602).
 
-
-
-![<span id="fig:ch6fig602"></span>Figure 6.2: Second plot of tutorial word network](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig602-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig602-1.png" alt="Second plot of tutorial word network" width="576" />
+<p class="caption">(\#fig:ch6fig602)Second plot of tutorial word network</p>
+</div>
 
 ### Centrality measures (node-level measures)
 
@@ -4046,25 +3858,19 @@ There are many such centrality measures. It can be difficult to go through all o
 * Eigenvector centrality
 * PageRank centrality
 
-Figure <a href="#fig:ch6fig603">6.3</a> summarizes some of the centrality measures in a graphical format.
+Figure \@ref(fig:ch6fig603) summarizes some of the centrality measures in a graphical format.
 
-
-
-
-![<span id="fig:ch6fig603"></span>Figure 6.3: Centrality summary](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig603-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig603-1.png" alt="Centrality summary" width="576" />
+<p class="caption">(\#fig:ch6fig603)Centrality summary</p>
+</div>
 
 
 ### Degree and strength
 
 The most straightforward centrality measure is degree centrality. Degree centrality is simply the number of edges connected to a given node. In a social network, this might mean the number of friends an individual has. We will calculate and visualize the degree centrality by varying the node sizes proportional to degree centrality.
 
-This is shown in Figure <a href="#fig:ch6fig604">6.4</a>.
-
-
-
+This is shown in Figure \@ref(fig:ch6fig604).
 
 
 ```r
@@ -4080,18 +3886,15 @@ ggraph(gd, layout = "kk") +
   geom_node_point(size = deg, color = "gold3")
 ```
 
-![<span id="fig:ch6fig604"></span>Figure 6.4: Node size reflects degree](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig604-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig604-1.png" alt="Node size reflects degree" width="576" />
+<p class="caption">(\#fig:ch6fig604)Node size reflects degree</p>
+</div>
 
 
+In weighted networks, we can also use node strength, which is the sum of the weight of edges connected to the node. Let us calculate node strength and plot the node sizes as proportional to these values.
 
-
-
-In weighted networks, we can also use node strength, which is the sum of the weights of edges connected to the node. Let us calculate node strength and plot the node sizes as proportional to these values.
-
-This is shown in Figure <a href="#fig:ch6fig605">6.5</a>.
-
-
-
+This is shown in Figure \@ref(fig:ch6fig605).
 
 
 ```r
@@ -4106,10 +3909,10 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(st >= 3), size=st*2, label=name), repel=F)
 ```
 
-![<span id="fig:ch6fig605"></span>Figure 6.5: Node size reflects graph.strength](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig605-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig605-1.png" alt="Node size reflects graph.strength" width="576" />
+<p class="caption">(\#fig:ch6fig605)Node size reflects graph.strength</p>
+</div>
 
 
 Compare the relative node sizes when plotting by *degree* vs. *strength*. What differences do you notice? The top six words are the same say (18), indeed (8), so (8), fire (7), Mose (4), Lord (4).
@@ -4118,10 +3921,7 @@ Compare the relative node sizes when plotting by *degree* vs. *strength*. What d
 
 Degree distribution: A frequency count of the occurrence of each degree.
 
-Let N be the number of nodes, and L be the number of edges. Average degree = 2L/N = 2(50)/41 = 2.439 for gu. The histogram of the degree is shown in Figure <a href="#fig:ch6fig606">6.6</a>.
-
-
-
+Let N be the number of nodes, and L be the number of edges. Average degree = 2L/N = 2(50)/41 = 2.439 for gu. The histogram of the degree is shown in Figure \@ref(fig:ch6fig606).
 
 
 ```r
@@ -4134,11 +3934,10 @@ degree.distribution(gu)[6:10]
 hist(degree.distribution(gu))
 ```
 
-![<span id="fig:ch6fig606"></span>Figure 6.6: Degree distribution of tutorial word network](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig606-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig606-1.png" alt="Degree distribution of tutorial word network" width="576" />
+<p class="caption">(\#fig:ch6fig606)Degree distribution of tutorial word network</p>
+</div>
 
 ### Degree and degree distribution for directed graph
 
@@ -4149,10 +3948,7 @@ hist(degree.distribution(gu))
 * Average degree: let N = number of nodes, and L = number of edges:
     * Avg. degree-in = Avg. degree-out = L/N = 50/41 = 1.219, for *gd*.
     
-The plots of the histogram are in Figure <a href="#fig:ch6fig607">6.7</a> and Figure <a href="#fig:ch6fig608">6.8</a>.
-
-
-
+The plots of the histogram are in Figure \@ref(fig:ch6fig607) and Figure \@ref(fig:ch6fig608).
 
 
 ```r
@@ -4163,14 +3959,16 @@ degree(gd,mode="out",loops = FALSE) %>% mean()
 hist(degree.distribution(gd, mode="in"))
 ```
 
-![<span id="fig:ch6fig607"></span>Figure 6.7: In degree distribution of directed word network](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig607-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig607-1.png" alt="In degree distribution of directed word network" width="576" />
+<p class="caption">(\#fig:ch6fig607)In degree distribution of directed word network</p>
+</div>
 
 
-
-![<span id="fig:ch6fig608"></span>Figure 6.8: Out degree distribution of directed word network](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig608-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig608-1.png" alt="Out degree distribution of directed word network" width="576" />
+<p class="caption">(\#fig:ch6fig608)Out degree distribution of directed word network</p>
+</div>
 
 
 ### Why do we care about degree?
@@ -4187,10 +3985,7 @@ We now do the same for betweenness centrality. It is defined as the number of ge
 * It was introduced as a measure for quantifying the control of a human on the communication between other humans in a social network.
 * In this conception, nodes that have a high probability to occur on a randomly chosen shortest path between two randomly chosen nodes have a high betweenness.
 
-This is shown in Figure <a href="#fig:ch6fig609">6.9</a>.
-
-
-
+This is shown in Figure \@ref(fig:ch6fig609).
 
 
 ```r
@@ -4208,10 +4003,10 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(betw >= 5), size=betw*2, label=name), repel=F)
 ```
 
-![<span id="fig:ch6fig609"></span>Figure 6.9: Node size reflects betweenness centrality](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig609-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig609-1.png" alt="Node size reflects betweenness centrality" width="576" />
+<p class="caption">(\#fig:ch6fig609)Node size reflects betweenness centrality</p>
+</div>
 
 
 We can see that there are three nodes (words = "say", "indeed", "fire") that have qualitatively higher betweenness values than all other nodes in the network. One way to interpret this is that these are nodes that tend to act as “bridges” between different clusters of nodes in the network.
@@ -4314,10 +4109,7 @@ sort(page[[1]], decreasing = TRUE) %>% head(6)
 ```
 \normalsize
 
-From the above parameters, we assemble a _data.frame_ and plot a correlation matrix, (Figure <a href="#fig:ch6fig610">6.10</a>).
-
-
-
+From the above parameters, we assemble a _data.frame_ and plot a correlation matrix, (Figure \@ref(fig:ch6fig610)).
 
 
 ```r
@@ -4333,16 +4125,13 @@ pairs(~deg + close + betw + eigen[[1]] + page[[1]],
       data=dfu)
 ```
 
-![<span id="fig:ch6fig610"></span>Figure 6.10: Simple Scatterplot Matrix](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig610-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig610-1.png" alt="Simple Scatterplot Matrix" width="576" />
+<p class="caption">(\#fig:ch6fig610)Simple Scatterplot Matrix</p>
+</div>
 
 
 ### Assembling a dataset of node-level measures for gd network
-
-
-
 
 
 ```r
@@ -4363,29 +4152,27 @@ dfd %>% ggplot(aes(x = strength, y = degree)) + geom_point() +
                   size = 3, color = "darkblue",
                   nudge_x = 0.25, nudge_y = 0.25, 
                   check_overlap = T) +
-        labs(title = "Word Co-occurrences Network")
+        labs(title = "Word Co-occurrences Network",
+             y = "Degree",x = "Strength")
 ```
 
-![<span id="fig:ch6fig611"></span>Figure 6.11: Relationship degree and strength](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig611-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig611-1.png" alt="Relationship degree and strength" width="576" />
+<p class="caption">(\#fig:ch6fig611)Relationship degree and strength</p>
+</div>
 
 
-
-
-
-The straight line in Figure <a href="#fig:ch6fig611">6.11</a> obviously shows that these are correlated since strength is simply the weighted version of degree.
+The straight line in Figure \@ref(fig:ch6fig611) obviously shows that these are correlated since strength is simply the weighted version of degree.
 
 How about the relationship between betweenness and strength?
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig612-1.png" alt="Relationship betweenness and strength" width="576" />
+<p class="caption">(\#fig:ch6fig612)Relationship betweenness and strength</p>
+</div>
 
 
-
-![<span id="fig:ch6fig612"></span>Figure 6.12: Relationship betweenness and strength](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig612-1.png)
-
-
-
-
-
-These are not well correlated, since they describe something different (as shown in Figure <a href="#fig:ch6fig612">6.12</a>, points are not in a straight line). Again the common words "say" and "indeed" have a dominant role in Surah Taa-Haa that narrates the true story of Prophet Mose. The common adverb "so" is often used for emphasis^[https://www.macmillandictionary.com/dictionary/british/so_1] to stress some facts and lessons of the story.
+These are not well correlated, since they describe something different (as shown in Figure \@ref(fig:ch6fig612), points are not in a straight line). Again the common words "say" and "indeed" have a dominant role in Surah Taa-Haa that narrates the true story of Prophet Moses. The common adverb "so" is often used for emphasis^[https://www.macmillandictionary.com/dictionary/british/so_1] to stress some facts and lessons of the story.
 
 ## Network-level measures {#network-level-measures}
 
@@ -4423,8 +4210,6 @@ For ‘fully connected’ networks, we can follow edges from any given node to a
 
 
 
-
-
 ```r
 components(gd)$membership[1:7]
 components(gd)$csize
@@ -4432,45 +4217,42 @@ components(gd)$no
 plot(gd)
 ```
 
-![<span id="fig:ch6fig613"></span>Figure 6.13: Simple plot showing network components](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig613-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig613-1.png" alt="Simple plot showing network components" width="576" />
+<p class="caption">(\#fig:ch6fig613)Simple plot showing network components</p>
+</div>
 
 
-
-
-
-The output shows the node membership, component sizes, and number of components. The numbers for _no_ (number of components, 4) and _csize_ (size for each component) can be confirmed from Figure <a href="#fig:ch6fig613">6.13</a>.
+The output shows the node membership, component sizes, and number of components. The numbers for _no_ (number of components, 4) and _csize_ (size for each component) can be confirmed from Figure \@ref(fig:ch6fig613).
 
 ### Degree distributions
 
-Degree distribution, the statistical distribution of node degrees in a network, is a common and often powerful way to describe a network. We can simply look at the degree distribution as a histogram of degrees. (See the plots in Figure <a href="#fig:ch6fig614">6.14</a> and Figure <a href="#fig:ch6fig615">6.15</a>).
+Degree distribution, the statistical distribution of node degrees in a network, is a common and often powerful way to describe a network. We can simply look at the degree distribution as a histogram of degrees. (See the plots in Figure \@ref(fig:ch6fig614) and Figure \@ref(fig:ch6fig615)).
+
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig614-1.png" alt="Histogram of gd degrees" width="576" />
+<p class="caption">(\#fig:ch6fig614)Histogram of gd degrees</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig615-1.png" alt="Histogram of gu degrees" width="576" />
+<p class="caption">(\#fig:ch6fig615)Histogram of gu degrees</p>
+</div>
 
 
-![<span id="fig:ch6fig614"></span>Figure 6.14: Histogram of gd degrees](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig614-1.png)
+However, if we want to compare the degree distributions of different networks, it might be more useful to plot the probability densities of each degree: i.e., what proportion of nodes has degree = 1, degree = 2, etc. We can do this by using the function _degree.distribution()_. The output of the plot is in Figure \@ref(fig:ch6fig616) and Figure \@ref(fig:ch6fig617).
+
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig616-1.png" alt="Degree distribution of gd" width="576" />
+<p class="caption">(\#fig:ch6fig616)Degree distribution of gd</p>
+</div>
 
 
-
-
-![<span id="fig:ch6fig615"></span>Figure 6.15: Histogram of gu degrees](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig615-1.png)
-
-
-
-
-
-However, if we want to compare the degree distributions of different networks, it might be more useful to plot the probability densities of each degree: i.e., what proportion of nodes has degree = 1, degree = 2, etc. We can do this by using the function _degree.distribution()_. The output of the plot is in Figure <a href="#fig:ch6fig616">6.16</a> and Figure <a href="#fig:ch6fig617">6.17</a>.
-
-
-
-![<span id="fig:ch6fig616"></span>Figure 6.16: Degree distribution of gd](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig616-1.png)
-
-
-
-
-![<span id="fig:ch6fig617"></span>Figure 6.17: Degree distribution of gu](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig617-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig617-1.png" alt="Degree distribution of gu" width="576" />
+<p class="caption">(\#fig:ch6fig617)Degree distribution of gu</p>
+</div>
 
 
 Degree and degree	distribution play an important role in understanding networks. A higher density changes the component structure of a network and impacts the diffusion and	learning properties. The degree also is an individual node’s	characteristic and reflects	its	position.
@@ -4489,7 +4271,7 @@ We can calculate path lengths with or without the edge weights (if using edge we
 
 This matrix is usually large, so we will not display the output. It gives us the geodesic path length between each pair of nodes in the network. We can describe the network using some characteristics of the paths that exist in that network. This matrix contains a bunch of cells that are “Inf” (i.e., infinity). This is because the network is not connected, and we cannot calculate path lengths between nodes in different components.
 
-How should we measure the average path length and diameter of a network with multiple components? There are two common solutions. The first is to ignore pairs of nodes that are in different components and only measure the average lengths of the paths that exist. This solution does not make sense for the diameter since the diameter of an unconnected network should be infinity. The second solution is to measure each component separately. We will do each of these in turn.
+How should we measure the average path length and diameter of a network with multiple components? There are two common solutions. The first is to ignore pairs of nodes that are in different components and only measure the average lengths of the paths that exist. This solution does not make sense for the diameter since the diameter of an unconnected network should be infinite. The second solution is to measure each component separately. We will do each of these in turn.
 
 Option 1: To calculate the average path length while ignoring pairs of nodes that are in different components, we can first replace the “Inf” with “NA” in the path length matrix. Next, we want just the “upper triangle” or “lower triangle” of this matrix, which lists all the geodesic paths without duplicates.
 
@@ -4629,15 +4411,13 @@ Modularity-based methods of community detection are not fool-proof. There is no 
 
 ### Modularity and community detection: a simple example
 
-Our undirected word co-occurrence network *gu* appears to have a clear community structure from the earlier plots (see Figure <a href="#fig:ch6fig618">6.18</a>).
+Our undirected word co-occurrence network *gu* appears to have a clear community structure from the earlier plots (see Figure \@ref(fig:ch6fig618)).
 
 
-
-
-![<span id="fig:ch6fig618"></span>Figure 6.18: Layout plot of gu](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig618-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig618-1.png" alt="Layout plot of gu" width="576" />
+<p class="caption">(\#fig:ch6fig618)Layout plot of gu</p>
+</div>
 
 
 Because the community division in this example is clear, we can choose any of the community detection methods as described in the previous section and we are likely to come up with the same answer.
@@ -4653,39 +4433,30 @@ modularity(eb) # modularity
 
 The resulting object is a 'communities object', which includes a few pieces of information - the number of communities (groups), the modularity value based on the node assignments, and the membership of nodes to each community. We can call each of these values separately.
 
-We can also use this 'communities object' to show the community structure (see Figure <a href="#fig:ch6fig619">6.19</a>).
+We can also use this 'communities object' to show the community structure (see Figure \@ref(fig:ch6fig619)).
+
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig619-1.png" alt="Community structure using edge.betweenness.community()" width="576" />
+<p class="caption">(\#fig:ch6fig619)Community structure using edge.betweenness.community()</p>
+</div>
 
 
+We repeat with the Louvain method (see Figure \@ref(fig:ch6fig620)):
+
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig620-1.png" alt="Community structure using the Louvain method" width="576" />
+<p class="caption">(\#fig:ch6fig620)Community structure using the Louvain method</p>
+</div>
 
 
-![<span id="fig:ch6fig619"></span>Figure 6.19: Community structure using edge.betweenness.community()](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig619-1.png)
+Figures \@ref(fig:ch6fig619) and \@ref(fig:ch6fig620) show that the two different methods yield different results; one with 7 and the other 8 communities (groups).
 
+We can customize the plot. We use the *RColorBrewer* package to assign colors (see Figure \@ref(fig:ch6fig621)).
 
-
-
-
-We repeat with the Louvain method (see Figure <a href="#fig:ch6fig620">6.20</a>):
-
-
-
-
-![<span id="fig:ch6fig620"></span>Figure 6.20: Community structure using the Louvain method](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig620-1.png)
-
-
-
-
-
-Figures <a href="#fig:ch6fig619">6.19</a> and <a href="#fig:ch6fig620">6.20</a> show that the two different methods yield different results; one with 7 and the other 8 communities (groups).
-
-We can customize the plot. We use the *RColorBrewer* package to assign colors (see Figure <a href="#fig:ch6fig621">6.21</a>).
-
-
-
-
-![<span id="fig:ch6fig621"></span>Figure 6.21: Using the Louvain method with some color adjustments](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig621-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig621-1.png" alt="Using the Louvain method with some color adjustments" width="576" />
+<p class="caption">(\#fig:ch6fig621)Using the Louvain method with some color adjustments</p>
+</div>
 
 
 ### Another example of clustering
@@ -4734,10 +4505,7 @@ __Assortment: a simple example with igraph__
 
 We use the same example network in this tutorial to demonstrate how to calculate assortativity, and to compare the difference between modularity and assortativity.
 
-We start by assigning each node a value and let it vary in size (see Figure <a href="#fig:ch6fig622">6.22</a>).
-
-
-
+We start by assigning each node a value and let it vary in size (see Figure \@ref(fig:ch6fig622)).
 
 
 ```r
@@ -4749,22 +4517,19 @@ V(gu)$size = 2*degree(gu)
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-![<span id="fig:ch6fig622"></span>Figure 6.22: Node size reflecting its degree](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig622-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig622-1.png" alt="Node size reflecting its degree" width="576" />
+<p class="caption">(\#fig:ch6fig622)Node size reflecting its degree</p>
+</div>
 
 ```r
 assortativity(gu, V(gu)$size, directed=F)
 ```
 
 
-
-
-
 This network exhibits negative (low) levels of assortativity by node size.
 
-We can also convert the size variable into a binary (i.e., discrete) trait and calculate the assortment coefficient (see Figure <a href="#fig:ch6fig623">6.23</a>).
-
-
-
+We can also convert the size variable into a binary (i.e., discrete) trait and calculate the assortment coefficient (see Figure \@ref(fig:ch6fig623)).
 
 
 ```r
@@ -4774,20 +4539,17 @@ V(gu)$size.discrete = (V(gu)$size > 5) + 0
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-![<span id="fig:ch6fig623"></span>Figure 6.23: Node size discrete](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig623-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig623-1.png" alt="Node size discrete" width="576" />
+<p class="caption">(\#fig:ch6fig623)Node size discrete</p>
+</div>
 
 ```r
 assortativity(gu, V(gu)$size.discrete, directed=F)
 ```
 
 
-
-
-
-As a comparison, we create a node attribute that varies randomly across all nodes in the network and then measure the assortativity coefficient based on this trait. We will plot the figure with square nodes, just to make it clear that we are plotting a different trait(see Figure <a href="#fig:ch6fig624">6.24</a>).
-
-
-
+As a comparison, we create a node attribute that varies randomly across all nodes in the network and then measure the assortativity coefficient based on this trait. We will plot the figure with square nodes, just to make it clear that we are plotting a different trait(see Figure \@ref(fig:ch6fig624)).
 
 
 ```r
@@ -4799,10 +4561,10 @@ plot(gu, layout=l, edge.color="black", vertex.size=V(gu)$random,
      vertex.shape="square")
 ```
 
-![<span id="fig:ch6fig624"></span>Figure 6.24: Using different node shape](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig624-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig624-1.png" alt="Using different node shape" width="576" />
+<p class="caption">(\#fig:ch6fig624)Using different node shape</p>
+</div>
 
 
 We can see that there is little assortment based on this trait.
@@ -4829,13 +4591,11 @@ gt
 ```
 \normalsize
 
-Notice how the _igraph_ *wordnetwork* is converted into two separate tibbles, Node Data and Edge Data. But both *wordnetwork* and *gt* are of the same _igraph class_. 
+Notice how the _igraph_ *wordnetwork* is converted into two separate tibbles, Node Data and Edge Data. But both *wordnetwork* and *gt* are of the same _igraph class_.
 
 ### Direct ggraph integration
 
-*gt* can directly be used with our preferred _ggraph_ package for visualizing networks (see the plot output in Figure <a href="#fig:ch6fig625">6.25</a>).
-
-
+*gt* can directly be used with our preferred _ggraph_ package for visualizing networks (see the plot output in Figure \@ref(fig:ch6fig625)).
 
 
 
@@ -4845,16 +4605,13 @@ ggraph(gt, layout = 'fr', weights = cooc) +
   geom_node_point()
 ```
 
-![<span id="fig:ch6fig625"></span>Figure 6.25: Simple first plot example using tidygraph and ggraph](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig625-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig625-1.png" alt="Simple first plot example using tidygraph and ggraph" width="576" />
+<p class="caption">(\#fig:ch6fig625)Simple first plot example using tidygraph and ggraph</p>
+</div>
 
 
-
-
-
-Now it is much easier to experiment with modifications to the node and edge parameters affecting layouts as it is not necessary to modify the underlying graph but only the plotting code (output in Figure <a href="#fig:ch6fig626">6.26</a>).
-
-
-
+Now it is much easier to experiment with modifications to the node and edge parameters affecting layouts as it is not necessary to modify the underlying graph but only the plotting code (output in Figure \@ref(fig:ch6fig626)).
 
 
 ```r
@@ -4863,10 +4620,10 @@ ggraph(gt, layout = 'fr', weights = log(cooc)) +
   geom_node_point(color = "gold4", size = 3)
 ```
 
-![<span id="fig:ch6fig626"></span>Figure 6.26: Adjusting node and edge plotting parameters](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig626-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig626-1.png" alt="Adjusting node and edge plotting parameters" width="576" />
+<p class="caption">(\#fig:ch6fig626)Adjusting node and edge plotting parameters</p>
+</div>
 
 
 ### Use selected measures from _tidygraph_ and plot
@@ -4893,40 +4650,34 @@ node_measures[1:10,c(1,5:10)]
 ```
 \normalsize
 
-Now we plot the various measures from the resulting *node_measures* _data.frame_ (output in Figure <a href="#fig:ch6fig627">6.27</a>).
+Now we plot the various measures from the resulting *node_measures* _data.frame_ (output in Figure \@ref(fig:ch6fig627)).
 
-Plot _degree_, _degree_in_, and _degree_out_ together (output in Figure <a href="#fig:ch6fig628">6.28</a>).
+Plot _degree_, _degree_in_, and _degree_out_ together (output in Figure \@ref(fig:ch6fig628)).
 
-Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure <a href="#fig:ch6fig629">6.29</a>).
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig627-1.png" alt="Degree for top 30 words" width="576" />
+<p class="caption">(\#fig:ch6fig627)Degree for top 30 words</p>
+</div>
 
-Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure <a href="#fig:ch6fig630">6.30</a>).
+Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure \@ref(fig:ch6fig629)).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig628-1.png" alt="Degree-in and degree-out for top 50 words" width="576" />
+<p class="caption">(\#fig:ch6fig628)Degree-in and degree-out for top 50 words</p>
+</div>
 
+Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure \@ref(fig:ch6fig630)).
 
-
-![<span id="fig:ch6fig627"></span>Figure 6.27: Degree for top 30 words](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig627-1.png)
-
-
-
-
-![<span id="fig:ch6fig628"></span>Figure 6.28: Degree-in and degree-out for top 50 words](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig628-1.png)
-
-
-
-
-![<span id="fig:ch6fig629"></span>Figure 6.29: Degree and betweenness for top 50 words](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig629-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig629-1.png" alt="Degree and betweenness for top 50 words" width="576" />
+<p class="caption">(\#fig:ch6fig629)Degree and betweenness for top 50 words</p>
+</div>
 
 
-
-
-
-![<span id="fig:ch6fig630"></span>Figure 6.30: Other measures for top 50 words](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig630-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig630-1.png" alt="Other measures for top 50 words" width="576" />
+<p class="caption">(\#fig:ch6fig630)Other measures for top 50 words</p>
+</div>
 
 Despite using *coord_cartesian(ylim = c(0, 1))* to scale the Measure coordinate, the values for br_score, and coreness are 0 or very small. Without any doubt "say", "Lord" together with "Allah" and "Mose" are the most influential and important words in Surah Taa-Haa.
 
@@ -4948,27 +4699,19 @@ The following is an interesting example in true _tidyverse_ fashion that combine
 
 \normalsize
 
-We can also convert our active node or edge table back to a _tibble_ and plot the output  (see Figure <a href="#fig:ch6fig631">6.31</a>).
+We can also convert our active node or edge table back to a _tibble_ and plot the output  (see Figure \@ref(fig:ch6fig631)).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig631-1.png" alt="Nodes are colored by group" width="576" />
+<p class="caption">(\#fig:ch6fig631)Nodes are colored by group</p>
+</div>
 
+For the next plot, we define our own specific colors. The center-most characters are in red and the distance to the center is the node size (see Figure \@ref(fig:ch6fig632)).
 
-
-![<span id="fig:ch6fig631"></span>Figure 6.31: Nodes are colored by group](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig631-1.png)
-
-
-
-
-
-For the next plot, we define our own specific colors. The center-most characters are in red and the distance to the center is the node size (see Figure <a href="#fig:ch6fig632">6.32</a>).
-
-
-
-
-![<span id="fig:ch6fig632"></span>Figure 6.32: Nodes are colored by centeredness](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig632-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig632-1.png" alt="Nodes are colored by centeredness" width="576" />
+<p class="caption">(\#fig:ch6fig632)Nodes are colored by centeredness</p>
+</div>
 
 Clearly, "say" is the _keyplayer_ for the main group.
 
@@ -5042,10 +4785,7 @@ From the table above, "say" tops in most centrality measures.
 
 ### Visualize the network
 
-We scale the nodes by degree centrality, and color it by community. We filter by only showing community 1 to 10 (see output in Figure <a href="#fig:ch6fig633">6.33</a>).
-
-
-
+We scale the nodes by degree centrality, and color it by community. We filter by only showing community 1 to 10 (see output in Figure \@ref(fig:ch6fig633)).
 
 
 ```r
@@ -5064,11 +4804,10 @@ network_ego1 %>%
   theme(legend.position = "none")
 ```
 
-![<span id="fig:ch6fig633"></span>Figure 6.33: Top 10 word communities](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig633-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig633-1.png" alt="Top 10 word communities" width="576" />
+<p class="caption">(\#fig:ch6fig633)Top 10 word communities</p>
+</div>
 
 __ego() function__
 
@@ -5107,10 +4846,7 @@ jg2 <- simplify(as.undirected(jg1))
 
 The parameter focus in the first line is used to choose the node id of the focal node (Mose = 1). The function coord_fixed() is used to always keep the aspect ratio at one (i.e. the circles are always displayed as a circle and not an ellipse).
 
-The function draw_circle() can be used to add the circles explicitly (see the output in Figure <a href="#fig:ch6fig634">6.34</a>).
-
-
-
+The function draw_circle() can be used to add the circles explicitly (see the output in Figure \@ref(fig:ch6fig634)).
 
 
 ```r
@@ -5133,103 +4869,75 @@ ggraph(jg1,layout = "focus", focus = focusnode) +
     theme(legend.position = "bottom")
 ```
 
-![<span id="fig:ch6fig634"></span>Figure 6.34: Using draw circle layout with Mose as focus node](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig634-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig634-1.png" alt="Using draw circle layout with Mose as focus node" width="576" />
+<p class="caption">(\#fig:ch6fig634)Using draw circle layout with Mose as focus node</p>
+</div>
 
+Repeat with a change of the focus node and displaying all the words (see the output in Figure \@ref(fig:ch6fig635)).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig635-1.png" alt="Same layout with say as focus node and text labels" width="576" />
+<p class="caption">(\#fig:ch6fig635)Same layout with say as focus node and text labels</p>
+</div>
 
+_layout_with_centrality()_ works similarly. We can specify any centrality index (or numeric vector) and create a concentric layout where the most central nodes are put in the center and the most peripheral nodes in the biggest circle. The numeric attribute used for the layout is specified with the cent parameter. Here, we use the weighted degree of the characters. See the output in Figure \@ref(fig:ch6fig636).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig636-1.png" alt="Weighted degree centrality layout" width="576" />
+<p class="caption">(\#fig:ch6fig636)Weighted degree centrality layout</p>
+</div>
 
-Repeat with a change of the focus node and displaying all the words (see the output in Figure <a href="#fig:ch6fig635">6.35</a>).
+We repeat with _betweenness centrality_ (see the output in Figure \@ref(fig:ch6fig637)).
 
-
-
-
-![<span id="fig:ch6fig635"></span>Figure 6.35: Same layout with say as focus node and text labels](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig635-1.png)
-
-
-
-
-
-_layout_with_centrality()_ works similarly. We can specify any centrality index (or numeric vector) and create a concentric layout where the most central nodes are put in the center and the most peripheral nodes in the biggest circle. The numeric attribute used for the layout is specified with the cent parameter. Here, we use the weighted degree of the characters. See the output in Figure <a href="#fig:ch6fig636">6.36</a>.
-
-
-
-
-![<span id="fig:ch6fig636"></span>Figure 6.36: Weighted degree centrality layout](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig636-1.png)
-
-
-
-
-
-We repeat with _betweenness centrality_ (see the output in Figure <a href="#fig:ch6fig637">6.37</a>).
-
-
-
-
-![<span id="fig:ch6fig637"></span>Figure 6.37: Betweenness centrality layout with degree for node size](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig637-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig637-1.png" alt="Betweenness centrality layout with degree for node size" width="576" />
+<p class="caption">(\#fig:ch6fig637)Betweenness centrality layout with degree for node size</p>
+</div>
 
 __Stress layout and clustering__
 
-We focus again on *gd* and *gu*. Some clustering functions do not work on directed graphs. We show two different examples here. The first one is a directed network (outputs in Figure <a href="#fig:ch6fig638">6.38</a>).
+We focus again on *gd* and *gu*. Some clustering functions do not work on directed graphs. We show two different examples here. The first one is a directed network (outputs in Figure \@ref(fig:ch6fig638)).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig638-1.png" alt="Directed network with clusters" width="576" />
+<p class="caption">(\#fig:ch6fig638)Directed network with clusters</p>
+</div>
 
+The second one is the undirected graph *gu* and *cluster_louvain* which does not work with directed graphs. *gu* does not have edge properties so we remove the aes(width=cooc). The output is in Figure \@ref(fig:ch6fig639).
 
-![<span id="fig:ch6fig638"></span>Figure 6.38: Directed network with clusters](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig638-1.png)
-
-
-
-
-
-The second one is the undirected graph *gu* and *cluster_louvain* which does not work with directed graphs. *gu* does not have edge properties so we remove the aes(width=cooc). The output is in Figure <a href="#fig:ch6fig639">6.39</a>.
-
-
-
-
-![<span id="fig:ch6fig639"></span>Figure 6.39: Undirected network with clusters](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig639-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig639-1.png" alt="Undirected network with clusters" width="576" />
+<p class="caption">(\#fig:ch6fig639)Undirected network with clusters</p>
+</div>
 
 Interestingly, the cluster functions give 4 for *gd* and 8 for *gu*.
 
 __Focus layout and clustering - focus on selected words__
 
-Earlier, we have shown how _layout_with_focus()_ allows us to focus the network on a specific word and order all other nodes in concentric circles (depending on distance) around it. Here we combine it with clustering. The limitation is that it can only work with a fully connected network (see the output in Figure <a href="#fig:ch6fig640">6.40</a> and Figure <a href="#fig:ch6fig641">6.41</a>).
+Earlier, we have shown how _layout_with_focus()_ allows us to focus the network on a specific word and order all other nodes in concentric circles (depending on distance) around it. Here we combine it with clustering. The limitation is that it can only work with a fully connected network (see the output in Figure \@ref(fig:ch6fig640) and Figure \@ref(fig:ch6fig641)).
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig640-1.png" alt="Focus layout with only the focus word" width="576" />
+<p class="caption">(\#fig:ch6fig640)Focus layout with only the focus word</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig641-1.png" alt="Focus layout with all words" width="576" />
+<p class="caption">(\#fig:ch6fig641)Focus layout with all words</p>
+</div>
 
+_layout_with_centrality()_ is based on a similar principle. We have shown this earlier. But here, we repeat with clustering (using *gu*) and look at the coreness centrality measure. Earlier, we have seen that _cluster_louvain()_ gives different results than _clusters()_ (see output in Figure \@ref(fig:ch6fig642) and Figure \@ref(fig:ch6fig643)).
 
-![<span id="fig:ch6fig640"></span>Figure 6.40: Focus layout with only the focus word](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig640-1.png)
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig642-1.png" alt="Centrality layout : graph.strength with clusters" width="576" />
+<p class="caption">(\#fig:ch6fig642)Centrality layout : graph.strength with clusters</p>
+</div>
 
-
-
-
-![<span id="fig:ch6fig641"></span>Figure 6.41: Focus layout with all words](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig641-1.png)
-
-
-
-
-
-_layout_with_centrality()_ is based on a similar principle. We have shown this earlier. But here, we repeat with clustering (using *gu*) and look at the coreness centrality measure. Earlier, we have seen that _cluster_louvain()_ gives different results than _clusters()_ (see output in Figure <a href="#fig:ch6fig642">6.42</a> and Figure <a href="#fig:ch6fig643">6.43</a>).
-
-
-
-
-![<span id="fig:ch6fig642"></span>Figure 6.42: Centrality layout : graph.strength with clusters](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig642-1.png)
-
-
-
-
-![<span id="fig:ch6fig643"></span>Figure 6.43: Centrality layout : graph.coreness with clusters](08-Ch6WordLocNetAnal_files/figure-docx/ch6fig643-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig643-1.png" alt="Centrality layout : graph.coreness with clusters" width="576" />
+<p class="caption">(\#fig:ch6fig643)Centrality layout : graph.coreness with clusters</p>
+</div>
 
 ## Summary {#chapter-6-summary}
 
@@ -5250,7 +4958,7 @@ The *centrality* of a node reflects its influence, power, and importance. There 
 
 We summarize the use of some of these measures in simpler terms.
 
-* Degree distributions help identify global	patterns of networks.		
+* Degree distributions help identify global	patterns of networks.
 * Clustering helps identify local	patterns.
 * Centrality measures determine the position and importance of nodes in	networks.
 
@@ -5259,33 +4967,32 @@ We ended the tutorial with examples of using _ggraph_ with the stress, layout_wi
 In concluding, we refer to some interesting points about areas of research in networks.^[https://www.coursera.org/learn/social-economic-networks]
 Why	Study	Networks?
 
-* Many	economic,	political,	and	social interactions	are	shaped	by	the	local	
-structure	of	relationships:	
-    * trade	of goods	and	services	
-    * sharing	of information,	favors,	risk
-    * transmission	of	viruses,	opinions
-    * access	to	info	about	jobs	
-    * choices	of	behavior,	education	
-    * political	alliances,	trade	alliances
-* Social	networks	influence	behavior	
-    * crime,	employment,	human	capital,	voting,	smoking
-    * networks	exhibit	heterogeneity,	but	also	have	enough	underlying structure	to	model	
-* Pure	interest	in	social	structure
-    * understand	social	network	structure	
+* Many	economic,	political, and social interactions are shaped	by the local structure of relationships:	
+    * trade	of goods and services	
+    * sharing	of information,	favors, risk
+    * transmission of	viruses, opinions
+    * access to	info about jobs	
+    * choices	of behavior, education	
+    * political	alliances, trade alliances
+* Social networks	influence	behavior	
+    * crime, employment, human capital, voting,	smoking
+    * networks exhibit heterogeneity,	but	also have	enough underlying structure	to model	
+* Pure	interest in	social structure
+    * understand social network	structure	
 
 Primary	Questions:	
 
-* What	do	we	know	about	network	structure?	
+* What do	we know	about	network	structure?	
 * How	do networks	form?	How do	the	efficient	networks form?
 * How	do networks	influence	behavior?
-* Diffusion, learning, peer	effects, trade,	inequality,	polarization	
+* Diffusion, learning, peer	effects, trade, inequality,	polarization	
 * Dynamics,	feedback
 
-What are	important	areas	for	future research?	Three	areas	for	research include	
+What are important areas for future research?	Three	areas	for	research include:	
 
 * Theory	
-    * network	formation, dynamics,	design	
-    * how	networks influence	behavior	
+    * network	formation, dynamics, design	
+    * how	networks influence behavior	
     * co-evolution?	
 * Empirical	and	experimental work
     * observe	networks,	patterns,	influence	
@@ -5325,7 +5032,6 @@ In this part, we add two chapters that will be focused on Graph Theory (or Netwo
 
 Some major unanswered questions are summarized at the end of the chapter as directions for future research.
 
-
 <!--chapter:end:09-Part3.Rmd-->
 
 
@@ -5335,23 +5041,20 @@ Some major unanswered questions are summarized at the end of the chapter as dire
 
 Natural Language Processing (NLP) is a combination of linguistics and data science analyzing large amounts of _natural language_ data which includes a collection of speeches, text corpora, and other forms of data generated from the usage of languages. The tasks of NLP vary from text mining and speech recognition (data-driven) to more complex tasks such as automatic text generation or speech production (AI-driven).
 
-In this chapter we will focus on one particular aspect of NLP applied to a chosen text of the English translation of the Quran, namely _lexical semantic analysis_. This analysis focuses on what is termed as __individual words in context__ analysis. Lexical semantics is the study of word meanings within its internal semantic structure or the semantic relations that occur within the corpus as a whole.^[Lexical semantics, Oxford research encyclopedias; https://oxfordre.com/linguistics/view/10.1093/acrefore/9780199384655.001.0001/acrefore-9780199384655-e-29] We will focus on the second approach, namely to study words in relation to the rest of the words in the complete text, in this case, the Saheeh English translation of Al-Quran.
+In this chapter we will focus on one particular aspect of NLP applied to a chosen text of the English translation of the Quran, namely _lexical semantic analysis_. This analysis focuses on what is termed as __individual words in context__ analysis. Lexical semantics is the study of word meanings within its internal semantic structure or the semantic relations that occur within the corpus.^[Lexical semantics, Oxford research encyclopedias; https://oxfordre.com/linguistics/view/10.1093/acrefore/9780199384655.001.0001/acrefore-9780199384655-e-29] We will focus on the second approach, namely to study words in relation to the rest of the words in the complete text, in this case, the Saheeh English translation of Al-Quran.
 
-We will also take a very specific approach by deploying network graphs (or properly known as graph theory). We start with visualization of words within the text as a network of relations (words in the text as _nodes_ and their presence in a sentence as _directed edges_). The relations can take several forms to suit a particular interest. It may be to discover main messages in the text or analytical reasoning such as to uncover the major topics within those messages. It can be explorative analysis, such as how these messages and topics relate to each other within the main message (or text).
+We will also take a very specific approach by deploying network graphs (or properly known as graph theory). We start with visualization of words within the text as a network of relations (words in the text as _nodes_ and their presence in a sentence as _directed edges_). Relationships can take several forms to suit a particular interest. It may be to discover main messages in the text or analytical reasoning such as to uncover the major topics within those messages. It can be explorative analysis, such as how these messages and topics relate to each other within the main message (or text).
 
 Another important point to mention is the difference between the _parametrical_ and _non-parametrical_ approach to the task at hand. The parametrical approach relies on some pre-built models, such as _sentiment scoring_, _semantic ontologies_, etc. The non-parametric approach does not rely on any models and instead will be driven by the empirical nature of the words and the text itself (i.e. do not rely on other samples from outside of the sample at hand). We will use the second approach by using network analysis and graph theory.
 
-In network analysis, identifying a few methods will help greatly.  An example is the formation of the network whether it follows a random graph or any particular _graph structure_. Another important issue is on the _emergent structures_, whether any emergent structure can be observed, and if it exists, we can uncover the factors of the emergent structures and sub-structures. This will bring us into the subject of _complicatedness_ and _complexity_ of _systems analysis_. 
-
+In network analysis, identifying a few methods will help greatly. An example is the formation of the network whether it follows a random graph or any particular graph structure. Another important issue is on the emergent structures, whether any emergent structure can be observed, and if it exists, we can uncover the factors of the emergent structures and sub-structures. This will bring us into the subject of complicatedness and complexity of systems analysis.
 Given the enormous possibilities and size of the task, this chapter will focus on providing preliminary findings using basic network analysis. We will identify some open issues for future work.
-
-To perform the various analysis, we will use two main packages in R, namely _quanteda_ [@quanteda] and _igraph_ [@igraph]. Quanteda is a complete suite of R packages for text analytics with many ready-made built-in functions that are easy to use.^[Quanteda reference, https://quanteda.io/index.html] iGraph is a network (or graph network) package in R.^[iGraph reference, https://igraph.org/r/] Both packages are well developed and supported within the R programming community. For the data, we will use the prebuilt text in _tidydata_ format from _quRan_ package, and for some of the utilities required, we will use the _quanteda_ package.
-
-For purposes of fast computation and visualization of a large network, we will use open-source software, _Gephi_^[https://gephi.org]. Similar software are _Pajek_^[http://pajek.imfm.si], _Cytoscape_^[https://cytoscape.org], and _NodeXL_^[https://www.smrfoundation.org]. As far as computation is concerned there are no additional advantages offered by these software applications, except for easier visual manipulations and production of images. We will rely on Gephi for this purpose while using __R__ as our main engine for computations.
+To perform the various analysis, we will use two main packages in R, namely quanteda (Benoit et al. 2018) and igraph (Csárdi 2020). Quanteda is a complete suite of R packages for text analytics with many ready-made built-in functions that are easy to use.  iGraph is a network (or graph network) package in R.  Both packages are well developed and supported within the R programming community. For the data, we will use the prebuilt text in tidydata format from quRan package, and for some of the utilities required, we will use the quanteda package.
+For purposes of fast computation and visualization of a large network, we will use open-source software, Gephi . Similar software are Pajek , Cytoscape , and NodeXL . As far as computation is concerned there are no additional advantages offered by these software applications, except for easier visual manipulation and production of images. We will rely on Gephi for this purpose while using R as our main engine for computations.
 
 ## A brief on _quanteda_ {#a-brief-tutorial-on-quanteda}
 
-The work for this chapter and the next will rely on the _quanteda_ package; hence we feel it is appropriate to present a short and brief tutorial on the package (as we have done for _tidytext_, _igraph_, and _ggraph_ in earlier chapters).
+The work for this chapter and the next relies on the _quanteda_ package; hence we feel it is appropriate to present a short and brief tutorial on the package (as we have done for _tidytext_, _igraph_, and _ggraph_ in earlier chapters).
 
 The _quanteda_ package is among the recent introductions into the family of NLP tools in __R__. It was developed by Kenneth Benoit and many developers, supported by the European Research Council[@quanteda]. The package contains comprehensive text modeling functions from start to end - which includes basic features from _tokenization_ to _unsupervised learning models_ of text analysis.^[For general reference, readers should refer to the quanteda documentation and tutorials at https://quanteda.io/index.html]
 
@@ -5362,7 +5065,7 @@ _quanteda_ has four basic types of objects:
 3. _dfm()_ a Document-feature matrix (DFM), a document-term-matrix, which is a sparse matrix of 0 and 1, indicating the occurrence of a term in a document (which is a sentence or set of texts)
 4. _fcm()_ a Feature Co-occurrence Matrix (FCM), a term-to-term-matrix, which is a sparse matrix of 0 and 1, indicating co-occurrence of a term with another term, within the entire document or corpus.
 
-In most text analytics packages, the first three objects are available directly from the package, while the feature's matrix is generated from pre-processing exercises before being fed onto a learning model. The advantage of _quanteda_ is fast and seamless processing or creation of the FCM. 
+In most text analytics packages, the first three objects are available directly from the package, while the feature's matrix is generated from pre-processing exercises before being fed onto a learning model. The advantage of _quanteda_ is fast and seamless processing or creation of the FCM.
 
 Text analysis with _quanteda_ goes through all these four types of objects either explicitly or implicitly.
 
@@ -5444,9 +5147,6 @@ In network analysis, an important aspect is the dynamics of the network growth, 
 For the Saheeh English Quran, how does this growth behavior look like? This is the question we want to investigate. From the start, we know that the most frequent (and hence central word) is "Allah". How do other words start to attach to this central "node", as we increase the words by the order of frequencies?
 
 
-
-
-
 ```r
 quran_all = read_csv("data/quran_trans.csv")
 tokensQ = quran_all$saheeh %>% 
@@ -5475,57 +5175,51 @@ p4 = fcm_tpnplot(fcmQ, n = 200,vls = 0)
 cowplot::plot_grid(p1,p2)
 ```
 
-![<span id="fig:ch7fig701"></span>Figure 7.1: Growth of words co-occurrences network in Saheeh](10-Ch7TextNetAnal_files/figure-docx/ch7fig701-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig701-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
+<p class="caption">(\#fig:ch7fig701)Growth of words co-occurrences network in Saheeh</p>
+</div>
 
 
 ```r
 cowplot::plot_grid(p3,p4)
 ```
 
-![<span id="fig:ch7fig702"></span>Figure 7.2: Growth of words co-occurrences network in Saheeh](10-Ch7TextNetAnal_files/figure-docx/ch7fig702-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig702-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
+<p class="caption">(\#fig:ch7fig702)Growth of words co-occurrences network in Saheeh</p>
+</div>
 
-
-
-
-
-Figure <a href="#fig:ch7fig701">7.1</a> shows the network growing from 10 to 20 words; and Figure <a href="#fig:ch7fig702">7.2</a> is from 50 to 200 words.
+Figure \@ref(fig:ch7fig701) shows the network growing from 10 to 20 words; and Figure \@ref(fig:ch7fig702) is from 50 to 200 words.
 
 We can observe that the word network grows centrally from the single word "Allah", and it grows in a particular way as more words are added until the network is dense. More importantly, the whole word network (for co-occurrence network) is "one" single large network, densely organized. This is an important observation. The question is what does it mean?
 
-Here we enclose a sample of a full-blown word co-occurrence network from the novel Moby Dick (Chapter 1) as a comparison (in Figure <a href="#fig:ch7fig703">7.3</a>). It is a fully connected network, forming a single large network, but the network is not as dense as the network shown for Saheeh. In fact, if we do a similar step of checking the growth of the network, it is not the same as what we see in Saheeh.^[We do not enclose the plots here to save space. Readers can repeat the same exercise using the enclosed code to check the results for themselves.]
+Here we enclose a sample of a full-blown word co-occurrence network from the novel Moby Dick (Chapter 1) as a comparison (in Figure \@ref(fig:ch7fig703)). It is a fully connected network, forming a single large network, but the network is not as dense as the network shown for Saheeh. In fact, if we do a similar step of checking the growth of the network, it is not the same as what we see in Saheeh.^[We do not enclose the plots here to save space. Readers can repeat the same exercise using the enclosed code to check the results for themselves.]
 
-
-
-
-![<span id="fig:ch7fig703"></span>Figure 7.3: Example of co-occurrence network in Chapter 1 of Moby Dick novel](10-Ch7TextNetAnal_files/figure-docx/ch7fig703-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig703-1.png" alt="Example of co-occurrence network in Chapter 1 of Moby Dick novel" width="384" />
+<p class="caption">(\#fig:ch7fig703)Example of co-occurrence network in Chapter 1 of Moby Dick novel</p>
+</div>
 
 Furthermore, a detailed look at the plot (which is not shown here) reveals that the early keywords seem to have some "themes" to it; namely about "allah", "lord", "believe", "day", "people", "muhammad", "messenger", and the themes grow out of these main themes. While these themes grow, the centrality of "allah" remains and grows stronger as the network size expand. This is termed the "emergent structure" of the network. Why this is true, is a subject that requires further research and analysis, which we encourage readers to pursue.
 
-And if we expand to all co-occurrences on the entire Saheeh corpus, we will get the picture in Figure <a href="#fig:ch7fig704">7.4</a>^[The figure is obtained from Gephi; since plotting a large network of this size is not efficient in __R__], which is amazingly interesting.
+And if we expand to all co-occurrences on the entire Saheeh corpus, we will get the picture in Figure \@ref(fig:ch7fig704)^[The figure is obtained from Gephi; since plotting a large network of this size is not efficient in __R__], which is amazingly interesting.
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig704-1.png" alt="Saheeh entire corpus word co-occurence network" width="384" />
+<p class="caption">(\#fig:ch7fig704)Saheeh entire corpus word co-occurence network</p>
+</div>
 
+The center of the network remains singly to "allah", and a zoomed view to the center is shown in Figure \@ref(fig:ch7fig705), which shows the central node, and all other major nodes (i.e., themes) - which are ordered as "allah", "lord", "people", "day", and so on. These "themes" interestingly coincide with the major "subject matters" as discussed by one of us through a qualitative analysis of the Quran.
 
-
-![<span id="fig:ch7fig704"></span>Figure 7.4: Saheeh entire corpus word co-occurence network](10-Ch7TextNetAnal_files/figure-docx/ch7fig704-1.png)
-
-
-
-The center of the network remains singly to "allah", and a zoomed view to the center is shown in Figure <a href="#fig:ch7fig705">7.5</a>, which shows the central node, and all other major nodes (i.e., themes) - which are ordered as "allah", "lord", "people", "day", and so on. These "themes" interestingly coincide with the major "subject matters" as discussed by one of us through a qualitative analysis of the Quran.
-
-
-
-
-![<span id="fig:ch7fig705"></span>Figure 7.5: Close up view of the center of the network](10-Ch7TextNetAnal_files/figure-docx/ch7fig705-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig705-1.png" alt="Close up view of the center of the network" width="384" />
+<p class="caption">(\#fig:ch7fig705)Close up view of the center of the network</p>
+</div>
 
 ### Word co-occurrence network statistics
 
-The word co-occurrence network is about understanding how each word that appears in the text relates to all other words which appear in the whole text. The connections or links between the words explain the structure of the messages or topics of the texts. The example in Figure <a href="#fig:ch7fig703">7.3</a> is a word co-occurrence network for Chapter 1 of Moby Dick's novel. It shows the whole text is centered around "sea" and "man", and sub-grouped by "water", "ship", and "voyage". The colors of the nodes represent sub-groupings (or cliques) whereby such sub-groupings may represent another message or sub-topic by themselves. The same process happens in growing the network shown in Figure <a href="#fig:ch7fig703">7.3</a> for Saheeh's entire corpus.
+The word co-occurrence network is about understanding how each word that appears in the text relates to all other words which appear in the whole text. The connections or links between the words explain the structure of the messages or topics of the texts. The example in Figure \@ref(fig:ch7fig703) is a word co-occurrence network for Chapter 1 of Moby Dick's novel. It shows the whole text is centered around "sea" and "man", and sub-grouped by "water", "ship", and "voyage". The colors of the nodes represent sub-groupings (or cliques) whereby such sub-groupings may represent another message or sub-topic by themselves. The same process happens in growing the network shown in Figure \@ref(fig:ch7fig703) for Saheeh's entire corpus.
 
 Now let us work using the _igraph_ package and explore various statistical analyses using graph theory in understanding the network.
 
@@ -5541,8 +5235,8 @@ First let us get the number of words (nodes) and co-occurrences (edges) in the w
 
 \footnotesize
 
-```r
-paste("nodes =",length(V(igphQ))," and edges =",length(E(igphQ)))
+```
+## [1] "nodes = 4801  and edges = 267668"
 ```
 \normalsize
 
@@ -5560,7 +5254,7 @@ Average distance is a measure of "halfway" steps needed to reach the "center" of
 
 What all of these measures mean is that the word network for Saheeh exhibits similarities to the Small World network! In fact, for an Erdos-Renyi (random graph) network, the comparable numbers are between 14 to 20 for the diameter and between 4.60 to 6 for the average distance.[@ban2014] This means that the words co-occurrences in Saheeh are not random in nature, and in fact well structured as a dense network.
 
-These properties very strongly indicate how closely related are all the words in Saheeh and the conciseness of the sentences in the text. Lower diameters and average distances are good measures of "efficiencies" in a large network. In the case of Saheeh, the measures clearly imply that the words in the texts are used with extreme efficiency. 
+These properties very strongly indicate how closely related are all the words in Saheeh and the conciseness of the sentences in the text. Lower diameters and average distances are good measures of "efficiencies" in a large network. In the case of Saheeh, the measures clearly imply that the words in the texts are used with extreme efficiency.
 
 ### Connectedness
 
@@ -5571,7 +5265,18 @@ Measures of connectedness reflect the components of the network, whether the net
 ```r
 comp_size = components(igphQ)
 comp_size$no
+```
+
+```
+## [1] 9
+```
+
+```r
 comp_size$csize
+```
+
+```
+## [1] 4783    2    2    2    3    2    3    2    2
 ```
 \normalsize
 
@@ -5579,20 +5284,16 @@ The result shows that there are 9 components, and in fact the single largest com
 
 ### Degree distributions
 
-A degree is a link between two words, and the total number of links attached to a word is called the degree of the node (word). We are interested how does the degree for the entire nodes in the network loos like, from a statistical distributions perspective. 
+A degree is a link between two words, and the total number of links attached to a word is called the degree of the node (word). We are interested how does the degree for the entire nodes in the network loos like, from a statistical distributions perspective.
 
 The codes below compute the degree for the Saheeh network and plot them.
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig706-1.png" alt="Plot of the degree distribution for Saheeh" width="576" />
+<p class="caption">(\#fig:ch7fig706)Plot of the degree distribution for Saheeh</p>
+</div>
 
-
-
-![<span id="fig:ch7fig706"></span>Figure 7.6: Plot of the degree distribution for Saheeh](10-Ch7TextNetAnal_files/figure-docx/ch7fig706-1.png)
-
-
-
-
-
-Figure <a href="#fig:ch7fig706">7.6</a> looks similar to the tf-idf plot for Saheeh in Figure 2.14 from Chapter 2 - which indicates that the degree follows Zipf's law, and hence is distributed following Power Law distributions. It shows the case where a very small number of words have a high degree of edges, whilst a very large number of words have an extremely small number of edges. 
+Figure \@ref(fig:ch7fig706) looks similar to the tf-idf plot for Saheeh in Figure 2.14 from Chapter 2 - which indicates that the degree follows Zipf's law, and hence is distributed following Power Law distributions. It shows the case where a very small number of words have a high degree of edges, whilst a very large number of words have an extremely small number of edges. 
 
 We show a simple demonstration what the degree means by printing the top twenty words ranked by its degree in the following texts, which is autogenerated by the codes written for this book:
 
@@ -5612,60 +5313,54 @@ For reference, we have seen examples of these clusterings earlier in Chapter 5 f
 
 ### Modularity
 
-The modularity algorithm is used to find _community structures_ or groupings of nodes and edges in large networks. In _igraph_, this is accomplished by applying the _cluster_walktrap()_ function. However, this approach has some shortcomings, mainly because it relies on a random walk approach in finding communities, which is sensitive to the starting position and is used mainly in undirected graphs. For this purpose, we rely instead on the "modularity class" function of Gephi for calculations. The results are shown in Figure <a href="#fig:ch7fig707">7.7</a>.
+The modularity algorithm is used to find _community structures_ or groupings of nodes and edges in large networks. In _igraph_, this is accomplished by applying the _cluster_walktrap()_ function. However, this approach has some shortcomings, mainly because it relies on a random walk approach in finding communities, which is sensitive to the starting position and is used mainly in undirected graphs. For this purpose, we rely instead on the "modularity class" function of Gephi for calculations. The results are shown in Figure \@ref(fig:ch7fig707).
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig707-1.png" alt="Modularity class" width="384" />
+<p class="caption">(\#fig:ch7fig707)Modularity class</p>
+</div>
 
+It is interesting to note that there are seven major modular classes with members of 300 or more, with the largest community having about 1,500 members.^[Modularity algorithm is dependent on its setting of resolution limits, which determines how small the communities we want to detect. In our case here we set it to 1, which is the standard limit.] In fact, the smaller classes are with members of less than ten, and can be ignored (classes of 8 and above). The percentage of nodes within each class is as follows: 33.63% (one-third of the nodes), 17.87%, 15.68%, 9.58%, 8.33%, 7.42%, and 6.33% (from the first to the seventh).
 
-
-![<span id="fig:ch7fig707"></span>Figure 7.7: Modularity class](10-Ch7TextNetAnal_files/figure-docx/ch7fig707-1.png)
-
-
-
-It is interesting to note that there are seven major modular classes with members of 300 or more, with the largest community having about 1,500 members.^[Modularity algorithm is dependent on its setting of resolution limits, which determines how small the communities we want to detect. In our case here we set it to 1, which is the standard limit.] In fact, the smaller classes are with members of less than ten, and can be ignored (classes of 8 and above). The percentage of nodes within each class is as follows: 33.63% (one-third of the nodes), 17.87%, 15.68%, 9.58%, 8.33%, 7.42%, and 6.33% (from the first to the seventh). 
-
-In grouping terms, we can say that each modular class represents a certain "commonality"; if we want to understand what these commonalities are, then we have to dive deeper into each class and investigate inside the classes. Furthermore, we can set the resolution limit of the modularity measure, which allows us to break the classes into a more refined set. We leave this issue as a future research direction.
+In grouping terms, we can say that each modular class represents a certain "commonality"; if we want to understand what these commonalities are, then we dive deeper into each class and investigate inside the classes. Furthermore, we can set the resolution limit of the modularity measure, which allows us to break the classes into a more refined set. We leave this issue as a future research direction.
 
 In this book, we will just show the visualizations of these classes (or groupings) to demonstrate the forms of shapes of the groups.
 
-Figure <a href="#fig:ch7fig708">7.8</a> provides the total picture of the modularity classes within the network.
+Figure \@ref(fig:ch7fig708) provides the total picture of the modularity classes within the network.
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig708-1.png" alt="Modularity class by colors" width="384" />
+<p class="caption">(\#fig:ch7fig708)Modularity class by colors</p>
+</div>
 
+Now let us check the structure of each of the various sub-groups. The largest grouping is shown in Figure \@ref(fig:ch7fig709), which has the same center as the entire network surrounded by words in the same modularity class. Figure \@ref(fig:ch7fig710) shows the second largest group, which has the same center as before but surrounded by another set of words. Figure \@ref(fig:ch7fig711) shows the third largest group is which has the same center as before but surrounded by another set of words.
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig709-1.png" alt="Network of largest clique" width="384" />
+<p class="caption">(\#fig:ch7fig709)Network of largest clique</p>
+</div>
 
-![<span id="fig:ch7fig708"></span>Figure 7.8: Modularity class by colors](10-Ch7TextNetAnal_files/figure-docx/ch7fig708-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig710-1.png" alt="Network of second largest clique" width="384" />
+<p class="caption">(\#fig:ch7fig710)Network of second largest clique</p>
+</div>
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig711-1.png" alt="Network of third largest clique" width="384" />
+<p class="caption">(\#fig:ch7fig711)Network of third largest clique</p>
+</div>
 
+We can move on to the fourth, fifth, and until the smallest grouping. The key point is what can we learn from these groups?
 
-Now let us check the structure of each of the various sub-groups. The largest grouping is shown in Figure <a href="#fig:ch7fig709">7.9</a>, which has the same center as the entire network surrounded by words in the same modularity class. Figure <a href="#fig:ch7fig710">7.10</a> shows the second largest group, which has the same center as before but surrounded by another set of words. Figure <a href="#fig:ch7fig711">7.11</a> shows the third largest group is which has the same center as before but surrounded by another set of words.
-
-
-
-
-![<span id="fig:ch7fig709"></span>Figure 7.9: Network of largest clique](10-Ch7TextNetAnal_files/figure-docx/ch7fig709-1.png)
-
-
-
-
-![<span id="fig:ch7fig710"></span>Figure 7.10: Network of second largest clique](10-Ch7TextNetAnal_files/figure-docx/ch7fig710-1.png)
-
-
-
-
-![<span id="fig:ch7fig711"></span>Figure 7.11: Network of third largest clique](10-Ch7TextNetAnal_files/figure-docx/ch7fig711-1.png)
-
-
-
-We can move on to the fourth, fifth, and until the smallest grouping. The key point is what can we learn from these groupings?
-
-First, we want to observe how do the sub-networks look once we take them out of the main network. Do the sub-networks look and behave the same as the main network? Does the main network change when we take out a sub-network? All these questions relate to what is called the "scale-free" properties of a network. A scale-free network is resilient to changes within the network; when a clique is taken out, the clique's properties are the same as the main network properties; while the properties of the network minus the clique also remain the same. 
+First, we want to observe how do the sub-networks look once we take them out of the main network. Do the sub-networks look and behave the same as the main network? Does the main network change when we take out a sub-network? All these questions relate to what is called the "scale-free" properties of a network. A scale-free network is resilient to changes within the network; when a clique is taken out, the clique's properties are the same as the main network properties, while the properties of the network minus the clique also remain the same.
 
 In another word, the network is structured in such a way that it behaves like a fractal - the large part is the combination of many small parts, while the small parts can exist by themselves, co-exist with other small parts, can be combined together and create a larger part, and so on. Fractal properties are resilient to "cascading failures" which is evident in most of nature's physical properties.^[For more on fractal properties, please refer to https://en.wikipedia.org/wiki/Fractal.]
 
 We can take the meaning of fractal properties into a much deeper context; for example, are the messages within the sub-network part of the composition of the main network? What happens to the messages in the main network when we take out a clique? Can we combine messages in two cliques and are the messages still coherent? 
 
-As an example, we can compile all the words within a clique and do a _sentiment analysis_ on the subset of words, similar to what we have shown in Chapter 3.  We can also weigh the sentiment scores against the position of the word within the sub-network, etc. Whatever meanings that come out is subject to interpretation in terms of what they represent.
+As an example, we can compile all the words within a clique and do a _sentiment analysis_ on the subset of words, similar to what we have shown in Chapter 3. We can also weigh the sentiment scores against the position of the word within the sub-network, etc. Whatever meanings come out is subject to interpretation in terms of what they represent.
 
-There are numerous ways to expand the current analysis, which is beyond the current introductory scope of this book. We will leave it for future work of Quran Analytics. For our purpose here, based on visual observations of the Figures <a href="#fig:ch7fig708">7.8</a>, <a href="#fig:ch7fig709">7.9</a>, <a href="#fig:ch7fig710">7.10</a>, and <a href="#fig:ch7fig711">7.11</a>, we can say that the network demonstrates some forms of "scale-free" (and fractal-like) properties. This is an important observation and provides leads for future exploration and analysis.
+There are numerous ways to expand the current analysis, which is beyond the current introductory scope of this book. We will leave it for future work of Quran Analytics. For our purpose here, based on visual observations of the Figures \@ref(fig:ch7fig708), \@ref(fig:ch7fig709), \@ref(fig:ch7fig710), and \@ref(fig:ch7fig711), we can say that the network demonstrates some forms of "scale-free" (and fractal-like) properties. This is an important observation and provides leads for future exploration and analysis.
 
 ### Betweenness
 
@@ -5719,7 +5414,7 @@ We do not intend to use the exercise here to interpret Al-Quran using the techni
 
 ### Summary
 
-Summarizing all the statistical properties of the nodes of the network, we can say that all the important words (top features) have a high degree, betweenness, and prestige centrality within the network. The consistencies of these measures across these top features are very interesting in the sense that the first word, _Allah_ is the topmost in all cases (the highest degree, highest prestige, the most betweenness, and also highest in all measures of centrality). 
+Summarizing all the statistical properties of the nodes of the network, we can say that all the important words (top features) have a high degree, betweenness, and prestige centrality within the network. The consistencies of these measures across these top features are very interesting in the sense that the first word, _Allah_ is the topmost in all cases (the highest degree, highest prestige, the most betweenness, and also highest in all measures of centrality).
 
 ## Dive into selected Surahs {#dive-into-selected-surahs}
 
@@ -5729,8 +5424,6 @@ a) understanding the total network of the texts (tokens) in the Surah;
 b) understanding the "topics" of the Surah.
 
 First, we will plot the network and obtain summary statistics.
-
-
 
 
 ```r
@@ -5758,24 +5451,23 @@ featKahf <- names(topfeatures(fcmKahf, 50))
 ```
 
 
-
-
-
 ```r
 fcm_select(fcmKahf, pattern = featKahf) %>%
     textplot_network(min_freq = 0.5, 
                      edge_color = "steelblue", 
                      edge_alpha = 0.5, 
                      edge_size = 2,
-                     vertex.size = 1)
+                     vertex.size = 1)+
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.background = element_rect(color = "black"))+
+  labs(title = 'Network of Top 50 Words in Surah Al-Kahf',
+       subtitle = " ")
 ```
 
-![<span id="fig:ch7fig712"></span>Figure 7.12: Network of top 50 words in Surah Al-Kahf](10-Ch7TextNetAnal_files/figure-docx/ch7fig712-1.png)
-
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig712-1.png" alt="Network of top 50 words in Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch7fig712)Network of top 50 words in Surah Al-Kahf</p>
+</div>
 
 
 
@@ -5807,20 +5499,23 @@ featMaryam <- names(topfeatures(fcmMaryam, 50))
 
 
 
-
 ```r
 fcm_select(fcmMaryam, pattern = featMaryam) %>%
     textplot_network(min_freq = 0.5, 
                      edge_color = "tomato", 
                      edge_alpha = 0.5, 
                      edge_size = 2,
-                     vertex.size = 1) 
+                     vertex.size = 1)+
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.background = element_rect(color = "black"))+
+  labs(title = 'Network of Top 50 Words in Surah Maryam',
+       subtitle = " ") 
 ```
 
-![<span id="fig:ch7fig713"></span>Figure 7.13: Network of top 50 words in Surah Maryam](10-Ch7TextNetAnal_files/figure-docx/ch7fig713-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig713-1.png" alt="Network of top 50 words in Surah Maryam" width="576" />
+<p class="caption">(\#fig:ch7fig713)Network of top 50 words in Surah Maryam</p>
+</div>
 
 
 For both Surahs, as shown in the figures, the most prominent word at the center is "lord"; however the surrounding topics are different. In Al-Kahf words such as "cave", "youth", "al-khidh", "moses" emerge, while in Surah Maryam "merciful", "jesus" appear.
@@ -5884,6 +5579,10 @@ tscKahf = kahf_toks %>% quanteda.textstats::textstat_collocations(method = "lamb
                         min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
 ```
+
+```
+## [1] "righteous deeds" "worldly life"    "heavens earth"   "lord knowing"
+```
 \normalsize
 
 What is the most important three-word sequence in Surah Al_Kahf? 
@@ -5895,6 +5594,10 @@ tscKahf = kahf_toks %>%
               textstat_collocations(method = "lambda", size = 3, 
                         min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
+```
+
+```
+## [1] "mercy prepare affair"     "believed righteous deeds"
 ```
 \normalsize
 
@@ -5908,6 +5611,10 @@ tscMaryam = maryam_toks %>%
                         min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscMaryam[tscMaryam$count == max(tscMaryam$count),]$collocation
 ```
+
+```
+## [1] "mention book"
+```
 \normalsize
 
 What is the most important three-word sequence in Surah Maryam? 
@@ -5919,6 +5626,10 @@ tscMaryam = maryam_toks %>%
               textstat_collocations(method = "lambda", size = 3, 
                         min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscMaryam[tscMaryam$count == max(tscMaryam$count),]$collocation
+```
+
+```
+## [1] "peace day born"   "day raised alive" "day born day"     "trunk palm tree"
 ```
 \normalsize
 
@@ -5956,6 +5667,10 @@ tscMaryamEY = maryamEY_toks %>%
                     min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscMaryamEY[tscMaryamEY$count == max(tscMaryamEY$count),]$collocation
 ```
+
+```
+## [1] "allah gracious"
+```
 \normalsize
 
 What are the most important three-word sequences in Surah Maryam in Yusuf Ali? 
@@ -5968,32 +5683,41 @@ tscMaryamEY = maryamEY_toks %>%
                         min_count = 1,smoothing = 0.5,tolower = TRUE)
 tscMaryamEY[tscMaryamEY$count == max(tscMaryamEY$count),]$collocation
 ```
+
+```
+## [1] "mention book story"
+```
 \normalsize
 
 We can see that Yusuf Ali's translations will give a different phrase. In fact, if we go deeper into phrases of slightly lower ranking, some of the phrases do match.
 
 ## Word keyness comparisons {#word-keyness-comparisons}
 
-If we want to compare the keywords of one Surah against another Surah, we can use the _keyness_ statistical measures. In _quanteda_ we can use _textstat_keyness()_ function and also _textplot_keyness()_ for plotting the results. Let us compare prominent keywords in Surah Al-Kahf versus Maryam. This is shown in Figure <a href="#fig:ch7fig714">7.14</a>. 
-
-
-
+If we want to compare the keywords of one Surah against another Surah, we can use the _keyness_ statistical measures. In _quanteda_ we can use _textstat_keyness()_ function and also _textplot_keyness()_ for plotting the results. Let us compare prominent keywords in Surah Al-Kahf versus Maryam. This is shown in Figure \@ref(fig:ch7fig714). 
 
 
 ```r
-kahf_maryam = rbind(kahf,maryam)
-corp <- corpus(kahf_maryam$text)
-docvars(corp, "surah") <- c(rep("kahf",110),rep("maryam",98))
-dfmat2 <- dfm(corp, remove = stop_words$word, dfm_group = "surah",
+kahf_1 = kahf %>% pull(text) %>% str_flatten()
+maryam_1 = maryam %>% pull(text) %>% str_flatten()
+kahf_maryam = kahf_maryam = rbind(kahf_1,maryam_1)
+
+corp = corpus(kahf_maryam,
+              docvarsz = c("kahf","maryam"))
+names(corp) = c("kahf","maryam")
+
+dfmat2 <- dfm(corp,
+              # groups = "surah",
+              remove = stop_words$word,
               remove_punct = TRUE)
-tstat2 <- textstat_keyness(dfmat2, measure = "lr") # target = "kahf", measure = "lr")
-textplot_keyness(tstat2, color = c("steelblue", "tomato"), n = 20)
+tstat2 <- textstat_keyness(dfmat2, target = "kahf", measure = "lr")
+textplot_keyness(tstat2, color = c("steelblue", "tomato"), n = 20)+
+  labs(title = "Keyness For Surah Maryam and Surah Al-Kahf")
 ```
 
-![<span id="fig:ch7fig714"></span>Figure 7.14: Keyness plot for Surah Maryam and Al-Kahf](10-Ch7TextNetAnal_files/figure-docx/ch7fig714-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig714-1.png" alt="Keyness plot for Surah Maryam and Al-Kahf" width="768" />
+<p class="caption">(\#fig:ch7fig714)Keyness plot for Surah Maryam and Al-Kahf</p>
+</div>
 
 
 The keyness plot shows and confirms what is known about the two Surahs. In Surah Al-Kahf, the word "found" relates to the cave-dwellers and al-khidh (Khidir) as well as Dhul-Qarnayn. In Surah Maryam, the key message is "merciful", an attribute of Allah, and Maryam (Mary) and her son Isa (AS) as signs of His mercy.
@@ -6003,39 +5727,33 @@ The keyness plot shows and confirms what is known about the two Surahs. In Surah
 Lexical diversity is a measure of how each sentence adds to the lexical variety in terms of its addition to the vocabulary within a corpus. Let us make a comparison between Surah Al-Kahf and Surah Maryam, by calculating _textstat_lexdiv()_ scores and plotting the results side by side.
 
 
-
-
-
 ```r
 kahf_lexdiv = textstat_lexdiv(dfm_kahf, measure = "all")
 maryam_lexdiv = textstat_lexdiv(dfm_maryam, measure = "all" )
 p1 = ggplot() + geom_point(aes(x = 1:nrow(kahf_lexdiv), 
                                y = kahf_lexdiv$R), 
                                color = "steelblue", 
-                           show.legend = FALSE) +
-                labs(x = "Surah Al-Kahf verses", y = "lexical diversity score")
+                           show.legend = FALSE) + ylim(0,5)+
+                labs(x = "Verse", y = "Lexical Diversity Score",title = "Surah Al-Kahf")
 p2 = ggplot() + geom_point(aes(x = 1:nrow(maryam_lexdiv), 
                                y = maryam_lexdiv$R), 
                                color = "tomato", 
-                               show.legend = FALSE) +
-                labs(x = "Surah Maryam verses", y = "lexical diversity score")
-cowplot::plot_grid(p1,p2, nrow = 1)
+                               show.legend = FALSE) + ylim(0,5)+
+                labs(x = "Verse", y = "Lexical Diversity Score",title = "Surah Maryam")
+cowplot::plot_grid(p1,p2, nrow = 1,align = "v")
 ```
 
-![<span id="fig:ch7fig715"></span>Figure 7.15: Lexical diversity scores for Surah Al-Kahf and Maryam](10-Ch7TextNetAnal_files/figure-docx/ch7fig715-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig715-1.png" alt="Lexical diversity scores for Surah Al-Kahf and Maryam" width="768" />
+<p class="caption">(\#fig:ch7fig715)Lexical diversity scores for Surah Al-Kahf and Maryam</p>
+</div>
 
 
-
-
-
-We can observe from Figure <a href="#fig:ch7fig715">7.15</a> that the verses in Surah Al-Kahf are much more diverse in their lexical diversity, throughout the Surah; whereas Surah Maryam's later verses (after verse 50) show more variety. What this implies is that the vocabulary structure in the verses of Surah Al-Kahf is different from Surah Maryam.
+We can observe from Figure \@ref(fig:ch7fig715) that the verses in Surah Al-Kahf are much more diverse in their lexical diversity, throughout the Surah; whereas Surah Maryam's later verses (after verse 50) show more variety. What this implies is that the vocabulary structure in the verses of Surah Al-Kahf is different from Surah Maryam.
 
 Another approach of comparison is called _key words in context_ or _kwic_ lexical dispersion plot. Note that "text1" to "text110" is from Surah Al-Kahf and the rest ("text111 to "text208") are from Surah Maryam.
 
 First, let us apply it to the word "Allah" and "Lord".
-
-
-
 
 
 ```r
@@ -6043,16 +5761,16 @@ textplot_xray(kwic(corp, pattern = "allah"), kwic(corp, pattern = "lord"),
               scale = "absolute") +
               aes(color = keyword) + 
               scale_color_manual(values = c("darkblue", "darkred")) +
-              theme(legend.position = "none")
+              theme(legend.position = "none",
+                    strip.background = element_rect(color = "black", size = 1))
 ```
 
-![<span id="fig:ch7fig716"></span>Figure 7.16: Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'](10-Ch7TextNetAnal_files/figure-docx/ch7fig716-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig716-1.png" alt="Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'" width="672" />
+<p class="caption">(\#fig:ch7fig716)Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'</p>
+</div>
 
-
-
-
-
-The plots in Figure <a href="#fig:ch7fig716">7.16</a> display the frequency of the selected keyword and its appearance within the various verses ("texts"). Lexical dispersion demonstrates the richness of emphasis of the whole document regarding the message, via frequencies of occurrence relative to the sentences (verses) within the document. 
+The plots in Figure \@ref(fig:ch7fig716) display the frequency of the selected keyword and its appearance within the various verses ("texts"). Lexical dispersion demonstrates the richness of emphasis of the whole document regarding the message, via frequencies of occurrence relative to the sentences (verses) within the document.
 
 The word "Allah" appears lesser than "Lord" in both Surahs. There are some occasions when "Allah" is mentioned, "Lord" is also mentioned (i.e. the lines where both blue and red dots exist). However, there are many verses in which "Lord" is mentioned without the mention of the word "Allah" (lower parts of the plot).
 
@@ -6064,22 +5782,19 @@ We would like to end by presenting another tool that is useful for viewing a lar
 
 Let us show the results for both Surahs.
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig717-1.png" alt="Dendrogram for clusters in Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch7fig717)Dendrogram for clusters in Surah Al-Kahf</p>
+</div>
 
 
-
-![<span id="fig:ch7fig717"></span>Figure 7.17: Dendrogram for clusters in Surah Al-Kahf](10-Ch7TextNetAnal_files/figure-docx/ch7fig717-1.png)
-
-
-
-
-
-![<span id="fig:ch7fig718"></span>Figure 7.18: Dendrogram for clusters in Surah Maryam](10-Ch7TextNetAnal_files/figure-docx/ch7fig718-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig718-1.png" alt="Dendrogram for clusters in Surah Maryam" width="576" />
+<p class="caption">(\#fig:ch7fig718)Dendrogram for clusters in Surah Maryam</p>
+</div>
 
 
-
-
-
-We can see from Figure <a href="#fig:ch7fig717">7.17</a> and Figure <a href="#fig:ch7fig718">7.18</a> that there are clusterings or groupings in the cooccurrences words; in fact there are about three large groupings in Surah Al-Kahf and Surah Maryam. We can extract out the data for the groupings and do further analysis as needed and required. We leave the subject as it is for our work here.
+We can see from Figure \@ref(fig:ch7fig717) and Figure \@ref(fig:ch7fig718) that there are clusterings or groupings in the cooccurrences words; in fact there are about three large groupings in Surah Al-Kahf and Surah Maryam. We can extract out the data for the groupings and do further analysis as needed and required. We leave the subject as it is for our work here.
 
 ## Words similarity in verses {#words-similarity-in-verses}
 
@@ -6088,8 +5803,6 @@ The concept of similarity in texts in NLP applies to sentences or in our case ve
 In linear algebra, the measure is the dot product of two vectors of not necessarily similar length, normalized to the product of their Euclidean norms, called _cosine similarity_ ($cosine_{sim}(x,y) = \frac{x.y}{|x|.|y|}$). Similar measure is called _jaccard similarity_, which is the measure of set similarity instead of dot product ($jaccard_{sim}(a,b) = \frac{|a \cap b}{|a \cup b|}$).
 
 This can be applied using the _textstat_simil()_ function in _quanteda_.
-
-
 
 
 
@@ -6108,22 +5821,22 @@ tstjac_kahf = textstat_simil(dfm_kahf, y = NULL,
                method = "jaccard")
 tstjac_kahf = as.data.frame(tstjac_kahf)
 ggplot() + 
-  geom_point(aes(x = c(1:943), y = tstcor_kahf$correlation), color = "red") +
-  geom_point(aes(x = c(1:943), y = tstcos_kahf$cosine), color = "blue") +
-  geom_point(aes(x = c(1:943), y = tstjac_kahf$jaccard), color = "green") +
-  labs(x = "edges", y = "similarity score")
+  geom_point(aes(x = c(1:length(tstcor_kahf$correlation)), y = tstcor_kahf$correlation), color = "red") +
+  geom_point(aes(x = c(1:length(tstcos_kahf$cosine)), y = tstcos_kahf$cosine), color = "blue") +
+  geom_point(aes(x = c(1:length(tstjac_kahf$jaccard)), y = tstjac_kahf$jaccard), color = "#3B9D47") +
+  labs(x = "Edges", y = "Similarity Score",
+       title = "Verses Similarity for Surah Al-Kahf",
+       subtitle = "Using <span style = 'color: red;'>Correlation</span>, <span style = 'color: blue;'>Cosine</span> and <span style = 'color: #31783A;'>Jaccard</span> measures")+
+  theme(plot.subtitle = element_markdown())
 ```
 
-![<span id="fig:ch7fig719"></span>Figure 7.19: Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures](10-Ch7TextNetAnal_files/figure-docx/ch7fig719-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig719-1.png" alt="Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures" width="576" />
+<p class="caption">(\#fig:ch7fig719)Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures</p>
+</div>
 
 
-
-
-
-Figure <a href="#fig:ch7fig719">7.19</a> shows the plot for three measures namely _correlation_ (red), _cosine_ (blue), _jaccard_ (green). Two verses are 100% similar textually, word-for-word, and a good number with a similarity score above 25% (i.e. more than a quarter of the words). What do all these numbers mean depends on how interpretations are made; for example, it can be said that these verses explain each other.
-
-
-
+Figure \@ref(fig:ch7fig719) shows the plot for three measures namely _correlation_ (red), _cosine_ (blue), _jaccard_ (green). Two verses are 100% similar textually, word-for-word, and a good number with a similarity score above 25% (i.e. more than a quarter of the words). What do all these numbers mean depends on how interpretations are made; for example, it can be said that these verses explain each other.
 
 
 ```r
@@ -6131,36 +5844,34 @@ tstcos_kahf$document1 = str_replace(tstcos_kahf$document1,"text","")
 tstcos_kahf$document2 = str_replace(tstcos_kahf$document2,"text","")
 igph_kahfcos = graph_from_data_frame(tstcos_kahf %>% 
                                        filter(cosine > 0.25))
-
 ggraph(igph_kahfcos, layout = "kk") +
   geom_edge_link(aes(width = cosine, edge_alpha = cosine), 
                      edge_color = "steelblue") +
   geom_node_point(size = 0.1, shape = 1, color = "black") +
-  geom_node_text(aes(label = name), col = "black", size = 4) 
+  geom_node_text(aes(label = name), col = "black", size = 4)+
+  theme_bw()+
+  labs(title = "Verses with High Similarity for Surah Al-Kahf")
 ```
 
-![<span id="fig:ch7fig720"></span>Figure 7.20: Verses with high similarities for Surah Al-Kahf](10-Ch7TextNetAnal_files/figure-docx/ch7fig720-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig720-1.png" alt="Verses with high similarities for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch7fig720)Verses with high similarities for Surah Al-Kahf</p>
+</div>
+
+The best way is to view them as an _igraph_ plot using _ggraph_ (as discussed in the previous chapter). Figure \@ref(fig:ch7fig720) shows clusters of verses that are linked. If we check further, the verses around v65 to v78, are repeated conversations between Moses and Khidh. The other cluster surrounding v38, is about the story of the cave dwellers. What we have shown is how statistical tools in NLP are used to find related sentences (or verses) in a large text (if we apply them to the entire translation).
+
+For completeness, we will show similar plots for Surah Maryam (Figures \@ref(fig:ch7fig721) and \@ref(fig:ch7fig722)). We leave the readers to check why the verses are linked in this manner for the Surah.
+
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig721-1.png" alt="Verses similarity for Surah Maryam using correlation, cosine and jaccard measures" width="576" />
+<p class="caption">(\#fig:ch7fig721)Verses similarity for Surah Maryam using correlation, cosine and jaccard measures</p>
+</div>
 
 
-
-
-
-The best way is to view them as an _igraph_ plot using _ggraph_ (as discussed in the previous chapter). Figure <a href="#fig:ch7fig720">7.20</a> shows clusters of verses that are linked. If we check further, the verses around v65 to v78, are repeated conversations between Moses and Khidh. The other cluster surrounding v38, is about the story of the cave dwellers. What we have shown is how statistical tools in NLP are used to find related sentences (or verses) in a large text (if we apply them to the entire translation).
-
-For completeness, we will show similar plots for Surah Maryam (Figures <a href="#fig:ch7fig721">7.21</a> and <a href="#fig:ch7fig722">7.22</a>). We leave the readers to check why the verses are linked in this manner for the Surah.
-
-
-
-
-![<span id="fig:ch7fig721"></span>Figure 7.21: Verses similarity for Surah Maryam using correlation, cosine and jaccard measures](10-Ch7TextNetAnal_files/figure-docx/ch7fig721-1.png)
-
-
-
-
-![<span id="fig:ch7fig722"></span>Figure 7.22: Verses with high similarities for Surah Maryam](10-Ch7TextNetAnal_files/figure-docx/ch7fig722-1.png)
-
-
-
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig722-1.png" alt="Verses with high similarities for Surah Maryam" width="576" />
+<p class="caption">(\#fig:ch7fig722)Verses with high similarities for Surah Maryam</p>
+</div>
 
 
 ## Words dissimilarity in verses {#words-dissimilarity-in-verses}
@@ -6168,9 +5879,6 @@ For completeness, we will show similar plots for Surah Maryam (Figures <a href="
 The inverse of the concept of similarity is the concept of distance in text. How different are any two verses in a set of verses, such as in a Surah will be?
 
 In linear algebra, the measure is the simple Euclidean distance of two vectors.^[https://en.wikipedia.org/wiki/Euclidean_distance] There are few options in _textstat_dist()_ function in _quanteda_ besides _euclidean_, like _minkowski_^[https://en.wikipedia.org/wiki/Minkowski_distance] and _manhattan_^[https://xlinux.nist.gov/dads/HTML/manhattanDistance.html]. We will use _manhattan_, because it is the most amplified version of distance.
-
-
-
 
 
 ```r
@@ -6181,22 +5889,25 @@ tstdis_kahf = as.data.frame(tstdis_kahf)
 ggplot() + geom_point(
               aes(x = c(1:nrow(tstdis_kahf)), 
                   y = scale(tstdis_kahf$manhattan, scale = F)), 
-              color = "aquamarine2") +
-              labs(x = "edges", y = "distance score")
+              color = "#54B660") +
+              labs(x = "Edges", y = "Distance Score",
+                   title = "Verses Distance for Surah Al-Kahf",
+                   subtitle = "Using Manhattan Measures")
 ```
 
-![<span id="fig:ch7fig723"></span>Figure 7.23: Verses distance for Surah Al-Kahf using manhattan measures](10-Ch7TextNetAnal_files/figure-docx/ch7fig723-1.png)
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig723-1.png" alt="Verses distance for Surah Al-Kahf using manhattan measures" width="576" />
+<p class="caption">(\#fig:ch7fig723)Verses distance for Surah Al-Kahf using manhattan measures</p>
+</div>
 
 
+<div class="figure" style="text-align: center">
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig724-1.png" alt="Verses with high distances for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch7fig724)Verses with high distances for Surah Al-Kahf</p>
+</div>
 
 
-![<span id="fig:ch7fig724"></span>Figure 7.24: Verses with high distances for Surah Al-Kahf](10-Ch7TextNetAnal_files/figure-docx/ch7fig724-1.png)
-
-
-
-
-
-Figures <a href="#fig:ch7fig723">7.23</a> and <a href="#fig:ch7fig724">7.24</a> guide us to check, why verse 45 is very different than verse 29. Many similar exercises are possible by extracting out the data (as plotted) and analyze them in whichever ways a researcher deems suitable.
+Figures \@ref(fig:ch7fig723) and \@ref(fig:ch7fig724) guide us to check why verse 45 is very different than verse 29. Many similar exercises are possible by extracting out the data (as plotted) and analyzing them in whichever ways a researcher deems suitable.
 
 The methods of similarity and distance are different from sentiment scoring in Chapter 3. Here the focus is on similar words existing in two different sentences. The more the similarity is, the higher the cosine (or other similarity measures) is. If there is no word matching, then the higher the distance is (measured by euclidean or manhattan scores).
 
@@ -6204,7 +5915,7 @@ We will not repeat the exercises for Surah Maryam and we also will not do simila
 
 ## Summary {#summary-chapter-7}
 
-We have demonstrated using the _quanteda_ package how to work with various NLP tasks for the Saheeh English translation of Al-Quran. The applications can be extended to include all other versions of English translations and also non-English translations using the methods shown. One particular point to emphasize is, we have used tools that are language-model independent. None of the methods shown require any assumptions of pre-built models of a language (except for the use of pre-built stopwords). These are non-parametric methods that we promoted as the basis for unsupervised learning methods, which is a fast-developing area in the applications for NLP tasks.
+We have demonstrated using the _quanteda_ package how to work with various NLP tasks for the Saheeh English translation of Al-Quran. The applications can be extended to include all other versions of English translations and non-English translations using the methods shown. One point to emphasize is, we have used tools that are language-model independent. None of the methods shown require any assumptions of pre-built models of a language (except for the use of pre-built stopwords). These are non-parametric methods that we promoted as the basis for unsupervised learning methods, which is a fast-developing area in the applications for NLP tasks.
 
 We have provided only glimpses of what are the possible tools and methods, which a researcher of Quran Analytics can take further. We provide some suggestions here.
 
@@ -6212,7 +5923,7 @@ We have provided only glimpses of what are the possible tools and methods, which
 
 2. Network models of texts are versatile and expandable in many directions, as a non-parametric approach and application of graph theory or network science algorithms.
 
-3. Language, which consists of words as one of its basic elements, can be viewed as a system or systems. Network models of language allow us to study language from the perspective of network dynamics and systems theory. 
+3. Language, which consists of words as one of its basic elements, can be viewed as a system or systems. Network models of language allow us to study language from the perspective of network dynamics and systems theory.
 
 4. Tools of NLP in __R__ such as _quanteda_ are extremely versatile because they do not force us to make prior underlying assumptions. We can just let the statistical results and visuals open up interesting questions that we can explore further.
 
@@ -6224,15 +5935,12 @@ _quanteda_ manual and guides [@quanteda]
 
 Ban, K., Meštrović, A., and Martincic-Ipsic, S. (2014). _Initial comparison of linguistic networks measures for parallel texts_ [@ban2014].
 
-
-
-
 <!--chapter:end:10-Ch7TextNetAnal.Rmd-->
 
 
 # Text Classification Models {#text-classification-models}
 
-The NLP task for modeling classifications of words for complex subjects such as modeling content analysis of ideas, opinions, and sentiments from texts or speeches is difficult due to a few factors. Too little data renders the exercise prone to large errors but too big of data infuse much noise (or entropy) which confounds the models' measurement. Too much data with insufficient entropy causes the overfitting of models. There is no clear start and also there are no clear ends.
+The NLP task for modeling classifications of words for complex subjects such as modeling content analysis of ideas, opinions, and sentiments from texts or speeches is difficult due to a few factors. Too little data renders the exercise prone to large errors but too much data infuse much noise (or entropy) which confounds the models' measurement. Too much data with insufficient entropy causes the overfitting of models. There is no clear start and also there are no clear ends.
 
 For example, as we have shown in Chapter 3, sentiment scoring is clearly model-dependent; the results vary if we vary the model used. Whether a pre-built model is a good scoring method for Quran Analytics is yet to be ascertained.
 
@@ -6248,15 +5956,14 @@ The tasks start with defining the research objective, which either involves ideo
 
 Labeling (or annotation) is a tedious manual process if it is humanly done, and humans are prone to errors and biased judgements. Automated labeling on the other hand is prone to algorithmic errors, which may remain undetected until later. Both methods require validations, and continuous updating and validations. However, with the advancement of computing and algorithms, the task is better left to computers than humans; except for extremely skewed cases if they come into consideration.
 
-Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both; modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions. 
+Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both, modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions.
 
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig801-1.png" alt="Text modeling framework in NLP" width="1152" />
+<p class="caption">(\#fig:ch8fig801)Text modeling framework in NLP</p>
+</div>
 
-
-![<span id="fig:ch8fig801"></span>Figure 8.1: Text modeling framework in NLP](11-Ch8TextClassModels_files/figure-docx/ch8fig801-1.png)
-
-
-
-The chart in Figure <a href="#fig:ch8fig801">8.1</a> provides a full scenario of the possible paths of modeling.^[This is our own remake of points from [@grimmer2013] paper.]
+The chart in Figure \@ref(fig:ch8fig801) provides a full scenario of the possible paths of modeling.^[This is our own remake of points from [@grimmer2013] paper.]
 
 ### General setting
 
@@ -6300,7 +6007,7 @@ The major difference between the supervised and unsupervised learning method is 
 
 The latest development of the supervised versus unsupervised models involves infusion of both types into each other, which falls under the name of "headless AI", "Unsupervised AI". The process involves combining the steps of unsupervised learning as the start, then using the results to auto-generate the labels, which are then implied into supervised learning models.^[An example of this approach is h2o.ai, https://www.h2o.ai] The main difference of the infused model is the process of labeling is entrusted to the algorithms rather than human.
 
-Since human language is a complex subject, the performance of any models, supervised, unsupervised, or both combined is still a subject that requires in-depth studies and testing. The encouraging part is, as we study more data as they become available, by way of big data, with better and faster computing power, our ability to deal with language through computational linguistics has improved tremendously. 
+Since human language is a complex subject, the performance of any models, supervised, unsupervised, or both combined is still a subject that requires in-depth studies and testing. The encouraging part is, as we study more data as they become available, by way of big data, with better and faster computing power, our ability to deal with language through computational linguistics has improved tremendously.
 
 ### Topic modeling for Quran Analytics
 
@@ -6313,7 +6020,7 @@ Topic Modeling often involves the following steps.^[https://tm4ss.github.io/docs
 3. Visualize the results from the calculated model and
 4. Select documents based on their topic composition.
 
-Topic modeling is an interesting aspect of NLP in the sense that, given a large amount of text data, which structures are not known offhand, and we want to extract information about the text, particularly what are the "headlines" or "themes" of the text in question. The general idea is, if a term is present in many of the sentences, in a certain particular structure, then we say that it has a high probability to be the key subject of the discussion. It implies that the word has a high probability to be in the headlines or themes, in the same way as to how we think a news headline should be. Putting it another way, given the text of news without the headlines, can we guess what the headline should be? 
+Topic modeling is an interesting aspect of NLP in the sense that, given a large amount of text data, which structures are not known offhand, and we want to extract information about the text, particularly what are the "headlines" or "themes" of the text in question. The general idea is, if a term is present in many of the sentences, in a certain particular structure, then we say that it has a high probability to be the key subject of the discussion. It implies that the word has a high probability to be in the headlines or themes, in the same way as to how we think a news headline should be. Putting it another way, given the text of news without the headlines, can we guess what the headline should be?
 
 For Quran Analytics, we know Al-Quran is arranged in a very deterministic manner (i.e. fixed permanently), and no change has occurred to the original text. Particularly each word, from the first to the last, is arranged in verses, from the first to the last (in 6,236 verses), in Surahs, from the first to the last (in 114 Surahs). Verses represent themes (or messages) of their own, and Surahs also represent a theme or combination of themes. The themes may be repeated in various words, or verses, or various parts within the Surahs, as well as various parts of the entire Al-Quran.
 
@@ -6386,7 +6093,6 @@ dfm_kahf <- kahf$saheeh %>%
 ```
 \normalsize
 
-
 ### Latent Dirichlet Allocation (LDA)
 
 We will start with the most common algorithm for topic modeling, namely _Latent Dirichlet Allocation (LDA)_. LDA is guided by two principles.
@@ -6400,7 +6106,7 @@ For parameterized models such as LDA, the number of topics $k$ is the most impor
 
 For our analysis, we choose a thematic “resolution” of $k = 6$ topics. In contrast to a resolution of 100 or more, 6 topics can be evaluated qualitatively very easily. We also set the seed for the random number generator to ensure reproducible results between repeated model inferences.
 
-We use the _LDA()_ function from the _topicmodels_ [@topicmodels] package, setting $k = 6$, to create a six-topic LDA model. Almost any topic model in practice will use a larger k, but we will soon see that this analysis approach extends to a larger number of topics. The function returns an object containing the full details of the model fit, such as how words are associated with topics and how topics are associated with documents. 
+We use the _LDA()_ function from the _topicmodels_ [@topicmodels] package, setting $k = 6$, to create a six-topic LDA model. Almost any topic model in practice will use a larger k, but we will soon see that this analysis approach extends to a larger number of topics. The function returns an object containing the full details of the model fit, such as how words are associated with topics and how topics are associated with documents.
 
 We need to "clean" the Document Feature Matrix, _dfm_ from empty rows and run the _LDA()_ function as shown below:
 
@@ -6422,12 +6128,9 @@ lda_kahf <- topicmodels::LDA(dfm_kahf_clean, k, method="Gibbs",
 
 Depending on the size of the vocabulary, the collection size, and the number $k$, the inference of topic models can take a long time. This calculation may take several minutes. If it takes too long, reduce the vocabulary in the DTM by increasing the minimum frequency in the previous step.
 
-The topic model inference results in two (approximate) posterior probability distributions: a distribution theta over k topics within each document and a distribution $\beta$ over V terms within each topic, where V represents the length of the vocabulary of the Surah (V = 240).  
+The topic model inference results in two (approximate) posterior probability distributions: a distribution theta over k topics within each document and a distribution $\beta$ over V terms within each topic, where V represents the length of the vocabulary of the Surah (V = 240).
 
 We take a look at the 7 most likely terms within the term probabilities $\beta$ of the inferred topics.
-
-
-
 
 
 ```r
@@ -6444,22 +6147,21 @@ kahf_top_terms %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
+  scale_y_reordered()+
+  theme(strip.background = element_rect(color = "black"))
 ```
 
-![<span id="fig:ch8fig802"></span>Figure 8.2: Top terms with LDA methods for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig802-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig802-1.png" alt="Top terms with LDA methods for Surah Al-Kahf" width="672" />
+<p class="caption">(\#fig:ch8fig802)Top terms with LDA methods for Surah Al-Kahf</p>
+</div>
 
 
-
-
-From Figure <a href="#fig:ch8fig802">8.2</a> we can see that the first topic contains the term "moses" and the second topic contains "cave", and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term "al-khidh" appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.
+From Figure \@ref(fig:ch8fig802) we can see that the first topic contains the term "moses" and the second topic contains "cave", and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term "al-khidh" appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.
 
 The reason why terms can be mixed between topics, despite we assuming that it shouldn't happen (for example we know precisely that "al-khidh" appears only in the specific segment), is due to the fact that the model does not "know" the topics off-hand. It only assumes six topics which location within the texts is assumed to be of equal probability across the entire text. What LDA does is to coerce six dimensions onto the data and figure out how best the six dimensions "fit" the data. Whatever the outcome is the result of this process.
 
 Furthermore, LDA tries to generate a pecking order for the topics, by giving one of the dimensions (i.e. topic) the highest rank from any of the six possibilities, followed by the second dimension and so forth. We can check which topics have a "higher" hierarchical clustering by checking its similarity using a distance method (as explained in Chapter 7), such as a Euclidean distance.^[Mathematically what this means is that we measure the dimensional entropy across the six possible dimensions, and rank the dimension with the highest entropy first, followed by the next.]
-
-
-
 
 
 ```r
@@ -6470,12 +6172,12 @@ lda.similarity <- as.data.frame(lda_kahf@beta) %>%
 plot(lda.similarity, xlab = "")
 ```
 
-![<span id="fig:ch8fig803"></span>Figure 8.3: LDA topic similarity by features for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig803-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig803-1.png" alt="LDA topic similarity by features for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig803)LDA topic similarity by features for Surah Al-Kahf</p>
+</div>
 
-
-
-
-From Figure <a href="#fig:ch8fig803">8.3</a>, we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.
+From Figure \@ref(fig:ch8fig803), we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.
 
 Let's take topic 4 as our sample (being the highest rank) and put the terms into a sentence as follows:
 
@@ -6516,9 +6218,6 @@ We can see from the output that there four different statistics which can be use
 Let us plot the top words in topics:
 
 
-
-
-
 ```r
 kahf_topics2 <- tidy(stm_kahf, matrix = "beta")
 kahf_top_terms <- kahf_topics2 %>%
@@ -6532,19 +6231,17 @@ kahf_top_terms %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
+  scale_y_reordered()+
+  theme(strip.background = element_rect(color = "black"))
 ```
 
-![<span id="fig:ch8fig804"></span>Figure 8.4: STM topic shares for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig804-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig804-1.png" alt="STM topic shares for Surah Al-Kahf" width="672" />
+<p class="caption">(\#fig:ch8fig804)STM topic shares for Surah Al-Kahf</p>
+</div>
 
 
-
-
-
-We can see, from Figure <a href="#fig:ch8fig804">8.4</a> that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:
-
-
-
+We can see, from Figure \@ref(fig:ch8fig804) that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:
 
 
 ```r
@@ -6553,18 +6250,14 @@ plot(stm_kahf, type = "summary", text.cex = 1,
 )
 ```
 
-![<span id="fig:ch8fig805"></span>Figure 8.5: STM topic shares for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig805-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig805-1.png" alt="STM topic shares for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig805)STM topic shares for Surah Al-Kahf</p>
+</div>
 
-
-
-
-
-Figure <a href="#fig:ch8fig805">8.5</a> and the results for top-words in Figure <a href="#fig:ch8fig804">8.4</a> demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure <a href="#fig:ch8fig805">8.5</a>, about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.
+Figure \@ref(fig:ch8fig805) and the results for top-words in Figure \@ref(fig:ch8fig804) demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure \@ref(fig:ch8fig805), about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.
 
 There are few other neat options within STM that are useful and we will demonstrate them here. One of the functions is _findThoughts()_, which is a tool to find the subjects of a topic within the texts. We will try to get two verses in which Topic 5 and Topic 2 are dominant, as a sample:
-
-
-
 
 
 ```r
@@ -6577,31 +6270,24 @@ plotQuote(thoughts4, width = 45, main = "Topic 5")
 plotQuote(thoughts3, width = 45, main = "Topic 2")
 ```
 
-![<span id="fig:ch8fig806"></span>Figure 8.6: Sample of verses highly associated with Topic 5 and Topic 2](11-Ch8TextClassModels_files/figure-docx/ch8fig806-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig806-1.png" alt="Sample of verses highly associated with Topic 5 and Topic 2" width="768" />
+<p class="caption">(\#fig:ch8fig806)Sample of verses highly associated with Topic 5 and Topic 2</p>
+</div>
 
-
-
-
-We present the results in a wordcloud format in Figure <a href="#fig:ch8fig807">8.7</a>.
-
-
-
+We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
 
 
 ```r
 cloud(stm_kahf)
 ```
 
-![<span id="fig:ch8fig807"></span>Figure 8.7: Top words from all topics in wordcloud from STM for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig807-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig807-1.png" alt="Top words from all topics in wordcloud from STM for Surah Al-Kahf" width="384" />
+<p class="caption">(\#fig:ch8fig807)Top words from all topics in wordcloud from STM for Surah Al-Kahf</p>
+</div>
 
-
-
-
-
-We can visualize the correlations between the topics in Figure <a href="#fig:ch8fig808">8.8</a>:
-
-
-
+We can visualize the correlations between the topics in Figure \@ref(fig:ch8fig808):
 
 
 ```r
@@ -6609,28 +6295,24 @@ stm_mod_corr = topicCorr(stm_kahf)
 plot(stm_mod_corr)
 ```
 
-![<span id="fig:ch8fig808"></span>Figure 8.8: Graphical display of topic correlations from STM for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig808-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig808-1.png" alt="Graphical display of topic correlations from STM for Surah Al-Kahf" width="384" />
+<p class="caption">(\#fig:ch8fig808)Graphical display of topic correlations from STM for Surah Al-Kahf</p>
+</div>
 
-
-
-
-
-Figure <a href="#fig:ch8fig809">8.9</a> is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.
-
-
-
+Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.
 
 
 ```r
 plot(stm_kahf, type = "perspectives", topics = c(5,2))
 ```
 
-![<span id="fig:ch8fig809"></span>Figure 8.9: Two perspective for topics from STM in Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig809-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig809-1.png" alt="Two perspective for topics from STM in Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig809)Two perspective for topics from STM in Surah Al-Kahf</p>
+</div>
 
-
-
-
-Figure <a href="#fig:ch8fig809">8.9</a> shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.
+Figure \@ref(fig:ch8fig809) shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.
 
 The important thing to note is that these models take words in the texts as "they are", without altering their positions (except for stopwords removals) and capture their occurrences. From there on, the models apply statistical calculations based on the formula provided within the models. Statistically speaking, the results are how the data "speak for itself". The exact meanings are for the human to interpret.
 
@@ -6669,6 +6351,7 @@ First, let us explain the approach of LSA. There are two different methods of ve
 ```r
 lsa_kahf = quanteda.textmodels::textmodel_lsa(dfm_kahf, nd = 6, margin = "both")
 ```
+
 
 
 
@@ -6713,10 +6396,7 @@ Comparing with previous results from STM, LDA:
 | Rank 5  |  (Topic 3) people, lord, mercy      |
 | Rank 6  | (Topic 2) lord, words, righteous    |
 
-To see how this looks, we plot the sentences scoring for each verse (denoted by the number), and across dimensions (we chose dim1 vs dim2, and dim1 vs dim 3, for illustration). Sentences that are "semantically" closer based on "topic a" vs "topic b" are clustered together. This is shown in Figure <a href="#fig:ch8fig810">8.10</a>.
-
-
-
+To see how this looks, we plot the sentences scoring for each verse (denoted by the number), and across dimensions (we chose dim1 vs dim2, and dim1 vs dim 3, for illustration). Sentences that are "semantically" closer based on "topic a" vs "topic b" are clustered together. This is shown in Figure \@ref(fig:ch8fig810).
 
 
 ```r
@@ -6732,24 +6412,21 @@ p2 = klsa_df %>% ggplot(aes(x = V1, y = V3), label= Name) +
 cowplot::plot_grid(p1,p2, nrow = 1)
 ```
 
-![<span id="fig:ch8fig810"></span>Figure 8.10: Topics in dimensions for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig810-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig810-1.png" alt="Topics in dimensions for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig810)Topics in dimensions for Surah Al-Kahf</p>
+</div>
 
 
+In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we "force" the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use.
+
+Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure \@ref(fig:ch8fig811).
 
 
-
-In Figure <a href="#fig:ch8fig810">8.10</a>, there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we "force" the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use. 
-
-Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure <a href="#fig:ch8fig811">8.11</a>.
-
-
-
-
-![<span id="fig:ch8fig811"></span>Figure 8.11: 3D plot of the scores from LSA model for topics in Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig811-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig811-1.png" alt="3D plot of the scores from LSA model for topics in Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig811)3D plot of the scores from LSA model for topics in Surah Al-Kahf</p>
+</div>
 
 The plot shows that for Topic 1 (the highest-ranked topic), there are verses that have high positive scores. For Topic 5 and Topic 6, almost similar verses have high positive scores, while for Topic 3, the scores are highly opposite (i.e. negative) on some of the verses. This is not exactly the ideal method to extract the information from the model, since visualization of the complex dimensionality is not easy and clear. However, what we want to demonstrate is there are deeper level complexities that are not easy to identify by just eyeballing the visuals.
 
@@ -6763,7 +6440,7 @@ Secondly, we need to mention a few notable problems. Is it justified to assume t
 
 Summarizing the observations and results of the LDA, STM, and LSA models, we can generally say that the unsupervised learning model represented by the three, despite the sparse data situation, performed reasonably well in capturing some elements in the structure of the texts from statistical perspectives. The model variations could very well result from a small sample problem.
 
-Generally, we would say that, if more analysis is done, like, instead of relying on a single Surah (as we have done here), we could use the entire corpus of Saheeh, and augment the data with other translations (Yusuf Ali and other English translations available).  This may help deal with the small sample/data problem. Furthermore, if data augmentation involves the original Arabic text combined with some refinement of the modeling approach, we believe that some interesting insights are possible. This is the more comprehensive Quran Analytics approach that we target. For now, we leave the subject as directions for future research.
+Generally, we would say that, if more analysis is done, like, instead of relying on a single Surah (as we have done here), we could use the entire corpus of Saheeh, and augment the data with other translations (Yusuf Ali and other English translations available). This may help deal with the small sample/data problem. Furthermore, if data augmentation involves the original Arabic text combined with some refinement of the modeling approach, we believe that some interesting insights are possible. This is the more comprehensive Quran Analytics approach that we target. For now, we leave the subject as directions for future research.
 
 ## Supervised learning models {#supervised-learning-models}
 
@@ -6819,8 +6496,6 @@ table2
 ```
 \normalsize
 
-
-
 We can see from the results in the confusion matrix table, _table1_, that in the training set, the Naive Bayes model has a perfect fit (almost all correct matches) with the accuracy of 100%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy drops down to 50.91%. We have an overfitting problem.
 
 ### Support Vector Machines (SVM)
@@ -6841,8 +6516,6 @@ table4
 ```
 \normalsize
 
-
-
 We can see from the results of the table that in the training set, the SVM model fits with an accuracy of 100%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy is at 4545%. It suffers the same problem as the Naive Bayes model, which is an overfitting problem.
 
 ### Summarizing supervised learning model
@@ -6851,7 +6524,7 @@ Our excursion on the supervised learning model is very short, with unsatisfactor
 
 ## Ideological difference models {#ideological-difference-models}
 
-_quanteda.texmodels_ has a few other supervised learning models, such as _textmodel_wordscores()_ and _textmodel_wordfish()_. Both of these models are useful for observing the "ideological" differences in texts. The concept of both models is to uncover if there are any differences ideologically speaking between the various topics. If there are "distinct" ideas, the model should be able to predict them. These types of models are in the category of "ideological scaling", a supervised learning model (please see Figure  <a href="#fig:ch8fig801">8.1</a>) at the beginning of the chapter.
+_quanteda.texmodels_ has a few other supervised learning models, such as _textmodel_wordscores()_ and _textmodel_wordfish()_. Both models are useful for observing the "ideological" differences in texts. The concept of both models is to uncover if there are any differences ideologically speaking between the various topics. If there are "distinct" ideas, the model should be able to predict them. These types of models are in the category of "ideological scaling", a supervised learning model (please see Figure  \@ref(fig:ch8fig801)) at the beginning of the chapter.
 
 First, we will apply the _wordscores_ model in the codes attached below, and tabulate the results.
 
@@ -6869,11 +6542,7 @@ table6
 ```
 \normalsize
 
-
-
 From the tables printed above, we can say that in the training part _(table5)_, the model could clearly identify that the "ideas" within each topic are distinct enough to be detected with the accuracy of 38.18%. In _table6_, when we apply the model to the validation data, we can see that some of the topics (ideas) are dispersed through other topics (ideas).
-
-
 
 
 ```r
@@ -6883,17 +6552,15 @@ textplot_scale1d(ws_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-![<span id="fig:ch8fig812"></span>Figure 8.12: Wordscores plot for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig812-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig812-1.png" alt="Wordscores plot for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig812)Wordscores plot for Surah Al-Kahf</p>
+</div>
 
 
-
-
-
-Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure <a href="#fig:ch8fig812">8.12</a>. From the plot we can visualize the relative positions of the key words for the various topics: "lord", which rank highest in the Surah, followed by "allah" - both almost at the center; the word "moses" scores higher, but in the same "direction" as "al-khidh", which is directly below "moses". The word "cave" and "gardens" are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.
+Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure \@ref(fig:ch8fig812). From the plot we can visualize the relative positions of the key words for the various topics: "lord", which rank highest in the Surah, followed by "allah" - both almost at the center; the word "moses" scores higher, but in the same "direction" as "al-khidh", which is directly below "moses". The word "cave" and "gardens" are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.
 
 Now we will apply _textmodel_wordfish()_, which in many ways, similar to _wordscores_ model and plot the results.
-
-
 
 
 ```r
@@ -6904,20 +6571,19 @@ textplot_scale1d(wf_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-![<span id="fig:ch8fig813"></span>Figure 8.13: Wordfish plot for Surah Al-Kahf](11-Ch8TextClassModels_files/figure-docx/ch8fig813-1.png)
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig813-1.png" alt="Wordfish plot for Surah Al-Kahf" width="576" />
+<p class="caption">(\#fig:ch8fig813)Wordfish plot for Surah Al-Kahf</p>
+</div>
 
 
-
-
-
-_wordfish_ scores which will show whether some of the topics are "diametrically" opposed to one another. Figure <a href="#fig:ch8fig813">8.13</a> demonstrates that all topics are pretty much "aligned" to each other from the word "lord", down to "gardens". An interesting observation is that "moses" is right after "lord" in the ranking, above "allah".
-
+_wordfish_ scores which will show whether some of the topics are "diametrically" opposed to one another. Figure \@ref(fig:ch8fig813) demonstrates that all topics are pretty much "aligned" to each other from the word "lord", down to "gardens". An interesting observation is that "moses" is right after "lord" in the ranking, above "allah".
 
 ## Word embeddings models {#word-embedding-models}
 
 In this section we will introduce a powerful approach to dealing with text data, using a text embedding method known famously as GloVe: Global Vectors for Word Representation [@glove2014]. It is "an unsupervised learning algorithm for obtaining vector representations for words". The concept of word-vector representations is to develop a global word-word co-occurrence matrix that tabulates how frequently words co-occur with another one in a given corpus.^[https://nlp.stanford.edu/projects/glove/] The model first sets a pre-training on all the data within the corpus, allowing any utilization thereafter to be easy and fast.
 
-Mathematically what the GloVe algorithm does is to transform the corpus into a "flat" and "compact" matrix of features (row-wise) vectors. Each feature is represented as a vector of fixed length (known as the dimension) set by the algorithm. The concept is similar to hashing algorithms, where each vector is unique (representing a unique feature or word in the vocabulary). Normally the length of the vector is set to fifty, which is deemed to be sufficient for most large-size tasks. We introduce the concept here for purposes of illustrating the usage and convenience of the algorithm and demonstrate its potential for Quran Analytics. 
+Mathematically what the GloVe algorithm does is to transform the corpus into a "flat" and "compact" matrix of features (row-wise) vectors. Each feature is represented as a vector of fixed length (known as the dimension) set by the algorithm. The concept is similar to hashing algorithms, where each vector is unique (representing a unique feature or word in the vocabulary). Normally the length of the vector is set to fifty, which is deemed to be sufficient for most large-size tasks. We introduce the concept here for purposes of illustrating the usage and convenience of the algorithm and demonstrate its potential for Quran Analytics.
 
 In __R__, the GloVe algorithm is implemented through the _text2vec_ [@text2vec] package. 
 
@@ -6966,9 +6632,7 @@ word_vec_df = as.data.frame(t(word_vec))
 ```
 \normalsize
 
-The word-vector consists of vectors of unique frequencies for each word in the vocabulary. These frequencies are used for calculating the similarities or distances between the words. A plot of selected word frequencies in the word-vector is presented in Figure <a href="#fig:ch8fig814">8.14</a>, for the word "allah", "lord", "muhammad", and "abraham".
-
-
+The word-vector consists of vectors of unique frequencies for each word in the vocabulary. These frequencies are used for calculating the similarities or distances between the words. A plot of selected word frequencies in the word-vector is presented in Figure \@ref(fig:ch8fig814), for the word "allah", "lord", "muhammad", and "abraham".
 
 
 ```r
@@ -6976,14 +6640,13 @@ word_vec_df %>% ggplot() + geom_line(aes(x=1:50, y=allah), color = "red") +
                     geom_line(aes(x=1:50, y=lord), color ="steelblue") +
                     geom_line(aes(x=1:50, y=muhammad), color = "magenta") +
                     geom_line(aes(x=1:50, y=abraham), color = "green") +
-                    labs(x = "dimensions", y = "word frequencies")
+                    labs(x = "Dimensions", y = "Word Frequencies")
 ```
 
-![<span id="fig:ch8fig814"></span>Figure 8.14: Word-vector frequencies for selected words](11-Ch8TextClassModels_files/figure-docx/ch8fig814-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig814-1.png" alt="Word-vector frequencies for selected words" width="576" />
+<p class="caption">(\#fig:ch8fig814)Word-vector frequencies for selected words</p>
+</div>
 
 The frequencies do not have any meaning, except that it records the relative unique position of each word within a corpus. This method is a faster way of generating an unsupervised learning model for the data at hand, especially when the data (i.e., text corpus) is large and sparse.^[Note that the matrix is a much more compact space than the DFM or FCM matrices we looked at earlier in _tidytext_ and _quanteda_.]
 
@@ -7062,10 +6725,7 @@ doc_topic_distr =
 ```
 \normalsize
 
-Figure <a href="#fig:ch8fig816">8.15</a> shows the prominence of the topics in Surah Al-Kahf. We can see better which topics rank higher, in fact, only a few of the topics are prominent compared to others.
-
-
-
+Figure \@ref(fig:ch8fig816) shows the prominence of the topics in Surah Al-Kahf. We can see better which topics rank higher, in fact, only a few of the topics are prominent compared to others.
 
 
 ```r
@@ -7074,11 +6734,10 @@ barplot(doc_topic_distr[1, ], xlab = "topic",
         names.arg = 1:ncol(doc_topic_distr))
 ```
 
-![<span id="fig:ch8fig816"></span>Figure 8.15: Topic bar plot for Surah Al-Kahf using GloVe model and LDA](11-Ch8TextClassModels_files/figure-docx/ch8fig816-1.png)
-
-
-
-
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig816-1.png" alt="Topic bar plot for Surah Al-Kahf using GloVe model and LDA" width="576" />
+<p class="caption">(\#fig:ch8fig816)Topic bar plot for Surah Al-Kahf using GloVe model and LDA</p>
+</div>
 
 We can get the top words for each topic, sorted by probability ranking as follows:
 
@@ -7094,7 +6753,6 @@ Without knowing what are the topics in Surah Al-Kahf, it is amazing to see that 
 We will fit the LSA model one more time, using the GloVe algorithm, and plot the results.
 
 
-
 ```r
 lsa_model = text2vec::LSA$new(n_topics = 6)
 doc_topic_distr = 
@@ -7102,20 +6760,17 @@ doc_topic_distr =
                           convergence_tol = 0.001)
 ```
 
+<div class="figure" style="text-align: center">
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig817-1.png" alt="Topics in dimensions for Surah Al-Kahf using LSA and GloVe" width="672" />
+<p class="caption">(\#fig:ch8fig817)Topics in dimensions for Surah Al-Kahf using LSA and GloVe</p>
+</div>
 
 
-
-![<span id="fig:ch8fig817"></span>Figure 8.16: Topics in dimensions for Surah Al-Kahf using LSA and GloVe](11-Ch8TextClassModels_files/figure-docx/ch8fig817-1.png)
-
-
-
-
-
-The results in Figure <a href="#fig:ch8fig817">8.16</a> are different from the ones in Figure <a href="#fig:ch8fig810">8.10</a>, where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more "verbs" (such as "remained", "found", "killed") appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.
+The results in Figure \@ref(fig:ch8fig817) are different from the ones in Figure \@ref(fig:ch8fig810), where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more "verbs" (such as "remained", "found", "killed") appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.
 
 ### Summarizing word embedding model methods
 
-The examples from this section on word embeddings using GloVe algorithms show promising results and demonstrate the strength of the method. It is a new generation of unsupervised learning methods for NLP tasks of finding topics, analyzing various language structures, and many others. The strength of GloVe lies in its simplicity and reliance on "closed and compact" space representations of text data, which allows us to deal with the problems of the Power Law distribution of Zipf's law and many other statistical anomalies in text analysis. The strength of GloVe is proven by the fact that it is used heavily by Google (as it was originally developed together between Google and Stanford NLP Group). 
+The examples from this section on word embeddings using GloVe algorithms show promising results and demonstrate the strength of the method. It is a new generation of unsupervised learning methods for NLP tasks of finding topics, analyzing various language structures, and many others. The strength of GloVe lies in its simplicity and reliance on "closed and compact" space representations of text data, which allows us to deal with the problems of the Power Law distribution of Zipf's law and many other statistical anomalies in text analysis. The strength of GloVe is proven by the fact that it is used heavily by Google (as it was originally developed together between Google and Stanford NLP Group).
 
 ## Summary {#summary-chapter-8}
 
@@ -7145,10 +6800,6 @@ _text2vec_ package references (http://text2vec.org/index.html)
 
 _GloVE_ references (https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html)
 
-
-
-
-
 <!--chapter:end:11-Ch8TextClassModels.Rmd-->
 
 
@@ -7163,7 +6814,7 @@ The early development of knowledge graphs was focused on gathering and organizin
 
 Within the field of Information Retrieval(IR), the application of knowledge graph is growing, due to the instrumental role of semantic search enabling of KG. Within IR, among the key tasks are understanding queries and documents, matching and returning direct and clear answers as well as actionable entities or relationships, for any form of subject or domain of interest. The main issue facing both subjects is the intertwining directions between "knowledge graphs for information retrieval" and "information retrieval for knowledge graphs"[@reinada2020]. In graph theory, this problem is couched in the term of reference for a graph, defining which are the nodes and which are the edges. For example, do we represent "documents" as nodes and "entities" as edges or the reverse.^[Inverting a graph is not a simple and direct mathematical process.]
 
-The subject of KG, IR, and combinations of both is among the latest research works which provide advancements in knowledge theory, in particular towards building expert systems and knowledge retrieval. Quran Analytics as we envisage is aiming towards creating an open system for Quranic knowledge retrieval and related learning systems as the end goal.
+The subject of KG, IR, and combinations of both is among the latest research works which provide advancements in knowledge theory, towards building expert systems and knowledge retrieval. Quran Analytics as we envisage is aiming towards creating an open system for Quranic knowledge retrieval and related learning systems as the end goal.
 
 The first and foremost challenge in creating KG and developing IR systems on top of it is "annotating" the knowledge. Interestingly though, within Islamic sciences, "annotating" the knowledge has been practiced by Islamic scholars from its very early time as a very strict discipline. We can see how the classical books are documented in an extremely meticulous way linking information, in forms of interpretations of verses of Al-Quran and the sayings or traditions of the Prophet (s.a.w). This is evident in the compendium of exegeses, such as by Imam Ibnu Katheer (Tafseer Ibnu Katheer), Imam Al-Razi (Al-Tafseer Al-Kabeer, The Large Commentary), and Imam Al-Tabari (Tafseer Al-Tabari). In Al-Hadith, we have the Sunan Sittah (the six major compendiums of Al-Hadith), which disciplines were established by Imam Malik (in Al-Muwatta'), and Imam Al-Bukhari (Saheeh Al-Bukhari) followed by Imam Muslim (Saheeh Muslim), and others.
 
@@ -7171,7 +6822,7 @@ The knowledge of these classical Islamic scholars (and many others for that matt
 
 The task for Quran Analytics, therefore, in the first instance is to convert all these "information" into a graph framework, as envisaged by the Knowledge Graph concept, to allow us to "extract knowledge" from the sources (such as from the verses) and transform them into learning. Since the field is extremely vast and challenging, the first focus of our Quran Analytics project is on the major exegesis of Al-Quran.
 
-Another interesting issue is, how do we learn what are in the "mind" of the classical scholars of exegesis of Al-Quran? Many of their ideas and thoughts are actually "hidden" from a direct naked reading of their writings. It would be almost impossible to memorize and link all concepts and aspects presented by these scholars, especially ideas which are not "explicitly written", except through annotations. For example, when a reference is made, say for a verse that is interpreted by other verses, the reasoning for such references may be inexplicitly stated, for reasons known only to the author. Uncovering this "hidden knowledge" is exactly what later scholars did when they relied on the classical sources and combined them with their own knowledge. (i.e., interpreting interpretations with their own interpretations). We can see this in the work of Imam Ibn Hajar, for example, in providing a detailed exegesis of the Sahih Al-Bukhari. This is exactly what is happening to the translations of Al-Quran, which in essence is actually interpretations of Al-Quran, into another language by the author.
+Another interesting issue is, how do we learn what are in the "mind" of the classical scholars of exegesis of Al-Quran? Many of their ideas and thoughts are "hidden" from a direct naked reading of their writings. It would be almost impossible to memorize and link all concepts and aspects presented by these scholars, especially ideas which are not "explicitly written", except through annotations. For example, when a reference is made, say for a verse that is interpreted by other verses, the reasoning for such references may be inexplicitly stated, for reasons known only to the author. Uncovering this "hidden knowledge" is exactly what later scholars did when they relied on the classical sources and combined them with their own knowledge. (i.e., interpreting interpretations with their own interpretations). We can see this in the work of Imam Ibn Hajar, for example, in providing a detailed exegesis of the Sahih Al-Bukhari. This is exactly what is happening to the translations of Al-Quran, which in essence is interpretations of Al-Quran, into another language by the author.
 
 Among the major requirements for Quran Analytics is to build "translation engines" for "interpretations" (i.e. translations) of Al-Quran in other languages, including Modern Standard Arabic language,^[Our views as to why the need applies to MSA is due to the fallacious assumptions that Arabic speaking people knows the Quranic language. The subject is controversial as far as we know since it is a subject imbued within the domain of linguistic and Islamic knowledge.] besides the obvious commonly used languages such as the English language and other major languages. In the case of the Malay language, the authors' mother tongue, the need is rather acute, at least based on our own experience of learning Al-Quran. The distance between Malay speaking people with their own mother tongue is diverging, the distance with the Arabic language is even wider, and the teaching of Al-Quran is relegated towards memorization and less towards understanding.^[The authors' personal views.]
 
@@ -7181,9 +6832,9 @@ Tafseer Ibnu Katheer is a classical Quranic exegesis, using a methodology that i
 
 In network terms, we say that each verse is a "node", and each of the links is an "edge", and the total network formed is a "graph". The information provided by the graph is called a "knowledge graph". In this case, the full knowledge graph of the Tafseer represents what Imam Ibnu Katheer recorded as his way of interpreting not only just each verse of Al-Quran but the entire verses of Al-Quran in totality. Whether that had been implicitly intended by him, or it is what his complete understanding of the whole Al-Quran is not explicitly expressed. Once we convert his whole interpretation into the form of a network as described, we can see the structures of his "knowledge" and get the deeper meanings of the knowledge representations of his methodologies and hence its deeper and broader understanding.
 
-In this chapter, we will do an expanded analysis of Tafseer Ibnu Katheer, using the tools and methods explored in previous chapters. 
+In this chapter, we will do an expanded analysis of Tafseer Ibnu Katheer, using the tools and methods explored in previous chapters.
  
-Open source network visualization tools are handy when we deal with large networks. There are several open-source tools available such as _Gephi_^[https://gephi.org], _Cytoscape_^[https://cytoscape.org], and _Pajek_^[http://mrvar.fdv.uni-lj.si/pajek/]. For interested readers, please refer to the manuals in _Gephi_ for the methods of applying the visualizations presented here.
+Open-source network visualization tools are handy when we deal with large networks. There are several open-source tools available such as _Gephi_^[https://gephi.org], _Cytoscape_^[https://cytoscape.org], and _Pajek_^[http://mrvar.fdv.uni-lj.si/pajek/]. For interested readers, please refer to the manuals in _Gephi_ for the methods of applying the visualizations presented here.
 
 The codes used for this chapter are in the Appendix.
 
@@ -7203,31 +6854,27 @@ Using _igraph_, we convert the dataset to a graph object and we are ready to exp
 
 ### Katheer Graph visualizations
 
-In network analysis, we use various methods of display or visualization of the network, which is called the layout. What each layout does is expand the network visually for visual observations. Here we provide a few samples of visuals and followed by short interpretations.
+In network analysis, we use various methods of display or visualization of the network, which is called the layout. What each layout does is expand the network visually for visual observations. Here we provide a few samples of visuals followed by short interpretations.
 
 1. _Fruchterman-Reingold_ layout visualization
 
-
-
-
-![<span id="fig:ch9fig901"></span>Figure 9.1: Ibnu Katheer verse network: Fructherman Reingold layout](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig901-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig901-1.png" alt="Ibnu Katheer verse network: Fructherman Reingold layout" width="384" />
+<p class="caption">(\#fig:ch9fig901)Ibnu Katheer verse network: Fructherman Reingold layout</p>
+</div>
 
 First, we calculate the modularity classes for the network (based on a resolution scale of 1.0) and color each class distinctly. As observed in the image, the various 115 communities are spread out throughout the verses in the entire Al-Quran. What this implies is that the method of interpretations of Ibnu Katheer is expanding the grouping of verses which are interpreted by each other (i.e. networked with each other), spanning across a large space encompassing many verses from other parts of Al-Quran (e.g., from other verses within the same Surah as well as from other Surahs). The visuals also imply that it took many verses to explain a verse, or in another way, many verses linked together give a much wider interpretation of the verse, and vice-versa.
 
-This is indeed a magnificent view of what Ibnu Katheer had in mind. If we want to this manually, it will take a great effort to annotate and make notes of each verse, grouping, and link altogether.
+This is indeed a magnificent view of what Ibnu Katheer had in mind. If we want to do this manually, it will take a great effort to annotate and make notes of each verse, grouping, and link altogether.
 
 The largest modularity class, which stood at 5.65% of verses (nodes) is a group of verses (community) consisting of about 300 verses. What it normally means is that these verses are from a common theme or subject. If we want to know what the themes are, we must extract the entire "sub-network" and do the types of analysis which were shown in earlier chapters (word network, co-occurrence network, topic models, sentiment analysis, etc.). Furthermore, the sub-network itself may consist of smaller sub-networks. We can keep repeating the process until we reach its most elementary form. Since our work here is for exploratory purposes, we will leave these details for future work.
 
 2. Add _Force Atlas 2_ layout to existing graph
 
-
-
-
-![<span id="fig:ch9fig902"></span>Figure 9.2: Ibnu Katheer verse network: Force Atlas layout](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig902-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig902-1.png" alt="Ibnu Katheer verse network: Force Atlas layout" width="384" />
+<p class="caption">(\#fig:ch9fig902)Ibnu Katheer verse network: Force Atlas layout</p>
+</div>
 
 Now we can observe that if we "re-arrange" the visualizations (by adding the Force Atlas algorithm), the groupings are more distinctly clearer. What this means is those different methods of visualizing provide views of various dimensions of the network. In fact, there are numerous methods of layout layerings that are easily applied within a network structure. All these layouts are based on certain "graph spring" algorithms, whereby each algorithm (logics) brings in another dimension to the graph (or knowledge representations). Again, we leave the subject for future work.
 
@@ -7259,92 +6906,82 @@ Given such an enormous structure of the Katheer Graph or knowledge network of ve
 
 ### Katheer Graph network degree
 
-The degree of the network represents the concept of "links between ideas" (we will use "message", instead of "idea"). If a verse is a "link" to another verse, it means that the "message" contained in the "source" verses explains the message in the "target" verse. The network shows that on average, a verse is connected to (interpreted directly by) 2.46 verses. However, as normally understood in statistics, an average is meaningless without understanding the shape of the entire distribution; which is shown in Figure <a href="#fig:ch9fig903">9.3</a>.
+The degree of the network represents the concept of "links between ideas" (we will use "message", instead of "idea"). If a verse is a "link" to another verse, it means that the "message" contained in the "source" verses explains the message in the "target" verse. The network shows that on average, a verse is connected to (interpreted directly by) 2.46 verses. However, as normally understood in statistics, an average is meaningless without understanding the shape of the entire distribution; which is shown in Figure \@ref(fig:ch9fig903).
 
-The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This is in contrast to normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
+The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This contrasts with normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig903-1.png" alt="Plot of the Katheer Graph degree" width="576" />
+<p class="caption">(\#fig:ch9fig903)Plot of the Katheer Graph degree</p>
+</div>
 
-
-
-![<span id="fig:ch9fig903"></span>Figure 9.3: Plot of the Katheer Graph degree](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig903-1.png)
-
-
-
-To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
+To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal, and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
 
 What we have is a massively dense citation network. Every verse is an important message (literature) and is compactly present in the citation network. This fact is an amazing phenomenon! What this implies as well is that every verse (message) is important, not only on its own, but also within a peculiar way in the network. You can take out a verse randomly, it contains messages in many other verses within it. And if you take a group of connected verses, without one of its members, the message linkages are very unlikely to be broken.^[This is the same phenomenon in the Internet routers network; redundancies, alternate routings, etc., ensure that the network cannot fail. You can be connected to one of the routers and be accessible to the network, and yet if your router is broken (taken out), still the rest of the network operates smoothly.]
 
 ### Katheer Graph network paths and traversals
 
-Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure <a href="#fig:ch9fig904">9.4</a>. This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of 14.82. A verse on the network is about 15 links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
+Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure \@ref(fig:ch9fig904). This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of 14.82. A verse on the network is about 15 links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig904-1.png" alt="Plot of the Katheer Graph path lengths distributions" width="576" />
+<p class="caption">(\#fig:ch9fig904)Plot of the Katheer Graph path lengths distributions</p>
+</div>
 
+To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure \@ref(fig:ch9fig905) says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
 
-
-![<span id="fig:ch9fig904"></span>Figure 9.4: Plot of the Katheer Graph path lengths distributions](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig904-1.png)
-
-
-
-To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure <a href="#fig:ch9fig905">9.5</a> says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
-
-
-
-
-![<span id="fig:ch9fig905"></span>Figure 9.5: Verse 6:25 distances from other verses](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig905-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig905-1.png" alt="Verse 6:25 distances from other verses" width="576" />
+<p class="caption">(\#fig:ch9fig905)Verse 6:25 distances from other verses</p>
+</div>
 
 We emphasize again that this observation is important, the network exhibits the small world property. A simple estimate of the small world property is measured by $log(N)/mean(d)$, which is 3.55. It means that in real terms, a verse is only about 4 links or steps away from "each other".^[Note that distance is the measure of a verse from any other verse; whereas the small word property measure is "how far away" each verse truly is.]
 
-This may imply that the messages within the verses are only a few steps away. We will demonstrate this observation later on in the chapter. Another way to say it is that even though the paths of interpretation can be quite long for some cases (can be as long as 51 steps), we do not need to go that "far back" in the traversals. Probably 4 steps is sufficient.
+This may imply that the messages within the verses are only a few steps away. We will demonstrate this observation later in the chapter. Another way to say it is that even though the paths of interpretation can be quite long for some cases (can be as long as 51 steps), we do not need to go that "far back" in the traversals. Probably 4 steps are sufficient.
 
 ### Network traversals using statistical properties
 
 Analyzing network statistical properties is important in the sense that it describes the overall "behaviors" of the network. In network science, these behaviors reveal many "emergent" properties which are interesting and useful for explanatory purposes. We can plot and study various properties as we demonstrate next.
 
-Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 0.5$) in interpreting other verses; and yet many of these verses are not necessarily contained within a grouping of verses (sub-networks) (i.e., $closeness centrality < 0.5$). There are only a few verses that are both "prestigious" and at the same time have a high level of importance in their own groupings (i.e., $eigen centrality > 0.5$ and $closeness centrality > 0.5$). Which are these verses? And how can we interpret these properties? If we dive deeper into the verses and the relations, we might have a better meaning of what they mean. 
+Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 0.5$) in interpreting other verses; and yet many of these verses are not necessarily contained within a grouping of verses (sub-networks) (i.e., $closeness centrality < 0.5$). There are only a few verses that are both "prestigious" and at the same time have a high level of importance in their own groupings (i.e., $eigen centrality > 0.5$ and $closeness centrality > 0.5$). Which are these verses? And how can we interpret these properties? If we dive deeper into the verses and the relations, we might have a better meaning of what they mean.
 
-How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it. 
+How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it.
 
-
-
-
-![<span id="fig:ch9fig906"></span>Figure 9.6: Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig906-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig906-1.png" alt="Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness" width="576" />
+<p class="caption">(\#fig:ch9fig906)Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness</p>
+</div>
 
 __Verse 2_255__
 
-A plot of this is shown in Figure <a href="#fig:ch9fig906">9.6</a>. We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Comparing to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure <a href="#fig:ch9fig906">9.6</a>). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
+A plot of this is shown in Figure \@ref(fig:ch9fig906). We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Compared to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure \@ref(fig:ch9fig906)). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
 
-
-
-
-![<span id="fig:ch9fig907"></span>Figure 9.7: Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig907-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907-1.png" alt="Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority" width="576" />
+<p class="caption">(\#fig:ch9fig907)Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority</p>
+</div>
 
 __Al-Rahman__
 
-Figure <a href="#fig:ch9fig907">9.7</a> compares the _Authority_ and _pageranks_ for the network. What can we learn from it? The group of verses from 19:88-93 (Surah Maryam v88-93) are high in terms of _Authority_, and yet low in terms of _pageranks_. What is the content of these verses? It contains the name of Allah, "Al-Rahman", befitting such knowledge that Al-Rahman is the most "authoritative" name of Allah (measured by _Authority_) but is mentioned not as often (measured by _pageranks_).
+Figure \@ref(fig:ch9fig907) compares the _Authority_ and _pageranks_ for the network. What can we learn from it? The group of verses from 19:88-93 (Surah Maryam v88-93) are high in terms of _Authority_, and yet low in terms of _pageranks_. What is the content of these verses? It contains the name of Allah, "Al-Rahman", befitting such knowledge that Al-Rahman is the most "authoritative" name of Allah (measured by _Authority_) but is mentioned not as often (measured by _pageranks_).
 
 __The Messengers and the message__
 
 How about Verse 16:36 (An-Nahl, verse 36)? Why is its "mentioned" status among the highest? A further look into the verse reveals that it is about the messenger (Prophets) with the message: _"Worship Allah and shun false gods"._
 
-There are countless ways and methods we can traverse the network using the network statistical properties as we have demonstrated above, depending on the contexts and objectives. What we demonstrate here is just a sampling of what's possible. The method of visualization is just one of the simple ways to present a pictorial view of the subject. Tracing these links and traversing from one verse to another may yield new meanings and interpretations. The network graph model is a really useful tool in analyzing the work of Ibnu Katheer.
+There are countless ways and methods we can traverse the network using the network statistical properties as we have demonstrated above, depending on the contexts and objectives. What we demonstrate here is just a sampling of what's possible. The method of visualization is just one of the simple ways to present a pictorial view of the subject. Tracing these links and traversing from one verse to another may yield new meanings and interpretations. The network graph model is a useful tool in analyzing the work of Ibnu Katheer.
 
 ## Traversals in Surah Al-A'laa {#traversals-in-Surah-Al-A'laa}
 
 In this section, we will demonstrate an example of how the Ibnu Katheer network can be used within a study of a specific Surah, namely Surah Al-A'laa (Surah no 87). It is a short Surah with known virtues as noted by Imam Ibnu Katheer himself.^[http://www.recitequran.com/tafsir/en.ibn-kathir/87:14]
 
-The first step we have to do is to "extract out" the Surah from the entire network. This is important since we cannot build the network for the Surah in isolation, without linking it to the entire network. We must attempt to understand the Surah within the total framework, instead of a localized framework. A first pass exercise (or linear search) will be to go through each verse of the Surah, and observe the annotations by Ibnu Katheer for each of the verses; which is fine. But how about the second level search, which are the verses being referred to, how are they being referred to other verses at their own level? And we move to the next level, the same question arises, until the end of the traversal process. 
+The first step we have to do is to "extract out" the Surah from the entire network. This is important since we cannot build the network for the Surah in isolation, without linking it to the entire network. We must attempt to understand the Surah within the total framework, instead of a localized framework. A first pass exercise (or linear search) will be to go through each verse of the Surah, and observe the annotations by Ibnu Katheer for each of the verses, which is fine. But how about the second level search, which are the verses being referred to, how are they being referred to other verses at their own level? And we move to the next level, the same question arises, until the end of the traversal process.
 
 This is achieved simply by combining the verses which point to any verse in Surah Al-A'laa (i.e. $E_i > 87_{1:19}$); then combine all the edges pointing to these verses ($E_j > E_i$) and move back up to five steps. The combination of edges creates the Surah Al-A'laa graph.
 
 There are 44 verses pointing to the 15 verses (level 1); then there are 29 other verses pointing to the 44 verses (level 2); then there are 54 verses pointing to the 29 verses (level 3); then there are 135 verses pointing to the 54 verses (level 4); then there are 228 verses pointing to the 135 verses (level 5). We can continue as far as we want until there are no nodes and edges to be added onto the network which may reach 51 levels (the network diameter of the entire Ibnu Kahtheer network). Up to level 5, we have 490 edges with 231 nodes (verses).
 
-What we want to do next depends on our objective. Let us say our objective is to understand how did Ibnu Katheer interpret Surah Al-A'laa, then we have to go through a few steps of questions and answers, as we will do next.
+What we want to do next depends on our objective. Let us say our objective is to understand how Ibnu Katheer interpreted Surah Al-A'laa, then we have to go through a few steps of questions and answers, as we will do next.
 
 ### Themes of Surah Al-A'laa
 
@@ -7361,25 +6998,23 @@ What is/are the main theme(s) of the Surah? And in which larger theme(s) is it i
 
 Based on the English translation usage of wordings in Saheeh, we may say that the theme for the Surah is about: \textit{"Allah say upon us to believe that (there is) life after death, (and) there is hell fire; and what is revealed through Prophet Muhammad (saw), (that we need to) purify and except (avoid) worldly enjoyment; and the (message is) in the scriptures of Abraham and Moses"}.
 
-How to make up the meaning of this sentence is up to an interpreter of Al-Quran. In fact, we can construct the sentence even better if we have the proper language model to put the proper ranking of the words (i.e. probabilistically). This is a subject we have to exclude from the current work. But the point is, we do have all the "data" necessary from the model (if we assume that the model is working), to construct a more organized sentence, semantically, syntactically, and grammatically. 
+How to make up the meaning of this sentence is up to an interpreter of Al-Quran. In fact, we can construct the sentence even better if we have the proper language model to put the proper ranking of the words (i.e. probabilistically). This is a subject we exclude from our current work. But the point is, we do have all the "data" necessary from the model (if we assume that the model is working), to construct a more organized sentence, semantically, syntactically, and grammatically.
 
 We do not wish to pursue this direction for now at least due to two reasons:
 
-a) we need to work with a language model of English which is suitable for the task;
+a) we need to work with a language model of English which is suitable for the task.
 b) we have to assume the accuracy of Saheeh's interpretation is in full congruency with Ibnu Katheer's exegesis.
 
 We cannot confirm either.
 
 ### Surah Al-A'laa network
 
-How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure <a href="#fig:ch9fig908">9.8</a>, which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
+How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure \@ref(fig:ch9fig908), which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
 
-
-
-
-![<span id="fig:ch9fig908"></span>Figure 9.8: Verses links towards verses in Surah Al-A'laa, up to 5 levels](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig908-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig908-1.png" alt="Verses links towards verses in Surah Al-A'laa, up to 5 levels" width="576" />
+<p class="caption">(\#fig:ch9fig908)Verses links towards verses in Surah Al-A'laa, up to 5 levels</p>
+</div>
 
 We create the graph using the _igraph_ function and tabulate the summary statistics:
 
@@ -7422,13 +7057,13 @@ Instead of using Al-A'laa network statistics to get the topics, we use the stati
 
 We can see that the order of the words changed (in the topic for the top ten verses), when we use the "original measures" from the entire network, instead of the measures from the "internal network" of Surah Al-A'laa. These changes are by no means trivial and have their own dimensions. A simple example may help: a person's status within his family members tells something about him, and at the same time his status in relation to all other people's status in their own families means something else. The topics of verses within a sub-network may tell us something, and if we measure relative to the entire network, those topics may rank differently.
 
-How to interpret the results as presented, is beyond our current discussion for similar reasons that we made before: the STM model may suffer from small sample problems, and semantically we do not know the styles of language used in Saheeh translations. Therefore, we will leave the subject as it is and let the readers think for themselves as to what the results may imply. What we demonstrated are the methods and approaches for the extraction of information, via text topic modeling, relying on the network dimensions.
+How to interpret the results as presented is beyond our current discussion for similar reasons that we made before: the STM model may suffer from small sample problems, and semantically we do not know the styles of language used in Saheeh translations. Therefore, we will leave the subject as it is and let the readers think for themselves as to what the results may imply. What we demonstrated are the methods and approaches for the extraction of information, via text topic modeling, relying on the network dimensions.
 
 ### Summary
 
 We can summarize for now that the possibilities of diving deeper into the "meaning" and "learning" from the Ibnu Katheer's interpretations of Al-Quran, by representing the verse-to-verse method of interpretations, are made easy when we transform the "knowledge" into "graphs". The network graph now allows the learner to traverse through the layers of verses, links across verses, etc., which is very difficult to do otherwise. What we have shown here is still "raw" in the sense that, the extraction of meanings is based on the Saheeh English translations, and the semantic meaning is what we may be after.
 
-Despite these shortcomings, we need to say that as far as the verses are concerned, the network we have shown and used for the traversals and explorations do not rely on the Arabic language at all. Furthermore, we do not rely on the comments made by Imam Ibnu Katheer in his exegesis. We rely solely on the data based on annotations made on the Tafseer.
+Despite these shortcomings, we need to say that as far as the verses are concerned, the network we have shown and used for the traversals and explorations does not rely on the Arabic language at all. Furthermore, we do not rely on the comments made by Imam Ibnu Katheer in his exegesis. We rely solely on the data based on annotations made on the Tafseer.
 
 ## Traversing verse 13 Surah Al-A'laa {#traversing-verse-13-Surah-Al-A'laa}
 
@@ -7440,39 +7075,34 @@ On the other hand, verse 87:13 is pointed towards two verses: 20:74 and 43:77. N
 
 So far we have traversed through the first layer, which is a simulation of direct reading of Ibnu Katheer: read verse 87:13, look at the annotations, then read verse 35:36 and 43:77. We will only know that verse 87:13 is being referred to by verse 20:27 by reading verse 20:27 and finding its annotations, and similarly for verse 43:77. To go beyond this step, will involve repeating the process all over again from each verse mentioned. The process is tedious, lengthy, and maybe confusing, but that is what is exactly required without any shortcuts. We hope the readers appreciate the difficulty involved that we are trying to emphasize here.
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909-1.png" alt="The verse map for V87:13" width="1152" />
+<p class="caption">(\#fig:ch9fig909)The verse map for V87:13</p>
+</div>
 
+Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure \@ref(fig:ch9fig909). We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
 
-![<span id="fig:ch9fig909"></span>Figure 9.9: The verse map for V87:13](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig909-1.png)
-
-
-
-Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure <a href="#fig:ch9fig909">9.9</a>. We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
-
-By observing further we can see that verse 20:74 does not have such deeper networks emanating from it. Why? Apparently, the wordings of 20:74 are similar to 87:13, as verse 20:74 reads _"Indeed, whoever comes to his Lord as a criminal - indeed, for him is Hell; he will neither die therein nor live."_ It is almost an exact word for word matching with verse 87:13.
+By observing further, we can see that verse 20:74 does not have such deeper networks emanating from it. Why? Apparently, the wordings of 20:74 are similar to 87:13, as verse 20:74 reads _"Indeed, whoever comes to his Lord as a criminal - indeed, for him is Hell; he will neither die therein nor live."_ It is almost an exact word for word matching with verse 87:13.
 
 How can a learner of Ibnu Katheer use this "map"? Firstly, he can easily draw the links between a verse to all the verses which point towards its interpretation. Secondly, the "map" presents the "message" or "knowledge" flows. As an example, reading verse 35:36 would likely confirm it is about the disbelievers and the torment of hellfire. The network around it probably presents a similar subject. Similarly, verse 43:77 is about the Lord's judgement on the disbelievers, a subject of the group of verses that relates to it, and so on.
 
-Furthermore, based on our earlier point of "small word properties" of Katheer Graph, it is obviously clear where in the case of verse 87:13 network, that it is "only four or so steps away" from the rest of the verses. A way to understand this is just like your house is only four roads away from the main highway and the main highway defines the neighbourhood of your house. The interpretation of verse 87:13 can be obtained from the four hops exercise because beyond that the meaning is already apparent. 
+Furthermore, based on our earlier point of "small word properties" of Katheer Graph, it is obviously clear where in the case of verse 87:13 network, that it is "only four or so steps away" from the rest of the verses. A way to understand this is just like your house is only four roads away from the main highway and the main highway defines the neighbourhood of your house. The interpretation of verse 87:13 can be obtained from the four hops exercise because beyond that the meaning is already apparent.
 
-Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner to see other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
+Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner from seeing other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907b-1.png" alt="Verse 87:13 ego network directed with clusters" width="768" />
+<p class="caption">(\#fig:ch9fig907b)Verse 87:13 ego network directed with clusters</p>
+</div>
 
+Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure \@ref(fig:ch9fig907b) using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909b-1.png" alt="Inverse of verse 87:13 ego network" width="1152" />
+<p class="caption">(\#fig:ch9fig909b)Inverse of verse 87:13 ego network</p>
+</div>
 
-![<span id="fig:ch9fig907b"></span>Figure 9.10: Verse 87:13 ego network directed with clusters](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig907b-1.png)
-
-
-
-Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure <a href="#fig:ch9fig907b">9.10</a> using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
-
-
-
-
-![<span id="fig:ch9fig909b"></span>Figure 9.11: Inverse of verse 87:13 ego network](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig909b-1.png)
-
-
-
-Figure <a href="#fig:ch9fig909b">9.11</a> uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
+Figure \@ref(fig:ch9fig909b) uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
 
 Verse 17:15 reads: _"Whoever is guided is only guided for [the benefit of] his soul. And whoever errs only errs against it. And no bearer of burdens will bear the burden of another. And never would We punish until We sent a messenger."_ It is about the subject of "guidance" and "no soul is burdened with the sin of others". What this message implies should be of interest to a learner of the verse, within the context of verse 87:13, inversely.
 
@@ -7486,41 +7116,33 @@ In this section, we will show another approach of graph traversals and clusterin
 
 We will take a different approach where 2:255 will be an "outwardly" moving network - that is which other verses 2:255 point to; and for 16:90, we look at which are the verses that interpret it (inwardly). Then we will combine the two networks together.
 
-The "map from" 2:255 is in Figure <a href="#fig:ch9fig910">9.12</a>. We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages. 
+The "map from" 2:255 is in Figure \@ref(fig:ch9fig910). We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages.
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig910-1.png" alt="Verse 2:255 ego network outwardly" width="1152" />
+<p class="caption">(\#fig:ch9fig910)Verse 2:255 ego network outwardly</p>
+</div>
 
+The "map towards" 16:90 is in Figure \@ref(fig:ch9fig911). The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig911-1.png" alt="Verse 16:90 ego network inwardly" width="1152" />
+<p class="caption">(\#fig:ch9fig911)Verse 16:90 ego network inwardly</p>
+</div>
 
-![<span id="fig:ch9fig910"></span>Figure 9.12: Verse 2:255 ego network outwardly](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig910-1.png)
+We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure \@ref(fig:ch9fig912). Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
 
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig912-1.png" alt="Outwardly map from verse 2:255 towards verse 16:90" width="1152" />
+<p class="caption">(\#fig:ch9fig912)Outwardly map from verse 2:255 towards verse 16:90</p>
+</div>
 
+Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure \@ref(fig:ch9fig913). The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
 
-The "map towards" 16:90 is in Figure <a href="#fig:ch9fig911">9.13</a>. The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
-
-
-
-
-![<span id="fig:ch9fig911"></span>Figure 9.13: Verse 16:90 ego network inwardly](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig911-1.png)
-
-
-
-We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure <a href="#fig:ch9fig912">9.14</a>. Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
-
-
-
-
-![<span id="fig:ch9fig912"></span>Figure 9.14: Outwardly map from verse 2:255 towards verse 16:90](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig912-1.png)
-
-
-
-Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure <a href="#fig:ch9fig913">9.15</a>. The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
-
-
-
-
-![<span id="fig:ch9fig913"></span>Figure 9.15: Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree](12-Ch9KnowledgeGraph_files/figure-docx/ch9fig913-1.png)
-
-
+<div class="figure" style="text-align: center">
+<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig913-1.png" alt="Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree" width="1152" />
+<p class="caption">(\#fig:ch9fig913)Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree</p>
+</div>
 
 __Summary__
 
@@ -7528,13 +7150,13 @@ The various traversals between the two verses which we have shown are another ex
 
 ## Word cooccurrences from Katheer Graph {#word-cooccurrences-from-Katheer-graph}
 
-Word co-occurrences play a major role in language modeling in NLP, as we have explained in Chapters 5, 6, and 7. In fact, when Imam Ibnu Katheer made his commentaries, referring a verse to another, it is actually a referral based on parts or chunks of the verses. A chunk of a verse, interpreting another chunk. A chunk usually contains a few words. In some ways, we can think of it as similar to a synonym dictionary. The base of the chunk are words forming the sub-sentence. And when these chunks are "matched" together, we have the words to "co-occur" together. If we take this perspective, what will the word co-occurrence framework look like? Can we learn new things out of it?
+Word co-occurrences play a major role in language modeling in NLP, as we have explained in Chapters 5, 6, and 7. In fact, when Imam Ibnu Katheer made his commentaries, referring a verse to another, it is a referral based on parts or chunks of the verses. A chunk of a verse, interpreting another chunk. A chunk usually contains a few words. In some ways, we can think of it as like a synonym dictionary. The base of the chunk are words forming the sub-sentence. And when these chunks are "matched" together, we have the words to "co-occur" together. If we take this perspective, what will the word co-occurrence framework look like? Can we learn new things out of it?
 
 Since the subject of the inquiry is a major one, we will not attempt to provide conclusive answers. Instead, we will work through some examples and demonstrate what are the possibilities offered by the methods we present in this book.
 
-First and foremost, we need to note that the "normal" method of word co-occurrences by counting the frequencies of n-grams, as we have shown in Chapter 3, will not be applicable. Instead, we have to rely on the GloVe model of _word-2-vec_ algorithms. The _word-2-vec_ does not suffer from the problems of "localized" positions of n-grams; wherein n-grams, the exact position of the word in a sequence of sentences and documents matter. GloVe instead creates "global vectors" (as the name represents), where what we want to know is the position of a word in a global sense, and hence less on exact positional sense. Furthermore, GloVe is a dynamic model, where we can change and alter what we set as "global". The alterations depend on the objective and problem setting the researcher has.
+First and foremost, we need to note that the "normal" method of word co-occurrences by counting the frequencies of n-grams, as we have shown in Chapter 3, will not be applicable. Instead, we rely on the GloVe model of _word-2-vec_ algorithms. The _word-2-vec_ does not suffer from the problems of "localized" positions of n-grams; wherein n-grams, the exact position of the word in a sequence of sentences and documents matter. GloVe instead creates "global vectors" (as the name represents), where what we want to know is the position of a word in a global sense, and hence less on exact positional sense. Furthermore, GloVe is a dynamic model, where we can change and alter what we set as "global". The alterations depend on the objective and problem setting the researcher has.
 
-We will apply the GloVe model and see how it works, with a note of caution. We have to rely on Saheeh's English translation, which confounds the analysis by an unknown degree since the translation methods and linguistic styles will enter into consideration when we want to interpret the results. Nevertheless, this is sufficient to demonstrate our objectives.
+We will apply the GloVe model and see how it works, with a note of caution. We rely on Saheeh's English translation, which confounds the analysis by an unknown degree since the translation methods and linguistic styles will enter into consideration when we want to interpret the results. Nevertheless, this is sufficient to demonstrate our objectives.
 
 ### Setting the text data
 
@@ -7549,56 +7171,56 @@ __Inward network Surah Al-A'laa topical word co-occurrences__
 
 |  Topics  |  word cooccurrences         |
 |----------|-----------------------------|
-| "allah"  | allah, knowing, wills, hearing, people, disobedient, messenger                  |
-| "lord"   | lord, believed, truth, walk, warners, proportioned, day                 |
-| "living" | living, firm, commands, threatens, removed, aforementioned, foods                  |
-| "dying"  | dying, beware, protected, reciting, friend, true, sleeping                  |
-| "purify" | purify, heaven, meeting, sin, keepers, hand, markets                  |
-| "hell"   | hell, compulsion, treaty, mercy, left, enlightenment, deity                  |
-| combined | allah, lord, knowing, believed, proportioned, dead, day                   |
+| "allah"  | allah, bring, knowing, messenger, forget, people, subjugator                  |
+| "lord"   | lord, desire, believed, truth, nearer, break, sky                 |
+| "living" | living, mention, revealed, eliminates, fine, unquestionably, bedouins                  |
+| "dying"  | dying, preceded, affairs, alteration, accepting, sharp, sheep                  |
+| "purify" | purify, dwellings, warners, intercession, orphans, resurrection, moderate                  |
+| "hell"   | hell, revelation, ruin, unquestionably, hoof, invented, needy                  |
+| combined | allah, lord, revealed, subjugator, believed, purify, dying                   |
 \normalsize
 
-The results in the table above, say that for the words in the inward text networks, for example, _"allah, knowing, wills, hearing, people, disobedient, messenger"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"knowing" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
+The results in the table above, say that for the words in the inward text networks, for example, _"allah, bring, knowing, messenger, forget, people, subjugator"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"bring" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
 
 \footnotesize
 __Outward network Surah Al-A'laa topical word co-occurrences__
 
 |   Topics |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, return, truth, angel, forbid, secrets, messenger                  |
-| "lord"   | lord, fear, compulsion, worship, wretched, married, forgive                 |
-| "living" | living, curse, injustice, patiently, provision, time, guided                  |
-| "dying"  | dying, hold, hearts, provided, spread, subsided, accept                  |
-| "purify" | purify, carried, depart, destination, continue, send, exhibited                  |
-| "hell"   | hell, fire, comprehensive, religion, ship, fight, torment                  |
-| combined | lord, allah, fear, living, guided, provided, afford                   |
+| "allah"  | allah, reached, messenger, remember, soul, truth, forgiving                  |
+| "lord"   | lord, worlds, submissive, worship, exalted, gathering, kinds                 |
+| "living" | living, traveling, afford, dying, close, afternoon, creation                  |
+| "dying"  | dying, ra, heads, subside, month, increase, living                  |
+| "purify" | purify, stranded, desire, brought, heels, blame, revealed                  |
+| "hell"   | hell, load, fire, painful, patient, compulsion, beasts                  |
+| combined | allah, living, dying, fear, lord, purify, truth                   |
 \normalsize
 
-The results in the table above, say that for the words in the outward text networks, for example, _"dying, hold, hearts, provided, spread, subsided, accept"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, hold, hearts, provided"_. This is one way to look at it. Readers can see for themselves the remaining topics.
+The results in the table above, say that for the words in the outward text networks, for example, _"dying, ra, heads, subside, month, increase, living"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, ra, heads, subside"_. This is one way to look at it. Readers can see for themselves the remaining topics.
 
 \footnotesize
 __Combined network Surah Al-A'laa topical word co-occurrences__
 
 | Topics   |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, people, remembrance, knowing, call, fear, believed                  |
-| "lord"   | lord, truth, believed, exalt, standing, fulfilled, allah                 |
-| "living" | living, compared, neglected, duties, swift, thousand, god                  |
-| "dying"  | dying, error, initial, disobedient, falsehood, closest, hidden                  |
-| "purify" | purify, access, garments, deceived, house, sin, approval                  |
-| "hell"   | hell, fire, refuge, woe, initial, test, burn                  |
-| combined | allah, lord, people, believed, dying, day, signs                   |
+| "allah"  | allah, people, knowing, enemy, change, messenger, bring                  |
+| "lord"   | lord, truth, inclining, return, fear, worlds, believed                 |
+| "living" | living, shaving, pardoned, submits, delusion, shout, extends                  |
+| "dying"  | dying, makkah, wandering, painful, lied, stories, exemplary                  |
+| "purify" | purify, told, mouths, seeking, dwellings, messenger, house                  |
+| "hell"   | hell, fire, relative, concluded, needy, designated, blessings                  |
+| combined | allah, lord, fear, inclining, truth, provision, intend                   |
 \normalsize
 
-The results in the table above, say that for the words in the combined inward and outward text networks, for example, _"hell, fire, refuge, woe, initial, test, burn"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, fire, refuge, woe"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
+The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, fire, relative, concluded, needy, designated, blessings"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, fire, relative, concluded"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
 
-It is not our intention to use all of these exercises to __interpret__ Surah Al-A'laa. What we show is just a methodology to extract information based on a defined objective. The objective is set based on the assumptions that words in a language tend to occur together, and jointly they provide semantical and ontological meaning to the subject of the texts. 
+It is not our intention to use all of these exercises to __interpret__ Surah Al-A'laa. What we show is just a methodology to extract information based on a defined objective. The objective is set based on the assumptions that words in a language tend to occur together, and jointly they provide semantical and ontological meaning to the subject of the texts.
 
 ## Summary {#summary-chapter-9}
 
 This chapter glues together many concepts, ideas, and methods of NLP tasks, that we have introduced in the earlier chapters based on __R__ and the selected packages.
 
-Programming in __R__ is not too hard and the credit mainly goes to the many developers of packages related to NLP. The _igraph_, _ggraph_,  and the plotting functions of _ggplot2_ are of extreme benefit when we deal with graph objects and their statistical calculations, as well as graph algorithms. For someone with moderate programming experience, a few months of training will get him to a sufficient level to run all the codes we have used here. Someone proficient in any programming language should take less than a month.
+Programming in __R__ is not too hard, and the credit mainly goes to the many developers of packages related to NLP. The _igraph_, _ggraph_,  and the plotting functions of _ggplot2_ are of extreme benefit when we deal with graph objects and their statistical calculations, as well as graph algorithms. For someone with moderate programming experience, a few months of training will get him to a sufficient level to run all the codes we have used here. Someone proficient in any programming language should take less than a month.
 
 Knowledge graphs as representations of a network of information such as the Ibnu Katheer exegesis show both the brilliance and knowledge of Imam Ibnu Katheer and the easiness for us to understand his brilliance and knowledge.
 
@@ -7606,13 +7228,13 @@ The work we have shown here for Imam Ibnu Katheer Graph for "Tafseer Al-Quran bi
 
 For our benefit and the readers, we list what we think are the areas of further research based on some of the results of this chapter:
 
-1. The full work of Katheer Graph needs to be analyzed using the Arabic language as its source of text. Note that in the work of this chapter, we use the English translations only when we want to provide some textual results based on the verses groupings. The main results, which are "numbers and pointers" do not assume any language. It is just data as is. Everything that we have done, can be performed in Arabic without any problem. Even the GloVe model is language-independent. This is what we meant by non-parametric models of NLP where the dependency on any pre-built model is avoided.
+1. The full work of Katheer Graph needs to be analyzed using the Arabic language as its source of text. Note that in the work of this chapter, we use the English translations only when we want to provide some textual results based on the verses groupings. The main results, which are "numbers and pointers" do not assume any language. It is just data as is. Everything that we have done, can be performed in Arabic without any problem. Even the GloVe model is language independent. This is what we meant by non-parametric models of NLP where the dependency on any pre-built model is avoided.
 
-2. There are more methods of discovery for the Katheer Graph which we have not tried. Exploring these methods certainly involves advanced research that is suitable for Ph.D. thesis and research papers. The brilliance and knowledge of Imam Ibnu Katheer of Al-Quran and his methodologies are hidden gems. The fastest method to do this is to apply knowledge graphs on a larger scale; that is to convert and annotate at the "words" level, on top, and above the verse level. This can be combined together with his annotations of Al-Hadith, and his commentaries. Only then, we will have a full appreciation of the exegesis work by Imam Ibnu Katheer.
+2. There are more methods of discovery for the Katheer Graph which we have not tried. Exploring these methods certainly involves advanced research that is suitable for Ph.D. thesis and research papers. The brilliance and knowledge of Imam Ibnu Katheer of Al-Quran and his methodologies are hidden gems. The fastest method to do this is to apply knowledge graphs on a larger scale; that is to convert and annotate at the "words" level, on top, and above the verse level. This can be combined with his annotations of Al-Hadith, and his commentaries. Only then, we will have a full appreciation of the exegesis work by Imam Ibnu Katheer.
 
 3. Utilization of unsupervised learning models for NLP tasks, like GloVe algorithms, deep learning, and Graph NLP, is still among the fresh fields of knowledge and discovery. Applications to Quran Analytics using these new tools are scarce. We envisage that combining Knowledge Graph, Graph Theory, Systems Theory, Unsupervised Learning NLP modeling, combined with Artificial Intelligence and Machine Learning computing algorithms will be among the potent and powerful tools for studies of Al-Quran and Islamic knowledge and sciences.
 
-Quran Analytics will be the starting point for us to develop and implement full-scale knowledge extraction systems from classical sources and writings on Al-Quran. We feel that the day for realizing this is near.
+Quran Analytics will be the starting point for us to develop and implement full-scale knowledge extraction systems from classical sources and writings on Al-Quran. We feel that the day for realizing this is coming very soon.
 
 
 ## Further readings
@@ -7679,47 +7301,52 @@ ik_gephi = read_csv("data/ik1_nodes.csv")
 kg_degree = data.frame("verse"=1:6236, "degree"= degree(kg))
 fig901a = kg_degree %>%  ggplot() + 
   geom_point(aes(x=verse,y=degree), color = "steelblue", alpha = 0.75) +
-  labs(title="A: Degree of verses")
+  labs(title="A: Degree of verses",x = "Verse", y = "Degree")
 
 kg_degree_ranked = kg_degree[rev(order(kg_degree$degree)),]
 
 fig901b = kg_degree_ranked %>% group_by(degree) %>% count() %>% 
-    ggplot(aes(x=log(degree), y=log(n))) + 
-    geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
-    geom_path() +
-    labs(title = "B: Rank frequency distributions", 
-         x = "log of degree", 
-         y = "log of rank frequency")
+  ggplot(aes(x=log(degree), y=log(n))) + 
+  geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
+  geom_path() +
+  labs(title = "B: Rank frequency distributions", 
+       x = "Log of Degree", 
+       y = "Log of Rank Frequency")
 
 kg_dist_table = distance_table(kg)
 
-fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), color = "steelblue") +
-  labs(x = "distance", y = "frequency")
+fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), fill = "steelblue",color = 'black') +
+  labs(x = "Distance", y = "Frequency")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(title = "Katheer Graph Path Lengths Distributions")+
+  theme_bw()
 
 kgd = distances(kg, v = V(kg), to = V(kg), mode = "in")
+# kgsp = shortest_paths(kg,from = "6:25", to = V(kg), mode = "in")
+fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_point(aes(x,y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")
 
-fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% 
-  ggplot() + geom_point(aes(x,y), color="steelblue") +
-  labs(x = "verses", y = "distance")
-
-fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% 
-  ggplot() + geom_density(aes(y), color="steelblue") +
-  labs(x = "verses", y = "distance")  
+fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_density(aes(y), color="steelblue") +
+  labs(x = "Verses", y = "Distance")  
 
 ## fig903: Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness
-fig903c = ik_gephi %>% 
-                ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
-                    geom_point(color = "cyan4") +
-                    geom_text(label=ik_gephi$Id, size = 3,
-                              nudge_x = 0.05, nudge_y = 0.05, 
-                              check_overlap = T) +
-                    labs(x = "prestige centrality", y = "betweenness centrality")
+fig903c = ik_gephi %>% ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
+  geom_point(color = "cyan4") +
+  geom_text(label=ik_gephi$Id, size = 3,
+            nudge_x = 0.05, nudge_y = 0.05, 
+            check_overlap = T) +
+  labs(x = "Prestige Centrality", y = "Betweenness Centrality",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Prestige vs Betweeness")+
+  theme_bw()
 ## fig904: Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority
 fig904 = ik_gephi %>% ggplot( aes(x=pageranks, y=Authority)) +
-                      geom_point(size = 1, color = "cyan4") + 
-                      geom_text( aes(label=ik_gephi$Id), size = 3, 
-                                 check_overlap = T) +
-                      labs(x = "pageranks", y = "Authority")
+  geom_point(size = 1, color = "cyan4") + 
+  geom_text( aes(label=ik_gephi$Id), size = 3, check_overlap = T) +
+  labs(x = "Pageranks", y = "Authority",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Pageranks vs Authority")+
+  theme_bw()
 
 ## TRAVERSALS IN SURAH AL-A'ALAA
 

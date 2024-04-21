@@ -1,0 +1,12 @@
+# Analysis of Words by its Cooccurences {-}
+
+> "You shall know a word by the company it keeps".
+> "Birds of the same feathers flock together"
+
+Words of common features appear together. Words to other words have relations in linguistic terms. The relations depend on the context, whether in a grammatical sense or sense of meaning. Grammatical rules have their own structures; while meaning also has its own structures, which is further divided as meaning in the sense of grammar and meaning in the sense of semantics.
+
+Locations of words within a sentence, within a group of sentences, within a corpus greatly matters. For the case of Al-Quran Arabic, the exact location of any word, or for that matter any alphabet, is precisely fixed and determined. In NLP, the relationship between words is a major undertaking, with recognized advancements of its own in certain languages such as the English language. In Quran Analytics, we consider this as a subject of our own. Since we are focused on analyzing the translations of Al-Quran, we will deal with the subject using the translated corpora of Al-Quran.
+
+As an introduction to the subject, in the next three chapters, we will address the subject of the relationship between words from three different perspectives. The first perspective is from the locations of words with other words in the corpus, or "collocations" and "co-occurrences" (Chapter 4). The second perspective is to look at these relations from statistical aspects, namely the correlations and other statistical measures (Chapter 5). The third perspective is to look at the relationship from a holistic or global approach, namely by looking at all the words as a network of words (Chapter 6)).
+
+The three chapters will be introductory materials for the subject of roles of words within a much wider and complex subject. There are many advancements made along these lines in recent studies of Computational Linguistics which we will not cover in this book. We will leave these issues as notes for further research.

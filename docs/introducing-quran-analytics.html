@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introducing Quran Analytics | Quran Analytics with R</title>
+  <meta name="description" content="1 Introducing Quran Analytics | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introducing Quran Analytics | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introducing Quran Analytics | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preamble.html"/>
+<link rel="next" href="analysis-of-words-by-its-frequencies.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducing-quran-analytics" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introducing Quran Analytics<a href="introducing-quran-analytics.html#introducing-quran-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<blockquote>
+<p>Prophet Muhammad (SAW) said, “The best of you are those who learn the Quran and teach it.” [Bukhari]</p>
+</blockquote>
+<p>Learning and teaching Al-Quran is one of the greatest virtues in Islam. It is an obligatory duty of a Muslim. The methods of learning Al-Quran have been passed down from generation to generation and continue to flourish even to this day. The methods of learning Al-Quran had always been in the original text of Al-Quran, which is the Quranic Arabic; whether it is about learning to read or learning to understand.</p>
+<p>With advancements in technology, is it possible for the new generation to learn Al-Quran beyond the traditional methods and tools? Does the digital revolution allow us to use technologies for learning and teaching Al-Quran? The answer is most clearly a yes. However, people with knowledge of technology understand that the use of technology is beyond just browsing webpages and manipulating mobile applications within our devices. It is also beyond simple webpage creation and publication of YouTube videos. All these means of teaching and learning, while laudable, bring along many unintended consequences.</p>
+<p>The question we want to pose is, is it possible to put everything about teaching and learning Al-Quran as a comprehensive and all-encompassing system using digital technology of the day? If this quest is possible, then we must start the subject right from the very beginning - that is to cast the objective of the envisaged system within the domain of scientific discovery.</p>
+<p>The logic of knowledge (or scientific discovery) provides an analysis of testing systems of theories against experience by observation and experiment <span class="citation">(<a href="#ref-popper1992">Popper 1992</a>)</span>. Analyzing is one mechanism to produce reliability based on evidence. Evidence comes in the form of data, and testing is through inference. Inference, on the other hand, is understood through the theory of probability.</p>
+<p>The question is, can we put the same rigor of testing Al-Quran as a way for us to get to the truth or true belief? Al-Quran to Muslims is a sacred religious text, the “word of Allah,” a divine revelation, and is the final truth. For many Muslims, Al-Quran studies must be through traditional learning and knowledge discovery methods. First and foremost, we hold to the view that as Muslims, believing in the finality of the truth of Al-Quran is one of the pillars of our faith; and there is no question about it. Therefore, we believe that the question of “testing” the truth of Al-Quran does not arise; in fact, it should reaffirm any believer in the veracity of its truth.</p>
+<p>The basic principle must be that what we seek is knowledge itself. Knowledge and discovery of knowledge do not have any limit. As a believer, we must have a firm belief in the miraculousness of the language of Al-Quran; but to be able to appreciate this miraculousness with reason is what we lack. Without formal training in the Classical Arabic language and Islamic studies, many of us are at the mercy of those who claimed authority over the subject. Is there a way for those in this category to acquire this knowledge using modern tools, directly from the original and classical sources of the Quranic knowledge? Answering this is what Quran Analytics is all about.</p>
+<p>Modern tools in knowledge discovery and acquisition are computational methods, data science, artificial intelligence, and algorithms - combined with scientific methods of analysis and domain expertise - applied in computing environments. Examples of this are information retrieval, knowledge extractions, knowledge graphs, and many other applications in various fields of studies in natural and social sciences. The web, as we know it today, is a massive body of information and knowledge. Extracting knowledge from the web is impossible without relying on these modern tools.</p>
+<p>Quranic knowledge is vast from many aspects; “the language is a captivating beauty, boundless expressiveness, eloquence, rhythm, magic, and distinction.”<span class="citation">(<a href="#ref-saeh2015">Saeh 2015</a>)</span> It benefited from the “turath” of many scholars of the past with voluminous texts. These scholars came across many geographic regions of the world over more than one thousand years. The question is, how do we gain knowledge from this vast sea of knowledge? The answer is, we need modern tools for knowledge acquisition in the form of Quran Analytics.</p>
+<p>The earlier scholars of Islam’s approach to Quranic knowledge were eminently clear. They start with a thorough mastery of the language, and secondly through the acquisition of knowledge via memorization of everything in its original form (i.e., language in words and speech, as well as in context) and from total comprehension of knowledge through understanding the various teachings. However, as time progresses, the subject of language is becoming more distant, especially for many of the non-Arabic speaking people (due to the language barrier) and Arabic speaking people (due to diglossic behavior). The distance of Quranic knowledge from the people is growing.</p>
+<p>Furthermore, the path of knowledge development among the early Islamic scholars took different trajectories; for example, there are distinct paths taken among scholars from the Arabic peninsula, the Levant, Central Asia, North Africa, the Turk regions, the sub-continent, and Southeast Asia. As the knowledge is being transmitted and spread, many changes happened, and the eventual form of understanding may have diverged significantly. An example of this is the Mazhabs (sects), wherein Southeast Asia ascribes to Shafie, the Persians to Shi’a, the Turks to Hanafi. Tracing these various paths of knowledge development by itself is a significant task, not counting the content and context of the knowledge itself.</p>
+<p>Written texts possess something that others do not, namely, it is a form of data and carries the language with the contexts and meaning and knowledge dissemination. With advancements in computing, these texts are available in digitized form and further digitalized in a machine-readable format. With the advancements in the tools of annotation and textual analysis together with Big Data availability, the process of analyzing becomes less daunting.</p>
+<p>Quran Analytics is a new term without a clear scholarly definition. We know that it is a combination of various disciplines - including Quranic sciences (Ulum Al-Quran), language and linguistics, and broader Islamic sciences. The relationship and interdependencies between these fields are both <em>complicated</em> and <em>complex</em>. Our exploratory attempt to provide a diagrammatic relation between the various fields of knowledge is shown in Figure <a href="introducing-quran-analytics.html#fig:ch1fig1">1.1</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:ch1fig1"></span>
+<img src="01-Ch1Introduction_files/figure-html/ch1fig1-1.png" alt="Complexity of Quran Analytics" width="672" />
+<p class="caption">
+Figure 1.1: Complexity of Quran Analytics
+</p>
+</div>
+<p>The “relationships” shown are examples of the relations and intersections of multi-disciplinary requirements for Quran Analytics.</p>
+<p>The vast subject of Quran Analytics is our broad domain. We cannot cover all in the current work. Instead, in this book, we would like to start introducing Quran Analytics, focusing on selected areas. We intend to start and spur the development of Quran Analytics as a new field of study, and this book is our introduction to the subject.</p>
+<div id="quran-analytics" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Quran Analytics<a href="introducing-quran-analytics.html#quran-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our search for the term “quran analytics” in Google Scholar, yields 2,480 results; and a similar search for “bible analytics” yields 19,500 results.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> In both cases, we could not find a clear scholarly definition of the terms used. In the case of the Bible, for example, one interesting site we found is Aver Analytics,<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> where they perform annotations of the King James (English version) Bible and convert the text data into visuals, for the purpose of learning. For the case of Quran Analytics, the main site is from qurananalysis,<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> which is the product of research works by the School of Computing team at the University of Leeds, United Kingdom. The site claims to be “the swiss-knife of Quran Research” for both Arabic and English languages.</p>
+<p>The most comprehensive reference that we found on the subject is based on the works of Prof. Eric Atwell and his students at Leeds University. Over a decade, they have been working on annotating the Quranic texts in Arabic, using the Buckwalter transliteration engines for Arabic textual language, generating various statistical measures for the Quranic words, and creating meta-data for words and verses of the Quran. While there are many recent scholarly articles such as publications of the peer-reviewed Journal of Qur’anic Studies by the University of Edinburgh, Quranic Analytics is a subject not extensively covered; whether it is labeled as “Quran NLP”, “Quran Analytics”, or anything similar. After reading and scanning the works, we still could not find definitive definitions of Quran Analytics.</p>
+<p>In the absence of a clearly defined terminology, we propose that the term, Quran Analytics, means the works of combining the science of Quranic studies, language and linguistic studies, and computational linguistics, for the knowledge acquisition and extraction from the Quran.</p>
+<p>Defining exactly what is meant by Quran Analytics will be a major challenge; a subject which we intend to develop and expand extensively in our research. For now, we would say that our approach to Quran Analytics is about utilizing the tools of computational linguistics applied non-parametrically to the studies of the sciences of Al-Quran. What we mean by non-parametric is that, by design, the analysis does not assume any pre-existing models of the sciences of Al-Quran. Another way to express this is akin to the terminology of “unsupervised learning” in machine learning algorithms. And borrowing the term from network or graph theory, we perform analysis to allow self-emergent structures to emerge and be detected in the process.</p>
+<p>Where this approach will take us to is still uncertain. However, the encouraging development is, for many complex tasks in computational linguistics such as information retrieval and knowledge extractions, using unsupervised learning, knowledge graphs (both are non-parametric methods), are among the major discoveries of recent time. This is largely aided by the availability of Big Data, faster computing capabilities, accuracies of newer algorithms, and advancements in network science.</p>
+</div>
+<div id="quranic-studies" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Quranic Studies<a href="introducing-quran-analytics.html#quranic-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Traditional studies of Al-Quran are through the Arabic language, the science of Quranic studies (Ulum al-Quran), and the exegesis (Tafseer) of Al-Quran. The methods go back to the early period of Islam and are passed down to modern times. It is an extensively developed field which in early days were dominated only in the Arabic language, until recent times when translations to other languages such as English were made. There exist large corpora of text, in Arabic, for various exegesis, commentaries, etc., aggregated from more than one thousand years of development. All of the writings have been preserved and nowadays available in digital forms.</p>
+<p>Anyone studying Al-Quran knows that to be able to read and comprehend all possible exegesis and commentaries for the Quran is a major task even for a scholar in the field. For people without proficiency in the Arabic language, the task is even harder. Only recently, for example, Tafseer Ibn Kathir is translated to English and other languages from its Arabic origin. Translating is not an easy effort, since it is often subjected to the translators’ own views and biases.</p>
+<p>One of the approaches to Quranic studies is to express it as literary texts within linguistic contexts. While the approach is novel, it is highly criticized by some traditional Islamic scholars as violations of Islamic principles, since the Quran is the “word of God” and not some literary piece. There is a lot of truth in this criticism, especially when it is studied in non-Quranic Arabic forms of language, which includes colloquial Arabic and non-Arabic languages. Furthermore, as emphasized by early scholars of the sciences of Al-Quran, the knowledge from the Quran must be viewed as a holistic approach, rather than analyzing their grammar, lexicography, content, and implications within sentences (verses) and a group of sentences (verses).</p>
+<p>In this regard, the arcane Computational Linguistic (CL) approach to Quranic studies, will be highly criticized since it might not adhere to the established methods and rules. Therefore there is a serious need for <strong>combining the sciences of Quranic studies with CL</strong>, whereby CL is only used as a tool for performing the studies, and not the primary method. In other words, CL on Al-Quran requires first and foremost, the sciences of Quranic studies as a field of knowledge and then CL as a tool of computing and processing the texts.</p>
+<p>Our view is that, to date, most of the incomprehension of CL applications to the Quranic studies comes from the lack of understanding of scholars of the CL subject itself. CL is only good as a tool, which follows the rules imposed by the designer or developer of the tools. Properly designed tools will serve their purpose. An example of this is the application of CL tools for the Chinese language and literary texts. Developers of Chinese CL tools have to reconstruct the engines of their CL application to perform with high accuracy. In other words, any computing solution is not “model-free” and therefore requires an intense modeling process. The sciences of Quranic studies and the science of Quranic Arabic from classical sources are a good start to derive these CL rules. This field has not been extensively developed, and hence we intend to expand the research and development of the applications of CL to the science of Quranic studies.</p>
+</div>
+<div id="quranic-language-and-studies" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Quranic language and linguistic studies<a href="introducing-quran-analytics.html#quranic-language-and-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Language studies is a very old field, as old as humanity itself. Language as a subject is difficult to describe in simple terms, as it is interrelated with many fields of literature, philology, anthropology, sociology, as well as biology. The Quranic language furthermore is unique in the sense that, we believe that it is the word of Allah, revealed through Prophet Muhammad (SAW), in Arabic language, one thousand two hundred years ago. As a language, traditional and contemporary scholars have argued that the Quranic language stands alone, apart even from the Classical Arabic of the time, and distinctly clear from the Colloquial Arabic.</p>
+<p>Our position is that the Quranic language has to be the first priority in the pecking order. It should be the rule which governs the meaning of the language. As an example, the Quranic language uses the “past tense” in English meaning something that is perpetual (e.g. the word “kaana”), in which case, its common usage of Arabic grammar (Classical or Colloquial) will never be the same as Quranic Arabic. Al Quran also introduces new terms and names or gives meanings to these terms and names. The same term and meanings do not change in Quranic Arabic but may change in the usage in the society (i.e. natural language). An example of this is “Riba”. A recent reference on the subject is found in <span class="citation">(<a href="#ref-saeh2015">Saeh 2015</a>)</span>.</p>
+<p>Since the subject of Quranic language is beyond our scope here, we simply state our stand on it, namely: the Quranic language is unique and stands by itself (as a mu’jizah), hence it must be treated as such. Our task and duty are to rediscover and uncover more of its uniqueness and meaning, through the knowledge extraction process of Quran Analytics.</p>
+<p>Linguistics is the scientific study of language. It involves an analysis of language form, language meaning, and language in context, as well as an analysis of the social, cultural, historical, and political factors that influence language.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> It is a vast field of sciences, with research covering the sub-field of sociolinguistics, neurolinguistics, translations, and many others. A particular field of interest for us is the latest development in computational linguistics. Our current focus will be on the applications of computational linguistics for Quranic studies.</p>
+</div>
+<div id="computational-linguistics" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Computational Linguistics<a href="introducing-quran-analytics.html#computational-linguistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>“Computational linguistics is the scientific and engineering discipline concerned with understanding written and spoken language from a computational perspective, and building artifacts that usefully process and produce language, either in bulk or in a dialogue setting. To the extent that language is a mirror of the mind, a computational understanding of language also provides insight into thinking and intelligence. And since language is our most natural and most versatile means of communication, linguistically competent computers would greatly facilitate our interaction with machines and software of all sorts, and put at our fingertips, in ways that truly meet our needs, the vast textual and other resources of the internet.”</em><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<p>The quotes above from the Stanford Encyclopedia of Philosophy reflect the definition of computational linguistics (CL) as a (sub) field of linguistics. The focus of CL is to perform syntactic parsing, word disambiguation, semantic representation and interpretation, making sense of textual representation, and acquisition of knowledge from the language (texts or speeches). The philosophical basis of CL originates from the works of Noam Chomsky, under the generative grammar theory, which claims that grammar in languages follows innate grammatical structures.</p>
+<p>The importance of this philosophical basis is to provide scientific justification for us to convert words and sentences into data, through the filters of grammatical rules. Once this is performed, then we will be able to carry out analytical works using traditional tools of probability and statistics. For this reason, in the early days, the subject was called “statistical linguistics”, which today is transformed to “statistical Natural Language Processing (NLP)”, or “Natural Language Processing”.</p>
+</div>
+<div id="natural-language-processing" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Natural Language Processing (NLP)<a href="introducing-quran-analytics.html#natural-language-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Natural Language Processing (NLP) is a combination of linguistics and data science analyzing large amounts of natural language data which includes the collection of speeches, text corpora, and other forms of data generated from the usage of languages. The speeches and text corpora come from official and formal sources (e.g., formal speeches, textbooks, etc.) as well as usage in common day-to-day communications (e.g., usage in social media).</p>
+<p>NLP has been largely developed over the last few decades and gained large popularity in part due to the development of various algorithms for language processing - from text mining, development of large corpora, all the way to the development of AI applications to language.</p>
+<p>The basics in NLP generally cover text parsing and mining, lexical and grammar analysis, semantic analysis. The higher-order works in NLP are pragmatic analysis, sociolinguistics, Machine Learning, and Artificial Intelligence on linguistics - which in turn are used in a variety of applications - from the simplest such as chatbots, all the way to information retrieval and knowledge extraction.</p>
+<p>Most text mining is done on ASCII-based alphabets based on UTF-8 Unicode encoding of characters. Particularly, almost all programming languages are based on the English language for its syntax, which drives the easiness of text mining applied to similar characters which are normally or universally used in a computing environment. Despite the availability of UTF-8 for Arabic characters, text mining is just beginning and is still way behind in comparison to the English language. The most important area which is almost relatively unexplored is on cross-language and multi-language text mining, between Arabic and English, Arabic and Malay, Malay and English with particular focus on sacred religious text such as Al-Quran and Al-Hadith.</p>
+</div>
+<div id="programming-language-in-NLP" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Programming language in NLP<a href="introducing-quran-analytics.html#programming-language-in-NLP" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Google Trends represents an “unbiased sample” of Google search data, which was made available to the public, representing trillions of searches on the Internet that take place every year. The strength of the tool lies in the availability of historical data, granularized to the details of time (daily) and geographic location (cities) for the whole world.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> We will use this tool for exploratory views on the usages of computer programming languages in Natural Language Processing (NLP).</p>
+<p>Google search for “Top programming language for NLP” reveals that it revolves around five programming languages: MATLAB, R, Python, and Java.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> Further inspection of trends shows that Python is the most popular by far overtaking all other languages combined.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> Leading the trend was “Stanford NLP” in Java since Java was used in the Stanford NLP project, “PyTorch” and “spaCy” for Python, since “PyTorch” and “spaCy” are the two most comprehensive and usable libraries for NLP works in Python, and the highest rise of usage is from China. For R, “NLP in R” is the only notable term, reflecting R’s lack of a single comprehensive package for NLP.</p>
+<p>Stanford CoreNLP, which is among the most comprehensive NLP projects to date and was originally written in Java, now uses Python as its official engine under Stanza. Nevertheless, it can be used by almost all other major programming languages such as PHP, C#, Perl, Ruby, and R.</p>
+<p>The latest trends indicate that interest in NLP among the programming languages is very encouraging. Google search for the term “NLP in” is tabulated as follows:<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+<table>
+<thead>
+<tr class="header">
+<th>The term</th>
+<th>Results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“NLP in R”</td>
+<td>43 million</td>
+</tr>
+<tr class="even">
+<td>“NLP in Python”</td>
+<td>20 million</td>
+</tr>
+<tr class="odd">
+<td>“NLP in Java”</td>
+<td>9.9 million</td>
+</tr>
+<tr class="even">
+<td>“NLP in MATLAB”</td>
+<td>1.47 million</td>
+</tr>
+</tbody>
+</table>
+<p>Regular expressions, also called <em>regex</em>, is an extremely powerful tool for computational linguistics. It is a programming language of its own, which relies on the logic of strings manipulations at the byte level. Regex allows the programmer to manipulate the texts at the rudimentary level, whether to do character search (using byte search) or removal/replacement of characters from text sources based on any structures.</p>
+<p>The drawback of regex however is its logic and highly cumbersome codes. Availability of string manipulations libraries, such as “spaCy” in Python or “stringi” in R, makes the use of regex less important in these languages. The basis of the logic applied in most of these libraries originates from regex. This is why regex could prove to be extremely useful in dealing with languages that are not based on Latin-based scripts such as Chinese or Arabic scripts.</p>
+<p>The latest trends in programming languages for NLP are encouraging where most solutions are aimed at inter-operability across computing platforms. This is accomplished through the development of Application Programming Interfaces (APIs) and extending the programming language to other languages. For example, TensorFlow which is made famous in Python is extended into R via Keras interface to R. Similarly, many built-in functions which are written in the C++ language are in use by Python, R, and Java. In the future as well as now, the need to be conversant in all programming languages may not be important; as long as one is familiar with any particular popular language, extending it to applications in another language will be straightforward.</p>
+</div>
+<div id="advancements-in-NLP-and-quran-analytics" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Advancements in NLP and Quran Analytics<a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Advancements in NLP over the last decade have progressed from simple and basic tasks into Machine Learning, Deep Learning, and Artificial Intelligence with significant success in achieving many complex and complicated operational goals. One of the key areas of success is in transforming data into knowledge. With large amounts of unstructured data, it is extremely difficult to process and convert those data into meaningful representations that humans can derive useful conclusions from. What the machine does is to take as input large amounts of data, process them in machine forms using rules generated by NLP tools, and finally present them to humans with the domain knowledge, to interpret them for people with less expertise of the domain concerned.</p>
+<p>An example of this is anomaly detection, where given large amounts of data (for example collections of Quranic exegesis), the only way for a human being to detect any “false interpretation” is by reading the texts in detail of all possible collections of exegesis which are considered authentic. The checks must involve all aspects, all possible sources of the interpretation, the methodology used in any specific exegesis, exact context and contents of the interpretation, contextual issues in linguistics, and all relevant notes and pointers attributed by the interpreter. Given the vast amount of exegesis available, what had been done traditionally is to commit everything to memory, and checks are done through memory. Why is this the only possible method? Because even readings on a textual basis will miss small details of anything - such as the exact context of the interpretation, the references used such as other verses, Hadiths, and traditions used. This is almost humanly impossible today (except for whoever is given gifts of memorization). Is it possible to use the advancements in NLP to perform this feat? This is an example of applying NLP to a problem in Quranic interpretations.</p>
+<p>There are many examples of recent achievements in NLP which are extremely encouraging for a wide range of applications within common usages, such as speech recognition, speech-to-text, information retrieval systems, and others. Since our objective here is to introduce Quran Analytics, we will cover some of the advances particularly towards its potential applications within this field. We must admit that the coverage about NLP is very wide and encompasses many domains, therefore our suggestions here remain a preliminary exploration of the subject matter. For further readings on the subject, we recommend that readers refer to the materials suggested at the end of the chapter.</p>
+<div id="common-NLP-tasks" class="section level3 hasAnchor" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> Common NLP tasks<a href="introducing-quran-analytics.html#common-NLP-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Common NLP tasks are generalized into the following:</p>
+<ol style="list-style-type: decimal">
+<li>Properties of natural language - which include phonetics, phonology, syntax, grammar, lexicon, and its variations.</li>
+<li>Morphology - Part of Speech (POS), lemmatization, and affixations.</li>
+<li>Semantics - phrase structure, sentences and utterances, relations, thematic, and others.</li>
+<li>Pragmatics - discourse, intentions, implications, and others.</li>
+</ol>
+<p>All the tasks listed above are cast within the linguistic domain, which is based on the notion that language is “generative” in nature. This implies that natural language, whether in the form of speech or textual, is convertible to machine-readable form as data. Once the natural language is converted to data, various algorithms and computing models are applied to generate the tasks in an inference framework. This framework is called “Statistical Natural Language Processing”. There are many established references for NLP as a subject, notable among them are <span class="citation">Manning and Schutze (<a href="#ref-manning1999">1999</a>)</span>, <span class="citation">Manning, Raghavan, and Schutze (<a href="#ref-manning2009">2009</a>)</span>, <span class="citation">Jurafsky and Martin (<a href="#ref-jurafsky2000">2000</a>)</span>.</p>
+<p>The key aspect of NLP is the statistical analysis, and the tools for it are available in abundance. However, the deeper meaning of the text and inference language is context-dependent. For the English language, this area has been well developed over many decades. Whilst for other languages, it is unclear, particularly the Arabic language, which has its diglossia of colloquial Arabic and Classical Arabic. The Malay language is similar, with its own diglossic dichotomy between Malaysian Malay and Indonesian Malay. All these deeper dimensions may confound statistical inference, and many inferences may suffer from small sample problems.</p>
+<p>Lexical analysis is one of the most advanced areas in NLP, due to the digitalization of language as textual data. Lexical analysis relies on two major steps:</p>
+<ol style="list-style-type: lower-alpha">
+<li>lexicalization which includes <em>tokenization</em>, <em>lemmatization</em>, and <em>word cleaning</em> process, and</li>
+<li>analyzing the objects (in this case tokens), within their contexts, such as <em>syntactic structures</em>, <em>grammar analysis</em>, and others.</li>
+</ol>
+<p>Semantic analysis is about relations between structures derived from the data as an outcome of lexical process or engines into the phrases, clauses, sentences, group of sentences as well as the whole text and corpora.</p>
+<p>Among the early works for NLP is corpus building. The task is to convert text and generate a large corpus of speech and textual data. There are many notable efforts for public corpus development such as Project Guttenberg<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>, American National Corpus<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>, British National Corpus<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>, BYU corpus linguistics<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>, and others. A good list is available on Wikipedia.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> A paid version program for corpora in many languages is developed by Sketch Engine<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> which has a variety of language capabilities. A sample list for Arabic language corpora is provided by Eddakrouri.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+<p>In the past decade, most programming languages have expanded their capabilities to deal with most programming tasks. Furthermore, the works by groups like Stanford NLP, IBM, Google, Baidu, as well as Facebook, generated many language models and treebanks. For example, Stanford NLP through Stanza provided language models for almost all major languages of the world.<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a> For treebanks, the famous one is the Penn Treebank project of the University of Pennsylvania, <a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a> which includes a variety of languages including the Arabic language.<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> Of late, is the development of semantic treebanks, which are collections of natural language annotated with meaning representations. An example of this is the Groningen Meaning Bank<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> by the University of Groningen, Netherlands.</p>
+</div>
+<div id="available-resources-for-digital-quranic-studies" class="section level3 hasAnchor" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Available resources for digital Quranic studies<a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Of particular interest for the work in Quran Analytics is the developments in Arabic NLP with a special focus on Classical Arabic. The interest and works in Arabic NLP have only recently started and much more work is still needed. Among the key problems is the availability of standardized Arabic corpora for Modern Standard Arabic.<span class="citation">(<a href="#ref-larabi2018">Marie-Sainte et al. 2019</a>)</span> One of the major limitations for Quran Analytics is the limited availability of resources since Arabic is considered as a “low resource language” in NLP, as compared to “high resource languages” such as English, French, Spanish, German and Chinese.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> Also, corpora for classical Islamic texts have just begun. A full survey is provided by <span class="citation">(<a href="#ref-atwell2018">Atwell 2018</a>)</span>. The most notable project is by King Saud University Corpus of Classical Arabic, which derived most of its texts from Al-Maktabah Al-Shamelah.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> It contains Classical Arabic texts from the early stage of Islamic history to modern times.<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
+<p>Since the last decade, many solution providers have developed Quranic studies using web applications or dedicated applications, made available to the public. Notable among them is the Quran corpus project from Leeds University, under <em>Corpus Quran</em>.<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> Their effort is highly extensive, since they performed massive efforts in annotating the Quran Arabic from its Uthmani scripts, and created the treebank, ontological graphs, grammatical expressions, as well as its English translations. The web page, as well as the data, has been made as open-source under <em>Quran Analysis</em>, <a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> and <em>Text Mining the Quran</em>.<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a></p>
+<p><em>Quran Gateway</em> <a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a> is another digital effort, which is provided as a paid version, developed originally by Dr. Andrew Bannister and Dr. Daniel Brubaker. The theme of their works is based on “An Oral-Formulaic Study of the Quran”, originally a Ph.D. thesis that was published as a book in <span class="citation">(<a href="#ref-bannister2014">Bannister 2014</a>)</span>. The approach is by taking NLP methods and applying them to the studies of Al-Quran, using both the original Quran in Arabic and various English translations.</p>
+<p>Thus far our research reveals that these are the only two works that qualify as comprehensive works on Quranic studies which deploy NLP computing tools for its development. Between the two, the work from the Leeds University working group is more comprehensive and covers a wider range of applications, and was made to be open source. Quran gateway on the other hand relies on a specific method (or models) which opens it to criticism as narrow-based solutions.</p>
+<p>As far as compilations for the translations of Al-Quran, most of the texts (i.e., corpus) are available from www.tanzil.net for various languages.</p>
+</div>
+<div id="nlp-works-on-english-translations-of-al-quran" class="section level3 hasAnchor" number="1.7.3">
+<h3><span class="header-section-number">1.7.3</span> NLP works on English translations of Al-Quran<a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Since the most accessible NLP libraries are in the English language, we will focus first on the English translations of Al-Quran. In particular, we will do some simple analytics using two English translations of Al-Quran, namely <em>The Meaning of the Holy Quran</em> by Abdullah Yusuf Ali <span class="citation">(<a href="#ref-yusufali2003">Yusuf-Ali 2003</a>)</span> and <em>The Quran: Arabic Text with Corresponding English Meanings</em> by Saheeh International <span class="citation">(<a href="#ref-saheeh1997">Saheeh-International 1997</a>)</span>. There are other translations such as by A.J. Arberry, Abul Ala Maududi, Pickthall, and a few others. The texts are available for download from www.tanzil.net and other sources. In this book, we will focus mainly on Saheeh and use Yusuf Ali for comparisons. A full work encompassing all other translations is left for the future.</p>
+<p>For the English language resources, there are many available models for syntactic, lexical, and treebanks, which are openly accessible. The most notable ones are Stanza NLP from Stanford NLP group, Penn Treebank, as well as Udpipe. We will be using Udpipe because of its easy access within <strong>R</strong>. In the future, we will also use other ready-made libraries for the English language for comparisons.</p>
+<p>Furthermore, among the libraries for sentiment scoring models, the English language provides many open libraries for usage. Among the notable ones are the “bing sentiment model” (from Bing Liu and collaborators), “AFINN sentiment model” (from Finn Arup Nielsen), “Stanford Sentiment Treebank” (from Stanford NLP group), “nrc sentiment model” (from Saif Mohammad and Peter Turney). We will use bing and AFINN in our work here.</p>
+<p>The most notable NLP work on English translation is from the University of Leeds, as indicated earlier. However, the work is just at the beginning stage. Many of their works are available online at www.corpus.quran.com.</p>
+</div>
+<div id="complex-nlp-tasks-for-quran-analytics" class="section level3 hasAnchor" number="1.7.4">
+<h3><span class="header-section-number">1.7.4</span> Complex NLP tasks for Quran Analytics<a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In our view, the bigger challenge for Quran Analytics will be in the new advancements of NLP, particularly in the area of information extraction, active learning, augmentation mining, knowledge graphs, knowledge base systems, and probabilistic language modeling. These are among the actively researched areas in NLP.</p>
+<p>Information extraction is a technique of extracting structured information from unstructured text. This is a difficult problem due to the complex nature of the human language, whereby words have different meanings when put in different contexts. Active learning on the other hand is important for the tasks of automation in annotation works - which reduces the time for high accuracy annotations tasks. A knowledge graph is a way of storing data that resulted from an information extraction task. It transforms the information data into what is termed a “graph database” concept. Argumentation mining focuses on analyzing argumentation in text and developing tools to automatically extract, aggregate, summarize and reason about arguments in natural language. This in turn provides tools for inference and predictions.</p>
+<p>Knowledge base systems (KBS) involve the creation of algorithms that use knowledge for solving complex problems. An example of this is a set of knowledge settings, such as Islamic rulings (fatwas); a KBS for this purpose is a system of collection of knowledge on all resources relating to the basis of rulings (i.e., Al-Quran, Al-Hadith, etc.). Finally, probabilistic models of language deal with fundamental cognitive questions of how humans’ structure, process and acquire language. Applications of Deep Learning algorithms and complicated language modeling such as Hidden Markov Models (HMM) are entrenched in this domain.</p>
+<p>There are numerous other areas of development within the field of NLP which are not possible to be covered here. What’s important is that all these advancements provide massive learning examples which give researchers new and novel methods of exploring NLP further. We are sure that these learning examples are useful tools and resources for Quran Analytics as we envisaged.</p>
+</div>
+</div>
+<div id="why-use-R" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Why use R?<a href="introducing-quran-analytics.html#why-use-R" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we will argue for <strong>R</strong> programming language as our tool of choice. <strong>R</strong> is a GNU project, which is a major advantage for many developers and collaborators to join their efforts in developing programs and solutions to common tasks. Only two programming environments have reached a large following in terms of users and contributing collaborators in the field of data science, <strong>Python</strong> and <strong>R</strong>. Which language should you learn? The decision can be challenging because both Python and <strong>R</strong> have clear strengths.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p>
+<p>R is exceptional for research – visualizing the data, telling the story, producing reports, and making MVP (minimum viable product) prototype apps with Shiny. From concept (idea) to execution (code), R users tend to be able to accomplish these tasks 3X to 5X faster than Python users, making them very productive for research. Python is exceptional for production – integrating machine learning models into production systems.</p>
+<p><strong>R</strong> originated as a statistical programming language. This is the reason why it is favored by scientists and researchers more than Python, which is geared more towards programmers. However, it really does not matter which one to choose between Python and <strong>R</strong>, since both are highly interoperable. What is needed is high proficiency in at least one. Most libraries available in Python will have their equivalent in <strong>R</strong>, and vice versa. If it is not available in one, you can simply run the Python program in <strong>R</strong> directly.</p>
+<p>We view that in computational linguistics, in particular NLP, <strong>R</strong> is well-positioned to undertake the heavy lifting works required. In particular, the flexibility of <strong>R</strong> as a Massively Objected Oriented Programming (MOOP) language with its advanced data structures, gives us flexibility to construct our own data structures fitting the problem at hand. This will become handy when we deal with complex concepts and methods for the Quranic language, in particular the Quranic Arabic. As far as the Arabic scripts are concerned, they can be dealt with quite easily; and usage of regular expressions is extremely straightforward in <strong>R</strong>.</p>
+<p>More importantly, developers have built massive libraries (called packages) in <strong>R</strong>, from a very broad discipline of subjects and applications. As of today, there are more than 10,000 packages that have been developed and maintained by CRAN, which is the common <strong>R</strong> codes repository, available for download and usage. Of course, this is a far cry from Python, which has more than 200,000 packages, hosted by PyPI. The advantage of <strong>R</strong> and <em>CRAN</em> is that all packages in the repository are well maintained, versioned, and well documented. In <strong>R</strong>, the most popular IDE (Integrated Development Environment) is <em>R Studio</em>, which is easy to use, and all documents are designed for reproducibility through <em>R Markdown</em>.</p>
+<p>Lastly, we would argue that as far as NLP is concerned, <strong>R</strong> represents the most vibrant alternative to Python, and is used widely by many NLP researchers and developers as a tool of choice. This is evident from the search results in the previous section which shows that interest in “NLP in R” is almost double the interest in “NLP in Python”. Since <strong>R</strong> is more attuned to researchers and scientists, we will take R as our programming language of choice. For a good introduction to <strong>R</strong>, we recommend “R for Data Science” by Wickham and Grolemund <span class="citation">(<a href="#ref-wickham2016">Wickham and Grolemund 2016</a>)</span>, its online version is also available,<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> and “R Programming for Data Science” by Roger Peng <span class="citation">(<a href="#ref-peng2014">Peng 2014</a>)</span>, with its online counterpart.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>. For a good course on R is from Coursera.<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>. A full exposition of the R programming language is “Extending R” by <span class="citation">(<a href="#ref-chambers2016">Chambers 2016</a>)</span>.</p>
+</div>
+<div id="focus-of-this-book" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> Focus of this book<a href="introducing-quran-analytics.html#focus-of-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The purpose of this book is to guide our readers along with the exploratory data analysis (EDA) step in data science.<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>. The datasets we will explore are mainly the selected English translations of Al-Quran. The methods of the exploratory analysis will be the various tools available, mainly using <strong>R</strong> programming language. This is intended as a first step before we will apply it within a larger context of applications on the original language of Al-Quran, which is in the Uthmani script and based on Al-Quran Classical Arabic, relying on various classical Islamic texts, such as the Hadith, Tafseer, and others which are based on Classical Arabic.</p>
+<p>We intend to achieve three indirect objectives in this book:</p>
+<ol style="list-style-type: decimal">
+<li>To indirectly introduce R programming language as a data science tool.</li>
+<li>To introduce some of the NLP tools in R.</li>
+<li>To explore some of the NLP concepts for text and data analysis.</li>
+</ol>
+<p>The more direct objectives of our exploratory work are to:</p>
+<ol style="list-style-type: decimal">
+<li>Demonstrate the usage of various tools within the context of the English language for the Quran English translations and provide indications in terms of applications within the original text of Al-Quran.</li>
+<li>Suggest various paths of research and development that can be further expanded based on the lessons learned from dealing with the English language. These are noted at the end of each chapter as conclusions providing further direction of research.</li>
+<li>Showcase various existing open-source models of language, in particular the English language. This will be shown through various comparative analyses.</li>
+</ol>
+<p>Most importantly, we hope that our work will spur more interest among researchers and collaborators to further investigate and expand the area of Quran Analytics, Natural Language Processing, Linguistics, in totality and comprehensively. It should encompass the domain of English language (for the case of English-speaking people), Malay language (for southeast Asian Malays), and hopefully other languages such as Farsi, Turkish, Chinese, Bangladeshi, Hindi, and numerous other major languages that have their Quran translations.</p>
+</div>
+<div id="further-readings" class="section level2 hasAnchor" number="1.10">
+<h2><span class="header-section-number">1.10</span> Further readings<a href="introducing-quran-analytics.html#further-readings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Atwell, Eric. <em>Classical and Modern Arabic Corpora: Genre and Language Change.</em> John Benjamins Publishing Company, Amsterdam, The Netherlands, 2018. <span class="citation">(<a href="#ref-atwell2018">Atwell 2018</a>)</span></p>
+<p>Baayen, Harald R. <em>Analyzing Linguistic Data: A Practical Introduction to Statistics Using R.</em> Cambridge University Press, Cambridge, United Kingdom, 2008. <span class="citation">(<a href="#ref-baayen2008">Baayen 2008</a>)</span></p>
+<p>Chambers John M. <em>Extending R.</em> Chapman Hall/CRC, Boca Raton, Florida, 2016 <span class="citation">(<a href="#ref-chambers2016">Chambers 2016</a>)</span></p>
+<p>Gries, Stefan T. <em>Quantitative Corpus Linguistics with R: A Practical Introduction.</em> Routledge, Taylor &amp; Francis Group, New York, New York, 2017. <span class="citation">(<a href="#ref-gries2017">Gries 2017</a>)</span></p>
+<p>Izutsu, Toshiko. <em>God and Man in the Qur’an.</em> Keio University, Tokyo, Japan, 1964 <span class="citation">(<a href="#ref-izutsu1964">Izutsu 1964</a>)</span></p>
+<p>Jurafsky, Daniel and James H. Martin. <em>Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition.</em> Prentice Hall, New Jersey, United States, 2000 <span class="citation">(<a href="#ref-jurafsky2000">Jurafsky and Martin 2000</a>)</span></p>
+<p>Manning, Christopher D. and Hinrich Schutze. <em>Foundations of Statistical Natural Language Processing.</em> The MIT Press, Cambridge, Massachusetts, 1999 <span class="citation">(<a href="#ref-manning1999">Manning and Schutze 1999</a>)</span></p>
+<p>Manning, Christopher D., Prabhakar Raghavan, and Hinrich Schutze. <em>An Introduction to Information Retrieval.</em> Cambridge University Press, Cambridge, England, 2009. <span class="citation">(<a href="#ref-manning2009">Manning, Raghavan, and Schutze 2009</a>)</span></p>
+<p>Peng, Roger D. <em>R Programming for Data Science</em>. Leanpub, Victoria, British Columbia, Canada, 2014. <span class="citation">(<a href="#ref-peng2014">Peng 2014</a>)</span></p>
+<p>Rahman, Fazlur. <em>Major Themes of the Qur’an.</em> The University of Chicago Press, Chicago, Illinois, USA, 1980. <span class="citation">(<a href="#ref-rahman1980">Rahman 1980</a>)</span></p>
+<p>Saeh, Bassam. <em>The Miraculous Language of Qur’an: Evidence of Divine Origin.</em> International Institute of Islamic Thought, London, United Kingdom, 2015 <span class="citation">(<a href="#ref-saeh2015">Saeh 2015</a>)</span></p>
+<p>Von-Denfer, Ahmad. <em>Ulum Al-Quran: An Introduction to the Sciences of the Quran.</em> The Islamic Foundation, London, United Kingdom, 1983 <span class="citation">(<a href="#ref-vondenfer1983">Von-Denfer 1983</a>)</span></p>
+<p>Wickham, Hadley and Garret Grolemund. <em>R for Data Science.</em> O’Reilly Media, Inc, Newton, Massachusetts, 2016. <span class="citation">(<a href="#ref-wickham2016">Wickham and Grolemund 2016</a>)</span></p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-atwell2018" class="csl-entry">
+Atwell, Eric. 2018. <em>Classical and Modern Arabic Corpora: Genre and Language Change</em>. Amsterdam, The Netherlands: John Benjamins Publishing Company.
+</div>
+<div id="ref-baayen2008" class="csl-entry">
+Baayen, Harald R. 2008. <em>Analyzing Linguistic Data: A Practical Introduction to Statistics Using r</em>. Cambridge, United Kingdom: Cambridge University Press.
+</div>
+<div id="ref-bannister2014" class="csl-entry">
+Bannister, Andew G. 2014. <em>An Oral Formulaic Study of the Quran</em>. Plymouth, United Kingdom: Lexington Books.
+</div>
+<div id="ref-chambers2016" class="csl-entry">
+Chambers, John M. 2016. <em>Extending r</em>. Boca Raton, Florida: Chapman Hall/CRC.
+</div>
+<div id="ref-gries2017" class="csl-entry">
+Gries, Stephen Th. 2017. <em>Quantitative Corpus Linguistics with r: A Practical Introduction</em>. 2nd ed. New York, New York: Routledge, Taylor; Francis Group.
+</div>
+<div id="ref-hirschberg2015" class="csl-entry">
+Hirschberg, Julia, and Christopher D. Manning. 2015. <span>“Advances in Natural Language Processing.”</span> <em>Science Magazine</em> 349: 261–66.
+</div>
+<div id="ref-izutsu1964" class="csl-entry">
+Izutsu, Toshiko. 1964. <em>God and Man in the Qur’an</em>. Tokyo, Japan: Keio University.
+</div>
+<div id="ref-jurafsky2000" class="csl-entry">
+Jurafsky, Daniel, and James H. Martin. 2000. <em>Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition</em>. 2nd ed. New Jersey, United States: Prentice Hall.
+</div>
+<div id="ref-manning2009" class="csl-entry">
+Manning, Christopher D., Prabhakar Raghavan, and Hinrich Schutze. 2009. <em>An Introduction to Information Retrieval</em>. Cambridge, England: Cambridge University Press.
+</div>
+<div id="ref-manning1999" class="csl-entry">
+Manning, Christopher D., and Hinrich Schutze. 1999. <em>Foundations of Statistical Natural Language Processing</em>. Cambridge, Massachusetts: The MIT Press.
+</div>
+<div id="ref-larabi2018" class="csl-entry">
+Marie-Sainte, Souad Larabi, Nada Alalyani, Sihaam Alotaibi, Sanaa Ghouzali, and Ibrahim Abunadi. 2019. <span>“Arabic Natural Language Processing and Machine Learning-Based Systems.”</span> <em>IEEE</em> 7: 7011–19.
+</div>
+<div id="ref-peng2014" class="csl-entry">
+Peng, Roger D. 2014. <em>R Programming for Data Science</em>. Victoria, British Columbia, Canada: Leanpub.
+</div>
+<div id="ref-popper1992" class="csl-entry">
+Popper, Karl. 1992. <em>The Logic of Scientific Discovery</em>. London, United Kingdom: Routledge Classics.
+</div>
+<div id="ref-rahman1980" class="csl-entry">
+Rahman, Fazlur. 1980. <em>Major Themes of the Qur’an</em>. Chicago, Illinois, USA: The University of Chicago Press.
+</div>
+<div id="ref-saeh2015" class="csl-entry">
+Saeh, Bassam. 2015. <em>The Miraculous Language of Qur’an: Evidence of Divine Origin</em>. London, United Kingdom: International Institute of Islamic Thought.
+</div>
+<div id="ref-saheeh1997" class="csl-entry">
+Saheeh-International. 1997. <em>The Quran: Arabic Text with Corresponding English Meanings</em>. Jeddah, Saudi Arabia: Abul Qasim Publishing House.
+</div>
+<div id="ref-vondenfer1983" class="csl-entry">
+Von-Denfer, Ahmad. 1983. <em>Ulum Al-Quran: An Introduction to the Sciences of the Quran</em>. London, United Kingdom: The Islamic Foundation.
+</div>
+<div id="ref-wickham2016" class="csl-entry">
+Wickham, Hadley, and Garret Grolemund. 2016. <em>R for Data Science</em>. Newton, Massachussets: O’Reilly Media, Inc.
+</div>
+<div id="ref-yusufali2003" class="csl-entry">
+Yusuf-Ali, Abdullah. 2003. <em>The Meaning of the Holy Quran</em>. Beltsville, Maryland: Amana Publications.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>Search performed on 27 January 2021, using <a href="https://scholar.google.com/" class="uri">https://scholar.google.com/</a><a href="introducing-quran-analytics.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.averanalytics.com/bible-dashboard" class="uri">https://www.averanalytics.com/bible-dashboard</a><a href="introducing-quran-analytics.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://www.qurananalysis.com/analysis/" class="uri">https://www.qurananalysis.com/analysis/</a><a href="introducing-quran-analytics.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://en.wikipedia.org/wiki/Linguistics" class="uri">https://en.wikipedia.org/wiki/Linguistics</a><a href="introducing-quran-analytics.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://plato.stanford.edu/entries/computational-linguistics/" class="uri">https://plato.stanford.edu/entries/computational-linguistics/</a><a href="introducing-quran-analytics.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Google Trends: (<a href="https://medium.com/google-news-lab/what-is-google-trends-data-and-what-does-it-mean-b48f07342ee8" class="uri">https://medium.com/google-news-lab/what-is-google-trends-data-and-what-does-it-mean-b48f07342ee8</a>)<a href="introducing-quran-analytics.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Google search on 24 January 2021<a href="introducing-quran-analytics.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>Google trend analysis on 24 January 2021. The search was done on the trends of “web search” on “MATLAB NLP”, “R NLP”, “Python NLP”, and “Java NLP” as the search term for the whole world for the past 5 years.<a href="introducing-quran-analytics.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Search on 24 January 2021<a href="introducing-quran-analytics.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://www.gutenberg.org" class="uri">https://www.gutenberg.org</a><a href="introducing-quran-analytics.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p><a href="http://www.anc.org" class="uri">http://www.anc.org</a><a href="introducing-quran-analytics.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://www.english-corpora.org/bnc/" class="uri">https://www.english-corpora.org/bnc/</a><a href="introducing-quran-analytics.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p><a href="https://lcl.byu.edu" class="uri">https://lcl.byu.edu</a><a href="introducing-quran-analytics.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://en.wikipedia.org/wiki/List_of_text_corpora" class="uri">https://en.wikipedia.org/wiki/List_of_text_corpora</a><a href="introducing-quran-analytics.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://www.sketchengine.eu" class="uri">https://www.sketchengine.eu</a><a href="introducing-quran-analytics.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://sites.google.com/a/aucegypt.edu/infoguistics/directory/Corpus-Linguistics/arabic-corpora" class="uri">https://sites.google.com/a/aucegypt.edu/infoguistics/directory/Corpus-Linguistics/arabic-corpora</a><a href="introducing-quran-analytics.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://stanfordnlp.github.io/stanza/available_models.html" class="uri">https://stanfordnlp.github.io/stanza/available_models.html</a><a href="introducing-quran-analytics.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu/~treebank/" class="uri">https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu/~treebank/</a><a href="introducing-quran-analytics.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p><a href="https://catalog.ldc.upenn.edu/LDC2005T20" class="uri">https://catalog.ldc.upenn.edu/LDC2005T20</a><a href="introducing-quran-analytics.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p><a href="https://gmb.let.rug.nl" class="uri">https://gmb.let.rug.nl</a><a href="introducing-quran-analytics.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p><span class="citation">Hirschberg and Manning (<a href="#ref-hirschberg2015">2015</a>)</span><a href="introducing-quran-analytics.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p><a href="https://shamela.ws" class="uri">https://shamela.ws</a><a href="introducing-quran-analytics.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>The site contains over 6,000 texts totaling around 1 billion words. Many of the texts are accessible in <a href="https://github.com/OpenArabic/" class="uri">https://github.com/OpenArabic/</a><a href="introducing-quran-analytics.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p><a href="https://corpus.quran.com" class="uri">https://corpus.quran.com</a><a href="introducing-quran-analytics.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p><a href="https://www.qurananalysis.com" class="uri">https://www.qurananalysis.com</a><a href="introducing-quran-analytics.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p><a href="http://textminingthequran.com" class="uri">http://textminingthequran.com</a><a href="introducing-quran-analytics.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p><a href="https://info.qurangateway.org/about/" class="uri">https://info.qurangateway.org/about/</a><a href="introducing-quran-analytics.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p><a href="https://www.r-bloggers.com/2021/02/r-is-for-research-python-is-for-production/" class="uri">https://www.r-bloggers.com/2021/02/r-is-for-research-python-is-for-production/</a><a href="introducing-quran-analytics.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p><a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a><a href="introducing-quran-analytics.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p><a href="https://bookdown.org/rdpeng/rprogdatascience/" class="uri">https://bookdown.org/rdpeng/rprogdatascience/</a><a href="introducing-quran-analytics.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p><a href="https://www.coursera.org/specializations/data-science-foundations-r" class="uri">https://www.coursera.org/specializations/data-science-foundations-r</a><a href="introducing-quran-analytics.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p><a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a><a href="introducing-quran-analytics.html#fnref34" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preamble.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-of-words-by-its-frequencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

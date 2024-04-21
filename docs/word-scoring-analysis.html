@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Word Scoring Analysis | Quran Analytics with R</title>
+  <meta name="description" content="3 Word Scoring Analysis | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Word Scoring Analysis | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Word Scoring Analysis | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="word-frequency-analysis.html"/>
+<link rel="next" href="analysis-of-words-by-its-cooccurences.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="word-scoring-analysis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Word Scoring Analysis<a href="word-scoring-analysis.html#word-scoring-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<blockquote>
+<p>“Indeed, We have sent you, [O Muhammad], with the truth as a bringer of good tidings and a warner, and you will not be asked about the companions of Hellfire.” [Al-Quran Saheeh 2:119]</p>
+</blockquote>
+<blockquote>
+<p>“And We have not sent you except as a giver of glad tidings and a warner to all Mankind, but most of mankind know not.” [ Al-Quran Saheeh 34:28]</p>
+</blockquote>
+<p>Once we have organized the texts into words (i.e., tokenize), we are ready to perform further analysis dealing with the words as data, in scoring these words following a scoring model. The selected scoring model will depend on the objective of the analysis and the structure of the model used. One such method is called <em>sentiment analysis</em>.</p>
+<p>In this chapter, we will explore sentiment analysis on the Saheeh and Yusuf Ali English translations of Al-Quran. We will not do any analysis on the Malay version because we could not find any reliable sentiment model developed for the Malay language. Sentiment analysis is done using existing <em>sentiment scoring models</em> or <em>sentiment lexicons</em> for the English language. The choice of which scoring models to choose depends on the objective of the analysis. Since we are using these pre-built models, we do not assume any accuracy of the analysis. However, as an explanatory exercise, we will use them to demonstrate the comparison between the two English translations of Al-Quran (Saheeh and Yusuf Ali) and a general indication of usages of scoring models in NLP, of which sentiment analysis is a special case.</p>
+<p>One fundamental theme of Al-Quran is “Basheeran” and “Nazeeran”, bringing “glad tidings” and “warnings” to all mankind, as denoted by verse 2:119 and verse 34:28, quoted above.<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a> From a sentiment analysis perspective, “glad tidings” is equated with “positive sentiments” and “warnings” is equated with “negative sentiments”. In this chapter, we will explore sentiment analysis to view how these sentiments are reflected in the English translations of Al-Quran.</p>
+<p>We will explore a few types of sentiment scoring models and a few methods of application to enable us to understand how sentiment analysis work. Any model will have its own assumptions; hence results may differ based on using different models. One of the reasons why this is the case depends on how the scoring model was derived. For example, the <em>bing</em> model is based on “-1” and “+1” scores; the <em>nrc</em> model is based on a binary of “yes” and “no”; while the <em>AFINN</em> model is based on scores between -5 to +5. We can build our own sentiment scoring model given enough datasets (or collection of corpora), based on the subject concerned. This subject is beyond the scope of the current work and left for future research.</p>
+<p>Since we will use the same dataset that as in Chapter 2, and the <em>tidytext</em> package, readers can assume that the computing environment in Chapter 2 is continued here.</p>
+<div id="preprocessing-the-data" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Preprocessing the data<a href="word-scoring-analysis.html#preprocessing-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All the works in <strong>R</strong> for this chapter are just a continuation of the previous computing environment. Before we proceed, we decide whether to remove stopwords from the texts or to retain them. The reasons for removing stopwords are explained in Chapter 2, to remove frequently occurring words that carry no further meaning, except for continuation of the sentence. In <em>tidytext</em> the English stopwords are pre-prepared from three lexicons as <em>stop_words</em> variable. We can use them all together, as we have here, or use the <em>filter()</em> functions to only use one set of stop words if that is more appropriate for certain analysis.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="word-scoring-analysis.html#cb18-1" tabindex="-1"></a>stop_words <span class="ot">=</span> tidytext<span class="sc">::</span>stop_words</span>
+<span id="cb18-2"><a href="word-scoring-analysis.html#cb18-2" tabindex="-1"></a>tidyESIC <span class="ot">&lt;-</span> tidyESI <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="word-scoring-analysis.html#cb18-3" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span>
+<span id="cb18-4"><a href="word-scoring-analysis.html#cb18-4" tabindex="-1"></a>ya_stop_words <span class="ot">&lt;-</span> <span class="fu">rbind</span>(stop_words,</span>
+<span id="cb18-5"><a href="word-scoring-analysis.html#cb18-5" tabindex="-1"></a>                      <span class="fu">c</span>(<span class="st">&#39;ye&#39;</span>, <span class="st">&#39;verily&#39;</span>, <span class="st">&#39;will&#39;</span>, <span class="st">&#39;said&#39;</span>, </span>
+<span id="cb18-6"><a href="word-scoring-analysis.html#cb18-6" tabindex="-1"></a>                        <span class="st">&#39;say&#39;</span>, <span class="st">&#39;us&#39;</span>, <span class="st">&#39;thy&#39;</span>, <span class="st">&#39;thee&#39;</span>, </span>
+<span id="cb18-7"><a href="word-scoring-analysis.html#cb18-7" tabindex="-1"></a>                        <span class="st">&#39;thou&#39;</span>, <span class="st">&#39;hath&#39;</span>, <span class="st">&#39;doth&#39;</span>))</span>
+<span id="cb18-8"><a href="word-scoring-analysis.html#cb18-8" tabindex="-1"></a>tidyEYAC <span class="ot">&lt;-</span> tidyEYA <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="word-scoring-analysis.html#cb18-9" tabindex="-1"></a>  <span class="fu">anti_join</span>(ya_stop_words)</span></code></pre></div>
+<p>Now let us compare the words (tokens) before and after the removal of stopwords:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="22%" />
+<col width="20%" />
+<col width="22%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Translations</th>
+<th>Total tokens before</th>
+<th>Total tokens after</th>
+<th>Unique tokens before</th>
+<th>Unique tokens after</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Saheeh</td>
+<td>158,065</td>
+<td>43,996</td>
+<td>5,251</td>
+<td>4,783</td>
+</tr>
+<tr class="even">
+<td>Yusuf Ali</td>
+<td>167,859</td>
+<td>52,409</td>
+<td>6,365</td>
+<td>5,862</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the words consist of 72.17 percent of stopwords in Saheeh, and 68.78 percent in Yusuf Ali. That is a significant number of words. On the other hand the stopwords tokens removed are only 8.91 percent for Saheeh, and 7.9 percent for Yusuf Ali, which is much lesser in percentage terms.</p>
+<p>Since the data has been cleaned from stopwords, we are now ready to analyze them by having a quick look at the top common words which occur, say, more than 150 times. This is shown below for both translations.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="word-scoring-analysis.html#cb19-1" tabindex="-1"></a>ch3_plotter1 <span class="ot">=</span> <span class="cf">function</span>(df,title_label) {</span>
+<span id="cb19-2"><a href="word-scoring-analysis.html#cb19-2" tabindex="-1"></a>      df <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="word-scoring-analysis.html#cb19-3" tabindex="-1"></a>      <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="word-scoring-analysis.html#cb19-4" tabindex="-1"></a>      <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">150</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="word-scoring-analysis.html#cb19-5" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="word-scoring-analysis.html#cb19-6" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> word, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="word-scoring-analysis.html#cb19-7" tabindex="-1"></a>      <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&#39;#1FA4CC&#39;</span>,<span class="at">color =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="word-scoring-analysis.html#cb19-8" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> title_label, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;number&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="word-scoring-analysis.html#cb19-9" tabindex="-1"></a>      <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb19-10"><a href="word-scoring-analysis.html#cb19-10" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>( </span>
+<span id="cb19-11"><a href="word-scoring-analysis.html#cb19-11" tabindex="-1"></a>            <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb19-12"><a href="word-scoring-analysis.html#cb19-12" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb19-13"><a href="word-scoring-analysis.html#cb19-13" tabindex="-1"></a>            <span class="at">size=</span><span class="dv">10</span>))<span class="sc">+</span><span class="fu">theme_bw</span>()</span>
+<span id="cb19-14"><a href="word-scoring-analysis.html#cb19-14" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="word-scoring-analysis.html#cb20-1" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ch3_plotter1</span>(tidyESIC,<span class="st">&quot;Saheeh&quot;</span>)</span>
+<span id="cb20-2"><a href="word-scoring-analysis.html#cb20-2" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ch3_plotter1</span>(tidyEYAC,<span class="st">&quot;Yusuf Ali&quot;</span>)</span>
+<span id="cb20-3"><a href="word-scoring-analysis.html#cb20-3" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig301"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig301-1.png" alt="Top common words in the translations" width="576" />
+<p class="caption">
+Figure 3.1: Top common words in the translations
+</p>
+</div>
+<p>Now we can see from Figure <a href="word-scoring-analysis.html#fig:ch3fig301">3.1</a> that the term “Allah” is indeed the highest occurring term by a large count, followed by the term “Lord”. This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term “Muhammad” (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term “messenger” appears in both with different rankings. There are other observations in other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations.</p>
+</div>
+<div id="sentiment-analysis-with-tidy-data" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Sentiment analysis with tidy data<a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Chapter 2, we explored the tidy text format and showed it can easily be used to approach questions about word frequency in the English Quran. This allowed us to analyze which words are used most frequently in the Quran and to compare two versions of the English Quran.</p>
+<p>Now let us address the topic of opinion mining or sentiment analysis. We can use the tools of text mining to approach the emotional content of text programmatically.</p>
+<p>One way to analyze the sentiment of a text is to consider the text as a combination of its individual words and the sentiment content of the whole text as the sum of the sentiment content of the individual words. There are other approaches, but this approach can easily take advantage of the tidy tools.</p>
+<div id="sentiment-scoring-models" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Sentiment scoring models<a href="word-scoring-analysis.html#sentiment-scoring-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <em>tidytext</em> package provides access to several sentiment lexicons. Three general-purpose lexicons are</p>
+<ol style="list-style-type: decimal">
+<li>AFINN from Finn Årup Nielsen,</li>
+<li>bing from Bing Liu and collaborators, and</li>
+<li>nrc from Saif Mohammad and Peter Turney.</li>
+</ol>
+<p>All three of these lexicons are based on unigrams, i.e., single words. These lexicons contain many English words and the words are assigned scores for positive/negative sentiment, and also possibly emotions like joy, anger, sadness, and so forth. In this section, we will use the <em>bing lexicon</em>.</p>
+<p>The function <em>get_sentiments()</em> allows us to get specific sentiment lexicons. An example is as follows:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="word-scoring-analysis.html#cb21-1" tabindex="-1"></a><span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)</span></code></pre></div>
+</div>
+<div id="bing-scoring-model" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> <em>bing</em> scoring model<a href="word-scoring-analysis.html#bing-scoring-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One advantage of having the data.frame with both sentiment and word is that we can analyze word counts that contribute to each sentiment. By implementing <em>count()</em> here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.</p>
+<p>This can be shown visually, and we can pipe straight into <em>ggplot2</em>, if we like, because of the way we are consistently using tools built for handling tidy data frames. Now let us plot the main words which have negative and positive sentiments for both translations.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="word-scoring-analysis.html#cb22-1" tabindex="-1"></a>bing_word_counts_ESIC <span class="ot">&lt;-</span> tidyESIC <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="word-scoring-analysis.html#cb22-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="word-scoring-analysis.html#cb22-3" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="word-scoring-analysis.html#cb22-4" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb22-5"><a href="word-scoring-analysis.html#cb22-5" tabindex="-1"></a>bing_word_counts_EYAC <span class="ot">&lt;-</span> tidyEYAC <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="word-scoring-analysis.html#cb22-6" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="word-scoring-analysis.html#cb22-7" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="word-scoring-analysis.html#cb22-8" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb22-9"><a href="word-scoring-analysis.html#cb22-9" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="word-scoring-analysis.html#cb22-10" tabindex="-1"></a>ch3_bing_plot <span class="ot">=</span> <span class="cf">function</span>(sent_df,title_label){</span>
+<span id="cb22-11"><a href="word-scoring-analysis.html#cb22-11" tabindex="-1"></a>  sent_df <span class="sc">%&gt;%</span> </span>
+<span id="cb22-12"><a href="word-scoring-analysis.html#cb22-12" tabindex="-1"></a>    <span class="fu">group_by</span>(sentiment) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-13"><a href="word-scoring-analysis.html#cb22-13" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-14"><a href="word-scoring-analysis.html#cb22-14" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word,n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-15"><a href="word-scoring-analysis.html#cb22-15" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(word,n,<span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb22-16"><a href="word-scoring-analysis.html#cb22-16" tabindex="-1"></a>      <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb22-17"><a href="word-scoring-analysis.html#cb22-17" tabindex="-1"></a>      <span class="fu">facet_wrap</span>(<span class="sc">~</span>sentiment, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb22-18"><a href="word-scoring-analysis.html#cb22-18" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> title_label, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb22-19"><a href="word-scoring-analysis.html#cb22-19" tabindex="-1"></a>      <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb22-20"><a href="word-scoring-analysis.html#cb22-20" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb22-21"><a href="word-scoring-analysis.html#cb22-21" tabindex="-1"></a>                        <span class="at">angle =</span> <span class="dv">0</span>,</span>
+<span id="cb22-22"><a href="word-scoring-analysis.html#cb22-22" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb22-23"><a href="word-scoring-analysis.html#cb22-23" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb22-24"><a href="word-scoring-analysis.html#cb22-24" tabindex="-1"></a>            <span class="at">strip.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>,<span class="at">face =</span> <span class="st">&#39;bold&#39;</span>),</span>
+<span id="cb22-25"><a href="word-scoring-analysis.html#cb22-25" tabindex="-1"></a>            <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb22-26"><a href="word-scoring-analysis.html#cb22-26" tabindex="-1"></a>}</span>
+<span id="cb22-27"><a href="word-scoring-analysis.html#cb22-27" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ch3_bing_plot</span>(bing_word_counts_ESIC,<span class="st">&quot;Saheeh&quot;</span>)</span>
+<span id="cb22-28"><a href="word-scoring-analysis.html#cb22-28" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ch3_bing_plot</span>(bing_word_counts_EYAC,<span class="st">&quot;Yusuf Ali&quot;</span>)</span>
+<span id="cb22-29"><a href="word-scoring-analysis.html#cb22-29" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="word-scoring-analysis.html#cb22-30" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig302"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig302-1.png" alt="Bing's top negative and positive words" width="768" />
+<p class="caption">
+Figure 3.2: Bing’s top negative and positive words
+</p>
+</div>
+<p>Figure <a href="word-scoring-analysis.html#fig:ch3fig302">3.2</a> interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, “fear” and “evil”, but for positive they differ: “merciful” and “righteous” for Saheeh, and “faith” and “mercy” for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.</p>
+<p>This indicates that while translating from the same source, using the <em>bing</em> sentiment model, the sentiments expressed by the words in English as translated, reflect different intonations from a sentiment point of view. Whether this is due to the sentiment model, or the writing is not known, until further investigations. The way to do this is by running the same analysis using a different scoring model. The results show that the scoring is “model-dependent”, as we will show next.</p>
+</div>
+<div id="afinn-scoring-model" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> <em>AFINN</em> scoring model<a href="word-scoring-analysis.html#afinn-scoring-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now let us compare with the <em>AFINN</em> scoring model and observe if there are any major changes to the findings using the <em>bing</em> model.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig303"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig303-1.png" alt="AFINN scoring model on Saheeh" width="576" />
+<p class="caption">
+Figure 3.3: AFINN scoring model on Saheeh
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig304"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig304-1.png" alt="AFINN scoring model on Yusuf Ali" width="576" />
+<p class="caption">
+Figure 3.4: AFINN scoring model on Yusuf Ali
+</p>
+</div>
+<p>We can see that the dimensions of sentiment are different in the <em>AFINN</em> model as compared to <em>bing</em>. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure <a href="word-scoring-analysis.html#fig:ch3fig303">3.3</a>, the plots for Saheeh compared to Figure <a href="word-scoring-analysis.html#fig:ch3fig304">3.4</a>, the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply.</p>
+<p>There are many other ready-made sentiment scoring models available. We will leave it to the readers to try on their own.</p>
+</div>
+</div>
+<div id="sentiment-analysis-within-the-surahs" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Sentiment analysis within the Surahs<a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since Al-Quran is arranged by Surahs or chapters, we would like to investigate if we can use sentiment scoring models to score each of the Surahs and measure which Surahs use the most “negative” words (“warnings”) and the most “positive” words (“glad tidings”).</p>
+<p>We can apply the <em>bing</em> model as follows:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="word-scoring-analysis.html#cb23-1" tabindex="-1"></a>bingnegative <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="word-scoring-analysis.html#cb23-2" tabindex="-1"></a>  <span class="fu">filter</span>(sentiment <span class="sc">==</span> <span class="st">&quot;negative&quot;</span>)</span>
+<span id="cb23-3"><a href="word-scoring-analysis.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="word-scoring-analysis.html#cb23-4" tabindex="-1"></a>wordcountsESIC <span class="ot">&lt;-</span> tidyESIC <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="word-scoring-analysis.html#cb23-5" tabindex="-1"></a>  <span class="fu">group_by</span>(surah_title_en) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="word-scoring-analysis.html#cb23-6" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">words =</span> <span class="fu">n</span>())</span>
+<span id="cb23-7"><a href="word-scoring-analysis.html#cb23-7" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="word-scoring-analysis.html#cb23-8" tabindex="-1"></a>wordcountsEYAC <span class="ot">&lt;-</span> tidyEYAC <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="word-scoring-analysis.html#cb23-9" tabindex="-1"></a>  <span class="fu">group_by</span>(surah_title_en) <span class="sc">%&gt;%</span></span>
+<span id="cb23-10"><a href="word-scoring-analysis.html#cb23-10" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">words =</span> <span class="fu">n</span>())</span>
+<span id="cb23-11"><a href="word-scoring-analysis.html#cb23-11" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="word-scoring-analysis.html#cb23-12" tabindex="-1"></a>ch3_bing_plot2 <span class="ot">=</span> <span class="cf">function</span>(sent_df,title_label){</span>
+<span id="cb23-13"><a href="word-scoring-analysis.html#cb23-13" tabindex="-1"></a>  sent_df <span class="sc">%&gt;%</span></span>
+<span id="cb23-14"><a href="word-scoring-analysis.html#cb23-14" tabindex="-1"></a>      <span class="fu">semi_join</span>(bingnegative) <span class="sc">%&gt;%</span></span>
+<span id="cb23-15"><a href="word-scoring-analysis.html#cb23-15" tabindex="-1"></a>      <span class="fu">group_by</span>(surah_title_en) <span class="sc">%&gt;%</span></span>
+<span id="cb23-16"><a href="word-scoring-analysis.html#cb23-16" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">negativewords =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb23-17"><a href="word-scoring-analysis.html#cb23-17" tabindex="-1"></a>      <span class="fu">left_join</span>(wordcountsESIC, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;surah_title_en&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-18"><a href="word-scoring-analysis.html#cb23-18" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">ratio =</span> negativewords<span class="sc">/</span>words) <span class="sc">%&gt;%</span></span>
+<span id="cb23-19"><a href="word-scoring-analysis.html#cb23-19" tabindex="-1"></a>      <span class="fu">top_n</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-20"><a href="word-scoring-analysis.html#cb23-20" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(surah_title_en,ratio), <span class="at">y =</span> ratio)) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="word-scoring-analysis.html#cb23-21" tabindex="-1"></a>        <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&#39;firebrick&#39;</span>,<span class="at">color =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
+<span id="cb23-22"><a href="word-scoring-analysis.html#cb23-22" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> title_label, <span class="at">x =</span> <span class="cn">NULL</span>,<span class="at">y =</span> <span class="st">&quot;Ratio&quot;</span>) <span class="sc">+</span></span>
+<span id="cb23-23"><a href="word-scoring-analysis.html#cb23-23" tabindex="-1"></a>        <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb23-24"><a href="word-scoring-analysis.html#cb23-24" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>( </span>
+<span id="cb23-25"><a href="word-scoring-analysis.html#cb23-25" tabindex="-1"></a>              <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb23-26"><a href="word-scoring-analysis.html#cb23-26" tabindex="-1"></a>              <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb23-27"><a href="word-scoring-analysis.html#cb23-27" tabindex="-1"></a>              <span class="at">size=</span><span class="dv">10</span>))<span class="sc">+</span><span class="fu">theme_bw</span>()</span>
+<span id="cb23-28"><a href="word-scoring-analysis.html#cb23-28" tabindex="-1"></a>}</span>
+<span id="cb23-29"><a href="word-scoring-analysis.html#cb23-29" tabindex="-1"></a></span>
+<span id="cb23-30"><a href="word-scoring-analysis.html#cb23-30" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ch3_bing_plot2</span>(tidyESIC,<span class="st">&quot;Saheeh&quot;</span>)</span>
+<span id="cb23-31"><a href="word-scoring-analysis.html#cb23-31" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ch3_bing_plot2</span>(tidyEYAC,<span class="st">&quot;Yusuf Ali&quot;</span>)</span>
+<span id="cb23-32"><a href="word-scoring-analysis.html#cb23-32" tabindex="-1"></a></span>
+<span id="cb23-33"><a href="word-scoring-analysis.html#cb23-33" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig305"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig305-1.png" alt="Negative Surahs scoring" width="576" />
+<p class="caption">
+Figure 3.5: Negative Surahs scoring
+</p>
+</div>
+<p>Figure <a href="word-scoring-analysis.html#fig:ch3fig305">3.5</a> shows the Surahs or chapters with the most “negative” words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.</p>
+<p>Let us repeat for “positive” Surahs.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig306"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig306-1.png" alt="Positive Surahs scoring" width="576" />
+<p class="caption">
+Figure 3.6: Positive Surahs scoring
+</p>
+</div>
+<p>It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure <a href="word-scoring-analysis.html#fig:ch3fig306">3.6</a>.</p>
+<p>Now let us study the sentiment within a Surah, such as Surah Yusuf, which is a middle-length Surah for comparison. The idea here is to observe the sentiment scores as we move along the Surah.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="word-scoring-analysis.html#cb24-1" tabindex="-1"></a>Surah_yusuf_ESIC <span class="ot">&lt;-</span> tidyESIC <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="word-scoring-analysis.html#cb24-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;afinn&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="word-scoring-analysis.html#cb24-3" tabindex="-1"></a>  <span class="fu">filter</span>(surah_title_en <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Yusuf&quot;</span>))</span>
+<span id="cb24-4"><a href="word-scoring-analysis.html#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="word-scoring-analysis.html#cb24-5" tabindex="-1"></a>Surah_yusuf_EYAC <span class="ot">&lt;-</span> tidyEYAC <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="word-scoring-analysis.html#cb24-6" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;afinn&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="word-scoring-analysis.html#cb24-7" tabindex="-1"></a>  <span class="fu">filter</span>(surah_title_en <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Yusuf&quot;</span>))</span>
+<span id="cb24-8"><a href="word-scoring-analysis.html#cb24-8" tabindex="-1"></a>ch3_syplot <span class="ot">=</span> <span class="cf">function</span>(sy_df,title_label,col_disp){</span>
+<span id="cb24-9"><a href="word-scoring-analysis.html#cb24-9" tabindex="-1"></a>  sy_df <span class="sc">%&gt;%</span> </span>
+<span id="cb24-10"><a href="word-scoring-analysis.html#cb24-10" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sy_df), <span class="at">y =</span> value )) <span class="sc">+</span></span>
+<span id="cb24-11"><a href="word-scoring-analysis.html#cb24-11" tabindex="-1"></a>          <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> col_disp) <span class="sc">+</span></span>
+<span id="cb24-12"><a href="word-scoring-analysis.html#cb24-12" tabindex="-1"></a>          <span class="fu">labs</span>(<span class="at">title =</span> title_label, </span>
+<span id="cb24-13"><a href="word-scoring-analysis.html#cb24-13" tabindex="-1"></a>               <span class="at">x =</span> <span class="st">&quot;Word Order&quot;</span>,</span>
+<span id="cb24-14"><a href="word-scoring-analysis.html#cb24-14" tabindex="-1"></a>               <span class="at">y =</span> <span class="st">&quot;Sentiment Score&quot;</span>)<span class="sc">+</span><span class="fu">theme_bw</span>()</span>
+<span id="cb24-15"><a href="word-scoring-analysis.html#cb24-15" tabindex="-1"></a>}</span>
+<span id="cb24-16"><a href="word-scoring-analysis.html#cb24-16" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="word-scoring-analysis.html#cb24-17" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ch3_syplot</span>(Surah_yusuf_ESIC,<span class="st">&quot;Saheeh&quot;</span>,<span class="st">&quot;magenta&quot;</span>)</span>
+<span id="cb24-18"><a href="word-scoring-analysis.html#cb24-18" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ch3_syplot</span>(Surah_yusuf_EYAC,<span class="st">&quot;Yusuf Ali&quot;</span>,<span class="st">&quot;darkgreen&quot;</span>)</span>
+<span id="cb24-19"><a href="word-scoring-analysis.html#cb24-19" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="word-scoring-analysis.html#cb24-20" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig307"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig307-1.png" alt="Sentiment scoring within Surah Yusuf" width="576" />
+<p class="caption">
+Figure 3.7: Sentiment scoring within Surah Yusuf
+</p>
+</div>
+<p>Here in Figure <a href="word-scoring-analysis.html#fig:ch3fig307">3.7</a>, we use the <em>AFFIN</em> model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a> If we take the meaning of giving “good tidings” (Basheeran) and “warnings” (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.</p>
+<div id="wordcloud-analysis-1" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Wordcloud analysis<a href="word-scoring-analysis.html#wordcloud-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Wordcloud is also useful for doing sentiment analysis by deploying <em>comparison.cloud()</em> function. To use this we need to turn the data frame into a matrix with <em>reshape2</em>’s <em>acast()</em> function. Many steps can all be done with <em>joins</em>, <em>%&gt;%</em> (piping), and <em>dplyr</em> because the data is in <em>tidy</em> format.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="word-scoring-analysis.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(reshape2) <span class="co"># to use cast function</span></span>
+<span id="cb25-2"><a href="word-scoring-analysis.html#cb25-2" tabindex="-1"></a>tidyESIC <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="word-scoring-analysis.html#cb25-3" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="word-scoring-analysis.html#cb25-4" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="word-scoring-analysis.html#cb25-5" tabindex="-1"></a>  <span class="fu">acast</span>(word <span class="sc">~</span> sentiment, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="word-scoring-analysis.html#cb25-6" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;#eb52a6&quot;</span>, <span class="st">&quot;#54f0b1&quot;</span>),</span>
+<span id="cb25-7"><a href="word-scoring-analysis.html#cb25-7" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">200</span>,</span>
+<span id="cb25-8"><a href="word-scoring-analysis.html#cb25-8" tabindex="-1"></a>                   <span class="at">random.order =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-9"><a href="word-scoring-analysis.html#cb25-9" tabindex="-1"></a>                   <span class="at">rot.per =</span> <span class="fl">0.35</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig308"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig308-1.png" alt="Comparison cloud for Saheeh translation" width="384" />
+<p class="caption">
+Figure 3.8: Comparison cloud for Saheeh translation
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig309"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig309-1.png" alt="Comparison cloud for Yusuf Ali translation" width="384" />
+<p class="caption">
+Figure 3.9: Comparison cloud for Yusuf Ali translation
+</p>
+</div>
+<p>The output for Saheeh is in Figure <a href="word-scoring-analysis.html#fig:ch3fig308">3.8</a>, and for Yusuf Ali is in Figure <a href="word-scoring-analysis.html#fig:ch3fig309">3.9</a>. We can observe clearly the words “fear”, “evil”, “hell”, dominate the negative sentiments; while the words “faith”, “righteous”, “mercy” dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.</p>
+</div>
+</div>
+<div id="statistics-of-sentiment-score" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Statistics of sentiment score<a href="word-scoring-analysis.html#statistics-of-sentiment-score" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we will go deeper into the statistics of sentiment scoring. This exercise will provide two benefits:</p>
+<ol style="list-style-type: lower-alpha">
+<li>to understand better how sentiment scores are built upon, and</li>
+<li>to see how the scores affect the various findings based on the simple visual analysis done in previous sections.</li>
+</ol>
+<p>First, let us do a general count of “positive” versus “negative” sentiment words in Saheeh and Yusuf Ali using the <em>bing</em> model.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="word-scoring-analysis.html#cb26-1" tabindex="-1"></a>ESIC_sent <span class="ot">=</span> tidyESIC <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="word-scoring-analysis.html#cb26-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="word-scoring-analysis.html#cb26-3" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb26-4"><a href="word-scoring-analysis.html#cb26-4" tabindex="-1"></a>EYAC_sent <span class="ot">=</span> tidyEYAC <span class="sc">%&gt;%</span> </span>
+<span id="cb26-5"><a href="word-scoring-analysis.html#cb26-5" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-6"><a href="word-scoring-analysis.html#cb26-6" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb26-7"><a href="word-scoring-analysis.html#cb26-7" tabindex="-1"></a>sent_ratio_all <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;si_pos&quot;</span> <span class="ot">=</span> ESIC_sent<span class="sc">$</span>n, </span>
+<span id="cb26-8"><a href="word-scoring-analysis.html#cb26-8" tabindex="-1"></a>                            <span class="st">&quot;ya_pos&quot;</span> <span class="ot">=</span> EYAC_sent<span class="sc">$</span>n)</span></code></pre></div>
+<p>Let us tabulate the scores of positive words and negative words and its percentages in both Saheeh and Yusuf Ali.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Saheeh</th>
+<th>Yusuf Ali</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Positive words</td>
+<td>3,632</td>
+<td>4,479</td>
+</tr>
+<tr class="even">
+<td>Negative words</td>
+<td>4,910</td>
+<td>6,129</td>
+</tr>
+<tr class="odd">
+<td>Percent positive</td>
+<td>0.43</td>
+<td>0.42</td>
+</tr>
+<tr class="even">
+<td>Percent negative</td>
+<td>0.57</td>
+<td>0.58</td>
+</tr>
+</tbody>
+</table>
+<p>A first observation is: “warnings” (negative sentiment) exceeds “glad tidings” (positive sentiment) by about 14 percent consistently in both translations. If we use the ratio of appearance of the word “Basheeran” versus “Nazeeran”, which is 0.31 percent, as an indicator of emphasis, then the finding is consistent. This is to say that Al-Quran emphasizes more on the “warnings” than the “glad tidings”. A simple casual first observation is that the words used in the two English translations of the Quran are “biased” towards negative sentiments. (Obviously, our readers will say that this casual finding must be verified with the original Quran in Arabic.)</p>
+<p>Let us see the cases for specific conditions, for example, to compare between “Meccan” Surahs and “Medinan” Surahs. If we group the verses according to this category, will the positive over negative sentiments ratio remain consistent with the whole corpus?</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="word-scoring-analysis.html#cb27-1" tabindex="-1"></a>ESIC_sent_meccan <span class="ot">=</span> tidyESIC <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="word-scoring-analysis.html#cb27-2" tabindex="-1"></a>  <span class="fu">filter</span>(revelation_type<span class="sc">==</span><span class="st">&quot;Meccan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="word-scoring-analysis.html#cb27-3" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="word-scoring-analysis.html#cb27-4" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb27-5"><a href="word-scoring-analysis.html#cb27-5" tabindex="-1"></a>EYAC_sent_meccan <span class="ot">=</span> tidyEYAC <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="word-scoring-analysis.html#cb27-6" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="word-scoring-analysis.html#cb27-7" tabindex="-1"></a>  <span class="fu">filter</span>(revelation_type<span class="sc">==</span><span class="st">&quot;Meccan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-8"><a href="word-scoring-analysis.html#cb27-8" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="word-scoring-analysis.html#cb28-1" tabindex="-1"></a>ESIC_sent_medinan <span class="ot">=</span> tidyESIC <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="word-scoring-analysis.html#cb28-2" tabindex="-1"></a>  <span class="fu">filter</span>(revelation_type<span class="sc">==</span><span class="st">&quot;Medinan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="word-scoring-analysis.html#cb28-3" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="word-scoring-analysis.html#cb28-4" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb28-5"><a href="word-scoring-analysis.html#cb28-5" tabindex="-1"></a>EYAC_sent_medinan <span class="ot">=</span> tidyEYAC <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="word-scoring-analysis.html#cb28-6" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-7"><a href="word-scoring-analysis.html#cb28-7" tabindex="-1"></a>  <span class="fu">filter</span>(revelation_type<span class="sc">==</span><span class="st">&quot;Medinan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-8"><a href="word-scoring-analysis.html#cb28-8" tabindex="-1"></a>  <span class="fu">count</span>(sentiment<span class="sc">==</span><span class="st">&quot;positive&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="word-scoring-analysis.html#cb29-1" tabindex="-1"></a>sent_ratio_rev <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;si_pos_meccan&quot;</span> <span class="ot">=</span> ESIC_sent_meccan<span class="sc">$</span>n, </span>
+<span id="cb29-2"><a href="word-scoring-analysis.html#cb29-2" tabindex="-1"></a>                               <span class="st">&quot;ya_pos_meccan&quot;</span> <span class="ot">=</span> EYAC_sent_meccan<span class="sc">$</span>n,</span>
+<span id="cb29-3"><a href="word-scoring-analysis.html#cb29-3" tabindex="-1"></a>                               <span class="st">&quot;si_pos_medinan&quot;</span> <span class="ot">=</span> ESIC_sent_medinan<span class="sc">$</span>n, </span>
+<span id="cb29-4"><a href="word-scoring-analysis.html#cb29-4" tabindex="-1"></a>                               <span class="st">&quot;ya_pos_medinan&quot;</span> <span class="ot">=</span> EYAC_sent_medinan<span class="sc">$</span>n)</span></code></pre></div>
+<p>Again we tabulate the results below:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Saheeh</th>
+<th>Yusuf Ali</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Positive words Meccan</td>
+<td>2,173</td>
+<td>2,625</td>
+</tr>
+<tr class="even">
+<td>Negative words Meccan</td>
+<td>2,881</td>
+<td>3,775</td>
+</tr>
+<tr class="odd">
+<td>Percent positive Meccan</td>
+<td>0.43</td>
+<td>0.41</td>
+</tr>
+<tr class="even">
+<td>Percent negative Meccan</td>
+<td>0.57</td>
+<td>0.59</td>
+</tr>
+<tr class="odd">
+<td>—————</td>
+<td>—————————</td>
+<td>————</td>
+</tr>
+<tr class="even">
+<td>Positive words Medinan</td>
+<td>1,459</td>
+<td>1,854</td>
+</tr>
+<tr class="odd">
+<td>Negative words Medinan</td>
+<td>2,029</td>
+<td>2,354</td>
+</tr>
+<tr class="even">
+<td>Percent positive Medinan</td>
+<td>0.42</td>
+<td>0.44</td>
+</tr>
+<tr class="odd">
+<td>Percent negative Medinan</td>
+<td>0.58</td>
+<td>0.56</td>
+</tr>
+</tbody>
+</table>
+<p>Comparing both results, we can observe that the bias towards negative sentiments remains consistent with the whole corpus for both translations. We can say that based on the <em>bing</em> sentiment model<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>, the messages of “warnings” and “glad tidings” are consistent across revelation periods.<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a></p>
+<p>On another note, the number of positive words and negative words in Meccan Surahs (and verses) exceeds the Medinan Surahs; the reason of which is probably attributed to Meccan Surahs having more verses compared to Medinan Surahs.</p>
+</div>
+<div id="sentiment-scoring-frequencies" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Sentiment scoring frequencies<a href="word-scoring-analysis.html#sentiment-scoring-frequencies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sentiment scoring originates from the information theory of signaling. Each word in a sequence of the text reflects a signal, which in sentiment scoring is symbolized by a sign, such as “positive” or “negative”, or “neutral” (or other levels of signals). Combined series of signals is considered as messages.</p>
+<p>Let us look into the entire corpus of Saheeh and the <em>bing</em> sentiment model to visualize the signals.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig310"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig310-1.png" alt="Sentiment frequency in Saheeh corpus" width="576" />
+<p class="caption">
+Figure 3.10: Sentiment frequency in Saheeh corpus
+</p>
+</div>
+<p>Figure <a href="word-scoring-analysis.html#fig:ch3fig310">3.10</a> clearly shows the “signals” in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a></p>
+<p>The signaling approach of sentiment analysis is also useful to investigate messages within a selected verse or group of verses, such as a Surah. Let us do this for a few selected Surahs: “Yaseen”, “Al-Fath”, “Al-Mulk”, “Al-Muddaththir”, “Al-Waaqia”, and “Al-Qiyaama”. We will choose Saheeh as our source of texts and <em>bing</em> as our model.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch3fig311"></span>
+<img src="04-Ch3WordScoring_files/figure-html/ch3fig311-1.png" alt="Sentiment frequency in selected Surahs" width="576" />
+<p class="caption">
+Figure 3.11: Sentiment frequency in selected Surahs
+</p>
+</div>
+<p>We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, particularly Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known “strong” messages, such as Surah “Al-Waaqia” and “Al-Qiyaama”.</p>
+<p>From Figure <a href="word-scoring-analysis.html#fig:ch3fig311">3.11</a>, we can see how these different Surahs “signals” are reflected throughout the Surah. “Yaseen” is balanced between positive and negative. “Al-Fath” (victory) is with many positives and few large negatives. “Al-Waaqia” is with intermittent positives and negatives. “Al-Qiyaama” is dominantly negative, in particular towards the end of the Surah.</p>
+<p>The comments we made are in a way, generalized trends of these signals without reference to the content of the Surah and interpretations of these Surahs. Again, we leave this as a research question.</p>
+</div>
+<div id="building-dedicated-sentiment-scoring-model" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Building dedicated sentiment scoring model<a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Thus far, we have relied on existing pre-built models of sentiment analysis in the English language. Like any model, it is built based on its own sets of assumptions. The performance of these models in the common usage of the English language is quite good and well documented. The question is, do these models match well to analyze the English translations of Al-Quran? It has been argued that any sentiment model is “domain-driven”, whereby the training libraries are sourced from a certain domain, such as from the social media (in the case of Twitter sentiment models), or news articles (for a more formal setting), based on American English medium or British English medium (for localization), and so on. Does a simple assumption of using any of the pre-built models applied to the translations of Al-Quran hold?</p>
+<p>The task which is important for Quran Analytics is to build dedicated sentiment scoring models based on the Quranic Arabic language. There are few reasons why this is important:</p>
+<ol style="list-style-type: decimal">
+<li>The sentiment scoring model for Al-Quran, whether based on the Arabic language or other languages for its translations, must be a dedicated model or models. Firstly, it must be more biased towards the meanings and intents of the messages of Al-Quran. Then it must be less biased for the language, namely Quranic Arabic, Classical Arabic (for Arabic), and any other language medium, such as the English language.</li>
+<li>Any sentiment scoring model has to rely on Ulum Al-Quran methodologies, and in particular exegesis methodologies, which have been extensively laid out by the Islamic scholars of the past.</li>
+<li>Furthermore, the dimensions of the “sentiments” should be much larger than a simple binary (“positive” versus “negative”) space, and very likely a more complex dimension is necessary.</li>
+<li>The learning base model, which consists of the corpora, the algorithms of machine learning, inferencing, and the various statistical tools and assumptions must be tested and verified through a rigorous process before deployment in a public setting.</li>
+</ol>
+<p>We include the discussion here to highlight the issues and provide views of possible directions and implications for future research.</p>
+</div>
+<div id="summary-chapter-3" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Summary<a href="word-scoring-analysis.html#summary-chapter-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sentiment analysis provides a way to understand the attitudes and opinions expressed in texts. In the chapter, we explored how to apply sentiment analysis for two English translations of Al-Quran using tidy data principles. Most of the results are almost similar. What’s interesting here is the resounding similarity between the two English translations of the Al Quran, which reflects among other things:</p>
+<ol style="list-style-type: decimal">
+<li>The consistencies of methods of translating Al Quran into the English language do not significantly alter the “mood” within the sentences used.</li>
+<li>Assuming that the two translators might use a different methodology of exegesis and rely on different rules of the English language, yet when a sentiment engine such as <em>bing</em> is being applied, we find consistencies in sentiment analysis. This may point to the fact that the original text itself (Al-Quran Arabic) is “rich” in its lexical and semantical meaning.</li>
+</ol>
+<p>In closing this chapter, we suggest for further studies to:</p>
+<ol style="list-style-type: decimal">
+<li>The expectedly different methods of translating Al Quran into the English language do not significantly alter the “mood” within the sentences used.</li>
+<li>Assuming that the two translators might use a different methodology of exegesis and rely on different rules of the English language, yet when a sentiment engine such as <em>bing</em> is being applied, we find consistencies in sentiment analysis. This may point to the fact that the original text itself (Al-Quran Arabic) is “rich” in its lexical and semantical meaning.</li>
+</ol>
+<p>In closing this chapter, we suggest for further research to:</p>
+<ol style="list-style-type: decimal">
+<li>Complete a comprehensive study by applying a wider analysis using all available translations of Al-Quran in many languages.</li>
+<li>Apply various other sentiment scoring analysis models, besides <em>bing</em> and <em>AFINN</em>, into the analysis.</li>
+<li>Study the applications of sentiment modeling to the original Quranic texts.</li>
+</ol>
+<p>And finally, we also allude to the need of building a Quran Analytics sentiment model which is based on the Sciences of Al-Quran. It must be driven by Quranic Arabic sentiment analysis and extended to languages other than Arabic which have developed their own sentiment models, such as the English language.</p>
+</div>
+<div id="further-readings-2" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Further readings<a href="word-scoring-analysis.html#further-readings-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al-Saffar, A., Awang, S., Tao, H., Omar, N., Al-Saiagh, W., and Al-bared, M. <em>Malay sentiment analysis based on combined classification approaches and senti-lexicon algorithm.</em> PLOS ONE, 13(4):1–18, 2018. <span class="citation">(<a href="#ref-alsaffar2018">Al-Saffar 2018</a>)</span></p>
+<p>Dawson, C. W., Ghallab, A., Mohsen, A., and Ali, Y. <em>Arabic sentiment analysis: A systematic literature review.</em> Applied Computational Intelligence and Soft Computing, 2020. <span class="citation">(<a href="#ref-dawson2020">Dawson et al. 2020</a>)</span></p>
+<p>Silge, J. and Robinson, D. <em>Text Mining with R: A Tidy Approach.</em> O’Reilly Media, Inc., Newton, Massachusetts, 2017. <span class="citation">(<a href="#ref-silge2017">Silge and Robinson 2017</a>)</span></p>
+<p><em>igraph</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-igraph">Csárdi 2020</a>)</span></p>
+<p><em>ggraph</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-ggraph">Pedersen 2017</a>)</span></p>
+<p><em>cleanNLP</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-cleanNLP">Arnold 2016</a>)</span></p>
+<p><em>coreNLP</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-coreNLP">Arnold and Tilton 2016</a>)</span></p>
+<p><em>sentimentr</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-sentimentr">Rinker 2017</a>)</span></p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-alsaffar2018" class="csl-entry">
+Al-Saffar, Suryanti AND Tao, Ahmed AND Awang. 2018. <span>“Malay Sentiment Analysis Based on Combined Classification Approaches and Senti-Lexicon Algorithm.”</span> <em>PLOS ONE</em> 13 (4): 1–18. <a href="https://doi.org/10.1371/journal.pone.0194852">https://doi.org/10.1371/journal.pone.0194852</a>.
+</div>
+<div id="ref-cleanNLP" class="csl-entry">
+Arnold, Taylor B. 2016. <em>cleanNLP: A Tidy Data Model for Natural Language Processing</em>. <a href="https://cran.r-project.org/package=cleanNLP">https://cran.r-project.org/package=cleanNLP</a>.
+</div>
+<div id="ref-coreNLP" class="csl-entry">
+Arnold, Taylor B., and Lauren Tilton. 2016. <em>coreNLP: Wrappers Around Stanford Corenlp Tools</em>. <a href="https://cran.r-project.org/package=coreNLP">https://cran.r-project.org/package=coreNLP</a>.
+</div>
+<div id="ref-igraph" class="csl-entry">
+Csárdi, Gábor. 2020. <em>Igraph: Network Analysis and Visualization</em>. <a href="https://cran.r-project.org/web/packages/igraph/index.html">https://cran.r-project.org/web/packages/igraph/index.html</a>.
+</div>
+<div id="ref-dawson2020" class="csl-entry">
+Dawson, Christian W., Abdullatif Ghallab, Abdulqader Mohsen, and Yousef Ali. 2020. <span>“Arabic Sentiment Analysis: A Systematic Literature Review.”</span> <em>Applied Computational Intelligence and Soft Computing</em> 2020: 7403128. <a href="https://doi.org/10.1155/2020/7403128">https://doi.org/10.1155/2020/7403128</a>.
+</div>
+<div id="ref-ggraph" class="csl-entry">
+Pedersen, Thomas Lin. 2017. <em>Ggraph: An Implementation of Grammar of Graphics for Graphs and Networks</em>. <a href="https://cran.r-project.org/package=ggraph">https://cran.r-project.org/package=ggraph</a>.
+</div>
+<div id="ref-sentimentr" class="csl-entry">
+Rinker, Tyler W. 2017. <em>Sentimentr: Calculate Text Polarity Sentiment</em>. <a href="http://github.com/trinker/sentimentr">http://github.com/trinker/sentimentr</a>.
+</div>
+<div id="ref-silge2017" class="csl-entry">
+Silge, Julia, and David Robinson. 2017. <em>Text Mining with r: A Tidy Approach</em>. Newton, Massachussets: O’Reilly Media, Inc. <a href="https://www.tidytextmining.com/index.html">https://www.tidytextmining.com/index.html</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="42">
+<li id="fn42"><p>Verses with “Basheeran” (glad tidings) appears 18 times, and “Nazeeran” (warnings) appears 58 times. By the number of counts of words, the emphasis of “warning” is greater than “glad tidings”.<a href="word-scoring-analysis.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>For example, see sentiment narrative in Jane Austen’s novels in <span class="citation">Silge and Robinson (<a href="#ref-silge2017">2017</a>)</span>.<a href="word-scoring-analysis.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>All works are repeatable with <em>AFINN</em> model in a similar manner.<a href="word-scoring-analysis.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>A simple t-test confirms that the statistical distribution of both samples is the same, and another t-test for comparison of sub-samples against the main sample also holds.<a href="word-scoring-analysis.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>We leave this subject as a research question.<a href="word-scoring-analysis.html#fnref46" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="word-frequency-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-of-words-by-its-cooccurences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

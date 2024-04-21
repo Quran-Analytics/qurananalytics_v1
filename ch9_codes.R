@@ -62,43 +62,52 @@ ik_gephi = read_csv("data/ik1_nodes.csv")
 kg_degree = data.frame("verse"=1:6236, "degree"= degree(kg))
 fig901a = kg_degree %>%  ggplot() + 
   geom_point(aes(x=verse,y=degree), color = "steelblue", alpha = 0.75) +
-  labs(title="A: Degree of verses")
+  labs(title="A: Degree of verses",x = "Verse", y = "Degree")
 
 kg_degree_ranked = kg_degree[rev(order(kg_degree$degree)),]
 
 fig901b = kg_degree_ranked %>% group_by(degree) %>% count() %>% 
-    ggplot(aes(x=log(degree), y=log(n))) + 
-    geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
-    geom_path() +
-    labs(title = "B: Rank frequency distributions", 
-         x = "log of degree", 
-         y = "log of rank frequency")
+  ggplot(aes(x=log(degree), y=log(n))) + 
+  geom_point(color="steelblue", size = 3, alpha = 0.8, show.legend = FALSE) + 
+  geom_path() +
+  labs(title = "B: Rank frequency distributions", 
+       x = "Log of Degree", 
+       y = "Log of Rank Frequency")
 
 kg_dist_table = distance_table(kg)
 
-fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), color = "steelblue") +
-  labs(x = "distance", y = "frequency")
+fig902 = ggplot() + geom_col(aes(x = 1:35,y=kg_dist_table$res), fill = "steelblue",color = 'black') +
+  labs(x = "Distance", y = "Frequency")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(title = "Katheer Graph Path Lengths Distributions")+
+  theme_bw()
 
 kgd = distances(kg, v = V(kg), to = V(kg), mode = "in")
 # kgsp = shortest_paths(kg,from = "6:25", to = V(kg), mode = "in")
 fig903a = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_point(aes(x,y), color="steelblue") +
-  labs(x = "verses", y = "distance")
+  labs(x = "Verses", y = "Distance")
 
 fig903b = data.frame("x" = 1:6236, "y" = kgd[,"6:25"]) %>% ggplot() + geom_density(aes(y), color="steelblue") +
-  labs(x = "verses", y = "distance")  
+  labs(x = "Verses", y = "Distance")  
 
 ## fig903: Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness
 fig903c = ik_gephi %>% ggplot(aes(x = eigencentrality, y = betweenesscentrality)) + 
-                          geom_point(color = "cyan4") +
-                          geom_text(label=ik_gephi$Id, size = 3,
-                                    nudge_x = 0.05, nudge_y = 0.05, 
-                                    check_overlap = T) +
-                          labs(x = "prestige centrality", y = "betweenness centrality")
+  geom_point(color = "cyan4") +
+  geom_text(label=ik_gephi$Id, size = 3,
+            nudge_x = 0.05, nudge_y = 0.05, 
+            check_overlap = T) +
+  labs(x = "Prestige Centrality", y = "Betweenness Centrality",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Prestige vs Betweeness")+
+  theme_bw()
 ## fig904: Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority
 fig904 = ik_gephi %>% ggplot( aes(x=pageranks, y=Authority)) +
-            geom_point(size = 1, color = "cyan4") + 
-              geom_text( aes(label=ik_gephi$Id), size = 3, check_overlap = T) +
-              labs(x = "pageranks", y = "Authority")
+  geom_point(size = 1, color = "cyan4") + 
+  geom_text( aes(label=ik_gephi$Id), size = 3, check_overlap = T) +
+  labs(x = "Pageranks", y = "Authority",
+       title = "Centrality Measures of verses in Ibnu Katheer",
+       subtitle = "Pageranks vs Authority")+
+  theme_bw()
 
 
 ## TRAVERSALS IN SURAH AL-A'ALAA

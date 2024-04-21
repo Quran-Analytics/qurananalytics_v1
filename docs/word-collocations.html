@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Word Collocations | Quran Analytics with R</title>
+  <meta name="description" content="4 Word Collocations | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Word Collocations | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Word Collocations | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analysis-of-words-by-its-cooccurences.html"/>
+<link rel="next" href="graph-representations-of-word-cooccurrences.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="word-collocations" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Word Collocations<a href="word-collocations.html#word-collocations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The word is among the most elementary units of language. It forms the vocabulary, is part of the grammatical structures, builds the semantics of a sentence, and provides many contexts of usage. Among the important tools developed in NLP is to model the relationships between words, in a sentence, in a corpus, and across corpora of text collection. Sentences or speeches are organized as sequences of words, upon which the concept of word relations is built.</p>
+<p>In this chapter, we will cover the broad ideas on the role of words forming the building blocks of grammatical and lexical structures of the sentence, with a particular focus on word collocations.</p>
+<p>Al-Quran, as a preserved text, is precise in its word arrangements, from the first verse to the last. Nothing has changed from the beginning. Nothing can be altered. The Quranic structure of the words is an integral part of the Quran. When translated into another language, the contextual meaning of the translated text must follow the structures of the original text to a large degree; therefore, the word relationship structure should be preserved as much as possible within the translations.</p>
+<p>In this chapter, we will explore some of the analysis on the relationship between words in the English translations of Al-Quran, namely the Saheeh and Yusuf Ali, as was the approach in the previous chapters. We explore some of the methods <em>tidytext</em> <span class="citation">(<a href="#ref-tidytext">Queiroz et al. 2020</a>)</span> package offers for calculating and visualizing relationships between words in these translations. The analysis includes understanding the structure of words occurring together (called n-grams), which words tend to follow another word (word correlations), how various words relate to each other (word network), and words appearance within sentences or a selected group of texts (such as a Surah or Hizb). Furthermore, we will introduce methods of lexical analysis whereby all the processes of lexical annotation, tagging, and lemmatization are applied to Surah Yusuf as a sample analysis.</p>
+<p>We will resume using the same environment in Chapter 3, whereby all the data used is the same and all the <strong>R</strong> libraries remain intact. We will also use a few new packages: <em>igraph</em> <span class="citation">(<a href="#ref-igraph">Csárdi 2020</a>)</span>, <em>ggraph</em> <span class="citation">(<a href="#ref-ggraph">Pedersen 2017</a>)</span>, which extends <em>ggplot2</em> to construct network plots, and <em>widyr</em> <span class="citation">(<a href="#ref-widyr">Robinson, Misra, and Silge 2020</a>)</span>, which calculates pairwise correlations and distances within a tidy data frame. For the lexical analysis, we will deploy the <em>udpipe</em> <span class="citation">(<a href="#ref-udpipe">Wijffels, Straka, and Straková 2020</a>)</span> package, which includes the Udpipe<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a> language model pre-loaded into the computing environment.</p>
+<div id="analyzing-word-collocations" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Analyzing word collocations<a href="word-collocations.html#analyzing-word-collocations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The simplest relationship between words in sentences is “its neighbour(s)”, word(s) preceding it, and word(s) after it. This relation is called word collocations. In NLP this is calculated using <em>n-grams</em>. In probabilistic terms, what we want to guess is, if a word “x” is known, what is the most probable word “y” that will follow, and vice-versa if we know “y”, what is the most probable word “x” that precedes it. This is called a <em>bi-gram</em> (or two words sequence) and can be extended to three words sequence, a <em>tri-gram</em>, and so on. If we have 3,000 distinct words (tokens), given a word, there are 2,999 possible choices of adjacent words, which means the probability space is not only large but also sparse. If we extend the same logic to tri-grams, the space increases exponentially. To create a model of n-grams, a probability model must be deployed.<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a></p>
+<div id="analyzing-bi-grams" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Analyzing bi-grams<a href="word-collocations.html#analyzing-bi-grams" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In <strong>R</strong> we can use the <em>tidytext</em> package and apply the tokenization function with the addition of <em>token = “ngrams”</em> option to <em>unnest_tokens()</em> function. When we set <span class="math inline">\(n = 2\)</span>, we are examining pairs of two consecutive words, which is called “bi-grams”. We show this below:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="word-collocations.html#cb30-1" tabindex="-1"></a>ESI_bigrams <span class="ot">&lt;-</span> quran_all <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="word-collocations.html#cb30-2" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(bigram, saheeh, <span class="at">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>This data structure is still a variation of the <em>tidytext</em> format. It is structured as one-token-per-row (with extra metadata, such as surah, still preserved), but each token now represents a bigram. Notice that these bigrams overlap: “in the”, “the name”, “name of” are separate bigrams.</p>
+<p>We can examine the most common bigrams using dplyr’s <em>count()</em>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="word-collocations.html#cb31-1" tabindex="-1"></a>ESI_bigrams <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="word-collocations.html#cb31-2" tabindex="-1"></a>  <span class="fu">count</span>(bigram, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Many of the most common bigrams are pairs of common (uninteresting) words, such as “of the”, “those who”, “and the”, “do not”. We call these “stopwords”. We use tidyr’s <em>separate()</em> function, which splits a column into multiple columns based on a delimiter. This lets us separate it into two columns, “word1” and “word2”, at which point we can remove cases where either is a stopword.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="word-collocations.html#cb32-1" tabindex="-1"></a>ESI_bigrams_separated <span class="ot">&lt;-</span>  ESI_bigrams <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="word-collocations.html#cb32-2" tabindex="-1"></a>  <span class="fu">separate</span>(bigram, <span class="fu">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb32-3"><a href="word-collocations.html#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="word-collocations.html#cb32-4" tabindex="-1"></a>ESI_bigrams_filtered <span class="ot">&lt;-</span> ESI_bigrams_separated <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="word-collocations.html#cb32-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word1 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="word-collocations.html#cb32-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word2 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word)</span>
+<span id="cb32-7"><a href="word-collocations.html#cb32-7" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="word-collocations.html#cb32-8" tabindex="-1"></a>ESI_bigram_counts <span class="ot">&lt;-</span> ESI_bigrams_filtered <span class="sc">%&gt;%</span> </span>
+<span id="cb32-9"><a href="word-collocations.html#cb32-9" tabindex="-1"></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>In other analyses, we may want to work with the recombined words. <em>tidyr</em>’s <em>unite()</em> function is the inverse of <em>separate()</em> and lets us recombine the columns into one. Thus, “separate/filter/count/unite” let us find the most common bi-grams not containing the stopwords.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="word-collocations.html#cb33-1" tabindex="-1"></a>ESI_bigrams_united <span class="ot">&lt;-</span> ESI_bigrams_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="word-collocations.html#cb33-2" tabindex="-1"></a>  <span class="fu">unite</span>(bigram, word1, word2, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<p>This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most common word with “allah” mentioned in each Surah. The result is presented in Figure <a href="word-collocations.html#fig:ch4fig401">4.1</a>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="word-collocations.html#cb34-1" tabindex="-1"></a>ESI_bigrams_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="word-collocations.html#cb34-2" tabindex="-1"></a>        <span class="fu">filter</span>(word1 <span class="sc">==</span> <span class="st">&quot;allah&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="word-collocations.html#cb34-3" tabindex="-1"></a>        <span class="fu">count</span>(surah_title_en, word2, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig401"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig401-1.png" alt="Top words with 'Allah' in the Quran" width="576" />
+<p class="caption">
+Figure 4.1: Top words with ‘Allah’ in the Quran
+</p>
+</div>
+<p>A bigram can also be treated as a term in a document in the same way that we treat individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure <a href="word-collocations.html#fig:ch4fig402">4.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig402"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig402-1.png" alt="Top word pairs tf-idf in the long Surahs" width="768" />
+<p class="caption">
+Figure 4.2: Top word pairs tf-idf in the long Surahs
+</p>
+</div>
+<p>There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or “sacred” separately). owever, the per-bigram counts are also sparser: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.</p>
+</div>
+<div id="visualizing-a-network-of-bigrams-with-ggraph" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Visualizing a network of bigrams with <em>ggraph</em><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We may be interested in visualizing all of the relationships among words simultaneously, rather than just the top few at a time. One common visualization method is to arrange the words in a network graph. Here we will be referring to a “graph” as a combination of connected nodes. A graph can be constructed from a tidy object since it has three variables:</p>
+<ol style="list-style-type: decimal">
+<li><em>from</em>: the node an edge is coming from</li>
+<li><em>to</em>: the node an edge is going towards</li>
+<li><em>weight</em>: A numeric value associated with each edge</li>
+</ol>
+<p>The <em>igraph</em> package has many powerful functions for manipulating and analyzing networks. One way to create an <em>igraph</em> object from tidy data is the <em>graph_from_data_frame()</em> function, which takes a data frame of edges with columns for “from” (word1), “to” (word2), and edge attributes (in this case <em>n</em>).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="word-collocations.html#cb35-1" tabindex="-1"></a>ESI_bigram_graph <span class="ot">&lt;-</span> ESI_bigram_counts <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="word-collocations.html#cb35-2" tabindex="-1"></a>                      <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="word-collocations.html#cb35-3" tabindex="-1"></a>                      <span class="fu">graph_from_data_frame</span>()</span></code></pre></div>
+<p><em>igraph</em> has built-in plotting functions, but many other packages have developed better visualization methods for graph objects. The <em>ggraph</em> package <span class="citation">(<a href="#ref-ggraph">Pedersen 2017</a>)</span> implements these visualizations in terms of the grammar of graphics. We can convert an <em>igraph</em> object into a <em>ggraph</em> with the <em>ggraph</em> function, after which we add layers to it, much like adding layers in <em>ggplot2</em>. For example, for a basic graph, we need to add three layers: nodes, edges, and text.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig403"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig403-1.png" alt="Common bi-grams in Saheeh" width="576" />
+<p class="caption">
+Figure 4.3: Common bi-grams in Saheeh
+</p>
+</div>
+<p>Figure <a href="word-collocations.html#fig:ch4fig403">4.3</a> shows all the top bi-grams (count above 10) for Saheeh’s translation. From here we can make some observations, like the word “allah” having a dominant role, and some known concepts in Islam like “straight path” and “establish prayer”. “perpetual residence”, “rivers flow”, “gardens beneath” are known rewards for those who “enter paradise”.</p>
+<p>We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure <a href="word-collocations.html#fig:ch4fig404">4.4</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig404"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig404-1.png" alt="Common bi-grams in Saheeh with ggraph format" width="576" />
+<p class="caption">
+Figure 4.4: Common bi-grams in Saheeh with ggraph format
+</p>
+</div>
+<p>It may take some experimentation with ggraph to get your networks into a presentable format, but network visualization is a useful and flexible way to look at relational tidy data.</p>
+<p>Note that this is a visualization of a Markov chain,<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a> a common model in text processing. In a Markov chain, each choice of a word depends only on the previous word. In this case, a random generator following this model might spit out “lord”, then “loves”, then “guides/obey”, by following each word with the most common words that follow it. To make the visualization interpretable, we chose to show only the most common word-to-word connections, but one can imagine an enormous graph representing all connections that occur in the Quran.</p>
+</div>
+<div id="tri-grams" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Tri-grams<a href="word-collocations.html#tri-grams" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We discuss next the most common trigrams, which are consecutive sequences of 3 words. We can find this by setting <span class="math inline">\(n = 3\)</span> as shown in the code below:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="word-collocations.html#cb36-1" tabindex="-1"></a>ESI_trigram_counts <span class="ot">&lt;-</span> quran_all <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="word-collocations.html#cb36-2" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(trigram, saheeh, <span class="at">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="word-collocations.html#cb36-3" tabindex="-1"></a>  <span class="fu">separate</span>(trigram, <span class="fu">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>, <span class="st">&quot;word3&quot;</span>), <span class="at">sep =</span> <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="word-collocations.html#cb36-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word1 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
+<span id="cb36-5"><a href="word-collocations.html#cb36-5" tabindex="-1"></a>         <span class="sc">!</span>word2 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word,</span>
+<span id="cb36-6"><a href="word-collocations.html#cb36-6" tabindex="-1"></a>         <span class="sc">!</span>word3 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word) <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="word-collocations.html#cb36-7" tabindex="-1"></a>  <span class="fu">count</span>(word1, word2, word3, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-8"><a href="word-collocations.html#cb36-8" tabindex="-1"></a>ESI_trigram_counts <span class="ot">&lt;-</span> ESI_trigram_counts <span class="sc">%&gt;%</span> </span>
+<span id="cb36-9"><a href="word-collocations.html#cb36-9" tabindex="-1"></a>                          <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(word2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(word3))</span>
+<span id="cb36-10"><a href="word-collocations.html#cb36-10" tabindex="-1"></a>ESI_trigrams_united <span class="ot">&lt;-</span> ESI_trigram_counts <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="word-collocations.html#cb36-11" tabindex="-1"></a>                          <span class="fu">unite</span>(trigram, word1, word2, word3, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<p>The result is viewed with:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="word-collocations.html#cb37-1" tabindex="-1"></a><span class="fu">head</span>(ESI_trigrams_united)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   trigram                          n
+##   &lt;chr&gt;                        &lt;int&gt;
+## 1 al masjid al                    16
+## 2 masjid al haram                 15
+## 3 defiantly disobedient people    10
+## 4 people worship allah            10
+## 5 firmly set mountains             9
+## 6 alif lam meem                    8</code></pre>
+<p>Similar analyses performed for bigrams may be repeated for trigrams as well. We leave this subject for readers to try.</p>
+</div>
+<div id="bigrams-co-ocurrences-and-correlations" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Bigrams co-ocurrences and correlations<a href="word-collocations.html#bigrams-co-ocurrences-and-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As a next step, let us examine which words commonly occur together in the Surahs. We can then examine word networks for these fields; this may help us see, for example, which Surahs are related to each other.</p>
+<p>We can use <em>pairwise_count()</em> from the <em>widyr</em> package to count how many times each pair of words occur together in a Surah.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="word-collocations.html#cb39-1" tabindex="-1"></a>word_pairs <span class="ot">&lt;-</span> surah_wordsESI <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="word-collocations.html#cb39-2" tabindex="-1"></a>  <span class="fu">pairwise_count</span>(word, surah_title_en, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-3"><a href="word-collocations.html#cb39-3" tabindex="-1"></a><span class="fu">head</span>(word_pairs)</span></code></pre></div>
+<p>Let us create a graph network of these co-occurring words so we can see the relationships better. The filter will determine the size of the graph.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig405"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig405-1.png" alt="Common word pairs in Saheeh" width="576" />
+<p class="caption">
+Figure 4.5: Common word pairs in Saheeh
+</p>
+</div>
+<p>Figure <a href="word-collocations.html#fig:ch4fig405">4.5</a> exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word “allah”, “lord” as expected. However, we can see many other words (nodes) such as “prayer”, which is highly linked to the center words (such as “allah”). Network visualization is a good starting point to make these types of observations.</p>
+</div>
+<div id="visualizing-correlations-of-bigrams-of-keywords" class="section level3 hasAnchor" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Visualizing correlations of bigrams of keywords<a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we examine the relationships among keywords in a different way. We can find the correlation among the keywords by looking for those keywords that are more likely to occur together than with other keywords for a dataset.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="word-collocations.html#cb40-1" tabindex="-1"></a>keyword_cors <span class="ot">&lt;-</span> surah_wordsESI <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="word-collocations.html#cb40-2" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="word-collocations.html#cb40-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="word-collocations.html#cb40-4" tabindex="-1"></a>  <span class="fu">pairwise_cor</span>(word, surah_title_en, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Let us visualize the network of keyword correlations.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig406"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig406-1.png" alt="Common keyword correlations in Saheeh" width="576" />
+<p class="caption">
+Figure 4.6: Common keyword correlations in Saheeh
+</p>
+</div>
+<p>From Figure <a href="word-collocations.html#fig:ch4fig406">4.6</a>, we can visualize all the keywords and their relations with other keywords. Note that the word “allah” and “lord” while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind “keyword in context” (kwic) which we will cover in a later part of the book.</p>
+</div>
+<div id="summarizing-ngrams" class="section level3 hasAnchor" number="4.1.6">
+<h3><span class="header-section-number">4.1.6</span> Summarizing ngrams<a href="word-collocations.html#summarizing-ngrams" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have shown some methods of creating bigrams and analyzing them. Bigrams are the simplest relations between words, and the statistical properties of bigrams are rather straightforward. However, once we start to add more than two words, the complications grow exponentially. Let’s say that we have a window of five words (5-grams); what we have now is a space of four preceding words and four succeeding words, where the window is a moving window. Every time we move one word ahead, we move along the window and calculate the relations four steps backward and four steps forward. This is a very tedious and compute-heavy exercise. The same analyses done on bigrams explode into bigger scale computations when extended to a larger number of words and visual analyses are no longer possible.</p>
+<p>Besides n-grams, we also have “skip-grams”. In skip-grams, instead of looking at words next to each other, we look at words within a distance to each other, such as three words away. Skip grams have their own purpose and use in analytics.</p>
+<p>There are powerful algorithms used in NLP which utilize fast-speed mechanisms to convert words into compact vector representations. The development of these algorithms is to overcome computer memory problems, where when we have a large number of words in big corpora (such as the Internet), computing n-grams, skip-grams, will take too much memory space, and hence require compact space representations. This is especially when we want to apply learning models in Machine Learning algorithms such as Neural Network models.</p>
+</div>
+</div>
+<div id="lexical-analysis" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Lexical analysis<a href="word-collocations.html#lexical-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An important NLP task in describing the relationships between words is lexical analysis. There are many good introductions to the subject, such as in <span class="citation">Manning and Schutze (<a href="#ref-manning1999">1999</a>)</span> and <span class="citation">Manning, Raghavan, and Schutze (<a href="#ref-manning2009">2009</a>)</span>. The first step for lexical analysis involves Part-of-Speech (POS) tagging, stemming, and lemmatization.<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a> This is followed by syntactic parsing, which is the identification of words within grammatical rules (such as a verb, a noun, a phrase, etc.). Finally, the step involves dependency parsing, which is the process of analyzing the grammatical structure of sentences (i.e., the sequence of words in grammatical rules).</p>
+<p>For lexical analysis processing, we deploy the <em>udpipe</em> package in <strong>R</strong> which was developed by <span class="citation">Wijffels, Straka, and Straková (<a href="#ref-udpipe">2020</a>)</span>.<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> For the purpose of demonstration, we select Surah Yusuf as our sample of analysis. The Surah is a fairly long chapter with 111 verses and mainly narrates the story of Prophet Yusuf (Joseph), which makes the analysis interesting.</p>
+<p>We start with loading the <em>udpipe</em> language model for the English language, using the <em>udpipe_download_model()</em> function.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="word-collocations.html#cb41-1" tabindex="-1"></a><span class="co"># During first time model download execute the below line too</span></span>
+<span id="cb41-2"><a href="word-collocations.html#cb41-2" tabindex="-1"></a><span class="co"># library(udpipe)</span></span>
+<span id="cb41-3"><a href="word-collocations.html#cb41-3" tabindex="-1"></a><span class="co"># udmodel &lt;- udpipe_download_model(language = &quot;english&quot;)</span></span>
+<span id="cb41-4"><a href="word-collocations.html#cb41-4" tabindex="-1"></a><span class="co"># Load the model</span></span>
+<span id="cb41-5"><a href="word-collocations.html#cb41-5" tabindex="-1"></a>udmodel <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(<span class="at">file =</span> <span class="st">&#39;data/english-ewt-ud-2.5-191206.udpipe&#39;</span>)</span></code></pre></div>
+<p>We will start by annotating Surah Yusuf. The annotated <em>data.frame</em> is used for the analysis later.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="word-collocations.html#cb42-1" tabindex="-1"></a>Q01 <span class="ot">&lt;-</span> quran_en_sahih <span class="sc">%&gt;%</span> <span class="fu">filter</span>(surah <span class="sc">==</span> <span class="dv">12</span>)</span>
+<span id="cb42-2"><a href="word-collocations.html#cb42-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(udmodel, <span class="at">x =</span> Q01<span class="sc">$</span>text, <span class="at">doc_id =</span> Q01<span class="sc">$</span>ayah_title)</span>
+<span id="cb42-3"><a href="word-collocations.html#cb42-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
+<p>The resulting <em>data.frame</em> has a field called upos which is the Universal Parts of Speech tag and also a field called lemma which is the root form of each token in the text. These two fields give us a broad range of analytic possibilities.</p>
+<div id="basic-frequency-statistics" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Basic frequency statistics<a href="word-collocations.html#basic-frequency-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a> The results of the frequencies are shown in Figure <a href="word-collocations.html#fig:ch4fig407">4.7</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig407"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig407-1.png" alt="UPOS (Universal Parts of Speech) in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.7: UPOS (Universal Parts of Speech) in Surah Yusuf
+</p>
+</div>
+<p>Parts of Speech (POS) tags allow us to extract easily the words we like to plot. We may not need stopwords for doing this, we just select nouns or verbs or adjectives and we have the most relevant parts for basic frequency analysis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig408"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig408-1.png" alt="Most occurring nouns in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.8: Most occurring nouns in Surah Yusuf
+</p>
+</div>
+<p>The NOUN and PROPN frequency plot in Figure <a href="word-collocations.html#fig:ch4fig408">4.8</a> correctly reflect Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran <span class="citation">(<a href="#ref-alsuwaidan2021">Alsuwaidan and Hussin 2021</a>)</span>. The noticeable noun missing in the plot is “prison”. The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure <a href="word-collocations.html#fig:ch4fig409">4.9</a> and Figure <a href="word-collocations.html#fig:ch4fig410">4.10</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig409"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig409-1.png" alt="Most occuring adjectives in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.9: Most occuring adjectives in Surah Yusuf
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig410"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig410-1.png" alt="Most occuring verbs in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.10: Most occuring verbs in Surah Yusuf
+</p>
+</div>
+</div>
+</div>
+<div id="word-cooccurrences-using-POS" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Word cooccurrences using POS<a href="word-collocations.html#word-cooccurrences-using-POS" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Analyzing single words is a good start. Multi-word expressions should be more interesting. We can get multi-word expressions by looking either at collocations (words following one another), at word co-occurrences within each sentence, or at word co-occurrences of words that are close in the neighborhood of one another.</p>
+<p>Co-occurrences allow us to see how words are used either in the same sentence or next to each other. The udpipe package easily helps us create word co-occurrence graphs using the relevant POS tags.</p>
+<div id="nouns-adjectives-and-verbs-used-in-same-sentence" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Nouns, adjectives, and verbs used in same sentence<a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We look at how many times nouns, proper nouns, adjectives, verbs, and adverbs are used in the same sentence.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="word-collocations.html#cb43-1" tabindex="-1"></a>cooccur <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(<span class="at">x =</span> <span class="fu">subset</span>(x, upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADJ&quot;</span>)), </span>
+<span id="cb43-2"><a href="word-collocations.html#cb43-2" tabindex="-1"></a>                     <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, </span>
+<span id="cb43-3"><a href="word-collocations.html#cb43-3" tabindex="-1"></a>                     <span class="at">group =</span> <span class="fu">c</span>(<span class="st">&quot;doc_id&quot;</span>, <span class="st">&quot;paragraph_id&quot;</span>, <span class="st">&quot;sentence_id&quot;</span>))</span></code></pre></div>
+<p>The result can be easily visualized using the <em>igraph</em> and <em>ggraph</em> packages. This is shown in Figure <a href="word-collocations.html#fig:ch4fig411">4.11</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig411"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig411-1.png" alt="Co-occurence of Nouns, Names, Adjectives and Verbs" width="576" />
+<p class="caption">
+Figure 4.11: Co-occurence of Nouns, Names, Adjectives and Verbs
+</p>
+</div>
+<p>The story is revealed by Allah (SWT). The main characters are Joseph, his father, his brothers, the king, and the wife of the minister (al-’Azeez). So the verb “say” dominates since it is a narrated story. It is interesting to note the strong link and occurrence of “know” with “Allah”.</p>
+</div>
+<div id="words-that-follow-one-another-using-pos" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Words that follow one another using POS<a href="word-collocations.html#words-that-follow-one-another-using-pos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Visualizing which words follow one another (bigram) can be done by calculating word co-occurrences of a specific POS type that follow one another and specify how far away we want to look regarding “following one another” (in the example below we indicate skipgram = 1 which means look to the next word and the word after that). Here we include the major POS.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="word-collocations.html#cb44-1" tabindex="-1"></a>cooccur <span class="ot">&lt;-</span> <span class="fu">cooccurrence</span>(x<span class="sc">$</span>lemma,</span>
+<span id="cb44-2"><a href="word-collocations.html#cb44-2" tabindex="-1"></a>              <span class="at">relevant =</span> x<span class="sc">$</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADV&quot;</span>, <span class="st">&quot;ADJ&quot;</span>),</span>
+<span id="cb44-3"><a href="word-collocations.html#cb44-3" tabindex="-1"></a>              <span class="at">skipgram =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Once we have these co-occurrences, we can easily do the same plots as before. (See Figure <a href="word-collocations.html#fig:ch4fig412">4.12</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig412"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig412-1.png" alt="Words following one another in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.12: Words following one another in Surah Yusuf
+</p>
+</div>
+</div>
+<div id="word-correlations-using-pos" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Word correlations using POS<a href="word-collocations.html#word-correlations-using-pos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Keyword correlations indicate how terms are just together in the same document/sentence. While co-occurrences focus on frequency, correlation measures between 2 terms can also be high even if 2 terms occur only a small number of times but always appear together.</p>
+<p>We show how nouns, proper nouns, verbs, adverbs, and adjectives are correlated within each verse of Surah Yusuf.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="word-collocations.html#cb45-1" tabindex="-1"></a>x<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">unique_identifier</span>(x, <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;doc_id&quot;</span>))</span>
+<span id="cb45-2"><a href="word-collocations.html#cb45-2" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">subset</span>(x, upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADV&quot;</span>, <span class="st">&quot;ADJ&quot;</span>))</span>
+<span id="cb45-3"><a href="word-collocations.html#cb45-3" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">document_term_frequencies</span>(dtm, <span class="at">document =</span> <span class="st">&quot;id&quot;</span>, <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>)</span>
+<span id="cb45-4"><a href="word-collocations.html#cb45-4" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">document_term_matrix</span>(dtm)</span>
+<span id="cb45-5"><a href="word-collocations.html#cb45-5" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">dtm_remove_lowfreq</span>(dtm, <span class="at">minfreq =</span> <span class="dv">5</span>)</span>
+<span id="cb45-6"><a href="word-collocations.html#cb45-6" tabindex="-1"></a>termcorrelations <span class="ot">&lt;-</span> <span class="fu">dtm_cor</span>(dtm)</span>
+<span id="cb45-7"><a href="word-collocations.html#cb45-7" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as_cooccurrence</span>(termcorrelations)</span>
+<span id="cb45-8"><a href="word-collocations.html#cb45-8" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">subset</span>(y, term1 <span class="sc">&lt;</span> term2 <span class="sc">&amp;</span> <span class="fu">abs</span>(cooc) <span class="sc">&gt;</span> <span class="fl">0.2</span>)</span>
+<span id="cb45-9"><a href="word-collocations.html#cb45-9" tabindex="-1"></a>y <span class="ot">&lt;-</span> y[<span class="fu">order</span>(<span class="fu">abs</span>(y<span class="sc">$</span>cooc), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb45-10"><a href="word-collocations.html#cb45-10" tabindex="-1"></a><span class="fu">head</span>(y)</span></code></pre></div>
+<pre><code>##               term1   term2      cooc
+## 1126         seduce    seek 0.7056591
+## 681             eat   other 0.6153136
+## 1179           back   shirt 0.5354312
+## 1402 interpretation   teach 0.4927311
+## 49              bag brother 0.4850995
+## 581            give measure 0.4298162</code></pre>
+<p>The above pairings indeed reflect the story of Prophet Joseph.</p>
+</div>
+</div>
+<div id="finding-keyword-combinations-using-POS" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Finding keyword combinations using POS<a href="word-collocations.html#finding-keyword-combinations-using-POS" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Frequency statistics of words are nice, but many words only make sense in combination with other words. Thus, we want to find keywords that are a combination of words. The steps here follow the example from <em>An overview of keyword extraction techniques</em>.<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a> The steps are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>by doing Parts of Speech tagging to identify nouns</li>
+<li>based on Collocations and Co-occurrences</li>
+<li>based on RAKE (Rapid Automatic Keyword Extraction)</li>
+<li>by looking for Phrases (noun phrases/verb phrases)</li>
+<li>based on the Textrank algorithm</li>
+<li>based on results of dependency parsing (getting the subject of the text)</li>
+</ol>
+<p>Currently, the <em>udpipe</em> package provides three methods to identify keywords in text:</p>
+<ol style="list-style-type: decimal">
+<li>RAKE (Rapid Automatic Keyword Extraction)</li>
+<li>Collocation ordering using Pointwise Mutual Information</li>
+<li>Parts of Speech phrase sequence detection</li>
+</ol>
+<div id="using-rake" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Using RAKE<a href="word-collocations.html#using-rake" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RAKE is one of the most popular (unsupervised machine learning) algorithms for extracting keywords. It is a domain-independent keyword extraction algorithm that tries to determine key phrases in a body of text by analyzing the frequency of word appearance and its co-occurrence with other words in the text.</p>
+<p>RAKE looks for keywords by looking to a contiguous sequence of words that do not contain irrelevant words by calculating a score for each word that is part of any candidate keyword. This is done by:</p>
+<ul>
+<li>among the words of the candidate keywords, the algorithm looks at how many times each word is occurring and how many times it co-occurs with other words.</li>
+<li>each word gets a score which is the ratio of the word degree (how many times it co-occurs with other words) to the word frequency.</li>
+</ul>
+<p>A RAKE score for the full candidate keyword is calculated by summing up the scores of each of the words which define the candidate keyword. The result is in Figure <a href="word-collocations.html#fig:ch4fig413">4.13</a>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="word-collocations.html#cb47-1" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">keywords_rake</span>(<span class="at">x =</span> x, </span>
+<span id="cb47-2"><a href="word-collocations.html#cb47-2" tabindex="-1"></a>            <span class="at">term =</span> <span class="st">&quot;lemma&quot;</span>, </span>
+<span id="cb47-3"><a href="word-collocations.html#cb47-3" tabindex="-1"></a>            <span class="at">group =</span> <span class="st">&quot;doc_id&quot;</span>, </span>
+<span id="cb47-4"><a href="word-collocations.html#cb47-4" tabindex="-1"></a>            <span class="at">relevant =</span> x<span class="sc">$</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADV&quot;</span>, <span class="st">&quot;ADJ&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig413"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig413-1.png" alt="Keywords identified by RAKE in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.13: Keywords identified by RAKE in Surah Yusuf
+</p>
+</div>
+</div>
+<div id="using-pointwise-mutual-information-collocations" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Using Pointwise Mutual Information Collocations<a href="word-collocations.html#using-pointwise-mutual-information-collocations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The result is in Figure <a href="word-collocations.html#fig:ch4fig414">4.14</a>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="word-collocations.html#cb48-1" tabindex="-1"></a>x<span class="sc">$</span>word <span class="ot">&lt;-</span> <span class="fu">tolower</span>(x<span class="sc">$</span>token)</span>
+<span id="cb48-2"><a href="word-collocations.html#cb48-2" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">keywords_collocation</span>(<span class="at">x =</span> x, <span class="at">term =</span> <span class="st">&quot;word&quot;</span>, <span class="at">group =</span> <span class="st">&quot;doc_id&quot;</span>)</span>
+<span id="cb48-3"><a href="word-collocations.html#cb48-3" tabindex="-1"></a>stats<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">factor</span>(stats<span class="sc">$</span>keyword, <span class="at">levels =</span> <span class="fu">rev</span>(stats<span class="sc">$</span>keyword))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig414"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig414-1.png" alt="Keywords identified by PMI Collocation in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.14: Keywords identified by PMI Collocation in Surah Yusuf
+</p>
+</div>
+</div>
+<div id="using-a-sequence-of-pos-tags-noun-phrases" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Using a sequence of POS tags (noun phrases)<a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another option is to extract phrases. These are defined as a sequence of POS tags. Common types of phrases are noun phrases or verb phrases. In English, a noun and a verb can form a phrase like “Joseph said”. With the noun Joseph and verb said, we can understand the context of the sentence. We will show an example of how to extract noun phrases using the <em>as_phrasemachine()</em> function in <em>udpipe</em>.</p>
+<p>POS tags are re-coded to one of the following one-letters:</p>
+<ul>
+<li>A: adjective</li>
+<li>C: coordinating conjunction</li>
+<li>D: determiner</li>
+<li>M: modifier of a verb</li>
+<li>N: noun or proper noun</li>
+<li>P: preposition</li>
+</ul>
+<p>This simple example maps the various UPOS re-coded using letters.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="word-collocations.html#cb49-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;SCONJ&quot;</span>, <span class="st">&quot;ADJ&quot;</span>, <span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;INTJ&quot;</span>, <span class="st">&quot;DET&quot;</span>, <span class="st">&quot;AUX&quot;</span>, <span class="st">&quot;NUM&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;PRON&quot;</span>, <span class="st">&quot;PUNCT&quot;</span>, <span class="st">&quot;ADP&quot;</span>, <span class="st">&quot;CCONJ&quot;</span>)</span>
+<span id="cb49-2"><a href="word-collocations.html#cb49-2" tabindex="-1"></a><span class="fu">as_phrasemachine</span>(y)</span></code></pre></div>
+<p>We then define a regular expression to indicate a sequence of POS tags which we want to extract from the text. Extracting noun phrases from a text can be done easily by defining a sequence of UPOS tags. For example, this sequence of UPOS tags can be seen as a noun phrase: Adjective, Noun, Preposition, Noun. After which identifying a simple noun phrase can be just expressed by using the following regular expression (A|N)<em>N(P+D</em>(A|N)<em>N)</em> which says start with adjective or noun, another noun, a preposition, determiner adjective or noun and next to a noun again.<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a> The result is in Figure <a href="word-collocations.html#fig:ch4fig415">4.15</a>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="word-collocations.html#cb50-1" tabindex="-1"></a>x<span class="sc">$</span>phrase_tag <span class="ot">&lt;-</span> <span class="fu">as_phrasemachine</span>(x<span class="sc">$</span>upos, <span class="at">type =</span> <span class="st">&quot;upos&quot;</span>)</span>
+<span id="cb50-2"><a href="word-collocations.html#cb50-2" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">keywords_phrases</span>(<span class="at">x =</span> x<span class="sc">$</span>phrase_tag, <span class="at">term =</span> <span class="fu">tolower</span>(x<span class="sc">$</span>token), </span>
+<span id="cb50-3"><a href="word-collocations.html#cb50-3" tabindex="-1"></a>                          <span class="at">pattern =</span> <span class="st">&quot;(A|N)*N(P+D*(A|N)*N)*&quot;</span>, </span>
+<span id="cb50-4"><a href="word-collocations.html#cb50-4" tabindex="-1"></a>                          <span class="at">is_regex =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb50-5"><a href="word-collocations.html#cb50-5" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">subset</span>(stats, ngram <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> freq <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb50-6"><a href="word-collocations.html#cb50-6" tabindex="-1"></a>stats<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">factor</span>(stats<span class="sc">$</span>keyword, <span class="at">levels =</span> <span class="fu">rev</span>(stats<span class="sc">$</span>keyword))</span>
+<span id="cb50-7"><a href="word-collocations.html#cb50-7" tabindex="-1"></a><span class="fu">head</span>(stats)</span></code></pre></div>
+<pre><code>##        keyword ngram freq         key
+## 28   those who     2   10   those who
+## 29 his brother     2    9 his brother
+## 31     my lord     2    9     my lord
+## 33  our father     2    8  our father
+## 39   which you     2    6   which you
+## 46   his shirt     2    5   his shirt</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig415"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig415-1.png" alt="Keywords - simple noun phrases in Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.15: Keywords - simple noun phrases in Surah Yusuf
+</p>
+</div>
+</div>
+<div id="textrank" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Textrank<a href="word-collocations.html#textrank" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Textrank is a word network ordered by Google Pagerank as implemented in the <em>textrank</em> <span class="citation">(<a href="#ref-textrank">Wijffels and BNOSAC 2020</a>)</span> package.<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a> The algorithm allows to summarize text and extract keywords. This is done by constructing a word network by looking to see if words are following one another. On top of that network, the ‘Google Pagerank’ algorithm is applied to extract relevant words after which other relevant words which are following one another are combined to get keywords. In the example below, we are interested in finding keywords using that algorithm of either “NOUN”, “PROPN”, “VERB”, “ADJ” following one another.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="word-collocations.html#cb52-1" tabindex="-1"></a>stats <span class="ot">&lt;-</span> textrank<span class="sc">::</span><span class="fu">textrank_keywords</span>(x<span class="sc">$</span>lemma, </span>
+<span id="cb52-2"><a href="word-collocations.html#cb52-2" tabindex="-1"></a>                  <span class="at">relevant =</span> x<span class="sc">$</span>upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>, <span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADJ&quot;</span>), </span>
+<span id="cb52-3"><a href="word-collocations.html#cb52-3" tabindex="-1"></a>                  <span class="at">ngram_max =</span> <span class="dv">8</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb52-4"><a href="word-collocations.html#cb52-4" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">subset</span>(stats<span class="sc">$</span>keywords, ngram <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> freq <span class="sc">&gt;=</span> <span class="dv">2</span>)</span>
+<span id="cb52-5"><a href="word-collocations.html#cb52-5" tabindex="-1"></a><span class="fu">head</span>(stats)</span></code></pre></div>
+<pre><code>##       keyword ngram freq
+## 7      he say     2   24
+## 13 he brother     2   10
+## 21    he have     2    6
+## 22   have see     2    5
+## 28   he shirt     2    4
+## 32     eat he     2    3</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig416"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig416-1.png" alt="Textrank wordcloud for Surah Yusuf" width="576" />
+<p class="caption">
+Figure 4.16: Textrank wordcloud for Surah Yusuf
+</p>
+</div>
+<p>Figure <a href="word-collocations.html#fig:ch4fig416">4.16</a> shows that the keywords combine words into multi-word expressions. Again, we see the dominance of the verb <em>“say”</em> since Surah Yusuf is a narrated story. It is welcoming to note that “fear Allah” and “do good” are in fact the top moral lessons from this Surah.</p>
+<blockquote>
+<p>“We relate to you the best of stories through Our revelation of this Quran, though before this you were totally unaware of them.” [12:3]</p>
+</blockquote>
+</div>
+</div>
+<div id="dependency-parsing" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Dependency parsing<a href="word-collocations.html#dependency-parsing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally, we address the subject of dependency parsing. Dependency parsing is an NLP technique that provides to each word in a sentence the link to another word in the same sentence, which is called the syntactical head. This link between every two words furthermore has a certain type of relationship giving us further details about it.</p>
+<p>The <em>udpipe</em> package provides such a dependency parser. With the output of dependency parsing, we can answer questions like</p>
+<ul>
+<li>What is the nominal subject of a text</li>
+<li>What is the object of a verb</li>
+<li>Which word modifies a noun</li>
+<li>What is the link to negative words</li>
+<li>Which words are compound statements</li>
+<li>What are noun phrases, verb phrases in the text</li>
+</ul>
+<p>Here we use the dependency parsing output to get the nominal subject and the adjective. When we executed the annotation using <em>udpipe</em>, the <em>dep_rel</em> field indicates how words are related to one another. A token is related to the parent using <em>token_id</em> and <em>head_token_id</em>. The <em>dep_rel</em> field indicates how words are linked to one another. The type of relations is defined on the Universal Dependencies website.<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a> Here we are going to take the words which have a dependency relation <em>nsubj</em> indicating the nominal subject and we are adding to that the adjective which is changing the nominal subject.</p>
+<p>In this way, we can combine what the Surah is talking about with the adjective or verb it uses when it describes a subject.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="word-collocations.html#cb54-1" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">merge</span>(x, x, </span>
+<span id="cb54-2"><a href="word-collocations.html#cb54-2" tabindex="-1"></a>           <span class="at">by.x =</span> <span class="fu">c</span>(<span class="st">&quot;doc_id&quot;</span>, <span class="st">&quot;paragraph_id&quot;</span>, <span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>),</span>
+<span id="cb54-3"><a href="word-collocations.html#cb54-3" tabindex="-1"></a>           <span class="at">by.y =</span> <span class="fu">c</span>(<span class="st">&quot;doc_id&quot;</span>, <span class="st">&quot;paragraph_id&quot;</span>, <span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>),</span>
+<span id="cb54-4"><a href="word-collocations.html#cb54-4" tabindex="-1"></a>           <span class="at">all.x =</span> <span class="cn">TRUE</span>, <span class="at">all.y =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb54-5"><a href="word-collocations.html#cb54-5" tabindex="-1"></a>           <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_parent&quot;</span>), <span class="at">sort =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-6"><a href="word-collocations.html#cb54-6" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">subset</span>(stats, dep_rel <span class="sc">%in%</span> <span class="st">&quot;nsubj&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb54-7"><a href="word-collocations.html#cb54-7" tabindex="-1"></a>                  upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NOUN&quot;</span>, <span class="st">&quot;PROPN&quot;</span>) <span class="sc">&amp;</span> </span>
+<span id="cb54-8"><a href="word-collocations.html#cb54-8" tabindex="-1"></a>                  upos_parent <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;VERB&quot;</span>, <span class="st">&quot;ADJ&quot;</span>))</span>
+<span id="cb54-9"><a href="word-collocations.html#cb54-9" tabindex="-1"></a>stats<span class="sc">$</span>term <span class="ot">&lt;-</span> <span class="fu">paste</span>(stats<span class="sc">$</span>lemma, stats<span class="sc">$</span>lemma_parent, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb54-10"><a href="word-collocations.html#cb54-10" tabindex="-1"></a>stats <span class="ot">&lt;-</span> udpipe<span class="sc">::</span><span class="fu">txt_freq</span>(stats<span class="sc">$</span>term)</span>
+<span id="cb54-11"><a href="word-collocations.html#cb54-11" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="st">&quot;keyword&quot;</span><span class="ot">=</span> stats<span class="sc">$</span>keyword,<span class="st">&quot;left&quot;</span> <span class="ot">=</span> stats<span class="sc">$</span>left, </span>
+<span id="cb54-12"><a href="word-collocations.html#cb54-12" tabindex="-1"></a>           <span class="st">&quot;right&quot;</span><span class="ot">=</span> stats<span class="sc">$</span>right, <span class="st">&quot;pmi&quot;</span> <span class="ot">=</span> stats<span class="sc">$</span>pmi )</span></code></pre></div>
+<pre><code>## data frame with 0 columns and 0 rows</code></pre>
+<p>We can visualize the dependency in a wordcloud plot.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig417"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig417-1.png" alt="Dependency parsing wordcloud for Surah Yusuf" width="384" />
+<p class="caption">
+Figure 4.17: Dependency parsing wordcloud for Surah Yusuf
+</p>
+</div>
+<p>The plot in Figure <a href="word-collocations.html#fig:ch4fig417">4.17</a> confirms the comment we made earlier about “say”. Another known moral lesson from Surah Yusuf, “patience fitting”, now appears.
+We have shown how to use the <em>dep_rel</em> parameter that is part of the annotation output from the <em>udpipe</em> package. For visualizing the relationships between the words which were found, we can just use the <em>ggraph</em> package. Now we introduce a basic function that selects the relevant columns from the annotation and puts it into a graph as guided by <span class="citation">Wijffels, Straka, and Straková (<a href="#ref-udpipe">2020</a>)</span> <a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>. The code for the function is reproduced as a reference in the Appendix at the end of the chapter.</p>
+<p>We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure <a href="word-collocations.html#fig:ch4fig418">4.18</a>. And a longer verse, verse 12:31. (See Figure <a href="word-collocations.html#fig:ch4fig419">4.19</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig418"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig418-1.png" alt="Dependency parsing udpipe output Verse 12:16" width="576" />
+<p class="caption">
+Figure 4.18: Dependency parsing udpipe output Verse 12:16
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch4fig419"></span>
+<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig419-1.png" alt="Dependency parsing udpipe output Verse 12:31" width="576" />
+<p class="caption">
+Figure 4.19: Dependency parsing udpipe output Verse 12:31
+</p>
+</div>
+<p>With dependency parsing, we can now see, for example, how nouns relate to the adjectives with nominal subject as the type of relationship.</p>
+<div id="collocations-and-co-occurences" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Collocations and co-occurences<a href="word-collocations.html#collocations-and-co-occurences" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once we have performed the dependency parsing (i.e., all the taggings) for the corpus (or selected subset within the corpus), we can redo all the exercises done in the earlier part of the chapter; namely the collocation measures of “n-grams”, “skip-grams”, and the co-occurrence measures such as words correlations, and fitting them into a network.</p>
+<p>Now that we have classified each word as “NOUN”, “PRONOUN”, “VERB”, etc., we can perform the exercises such as collocations among nouns and pronouns, between verbs, or combing noun and verbs. The permutations are almost limitless. Since our intent is only to introduce the subject and the tools available, we will leave it for researchers with a background in linguistics.</p>
+</div>
+</div>
+<div id="chapter-4-summary" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Summary<a href="word-collocations.html#chapter-4-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This initial exploration of the <em>udpipe</em> package with just one of the 114 Surahs in Saheeh translation of Al-Quran has indeed shown some interesting and unique analysis. The results confirm many familiar lessons for those acquainted with the Quran and Surah Yusuf, in particular.</p>
+<p>The study also opens other investigation avenues like</p>
+<ol style="list-style-type: decimal">
+<li>Looking into other Surahs of the Quran,</li>
+<li>Other translations,</li>
+<li>Other use cases of <em>udpipe</em>,</li>
+<li>Most importantly, analyzing the original Arabic Quran.</li>
+</ol>
+<p>The first in the “to-do” list should be easy since the codes can be repeated by just changing the selected Surah to analyze. We encourage our readers to pursue this.</p>
+<p>The second can also be easily tested with other English translations of the Quran like what we have shown in Chapter 2 and Chapter 3. Again, we leave this to our readers. It can also be repeated with translations of the Quran in other languages that are supported by udpipe.<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a></p>
+<p>We will explore the third item in the coming chapters. The final “to-do” item is massive and extremely valuable. We must define a full project scope for it. Applying the NLP tools that we have covered so far is the easier part, but interpreting the results will be the real challenge. Much of this work has been done by Corpus Quran project<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>; the work of which still requires intensive development and verification of its accuracies and appropriateness.<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a></p>
+<p>In the next chapter, we will go deeper into the tools of network graphs in <strong>R</strong>. We have used it quite heavily in this chapter and in some of the earlier chapters. Our work on Quran Analytics will use these tools frequently. As such, a simple tutorial on these tools using examples from the Quran should be useful.</p>
+</div>
+<div id="further-readings-3" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Further readings<a href="word-collocations.html#further-readings-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>widyr</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-widyr">Robinson, Misra, and Silge 2020</a>)</span></p>
+<p><em>udpipe</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-udpipe">Wijffels, Straka, and Straková 2020</a>)</span></p>
+<p><em>tm</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-tm">Feinerer, Hornik, and Software 2020</a>)</span></p>
+<p><em>textrank</em> package in <strong>R</strong>. <span class="citation">(<a href="#ref-textrank">Wijffels and BNOSAC 2020</a>)</span></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="appendix" class="section level2 unnumbered hasAnchor">
+<h2>Appendix<a href="word-collocations.html#appendix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Function for Udpipe Dependency Parser output</strong></p>
+<p>The codes for this function was produced by bnosac (<a href="https://www.bnosac.be" class="uri">https://www.bnosac.be</a>).</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="word-collocations.html#cb56-1" tabindex="-1"></a>plot_annotation <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">size =</span> <span class="dv">3</span>){</span>
+<span id="cb56-2"><a href="word-collocations.html#cb56-2" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(x) <span class="sc">&amp;</span> </span>
+<span id="cb56-3"><a href="word-collocations.html#cb56-3" tabindex="-1"></a>            <span class="fu">all</span>(<span class="fu">c</span>(<span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, </span>
+<span id="cb56-4"><a href="word-collocations.html#cb56-4" tabindex="-1"></a>                  <span class="st">&quot;dep_rel&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>,</span>
+<span id="cb56-5"><a href="word-collocations.html#cb56-5" tabindex="-1"></a>                  <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>) <span class="sc">%in%</span> <span class="fu">colnames</span>(x)))</span>
+<span id="cb56-6"><a href="word-collocations.html#cb56-6" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x<span class="sc">$</span>head_token_id), ]</span>
+<span id="cb56-7"><a href="word-collocations.html#cb56-7" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[x<span class="sc">$</span>sentence_id <span class="sc">%in%</span> <span class="fu">min</span>(x<span class="sc">$</span>sentence_id), ]</span>
+<span id="cb56-8"><a href="word-collocations.html#cb56-8" tabindex="-1"></a>  edges <span class="ot">&lt;-</span> x[x<span class="sc">$</span>head_token_id <span class="sc">!=</span> <span class="dv">0</span>, </span>
+<span id="cb56-9"><a href="word-collocations.html#cb56-9" tabindex="-1"></a>             <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>)]</span>
+<span id="cb56-10"><a href="word-collocations.html#cb56-10" tabindex="-1"></a>  edges<span class="sc">$</span>label <span class="ot">&lt;-</span> edges<span class="sc">$</span>dep_rel</span>
+<span id="cb56-11"><a href="word-collocations.html#cb56-11" tabindex="-1"></a>  g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(</span>
+<span id="cb56-12"><a href="word-collocations.html#cb56-12" tabindex="-1"></a>              edges,</span>
+<span id="cb56-13"><a href="word-collocations.html#cb56-13" tabindex="-1"></a>              <span class="at">vertices =</span> x[, <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>,</span>
+<span id="cb56-14"><a href="word-collocations.html#cb56-14" tabindex="-1"></a>                               <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>)],</span>
+<span id="cb56-15"><a href="word-collocations.html#cb56-15" tabindex="-1"></a>              <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-16"><a href="word-collocations.html#cb56-16" tabindex="-1"></a>  <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
+<span id="cb56-17"><a href="word-collocations.html#cb56-17" tabindex="-1"></a>      <span class="fu">geom_edge_arc</span>(</span>
+<span id="cb56-18"><a href="word-collocations.html#cb56-18" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> dep_rel, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.20</span>),</span>
+<span id="cb56-19"><a href="word-collocations.html#cb56-19" tabindex="-1"></a>        <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">&#39;mm&#39;</span>), </span>
+<span id="cb56-20"><a href="word-collocations.html#cb56-20" tabindex="-1"></a>                            <span class="at">ends =</span> <span class="st">&quot;last&quot;</span>,</span>
+<span id="cb56-21"><a href="word-collocations.html#cb56-21" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>),</span>
+<span id="cb56-22"><a href="word-collocations.html#cb56-22" tabindex="-1"></a>        <span class="at">end_cap =</span> ggraph<span class="sc">::</span><span class="fu">label_rect</span>(<span class="st">&quot;wordswordswords&quot;</span>),</span>
+<span id="cb56-23"><a href="word-collocations.html#cb56-23" tabindex="-1"></a>        <span class="at">label_colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="at">label_size =</span> size) <span class="sc">+</span></span>
+<span id="cb56-24"><a href="word-collocations.html#cb56-24" tabindex="-1"></a>      <span class="fu">geom_node_label</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> token), </span>
+<span id="cb56-25"><a href="word-collocations.html#cb56-25" tabindex="-1"></a>                      <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>,</span>
+<span id="cb56-26"><a href="word-collocations.html#cb56-26" tabindex="-1"></a>                      <span class="at">size =</span> size, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="sc">+</span></span>
+<span id="cb56-27"><a href="word-collocations.html#cb56-27" tabindex="-1"></a>      <span class="fu">geom_node_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> upos), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">size =</span> size) <span class="sc">+</span></span>
+<span id="cb56-28"><a href="word-collocations.html#cb56-28" tabindex="-1"></a>      <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb56-29"><a href="word-collocations.html#cb56-29" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;udpipe output&quot;</span>, </span>
+<span id="cb56-30"><a href="word-collocations.html#cb56-30" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;tokenisation, parts of speech tagging &amp; dependency relations&quot;</span>)</span>
+<span id="cb56-31"><a href="word-collocations.html#cb56-31" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-alsuwaidan2021" class="csl-entry">
+Alsuwaidan, Tareq, and Azman Hussin. 2021. <span>“Islam Simplified: A Holistic View of the Quran.”</span>
+</div>
+<div id="ref-igraph" class="csl-entry">
+Csárdi, Gábor. 2020. <em>Igraph: Network Analysis and Visualization</em>. <a href="https://cran.r-project.org/web/packages/igraph/index.html">https://cran.r-project.org/web/packages/igraph/index.html</a>.
+</div>
+<div id="ref-tm" class="csl-entry">
+Feinerer, Ingo, Kurt Hornik, and Artifex Software. 2020. <em>Tm: Text Mining Package</em>. <a href="https://cran.r-project.org/web/packages/tm/index.html">https://cran.r-project.org/web/packages/tm/index.html</a>.
+</div>
+<div id="ref-manning2009" class="csl-entry">
+Manning, Christopher D., Prabhakar Raghavan, and Hinrich Schutze. 2009. <em>An Introduction to Information Retrieval</em>. Cambridge, England: Cambridge University Press.
+</div>
+<div id="ref-manning1999" class="csl-entry">
+Manning, Christopher D., and Hinrich Schutze. 1999. <em>Foundations of Statistical Natural Language Processing</em>. Cambridge, Massachusetts: The MIT Press.
+</div>
+<div id="ref-ggraph" class="csl-entry">
+Pedersen, Thomas Lin. 2017. <em>Ggraph: An Implementation of Grammar of Graphics for Graphs and Networks</em>. <a href="https://cran.r-project.org/package=ggraph">https://cran.r-project.org/package=ggraph</a>.
+</div>
+<div id="ref-tidytext" class="csl-entry">
+Queiroz, Gabriela De, Colin Fay, Emil Hvitfeldt, Os Keyes, Tim Mastny, Jeff Erickson, David Robinson, Kanishka Misra, and Julia Silge. 2020. <em>Tidytext: Text Mining Using ’Dplyr’, ’Ggplot2’, and Other Tidy Tools</em>. <a href="https://cran.r-project.org/web/packages/tidytext/index.html">https://cran.r-project.org/web/packages/tidytext/index.html</a>.
+</div>
+<div id="ref-widyr" class="csl-entry">
+Robinson, David, Kanishka Misra, and Julia Silge. 2020. <em>Widyr: Widen, Process, Then Re-Tidy Data</em>. <a href="https://cran.r-project.org/web/packages/widyr/index.html">https://cran.r-project.org/web/packages/widyr/index.html</a>.
+</div>
+<div id="ref-textrank" class="csl-entry">
+Wijffels, Jan, and BNOSAC. 2020. <em>Textrank: Summarize Text by Ranking Sentences and Finding Keywords</em>. <a href="https://cran.r-project.org/web/packages/textrank/index.html">https://cran.r-project.org/web/packages/textrank/index.html</a>.
+</div>
+<div id="ref-udpipe" class="csl-entry">
+Wijffels, Jan, Milan Straka, and Jana Straková. 2020. <em>Udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit</em>. <a href="https://github.com/bnosac/udpipe">https://github.com/bnosac/udpipe</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="47">
+<li id="fn47"><p>Language model developed by the Institute of Formal and Applied Linguistics, Charles University, Czech republic.<a href="word-collocations.html#fnref47" class="footnote-back">↩︎</a></p></li>
+<li id="fn48"><p>A comprehensive textbook on n-gram models is <span class="citation">(<a href="#ref-manning1999">Manning and Schutze 1999</a>)</span>.<a href="word-collocations.html#fnref48" class="footnote-back">↩︎</a></p></li>
+<li id="fn49"><p>A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed. <a href="https://brilliant.org/wiki/markov-chains/" class="uri">https://brilliant.org/wiki/markov-chains/</a><a href="word-collocations.html#fnref49" class="footnote-back">↩︎</a></p></li>
+<li id="fn50"><p>The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form.<a href="word-collocations.html#fnref50" class="footnote-back">↩︎</a></p></li>
+<li id="fn51"><p>The udpipe model is developed by the Institute of Formal Applied Linguistics, Charles University, Czech republic. Guides for using the package are available at (<a href="https://bnosac.github.io/udpipe/docs/doc5.html" class="uri">https://bnosac.github.io/udpipe/docs/doc5.html</a>)<a href="word-collocations.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p>For a detailed list of all POS tags, please visit <a href="https://universaldependencies.org/u/pos/index.html" class="uri">https://universaldependencies.org/u/pos/index.html</a><a href="word-collocations.html#fnref52" class="footnote-back">↩︎</a></p></li>
+<li id="fn53"><p><a href="https://www.r-bloggers.com/2018/04/an-overview-of-keyword-extraction-techniques/" class="uri">https://www.r-bloggers.com/2018/04/an-overview-of-keyword-extraction-techniques/</a><a href="word-collocations.html#fnref53" class="footnote-back">↩︎</a></p></li>
+<li id="fn54"><p><a href="https://www.rdocumentation.org/packages/udpipe/versions/0.8.5/topics/keywords_phrases" class="uri">https://www.rdocumentation.org/packages/udpipe/versions/0.8.5/topics/keywords_phrases</a><a href="word-collocations.html#fnref54" class="footnote-back">↩︎</a></p></li>
+<li id="fn55"><p><a href="https://cran.r-project.org/web/packages/textrank/index.html" class="uri">https://cran.r-project.org/web/packages/textrank/index.html</a><a href="word-collocations.html#fnref55" class="footnote-back">↩︎</a></p></li>
+<li id="fn56"><p> <a href="http://universaldependencies.org/u/dep/index.html" class="uri">http://universaldependencies.org/u/dep/index.html</a><a href="word-collocations.html#fnref56" class="footnote-back">↩︎</a></p></li>
+<li id="fn57"><p><a href="http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe" class="uri">http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe</a><a href="word-collocations.html#fnref57" class="footnote-back">↩︎</a></p></li>
+<li id="fn58"><p><a href="https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html" class="uri">https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html</a><a href="word-collocations.html#fnref58" class="footnote-back">↩︎</a></p></li>
+<li id="fn59"><p><a href="https://corpus.quran.com" class="uri">https://corpus.quran.com</a><a href="word-collocations.html#fnref59" class="footnote-back">↩︎</a></p></li>
+<li id="fn60"><p>Accuracies of the work is still a work in progress, as claimed by the developers, posted on its message board (<a href="https://corpus.quran.com/messageboard.jsp" class="uri">https://corpus.quran.com/messageboard.jsp</a>)<a href="word-collocations.html#fnref60" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analysis-of-words-by-its-cooccurences.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graph-representations-of-word-cooccurrences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

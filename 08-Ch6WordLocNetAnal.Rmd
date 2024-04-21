@@ -71,16 +71,12 @@ cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB",
                                                   "ADJ", "ADV", "NUM")), 
                      term = "lemma", 
                      group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur)
 ```
 \normalsize
 
 The result can be easily visualized using the _igraph_ and _ggraph_ packages. We chose the top 50 occurrences for the tutorial so the plots do not clutter.
 
-
-
-
-``` {r ch6fig601, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="First plot of tutorial word network"}
+``` {r ch6fig601, fig.align="center", fig.height=4, fig.width=8, echo=T, warning=F, fig.cap="First plot of tutorial word network"}
 wordnetwork <- head(cooccur, 50)
 wordnetwork <- graph_from_data_frame(wordnetwork)
 ggraph(wordnetwork, layout = "kk") +
@@ -92,9 +88,6 @@ ggraph(wordnetwork, layout = "kk") +
   labs(title = "Co-occurrences Within Sentence",
        subtitle = "Top 50 Nouns, Names, Adjectives, Verbs, Adverbs")
 ```
-
-
-
 
 
 The base wordnetwork graph is a directed network with 41 nodes and 50 edges *(DN-- 41 50 -- )*. The nodes have the *name* attribute. The edges have the *cooc* attribute (+ attr: name (v/c), cooc (e/n))
@@ -140,8 +133,6 @@ We will use the two networks, *gu* and *gd*, that we created in this section. Fo
 
 Re-plotting of *gd* graph is in Figure \@ref(fig:ch6fig602).
 
-
-
 ``` {r ch6fig602, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Second plot of tutorial word network"}
 ggraph(gd, layout = "kk") +
   geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_color = "deeppink") +
@@ -149,10 +140,6 @@ ggraph(gd, layout = "kk") +
   labs(title = "Co-occurrences Within Sentence",
        subtitle = "Top 50 Nouns, Names, Adjectives, Verbs, Adverbs")
 ```
-
-
-
-
 
 ### Centrality measures (node-level measures)
 
@@ -179,16 +166,10 @@ There are many such centrality measures. It can be difficult to go through all o
 
 Figure \@ref(fig:ch6fig603) summarizes some of the centrality measures in a graphical format.
 
-
-
-
 ```{r ch6fig603, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap = "Centrality summary"}
 img_cs = readJPEG("images/centrality_summary.jpg")
 grid.raster(img_cs)
 ```
-
-
-
 
 
 ### Degree and strength
@@ -196,9 +177,6 @@ grid.raster(img_cs)
 The most straightforward centrality measure is degree centrality. Degree centrality is simply the number of edges connected to a given node. In a social network, this might mean the number of friends an individual has. We will calculate and visualize the degree centrality by varying the node sizes proportional to degree centrality.
 
 This is shown in Figure \@ref(fig:ch6fig604).
-
-
-
 
 ``` {r ch6fig604, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Node size reflects degree"}
 degree(gd)[1:5]
@@ -214,15 +192,9 @@ ggraph(gd, layout = "kk") +
 ```
 
 
-
-
-
 In weighted networks, we can also use node strength, which is the sum of the weight of edges connected to the node. Let us calculate node strength and plot the node sizes as proportional to these values.
 
 This is shown in Figure \@ref(fig:ch6fig605).
-
-
-
 
 ``` {r ch6fig605, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Node size reflects graph.strength"}
 set.seed(10)
@@ -237,9 +209,6 @@ ggraph(gd, layout = "kk") +
 ```
 
 
-
-
-
 Compare the relative node sizes when plotting by *degree* vs. *strength*. What differences do you notice? The top six words are the same say (18), indeed (8), so (8), fire (7), Mose (4), Lord (4).
 
 ### Degree distribution
@@ -247,9 +216,6 @@ Compare the relative node sizes when plotting by *degree* vs. *strength*. What d
 Degree distribution: A frequency count of the occurrence of each degree.
 
 Let N be the number of nodes, and L be the number of edges. Average degree = 2L/N = 2(50)/41 = 2.439 for gu. The histogram of the degree is shown in Figure \@ref(fig:ch6fig606).
-
-
-
 
 ``` {r ch6fig606, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Degree distribution of tutorial word network"}
 sort(degree(gu), decreasing = TRUE)[1:5]
@@ -260,10 +226,6 @@ degree.distribution(gu)[1:5]
 degree.distribution(gu)[6:10]
 hist(degree.distribution(gu))
 ```
-
-
-
-
 
 ### Degree and degree distribution for directed graph
 
@@ -276,9 +238,6 @@ hist(degree.distribution(gu))
     
 The plots of the histogram are in Figure \@ref(fig:ch6fig607) and Figure \@ref(fig:ch6fig608).
 
-
-
-
 ``` {r ch6fig607, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="In degree distribution of directed word network"}
 degree(gd,mode="in",loops = FALSE)[1:5]
 degree(gd,mode="out",loops = FALSE)[1:5]
@@ -288,13 +247,9 @@ hist(degree.distribution(gd, mode="in"))
 ```
 
 
-
 ``` {r ch6fig608, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Out degree distribution of directed word network"}
 hist(degree.distribution(gd, mode="out"))
 ```
-
-
-
 
 
 ### Why do we care about degree?
@@ -313,9 +268,6 @@ We now do the same for betweenness centrality. It is defined as the number of ge
 
 This is shown in Figure \@ref(fig:ch6fig609).
 
-
-
-
 ``` {r ch6fig609, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Node size reflects betweenness centrality"}
 betw = betweenness(gd, normalized=F)
 # calculate the betweenness centrality
@@ -330,9 +282,6 @@ ggraph(gd, layout = "kk") +
   geom_node_point(size = betw*0.2, color = "gold3") +
   geom_node_text(aes(filter=(betw >= 5), size=betw*2, label=name), repel=F)
 ```
-
-
-
 
 
 We can see that there are three nodes (words = "say", "indeed", "fire") that have qualitatively higher betweenness values than all other nodes in the network. One way to interpret this is that these are nodes that tend to act as “bridges” between different clusters of nodes in the network.
@@ -433,9 +382,6 @@ sort(page[[1]], decreasing = TRUE) %>% head(6)
 
 From the above parameters, we assemble a _data.frame_ and plot a correlation matrix, (Figure \@ref(fig:ch6fig610)).
 
-
-
-
 ``` {r ch6fig610, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Simple Scatterplot Matrix"}
 
 dfu <- data.frame(degS, closeS, betwS, eigen[[1]], page[[1]])
@@ -451,13 +397,7 @@ pairs(~deg + close + betw + eigen[[1]] + page[[1]],
 ```
 
 
-
-
-
 ### Assembling a dataset of node-level measures for gd network
-
-
-
 
 ``` {r ch6fig611, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Relationship degree and strength"}
 #assemble dataset
@@ -477,19 +417,14 @@ dfd %>% ggplot(aes(x = strength, y = degree)) + geom_point() +
                   size = 3, color = "darkblue",
                   nudge_x = 0.25, nudge_y = 0.25, 
                   check_overlap = T) +
-        labs(title = "Word Co-occurrences Network")
+        labs(title = "Word Co-occurrences Network",
+             y = "Degree",x = "Strength")
 ```
-
-
-
 
 
 The straight line in Figure \@ref(fig:ch6fig611) obviously shows that these are correlated since strength is simply the weighted version of degree.
 
 How about the relationship between betweenness and strength?
-
-
-
 
 ``` {r ch6fig612, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Relationship betweenness and strength"}
        
@@ -499,11 +434,9 @@ dfd %>% ggplot(aes(x = strength, y = betweenness)) +
                     size = 3, color = "darkblue",
                     nudge_x = 0.25, nudge_y = 0.25, 
                     check_overlap = T) +
-          labs(title = "Word Co-occurrences Network")
+          labs(title = "Word Co-occurrences Network",
+             y = "Betweenness",x = "Strength")
 ```
-
-
-
 
 
 These are not well correlated, since they describe something different (as shown in Figure \@ref(fig:ch6fig612), points are not in a straight line). Again the common words "say" and "indeed" have a dominant role in Surah Taa-Haa that narrates the true story of Prophet Moses. The common adverb "so" is often used for emphasis^[https://www.macmillandictionary.com/dictionary/british/so_1] to stress some facts and lessons of the story.
@@ -549,8 +482,6 @@ edge_density(gu)
 For ‘fully connected’ networks, we can follow edges from any given node to all other nodes in the network. Networks can also be composed of multiple components that are not connected to each other, as is obvious from the plots of our sample word network *gd*. We can get this information with a simple function.
 
 
-
-
 ``` {r ch6fig613, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F,  fig.cap="Simple plot showing network components"}
 components(gd)$membership[1:7]
 components(gd)$csize
@@ -559,23 +490,15 @@ plot(gd)
 ```
 
 
-
-
-
 The output shows the node membership, component sizes, and number of components. The numbers for _no_ (number of components, 4) and _csize_ (size for each component) can be confirmed from Figure \@ref(fig:ch6fig613).
 
 ### Degree distributions
 
 Degree distribution, the statistical distribution of node degrees in a network, is a common and often powerful way to describe a network. We can simply look at the degree distribution as a histogram of degrees. (See the plots in Figure \@ref(fig:ch6fig614) and Figure \@ref(fig:ch6fig615)).
 
-
-
-
 ``` {r ch6fig614, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F,  fig.cap="Histogram of gd degrees"}
 hist(degree(gd), breaks=5, col="steelblue")
 ```
-
-
 
 
 ``` {r ch6fig615, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F,  fig.cap="Histogram of gu degrees"}
@@ -583,12 +506,7 @@ hist(degree(gu), breaks=5, col="royalblue")
 ```
 
 
-
-
-
 However, if we want to compare the degree distributions of different networks, it might be more useful to plot the probability densities of each degree: i.e., what proportion of nodes has degree = 1, degree = 2, etc. We can do this by using the function _degree.distribution()_. The output of the plot is in Figure \@ref(fig:ch6fig616) and Figure \@ref(fig:ch6fig617).
-
-
 
 ``` {r ch6fig616, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F,  fig.cap="Degree distribution of gd"}
 pkd = degree.distribution(gd)
@@ -596,15 +514,10 @@ plot(pkd, pch=20)
 ```
 
 
-
-
 ``` {r ch6fig617, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F,  fig.cap="Degree distribution of gu"}
 pku = degree.distribution(gu)
 plot(pku, pch=20)
 ```
-
-
-
 
 
 Degree and degree	distribution play an important role in understanding networks. A higher density changes the component structure of a network and impacts the diffusion and	learning properties. The degree also is an individual node’s	characteristic and reflects	its	position.
@@ -781,21 +694,12 @@ The resulting object is a 'communities object', which includes a few pieces of i
 
 We can also use this 'communities object' to show the community structure (see Figure \@ref(fig:ch6fig619)).
 
-
-
-
 ``` {r ch6fig619, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Community structure using edge.betweenness.community()"}
 plot(eb, gu, layout=l)
 ```
 
 
-
-
-
 We repeat with the Louvain method (see Figure \@ref(fig:ch6fig620)):
-
-
-
 
 ``` {r ch6fig620, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Community structure using the Louvain method"}
 el = cluster_louvain(gu)
@@ -804,15 +708,9 @@ plot(el, gu, vertex.label="", edge.color="red")
 ```
 
 
-
-
-
 Figures \@ref(fig:ch6fig619) and \@ref(fig:ch6fig620) show that the two different methods yield different results; one with 7 and the other 8 communities (groups).
 
 We can customize the plot. We use the *RColorBrewer* package to assign colors (see Figure \@ref(fig:ch6fig621)).
-
-
-
 
 ``` {r ch6fig621, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Using the Louvain method with some color adjustments"}
 library(RColorBrewer)
@@ -821,9 +719,6 @@ V(gu)$color = colors[membership(el)] #assign node color based on the community a
 set.seed(2)
 plot(gu, vertex.label="")
 ```
-
-
-
 
 
 ### Another example of clustering
@@ -877,9 +772,6 @@ We use the same example network in this tutorial to demonstrate how to calculate
 
 We start by assigning each node a value and let it vary in size (see Figure \@ref(fig:ch6fig622)).
 
-
-
-
 ``` {r ch6fig622, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Node size reflecting its degree"}
 set.seed(3)
 l = layout_with_kk(gu)
@@ -891,15 +783,9 @@ assortativity(gu, V(gu)$size, directed=F)
 ```
 
 
-
-
-
 This network exhibits negative (low) levels of assortativity by node size.
 
 We can also convert the size variable into a binary (i.e., discrete) trait and calculate the assortment coefficient (see Figure \@ref(fig:ch6fig623)).
-
-
-
 
 ``` {r ch6fig623, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Node size discrete"}
 V(gu)$size.discrete = (V(gu)$size > 5) + 0
@@ -910,13 +796,7 @@ assortativity(gu, V(gu)$size.discrete, directed=F)
 ```
 
 
-
-
-
 As a comparison, we create a node attribute that varies randomly across all nodes in the network and then measure the assortativity coefficient based on this trait. We will plot the figure with square nodes, just to make it clear that we are plotting a different trait(see Figure \@ref(fig:ch6fig624)).
-
-
-
 
 ``` {r ch6fig624, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Using different node shape"}
 set.seed(3)
@@ -926,9 +806,6 @@ assortativity(gu, V(gu)$random, directed=F)
 plot(gu, layout=l, edge.color="black", vertex.size=V(gu)$random,
      vertex.shape="square")
 ```
-
-
-
 
 
 We can see that there is little assortment based on this trait.
@@ -961,8 +838,6 @@ Notice how the _igraph_ *wordnetwork* is converted into two separate tibbles, No
 *gt* can directly be used with our preferred _ggraph_ package for visualizing networks (see the plot output in Figure \@ref(fig:ch6fig625)).
 
 
-
-
 ``` {r ch6fig625, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Simple first plot example using tidygraph and ggraph"}
 ggraph(gt, layout = 'fr', weights = cooc) + 
   geom_edge_link() + 
@@ -970,22 +845,13 @@ ggraph(gt, layout = 'fr', weights = cooc) +
 ```
 
 
-
-
-
 Now it is much easier to experiment with modifications to the node and edge parameters affecting layouts as it is not necessary to modify the underlying graph but only the plotting code (output in Figure \@ref(fig:ch6fig626)).
-
-
-
 
 ``` {r ch6fig626, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Adjusting node and edge plotting parameters"}
 ggraph(gt, layout = 'fr', weights = log(cooc)) + 
   geom_edge_link(color = "cyan4") + 
   geom_node_point(color = "gold4", size = 3)
 ```
-
-
-
 
 
 ### Use selected measures from _tidygraph_ and plot
@@ -1015,13 +881,6 @@ Now we plot the various measures from the resulting *node_measures* _data.frame_
 
 Plot _degree_, _degree_in_, and _degree_out_ together (output in Figure \@ref(fig:ch6fig628)).
 
-Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure \@ref(fig:ch6fig629)).
-
-Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure \@ref(fig:ch6fig630)).
-
-
-
-
 ``` {r ch6fig627, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Degree for top 30 words"}
        
 node_measures %>% arrange(desc(degree)) %>% 
@@ -1037,8 +896,7 @@ node_measures %>% arrange(desc(degree)) %>%
      theme_bw()
 ```
 
-
-
+Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure \@ref(fig:ch6fig629)).
 
 ``` {r ch6fig628, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Degree-in and degree-out for top 50 words"}
        
@@ -1050,13 +908,16 @@ NMtall %>% arrange(desc(Value)) %>%
      mutate(name=fct_reorder(name, Value, .desc = F)) %>% 
      ggplot(aes(name, Value, color = center)) + 
      geom_point(size = 2) + 
+     scale_color_manual(values = c("degree_in" = 'blue',"degree_out" = 'red'))+
      coord_cartesian(ylim = c(0, 12)) +
      labs(x = "Word", y = "Measure") +
-     coord_flip()
+     coord_flip()+
+     theme_bw()+
+     theme(legend.position = 'top')
+     
 ```
 
-
-
+Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure \@ref(fig:ch6fig630)).
 
 ``` {r ch6fig629, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Degree and betweenness for top 50 words"}
        
@@ -1067,15 +928,12 @@ NMtall %>% arrange(desc(Value)) %>%
      head(50) %>% 
      mutate(name=fct_reorder(name, Value, .desc = F)) %>% 
      ggplot(aes(name, Value, fill = center)) + 
-     geom_col(position = "identity") + 
+     geom_col(position = "identity",color = 'black') + 
      labs(x = "Word", y = "Measure") +
-     coord_flip()
+     coord_flip()+
+     theme_bw()+
+     theme(legend.position = 'top')
 ```
-
-
-
-
-
 
 
 ``` {r ch6fig630, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Other measures for top 50 words"}
@@ -1088,14 +946,13 @@ NMtall %>% arrange(desc(Value)) %>%
      mutate(name=fct_reorder(name, Value, .desc = F)) %>% 
      ggplot(aes(name, Value, color = measure)) + 
      geom_point(size = 2) +
+     scale_color_manual(values = c("#00A36C","red","blue"))+
      coord_cartesian(ylim = c(0, 1)) + 
      labs(x = "Word", y = "Measure") +
-     coord_flip()
+     coord_flip()+
+     theme_bw()+
+     theme(legend.position = 'top')
 ```
-
-
-
-
 
 Despite using *coord_cartesian(ylim = c(0, 1))* to scale the Measure coordinate, the values for br_score, and coreness are 0 or very small. Without any doubt "say", "Lord" together with "Allah" and "Mose" are the most influential and important words in Surah Taa-Haa.
 
@@ -1130,9 +987,6 @@ gtexample <- gt %>%
 
 We can also convert our active node or edge table back to a _tibble_ and plot the output  (see Figure \@ref(fig:ch6fig631)).
 
-
-
-
 ``` {r ch6fig631, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Nodes are colored by group"}
 gtexample %>%
   activate(nodes) %>% 
@@ -1151,14 +1005,7 @@ ggraph(gtexample, layout="fr") +
     labs(title = "Surah Taa-Haa Word Co-occurrence Network")
 ```
 
-
-
-
-
 For the next plot, we define our own specific colors. The center-most characters are in red and the distance to the center is the node size (see Figure \@ref(fig:ch6fig632)).
-
-
-
 
 ``` {r ch6fig632, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Nodes are colored by centeredness"}
 got_palette = c("red", "blue", "green", "gold", "coral",
@@ -1172,10 +1019,6 @@ ggraph(gtexample, layout="fr") +
     theme(legend.position = "bottom") +
     labs(title = "Surah Taa-Haa Word Co-occurrence Network")
 ```
-
-
-
-
 
 Clearly, "say" is the _keyplayer_ for the main group.
 
@@ -1248,9 +1091,6 @@ From the table above, "say" tops in most centrality measures.
 
 We scale the nodes by degree centrality, and color it by community. We filter by only showing community 1 to 10 (see output in Figure \@ref(fig:ch6fig633)).
 
-
-
-
 ``` {r ch6fig633, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Top 10 word communities"}
 network_ego1 %>%
   filter(community %in% 1:10) %>%
@@ -1266,10 +1106,6 @@ network_ego1 %>%
   coord_fixed() +
   theme(legend.position = "none")
 ```
-
-
-
-
 
 __ego() function__
 
@@ -1308,9 +1144,6 @@ The parameter focus in the first line is used to choose the node id of the focal
 
 The function draw_circle() can be used to add the circles explicitly (see the output in Figure \@ref(fig:ch6fig634)).
 
-
-
-
 ``` {r ch6fig634, fig.align="center", fig.height=4, fig.width=6, echo=T, warning=F, fig.cap="Using draw circle layout with Mose as focus node"}
        
 got_palette = c("red", "blue", "green", "gold", "coral", "cyan4",
@@ -1332,14 +1165,7 @@ ggraph(jg1,layout = "focus", focus = focusnode) +
     theme(legend.position = "bottom")
 ```
 
-
-
-
-
 Repeat with a change of the focus node and displaying all the words (see the output in Figure \@ref(fig:ch6fig635)).
-
-
-
 
 ``` {r ch6fig635, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Same layout with say as focus node and text labels"}
 deg = degree(jg1)
@@ -1357,14 +1183,7 @@ ggraph(jg1,layout = "focus", focus = focusnode) +
     theme(legend.position = "bottom")
 ```
 
-
-
-
-
 _layout_with_centrality()_ works similarly. We can specify any centrality index (or numeric vector) and create a concentric layout where the most central nodes are put in the center and the most peripheral nodes in the biggest circle. The numeric attribute used for the layout is specified with the cent parameter. Here, we use the weighted degree of the characters. See the output in Figure \@ref(fig:ch6fig636).
-
-
-
 
 ``` {r ch6fig636, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Weighted degree centrality layout"}
 ggraph(jg1,layout = "centrality", cent = graph.strength(jg1)) +
@@ -1378,14 +1197,7 @@ ggraph(jg1,layout = "centrality", cent = graph.strength(jg1)) +
   theme(legend.position = "bottom")
 ```
 
-
-
-
-
 We repeat with _betweenness centrality_ (see the output in Figure \@ref(fig:ch6fig637)).
-
-
-
 
 ``` {r ch6fig637, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Betweenness centrality layout with degree for node size"}
 ggraph(jg1,layout = "centrality", 
@@ -1400,15 +1212,9 @@ ggraph(jg1,layout = "centrality",
   theme(legend.position = "bottom")
 ```
 
-
-
-
-
 __Stress layout and clustering__
 
 We focus again on *gd* and *gu*. Some clustering functions do not work on directed graphs. We show two different examples here. The first one is a directed network (outputs in Figure \@ref(fig:ch6fig638)).
-
-
 
 ``` {r ch6fig638, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Directed network with clusters"}
 cld <- clusters(gd)
@@ -1424,14 +1230,7 @@ ggraph(gd,layout = "stress") +
     theme(legend.position = "bottom")
 ```
 
-
-
-
-
 The second one is the undirected graph *gu* and *cluster_louvain* which does not work with directed graphs. *gu* does not have edge properties so we remove the aes(width=cooc). The output is in Figure \@ref(fig:ch6fig639).
-
-
-
 
 ``` {r ch6fig639, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Undirected network with clusters"}
        
@@ -1448,18 +1247,11 @@ ggraph(gu,layout = "stress") +
     theme(legend.position = "bottom")
 ```
 
-
-
-
-
 Interestingly, the cluster functions give 4 for *gd* and 8 for *gu*.
 
 __Focus layout and clustering - focus on selected words__
 
 Earlier, we have shown how _layout_with_focus()_ allows us to focus the network on a specific word and order all other nodes in concentric circles (depending on distance) around it. Here we combine it with clustering. The limitation is that it can only work with a fully connected network (see the output in Figure \@ref(fig:ch6fig640) and Figure \@ref(fig:ch6fig641)).
-
-
-
 
 ``` {r ch6fig640, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Focus layout with only the focus word"}
        
@@ -1478,9 +1270,6 @@ ggraph(jg1, "focus", focus=focusnode) +
   theme(legend.position = "bottom")
 ```
 
-
-
-
 ``` {r ch6fig641, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Focus layout with all words"}
        
 clu <- clusters(jg1)
@@ -1498,14 +1287,7 @@ ggraph(jg1, "focus", focus=focusnode) +
   theme(legend.position = "bottom")
 ```
 
-
-
-
-
 _layout_with_centrality()_ is based on a similar principle. We have shown this earlier. But here, we repeat with clustering (using *gu*) and look at the coreness centrality measure. Earlier, we have seen that _cluster_louvain()_ gives different results than _clusters()_ (see output in Figure \@ref(fig:ch6fig642) and Figure \@ref(fig:ch6fig643)).
-
-
-
 
 ``` {r ch6fig642, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Centrality layout : graph.strength with clusters"}
 clu <- cluster_louvain(jg2)
@@ -1522,9 +1304,6 @@ ggraph(jg2, "centrality", cent=graph.strength(jg2)) +
     theme(legend.position = "bottom")
 ```
 
-
-
-
 ``` {r ch6fig643, fig.align="center", fig.height=4, fig.width=6, echo=F, warning=F, fig.cap="Centrality layout : graph.coreness with clusters"}
 ggraph(jg2, "centrality", cent=graph.coreness(jg2)) +
   draw_circle(col = "darkblue", use = "focus", max.circle = 3) +
@@ -1536,10 +1315,6 @@ ggraph(jg2, "centrality", cent=graph.coreness(jg2)) +
   scale_fill_manual(values=got_palette) +
     theme(legend.position = "bottom")
 ```
-
-
-
-
 
 ## Summary {#chapter-6-summary}
 

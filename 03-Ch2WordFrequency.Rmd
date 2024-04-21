@@ -6,7 +6,7 @@ if(!knitr:::is_html_output())
   knitr::opts_chunk$set(tidy.opts=list(width.cutoff=56, indent = 2), tidy = TRUE)
 #  knitr::opts_chunk$set(fig.pos = 'H')
 }
- knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, results = 'hide')
+ knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 library(tidyverse)
 library(tidytext)
 library(ggplot2)
@@ -26,6 +26,8 @@ library(grid)
 library(png)
 library(jpeg)
 library(quanteda.textmodels)
+library(wordcloud) # added
+library(RColorBrewer) # added
 ```
 
 # Word Frequency Analysis {#word-frequency-analysis}
@@ -46,12 +48,6 @@ We will use the _tidytext_ package in __R__. For the data, we will use the data 
 
 \footnotesize
 ``` {r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
-library(tidyverse)
-library(tidytext)
-library(readr)
-library(quRan)
-library(ggplot2)
-
 quran_all = read_csv("data/quran_trans.csv") %>% 
               select(surah_id, ayah_id, surah_title_en, 
                      surah_title_en_trans, revelation_type,
@@ -84,11 +80,7 @@ Wordcloud analysis is a simple visual representation of word occurrence frequenc
 In __R__, there are many packages useful for wordcloud analysis, the easiest one is the _wordcloud_ package. We will show how to use them here.
 
 
-
-
 ```{r ch2fig201,fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Wordcloud for Saheeh translation"}
-library(wordcloud)
-library(RColorBrewer) 
 set.seed(1234)
 tidyESI %>%
   count(word) %>%
@@ -99,8 +91,6 @@ tidyESI %>%
                  rot.per = 0.35,
                  colors=brewer.pal(8,"Dark2")))
 ```
-
-
 
 
 ```{r ch2fig202, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Wordcloud for Yusuf Ali translation"}
@@ -115,9 +105,6 @@ tidyEYA %>%
                  colors=brewer.pal(8,"Dark2")))
 ```
 
-
-
-
 ```{r ch2fig203, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Wordcloud for Malay translation"}
 set.seed(1234)
 tidyMAB %>%
@@ -129,10 +116,6 @@ tidyMAB %>%
                  rot.per = 0.35,
                  colors=brewer.pal(8,"Dark2")))
 ```
-
-
-
-
 
 For Saheeh, the wordcloud plot is in Figure \@ref(fig:ch2fig201); for Yusuf Ali, the wordcloud plot is in Figure \@ref(fig:ch2fig202); and for the Malay, the wordcloud plot is in Figure \@ref(fig:ch2fig203).
 
@@ -211,105 +194,86 @@ tf_plotter = function(df,surah_group,title_label,x_lim){
   xlim(NA,x_lim) +
   facet_wrap(~surah_title_en, ncol = 2, scales = "free_y") +
   labs(title = title_label,
-       x = "term frequency",
-       y = NULL)
+       x = "Term Frequency",
+       y = NULL)+ 
+  theme(plot.title = element_text(size=12),
+        # panel.border = element_rect(colour = "black", fill=NA),
+        strip.background = element_rect(color = "black"),
+        plot.background = element_rect(color = "black"))
 }
 ```
-
-
 
 
 ```{r ch2fig204, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Saheeh"}
 tf_plotter(df = surah_wordsESI, 
            surah_group = last6_surahs, 
-           title_label = "Saheeh",
+           title_label = "Term Frequency in Short Length Surah (Saheeh)",
            x_lim = 0.10)
 ```
-
-
 
 
 ```{r ch2fig205, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Yusuf Ali"}
 tf_plotter(df = surah_wordsEYA, 
            surah_group = last6_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "Term Frequency in Short Length Surah (Yusuf Ali)",
            x_lim = 0.10)
 ```
-
-
 
 
 ```{r ch2fig206, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs term frequency in Malay"}
 tf_plotter(df = surah_wordsMAB, 
            surah_group = last6_surahs, 
-           title_label = "Malay",
+           title_label = "Term Frequency in Short Length Surah (Malay)",
            x_lim = 0.10)
 ```
-
-
-
-
 
 
 ```{r ch2fig207, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Saheeh"}
 tf_plotter(df = surah_wordsESI, 
            surah_group = hamim_surahs, 
-           title_label = "Saheeh",
+           title_label = "Term Frequency in Medium Length Surah (Saheeh)",
            x_lim = 0.01)
 ```
-
-
 
 
 ```{r ch2fig208, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Yusuf Ali"}
 tf_plotter(df = surah_wordsEYA, 
            surah_group = hamim_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "Term Frequency in Medium Length Surah (Yusuf Ali)",
            x_lim = 0.01)
 ```
-
-
 
 
 ```{r ch2fig209, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Hamim Surahs term frequency in Malay"}
 tf_plotter(df = surah_wordsMAB, 
            surah_group = hamim_surahs, 
-           title_label = "Malay",
+           title_label = "Term Frequency in Medium Length Surah (Malay)",
            x_lim = 0.01)
 ```
-
-
 
 
 ```{r ch2fig210, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Saheeh"}
 tf_plotter(df = surah_wordsESI, 
            surah_group = long_surahs, 
-           title_label = "Saheeh",
+           title_label = "Term Frequency in Long Length Surah (Saheeh)",
            x_lim = 0.002)
 ```
-
-
 
 
 ```{r ch2fig211, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Yusuf Ali"}
 tf_plotter(df = surah_wordsEYA, 
            surah_group = long_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "Term Frequency in Long Length Surah (Yusuf Ali)",
            x_lim = 0.002)
 ```
-
-
 
 
 ```{r ch2fig212, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs term frequency in Malay"}
 tf_plotter(df = surah_wordsMAB, 
            surah_group = long_surahs, 
-           title_label = "Malay",
+           title_label = "Term Frequency in Long Length Surah (Malay)",
            x_lim = 0.002)
 ```
-
-
-
 
 
 From these plots of "term frequency" starting with the short Surahs (Figure \@ref(fig:ch2fig204), Figure \@ref(fig:ch2fig205), and Figure \@ref(fig:ch2fig206)), followed by the medium Surahs (Figure \@ref(fig:ch2fig207), Figure \@ref(fig:ch2fig208), and Figure \@ref(fig:ch2fig209)), and the long Surahs (Figure \@ref(fig:ch2fig210), Figure \@ref(fig:ch2fig211), and Figure \@ref(fig:ch2fig212)), there are many insights and lessons about the language of the translation of Al-Quran.
@@ -319,7 +283,6 @@ For example,  we can observe that the term frequencies for all the translations 
 There are many more analyses open to the researchers by studying the various structures and properties of the word frequencies in the original texts against the translated texts of Al-Quran. We leave this for future work and research.
 
 To have a broader view of the observations made, let us look at the plot for the percentages of unique words (tokens) against the total number of words (tokens) within each Surah for all the translations.
-
 
 
 ```{r, echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
@@ -341,8 +304,6 @@ MAB_total_toks = surah_wordsMAB %>% distinct(surah_title_en,total) %>%
 ```
 
 
-
-
 ```{r ch2fig213, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Percentage of unique words in the Surahs"}
 library(reshape2)
 EQT_total_toks = data.frame("Surah" = 1:nrow(ESI_total_toks), 
@@ -359,11 +320,11 @@ EQT_total_toks_melt %>% ggplot() +
                                            shape = Translation, 
                                            color = Translation))  + 
                             labs(x = "Surah number", 
-                                 y = "Percentage") 
+                                 y = "Percentage",
+                                 title = "Percentage of Unique Words in Surah") +
+  scale_y_continuous(labels = scales::percent)+
+  theme(panel.border = element_rect(colour = "black", fill=NA))
 ```
-
-
-
 
 
 The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure \@ref(fig:ch2fig213) shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
@@ -400,26 +361,21 @@ tfidf_plotter = function(df_plot,title_label,color){
                 geom_point(aes(x = 1:length(df_plot$tf_idf), 
                        y = log(df_plot$tf_idf)), color = "red", 
                        size = 0.05) +
-                labs(title = title_label, x = "n", y = "tf_idf")}
+                labs(title = title_label, x = "n", y = "tf_idf")+
+                theme(panel.border = element_rect(colour = "black", fill=NA),
+                      axis.text.x = element_text(angle = 45,vjust = 0.5))
+  }
 ```
 \normalsize
 
 
-
-
-
 ```{r ch2fig214, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="tf-idf for the translations"}
-p1 = tfidf_plotter(ESI_tf_idf,"Saheeh","red")
-p2 = tfidf_plotter(EYA_tf_idf,"Yusuf Ali","blue")
-p3 = tfidf_plotter(MAB_tf_idf,"Malay","green")
+p1 = tfidf_plotter(ESI_tf_idf,"Saheeh")
+p2 = tfidf_plotter(EYA_tf_idf,"Yusuf Ali")
+p3 = tfidf_plotter(MAB_tf_idf,"Malay")
 
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
-
-
-
-
-
 
 We can see from Figure \@ref(fig:ch2fig214), the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
 
@@ -444,103 +400,76 @@ tfidf_plotter = function(df, surah_group,title_label,top_n_words) {
 ```
 \normalsize
 
-
-
-
 ```{r ch2fig215, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Saheeh"}
 tfidf_plotter(df = surah_wordsESI, 
            surah_group = last6_surahs, 
-           title_label = "Saheeh",
+           title_label = "TF-IDF for Short Surah (Saheeh)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig216, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Yusuf Ali"}
 tfidf_plotter(df = surah_wordsEYA, 
            surah_group = last6_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "TF-IDF for Short Surah (Yusuf Ali)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig217, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Short Surahs tf-idf for Malay"}
 tfidf_plotter(df = surah_wordsMAB, 
            surah_group = last6_surahs, 
-           title_label = "Malay",
+           title_label = "TF-IDF for Short Surah (Malay)",
            top_n_words = 7)
 ```
-
-
-
-
 
 
 ```{r ch2fig218, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Saheeh"}
 tfidf_plotter(df = surah_wordsESI, 
            surah_group = hamim_surahs, 
-           title_label = "Saheeh",
+           title_label = "TF-IDF for Medium Surah (Saheeh)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig219, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Yusuf Ali"}
 tfidf_plotter(df = surah_wordsEYA, 
            surah_group = hamim_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "TF-IDF for Medium Surah (Yusuf Ali)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig220, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Medium Surahs tf-idf for Malay"}
 tfidf_plotter(df = surah_wordsMAB, 
            surah_group = hamim_surahs, 
-           title_label = "Malay",
+           title_label = "TF-IDF for Medium Surah (Malay)",
            top_n_words = 7)
 ```
-
-
-
-
 
 
 ```{r ch2fig221, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Saheeh"}
 tfidf_plotter(df = surah_wordsESI, 
            surah_group = last6_surahs, 
-           title_label = "Saheeh",
+           title_label = "TF-IDF for Long Surah (Saheeh)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig222,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Yusuf Ali"}
 tfidf_plotter(df = surah_wordsEYA, 
            surah_group = last6_surahs, 
-           title_label = "Yusuf Ali",
+           title_label = "TF-IDF for Long Surah (Yusuf Ali)",
            top_n_words = 7)
 ```
-
-
 
 
 ```{r ch2fig223,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Long Surahs tf-idf for Malay"}
 tfidf_plotter(df = surah_wordsMAB, 
            surah_group = last6_surahs, 
-           title_label = "Malay",
+           title_label = "TF-IDF for Long Surah (Malay)",
            top_n_words = 7)
 ```
-
-
-
-
 
 As measured by the tf-idf, these words are the most important to each Surah, and most readers would likely agree. It identifies words that are important to one document within a collection of documents. Furthermore, we can see that Saheeh's translation used different words than Yusuf Ali; this is obvious in the top tf_idf terms where they differ significantly.
 
@@ -551,8 +480,6 @@ The shape of the tf-idf curves has many similarities between the translations; t
 Zipf's law states that the frequency of a word's appearance is inversely proportional to the rank of its frequency for a given corpus. In general, Zipf's law states that the frequency distributions of words in a corpus follow a Power Law behavior [@zipf1949]. The words such as "allah" in the translations, for which the term frequency is high, are inversely related to its rank, which is low. A Power Law distribution from a statistical perspective is a distribution with both a fat tail and a long tail simultaneously. Power Law has many implications for statistical testing and scale-free network behaviors (a subject beyond the current discussion).
 
 Here we present the Zipf's plots for the translations, indicating whether they follow Zipf's law (and hence power-law) and test the translations' similarities.
-
-
 
 
 ```{r ch2fig224,fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Zipf's plot"}
@@ -581,18 +508,15 @@ zipf_plotter = function(freq_rank_df,title_label){
   scale_x_log10() +
   scale_y_log10() + 
   labs(title = title_label, 
-       x = "log of rank", 
-       y = "log of term frequency")
+       x = "Log of Rank", 
+       y = "Log of Term Frequency")+
+    theme(panel.border = element_rect(colour = "black", fill=NA))
 }
 p1 = zipf_plotter(freq_by_rank_ESI,"Saheeh")
 p2 = zipf_plotter(freq_by_rank_EYA,"Yusuf Ali")
 p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
-
-
-
-
 
 Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
 
@@ -601,8 +525,6 @@ Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for tes
 From the wordcloud plots in Figure \@ref(fig:ch2fig201), Figure \@ref(fig:ch2fig202), and Figure \@ref(fig:ch2fig203), we can see consistently the connecting terms emerged as high frequency terms for all versions of translation. The question is, how do we treat some words which occur in high frequencies, such as these connecting words, and at the same time, having low inverse ranking? Should these words remain in the texts or removed for the (statistical) analysis since their roles are more as word connectors rather than carrying any meaning? Is the decision to take out these words justified?
 
 Most analyses of texts in English will take the option of removing these stopwords. While maybe acceptable in most circumstances, such an approach is not as straightforward when applied to Al-Quran translations. In the coming chapters, we will revisit the subject again. Let us redo Zipf's plot with all the stopwords removed and see what the removal of stopwords means.
-
-
 
 
 ```{r ch2fig225,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Zipf's plot without stopwords"}
@@ -655,9 +577,6 @@ cowplot::plot_grid(p1,p2,p3,nrow = 1)
 ```
 
 
-
-
-
 From the plots in Figure \@ref(fig:ch2fig225), compared to the previous Zipf's plot in Figure \@ref(fig:ch2fig221), we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
 
 We caution the readers that we have been rather casual in some of the claims without rigorously providing statistical tests or proofs. Instead, we rely only on the visualizations provided and let the "data illustrate itself". Our purpose is to highlight various indications for future work and research and at the same time, allow readers with no statistical background, to understand the concepts and approach. The need for a full and proper test of the hypothesis as indicated above is one example case of precaution required before concluding.
@@ -680,8 +599,6 @@ Unique tokens are similar to vocabulary in some sense. It is the library of word
 As we have described before, in the corpora, few words occur in high frequencies, and few words occur in very low frequencies at both extremes. We will plot the statistical density of the distribution (in log scale) of the term frequencies in both translations to observe this phenomenon.
 
 
-
-
 ```{r ch2fig226, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Density plot of term frequency"}
 tf_combined = rbind(
                 data.frame( "term_frequency" = freq_by_rank_ESI$`term frequency`, 
@@ -692,12 +609,11 @@ tf_combined = rbind(
                             "transl" = rep("3: Malay", nrow(freq_by_rank_MAB))))
 tf_combined %>% ggplot(aes(x = log(term_frequency))) + 
     geom_density(color = "steelblue") + 
-    labs(x = "log of term frequency") +
-    facet_wrap(~transl) 
+    labs(x = "Log of Term Frequency",y = 'Density') +
+    facet_wrap(~transl)+
+   theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
+          strip.background = element_rect(color = "black", size = 1))
 ```
-
-
-
 
 
 The term frequencies (using a log scale for visualization) for both translations in Figure \@ref(fig:ch2fig226) show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
@@ -728,7 +644,7 @@ What do words of non-high occurrence and non-rare occurrence, hence medium occur
 Let us take Saheeh as our example. The highest rank is "allah" (rank = 1), and among the lowest rank is "wombs" (rank = 1199). Let us check what are the words in the middle rank, rank around 600.
 
 \footnotesize
-```{r, message = FALSE, warning = FALSE, error = FALSE, results = 'hide' }
+```{r, message = FALSE, warning = FALSE, error = FALSE,results='hide',echo=FALSE}
 freq_by_rank_ESI %>% filter(rank > 601 & rank < 608 ) %>% head()
 ```
 \normalsize
@@ -772,8 +688,3 @@ _ggplot2_ package in __R__. [@ggplot2]
 _quRan_ package in __R__. [@quRan]
 
 Tidy text mining website: https://www.tidytextmining.com/tidytext.html
- 
-
-
-
-

@@ -39,14 +39,10 @@ Written texts possess something that others do not, namely, it is a form of data
 
 Quran Analytics is a new term without a clear scholarly definition. We know that it is a combination of various disciplines - including Quranic sciences (Ulum Al-Quran), language and linguistics, and broader Islamic sciences. The relationship and interdependencies between these fields are both _complicated_ and _complex_. Our exploratory attempt to provide a diagrammatic relation between the various fields of knowledge is shown in Figure \@ref(fig:ch1fig1).
 
-
-
 ```{r, ch1fig1, echo=F,fig.cap="Complexity of Quran Analytics"}
 img_qa = readPNG("images/QA_ch1_1A.png")
 grid.raster(img_qa)
 ```
-
-
 
 The "relationships" shown are examples of the relations and intersections of multi-disciplinary requirements for Quran Analytics.
 

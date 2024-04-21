@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page not found | Quran Analytics with R</title>
+  <meta name="description" content="Page not found | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Page not found | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Page not found | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

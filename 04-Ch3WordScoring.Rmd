@@ -26,8 +26,7 @@ library(grid)
 library(png)
 library(jpeg)
 library(quanteda.textmodels)
-# added
-library(textdata)
+library(textdata) # added
 ```
 
 # Word Scoring Analysis {#word-scoring-analysis}
@@ -51,12 +50,6 @@ Since we will use the same dataset that as in Chapter 2, and the _tidytext_ pack
 All the works in __R__ for this chapter are just a continuation of the previous computing environment. Before we proceed, we decide whether to remove stopwords from the texts or to retain them. The reasons for removing stopwords are explained in Chapter 2, to remove frequently occurring words that carry no further meaning, except for continuation of the sentence. In _tidytext_ the English stopwords are pre-prepared from three lexicons as _stop_words_ variable. We can use them all together, as we have here, or use the _filter()_ functions to only use one set of stop words if that is more appropriate for certain analysis.
 
 ```{r, echo=FALSE,message = FALSE, warning = FALSE, error = FALSE, results = 'hide'}
-library(tidyverse)
-library(tidytext)
-library(readr)
-library(quRan)
-library(ggplot2)
-
 quran_all = read_csv("data/quran_trans.csv") %>% 
               select(surah_id, ayah_id, surah_title_en, 
                      surah_title_en_trans, revelation_type,
@@ -70,7 +63,6 @@ tidyMAB <- quran_all %>%
   unnest_tokens(word, malay) %>% select(-saheeh,-yusufali)
 
 ```
-
 
 
 \footnotesize
@@ -106,27 +98,23 @@ ch3_plotter1 = function(df,title_label) {
       filter(n > 150) %>%
       mutate(word = reorder(word, n)) %>%
       ggplot(aes(x = word, y = n)) +
-      geom_col() +
+      geom_col(fill = '#1FA4CC',color = 'black') +
       labs(title = title_label, x = NULL, y = "number") +
       coord_flip() +
       theme(axis.text = element_text( 
             angle = 0, 
             color="blue", 
-            size=10))
+            size=10))+theme_bw()
 }
 ```
 \normalsize
 
 
-
-
-```{r ch3fig301, fig.align="center",fig.height=4,fig.width=4, echo=T,warning=F, fig.cap="Top common words in the translations"}
+```{r ch3fig301, fig.align="center",fig.height=5,fig.width=6, echo=T,warning=F, fig.cap="Top common words in the translations"}
 p1 = ch3_plotter1(tidyESIC,"Saheeh")
 p2 = ch3_plotter1(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
-
-
 
 
 Now we can see from Figure \@ref(fig:ch3fig301) that the term "Allah" is indeed the highest occurring term by a large count, followed by the term "Lord". This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term "Muhammad" (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term "messenger" appears in both with different rankings. There are other observations in other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations. 
@@ -164,8 +152,7 @@ One advantage of having the data.frame with both sentiment and word is that we c
 This can be shown visually, and we can pipe straight into _ggplot2_, if we like, because of the way we are consistently using tools built for handling tidy data frames. Now let us plot the main words which have negative and positive sentiments for both translations.
 
 
-
-```{r ch3fig302, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Bing's top negative and positive words"}
+```{r ch3fig302, fig.align="center",fig.height=4,fig.width=8, echo=T,warning=F, fig.cap="Bing's top negative and positive words"}
 bing_word_counts_ESIC <- tidyESIC %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -188,15 +175,15 @@ ch3_bing_plot = function(sent_df,title_label){
       theme(axis.text = element_text(
                         angle = 0,
                         color = "blue",
-                        size = 10))
+                        size = 10),
+            strip.text.x = element_text(size = 12,face = 'bold'),
+            plot.background = element_rect(color = "black"))
 }
 p1 = ch3_bing_plot(bing_word_counts_ESIC,"Saheeh")
 p2 = ch3_bing_plot(bing_word_counts_EYAC,"Yusuf Ali")
 
 cowplot::plot_grid(p1,p2)
 ```
-
-
 
 
 Figure \@ref(fig:ch3fig302) interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, "fear" and "evil", but for positive they differ: "merciful" and "righteous" for Saheeh, and "faith" and "mercy" for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.
@@ -206,8 +193,6 @@ This indicates that while translating from the same source, using the _bing_ sen
 ### _AFINN_ scoring model
 
 Now let us compare with the _AFINN_ scoring model and observe if there are any major changes to the findings using the _bing_ model.
-
-
 
 
 ```{r ch3fig303, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="AFINN scoring model on Saheeh"}
@@ -228,26 +213,23 @@ ch3_afinn_plot = function(sent_df,title_label){
       ggplot(aes(word, n, fill = value)) +
       geom_col(show.legend = FALSE) +
       facet_wrap(~value, scales = "free_y") +
-      labs(y = title_label, x = NULL) +
+      labs(y = "n", x = NULL,
+           title = paste0("AFINN Scoring Model on ",title_label)) +
       coord_flip() +
       theme(axis.text = element_text( 
                           angle = 0, 
                           color="blue", 
-                          size=10))
+                          size=10),
+            strip.background = element_rect(color = "black"),
+            plot.background = element_rect(color = "black"))
 }
 ch3_afinn_plot(afinn_word_counts_ESIC,"Saheeh")
 ```
 
 
-
-
-
 ```{r ch3fig304, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="AFINN scoring model on Yusuf Ali"}
 ch3_afinn_plot(afinn_word_counts_EYAC,"Yusuf Ali")
 ```
-
-
-
 
 
 We can see that the dimensions of sentiment are different in the _AFINN_ model as compared to _bing_. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure \@ref(fig:ch3fig303), the plots for Saheeh compared to Figure \@ref(fig:ch3fig304), the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply.
@@ -259,8 +241,6 @@ There are many other ready-made sentiment scoring models available. We will leav
 Since Al-Quran is arranged by Surahs or chapters, we would like to investigate if we can use sentiment scoring models to score each of the Surahs and measure which Surahs use the most "negative" words ("warnings") and the most "positive" words ("glad tidings").
 
 We can apply the _bing_ model as follows:
-
-
 
 
 ```{r ch3fig305, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Negative Surahs scoring"}
@@ -283,14 +263,14 @@ ch3_bing_plot2 = function(sent_df,title_label){
       left_join(wordcountsESIC, by = c("surah_title_en")) %>%
       mutate(ratio = negativewords/words) %>%
       top_n(20) %>%
-      ggplot(aes(x = surah_title_en, y = ratio)) +
-        geom_col() +
-        labs(title = title_label, x = NULL) +
+      ggplot(aes(x = reorder(surah_title_en,ratio), y = ratio)) +
+        geom_col(fill = 'firebrick',color = 'black') +
+        labs(title = title_label, x = NULL,y = "Ratio") +
         coord_flip() +
         theme(axis.text = element_text( 
               angle = 0, 
               color="blue", 
-              size=10))
+              size=10))+theme_bw()
 }
 
 p1 = ch3_bing_plot2(tidyESIC,"Saheeh")
@@ -300,14 +280,9 @@ cowplot::plot_grid(p1,p2)
 ```
 
 
-
-
-
 Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative" words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.
 
 Let us repeat for "positive" Surahs.
-
-
 
 
 ```{r ch3fig306,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Positive Surahs scoring"}
@@ -330,14 +305,14 @@ ch3_bing_plot3 = function(sent_df,title_label){
       left_join(wordcountsESIC, by = c("surah_title_en")) %>%
       mutate(ratio = positivewords/words) %>%
       top_n(20) %>%
-      ggplot(aes(x = surah_title_en, y = ratio)) +
-      geom_col() + 
+      ggplot(aes(x = reorder(surah_title_en,ratio), y = ratio)) +
+      geom_col(fill = '#2B9D5A',color = 'black') +
           labs(title = title_label, x = NULL) +
           coord_flip() +
           theme(axis.text = element_text( 
                 angle = 0, 
                 color="blue", 
-                size=10))
+                size=10))+theme_bw()
 }
 
 p1 = ch3_bing_plot3(tidyESIC,"Saheeh")
@@ -347,14 +322,9 @@ cowplot::plot_grid(p1,p2)
 ```
 
 
-
-
-
 It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure \@ref(fig:ch3fig306).
 
 Now let us study the sentiment within a Surah, such as Surah Yusuf, which is a middle-length Surah for comparison. The idea here is to observe the sentiment scores as we move along the Surah.
-
-
 
 
 ```{r ch3fig307,fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Sentiment scoring within Surah Yusuf"}
@@ -370,8 +340,8 @@ ch3_syplot = function(sy_df,title_label,col_disp){
         ggplot(aes(x = 1:nrow(sy_df), y = value )) +
           geom_col(show.legend = FALSE, color = col_disp) +
           labs(title = title_label, 
-               x = "word order",
-               y = "sentiment score")
+               x = "Word Order",
+               y = "Sentiment Score")+theme_bw()
 }
 
 p1 = ch3_syplot(Surah_yusuf_ESIC,"Saheeh","magenta")
@@ -381,16 +351,11 @@ cowplot::plot_grid(p1,p2)
 ```
 
 
-
-
-
 Here in Figure \@ref(fig:ch3fig307), we use the _AFFIN_ model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.^[For example, see sentiment narrative in Jane Austen's novels in @silge2017.] If we take the meaning of giving "good tidings" (Basheeran) and "warnings" (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.
 
 ### Wordcloud analysis
 
 Wordcloud is also useful for doing sentiment analysis by deploying _comparison.cloud()_ function. To use this we need to turn the data frame into a matrix with _reshape2_’s _acast()_ function. Many steps can all be done with _joins_, _%>%_ (piping), and _dplyr_ because the data is in _tidy_ format.
-
-
 
 
 ```{r ch3fig308, fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Comparison cloud for Saheeh translation"}
@@ -406,8 +371,6 @@ tidyESIC %>%
 ```
 
 
-
-
 ```{r ch3fig309,fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Comparison cloud for Yusuf Ali translation"}
 tidyEYAC %>%
   inner_join(get_sentiments("bing")) %>%
@@ -418,9 +381,6 @@ tidyEYAC %>%
                    random.order = FALSE,
                    rot.per = 0.35)
 ```
-
-
-
 
 
 The output for Saheeh is in Figure \@ref(fig:ch3fig308), and for Yusuf Ali is in Figure \@ref(fig:ch3fig309). We can observe clearly the words "fear", "evil", "hell", dominate the negative sentiments; while the words "faith", "righteous", "mercy" dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.
@@ -516,7 +476,6 @@ Sentiment scoring originates from the information theory of signaling. Each word
 Let us look into the entire corpus of Saheeh and the _bing_ sentiment model to visualize the signals.
 
 
-
 ```{r ch3fig310,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Sentiment frequency in Saheeh corpus"}
 all_surahs_sent = tidyESIC %>% 
     inner_join(get_sentiments("bing")) %>% 
@@ -525,21 +484,19 @@ all_surahs_sent = tidyESIC %>%
 
 all_surahs_sent %>%       
     ggplot() + 
-    geom_col(aes(x = ayah_id, y = score, fill = sentiment ),
+    geom_col(aes(x = ayah_id, y = score, fill = sentiment,width = 3 ),
              show.legend = FALSE ) +
-    labs(x = NULL, y = "sentiment score") + 
-    theme(legend.position = "none") 
+  geom_hline(yintercept = 0)+
+  coord_cartesian(ylim = c(-15,10))+
+    labs(x = NULL, y = "Sentiment Score", title = "Sentiment Frequency in Saheeh Corpus") + 
+    theme(legend.position = "none") +
+  theme_bw()
 ```
-
-
-
 
 
 Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.^[We leave this subject as a research question.]
 
 The signaling approach of sentiment analysis is also useful to investigate messages within a selected verse or group of verses, such as a Surah. Let us do this for a few selected Surahs: "Yaseen", "Al-Fath", "Al-Mulk", "Al-Muddaththir", "Al-Waaqia", and "Al-Qiyaama". We will choose Saheeh as our source of texts and _bing_ as our model.
-
-
 
 
 ```{r ch3fig311,fig.align="center",fig.height=8,fig.width=6, echo=F,warning=F, fig.cap="Sentiment frequency in selected Surahs"}
@@ -548,13 +505,16 @@ sel_surahs_sent = tidyESIC %>%
     filter(surah_title_en %in% sel_surahs) %>% 
     inner_join(get_sentiments("bing")) %>% 
     mutate(score = if_else(sentiment=="positive",1,-1)) %>% 
-    mutate(sentiment = if_else(score > 0, "red","green")) 
+    mutate(sentiment = if_else(score < 0, "firebrick",'#2B9D5A')) 
 
 sent_plotter = function(sent_df, plot_surah) {
   sent_df %>% filter(surah_title_en == plot_surah) %>% 
       ggplot() + geom_col(aes(x = ayah_id, y = score, fill = sentiment ), show.legend = FALSE ) +
+    scale_fill_identity()+
+    geom_hline(yintercept = 0)+
       labs(x = NULL, y = NULL) + theme(legend.position = "none") +
-      facet_wrap(~surah_title_en) 
+      facet_wrap(~surah_title_en)+
+    theme_bw()
 }
 
 p1 = sent_plotter(sel_surahs_sent, sel_surahs[1])
@@ -563,11 +523,8 @@ p3 = sent_plotter(sel_surahs_sent, sel_surahs[3])
 p4 = sent_plotter(sel_surahs_sent, sel_surahs[4])
 p5 = sent_plotter(sel_surahs_sent, sel_surahs[5])
 p6 = sent_plotter(sel_surahs_sent, sel_surahs[6])
-cowplot::plot_grid(p1,p2,p3,p4,p5,p6, nrow = 6, ncol = 2)
+cowplot::plot_grid(p1,p2,p3,p4,p5,p6, nrow = 3, ncol = 2)
 ```
-
-
-
 
 
 We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, particularly Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known "strong" messages, such as Surah "Al-Waaqia" and "Al-Qiyaama". 

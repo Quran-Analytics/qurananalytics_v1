@@ -48,8 +48,6 @@ Labeling (or annotation) is a tedious manual process if it is humanly done, and 
 
 Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both, modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions.
 
-
-
 ```{r ch8fig801,fig.align="center",fig.height=8,fig.width=12, echo=F,warning=F, fig.cap="Text modeling framework in NLP"}
 # library(DiagrammeR)
 # grViz("digraph dot {
@@ -86,11 +84,9 @@ Furthermore, all models involve statistical inferencing and causality analysis. 
 # 
 # }")
 
-grid::grid.raster(png::readPNG("images/ch8diagram.png"))
+grid::grid.raster(png::readPNG("images/ch8aqa.png"))
 
 ```
-
-
 
 The chart in Figure \@ref(fig:ch8fig801) provides a full scenario of the possible paths of modeling.^[This is our own remake of points from [@grimmer2013] paper.]
 
@@ -221,7 +217,6 @@ dfm_kahf <- kahf$saheeh %>%
 ```
 \normalsize
 
-
 ### Latent Dirichlet Allocation (LDA)
 
 We will start with the most common algorithm for topic modeling, namely _Latent Dirichlet Allocation (LDA)_. LDA is guided by two principles.
@@ -260,10 +255,7 @@ The topic model inference results in two (approximate) posterior probability dis
 
 We take a look at the 7 most likely terms within the term probabilities $\beta$ of the inferred topics.
 
-
-
-
-```{r ch8fig802, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Top terms with LDA methods for Surah Al-Kahf"}
+```{r ch8fig802, fig.align="center",fig.height=5,fig.width=7, echo=T,warning=F, fig.cap="Top terms with LDA methods for Surah Al-Kahf"}
 library(tidytext)
 kahf_topics <- tidy(lda_kahf, matrix = "beta")
 kahf_top_terms <- kahf_topics %>%
@@ -277,10 +269,9 @@ kahf_top_terms %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
+  scale_y_reordered()+
+  theme(strip.background = element_rect(color = "black"))
 ```
-
-
 
 
 From Figure \@ref(fig:ch8fig802) we can see that the first topic contains the term "moses" and the second topic contains "cave", and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term "al-khidh" appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.
@@ -289,9 +280,6 @@ The reason why terms can be mixed between topics, despite we assuming that it sh
 
 Furthermore, LDA tries to generate a pecking order for the topics, by giving one of the dimensions (i.e. topic) the highest rank from any of the six possibilities, followed by the second dimension and so forth. We can check which topics have a "higher" hierarchical clustering by checking its similarity using a distance method (as explained in Chapter 7), such as a Euclidean distance.^[Mathematically what this means is that we measure the dimensional entropy across the six possible dimensions, and rank the dimension with the highest entropy first, followed by the next.]
 
-
-
-
 ```{r ch8fig803, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="LDA topic similarity by features for Surah Al-Kahf"}
 lda.similarity <- as.data.frame(lda_kahf@beta) %>%
   scale() %>%
@@ -299,9 +287,6 @@ lda.similarity <- as.data.frame(lda_kahf@beta) %>%
   hclust(method = "ward.D2")
 plot(lda.similarity, xlab = "")
 ```
-
-
-
 
 From Figure \@ref(fig:ch8fig803), we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.
 
@@ -341,10 +326,7 @@ We can see from the output that there four different statistics which can be use
 
 Let us plot the top words in topics:
 
-
-
-
-```{r ch8fig804, results="hide",fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="STM topic shares for Surah Al-Kahf"}
+```{r ch8fig804, results="hide",fig.align="center",fig.height=5,fig.width=7, echo=T,warning=F, fig.cap="STM topic shares for Surah Al-Kahf"}
 kahf_topics2 <- tidy(stm_kahf, matrix = "beta")
 kahf_top_terms <- kahf_topics2 %>%
   group_by(topic) %>%
@@ -357,17 +339,12 @@ kahf_top_terms %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
+  scale_y_reordered()+
+  theme(strip.background = element_rect(color = "black"))
 ```
 
 
-
-
-
 We can see, from Figure \@ref(fig:ch8fig804) that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:
-
-
-
 
 ```{r ch8fig805, fig.align="center",fig.height=3,fig.width=6, echo=T,warning=F, fig.cap="STM topic shares for Surah Al-Kahf"}
 plot(stm_kahf, type = "summary", text.cex = 1,
@@ -375,16 +352,9 @@ plot(stm_kahf, type = "summary", text.cex = 1,
 )
 ```
 
-
-
-
-
 Figure \@ref(fig:ch8fig805) and the results for top-words in Figure \@ref(fig:ch8fig804) demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure \@ref(fig:ch8fig805), about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.
 
 There are few other neat options within STM that are useful and we will demonstrate them here. One of the functions is _findThoughts()_, which is a tool to find the subjects of a topic within the texts. We will try to get two verses in which Topic 5 and Topic 2 are dominant, as a sample:
-
-
-
 
 ```{r ch8fig806, fig.align="center",fig.height=4,fig.width=8, echo=T,warning=F, fig.cap="Sample of verses highly associated with Topic 5 and Topic 2"}
 thoughts4 = findThoughts(stm_kahf, n = 2,text = kahf$saheeh[1:107], 
@@ -396,47 +366,24 @@ plotQuote(thoughts4, width = 45, main = "Topic 5")
 plotQuote(thoughts3, width = 45, main = "Topic 2")
 ```
 
-
-
-
 We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
-
-
-
 
 ```{r ch8fig807, fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Top words from all topics in wordcloud from STM for Surah Al-Kahf"}
 cloud(stm_kahf)
 ```
 
-
-
-
-
 We can visualize the correlations between the topics in Figure \@ref(fig:ch8fig808):
-
-
-
 
 ```{r ch8fig808, fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Graphical display of topic correlations from STM for Surah Al-Kahf"}
 stm_mod_corr = topicCorr(stm_kahf)
 plot(stm_mod_corr)
 ```
 
-
-
-
-
 Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.
-
-
-
 
 ```{r ch8fig809, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Two perspective for topics from STM in Surah Al-Kahf"}
 plot(stm_kahf, type = "perspectives", topics = c(5,2))
 ```
-
-
-
 
 Figure \@ref(fig:ch8fig809) shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.
 
@@ -490,6 +437,7 @@ topic4 = rownames(klsa_features[rev(order(klsa_features$V4)),]); #sum(klsa_featu
 topic5 = rownames(klsa_features[rev(order(klsa_features$V5)),]); #sum(klsa_features$V5)
 topic6 = rownames(klsa_features[rev(order(klsa_features$V6)),]); #sum(klsa_features$V6)
 ```
+
 ```{r}
 topic1[1:5]
 topic2[1:5]
@@ -533,9 +481,6 @@ Comparing with previous results from STM, LDA:
 
 To see how this looks, we plot the sentences scoring for each verse (denoted by the number), and across dimensions (we chose dim1 vs dim2, and dim1 vs dim 3, for illustration). Sentences that are "semantically" closer based on "topic a" vs "topic b" are clustered together. This is shown in Figure \@ref(fig:ch8fig810).
 
-
-
-
 ```{r ch8fig810, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Topics in dimensions for Surah Al-Kahf"}
 Name = str_replace(rownames(klsa_df),"text","")
 p1 = klsa_df %>% ggplot(aes(x = V1, y = V2), label= Name) + 
@@ -550,14 +495,9 @@ cowplot::plot_grid(p1,p2, nrow = 1)
 ```
 
 
-
-
-
 In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we "force" the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use.
 
 Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure \@ref(fig:ch8fig811).
-
-
 
 
 ```{r ch8fig811, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="3D plot of the scores from LSA model for topics in Surah Al-Kahf"}
@@ -567,10 +507,6 @@ Now let us present the results from another perspective, that is to view the sco
 ## replaced with image due to heavy on memory and Cairo Graphics bugs
 grid.raster(readPNG("images/ch8fig811.png"))
 ```
-
-
-
-
 
 The plot shows that for Topic 1 (the highest-ranked topic), there are verses that have high positive scores. For Topic 5 and Topic 6, almost similar verses have high positive scores, while for Topic 3, the scores are highly opposite (i.e. negative) on some of the verses. This is not exactly the ideal method to extract the information from the model, since visualization of the complex dimensionality is not easy and clear. However, what we want to demonstrate is there are deeper level complexities that are not easy to identify by just eyeballing the visuals.
 
@@ -639,8 +575,6 @@ table2
 ```
 \normalsize
 
-
-
 We can see from the results in the confusion matrix table, _table1_, that in the training set, the Naive Bayes model has a perfect fit (almost all correct matches) with the accuracy of `r round(100*sum(diag(table1))/55,2)`%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy drops down to `r round(100*sum(diag(table2))/55,2)`%. We have an overfitting problem.
 
 ### Support Vector Machines (SVM)
@@ -659,8 +593,6 @@ table4 = table(pred, label_valid)
 table4
 ```
 \normalsize
-
-
 
 We can see from the results of the table that in the training set, the SVM model fits with an accuracy of `r round(100*sum(diag(table3))/55,2)`%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy is at `r 100*round(100*sum(diag(table4))/55,2)`%. It suffers the same problem as the Naive Bayes model, which is an overfitting problem.
 
@@ -687,11 +619,7 @@ table6
 ```
 \normalsize
 
-
-
 From the tables printed above, we can say that in the training part _(table5)_, the model could clearly identify that the "ideas" within each topic are distinct enough to be detected with the accuracy of `r round(100*sum(diag(table5))/55,2)`%. In _table6_, when we apply the model to the validation data, we can see that some of the topics (ideas) are dispersed through other topics (ideas).
-
-
 
 ```{r ch8fig812, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Wordscores plot for Surah Al-Kahf"}
 textplot_scale1d(ws_kahf, margin = "features",
@@ -701,14 +629,9 @@ textplot_scale1d(ws_kahf, margin = "features",
 ```
 
 
-
-
-
 Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure \@ref(fig:ch8fig812). From the plot we can visualize the relative positions of the key words for the various topics: "lord", which rank highest in the Surah, followed by "allah" - both almost at the center; the word "moses" scores higher, but in the same "direction" as "al-khidh", which is directly below "moses". The word "cave" and "gardens" are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.
 
 Now we will apply _textmodel_wordfish()_, which in many ways, similar to _wordscores_ model and plot the results.
-
-
 
 ```{r ch8fig813, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Wordfish plot for Surah Al-Kahf"}
 wf_kahf = textmodel_wordfish(dfm_train, dir = c(1,2))
@@ -719,11 +642,7 @@ textplot_scale1d(wf_kahf, margin = "features",
 ```
 
 
-
-
-
 _wordfish_ scores which will show whether some of the topics are "diametrically" opposed to one another. Figure \@ref(fig:ch8fig813) demonstrates that all topics are pretty much "aligned" to each other from the word "lord", down to "gardens". An interesting observation is that "moses" is right after "lord" in the ranking, above "allah".
-
 
 ## Word embeddings models {#word-embedding-models}
 
@@ -779,19 +698,13 @@ word_vec_df = as.data.frame(t(word_vec))
 
 The word-vector consists of vectors of unique frequencies for each word in the vocabulary. These frequencies are used for calculating the similarities or distances between the words. A plot of selected word frequencies in the word-vector is presented in Figure \@ref(fig:ch8fig814), for the word "allah", "lord", "muhammad", and "abraham".
 
-
-
 ```{r ch8fig814, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Word-vector frequencies for selected words"}
 word_vec_df %>% ggplot() + geom_line(aes(x=1:50, y=allah), color = "red") +
                     geom_line(aes(x=1:50, y=lord), color ="steelblue") +
                     geom_line(aes(x=1:50, y=muhammad), color = "magenta") +
                     geom_line(aes(x=1:50, y=abraham), color = "green") +
-                    labs(x = "dimensions", y = "word frequencies")
+                    labs(x = "Dimensions", y = "Word Frequencies")
 ```
-
-
-
-
 
 The frequencies do not have any meaning, except that it records the relative unique position of each word within a corpus. This method is a faster way of generating an unsupervised learning model for the data at hand, especially when the data (i.e., text corpus) is large and sparse.^[Note that the matrix is a much more compact space than the DFM or FCM matrices we looked at earlier in _tidytext_ and _quanteda_.]
 
@@ -868,18 +781,11 @@ doc_topic_distr =
 
 Figure \@ref(fig:ch8fig816) shows the prominence of the topics in Surah Al-Kahf. We can see better which topics rank higher, in fact, only a few of the topics are prominent compared to others.
 
-
-
-
 ```{r ch8fig816, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Topic bar plot for Surah Al-Kahf using GloVe model and LDA"}
 barplot(doc_topic_distr[1, ], xlab = "topic", 
         ylab = "proportion", ylim = c(0, 1), 
         names.arg = 1:ncol(doc_topic_distr))
 ```
-
-
-
-
 
 We can get the top words for each topic, sorted by probability ranking as follows:
 
@@ -893,7 +799,6 @@ Without knowing what are the topics in Surah Al-Kahf, it is amazing to see that 
 
 We will fit the LSA model one more time, using the GloVe algorithm, and plot the results.
 
-
 ```{r, results="hide"}
 lsa_model = text2vec::LSA$new(n_topics = 6)
 doc_topic_distr = 
@@ -901,10 +806,7 @@ doc_topic_distr =
                           convergence_tol = 0.001)
 ```
 
-
-
-
-```{r ch8fig817,fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Topics in dimensions for Surah Al-Kahf using LSA and GloVe"}
+```{r ch8fig817,fig.align="center",fig.height=5,fig.width=7, echo=F,warning=F, fig.cap="Topics in dimensions for Surah Al-Kahf using LSA and GloVe"}
 lsaglv = as.data.frame(t(lsa_model$components))
 Name = rownames(lsaglv)  # str_replace(rownames(klsa_df),"text","")
 p1 = lsaglv %>% ggplot(aes(x = V1, y = V2), label= Name) + 
@@ -921,9 +823,6 @@ p3 = lsaglv %>% ggplot(aes(x = V1, y = V5), label= Name) +
   geom_text(aes(label=Name,hjust=1, vjust=1))
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
-
-
-
 
 
 The results in Figure \@ref(fig:ch8fig817) are different from the ones in Figure \@ref(fig:ch8fig810), where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more "verbs" (such as "remained", "found", "killed") appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.
@@ -959,7 +858,3 @@ _STM_ package references from [@roberts2014] and [@roberts2019].
 _text2vec_ package references (http://text2vec.org/index.html)
 
 _GloVE_ references (https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html)
-
-
-
-

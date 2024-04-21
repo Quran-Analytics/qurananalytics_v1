@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Texts Network Analysis | Quran Analytics with R</title>
+  <meta name="description" content="7 Texts Network Analysis | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Texts Network Analysis | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Texts Network Analysis | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="text-and-knowledge-modeling.html"/>
+<link rel="next" href="text-classification-models.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="text-network-analysis" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Texts Network Analysis<a href="text-network-analysis.html#text-network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Natural Language Processing (NLP) is a combination of linguistics and data science analyzing large amounts of <em>natural language</em> data which includes a collection of speeches, text corpora, and other forms of data generated from the usage of languages. The tasks of NLP vary from text mining and speech recognition (data-driven) to more complex tasks such as automatic text generation or speech production (AI-driven).</p>
+<p>In this chapter we will focus on one particular aspect of NLP applied to a chosen text of the English translation of the Quran, namely <em>lexical semantic analysis</em>. This analysis focuses on what is termed as <strong>individual words in context</strong> analysis. Lexical semantics is the study of word meanings within its internal semantic structure or the semantic relations that occur within the corpus.<a href="#fn78" class="footnote-ref" id="fnref78"><sup>78</sup></a> We will focus on the second approach, namely to study words in relation to the rest of the words in the complete text, in this case, the Saheeh English translation of Al-Quran.</p>
+<p>We will also take a very specific approach by deploying network graphs (or properly known as graph theory). We start with visualization of words within the text as a network of relations (words in the text as <em>nodes</em> and their presence in a sentence as <em>directed edges</em>). Relationships can take several forms to suit a particular interest. It may be to discover main messages in the text or analytical reasoning such as to uncover the major topics within those messages. It can be explorative analysis, such as how these messages and topics relate to each other within the main message (or text).</p>
+<p>Another important point to mention is the difference between the <em>parametrical</em> and <em>non-parametrical</em> approach to the task at hand. The parametrical approach relies on some pre-built models, such as <em>sentiment scoring</em>, <em>semantic ontologies</em>, etc. The non-parametric approach does not rely on any models and instead will be driven by the empirical nature of the words and the text itself (i.e. do not rely on other samples from outside of the sample at hand). We will use the second approach by using network analysis and graph theory.</p>
+<p>In network analysis, identifying a few methods will help greatly. An example is the formation of the network whether it follows a random graph or any particular graph structure. Another important issue is on the emergent structures, whether any emergent structure can be observed, and if it exists, we can uncover the factors of the emergent structures and sub-structures. This will bring us into the subject of complicatedness and complexity of systems analysis.
+Given the enormous possibilities and size of the task, this chapter will focus on providing preliminary findings using basic network analysis. We will identify some open issues for future work.
+To perform the various analysis, we will use two main packages in R, namely quanteda (Benoit et al. 2018) and igraph (Csárdi 2020). Quanteda is a complete suite of R packages for text analytics with many ready-made built-in functions that are easy to use. iGraph is a network (or graph network) package in R. Both packages are well developed and supported within the R programming community. For the data, we will use the prebuilt text in tidydata format from quRan package, and for some of the utilities required, we will use the quanteda package.
+For purposes of fast computation and visualization of a large network, we will use open-source software, Gephi . Similar software are Pajek , Cytoscape , and NodeXL . As far as computation is concerned there are no additional advantages offered by these software applications, except for easier visual manipulation and production of images. We will rely on Gephi for this purpose while using R as our main engine for computations.</p>
+<div id="a-brief-tutorial-on-quanteda" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> A brief on <em>quanteda</em><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The work for this chapter and the next relies on the <em>quanteda</em> package; hence we feel it is appropriate to present a short and brief tutorial on the package (as we have done for <em>tidytext</em>, <em>igraph</em>, and <em>ggraph</em> in earlier chapters).</p>
+<p>The <em>quanteda</em> package is among the recent introductions into the family of NLP tools in <strong>R</strong>. It was developed by Kenneth Benoit and many developers, supported by the European Research Council<span class="citation">(<a href="#ref-quanteda">Benoit et al. 2018</a>)</span>. The package contains comprehensive text modeling functions from start to end - which includes basic features from <em>tokenization</em> to <em>unsupervised learning models</em> of text analysis.<a href="#fn79" class="footnote-ref" id="fnref79"><sup>79</sup></a></p>
+<p><em>quanteda</em> has four basic types of objects:</p>
+<ol style="list-style-type: decimal">
+<li><em>corpus()</em> which is corpus, the collection of texts in textual format.</li>
+<li><em>tokens()</em> which is a tokenizing function, the tokens for the texts with all the metadata and tagging</li>
+<li><em>dfm()</em> a Document-feature matrix (DFM), a document-term-matrix, which is a sparse matrix of 0 and 1, indicating the occurrence of a term in a document (which is a sentence or set of texts)</li>
+<li><em>fcm()</em> a Feature Co-occurrence Matrix (FCM), a term-to-term-matrix, which is a sparse matrix of 0 and 1, indicating co-occurrence of a term with another term, within the entire document or corpus.</li>
+</ol>
+<p>In most text analytics packages, the first three objects are available directly from the package, while the feature’s matrix is generated from pre-processing exercises before being fed onto a learning model. The advantage of <em>quanteda</em> is fast and seamless processing or creation of the FCM.</p>
+<p>Text analysis with <em>quanteda</em> goes through all these four types of objects either explicitly or implicitly.</p>
+<p><em>corpus()</em></p>
+<p>Once a <em>corpus</em> is created, we can manipulate the corpus with many functions. <em>corpus_reshape()</em> is an important tool for converting data from long to wide format. Subsetting of a corpus is done via <em>corpus_subset()</em>. <em>corpus_segment()</em> allows us to select documents in a corpus based on document-level variables. Trimming the corpus is through <em>corpus_trim()</em>.</p>
+<p><em>tokens()</em></p>
+<p>To create tokens from a corpus or text data, we use the <em>tokens()</em> function, which will create a tokenized dataset, consisting of tokens object. Once we have the tokens object, we can manipulate it with many ready-made functions, such as <em>tokens_lookup()</em> for quick search of tokens, <em>tokens_subset()</em>, <em>tokens_sample()</em>, <em>tokens_split()</em> for creating subsets the tokens; _tokens_select(), <em>tokens_replace()</em>, which are an important tool for replacing or changing items inside the tokens object; and finally, <em>tokens_remove()</em>, <em>tokens_tolower()</em>, <em>tokens_wordstem()</em> for manipulating the tokens object.</p>
+<p><em>char()</em></p>
+<p>There are also character-level manipulation functions that serve general utility purposes. These are: <em>char_tolower()</em>, <em>char_toupper()</em>, <em>char_ngrams()</em>, <em>char_select()</em>, <em>char_remove()</em>, <em>char_keep()</em>, <em>char_trim()</em>, etc. They are all are similar to the methods used in <em>tidytext</em> character manipulations functions.</p>
+<p><em>dfm()</em></p>
+<p>Document Feature Matrix object is created by <em>dfm()</em> function. This is among the major objects in <em>quanteda</em>. It is a sparse matrix with named rows and columns. The names for the rows are the document labels, and the names for the columns are the features (or tokens). Once created, we can use <em>dplyr</em> like functions such as <em>dfm_group()</em> for group-by, <em>dfm_select()</em> for selecting tokens, <em>dfm_remove()</em> for removing tokens, <em>dfm_sort()</em> for sorting, and so on.</p>
+<p><em>fcm()</em></p>
+<p>Feature Co-occurrence Matrix object is created by <em>fcm()</em> function. It is a square sparse matrix with named rows and columns. The names for the rows and the columns are the features (or tokens). Once created, the manipulations are similar to the <em>dfm</em> object, where we can use functions such as <em>fcm_select()</em> for selecting tokens, <em>fcm_remove()</em> for removing tokens, <em>fcmm_sort()</em> for sorting, and so on.</p>
+<p><em>Utility functions</em></p>
+<p>There are a few useful functions to apply on <em>dfm</em> or <em>fcm</em> objects, which are handy, such as <em>docfreq()</em> for calculating frequencies of the tokens, and <em>topfeatures()</em> for getting the top features. General ones include: <em>ndoc()</em>, <em>nfeat()</em>, <em>nsentence()</em>, <em>ntoken()</em>, <em>ntype()</em> for counting purposes. One of the less well-known, but powerful functions is <em>dictionary()</em>, which creates a dictionary type data, which is handy for dealing with large amounts of text data, when generating vocabulary is required. The <em>dictionary</em> object can be manipulated easily with <em>dictionary_edit()</em>, <em>char_edit()</em>, and coercion between objects is by using the <em>as.dictionary()</em> function.</p>
+<p><em>Network and plotting functions</em></p>
+<p>Creating and converting objects into networks, and plotting is a cumbersome process. <em>quanteda</em> makes this easy by a seamless process of converting <em>dfm</em> or <em>fcm</em> object into an <em>igraph</em> object, which then can be used for graph manipulations and calculations. It also creates few wrappers around the <em>ggplot2</em> functions for easy plotting of network objects. An example of such functions is <em>textplot_network()</em>.</p>
+<p><em>statistical functions</em></p>
+<p>The statistical functions are named as <em>textstat_xxx</em>(). They are <em>textstat_simil()</em> for texts similarity calculations, <em>textstat_dist()</em> for texts distance measures, <em>textstat_frequency()</em>, <em>textstat_keyness()</em>, <em>textstat_collocation()</em>, <em>textstat_entropy()</em>, and numerous others. All of these functions are extremely useful for quick calculations of the statistical measures which are available for usage in analysis.</p>
+<p><em>quanteda textmodels</em></p>
+<p>As an extension to the brief on <em>quanteda</em>, we introduce the <em>quanteda.textmodel</em> package. It is a dedicated suite for text modeling work, which has many applications for running <em>statistical learning models</em> - taking advantage of the data structure of <em>quanteda</em> objects. There are many models developed include <em>textmodel_wordscores()</em>, <em>text_model_affinity()</em>, <em>textmodel_svm()</em> (Support Vector Machines), <em>textmodel_nb()</em> (Naive Bayes), <em>textmode_lsa()</em>, and others. We will describe the models in the next chapter (Chapter 8).</p>
+<p><strong>R</strong> code examples of using <em>quanteda</em> are given below:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="text-network-analysis.html#cb165-1" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb165-2"><a href="text-network-analysis.html#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="text-network-analysis.html#cb165-3" tabindex="-1"></a><span class="co"># create a corpus</span></span>
+<span id="cb165-4"><a href="text-network-analysis.html#cb165-4" tabindex="-1"></a>corp_kahf <span class="ot">&lt;-</span> <span class="fu">corpus</span>(quran_en_sahih)</span>
+<span id="cb165-5"><a href="text-network-analysis.html#cb165-5" tabindex="-1"></a>corp_kahf_sub <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(corp_kahf,ayah <span class="sc">&gt;=</span> <span class="dv">100</span>)</span>
+<span id="cb165-6"><a href="text-network-analysis.html#cb165-6" tabindex="-1"></a></span>
+<span id="cb165-7"><a href="text-network-analysis.html#cb165-7" tabindex="-1"></a><span class="co"># tokenize and process</span></span>
+<span id="cb165-8"><a href="text-network-analysis.html#cb165-8" tabindex="-1"></a>toks_kahf <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">tokens</span>(corp_kahf,<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb165-9"><a href="text-network-analysis.html#cb165-9" tabindex="-1"></a>              <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span> <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, </span>
+<span id="cb165-10"><a href="text-network-analysis.html#cb165-10" tabindex="-1"></a>                                                <span class="at">padding =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb165-11"><a href="text-network-analysis.html#cb165-11" tabindex="-1"></a></span>
+<span id="cb165-12"><a href="text-network-analysis.html#cb165-12" tabindex="-1"></a><span class="co"># create dfm and fcm using tokens or corpus</span></span>
+<span id="cb165-13"><a href="text-network-analysis.html#cb165-13" tabindex="-1"></a>dfm_kahf <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks_kahf); dfm_kahf <span class="ot">&lt;-</span> <span class="fu">dfm</span>(corp_kahf)</span>
+<span id="cb165-14"><a href="text-network-analysis.html#cb165-14" tabindex="-1"></a>fcm_kahf <span class="ot">&lt;-</span> <span class="fu">fcm</span>(toks_kahf); fcm_kahf <span class="ot">&lt;-</span> <span class="fu">fcm</span>(corp_kahf)</span>
+<span id="cb165-15"><a href="text-network-analysis.html#cb165-15" tabindex="-1"></a></span>
+<span id="cb165-16"><a href="text-network-analysis.html#cb165-16" tabindex="-1"></a><span class="co"># dfm and fcm manipulations</span></span>
+<span id="cb165-17"><a href="text-network-analysis.html#cb165-17" tabindex="-1"></a>dfm_kahf_sub <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfm_kahf, surah_title_en <span class="sc">==</span> <span class="st">&quot;Al-Baqara&quot;</span>)</span>
+<span id="cb165-18"><a href="text-network-analysis.html#cb165-18" tabindex="-1"></a>fcm_kahf_sub <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(fcm_kahf, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;allah&quot;</span>,<span class="st">&quot;lord&quot;</span>))</span>
+<span id="cb165-19"><a href="text-network-analysis.html#cb165-19" tabindex="-1"></a></span>
+<span id="cb165-20"><a href="text-network-analysis.html#cb165-20" tabindex="-1"></a><span class="co"># using dictionary</span></span>
+<span id="cb165-21"><a href="text-network-analysis.html#cb165-21" tabindex="-1"></a>dict <span class="ot">&lt;-</span> <span class="fu">dictionary</span>(<span class="fu">list</span>(<span class="at">god =</span> <span class="fu">c</span>(<span class="st">&quot;allah&quot;</span>,<span class="st">&quot;lord&quot;</span>),</span>
+<span id="cb165-22"><a href="text-network-analysis.html#cb165-22" tabindex="-1"></a>                <span class="at">prophet =</span> <span class="fu">c</span>(<span class="st">&quot;prophet&quot;</span>,<span class="st">&quot;muhammad&quot;</span>,<span class="st">&quot;moses&quot;</span>)))</span>
+<span id="cb165-23"><a href="text-network-analysis.html#cb165-23" tabindex="-1"></a><span class="fu">dfm</span>(corp_kahf, <span class="at">dictionary =</span> dict)</span></code></pre></div>
+<p>For the rest of this chapter, we will utilize the <em>quanteda</em> package and work through our analysis utilizing the various functions for the dual purpose of providing a tutorial and applying them to specific examples.</p>
+</div>
+<div id="analyzing-word-cooccurrences-as-a-network" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Analyzing word cooccurrence as a network<a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="network-dynamics-growth-of-word-co-occurrence-network" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Network dynamics: growth of word co-occurrence network<a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In network analysis, an important aspect is the dynamics of the network growth, from a few nodes and edges until it becomes a full-blown network. This phenomenon is important in network analysis, whereby a network may start as a small set, and over time it grows into its full size. In the words network, it may start with a few central words (or vocabulary) and as more words are added to the network, it will grow into a full network of words.</p>
+<p>For the Saheeh English Quran, how does this growth behavior look like? This is the question we want to investigate. From the start, we know that the most frequent (and hence central word) is “Allah”. How do other words start to attach to this central “node”, as we increase the words by the order of frequencies?</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="text-network-analysis.html#cb166-1" tabindex="-1"></a>quran_all <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/quran_trans.csv&quot;</span>)</span>
+<span id="cb166-2"><a href="text-network-analysis.html#cb166-2" tabindex="-1"></a>tokensQ <span class="ot">=</span> quran_all<span class="sc">$</span>saheeh <span class="sc">%&gt;%</span> </span>
+<span id="cb166-3"><a href="text-network-analysis.html#cb166-3" tabindex="-1"></a>      <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb166-4"><a href="text-network-analysis.html#cb166-4" tabindex="-1"></a>      <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb166-5"><a href="text-network-analysis.html#cb166-5" tabindex="-1"></a>      <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, <span class="at">padding =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb166-6"><a href="text-network-analysis.html#cb166-6" tabindex="-1"></a>dfmQ <span class="ot">=</span> <span class="fu">dfm</span>(tokensQ)</span>
+<span id="cb166-7"><a href="text-network-analysis.html#cb166-7" tabindex="-1"></a>fcmQ <span class="ot">&lt;-</span> <span class="fu">fcm</span>(tokensQ, <span class="at">context =</span> <span class="st">&quot;window&quot;</span>, <span class="at">tri =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb166-8"><a href="text-network-analysis.html#cb166-8" tabindex="-1"></a>fcm_tpnplot <span class="ot">=</span> <span class="cf">function</span>(fcmQf,n,vls){</span>
+<span id="cb166-9"><a href="text-network-analysis.html#cb166-9" tabindex="-1"></a>  feat <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(fcmQf, n))</span>
+<span id="cb166-10"><a href="text-network-analysis.html#cb166-10" tabindex="-1"></a>  fcmQ_feat <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(fcmQf, <span class="at">pattern =</span> feat)</span>
+<span id="cb166-11"><a href="text-network-analysis.html#cb166-11" tabindex="-1"></a>  v_size <span class="ot">=</span> <span class="fu">rowSums</span>(fcmQ_feat)<span class="sc">/</span><span class="fu">min</span>(<span class="fu">rowSums</span>(fcmQ_feat))</span>
+<span id="cb166-12"><a href="text-network-analysis.html#cb166-12" tabindex="-1"></a>  fcmQ_feat <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(fcmQ, <span class="at">pattern =</span> feat)</span>
+<span id="cb166-13"><a href="text-network-analysis.html#cb166-13" tabindex="-1"></a>  fcmQ_feat <span class="sc">%&gt;%</span></span>
+<span id="cb166-14"><a href="text-network-analysis.html#cb166-14" tabindex="-1"></a>    <span class="fu">textplot_network</span>(<span class="at">min_freq =</span> <span class="fl">0.5</span>,</span>
+<span id="cb166-15"><a href="text-network-analysis.html#cb166-15" tabindex="-1"></a>                <span class="at">edge_color =</span> <span class="st">&quot;gold&quot;</span>, </span>
+<span id="cb166-16"><a href="text-network-analysis.html#cb166-16" tabindex="-1"></a>                <span class="at">edge_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb166-17"><a href="text-network-analysis.html#cb166-17" tabindex="-1"></a>                <span class="at">edge_size =</span> <span class="dv">2</span>,</span>
+<span id="cb166-18"><a href="text-network-analysis.html#cb166-18" tabindex="-1"></a>                <span class="at">vertex_size =</span> <span class="dv">1</span>,</span>
+<span id="cb166-19"><a href="text-network-analysis.html#cb166-19" tabindex="-1"></a>                <span class="at">vertex_labelsize =</span> vls<span class="sc">*</span><span class="fu">log</span>(v_size)) </span>
+<span id="cb166-20"><a href="text-network-analysis.html#cb166-20" tabindex="-1"></a>}</span>
+<span id="cb166-21"><a href="text-network-analysis.html#cb166-21" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">fcm_tpnplot</span>(fcmQ, <span class="at">n =</span> <span class="dv">10</span>,<span class="at">vls =</span> <span class="dv">2</span>) </span>
+<span id="cb166-22"><a href="text-network-analysis.html#cb166-22" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">fcm_tpnplot</span>(fcmQ, <span class="at">n =</span> <span class="dv">20</span>,<span class="at">vls =</span> <span class="dv">1</span>) </span>
+<span id="cb166-23"><a href="text-network-analysis.html#cb166-23" tabindex="-1"></a>p3 <span class="ot">=</span> <span class="fu">fcm_tpnplot</span>(fcmQ, <span class="at">n =</span> <span class="dv">50</span>,<span class="at">vls =</span> <span class="dv">0</span>)</span>
+<span id="cb166-24"><a href="text-network-analysis.html#cb166-24" tabindex="-1"></a>p4 <span class="ot">=</span> <span class="fu">fcm_tpnplot</span>(fcmQ, <span class="at">n =</span> <span class="dv">200</span>,<span class="at">vls =</span> <span class="dv">0</span>) </span>
+<span id="cb166-25"><a href="text-network-analysis.html#cb166-25" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig701"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig701-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
+<p class="caption">
+Figure 7.1: Growth of words co-occurrences network in Saheeh
+</p>
+</div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="text-network-analysis.html#cb167-1" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p3,p4)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig702"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig702-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
+<p class="caption">
+Figure 7.2: Growth of words co-occurrences network in Saheeh
+</p>
+</div>
+<p>Figure <a href="text-network-analysis.html#fig:ch7fig701">7.1</a> shows the network growing from 10 to 20 words; and Figure <a href="text-network-analysis.html#fig:ch7fig702">7.2</a> is from 50 to 200 words.</p>
+<p>We can observe that the word network grows centrally from the single word “Allah”, and it grows in a particular way as more words are added until the network is dense. More importantly, the whole word network (for co-occurrence network) is “one” single large network, densely organized. This is an important observation. The question is what does it mean?</p>
+<p>Here we enclose a sample of a full-blown word co-occurrence network from the novel Moby Dick (Chapter 1) as a comparison (in Figure <a href="text-network-analysis.html#fig:ch7fig703">7.3</a>). It is a fully connected network, forming a single large network, but the network is not as dense as the network shown for Saheeh. In fact, if we do a similar step of checking the growth of the network, it is not the same as what we see in Saheeh.<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig703"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig703-1.png" alt="Example of co-occurrence network in Chapter 1 of Moby Dick novel" width="384" />
+<p class="caption">
+Figure 7.3: Example of co-occurrence network in Chapter 1 of Moby Dick novel
+</p>
+</div>
+<p>Furthermore, a detailed look at the plot (which is not shown here) reveals that the early keywords seem to have some “themes” to it; namely about “allah”, “lord”, “believe”, “day”, “people”, “muhammad”, “messenger”, and the themes grow out of these main themes. While these themes grow, the centrality of “allah” remains and grows stronger as the network size expand. This is termed the “emergent structure” of the network. Why this is true, is a subject that requires further research and analysis, which we encourage readers to pursue.</p>
+<p>And if we expand to all co-occurrences on the entire Saheeh corpus, we will get the picture in Figure <a href="text-network-analysis.html#fig:ch7fig704">7.4</a><a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>, which is amazingly interesting.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig704"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig704-1.png" alt="Saheeh entire corpus word co-occurence network" width="384" />
+<p class="caption">
+Figure 7.4: Saheeh entire corpus word co-occurence network
+</p>
+</div>
+<p>The center of the network remains singly to “allah”, and a zoomed view to the center is shown in Figure <a href="text-network-analysis.html#fig:ch7fig705">7.5</a>, which shows the central node, and all other major nodes (i.e., themes) - which are ordered as “allah”, “lord”, “people”, “day”, and so on. These “themes” interestingly coincide with the major “subject matters” as discussed by one of us through a qualitative analysis of the Quran.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig705"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig705-1.png" alt="Close up view of the center of the network" width="384" />
+<p class="caption">
+Figure 7.5: Close up view of the center of the network
+</p>
+</div>
+</div>
+<div id="word-co-occurrence-network-statistics" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Word co-occurrence network statistics<a href="text-network-analysis.html#word-co-occurrence-network-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The word co-occurrence network is about understanding how each word that appears in the text relates to all other words which appear in the whole text. The connections or links between the words explain the structure of the messages or topics of the texts. The example in Figure <a href="text-network-analysis.html#fig:ch7fig703">7.3</a> is a word co-occurrence network for Chapter 1 of Moby Dick’s novel. It shows the whole text is centered around “sea” and “man”, and sub-grouped by “water”, “ship”, and “voyage”. The colors of the nodes represent sub-groupings (or cliques) whereby such sub-groupings may represent another message or sub-topic by themselves. The same process happens in growing the network shown in Figure <a href="text-network-analysis.html#fig:ch7fig703">7.3</a> for Saheeh’s entire corpus.</p>
+<p>Now let us work using the <em>igraph</em> package and explore various statistical analyses using graph theory in understanding the network.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="text-network-analysis.html#cb168-1" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb168-2"><a href="text-network-analysis.html#cb168-2" tabindex="-1"></a>igphQ <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">as.igraph</span>(fcmQ)</span></code></pre></div>
+<p>First let us get the number of words (nodes) and co-occurrences (edges) in the whole word co-occurrence network (graph).</p>
+<pre><code>## [1] &quot;nodes = 4801  and edges = 267668&quot;</code></pre>
+<p>There are 4,801 words (nodes) and 267,668 edges in the network. Note that we have removed all the stop-words, which otherwise will confound the network with all the stopwords in between. Recall that from Chapter 5, we have recorded that the total unique tokens (words) for Saheeh is 5,739 (including stopwords). Almost one thousand tokens are not present, due to either being removed as stopwords or the tokens have zero co-occurrence, and hence not included.</p>
+<p>There are a few general statistics that we are interested in, namely: <em>diameter</em>, <em>paths</em> and <em>distance</em>, <em>connectedness</em>, <em>clustering</em>, and <em>modularity</em> measures of the network. The previous chapter introduced a basic tutorial on these measures using a smaller word co-occurrences network graph from just one Surah. We now extend applying the same concepts for the entire Saheeh Quran corpus.</p>
+</div>
+<div id="diameter-and-average-distance" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Diameter and average distance<a href="text-network-analysis.html#diameter-and-average-distance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a network, the diameter is the measure of the “longest span”, which implies the maximum “hops” or “steps” it takes from one node to reach the furthest node from it. This is also called the measure of “small-world properties” of Watts-Strogatz.<a href="#fn82" class="footnote-ref" id="fnref82"><sup>82</sup></a> In a word network, it means how many words in between that it will take for a word to be connected to another word.</p>
+<p>So how many words in between, for it to be connected to the furthest word in Saheeh? The answer is 6 words. How do we make sense out of this number? As a comparison, the network diameter for the internet is 6.98 and the E.coli metabolism network has a diameter of 8. Comparing with English texts (such as novels or textbooks) the “normal diameter” is between 10 to 14, and the measure is about the same for a few other Latin-based languages.<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a> What we are observing here is a phenomenal structure, a corpus of English text having a measure of diameter much smaller than any normal texts, and extremely close to the measures of the network in nature (e.g., E.Coli protein network).</p>
+<p>Average distance is a measure of “halfway” steps needed to reach the “center” of the network. The measure for Saheeh is 2.55. The comparable number for English books is between 3.33 to 3.60. Again, in our case here we can say that any word is not more than 2.55 steps away on average from the center word, which is “Allah”, the central theme.</p>
+<p>What all of these measures mean is that the word network for Saheeh exhibits similarities to the Small World network! In fact, for an Erdos-Renyi (random graph) network, the comparable numbers are between 14 to 20 for the diameter and between 4.60 to 6 for the average distance.<span class="citation">(<a href="#ref-ban2014">Ban, Meštrović, and Martincic-Ipsic 2014</a>)</span> This means that the words co-occurrences in Saheeh are not random in nature, and in fact well structured as a dense network.</p>
+<p>These properties very strongly indicate how closely related are all the words in Saheeh and the conciseness of the sentences in the text. Lower diameters and average distances are good measures of “efficiencies” in a large network. In the case of Saheeh, the measures clearly imply that the words in the texts are used with extreme efficiency.</p>
+</div>
+<div id="connectedness" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Connectedness<a href="text-network-analysis.html#connectedness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Measures of connectedness reflect the components of the network, whether the network consists of a single large component or separated into few components. The codes below compute these measures:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="text-network-analysis.html#cb170-1" tabindex="-1"></a>comp_size <span class="ot">=</span> <span class="fu">components</span>(igphQ)</span>
+<span id="cb170-2"><a href="text-network-analysis.html#cb170-2" tabindex="-1"></a>comp_size<span class="sc">$</span>no</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="text-network-analysis.html#cb172-1" tabindex="-1"></a>comp_size<span class="sc">$</span>csize</span></code></pre></div>
+<pre><code>## [1] 4783    2    2    2    3    2    3    2    2</code></pre>
+<p>The result shows that there are 9 components, and in fact the single largest component (giant component) consists of 4,783 nodes, which is 99.63% of the total nodes. This shows that the network is actually a single giant component, and it is also a <em>fully connected</em> network, which means that there is no single word that is not related to at least another word. It also implies that the whole network (i.e. every word) has a relation (directly or indirectly) with every other word in the network.<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a></p>
+</div>
+<div id="degree-distributions-1" class="section level3 hasAnchor" number="7.2.5">
+<h3><span class="header-section-number">7.2.5</span> Degree distributions<a href="text-network-analysis.html#degree-distributions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A degree is a link between two words, and the total number of links attached to a word is called the degree of the node (word). We are interested how does the degree for the entire nodes in the network loos like, from a statistical distributions perspective.</p>
+<p>The codes below compute the degree for the Saheeh network and plot them.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig706"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig706-1.png" alt="Plot of the degree distribution for Saheeh" width="576" />
+<p class="caption">
+Figure 7.6: Plot of the degree distribution for Saheeh
+</p>
+</div>
+<p>Figure <a href="text-network-analysis.html#fig:ch7fig706">7.6</a> looks similar to the tf-idf plot for Saheeh in Figure 2.14 from Chapter 2 - which indicates that the degree follows Zipf’s law, and hence is distributed following Power Law distributions. It shows the case where a very small number of words have a high degree of edges, whilst a very large number of words have an extremely small number of edges.</p>
+<p>We show a simple demonstration what the degree means by printing the top twenty words ranked by its degree in the following texts, which is autogenerated by the codes written for this book:</p>
+<p>allah, lord, people, day, earth, punishment, fear</p>
+<p>messenger, believed, muhammad, truth, heavens, knowing, believers</p>
+<p>life, disbelievers, fire, mercy, surely, moses</p>
+<p>It is forming like a sentence, saying “Allah (the) Lord (of the) people, day (on) earth, punishment fear, messenger believed, Muhammad truth”. Actually, when we feed the texts into an unsupervised machine learning and recreate the texts, it will come out like what we have shown above.<a href="#fn85" class="footnote-ref" id="fnref85"><sup>85</sup></a> What it means is that the word with the highest probability is “allah” followed by “lord” and so on. This is probably why the challenge to come out with just one Surah, even a short Surah, is unmet until today.<a href="#fn86" class="footnote-ref" id="fnref86"><sup>86</sup></a> You must have the word “allah” or convey the meaning of oneness or Tauheed, which is impossible for the non-believers.</p>
+</div>
+<div id="clustering-coefficients" class="section level3 hasAnchor" number="7.2.6">
+<h3><span class="header-section-number">7.2.6</span> Clustering coefficients<a href="text-network-analysis.html#clustering-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many ways to compute clustering coefficients in a network, we will use the <em>igraph</em> method called <em>transitivity()</em>. The measure for the network transitivity is at 10.7%. This is a measure of the probability that given a node, the adjacent nodes (words) are connected. The number obtained here is extremely high. For most other real networks, the probabilities are extremely small; for example, the internet (0.003298%), World Wide Web (0.001412%), and E.coli metabolism (0.537055%). An implication of this finding is an indication of how “dense” the words are in the text, and almost no word is left without relations to other words.</p>
+<p>For reference, we have seen examples of these clusterings earlier in Chapter 5 for Surah Yusuf and Chapter 6 for Surah Taa Haa.</p>
+</div>
+<div id="modularity" class="section level3 hasAnchor" number="7.2.7">
+<h3><span class="header-section-number">7.2.7</span> Modularity<a href="text-network-analysis.html#modularity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The modularity algorithm is used to find <em>community structures</em> or groupings of nodes and edges in large networks. In <em>igraph</em>, this is accomplished by applying the <em>cluster_walktrap()</em> function. However, this approach has some shortcomings, mainly because it relies on a random walk approach in finding communities, which is sensitive to the starting position and is used mainly in undirected graphs. For this purpose, we rely instead on the “modularity class” function of Gephi for calculations. The results are shown in Figure <a href="text-network-analysis.html#fig:ch7fig707">7.7</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig707"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig707-1.png" alt="Modularity class" width="384" />
+<p class="caption">
+Figure 7.7: Modularity class
+</p>
+</div>
+<p>It is interesting to note that there are seven major modular classes with members of 300 or more, with the largest community having about 1,500 members.<a href="#fn87" class="footnote-ref" id="fnref87"><sup>87</sup></a> In fact, the smaller classes are with members of less than ten, and can be ignored (classes of 8 and above). The percentage of nodes within each class is as follows: 33.63% (one-third of the nodes), 17.87%, 15.68%, 9.58%, 8.33%, 7.42%, and 6.33% (from the first to the seventh).</p>
+<p>In grouping terms, we can say that each modular class represents a certain “commonality”; if we want to understand what these commonalities are, then we dive deeper into each class and investigate inside the classes. Furthermore, we can set the resolution limit of the modularity measure, which allows us to break the classes into a more refined set. We leave this issue as a future research direction.</p>
+<p>In this book, we will just show the visualizations of these classes (or groupings) to demonstrate the forms of shapes of the groups.</p>
+<p>Figure <a href="text-network-analysis.html#fig:ch7fig708">7.8</a> provides the total picture of the modularity classes within the network.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig708"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig708-1.png" alt="Modularity class by colors" width="384" />
+<p class="caption">
+Figure 7.8: Modularity class by colors
+</p>
+</div>
+<p>Now let us check the structure of each of the various sub-groups. The largest grouping is shown in Figure <a href="text-network-analysis.html#fig:ch7fig709">7.9</a>, which has the same center as the entire network surrounded by words in the same modularity class. Figure <a href="text-network-analysis.html#fig:ch7fig710">7.10</a> shows the second largest group, which has the same center as before but surrounded by another set of words. Figure <a href="text-network-analysis.html#fig:ch7fig711">7.11</a> shows the third largest group is which has the same center as before but surrounded by another set of words.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig709"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig709-1.png" alt="Network of largest clique" width="384" />
+<p class="caption">
+Figure 7.9: Network of largest clique
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig710"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig710-1.png" alt="Network of second largest clique" width="384" />
+<p class="caption">
+Figure 7.10: Network of second largest clique
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig711"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig711-1.png" alt="Network of third largest clique" width="384" />
+<p class="caption">
+Figure 7.11: Network of third largest clique
+</p>
+</div>
+<p>We can move on to the fourth, fifth, and until the smallest grouping. The key point is what can we learn from these groups?</p>
+<p>First, we want to observe how do the sub-networks look once we take them out of the main network. Do the sub-networks look and behave the same as the main network? Does the main network change when we take out a sub-network? All these questions relate to what is called the “scale-free” properties of a network. A scale-free network is resilient to changes within the network; when a clique is taken out, the clique’s properties are the same as the main network properties, while the properties of the network minus the clique also remain the same.</p>
+<p>In another word, the network is structured in such a way that it behaves like a fractal - the large part is the combination of many small parts, while the small parts can exist by themselves, co-exist with other small parts, can be combined together and create a larger part, and so on. Fractal properties are resilient to “cascading failures” which is evident in most of nature’s physical properties.<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a></p>
+<p>We can take the meaning of fractal properties into a much deeper context; for example, are the messages within the sub-network part of the composition of the main network? What happens to the messages in the main network when we take out a clique? Can we combine messages in two cliques and are the messages still coherent?</p>
+<p>As an example, we can compile all the words within a clique and do a <em>sentiment analysis</em> on the subset of words, similar to what we have shown in Chapter 3. We can also weigh the sentiment scores against the position of the word within the sub-network, etc. Whatever meanings come out is subject to interpretation in terms of what they represent.</p>
+<p>There are numerous ways to expand the current analysis, which is beyond the current introductory scope of this book. We will leave it for future work of Quran Analytics. For our purpose here, based on visual observations of the Figures <a href="text-network-analysis.html#fig:ch7fig708">7.8</a>, <a href="text-network-analysis.html#fig:ch7fig709">7.9</a>, <a href="text-network-analysis.html#fig:ch7fig710">7.10</a>, and <a href="text-network-analysis.html#fig:ch7fig711">7.11</a>, we can say that the network demonstrates some forms of “scale-free” (and fractal-like) properties. This is an important observation and provides leads for future exploration and analysis.</p>
+</div>
+<div id="betweenness-1" class="section level3 hasAnchor" number="7.2.8">
+<h3><span class="header-section-number">7.2.8</span> Betweenness<a href="text-network-analysis.html#betweenness-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Betweenness measures the relative importance of words in connecting other words as the word in between. We compute the measures using the following codes:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="text-network-analysis.html#cb174-1" tabindex="-1"></a>btwnQ <span class="ot">=</span> <span class="fu">betweenness</span>(igphQ, <span class="at">v =</span> <span class="fu">V</span>(igphQ), <span class="at">directed =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb174-2"><a href="text-network-analysis.html#cb174-2" tabindex="-1"></a>                    <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">normalized =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb174-3"><a href="text-network-analysis.html#cb174-3" tabindex="-1"></a>top_btwn <span class="ot">=</span> btwnQ[<span class="fu">rev</span>(<span class="fu">order</span>(btwnQ))]</span></code></pre></div>
+<p>Now let us use the results and rewrite the phrase as we have done earlier, using <em>betweenness</em> instead, as follows:</p>
+<p>allah, lord, people, day, earth</p>
+<p>punishment, fear, fire, believed, muhammad</p>
+<p>created, evil, disbelievers, truth, messenger</p>
+<p>women , moses , bring , hearts , surely</p>
+<p>A comparison with words from the top degree, reveals some interesting observations. Except for the top few words, some other words changed their positions. This reflects the meaning of betweenness measures, that is some words appear more as a word in between two words, and lesser in terms of links.</p>
+</div>
+<div id="prestige-centrality" class="section level3 hasAnchor" number="7.2.9">
+<h3><span class="header-section-number">7.2.9</span> Prestige centrality<a href="text-network-analysis.html#prestige-centrality" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Centrality measures refer to the centrality position of a word in the whole text. There are many ways to measure centrality, the simplest one being <strong>eigenvector centrality</strong>. This is the measure of the “importance” of a word. This is computed as the codes below:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="text-network-analysis.html#cb175-1" tabindex="-1"></a>evcentQ <span class="ot">=</span> <span class="fu">eigen_centrality</span>(igphQ)</span>
+<span id="cb175-2"><a href="text-network-analysis.html#cb175-2" tabindex="-1"></a>top_evcent <span class="ot">=</span>evcentQ<span class="sc">$</span>vector</span>
+<span id="cb175-3"><a href="text-network-analysis.html#cb175-3" tabindex="-1"></a>top_evcent <span class="ot">=</span> top_evcent[<span class="fu">rev</span>(<span class="fu">order</span>(top_evcent))]</span></code></pre></div>
+<p>We repeat the same exercise using the “prestige” as the rankings instead.</p>
+<p>allah ,people ,lord ,earth ,fear</p>
+<p>messenger ,day ,heavens ,knowing ,believed</p>
+<p>punishment ,truth ,muhammad ,believers ,wills</p>
+<p>merciful ,exalted ,mercy ,worship ,belongs</p>
+<p>We do not intend to use the exercise here to interpret Al-Quran using the techniques used. However, for those who studied Al-Quran, some of the things shown here will start to make some sense of the direction of “knowledge” which can be extracted from using these measures of the network. So far, we have dealt only with the top-level words and have not dived deeper to lower-ranking texts (below 20), which might reveal many further insights. Again, we have to leave this for future work.</p>
+</div>
+<div id="summary" class="section level3 hasAnchor" number="7.2.10">
+<h3><span class="header-section-number">7.2.10</span> Summary<a href="text-network-analysis.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Summarizing all the statistical properties of the nodes of the network, we can say that all the important words (top features) have a high degree, betweenness, and prestige centrality within the network. The consistencies of these measures across these top features are very interesting in the sense that the first word, <em>Allah</em> is the topmost in all cases (the highest degree, highest prestige, the most betweenness, and also highest in all measures of centrality).</p>
+</div>
+</div>
+<div id="dive-into-selected-surahs" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Dive into selected Surahs<a href="text-network-analysis.html#dive-into-selected-surahs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The methods introduced in the previous section can be applied to a Surah as well as in performing comparisons between Surahs. Let us choose two intermediate-length Surahs, namely Al-Kahf (No. 18, 110 verses) and Maryam (No. 19, 98 verses). There are a few approaches we could take:</p>
+<ol style="list-style-type: lower-alpha">
+<li>understanding the total network of the texts (tokens) in the Surah;</li>
+<li>understanding the “topics” of the Surah.</li>
+</ol>
+<p>First, we will plot the network and obtain summary statistics.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="text-network-analysis.html#cb176-1" tabindex="-1"></a>kahf <span class="ot">=</span> quran_en_sahih[<span class="fu">grep</span>(<span class="st">&quot;Al-Kahf&quot;</span>,quran_en_sahih<span class="sc">$</span>surah_title_en),]</span>
+<span id="cb176-2"><a href="text-network-analysis.html#cb176-2" tabindex="-1"></a>kahf_toks <span class="ot">&lt;-</span> kahf<span class="sc">$</span>text <span class="sc">%&gt;%</span></span>
+<span id="cb176-3"><a href="text-network-analysis.html#cb176-3" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb176-4"><a href="text-network-analysis.html#cb176-4" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb176-5"><a href="text-network-analysis.html#cb176-5" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, <span class="at">padding =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb176-6"><a href="text-network-analysis.html#cb176-6" tabindex="-1"></a>dfm_kahf <span class="ot">=</span> <span class="fu">dfm</span>(kahf_toks)</span>
+<span id="cb176-7"><a href="text-network-analysis.html#cb176-7" tabindex="-1"></a>fcmKahf <span class="ot">&lt;-</span> <span class="fu">fcm</span>(kahf_toks, </span>
+<span id="cb176-8"><a href="text-network-analysis.html#cb176-8" tabindex="-1"></a>             <span class="at">context =</span> <span class="st">&quot;window&quot;</span>, </span>
+<span id="cb176-9"><a href="text-network-analysis.html#cb176-9" tabindex="-1"></a>             <span class="at">tri =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb176-10"><a href="text-network-analysis.html#cb176-10" tabindex="-1"></a>igphKahf <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">as.igraph</span>(fcmKahf)</span>
+<span id="cb176-11"><a href="text-network-analysis.html#cb176-11" tabindex="-1"></a>degKahf <span class="ot">=</span> <span class="fu">degree</span>(igphKahf, <span class="at">v =</span> <span class="fu">V</span>(igphKahf), </span>
+<span id="cb176-12"><a href="text-network-analysis.html#cb176-12" tabindex="-1"></a>                   <span class="at">mode =</span> <span class="st">&quot;total&quot;</span>, <span class="at">loops =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb176-13"><a href="text-network-analysis.html#cb176-13" tabindex="-1"></a>                   <span class="at">normalized =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb176-14"><a href="text-network-analysis.html#cb176-14" tabindex="-1"></a>top_degreeKahf <span class="ot">=</span> degKahf[<span class="fu">rev</span>(<span class="fu">order</span>(degKahf))]</span>
+<span id="cb176-15"><a href="text-network-analysis.html#cb176-15" tabindex="-1"></a>btwnKahf <span class="ot">=</span> <span class="fu">betweenness</span>(igphKahf, <span class="at">v=</span><span class="fu">V</span>(igphKahf), <span class="at">directed =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb176-16"><a href="text-network-analysis.html#cb176-16" tabindex="-1"></a>                         <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">normalized =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb176-17"><a href="text-network-analysis.html#cb176-17" tabindex="-1"></a>top_btwnKahf <span class="ot">=</span> btwnKahf[<span class="fu">rev</span>(<span class="fu">order</span>(btwnKahf))]</span>
+<span id="cb176-18"><a href="text-network-analysis.html#cb176-18" tabindex="-1"></a>evcentKahf <span class="ot">=</span> <span class="fu">eigen_centrality</span>(igphKahf)</span>
+<span id="cb176-19"><a href="text-network-analysis.html#cb176-19" tabindex="-1"></a>top_evcent <span class="ot">=</span>evcentKahf<span class="sc">$</span>vector</span>
+<span id="cb176-20"><a href="text-network-analysis.html#cb176-20" tabindex="-1"></a>top_evcentKahf <span class="ot">=</span> top_evcent[<span class="fu">rev</span>(<span class="fu">order</span>(top_evcent))]</span>
+<span id="cb176-21"><a href="text-network-analysis.html#cb176-21" tabindex="-1"></a>featKahf <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(fcmKahf, <span class="dv">50</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="text-network-analysis.html#cb177-1" tabindex="-1"></a><span class="fu">fcm_select</span>(fcmKahf, <span class="at">pattern =</span> featKahf) <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="text-network-analysis.html#cb177-2" tabindex="-1"></a>    <span class="fu">textplot_network</span>(<span class="at">min_freq =</span> <span class="fl">0.5</span>, </span>
+<span id="cb177-3"><a href="text-network-analysis.html#cb177-3" tabindex="-1"></a>                     <span class="at">edge_color =</span> <span class="st">&quot;steelblue&quot;</span>, </span>
+<span id="cb177-4"><a href="text-network-analysis.html#cb177-4" tabindex="-1"></a>                     <span class="at">edge_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb177-5"><a href="text-network-analysis.html#cb177-5" tabindex="-1"></a>                     <span class="at">edge_size =</span> <span class="dv">2</span>,</span>
+<span id="cb177-6"><a href="text-network-analysis.html#cb177-6" tabindex="-1"></a>                     <span class="at">vertex.size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb177-7"><a href="text-network-analysis.html#cb177-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb177-8"><a href="text-network-analysis.html#cb177-8" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>))<span class="sc">+</span></span>
+<span id="cb177-9"><a href="text-network-analysis.html#cb177-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Network of Top 50 Words in Surah Al-Kahf&#39;</span>,</span>
+<span id="cb177-10"><a href="text-network-analysis.html#cb177-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig712"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig712-1.png" alt="Network of top 50 words in Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 7.12: Network of top 50 words in Surah Al-Kahf
+</p>
+</div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="text-network-analysis.html#cb178-1" tabindex="-1"></a>maryam <span class="ot">=</span> quran_en_sahih[<span class="fu">grep</span>(<span class="st">&quot;Maryam&quot;</span>,quran_en_sahih<span class="sc">$</span>surah_title_en),]</span>
+<span id="cb178-2"><a href="text-network-analysis.html#cb178-2" tabindex="-1"></a>maryam_toks <span class="ot">&lt;-</span> maryam<span class="sc">$</span>text <span class="sc">%&gt;%</span></span>
+<span id="cb178-3"><a href="text-network-analysis.html#cb178-3" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb178-4"><a href="text-network-analysis.html#cb178-4" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb178-5"><a href="text-network-analysis.html#cb178-5" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, </span>
+<span id="cb178-6"><a href="text-network-analysis.html#cb178-6" tabindex="-1"></a>                  <span class="at">padding =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb178-7"><a href="text-network-analysis.html#cb178-7" tabindex="-1"></a>dfm_maryam <span class="ot">=</span> <span class="fu">dfm</span>(maryam_toks)</span>
+<span id="cb178-8"><a href="text-network-analysis.html#cb178-8" tabindex="-1"></a>fcmMaryam <span class="ot">&lt;-</span> <span class="fu">fcm</span>(maryam_toks, </span>
+<span id="cb178-9"><a href="text-network-analysis.html#cb178-9" tabindex="-1"></a>             <span class="at">context =</span> <span class="st">&quot;window&quot;</span>, </span>
+<span id="cb178-10"><a href="text-network-analysis.html#cb178-10" tabindex="-1"></a>             <span class="at">tri =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb178-11"><a href="text-network-analysis.html#cb178-11" tabindex="-1"></a>igphMaryam <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">as.igraph</span>(fcmMaryam)</span>
+<span id="cb178-12"><a href="text-network-analysis.html#cb178-12" tabindex="-1"></a>degMaryam <span class="ot">=</span> <span class="fu">degree</span>(igphMaryam, <span class="at">v =</span> <span class="fu">V</span>(igphMaryam), </span>
+<span id="cb178-13"><a href="text-network-analysis.html#cb178-13" tabindex="-1"></a>                   <span class="at">mode =</span> <span class="st">&quot;total&quot;</span>, <span class="at">loops =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb178-14"><a href="text-network-analysis.html#cb178-14" tabindex="-1"></a>                   <span class="at">normalized =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb178-15"><a href="text-network-analysis.html#cb178-15" tabindex="-1"></a>top_degreeMaryam <span class="ot">=</span> degMaryam[<span class="fu">rev</span>(<span class="fu">order</span>(degMaryam))]</span>
+<span id="cb178-16"><a href="text-network-analysis.html#cb178-16" tabindex="-1"></a>btwnMaryam <span class="ot">=</span> <span class="fu">betweenness</span>(igphMaryam, <span class="at">v=</span><span class="fu">V</span>(igphMaryam), <span class="at">directed =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb178-17"><a href="text-network-analysis.html#cb178-17" tabindex="-1"></a>                         <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">normalized =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb178-18"><a href="text-network-analysis.html#cb178-18" tabindex="-1"></a>top_btwnMaryam <span class="ot">=</span> btwnMaryam[<span class="fu">rev</span>(<span class="fu">order</span>(btwnMaryam))]</span>
+<span id="cb178-19"><a href="text-network-analysis.html#cb178-19" tabindex="-1"></a>evcentMaryam <span class="ot">=</span> <span class="fu">eigen_centrality</span>(igphMaryam)</span>
+<span id="cb178-20"><a href="text-network-analysis.html#cb178-20" tabindex="-1"></a>top_evcent <span class="ot">=</span>evcentMaryam<span class="sc">$</span>vector</span>
+<span id="cb178-21"><a href="text-network-analysis.html#cb178-21" tabindex="-1"></a>top_evcentMaryam <span class="ot">=</span> top_evcent[<span class="fu">rev</span>(<span class="fu">order</span>(top_evcent))]</span>
+<span id="cb178-22"><a href="text-network-analysis.html#cb178-22" tabindex="-1"></a></span>
+<span id="cb178-23"><a href="text-network-analysis.html#cb178-23" tabindex="-1"></a>featMaryam <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(fcmMaryam, <span class="dv">50</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="text-network-analysis.html#cb179-1" tabindex="-1"></a><span class="fu">fcm_select</span>(fcmMaryam, <span class="at">pattern =</span> featMaryam) <span class="sc">%&gt;%</span></span>
+<span id="cb179-2"><a href="text-network-analysis.html#cb179-2" tabindex="-1"></a>    <span class="fu">textplot_network</span>(<span class="at">min_freq =</span> <span class="fl">0.5</span>, </span>
+<span id="cb179-3"><a href="text-network-analysis.html#cb179-3" tabindex="-1"></a>                     <span class="at">edge_color =</span> <span class="st">&quot;tomato&quot;</span>, </span>
+<span id="cb179-4"><a href="text-network-analysis.html#cb179-4" tabindex="-1"></a>                     <span class="at">edge_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb179-5"><a href="text-network-analysis.html#cb179-5" tabindex="-1"></a>                     <span class="at">edge_size =</span> <span class="dv">2</span>,</span>
+<span id="cb179-6"><a href="text-network-analysis.html#cb179-6" tabindex="-1"></a>                     <span class="at">vertex.size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb179-7"><a href="text-network-analysis.html#cb179-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb179-8"><a href="text-network-analysis.html#cb179-8" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>))<span class="sc">+</span></span>
+<span id="cb179-9"><a href="text-network-analysis.html#cb179-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Network of Top 50 Words in Surah Maryam&#39;</span>,</span>
+<span id="cb179-10"><a href="text-network-analysis.html#cb179-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot; &quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig713"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig713-1.png" alt="Network of top 50 words in Surah Maryam" width="576" />
+<p class="caption">
+Figure 7.13: Network of top 50 words in Surah Maryam
+</p>
+</div>
+<p>For both Surahs, as shown in the figures, the most prominent word at the center is “lord”; however the surrounding topics are different. In Al-Kahf words such as “cave”, “youth”, “al-khidh”, “moses” emerge, while in Surah Maryam “merciful”, “jesus” appear.</p>
+<p>The summary statistics are tabulated in the Table:</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="34%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistics</th>
+<th>Surah Al-Kahf</th>
+<th>Surah Maryam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nodes</td>
+<td>506</td>
+<td>326</td>
+</tr>
+<tr class="even">
+<td>Edges</td>
+<td>5,516</td>
+<td>2,838</td>
+</tr>
+<tr class="odd">
+<td>Average degree</td>
+<td>21.8</td>
+<td>17.41</td>
+</tr>
+<tr class="even">
+<td>Diameter</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>Average Path Length</td>
+<td>3.06</td>
+<td>3.24</td>
+</tr>
+<tr class="even">
+<td>Size of largest component</td>
+<td>504</td>
+<td>315</td>
+</tr>
+<tr class="odd">
+<td>Transitivity</td>
+<td>0.28</td>
+<td>0.33</td>
+</tr>
+</tbody>
+</table>
+<p>The table above reveals that the network characteristics of both Surahs are not far from each other. Despite Al-Kahf being a bit longer, which results in more nodes and edges, the diameter, average distance to the center, are all about the same.</p>
+<p>Now let us try to get some ideas regarding the thematic subjects of both Surahs, from the three elements of measures: degree, clustering, and betweenness.</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="74%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Surah Al-Kahf</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>By degree</td>
+<td>lord ,allah ,people ,moses ,found ,earth ,mercy</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>deeds ,day ,remained ,bring ,truth ,cave ,knowing</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>righteous ,reward ,sea ,muhammad ,al-khidh ,send</td>
+</tr>
+<tr class="even">
+<td>By betweenness</td>
+<td>lord ,allah ,moses ,people ,earth ,reward ,day</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>bring ,gardens ,deeds ,cave ,beneath ,remained ,found</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>dog ,muhammad ,send ,affair ,truth ,time</td>
+</tr>
+<tr class="odd">
+<td>By prestige centrality</td>
+<td>lord ,allah ,mercy ,promise ,remained ,words ,knowing</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>day ,wills ,righteous ,affair ,truth ,deeds ,exhausted</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>worship ,cave ,muhammad ,sea ,associate ,guidance</td>
+</tr>
+</tbody>
+</table>
+<p>One way to interpret the keywords is that the main keywords are (in the order of): “lord”, “allah”, then by the number of mentions: “people”, by between the subjects: “moses”, and by the prestige of mention: “mercy”.</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Surah Maryam</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>By degree</td>
+<td>lord ,merciful ,allah ,day ,mention ,father ,people</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>worship ,prophet ,surely ,abraham ,book ,prayer ,boy</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>jesus ,verses ,punishment ,peace ,promised ,earth</td>
+</tr>
+<tr class="even">
+<td>By betweenness</td>
+<td>lord ,merciful ,allah ,day ,died ,alive ,surely</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>father ,people ,worship ,prayer ,abraham ,hear ,brought</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>mention ,earth ,jesus ,speak ,angel ,destroyed</td>
+</tr>
+<tr class="odd">
+<td>By prestige centrality</td>
+<td>lord ,allah ,worship ,people ,merciful ,day ,mention</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>sign ,invoke ,prophet ,jesus ,father ,leave ,book</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>unhappy ,zechariah ,mercy ,boy ,peace ,abraham</td>
+</tr>
+</tbody>
+</table>
+<p>One way to interpret the keywords is that the main keywords are (in the order of): “lord”, then by the number of mentions: “merciful”, by between the subjects: “merciful”, and by the prestige of mention: “worship”.</p>
+</div>
+<div id="word-collocations-statistical-method" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Word collocations statistical method<a href="text-network-analysis.html#word-collocations-statistical-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section we will take another approach to the computations of word collocations, namely using various statistical tools. Most of these tools utilize what is called “distance measures”, which mathematically is the calculation relative statistical scoring of multi-word expressions. The multi-word can be set to two (i.e. bigrams) or three (i.e. trigrams), and so on, depending on the objective of the analysis.</p>
+<p>The function we can apply is <em>textstat_collocations()</em> from <em>quanteda</em>. Here we show how this function is applied and what the results meant<span class="citation">(<a href="#ref-blaheta2001">Blaheta and Johnson 2001</a>)</span>.</p>
+<p>What is the most important two-word sequence in Surah Al-Kahf?</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="text-network-analysis.html#cb180-1" tabindex="-1"></a>tscKahf <span class="ot">=</span> kahf_toks <span class="sc">%&gt;%</span> quanteda.textstats<span class="sc">::</span><span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb180-2"><a href="text-network-analysis.html#cb180-2" tabindex="-1"></a>                        <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb180-3"><a href="text-network-analysis.html#cb180-3" tabindex="-1"></a>tscKahf[tscKahf<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscKahf<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;righteous deeds&quot; &quot;worldly life&quot;    &quot;heavens earth&quot;   &quot;lord knowing&quot;</code></pre>
+<p>What is the most important three-word sequence in Surah Al_Kahf?</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="text-network-analysis.html#cb182-1" tabindex="-1"></a>tscKahf <span class="ot">=</span> kahf_toks <span class="sc">%&gt;%</span> </span>
+<span id="cb182-2"><a href="text-network-analysis.html#cb182-2" tabindex="-1"></a>              <span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb182-3"><a href="text-network-analysis.html#cb182-3" tabindex="-1"></a>                        <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb182-4"><a href="text-network-analysis.html#cb182-4" tabindex="-1"></a>tscKahf[tscKahf<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscKahf<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;mercy prepare affair&quot;     &quot;believed righteous deeds&quot;</code></pre>
+<p>What is the most important two-word sequence in Surah Maryam?</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="text-network-analysis.html#cb184-1" tabindex="-1"></a>tscMaryam <span class="ot">=</span> maryam_toks <span class="sc">%&gt;%</span> </span>
+<span id="cb184-2"><a href="text-network-analysis.html#cb184-2" tabindex="-1"></a>              <span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb184-3"><a href="text-network-analysis.html#cb184-3" tabindex="-1"></a>                        <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb184-4"><a href="text-network-analysis.html#cb184-4" tabindex="-1"></a>tscMaryam[tscMaryam<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscMaryam<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;mention book&quot;</code></pre>
+<p>What is the most important three-word sequence in Surah Maryam?</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="text-network-analysis.html#cb186-1" tabindex="-1"></a>tscMaryam <span class="ot">=</span> maryam_toks <span class="sc">%&gt;%</span> </span>
+<span id="cb186-2"><a href="text-network-analysis.html#cb186-2" tabindex="-1"></a>              <span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb186-3"><a href="text-network-analysis.html#cb186-3" tabindex="-1"></a>                        <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb186-4"><a href="text-network-analysis.html#cb186-4" tabindex="-1"></a>tscMaryam[tscMaryam<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscMaryam<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;peace day born&quot;   &quot;day raised alive&quot; &quot;day born day&quot;     &quot;trunk palm tree&quot;</code></pre>
+<p>The results in the exercises indicate that out of all possible collocations (bigrams for two-word phrases and trigrams for three-word phrases), these resulting phrases rank highest in the entire text (i.e. the chosen Surah). They stood out as the most “outstanding phrases” which explain the subject of the texts (i.e. Surah). Whether the results make any meaningful sense or not is a subject of the interpretation of the texts (i.e., translated text of Al-Quran).</p>
+<p>As a comparison, we will do the same for Surah Maryam for Yusuf Ali (instead of Saheeh as done before). Will we get the same answer? (We will show only the results since the codes follow the same steps).</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="text-network-analysis.html#cb188-1" tabindex="-1"></a>quranEY <span class="ot">&lt;-</span> quran_en_yusufali <span class="sc">%&gt;%</span> </span>
+<span id="cb188-2"><a href="text-network-analysis.html#cb188-2" tabindex="-1"></a>             <span class="fu">select</span>(surah_id, </span>
+<span id="cb188-3"><a href="text-network-analysis.html#cb188-3" tabindex="-1"></a>                    ayah_id,</span>
+<span id="cb188-4"><a href="text-network-analysis.html#cb188-4" tabindex="-1"></a>                    surah_title_en, </span>
+<span id="cb188-5"><a href="text-network-analysis.html#cb188-5" tabindex="-1"></a>                    surah_title_en_trans, </span>
+<span id="cb188-6"><a href="text-network-analysis.html#cb188-6" tabindex="-1"></a>                    revelation_type, </span>
+<span id="cb188-7"><a href="text-network-analysis.html#cb188-7" tabindex="-1"></a>                    text,</span>
+<span id="cb188-8"><a href="text-network-analysis.html#cb188-8" tabindex="-1"></a>                    ayah_title)</span>
+<span id="cb188-9"><a href="text-network-analysis.html#cb188-9" tabindex="-1"></a>maryamEY <span class="ot">=</span> quranEY[<span class="fu">grep</span>(<span class="st">&quot;Maryam&quot;</span>,quranEY<span class="sc">$</span>surah_title_en),]</span>
+<span id="cb188-10"><a href="text-network-analysis.html#cb188-10" tabindex="-1"></a>maryamEY_toks <span class="ot">&lt;-</span> maryamEY<span class="sc">$</span>text <span class="sc">%&gt;%</span></span>
+<span id="cb188-11"><a href="text-network-analysis.html#cb188-11" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb188-12"><a href="text-network-analysis.html#cb188-12" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb188-13"><a href="text-network-analysis.html#cb188-13" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, </span>
+<span id="cb188-14"><a href="text-network-analysis.html#cb188-14" tabindex="-1"></a>                  <span class="at">padding =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>What are the most important two-word sequences in Surah Maryam in Yusuf Ali?</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="text-network-analysis.html#cb189-1" tabindex="-1"></a>tscMaryamEY <span class="ot">=</span> maryamEY_toks <span class="sc">%&gt;%</span> </span>
+<span id="cb189-2"><a href="text-network-analysis.html#cb189-2" tabindex="-1"></a>                <span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb189-3"><a href="text-network-analysis.html#cb189-3" tabindex="-1"></a>                    <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb189-4"><a href="text-network-analysis.html#cb189-4" tabindex="-1"></a>tscMaryamEY[tscMaryamEY<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscMaryamEY<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;allah gracious&quot;</code></pre>
+<p>What are the most important three-word sequences in Surah Maryam in Yusuf Ali?</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="text-network-analysis.html#cb191-1" tabindex="-1"></a>tscMaryamEY <span class="ot">=</span> maryamEY_toks <span class="sc">%&gt;%</span> </span>
+<span id="cb191-2"><a href="text-network-analysis.html#cb191-2" tabindex="-1"></a>                <span class="fu">textstat_collocations</span>(<span class="at">method =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb191-3"><a href="text-network-analysis.html#cb191-3" tabindex="-1"></a>                        <span class="at">min_count =</span> <span class="dv">1</span>,<span class="at">smoothing =</span> <span class="fl">0.5</span>,<span class="at">tolower =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb191-4"><a href="text-network-analysis.html#cb191-4" tabindex="-1"></a>tscMaryamEY[tscMaryamEY<span class="sc">$</span>count <span class="sc">==</span> <span class="fu">max</span>(tscMaryamEY<span class="sc">$</span>count),]<span class="sc">$</span>collocation</span></code></pre></div>
+<pre><code>## [1] &quot;mention book story&quot;</code></pre>
+<p>We can see that Yusuf Ali’s translations will give a different phrase. In fact, if we go deeper into phrases of slightly lower ranking, some of the phrases do match.</p>
+</div>
+<div id="word-keyness-comparisons" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Word keyness comparisons<a href="text-network-analysis.html#word-keyness-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we want to compare the keywords of one Surah against another Surah, we can use the <em>keyness</em> statistical measures. In <em>quanteda</em> we can use <em>textstat_keyness()</em> function and also <em>textplot_keyness()</em> for plotting the results. Let us compare prominent keywords in Surah Al-Kahf versus Maryam. This is shown in Figure <a href="text-network-analysis.html#fig:ch7fig714">7.14</a>.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="text-network-analysis.html#cb193-1" tabindex="-1"></a>kahf_1 <span class="ot">=</span> kahf <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text) <span class="sc">%&gt;%</span> <span class="fu">str_flatten</span>()</span>
+<span id="cb193-2"><a href="text-network-analysis.html#cb193-2" tabindex="-1"></a>maryam_1 <span class="ot">=</span> maryam <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text) <span class="sc">%&gt;%</span> <span class="fu">str_flatten</span>()</span>
+<span id="cb193-3"><a href="text-network-analysis.html#cb193-3" tabindex="-1"></a>kahf_maryam <span class="ot">=</span> kahf_maryam <span class="ot">=</span> <span class="fu">rbind</span>(kahf_1,maryam_1)</span>
+<span id="cb193-4"><a href="text-network-analysis.html#cb193-4" tabindex="-1"></a></span>
+<span id="cb193-5"><a href="text-network-analysis.html#cb193-5" tabindex="-1"></a>corp <span class="ot">=</span> <span class="fu">corpus</span>(kahf_maryam,</span>
+<span id="cb193-6"><a href="text-network-analysis.html#cb193-6" tabindex="-1"></a>              <span class="at">docvarsz =</span> <span class="fu">c</span>(<span class="st">&quot;kahf&quot;</span>,<span class="st">&quot;maryam&quot;</span>))</span>
+<span id="cb193-7"><a href="text-network-analysis.html#cb193-7" tabindex="-1"></a><span class="fu">names</span>(corp) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;kahf&quot;</span>,<span class="st">&quot;maryam&quot;</span>)</span>
+<span id="cb193-8"><a href="text-network-analysis.html#cb193-8" tabindex="-1"></a></span>
+<span id="cb193-9"><a href="text-network-analysis.html#cb193-9" tabindex="-1"></a>dfmat2 <span class="ot">&lt;-</span> <span class="fu">dfm</span>(corp,</span>
+<span id="cb193-10"><a href="text-network-analysis.html#cb193-10" tabindex="-1"></a>              <span class="co"># groups = &quot;surah&quot;,</span></span>
+<span id="cb193-11"><a href="text-network-analysis.html#cb193-11" tabindex="-1"></a>              <span class="at">remove =</span> stop_words<span class="sc">$</span>word,</span>
+<span id="cb193-12"><a href="text-network-analysis.html#cb193-12" tabindex="-1"></a>              <span class="at">remove_punct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb193-13"><a href="text-network-analysis.html#cb193-13" tabindex="-1"></a>tstat2 <span class="ot">&lt;-</span> <span class="fu">textstat_keyness</span>(dfmat2, <span class="at">target =</span> <span class="st">&quot;kahf&quot;</span>, <span class="at">measure =</span> <span class="st">&quot;lr&quot;</span>)</span>
+<span id="cb193-14"><a href="text-network-analysis.html#cb193-14" tabindex="-1"></a><span class="fu">textplot_keyness</span>(tstat2, <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;tomato&quot;</span>), <span class="at">n =</span> <span class="dv">20</span>)<span class="sc">+</span></span>
+<span id="cb193-15"><a href="text-network-analysis.html#cb193-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Keyness For Surah Maryam and Surah Al-Kahf&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig714"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig714-1.png" alt="Keyness plot for Surah Maryam and Al-Kahf" width="768" />
+<p class="caption">
+Figure 7.14: Keyness plot for Surah Maryam and Al-Kahf
+</p>
+</div>
+<p>The keyness plot shows and confirms what is known about the two Surahs. In Surah Al-Kahf, the word “found” relates to the cave-dwellers and al-khidh (Khidir) as well as Dhul-Qarnayn. In Surah Maryam, the key message is “merciful”, an attribute of Allah, and Maryam (Mary) and her son Isa (AS) as signs of His mercy.</p>
+</div>
+<div id="lexical-diversity-and-dispersion" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Lexical diversity and dispersion<a href="text-network-analysis.html#lexical-diversity-and-dispersion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lexical diversity is a measure of how each sentence adds to the lexical variety in terms of its addition to the vocabulary within a corpus. Let us make a comparison between Surah Al-Kahf and Surah Maryam, by calculating <em>textstat_lexdiv()</em> scores and plotting the results side by side.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="text-network-analysis.html#cb194-1" tabindex="-1"></a>kahf_lexdiv <span class="ot">=</span> <span class="fu">textstat_lexdiv</span>(dfm_kahf, <span class="at">measure =</span> <span class="st">&quot;all&quot;</span>)</span>
+<span id="cb194-2"><a href="text-network-analysis.html#cb194-2" tabindex="-1"></a>maryam_lexdiv <span class="ot">=</span> <span class="fu">textstat_lexdiv</span>(dfm_maryam, <span class="at">measure =</span> <span class="st">&quot;all&quot;</span> )</span>
+<span id="cb194-3"><a href="text-network-analysis.html#cb194-3" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(kahf_lexdiv), </span>
+<span id="cb194-4"><a href="text-network-analysis.html#cb194-4" tabindex="-1"></a>                               <span class="at">y =</span> kahf_lexdiv<span class="sc">$</span>R), </span>
+<span id="cb194-5"><a href="text-network-analysis.html#cb194-5" tabindex="-1"></a>                               <span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>, </span>
+<span id="cb194-6"><a href="text-network-analysis.html#cb194-6" tabindex="-1"></a>                           <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb194-7"><a href="text-network-analysis.html#cb194-7" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Verse&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Lexical Diversity Score&quot;</span>,<span class="at">title =</span> <span class="st">&quot;Surah Al-Kahf&quot;</span>)</span>
+<span id="cb194-8"><a href="text-network-analysis.html#cb194-8" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(maryam_lexdiv), </span>
+<span id="cb194-9"><a href="text-network-analysis.html#cb194-9" tabindex="-1"></a>                               <span class="at">y =</span> maryam_lexdiv<span class="sc">$</span>R), </span>
+<span id="cb194-10"><a href="text-network-analysis.html#cb194-10" tabindex="-1"></a>                               <span class="at">color =</span> <span class="st">&quot;tomato&quot;</span>, </span>
+<span id="cb194-11"><a href="text-network-analysis.html#cb194-11" tabindex="-1"></a>                               <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb194-12"><a href="text-network-analysis.html#cb194-12" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Verse&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Lexical Diversity Score&quot;</span>,<span class="at">title =</span> <span class="st">&quot;Surah Maryam&quot;</span>)</span>
+<span id="cb194-13"><a href="text-network-analysis.html#cb194-13" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2, <span class="at">nrow =</span> <span class="dv">1</span>,<span class="at">align =</span> <span class="st">&quot;v&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig715"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig715-1.png" alt="Lexical diversity scores for Surah Al-Kahf and Maryam" width="768" />
+<p class="caption">
+Figure 7.15: Lexical diversity scores for Surah Al-Kahf and Maryam
+</p>
+</div>
+<p>We can observe from Figure <a href="text-network-analysis.html#fig:ch7fig715">7.15</a> that the verses in Surah Al-Kahf are much more diverse in their lexical diversity, throughout the Surah; whereas Surah Maryam’s later verses (after verse 50) show more variety. What this implies is that the vocabulary structure in the verses of Surah Al-Kahf is different from Surah Maryam.</p>
+<p>Another approach of comparison is called <em>key words in context</em> or <em>kwic</em> lexical dispersion plot. Note that “text1” to “text110” is from Surah Al-Kahf and the rest (“text111 to”text208”) are from Surah Maryam.</p>
+<p>First, let us apply it to the word “Allah” and “Lord”.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="text-network-analysis.html#cb195-1" tabindex="-1"></a><span class="fu">textplot_xray</span>(<span class="fu">kwic</span>(corp, <span class="at">pattern =</span> <span class="st">&quot;allah&quot;</span>), <span class="fu">kwic</span>(corp, <span class="at">pattern =</span> <span class="st">&quot;lord&quot;</span>),</span>
+<span id="cb195-2"><a href="text-network-analysis.html#cb195-2" tabindex="-1"></a>              <span class="at">scale =</span> <span class="st">&quot;absolute&quot;</span>) <span class="sc">+</span></span>
+<span id="cb195-3"><a href="text-network-analysis.html#cb195-3" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">color =</span> keyword) <span class="sc">+</span> </span>
+<span id="cb195-4"><a href="text-network-analysis.html#cb195-4" tabindex="-1"></a>              <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkred&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb195-5"><a href="text-network-analysis.html#cb195-5" tabindex="-1"></a>              <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb195-6"><a href="text-network-analysis.html#cb195-6" tabindex="-1"></a>                    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig716"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig716-1.png" alt="Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'" width="672" />
+<p class="caption">
+Figure 7.16: Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word ‘Allah’ and ‘Lord’
+</p>
+</div>
+<p>The plots in Figure <a href="text-network-analysis.html#fig:ch7fig716">7.16</a> display the frequency of the selected keyword and its appearance within the various verses (“texts”). Lexical dispersion demonstrates the richness of emphasis of the whole document regarding the message, via frequencies of occurrence relative to the sentences (verses) within the document.</p>
+<p>The word “Allah” appears lesser than “Lord” in both Surahs. There are some occasions when “Allah” is mentioned, “Lord” is also mentioned (i.e. the lines where both blue and red dots exist). However, there are many verses in which “Lord” is mentioned without the mention of the word “Allah” (lower parts of the plot).</p>
+<p>What the exercise does is to get some sense into why, lexically, certain words appear in some verses (or Surahs), and do not appear in some other verses (or Surahs). The explanation of why there are patterns of appearance is a subject of the interpretation of Al-Quran. The method we use here is only a tool to detect and visualize the patterns.</p>
+</div>
+<div id="viewing-the-network-as-dendrogram" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Viewing the network as dendrogram<a href="text-network-analysis.html#viewing-the-network-as-dendrogram" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We would like to end by presenting another tool that is useful for viewing a large network of co-occurrence data as we have been dealing with in the previous sections. The dendrogram is useful to view “clustering” or “grouping” of the networks using algorithms such as <em>fast_greedy</em> or <em>cluster_edge_betweenness</em> as discussed in Chapter 5.</p>
+<p>Let us show the results for both Surahs.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig717"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig717-1.png" alt="Dendrogram for clusters in Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 7.17: Dendrogram for clusters in Surah Al-Kahf
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig718"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig718-1.png" alt="Dendrogram for clusters in Surah Maryam" width="576" />
+<p class="caption">
+Figure 7.18: Dendrogram for clusters in Surah Maryam
+</p>
+</div>
+<p>We can see from Figure <a href="text-network-analysis.html#fig:ch7fig717">7.17</a> and Figure <a href="text-network-analysis.html#fig:ch7fig718">7.18</a> that there are clusterings or groupings in the cooccurrences words; in fact there are about three large groupings in Surah Al-Kahf and Surah Maryam. We can extract out the data for the groupings and do further analysis as needed and required. We leave the subject as it is for our work here.</p>
+</div>
+<div id="words-similarity-in-verses" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Words similarity in verses<a href="text-network-analysis.html#words-similarity-in-verses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The concept of similarity in texts in NLP applies to sentences or in our case verses. How similar are any two verses in a set of verses, such as a Surah? Or how similar are verses from one Surah compared to verses from another Surah? This is like posing a question: does a verse contains similar words (not necessarily in the same order) with another given verse?</p>
+<p>In linear algebra, the measure is the dot product of two vectors of not necessarily similar length, normalized to the product of their Euclidean norms, called <em>cosine similarity</em> (<span class="math inline">\(cosine_{sim}(x,y) = \frac{x.y}{|x|.|y|}\)</span>). Similar measure is called <em>jaccard similarity</em>, which is the measure of set similarity instead of dot product (<span class="math inline">\(jaccard_{sim}(a,b) = \frac{|a \cap b}{|a \cup b|}\)</span>).</p>
+<p>This can be applied using the <em>textstat_simil()</em> function in <em>quanteda</em>.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="text-network-analysis.html#cb196-1" tabindex="-1"></a>tstcor_kahf <span class="ot">=</span> <span class="fu">textstat_simil</span>(dfm_kahf, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb196-2"><a href="text-network-analysis.html#cb196-2" tabindex="-1"></a>               <span class="at">margin =</span> <span class="st">&quot;documents&quot;</span>,</span>
+<span id="cb196-3"><a href="text-network-analysis.html#cb196-3" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;correlation&quot;</span>)</span>
+<span id="cb196-4"><a href="text-network-analysis.html#cb196-4" tabindex="-1"></a>tstcor_kahf <span class="ot">=</span> <span class="fu">as.data.frame</span>(tstcor_kahf)</span>
+<span id="cb196-5"><a href="text-network-analysis.html#cb196-5" tabindex="-1"></a>tstcor_kahf <span class="ot">=</span> tstcor_kahf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb196-6"><a href="text-network-analysis.html#cb196-6" tabindex="-1"></a>tstcos_kahf <span class="ot">=</span> <span class="fu">textstat_simil</span>(dfm_kahf, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb196-7"><a href="text-network-analysis.html#cb196-7" tabindex="-1"></a>               <span class="at">margin =</span> <span class="st">&quot;documents&quot;</span>,</span>
+<span id="cb196-8"><a href="text-network-analysis.html#cb196-8" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>)</span>
+<span id="cb196-9"><a href="text-network-analysis.html#cb196-9" tabindex="-1"></a>tstcos_kahf <span class="ot">=</span> <span class="fu">as.data.frame</span>(tstcos_kahf)</span>
+<span id="cb196-10"><a href="text-network-analysis.html#cb196-10" tabindex="-1"></a>tstjac_kahf <span class="ot">=</span> <span class="fu">textstat_simil</span>(dfm_kahf, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb196-11"><a href="text-network-analysis.html#cb196-11" tabindex="-1"></a>               <span class="at">margin =</span> <span class="st">&quot;documents&quot;</span>,</span>
+<span id="cb196-12"><a href="text-network-analysis.html#cb196-12" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;jaccard&quot;</span>)</span>
+<span id="cb196-13"><a href="text-network-analysis.html#cb196-13" tabindex="-1"></a>tstjac_kahf <span class="ot">=</span> <span class="fu">as.data.frame</span>(tstjac_kahf)</span>
+<span id="cb196-14"><a href="text-network-analysis.html#cb196-14" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb196-15"><a href="text-network-analysis.html#cb196-15" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(tstcor_kahf<span class="sc">$</span>correlation)), <span class="at">y =</span> tstcor_kahf<span class="sc">$</span>correlation), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-16"><a href="text-network-analysis.html#cb196-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(tstcos_kahf<span class="sc">$</span>cosine)), <span class="at">y =</span> tstcos_kahf<span class="sc">$</span>cosine), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-17"><a href="text-network-analysis.html#cb196-17" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(tstjac_kahf<span class="sc">$</span>jaccard)), <span class="at">y =</span> tstjac_kahf<span class="sc">$</span>jaccard), <span class="at">color =</span> <span class="st">&quot;#3B9D47&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-18"><a href="text-network-analysis.html#cb196-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Edges&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Similarity Score&quot;</span>,</span>
+<span id="cb196-19"><a href="text-network-analysis.html#cb196-19" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Verses Similarity for Surah Al-Kahf&quot;</span>,</span>
+<span id="cb196-20"><a href="text-network-analysis.html#cb196-20" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Using &lt;span style = &#39;color: red;&#39;&gt;Correlation&lt;/span&gt;, &lt;span style = &#39;color: blue;&#39;&gt;Cosine&lt;/span&gt; and &lt;span style = &#39;color: #31783A;&#39;&gt;Jaccard&lt;/span&gt; measures&quot;</span>)<span class="sc">+</span></span>
+<span id="cb196-21"><a href="text-network-analysis.html#cb196-21" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig719"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig719-1.png" alt="Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures" width="576" />
+<p class="caption">
+Figure 7.19: Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures
+</p>
+</div>
+<p>Figure <a href="text-network-analysis.html#fig:ch7fig719">7.19</a> shows the plot for three measures namely <em>correlation</em> (red), <em>cosine</em> (blue), <em>jaccard</em> (green). Two verses are 100% similar textually, word-for-word, and a good number with a similarity score above 25% (i.e. more than a quarter of the words). What do all these numbers mean depends on how interpretations are made; for example, it can be said that these verses explain each other.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="text-network-analysis.html#cb197-1" tabindex="-1"></a>tstcos_kahf<span class="sc">$</span>document1 <span class="ot">=</span> <span class="fu">str_replace</span>(tstcos_kahf<span class="sc">$</span>document1,<span class="st">&quot;text&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb197-2"><a href="text-network-analysis.html#cb197-2" tabindex="-1"></a>tstcos_kahf<span class="sc">$</span>document2 <span class="ot">=</span> <span class="fu">str_replace</span>(tstcos_kahf<span class="sc">$</span>document2,<span class="st">&quot;text&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb197-3"><a href="text-network-analysis.html#cb197-3" tabindex="-1"></a>igph_kahfcos <span class="ot">=</span> <span class="fu">graph_from_data_frame</span>(tstcos_kahf <span class="sc">%&gt;%</span> </span>
+<span id="cb197-4"><a href="text-network-analysis.html#cb197-4" tabindex="-1"></a>                                       <span class="fu">filter</span>(cosine <span class="sc">&gt;</span> <span class="fl">0.25</span>))</span>
+<span id="cb197-5"><a href="text-network-analysis.html#cb197-5" tabindex="-1"></a><span class="fu">ggraph</span>(igph_kahfcos, <span class="at">layout =</span> <span class="st">&quot;kk&quot;</span>) <span class="sc">+</span></span>
+<span id="cb197-6"><a href="text-network-analysis.html#cb197-6" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">width =</span> cosine, <span class="at">edge_alpha =</span> cosine), </span>
+<span id="cb197-7"><a href="text-network-analysis.html#cb197-7" tabindex="-1"></a>                     <span class="at">edge_color =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb197-8"><a href="text-network-analysis.html#cb197-8" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb197-9"><a href="text-network-analysis.html#cb197-9" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb197-10"><a href="text-network-analysis.html#cb197-10" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb197-11"><a href="text-network-analysis.html#cb197-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Verses with High Similarity for Surah Al-Kahf&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig720"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig720-1.png" alt="Verses with high similarities for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 7.20: Verses with high similarities for Surah Al-Kahf
+</p>
+</div>
+<p>The best way is to view them as an <em>igraph</em> plot using <em>ggraph</em> (as discussed in the previous chapter). Figure <a href="text-network-analysis.html#fig:ch7fig720">7.20</a> shows clusters of verses that are linked. If we check further, the verses around v65 to v78, are repeated conversations between Moses and Khidh. The other cluster surrounding v38, is about the story of the cave dwellers. What we have shown is how statistical tools in NLP are used to find related sentences (or verses) in a large text (if we apply them to the entire translation).</p>
+<p>For completeness, we will show similar plots for Surah Maryam (Figures <a href="text-network-analysis.html#fig:ch7fig721">7.21</a> and <a href="text-network-analysis.html#fig:ch7fig722">7.22</a>). We leave the readers to check why the verses are linked in this manner for the Surah.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig721"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig721-1.png" alt="Verses similarity for Surah Maryam using correlation, cosine and jaccard measures" width="576" />
+<p class="caption">
+Figure 7.21: Verses similarity for Surah Maryam using correlation, cosine and jaccard measures
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig722"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig722-1.png" alt="Verses with high similarities for Surah Maryam" width="576" />
+<p class="caption">
+Figure 7.22: Verses with high similarities for Surah Maryam
+</p>
+</div>
+</div>
+<div id="words-dissimilarity-in-verses" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Words dissimilarity in verses<a href="text-network-analysis.html#words-dissimilarity-in-verses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The inverse of the concept of similarity is the concept of distance in text. How different are any two verses in a set of verses, such as in a Surah will be?</p>
+<p>In linear algebra, the measure is the simple Euclidean distance of two vectors.<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a> There are few options in <em>textstat_dist()</em> function in <em>quanteda</em> besides <em>euclidean</em>, like <em>minkowski</em><a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a> and <em>manhattan</em><a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a>. We will use <em>manhattan</em>, because it is the most amplified version of distance.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="text-network-analysis.html#cb198-1" tabindex="-1"></a>tstdis_kahf <span class="ot">=</span> <span class="fu">textstat_dist</span>(dfm_kahf, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb198-2"><a href="text-network-analysis.html#cb198-2" tabindex="-1"></a>               <span class="at">margin =</span> <span class="st">&quot;documents&quot;</span>,</span>
+<span id="cb198-3"><a href="text-network-analysis.html#cb198-3" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;manhattan&quot;</span>)</span>
+<span id="cb198-4"><a href="text-network-analysis.html#cb198-4" tabindex="-1"></a>tstdis_kahf <span class="ot">=</span> <span class="fu">as.data.frame</span>(tstdis_kahf)</span>
+<span id="cb198-5"><a href="text-network-analysis.html#cb198-5" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(</span>
+<span id="cb198-6"><a href="text-network-analysis.html#cb198-6" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(tstdis_kahf)), </span>
+<span id="cb198-7"><a href="text-network-analysis.html#cb198-7" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">scale</span>(tstdis_kahf<span class="sc">$</span>manhattan, <span class="at">scale =</span> F)), </span>
+<span id="cb198-8"><a href="text-network-analysis.html#cb198-8" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;#54B660&quot;</span>) <span class="sc">+</span></span>
+<span id="cb198-9"><a href="text-network-analysis.html#cb198-9" tabindex="-1"></a>              <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Edges&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Distance Score&quot;</span>,</span>
+<span id="cb198-10"><a href="text-network-analysis.html#cb198-10" tabindex="-1"></a>                   <span class="at">title =</span> <span class="st">&quot;Verses Distance for Surah Al-Kahf&quot;</span>,</span>
+<span id="cb198-11"><a href="text-network-analysis.html#cb198-11" tabindex="-1"></a>                   <span class="at">subtitle =</span> <span class="st">&quot;Using Manhattan Measures&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig723"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig723-1.png" alt="Verses distance for Surah Al-Kahf using manhattan measures" width="576" />
+<p class="caption">
+Figure 7.23: Verses distance for Surah Al-Kahf using manhattan measures
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch7fig724"></span>
+<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig724-1.png" alt="Verses with high distances for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 7.24: Verses with high distances for Surah Al-Kahf
+</p>
+</div>
+<p>Figures <a href="text-network-analysis.html#fig:ch7fig723">7.23</a> and <a href="text-network-analysis.html#fig:ch7fig724">7.24</a> guide us to check why verse 45 is very different than verse 29. Many similar exercises are possible by extracting out the data (as plotted) and analyzing them in whichever ways a researcher deems suitable.</p>
+<p>The methods of similarity and distance are different from sentiment scoring in Chapter 3. Here the focus is on similar words existing in two different sentences. The more the similarity is, the higher the cosine (or other similarity measures) is. If there is no word matching, then the higher the distance is (measured by euclidean or manhattan scores).</p>
+<p>We will not repeat the exercises for Surah Maryam and we also will not do similar exercises on Yusuf Ali for brevity. We leave it for readers’ own exercise using the <strong>R</strong> codes enclosed together with the book.</p>
+</div>
+<div id="summary-chapter-7" class="section level2 hasAnchor" number="7.10">
+<h2><span class="header-section-number">7.10</span> Summary<a href="text-network-analysis.html#summary-chapter-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have demonstrated using the <em>quanteda</em> package how to work with various NLP tasks for the Saheeh English translation of Al-Quran. The applications can be extended to include all other versions of English translations and non-English translations using the methods shown. One point to emphasize is, we have used tools that are language-model independent. None of the methods shown require any assumptions of pre-built models of a language (except for the use of pre-built stopwords). These are non-parametric methods that we promoted as the basis for unsupervised learning methods, which is a fast-developing area in the applications for NLP tasks.</p>
+<p>We have provided only glimpses of what are the possible tools and methods, which a researcher of Quran Analytics can take further. We provide some suggestions here.</p>
+<ol style="list-style-type: decimal">
+<li><p>Expand the usage of the tools to develop methods of analysis based on the objective of linguistics and analytical studies for translations of Al-Quran and benchmark it against linguistic models (for the selected language) and against the original text of Al-Quran.</p></li>
+<li><p>Network models of texts are versatile and expandable in many directions, as a non-parametric approach and application of graph theory or network science algorithms.</p></li>
+<li><p>Language, which consists of words as one of its basic elements, can be viewed as a system or systems. Network models of language allow us to study language from the perspective of network dynamics and systems theory.</p></li>
+<li><p>Tools of NLP in <strong>R</strong> such as <em>quanteda</em> are extremely versatile because they do not force us to make prior underlying assumptions. We can just let the statistical results and visuals open up interesting questions that we can explore further.</p></li>
+</ol>
+</div>
+<div id="further-readings-6" class="section level2 hasAnchor" number="7.11">
+<h2><span class="header-section-number">7.11</span> Further readings<a href="text-network-analysis.html#further-readings-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>quanteda</em> package documentation (<a href="https://quanteda.io" class="uri">https://quanteda.io</a>).</p>
+<p><em>quanteda</em> manual and guides <span class="citation">(<a href="#ref-quanteda">Benoit et al. 2018</a>)</span></p>
+<p>Ban, K., Meštrović, A., and Martincic-Ipsic, S. (2014). <em>Initial comparison of linguistic networks measures for parallel texts</em> <span class="citation">(<a href="#ref-ban2014">Ban, Meštrović, and Martincic-Ipsic 2014</a>)</span>.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ban2014" class="csl-entry">
+Ban, Kristina, Ana Meštrović, and Sanda Martincic-Ipsic. 2014. <span>“Initial Comparison of Linguistic Networks Measures for Parallel Texts,”</span> May.
+</div>
+<div id="ref-quanteda" class="csl-entry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Paul Nulty, Adam Obeng, Stefan Müller, and Akitaka Matsuo. 2018. <em>Quanteda: An r Package for the Quantitative Analysis of Textual Data</em>. <a href="https://cran.r-project.org/web/packages/quanteda/index.html">https://cran.r-project.org/web/packages/quanteda/index.html</a>.
+</div>
+<div id="ref-blaheta2001" class="csl-entry">
+Blaheta, Don, and Mark Johnson. 2001. <span>“From Taxonomies over Ontologies to Knowledge Graphs.”</span> Available at <a href="http://web.science.mq.edu.au/~mjohnson/papers/2001/dpb-colloc01.pdf" class="uri">http://web.science.mq.edu.au/~mjohnson/papers/2001/dpb-colloc01.pdf</a> (2021/02/16).
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="78">
+<li id="fn78"><p>Lexical semantics, Oxford research encyclopedias; <a href="https://oxfordre.com/linguistics/view/10.1093/acrefore/9780199384655.001.0001/acrefore-9780199384655-e-29" class="uri">https://oxfordre.com/linguistics/view/10.1093/acrefore/9780199384655.001.0001/acrefore-9780199384655-e-29</a><a href="text-network-analysis.html#fnref78" class="footnote-back">↩︎</a></p></li>
+<li id="fn79"><p>For general reference, readers should refer to the quanteda documentation and tutorials at <a href="https://quanteda.io/index.html" class="uri">https://quanteda.io/index.html</a><a href="text-network-analysis.html#fnref79" class="footnote-back">↩︎</a></p></li>
+<li id="fn80"><p>We do not enclose the plots here to save space. Readers can repeat the same exercise using the enclosed code to check the results for themselves.<a href="text-network-analysis.html#fnref80" class="footnote-back">↩︎</a></p></li>
+<li id="fn81"><p>The figure is obtained from Gephi; since plotting a large network of this size is not efficient in <strong>R</strong><a href="text-network-analysis.html#fnref81" class="footnote-back">↩︎</a></p></li>
+<li id="fn82"><p>Please refer to <a href="https://en.wikipedia.org/wiki/Watts–Strogatz_model" class="uri">https://en.wikipedia.org/wiki/Watts–Strogatz_model</a>, for a quick guide.<a href="text-network-analysis.html#fnref82" class="footnote-back">↩︎</a></p></li>
+<li id="fn83"><p><span class="citation">Ban, Meštrović, and Martincic-Ipsic (<a href="#ref-ban2014">2014</a>)</span><a href="text-network-analysis.html#fnref83" class="footnote-back">↩︎</a></p></li>
+<li id="fn84"><p>This is a very important phenomenon that requires deeper interpretations. Just imagine web pages of the Internet, whereby every page is directly or indirectly connected to every other page on the network. We know that this is not true in the case of the Internet.<a href="text-network-analysis.html#fnref84" class="footnote-back">↩︎</a></p></li>
+<li id="fn85"><p>Tests using unsupervised learning LSTM Neural Network model was done by the first author; the results of which are not fully ready for publication at the time of this writing.<a href="text-network-analysis.html#fnref85" class="footnote-back">↩︎</a></p></li>
+<li id="fn86"><p>Refer to verse 2:23<a href="text-network-analysis.html#fnref86" class="footnote-back">↩︎</a></p></li>
+<li id="fn87"><p>Modularity algorithm is dependent on its setting of resolution limits, which determines how small the communities we want to detect. In our case here we set it to 1, which is the standard limit.<a href="text-network-analysis.html#fnref87" class="footnote-back">↩︎</a></p></li>
+<li id="fn88"><p>For more on fractal properties, please refer to <a href="https://en.wikipedia.org/wiki/Fractal" class="uri">https://en.wikipedia.org/wiki/Fractal</a>.<a href="text-network-analysis.html#fnref88" class="footnote-back">↩︎</a></p></li>
+<li id="fn89"><p><a href="https://en.wikipedia.org/wiki/Euclidean_distance" class="uri">https://en.wikipedia.org/wiki/Euclidean_distance</a><a href="text-network-analysis.html#fnref89" class="footnote-back">↩︎</a></p></li>
+<li id="fn90"><p><a href="https://en.wikipedia.org/wiki/Minkowski_distance" class="uri">https://en.wikipedia.org/wiki/Minkowski_distance</a><a href="text-network-analysis.html#fnref90" class="footnote-back">↩︎</a></p></li>
+<li id="fn91"><p><a href="https://xlinux.nist.gov/dads/HTML/manhattanDistance.html" class="uri">https://xlinux.nist.gov/dads/HTML/manhattanDistance.html</a><a href="text-network-analysis.html#fnref91" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="text-and-knowledge-modeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="text-classification-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

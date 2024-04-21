@@ -84,16 +84,17 @@ pos_plotter = function(df_udp, surah_no_input,title_label){
                         legend.position = "top") +
                   ylim(0,0.35) +
                   labs(title = title_label,
-                     x = "UPOS", y = "percentage")
+                     x = "UPOS", y = "Percentage")+
+    theme(plot.background = element_rect(color = "black"))+
+    scale_y_continuous(labels = scales::percent)
+    
 }
 ```
 \normalsize
 
 First, let us plot the POS percentages for the entire text.
 
-
-
-```{r ch5fig501, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for the entire text"}
+```{r ch5fig501, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for the entire text"}
 all_surah = as.character(1:114)
 p1 = pos_plotter(QSI_udp,all_surah,"Saheeh")  + theme(legend.position = "none")
 p2 = pos_plotter(QYA_udp,all_surah,"Yusuf Ali")  + theme(legend.position = "none")
@@ -101,37 +102,27 @@ cowplot::plot_grid(p1,p2)
 ```
 
 
-
 From Figure \@ref(fig:ch5fig501), we can see that both Saheeh and Yusuf Ali prominently use nouns, pronouns, verbs, and adpositions almost similarly (based on the observation for the texts, the full sample size). However, in the case of punctuation, Yusuf Ali tends to be higher than Saheeh. As indicated by linguists, usage of more punctuation indicates the possible difference between the literary English of Yusuf Ali compared to Saheeh (possibly due to the American English of Saheeh).
 
-
-
-
-```{r ch5fig502, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs"}
+```{r ch5fig502, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs"}
 p1 = pos_plotter(QSI_udp,early_surah_no,"Saheeh")
 p2 = pos_plotter(QYA_udp,early_surah_no,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
 
-
-```{r ch5fig503, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs"}
+```{r ch5fig503, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs"}
 p1 = pos_plotter(QSI_udp,mid_surah_no,"Saheeh")
 p2 = pos_plotter(QYA_udp,mid_surah_no,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
 
-
-
-```{r ch5fig504, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS in Saheeh and Yusuf Ali for last Surahs"}
+```{r ch5fig504, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS in Saheeh and Yusuf Ali for last Surahs"}
 p1 = pos_plotter(QSI_udp,last_surah_no,"Saheeh")
 p2 = pos_plotter(QYA_udp,last_surah_no,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
-
-
-
 
 
 The plots resulting from the codes are in Figure \@ref(fig:ch5fig502), Figure \@ref(fig:ch5fig503), and Figure \@ref(fig:ch5fig504). They refer to the long Surahs, medium Surahs, and short Surahs (the last few). We will make some observations based on just visualizing the plots. 
@@ -169,45 +160,34 @@ Yusuf Ali is consistently higher than Saheeh in most categories: punctuation, no
 Clearly, the English translation (represented by Saheeh and Yusuf Ali) is starkly different compared to the Arabic when it comes to the lexical composition (which is probably obvious, due to the difference between English and Arabic). However, is the difference due to the efforts of translating compact Arabic texts to English, or is it due to the compactness of meaning? The first difference is purely a question of lexical styles, whilst the second one is a question of semantics and pragmatics of the language and texts. The answer to this question is non-trivial and requires deeper research.
 
 
-
-
-```{r ch5fig505, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the entire text"}
+```{r ch5fig505, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the entire text"}
 p1 = pos_plotter(QSI_udp,all_surah,"Saheeh")  + theme(legend.position = "none")
 p2 = pos_plotter(QAR_udp,all_surah,"Arabic")  + theme(legend.position = "none")
 cowplot::plot_grid(p1,p2)
 ```
 
 
-
 Based on the analysis here, we can provide some suggestions, which are evident (visually) through the plots of the statistics of the POS tags as presented in Figure \@ref(fig:ch5fig505). For this purpose, we made some comparisons between Saheeh and Arabic (we left out Yusuf Ali for brevity) and included comparisons for the various Surahs' groupings in Figure \@ref(fig:ch5fig506), Figure \@ref(fig:ch5fig507), and Figure \@ref(fig:ch5fig508) for the readers to make some sense out of it.
 
 
-
-```{r ch5fig506, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the early Surahs"}
+```{r ch5fig506, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the early Surahs"}
 p1 = pos_plotter(QSI_udp,early_surah_no, "Saheeh")
 p2 = pos_plotter(QAR_udp,early_surah_no, "Arabic")
 cowplot::plot_grid(p1,p2)
 ```
 
 
-
-
-```{r ch5fig507, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the middle Surahs"}
+```{r ch5fig507, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the middle Surahs"}
 p1 = pos_plotter(QSI_udp,mid_surah_no, "Saheeh")
 p2 = pos_plotter(QAR_udp,mid_surah_no, "Arabic")
 cowplot::plot_grid(p1,p2)
 ```
 
-
-
-
-```{r ch5fig508, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the last Surahs"}
+```{r ch5fig508, fig.align="center",fig.height=4,fig.width=8, echo=F,warning=F, fig.cap="Percentage of POS categories in Saheeh and Arabic for the last Surahs"}
 p1 = pos_plotter(QSI_udp,last_surah_no,"Saheeh")
 p2 = pos_plotter(QAR_udp,last_surah_no,"Arabic")
 cowplot::plot_grid(p1,p2)
 ```
-
-
 
 Finally, we leave with the following question: what do all these meant when translating the Quranic Arabic to the English language (and other languages for that matter)? At least we may say so from the semantic styles point of view, as indicated by many Islamic scholars that Al-Quran has a special language [@saeh2015]. But is it also true for lexical and syntactic styles? Furthermore, does the semantic richness of the Arabic used in Al-Quran, together with the lexical and syntactic richness combined, result in texts which produce higher-level meanings, implying that to learn Al-Quran, one must rely only on the original Arabic text?
 
@@ -218,8 +198,6 @@ General comparisons as provided in this section open more questions than answers
 Now we will explore in more detail the observations made in the previous section, applied to a specific Surah, Surah Yusuf. The choice of Surah Yusuf is made consciously with the knowledge that the Surah contains one major story, namely that of Prophet Yusuf (Joseph).
 
 We will start by plotting the POS tags statistics for the Surah Yusuf from Saheeh and Yusuf Ali.
-
-
 
 ```{r ch5fig509, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Percentage of POS categories in Surah Yusuf"}
 
@@ -234,14 +212,16 @@ abc_df = bind_rows(a,b)
 
 abc_df %>%      
 ggplot(aes(x = as.factor(upos), y=prop, color = version)) +
-                  geom_point() + scale_color_brewer(palette = "Dark2") +
+                  geom_point() + 
+                  scale_color_manual(values = c('saheeh' = 'red','yusufali' = 'blue'))+
+  # scale_color_brewer(palette = "Dark2") +
+                  # theme_bw()+
                   theme(axis.text.x = element_text(angle = 90), 
                         legend.position = "top") +
                   ylim(0,0.3) +
-                  labs(x = "UPOS", y = "percentage")
+                  labs(x = "UPOS", y = "Percentage")+
+                  scale_y_continuous(labels = scales::percent)
 ```
-
-
 
 As evident from Figure \@ref(fig:ch5fig509), the differences in lexical styles between Saheeh and Yusuf Ali are not that obvious, except for the fact that Yusuf Ali used more punctuations, which is the same observation made for the entire Quran (as in Figure \@ref(fig:ch5fig501)).
 
@@ -287,34 +267,21 @@ gg_plotter1 = function(grf_plot){
 ```
 \normalsize
 
-
-
-
-
 ```{r ch5fig510, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Co-occurrence network for top relations in Surah Yusuf for Saheeh"}
 set.seed(1234)
 gg_plotter1(QSI_cooc_g)
 ```
-
-
-
-
 
 ```{r ch5fig511, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali"}
 set.seed(2345)
 gg_plotter1(QYA_cooc_g)
 ```
 
-
-
 The plots in Figure \@ref(fig:ch5fig510) and Figure \@ref(fig:ch5fig511) are networks of words that co-occur frequently within Surah Yusuf. The nodes (the words), which are sized to their frequency of appearances, are linked by the edges, which are sized to the number of times the co-occurrence occurs. Clearly in the Saheeh and Yusuf Ali version, "say", "Allah" and "Joseph" are higher by both counts. This is similar to the bigrams we did earlier with one major difference: we tag the words in accordance to its dependency parser and no stopwords are removed from the texts.^[This is an important point to be made since we alluded to earlier that removal of stopwords while being practiced frequently in NLP analysis, is non-trivial; and should only be used as a last resort rather than by default.]
 
 ### Arc method of visualization
 
 Graphs, in the sense of graph theory, represent a powerful mathematical concept as well as a beautiful way of visualizing data. Here we present a few different ways of presenting the same data but using different layouts.
-
-
-
 
 ```{r ch5fig512, fig.align="center",fig.height=3,fig.width=4, echo=T,warning=F, fig.cap="Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh"}
 ggraph(QSI_cooc_g, layout = 'linear') + 
@@ -324,10 +291,6 @@ ggraph(QSI_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-
-
-
-
 ```{r ch5fig513, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali"}
 ggraph(QYA_cooc_g, layout = 'linear') + 
     geom_edge_arc(color = "gold3", width=0.5) +
@@ -336,14 +299,9 @@ ggraph(QYA_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-
-
 Figure \@ref(fig:ch5fig512) and Figure \@ref(fig:ch5fig513), are "arc" layouts, which organize the links in a "conversational" manner. We can observe that Saheeh's groupings of relations differ from Yusuf Ali's (from the organization of the arcs). The question is which one is nearer to the original texts (as shown in Figure \@ref(fig:ch5fig514)). We let the readers make their own judgment!
 
 What we want to show is there are many tools besides pure statistical analysis to see the lexical styles of texts, and possibly the semantic styles, by just observations through visualizations.
-
-
-
 
 ```{r ch5fig514, fig.align="center",fig.height=3,fig.width=4, echo=F,warning=F, fig.cap="Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic"}
 ggraph(QAR_cooc_g, layout = 'linear') + 
@@ -353,12 +311,7 @@ ggraph(QAR_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-
-
 ### Circular method of visualization
-
-
-
 
 ```{r ch5fig515, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh"}
 ggraph(QSI_cooc_g, layout = 'linear', circular = TRUE) + 
@@ -370,9 +323,6 @@ ggraph(QSI_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-
-
-
 ```{r ch5fig516, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali"}
 ggraph(QYA_cooc_g, layout = 'linear', circular = TRUE) + 
      geom_edge_arc(color = "gold3", width=0.5) +
@@ -383,16 +333,9 @@ ggraph(QYA_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-
-
-
-
 Figure \@ref(fig:ch5fig515) and Figure \@ref(fig:ch5fig516), are circular layouts that provide another perspective of viewing, like a round-table discussion. Do the two "round tables" (Saheeh versus Yusuf Ali) look the same? We can say that they are close, but not  the same. This is an example of the subtle differences in the "semantic meaning" (and may also be pragmatic meaning) of the texts.
 
 For benchmarking, let us just compare both to the Arabic version in Figure \@ref(fig:ch5fig517) and we let the readers make their own judgment.
-
-
-
 
 ```{r ch5fig517, fig.align="center",fig.height=4,fig.width=6, echo=F,warning=F, fig.cap="Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts"}
 ggraph(QAR_cooc_g, layout = 'linear', circular = TRUE) + 
@@ -404,17 +347,11 @@ ggraph(QAR_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-
-
-
-
 ### Grouping of co-occurences
 
 Next, we can ask, do these words which co-occur highly have their groupings? We know offhand that there are few nodes (words) that will have links to many other words, but we want to see whether all these "smaller" nodes (words of lesser prominence) are grouped in a certain manner.
 
 This is easily visualized through graph clustering algorithms. We will show two different methods of "graph clustering", one is based on the _fastgreedy_ algorithm.
-
-
 
 
 ```{r ch5fig518, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Groupings by fastgreedy in Surah Yusuf for Saheeh"}
@@ -431,8 +368,6 @@ plot(QSI_cooc_g, vertex.color=vertex_attr(QSI_cooc_g)$cor,
 ```
 
 
-
-
 ```{r ch5fig519, fig.align="center",fig.height=4,fig.width=6, echo=T,warning=F, fig.cap="Groupings by fastgreedy in Surah Yusuf for Yusuf Ali"}
 fc2 <- fastgreedy.community(simplify(as.undirected(QYA_cooc_g)))
 set.seed(2345)
@@ -445,10 +380,6 @@ plot(QYA_cooc_g, vertex.color=vertex_attr(QYA_cooc_g)$cor,
       mark.groups = fc2, 
       mark.border=NA)
 ```
-
-
-
-
 
 Figure \@ref(fig:ch5fig518) and Figure \@ref(fig:ch5fig519) show the groupings by the colors. To interpret these visuals, we use the analogy of people in a large ballroom having conversations or hearing conversations. Are there any groupings between the people (denoted by the color schemes)? The larger nodes represent people who speak more than the smaller nodes, and a set of colors represent the sub-groupings of people. Based on this analogy, we can see that Saheeh differs from Yusuf Ali to some degree. What this implies is that the differences between Saheeh and Yusuf Ali are beyond lexical, syntactic, and semantic, rather it goes towards pragmatic (i.e. dynamics of conversations) as well.
 
@@ -467,14 +398,10 @@ cooccur <- cooccurrence(x = subset(x,upos %in% c("NOUN", "PROPN", "VERB",
                                                 "ADJ", "ADV", "NUM")), 
                         term = "lemma", 
                         group = c("doc_id", "paragraph_id", "sentence_id"))
-head(cooccur,10)
 ```
 \normalsize
 
 The result can be easily visualized using the _igraph_ and _ggraph_ R packages as we have seen earlier.
-
-
-
 
 ```{r ch5tut1, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Co-occurence within sentence"}
 library(igraph)
@@ -491,9 +418,6 @@ ggraph(wordnetwork, layout = "fr") +
        subtitle = "Top 100 Nouns, Names, Adjectives, Verbs, Adverbs",
        caption = "Surah Yusuf (Sahih International)")
 ```
-
-
-
 
 
 The network graph shows the main words used in the Surah as nodes. The nouns and proper nouns like Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez) make up the main characters in this revealed story. The strength or influence of each word (node) is visualized by the size of the circle representing the words (nodes) and the thickness of the links with other nodes. The verb "say" is a node that dominates since Surah Yusuf is a narrated story. It is interesting to see the strong link and occurrence of "know" with "Allah".
@@ -520,7 +444,6 @@ __Create graph__
     
 \footnotesize
 ``` {r}
-head(cooccur, 10)
 wordnetwork <- head(cooccur, 50)
 gm <- graph_from_data_frame(wordnetwork)
 ```
@@ -563,7 +486,7 @@ __Find nodes and edges by attribute:__
 * We can select nodes and edges based on their attributes.
 
 \footnotesize
-``` {r}
+``` {r results = 'hide'}
 V(gm)[name=="Allah"]
 E(gm)[cooc > 10][1:4]
 E(gm)[cooc > 10][5:8]
@@ -580,15 +503,9 @@ __Using igraph plots__
 
 * There are sufficient plotting functions in _igraph_ to begin with. 
 
-
-
-
 ``` {r ch5tut2, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="First plot of tutorial word network"}
 plot(gm)
 ```
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut2).
 
@@ -606,16 +523,9 @@ __Plot with curved edges (edge.curved=.1) and reduce arrow size:__
     + first one is to specify them in the plot() function, as we do below.
 * Note that using curved edges will allow you to see multiple links between two nodes (e.g. links going in either direction or multiplex links)
 
-
-
-
 ``` {r ch5tut3, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust some edge parameters"}
 plot(gm, edge.arrow.size=.4, edge.curved=.1)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut3).
 
@@ -624,22 +534,15 @@ __Set edge color to red, the node color to yellow:__
 * We can set colors by name or hex code.
 * Replace the vertex label with the node names stored in "Label"
 
-
-
-
 ``` {r ch5tut4, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust colors"}
 plot(gm, edge.arrow.size=.2, edge.color="red",
       vertex.color="yellow", vertex.frame.color="#ffffff",
       vertex.label=V(gm)$Label, vertex.label.color="black")
 ```
 
-
-
 Plot output is in Figure \@ref(fig:ch5tut4).
 
 __Compute node degrees (number of links) and use that to set node size:__
-
-
 
 
 ``` {r ch5tut5, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust node size based on its degree"}
@@ -647,8 +550,6 @@ deg <- degree(gm, mode="all")
 V(gm)$size <- deg
 plot(gm, vertex.label=V(gm)$Label)
 ```
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut5).
 
@@ -658,16 +559,9 @@ V(gm)$size <- deg
 plot(gm, vertex.size=igraph::degree(gm), vertex.label=NA)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut6).
 
 __Set edge width based on number of co-occurrences:__
-
-
-
 
 ``` {r ch5tut7, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust edge width based on number of co-occurrences"}
 E(gm)$cooc[1:10]
@@ -676,17 +570,9 @@ E(gm)$width[1:10]
 plot(gm)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut7).
 
 We change the arrow size and edge color. We introduce and set the network layout in the next code. We will show other layouts later.
-
-
-
-
 
 ``` {r ch5tut8, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust edge color and set layout"}
 #change arrow size and edge color:
@@ -696,26 +582,15 @@ graph_attr(gm, "layout") <- layout_with_fr
 plot(gm) 
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut8).
 
 Sometimes, especially with semantic networks, we plot only the labels of the nodes:
-
-
-
 
 ``` {r ch5tut9, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust nodes highlighting only labels"}
 plot(gm, vertex.shape="none", vertex.label=V(gm)$name, 
       vertex.label.font=2, vertex.label.color="blue",
       vertex.label.cex=.7, edge.color="gray85")
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut9).
 
@@ -725,24 +600,15 @@ __Color edges of graph based on their source node color:__
     + returns the start and end vertex for edges listed in the _es_ parameter.
     + names parameter controls whether the function returns edge names or IDs.
 
-
-
 ``` {r ch5tut10, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust edge color based on the source node"}
 edge.start <- ends(gm, es=E(gm), names=F)[,1]
 edge.col <- V(gm)$color[edge.start]
 plot(gm, edge.color=edge.col, edge.curved=.1)  
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut10).
 
 __Color edges of graph based on the number of co-occurrences:__
-
-
-
 
 ``` {r ch5tut11, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust edge color based on formula"}
 E(gm)[cooc <= 5]$color <- "red"
@@ -751,24 +617,13 @@ E(gm)[cooc > 10]$color <- "green"
 plot(gm)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut11).
-
-
-
 
 ``` {r ch5tut12, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Adjust layout and remove label"}
 plot(gm, vertex.size=5,
      layout=layout.fruchterman.reingold,
      vertex.label=NA)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut12).
 
@@ -781,9 +636,6 @@ Change the graph layout according to some algorithms already implemented in _igr
 * layout_with_kk
 * layout_with_sugiyama
 
-
-
-
 ``` {r ch5tut13, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using dh layout"}
 l<-layout_with_dh(gm)
 plot(gm, vertex.color=vertex_attr(gm)$cor,
@@ -794,14 +646,9 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
       layout=l)
 ```
 
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut13).
 
 __Other cool layouts:__
-
-
 
 ``` {r ch5tut14, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Layout in circle"}
 plot(gm, vertex.color=vertex_attr(gm)$cor,vertex.label=NA,
@@ -812,13 +659,7 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,vertex.label=NA,
      layout=layout_in_circle, main="layout_in_circle")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut14).
-
-
 
 ``` {r ch5tut15, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Layout as tree"}
 plot(gm, vertex.color=vertex_attr(gm)$cor,
@@ -828,14 +669,7 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_tree, main="layout_as_tree")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut15).
-
-
-
 
 ``` {r ch5tut16, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Layout as star"}
 plot(gm, vertex.color=vertex_attr(gm)$cor,
@@ -845,18 +679,12 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_star, main="layout_as_star")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut16).
 
 __Additional layouts:__
 
 * Use a simple program
 * List the available layouts and then grep to select
-
-
 
 ``` {r ch5tut17, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F,results = "hide", fig.cap="Additional layouts"}
 layouts <- grep("^layout_", ls("package:igraph"), 
@@ -870,10 +698,6 @@ for (layout in layouts) {
       plot(gm, edge.arrow.mode=0, edge.width=1, layout=l, 
            main=layout) }
 ```
-
-
-
-
 
 __Fruchterman-Reingold:__
 
@@ -889,46 +713,25 @@ __Fruchterman-Reingold:__
     + Lower that number for large graphs to get results faster and check if they look reasonable.
 * The layout can also interpret edge weights. You can set the “weights” parameter which increases the attraction forces among nodes connected by heavier edges.
 
-
-
-
 ``` {r ch5tut18, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using fr layout"}
 l <- layout_with_fr(gm)
 plot(gm, layout=l)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut18).
-
-
-
 
 ``` {r ch5tut19, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using fr layout with 50 iterations"}
 l <- layout_with_fr(gm, niter=50)
 plot(gm, layout=l)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut19).
-
-
-
 
 ``` {r ch5tut20, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using fr layout different weights"}
 ws <-  c(1, rep(100, ecount(gm)-1))
 lw <- layout_with_fr(gm, weights=ws)
 plot(gm, layout=lw)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut20).
 
@@ -941,9 +744,6 @@ __Fruchterman-Reingold Non-Deterministic:__
     - change that with the parameter _rescale=FALSE_ and rescale plot manually by multiplying the coordinates by a scalar.
     - use _norm_coords_ to normalize the plot with the boundaries you want. This way you can create more compact or spread out layout versions.
 
-
-
-
 ``` {r ch5tut21, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Each fr layout call with different outcomes"}
 par(mfrow=c(2,2), mar=c(0,0,0,0))
 plot(gm, layout=layout_with_fr)
@@ -952,14 +752,7 @@ plot(gm, layout=l)
 plot(gm, layout=l)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut21).
-
-
-
 
 ``` {r ch5tut22, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using fr layout call with manual rescaling"} 
 l <- layout_with_fr(gm)
@@ -972,10 +765,6 @@ plot(gm, rescale=F, layout=l*0.8)
 plot(gm, rescale=F, layout=l*1.0)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut22).
 
 __Kamada Kawai:__
@@ -983,17 +772,10 @@ __Kamada Kawai:__
 * Another popular force-directed algorithm that produces nice results for connected graphs.
 * Like Fruchterman Reingold, it attempts to minimize the energy in a spring system.
 
-
-
-
 ``` {r ch5tut23, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using kk layout"}
 l <- layout_with_kk(gm)
 plot(gm, layout=l)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut23).
 
@@ -1007,24 +789,13 @@ __Graphopt:__
     + spring.constant (defaults to 1).
 * Tweaking those can lead to considerably different graph layouts.
 
-
-
-
 ``` {r ch5tut24, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using graphopt layout"}
 l <- layout_with_graphopt(gm)
 plot(gm, layout=l)
 ```
-
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut24).
 
 The charge parameter below changes node repulsion:
-
-
-
 
 ``` {r ch5tut25, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using graphopt layout with different charge"}
 l1 <- layout_with_graphopt(gm, charge=0.02)
@@ -1035,10 +806,6 @@ plot(gm, layout=l1)
 plot(gm, layout=l2)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut25).
 
 ### Graph algorithms
@@ -1048,18 +815,11 @@ __LGL algorithm:__
 * Meant for large, connected graphs.
 * Here you can also specify a root, a node that will be placed in the middle of the layout.
 
-
-
-
 ``` {r ch5tut26, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using lgl layout with different roots"}
 par(mfrow=c(1,2), mar=c(1,1,1,1))
 plot(gm, layout=layout_with_lgl, root = 1)
 plot(gm, layout=layout_with_lgl, root = 5)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut26).
 
@@ -1071,16 +831,9 @@ __The MDS (multidimensional scaling) algorithm:__
 * MDS layouts are nice because positions and distances have a clear interpretation.
 * The problem with them is visual clarity: nodes often overlap, or are placed on top of each other.
 
-
-
-
 ``` {r ch5tut27, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using mds layout"}
 plot(gm, layout=layout_with_mds)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut27).
 
@@ -1096,9 +849,6 @@ Plot output is in Figure \@ref(fig:ch5tut27).
     + It is obvious from the previous plots that the nodes **"seek"** and **"seduce"** are unconnected with the rest.
     + The code below shows how to use the delete_vertices() function.
     
-
-
-
 ``` {r ch5tut28, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Communities or clusters in tutorial word network"}
 gm1 <- delete_vertices(gm, "seek")
 gm1 <- delete_vertices(gm1, "seduce")
@@ -1115,18 +865,11 @@ plot(gm1, vertex.color=vertex_attr(gm1)$cor,
      mark.border=NA)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut28).
 
 __Calculate and plot the shortest path between two nodes:__
 
 * To emphasize the path between them, we create a new color vector for interactions (edges) the same way we did before for the nodes/vertices:
-
-
-
 
 ``` {r ch5tut29, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Path from one node to another"}
 short.path <- shortest_paths(gm, from = "Joseph", to = "seven", output = "both")
@@ -1145,10 +888,6 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=l)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut29).
 
 ### Using ggraph
@@ -1159,10 +898,6 @@ Plot output is in Figure \@ref(fig:ch5tut29).
 * We can use our _igraph_ objects directly with the _ggraph_ package.
 * The following code gets the data and adds separate layers for nodes and links.
 
-
-
-
-
 ``` {r ch5tut30, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with minimal parameters set"}
 library(ggraph)
 lay = create_layout(gm, layout = "kk")
@@ -1172,16 +907,9 @@ ggraph(lay) +
   theme_graph()
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut30).
 
 __Add node names and edge type:__
-
-
-
 
 ``` {r ch5tut31, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="ggraph with node and edge parameters set"}
 ggraph(lay) + 
@@ -1191,16 +919,9 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut31).
 
 __Plot node degree as node size (and alpha):__
-
-
-
 
 ``` {r ch5tut32, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="ggraph with node size and alpha based on degree"}
 ggraph(lay) + 
@@ -1211,26 +932,15 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ``` 
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut32).
 
 __Plot edge weight as edge alpha:__
-
-
-
 
 ``` {r ch5tut33, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="ggraph with edge width and alpha based on number of co-occurrences"}
 ggraph(lay) + 
   geom_edge_link(aes(alpha = cooc)) + 
   geom_node_point()
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut33).
 
@@ -1243,9 +953,6 @@ __Layouts in ggraph:__
     + Nodes have color, fill, shape, size, and stroke.
     + Edges have color, width, and linetype.
     + alpha parameter controls transparency.
-    
-
-
 
 ``` {r ch5tut34, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with layout kk"} 
 ggraph(gm, layout="kk") +
@@ -1256,10 +963,6 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut34).
 
 __Different themes:__
@@ -1267,9 +970,6 @@ __Different themes:__
 * As in _ggplot2_, we can add different themes to the plot.
     + For a cleaner look, we can use a minimal or empty theme with theme_minimal() or theme_void().
     
-
-
-
 ``` {r ch5tut35, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with linear layout and void theme"} 
 ggraph(gm, layout = 'linear') + 
     geom_edge_arc(color = "gold3", width=0.7) +
@@ -1277,10 +977,6 @@ ggraph(gm, layout = 'linear') +
     geom_node_text(aes(label = name), repel=TRUE, size = 3) +
     theme_void()
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut35).
 
@@ -1291,8 +987,6 @@ __Mapping aesthetics:__
 * In the code below, the edge attribute type and node attribute audience.size are taken from our data as they are included in the _igraph_ object.
 
 
-
-
 ``` {r ch5tut36, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with kk layout and aes setting"}
 ggraph(gm, layout="kk") +
   geom_edge_link(aes(color = cooc)) +           
@@ -1300,19 +994,12 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut36).
 
 __Legends:__
 
 * One great thing about _ggplot2_ and _ggraph_ we can see above is that they automatically generate a legend which makes plots easier to interpret.
 * We can add a layer with node labels using geom_node_text() or geom_node_label() which correspond to similar functions in _ggplot2_.
-
-
-
 
 ``` {r ch5tut37, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with various parameter settings"}
 ggraph(gm,  layout = 'kk') +
@@ -1323,17 +1010,11 @@ ggraph(gm,  layout = 'kk') +
   theme_void()
 ```
 
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut37).
 
 __Arc and Coord:__
 
 * _ggraph_ provides some new layout types and algorithms for our drawing pleasure
-
-
-
 
 ``` {r ch5tut38, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with linear layout"}
 ggraph(gm, layout = 'linear',  circular = TRUE) + 
@@ -1342,10 +1023,6 @@ ggraph(gm, layout = 'linear',  circular = TRUE) +
      geom_node_text(aes(label = name), size=3, color="darkblue", 
                     repel=T)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut38).
 
@@ -1359,8 +1036,6 @@ __Fan:__
     + Parallel edges will be sorted by directionality before plotting so edges flowing in the same direction will be plotted together.
     
 
-
-
 ``` {r ch5tut39, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with edge fan"}
 ggraph(gm, layout = 'kk') + 
      geom_edge_fan(aes(color = cooc, width = cooc)) +
@@ -1368,10 +1043,6 @@ ggraph(gm, layout = 'kk') +
      geom_node_text(aes(label = name), size=3, color="darkred", 
                     repel=T)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut39).
 
@@ -1381,8 +1052,6 @@ __Density:__
 * We can color the edges, but edges can tend to get overplotted, thus reducing readability.
 * geom_edge_density() lets us add shading to our plot based on the density of edges in a certain area:
 
-
-
 ``` {r ch5tut40, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Using ggraph with edge density"}
 ggraph(gm, layout = 'kk') + 
      geom_edge_density(aes(fill = cooc)) + 
@@ -1390,19 +1059,12 @@ ggraph(gm, layout = 'kk') +
      geom_node_point(color="#de4e96", aes(size = igraph::degree(gm)))
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut40).
 
 __Other ways to represent a network:__
 
 * _ggraph_ offers several other interesting ways to represent networks, including dendrograms, treemaps, hive plots, and circle plots.
 * We show below a simple heatmap of our network matrix.
-
-
-
 
 ``` {r ch5tut41, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Heatmap of word network"}
 netm <- get.adjacency(gm, attr="cooc", sparse=F)
@@ -1413,17 +1075,11 @@ heatmap(netm[,17:1], Rowv = NA, Colv = NA, col = palf(100),
         scale="none", margins=c(10,10) )
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut41).
 
 __Plot the degree distribution for our network:__
 
 * Depending on what properties of the network or its nodes and edges are most important to us, simple graphs can often be more informative.
-
-
 
 
 ``` {r ch5tut42, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Degree distribution of word network"}
@@ -1432,10 +1088,6 @@ plot( x=0:max(degree(gm)), y=1-deg.dist, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut42).
 
 ## Fun with network graphs {#fun-with-network-graphs}
@@ -1443,9 +1095,6 @@ Plot output is in Figure \@ref(fig:ch5tut42).
 Let us have some light moments working with network graphs. We have seen the various network layout options, and also for geom_edge_density, geom_edge_link, geom_node_point, geom_node_text. Different combinations of these options can result in interesting and fun ways to represent network graph data.
 
 Digital art is one interesting aspect of visualizing data. We will show an example in this section. For that, we increase the network size of the word co-occurrences in Surah Yusuf and explore.
-
-
-
 
 ``` {r ch5tut43, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Larger network density with labels"}
 wordnetwork <- head(cooccur, 100)
@@ -1458,10 +1107,7 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-
-
 Plot output is in Figure \@ref(fig:ch5tut43).
-
 
 ``` {r ch5tut44, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Larger network density without labels"}
 ggraph(gm1, layout = 'kk') + 
@@ -1472,16 +1118,9 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut44).
 
 We remove the title and legend. We encourage our readers to try different combinations of colors, alphas, and network size. Surah Yusuf is a beautiful Surah. The word co-occurrence network of this Surah looks quite pretty too.
-
-
-
 
 ``` {r ch5tut45, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Digital art from Surah Yusuf"}
 ggraph(gm1, layout = 'kk') + 
@@ -1491,16 +1130,9 @@ ggraph(gm1, layout = 'kk') +
                       colour = "#a83268", show.legend = FALSE)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut45).
 
 We now use the linear layout with the circular parameter set to TRUE to give a circular effect.
-
-
-
 
 ``` {r ch5tut46, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Word network with circular layout"}
 ggraph(gm1, layout = 'linear', circular = TRUE) + 
@@ -1512,17 +1144,11 @@ ggraph(gm1, layout = 'linear', circular = TRUE) +
      ggtitle("Network of Top 100 Words")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut46).
 
 ### Working with a bigger graph
 
 We increase the word network for Surah Yusuf to 2000 co-occurrences or edges.
-
-
 
 ``` {r ch5tut47, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Larger word network with kk layout and edge density"}
 wordnetwork <- head(cooccur, 2000)
@@ -1536,15 +1162,9 @@ ggraph(jg, layout = 'kk') +
       ggtitle("Data Art of Top 2000 Coccurrences")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut47).
 
 Does the plot above show all the 421 nodes as connected? We can do other analyses.
-
-
 
 ``` {r}
 is.connected(jg) # Is it connected?
@@ -1555,39 +1175,21 @@ max(degree(jg, mode="out"))
 max(degree(jg, mode="all"))
 ```
 
-
-
-
 ``` {r ch5tut48, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Larger word network with kk layout and edge-in density"}
 # In-degree distribution
 plot(degree.distribution(jg, mode="in"), log="xy")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut48).
-
-
-
 
 ``` {r ch5tut49, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Larger word network with kk layout and edge-out density"}
 # Out-degree distribution
 plot(degree.distribution(jg, mode="out"), log="xy")
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut49).
 
-
 _is.connected(jg)_ being FALSE says that there are some nodes that are not connected.
-
-
-
 
 ``` {r ch5tut50, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="One big cluster and unconnected nodes"}
 lay = create_layout(jg, layout = "fr")
@@ -1596,9 +1198,6 @@ ggraph(lay) +
    geom_node_point() +
    geom_node_text(aes(label = name), size = 3)
 ```
-
-
-
 
 
 The rather ugly Figure \@ref(fig:ch5tut50) shows the 4 nodes. Let us delete and repeat the cluster analysis. But instead of using the delete_vertices() function like in an earlier example, we just use the main component. First, we find the components and then subset the graph based on those components. In _igraph_ the largest component is not always the first one with id == 1.
@@ -1627,9 +1226,6 @@ E(jg2)[6:10]
 
 ### Community structure detection
 
-
-
-
 ``` {r ch5tut51, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Communities within the large fully connected network"}
 fc <- fastgreedy.community(simplify(as.undirected(jg2)))
 plot(jg2, vertex.color=vertex_attr(jg2)$cor,
@@ -1641,10 +1237,6 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.groups = fc, 
       mark.border=NA)
 ```
-
-
-
-
 
 Plot output is in Figure \@ref(fig:ch5tut51).
 
@@ -1663,9 +1255,6 @@ The _igraph_ documentation^[https://igraph.org/r/doc/] lists the following for c
 
 Let us explore cluster_edge_betweenness. We can see a pleasing digital art representing the words in Surah Yusuf.
 
-
-
-
 ``` {r ch5tut52, fig.align="center",fig.height=4,fig.width=6, echo=T, warning=F, fig.cap="Another piece of art from Surah Yusuf"}
 fc <- cluster_edge_betweenness(simplify(as.undirected(jg2)))
 plot(jg2, vertex.color=vertex_attr(jg2)$cor,
@@ -1678,10 +1267,6 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-
-
-
-
 Plot output is in Figure \@ref(fig:ch5tut52).
 
 ## Summary {#chapter-5-summary}
@@ -1691,7 +1276,6 @@ Our work on Quran Analytics relies heavily on the use of network graphs. In this
 We strongly recommend our users experiment with the different parameters and functions from _ggraph_ based on the sample network graphs from Surah Yusuf that we showed how to create in this chapter. It is important to have a working knowledge of network graphs to follow the coming chapters. Network graphs have applications in many other subject matters, so our readers will benefit much from this knowledge.
 
 We will explore the _tidygraph_ package and also some of the numerical analysis on network graphs like measures of centrality, in the next chapter. We have seen in the final example, concepts like “hub” (most central node) and “spread” for our Surah Yusuf word co-occurrence network that is similar to virus networks.
-
 
 ## Further readings
 

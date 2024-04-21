@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Text Classification Models | Quran Analytics with R</title>
+  <meta name="description" content="8 Text Classification Models | Quran Analytics with R" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Text Classification Models | Quran Analytics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Text Classification Models | Quran Analytics with R" />
+  
+  
+  
+
+<meta name="author" content="Wan M Hasni and Azman Hussin" />
+
+
+<meta name="date" content="2024-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="text-network-analysis.html"/>
+<link rel="next" href="knowledge-through-verse-network.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quran Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-first-author.html"><a href="preface-from-the-first-author.html"><i class="fa fa-check"></i>Preface From the First Author</a></li>
+<li class="chapter" data-level="" data-path="preface-from-the-second-author.html"><a href="preface-from-the-second-author.html"><i class="fa fa-check"></i>Preface From the Second Author</a></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html"><i class="fa fa-check"></i><b>1</b> Introducing Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quran-analytics"><i class="fa fa-check"></i><b>1.1</b> Quran Analytics</a></li>
+<li class="chapter" data-level="1.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-studies"><i class="fa fa-check"></i><b>1.2</b> Quranic Studies</a></li>
+<li class="chapter" data-level="1.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#quranic-language-and-studies"><i class="fa fa-check"></i><b>1.3</b> Quranic language and linguistic studies</a></li>
+<li class="chapter" data-level="1.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#computational-linguistics"><i class="fa fa-check"></i><b>1.4</b> Computational Linguistics</a></li>
+<li class="chapter" data-level="1.5" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#natural-language-processing"><i class="fa fa-check"></i><b>1.5</b> Natural Language Processing (NLP)</a></li>
+<li class="chapter" data-level="1.6" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#programming-language-in-NLP"><i class="fa fa-check"></i><b>1.6</b> Programming language in NLP</a></li>
+<li class="chapter" data-level="1.7" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#advancements-in-NLP-and-quran-analytics"><i class="fa fa-check"></i><b>1.7</b> Advancements in NLP and Quran Analytics</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#common-NLP-tasks"><i class="fa fa-check"></i><b>1.7.1</b> Common NLP tasks</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#available-resources-for-digital-quranic-studies"><i class="fa fa-check"></i><b>1.7.2</b> Available resources for digital Quranic studies</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#nlp-works-on-english-translations-of-al-quran"><i class="fa fa-check"></i><b>1.7.3</b> NLP works on English translations of Al-Quran</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#complex-nlp-tasks-for-quran-analytics"><i class="fa fa-check"></i><b>1.7.4</b> Complex NLP tasks for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#why-use-R"><i class="fa fa-check"></i><b>1.8</b> Why use R?</a></li>
+<li class="chapter" data-level="1.9" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#focus-of-this-book"><i class="fa fa-check"></i><b>1.9</b> Focus of this book</a></li>
+<li class="chapter" data-level="1.10" data-path="introducing-quran-analytics.html"><a href="introducing-quran-analytics.html#further-readings"><i class="fa fa-check"></i><b>1.10</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-frequencies.html"><a href="analysis-of-words-by-its-frequencies.html"><i class="fa fa-check"></i>Analysis of Words by its Frequencies</a></li>
+<li class="chapter" data-level="2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html"><i class="fa fa-check"></i><b>2</b> Word Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#R-packages-and-data-used"><i class="fa fa-check"></i><b>2.1</b> R packages and data used</a></li>
+<li class="chapter" data-level="2.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#wordcloud-analysis"><i class="fa fa-check"></i><b>2.2</b> Wordclouds analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#analyzing-word-and-document-frequency"><i class="fa fa-check"></i><b>2.3</b> Analyzing word and document frequency</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#term-frequency-in-english-quran"><i class="fa fa-check"></i><b>2.3.1</b> Term frequency in English Quran</a></li>
+<li class="chapter" data-level="2.3.2" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#the-bind_tf_idf-function"><i class="fa fa-check"></i><b>2.3.2</b> The <em>bind_tf_idf</em> function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#zipfs-law"><i class="fa fa-check"></i><b>2.4</b> Zipf’s law</a></li>
+<li class="chapter" data-level="2.5" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-high-occurrence-and-stopwords"><i class="fa fa-check"></i><b>2.5</b> Words of high occurrence and stopwords</a></li>
+<li class="chapter" data-level="2.6" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-of-rare-occurrence"><i class="fa fa-check"></i><b>2.6</b> Words of rare occurrence</a></li>
+<li class="chapter" data-level="2.7" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#words-with-medium-occurrence"><i class="fa fa-check"></i><b>2.7</b> Words with medium occurrence</a></li>
+<li class="chapter" data-level="2.8" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#chapter-2-summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.9" data-path="word-frequency-analysis.html"><a href="word-frequency-analysis.html#further-readings-1"><i class="fa fa-check"></i><b>2.9</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html"><i class="fa fa-check"></i><b>3</b> Word Scoring Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#preprocessing-the-data"><i class="fa fa-check"></i><b>3.1</b> Preprocessing the data</a></li>
+<li class="chapter" data-level="3.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-with-tidy-data"><i class="fa fa-check"></i><b>3.2</b> Sentiment analysis with tidy data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-models"><i class="fa fa-check"></i><b>3.2.1</b> Sentiment scoring models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#bing-scoring-model"><i class="fa fa-check"></i><b>3.2.2</b> <em>bing</em> scoring model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#afinn-scoring-model"><i class="fa fa-check"></i><b>3.2.3</b> <em>AFINN</em> scoring model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-analysis-within-the-surahs"><i class="fa fa-check"></i><b>3.3</b> Sentiment analysis within the Surahs</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#wordcloud-analysis-1"><i class="fa fa-check"></i><b>3.3.1</b> Wordcloud analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#statistics-of-sentiment-score"><i class="fa fa-check"></i><b>3.4</b> Statistics of sentiment score</a></li>
+<li class="chapter" data-level="3.5" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#sentiment-scoring-frequencies"><i class="fa fa-check"></i><b>3.5</b> Sentiment scoring frequencies</a></li>
+<li class="chapter" data-level="3.6" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#building-dedicated-sentiment-scoring-model"><i class="fa fa-check"></i><b>3.6</b> Building dedicated sentiment scoring model</a></li>
+<li class="chapter" data-level="3.7" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#summary-chapter-3"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="word-scoring-analysis.html"><a href="word-scoring-analysis.html#further-readings-2"><i class="fa fa-check"></i><b>3.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-words-by-its-cooccurences.html"><a href="analysis-of-words-by-its-cooccurences.html"><i class="fa fa-check"></i>Analysis of Words by its Cooccurences</a></li>
+<li class="chapter" data-level="4" data-path="word-collocations.html"><a href="word-collocations.html"><i class="fa fa-check"></i><b>4</b> Word Collocations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-word-collocations"><i class="fa fa-check"></i><b>4.1</b> Analyzing word collocations</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="word-collocations.html"><a href="word-collocations.html#analyzing-bi-grams"><i class="fa fa-check"></i><b>4.1.1</b> Analyzing bi-grams</a></li>
+<li class="chapter" data-level="4.1.2" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-a-network-of-bigrams-with-ggraph"><i class="fa fa-check"></i><b>4.1.2</b> Visualizing a network of bigrams with <em>ggraph</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="word-collocations.html"><a href="word-collocations.html#tri-grams"><i class="fa fa-check"></i><b>4.1.3</b> Tri-grams</a></li>
+<li class="chapter" data-level="4.1.4" data-path="word-collocations.html"><a href="word-collocations.html#bigrams-co-ocurrences-and-correlations"><i class="fa fa-check"></i><b>4.1.4</b> Bigrams co-ocurrences and correlations</a></li>
+<li class="chapter" data-level="4.1.5" data-path="word-collocations.html"><a href="word-collocations.html#visualizing-correlations-of-bigrams-of-keywords"><i class="fa fa-check"></i><b>4.1.5</b> Visualizing correlations of bigrams of keywords</a></li>
+<li class="chapter" data-level="4.1.6" data-path="word-collocations.html"><a href="word-collocations.html#summarizing-ngrams"><i class="fa fa-check"></i><b>4.1.6</b> Summarizing ngrams</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="word-collocations.html"><a href="word-collocations.html#lexical-analysis"><i class="fa fa-check"></i><b>4.2</b> Lexical analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="word-collocations.html"><a href="word-collocations.html#basic-frequency-statistics"><i class="fa fa-check"></i><b>4.2.1</b> Basic frequency statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="word-collocations.html"><a href="word-collocations.html#word-cooccurrences-using-POS"><i class="fa fa-check"></i><b>4.3</b> Word cooccurrences using POS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="word-collocations.html"><a href="word-collocations.html#nouns-adjectives-and-verbs-used-in-same-sentence"><i class="fa fa-check"></i><b>4.3.1</b> Nouns, adjectives, and verbs used in same sentence</a></li>
+<li class="chapter" data-level="4.3.2" data-path="word-collocations.html"><a href="word-collocations.html#words-that-follow-one-another-using-pos"><i class="fa fa-check"></i><b>4.3.2</b> Words that follow one another using POS</a></li>
+<li class="chapter" data-level="4.3.3" data-path="word-collocations.html"><a href="word-collocations.html#word-correlations-using-pos"><i class="fa fa-check"></i><b>4.3.3</b> Word correlations using POS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="word-collocations.html"><a href="word-collocations.html#finding-keyword-combinations-using-POS"><i class="fa fa-check"></i><b>4.4</b> Finding keyword combinations using POS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="word-collocations.html"><a href="word-collocations.html#using-rake"><i class="fa fa-check"></i><b>4.4.1</b> Using RAKE</a></li>
+<li class="chapter" data-level="4.4.2" data-path="word-collocations.html"><a href="word-collocations.html#using-pointwise-mutual-information-collocations"><i class="fa fa-check"></i><b>4.4.2</b> Using Pointwise Mutual Information Collocations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="word-collocations.html"><a href="word-collocations.html#using-a-sequence-of-pos-tags-noun-phrases"><i class="fa fa-check"></i><b>4.4.3</b> Using a sequence of POS tags (noun phrases)</a></li>
+<li class="chapter" data-level="4.4.4" data-path="word-collocations.html"><a href="word-collocations.html#textrank"><i class="fa fa-check"></i><b>4.4.4</b> Textrank</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="word-collocations.html"><a href="word-collocations.html#dependency-parsing"><i class="fa fa-check"></i><b>4.5</b> Dependency parsing</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="word-collocations.html"><a href="word-collocations.html#collocations-and-co-occurences"><i class="fa fa-check"></i><b>4.5.1</b> Collocations and co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="word-collocations.html"><a href="word-collocations.html#chapter-4-summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="word-collocations.html"><a href="word-collocations.html#further-readings-3"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="word-collocations.html"><a href="word-collocations.html#appendix"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html"><i class="fa fa-check"></i><b>5</b> Graph Representations of Word Cooccurences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#statistical-analysis-of-word-positions"><i class="fa fa-check"></i><b>5.1</b> Statistical analysis of word positions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-between-saheeh-and-yusuf-ali"><i class="fa fa-check"></i><b>5.1.1</b> Comparison between Saheeh and Yusuf Ali</a></li>
+<li class="chapter" data-level="5.1.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#comparison-against-the-arabic-text"><i class="fa fa-check"></i><b>5.1.2</b> Comparison against the Arabic text</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#focus-on-surah-Yusuf"><i class="fa fa-check"></i><b>5.2</b> Focus on Surah Yusuf</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#arc-method-of-visualization"><i class="fa fa-check"></i><b>5.2.1</b> Arc method of visualization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#circular-method-of-visualization"><i class="fa fa-check"></i><b>5.2.2</b> Circular method of visualization</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#grouping-of-co-occurences"><i class="fa fa-check"></i><b>5.2.3</b> Grouping of co-occurences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#a-short-tutorial-on-graphs-in-R"><i class="fa fa-check"></i><b>5.3</b> A short tutorial on graphs in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-creation"><i class="fa fa-check"></i><b>5.3.1</b> Graph creation</a></li>
+<li class="chapter" data-level="5.3.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-plots"><i class="fa fa-check"></i><b>5.3.2</b> Graph plots</a></li>
+<li class="chapter" data-level="5.3.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-layouts"><i class="fa fa-check"></i><b>5.3.3</b> Graph layouts</a></li>
+<li class="chapter" data-level="5.3.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-algorithms"><i class="fa fa-check"></i><b>5.3.4</b> Graph algorithms</a></li>
+<li class="chapter" data-level="5.3.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#graph-analysis"><i class="fa fa-check"></i><b>5.3.5</b> Graph analysis</a></li>
+<li class="chapter" data-level="5.3.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#using-ggraph"><i class="fa fa-check"></i><b>5.3.6</b> Using ggraph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#fun-with-network-graphs"><i class="fa fa-check"></i><b>5.4</b> Fun with network graphs</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#working-with-a-bigger-graph"><i class="fa fa-check"></i><b>5.4.1</b> Working with a bigger graph</a></li>
+<li class="chapter" data-level="5.4.2" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#taking-the-largest-component"><i class="fa fa-check"></i><b>5.4.2</b> Taking the largest component</a></li>
+<li class="chapter" data-level="5.4.3" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#community-structure-detection"><i class="fa fa-check"></i><b>5.4.3</b> Community structure detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#chapter-5-summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.6" data-path="graph-representations-of-word-cooccurrences.html"><a href="graph-representations-of-word-cooccurrences.html#further-readings-4"><i class="fa fa-check"></i><b>5.6</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html"><i class="fa fa-check"></i><b>6</b> Word Cooccurences of Surah Taa Haa</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#data-preprocessing"><i class="fa fa-check"></i><b>6.1</b> Data preprocessing</a></li>
+<li class="chapter" data-level="6.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-analysis-and-characteristics"><i class="fa fa-check"></i><b>6.2</b> Network analysis and characteristics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-characteristics"><i class="fa fa-check"></i><b>6.2.1</b> Network characteristics</a></li>
+<li class="chapter" data-level="6.2.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#centrality-measures-node-level-measures"><i class="fa fa-check"></i><b>6.2.2</b> Centrality measures (node-level measures)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-strength"><i class="fa fa-check"></i><b>6.2.3</b> Degree and strength</a></li>
+<li class="chapter" data-level="6.2.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distribution"><i class="fa fa-check"></i><b>6.2.4</b> Degree distribution</a></li>
+<li class="chapter" data-level="6.2.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-and-degree-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.2.5</b> Degree and degree distribution for directed graph</a></li>
+<li class="chapter" data-level="6.2.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-degree"><i class="fa fa-check"></i><b>6.2.6</b> Why do we care about degree?</a></li>
+<li class="chapter" data-level="6.2.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#betweenness"><i class="fa fa-check"></i><b>6.2.7</b> Betweenness</a></li>
+<li class="chapter" data-level="6.2.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.8</b> Degree centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#outdegree-centrality-and-indegree-prestige"><i class="fa fa-check"></i><b>6.2.9</b> Outdegree centrality and indegree prestige</a></li>
+<li class="chapter" data-level="6.2.10" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#closeness-centrality-for-undirected-graph"><i class="fa fa-check"></i><b>6.2.10</b> Closeness centrality for undirected graph</a></li>
+<li class="chapter" data-level="6.2.11" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#correlation-analysis-among-centrality-measures-for-the-gu-network"><i class="fa fa-check"></i><b>6.2.11</b> Correlation analysis among centrality measures for the <em>gu</em> network</a></li>
+<li class="chapter" data-level="6.2.12" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assembling-a-dataset-of-node-level-measures-for-gd-network"><i class="fa fa-check"></i><b>6.2.12</b> Assembling a dataset of node-level measures for gd network</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#network-level-measures"><i class="fa fa-check"></i><b>6.3</b> Network-level measures</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#size-and-density"><i class="fa fa-check"></i><b>6.3.1</b> Size and density</a></li>
+<li class="chapter" data-level="6.3.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#components"><i class="fa fa-check"></i><b>6.3.2</b> Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#degree-distributions"><i class="fa fa-check"></i><b>6.3.3</b> Degree distributions</a></li>
+<li class="chapter" data-level="6.3.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#average-path-length-and-diameter"><i class="fa fa-check"></i><b>6.3.4</b> Average path length and diameter</a></li>
+<li class="chapter" data-level="6.3.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution"><i class="fa fa-check"></i><b>6.3.5</b> Path distance distribution</a></li>
+<li class="chapter" data-level="6.3.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#path-distance-distribution-for-directed-graph"><i class="fa fa-check"></i><b>6.3.6</b> Path distance distribution for directed graph</a></li>
+<li class="chapter" data-level="6.3.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-path"><i class="fa fa-check"></i><b>6.3.7</b> Why do we care about path?</a></li>
+<li class="chapter" data-level="6.3.8" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#clustering-coefficient-transitivity-distribution"><i class="fa fa-check"></i><b>6.3.8</b> Clustering coefficient (Transitivity) distribution</a></li>
+<li class="chapter" data-level="6.3.9" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#why-do-we-care-about-clustering-coefficient"><i class="fa fa-check"></i><b>6.3.9</b> Why do we care about clustering coefficient?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#community-structure-and-assortment"><i class="fa fa-check"></i><b>6.4</b> Community structure and assortment</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection"><i class="fa fa-check"></i><b>6.4.1</b> Modularity and community detection</a></li>
+<li class="chapter" data-level="6.4.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#modularity-and-community-detection-a-simple-example"><i class="fa fa-check"></i><b>6.4.2</b> Modularity and community detection: a simple example</a></li>
+<li class="chapter" data-level="6.4.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#another-example-of-clustering"><i class="fa fa-check"></i><b>6.4.3</b> Another example of clustering</a></li>
+<li class="chapter" data-level="6.4.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#assortment-homophily"><i class="fa fa-check"></i><b>6.4.4</b> Assortment (homophily)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#analyzing-using-tidygraph"><i class="fa fa-check"></i><b>6.5</b> Analyzing using <em>tidygraph</em></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#direct-ggraph-integration"><i class="fa fa-check"></i><b>6.5.1</b> Direct ggraph integration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#use-selected-measures-from-tidygraph-and-plot"><i class="fa fa-check"></i><b>6.5.2</b> Use selected measures from <em>tidygraph</em> and plot</a></li>
+<li class="chapter" data-level="6.5.3" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#example-combining-selected-node-and-edge-measures-from-tidygraph"><i class="fa fa-check"></i><b>6.5.3</b> Example combining selected node and edge measures from <em>tidygraph</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#who-is-the-most-important-influencer"><i class="fa fa-check"></i><b>6.5.4</b> Who is the most important influencer?</a></li>
+<li class="chapter" data-level="6.5.5" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#build-communities-and-calculate-measures"><i class="fa fa-check"></i><b>6.5.5</b> Build communities and calculate measures</a></li>
+<li class="chapter" data-level="6.5.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#visualize-the-network"><i class="fa fa-check"></i><b>6.5.6</b> Visualize the network</a></li>
+<li class="chapter" data-level="6.5.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#concentric-layouts"><i class="fa fa-check"></i><b>6.5.7</b> Concentric layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#chapter-6-summary"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="word-coccurrences-of-Surah-Taa-Haa.html"><a href="word-coccurrences-of-Surah-Taa-Haa.html#further-readings-5"><i class="fa fa-check"></i><b>6.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-and-knowledge-modeling.html"><a href="text-and-knowledge-modeling.html"><i class="fa fa-check"></i>Text and Knowledge Modeling</a></li>
+<li class="chapter" data-level="7" data-path="text-network-analysis.html"><a href="text-network-analysis.html"><i class="fa fa-check"></i><b>7</b> Texts Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#a-brief-tutorial-on-quanteda"><i class="fa fa-check"></i><b>7.1</b> A brief on <em>quanteda</em></a></li>
+<li class="chapter" data-level="7.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#analyzing-word-cooccurrences-as-a-network"><i class="fa fa-check"></i><b>7.2</b> Analyzing word cooccurrence as a network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="text-network-analysis.html"><a href="text-network-analysis.html#network-dynamics-growth-of-word-co-occurrence-network"><i class="fa fa-check"></i><b>7.2.1</b> Network dynamics: growth of word co-occurrence network</a></li>
+<li class="chapter" data-level="7.2.2" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-co-occurrence-network-statistics"><i class="fa fa-check"></i><b>7.2.2</b> Word co-occurrence network statistics</a></li>
+<li class="chapter" data-level="7.2.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#diameter-and-average-distance"><i class="fa fa-check"></i><b>7.2.3</b> Diameter and average distance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#connectedness"><i class="fa fa-check"></i><b>7.2.4</b> Connectedness</a></li>
+<li class="chapter" data-level="7.2.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#degree-distributions-1"><i class="fa fa-check"></i><b>7.2.5</b> Degree distributions</a></li>
+<li class="chapter" data-level="7.2.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#clustering-coefficients"><i class="fa fa-check"></i><b>7.2.6</b> Clustering coefficients</a></li>
+<li class="chapter" data-level="7.2.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#modularity"><i class="fa fa-check"></i><b>7.2.7</b> Modularity</a></li>
+<li class="chapter" data-level="7.2.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#betweenness-1"><i class="fa fa-check"></i><b>7.2.8</b> Betweenness</a></li>
+<li class="chapter" data-level="7.2.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#prestige-centrality"><i class="fa fa-check"></i><b>7.2.9</b> Prestige centrality</a></li>
+<li class="chapter" data-level="7.2.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary"><i class="fa fa-check"></i><b>7.2.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="text-network-analysis.html"><a href="text-network-analysis.html#dive-into-selected-surahs"><i class="fa fa-check"></i><b>7.3</b> Dive into selected Surahs</a></li>
+<li class="chapter" data-level="7.4" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-collocations-statistical-method"><i class="fa fa-check"></i><b>7.4</b> Word collocations statistical method</a></li>
+<li class="chapter" data-level="7.5" data-path="text-network-analysis.html"><a href="text-network-analysis.html#word-keyness-comparisons"><i class="fa fa-check"></i><b>7.5</b> Word keyness comparisons</a></li>
+<li class="chapter" data-level="7.6" data-path="text-network-analysis.html"><a href="text-network-analysis.html#lexical-diversity-and-dispersion"><i class="fa fa-check"></i><b>7.6</b> Lexical diversity and dispersion</a></li>
+<li class="chapter" data-level="7.7" data-path="text-network-analysis.html"><a href="text-network-analysis.html#viewing-the-network-as-dendrogram"><i class="fa fa-check"></i><b>7.7</b> Viewing the network as dendrogram</a></li>
+<li class="chapter" data-level="7.8" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-similarity-in-verses"><i class="fa fa-check"></i><b>7.8</b> Words similarity in verses</a></li>
+<li class="chapter" data-level="7.9" data-path="text-network-analysis.html"><a href="text-network-analysis.html#words-dissimilarity-in-verses"><i class="fa fa-check"></i><b>7.9</b> Words dissimilarity in verses</a></li>
+<li class="chapter" data-level="7.10" data-path="text-network-analysis.html"><a href="text-network-analysis.html#summary-chapter-7"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="text-network-analysis.html"><a href="text-network-analysis.html#further-readings-6"><i class="fa fa-check"></i><b>7.11</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification-models.html"><a href="text-classification-models.html"><i class="fa fa-check"></i><b>8</b> Text Classification Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-classification-models.html"><a href="text-classification-models.html#brief-outline-of-text-modeling"><i class="fa fa-check"></i><b>8.1</b> Brief outline of text modeling</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="text-classification-models.html"><a href="text-classification-models.html#general-setting"><i class="fa fa-check"></i><b>8.1.1</b> General setting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-and-unsupervised-learning-methods"><i class="fa fa-check"></i><b>8.1.2</b> Supervised and unsupervised learning methods</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification-models.html"><a href="text-classification-models.html#topic-modeling-for-quran-analytics"><i class="fa fa-check"></i><b>8.1.3</b> Topic modeling for Quran Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification-models.html"><a href="text-classification-models.html#unsupervised-learning-models"><i class="fa fa-check"></i><b>8.2</b> Unsupervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model"><i class="fa fa-check"></i><b>8.2.1</b> Latent Dirichlet Allocation (LDA) model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm"><i class="fa fa-check"></i><b>8.2.2</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-model"><i class="fa fa-check"></i><b>8.2.3</b> Latent Semantic Analysis model</a></li>
+<li class="chapter" data-level="8.2.4" data-path="text-classification-models.html"><a href="text-classification-models.html#labeling-the-data"><i class="fa fa-check"></i><b>8.2.4</b> Labeling the data</a></li>
+<li class="chapter" data-level="8.2.5" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-dirichlet-allocation-lda"><i class="fa fa-check"></i><b>8.2.5</b> Latent Dirichlet Allocation (LDA)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="text-classification-models.html"><a href="text-classification-models.html#structural-topic-models-stm-1"><i class="fa fa-check"></i><b>8.2.6</b> Structural Topic Models (STM)</a></li>
+<li class="chapter" data-level="8.2.7" data-path="text-classification-models.html"><a href="text-classification-models.html#latent-semantic-analysis-lsa"><i class="fa fa-check"></i><b>8.2.7</b> Latent Semantic Analysis (LSA)</a></li>
+<li class="chapter" data-level="8.2.8" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-unsupervised-learning-model"><i class="fa fa-check"></i><b>8.2.8</b> Summarizing unsupervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-classification-models.html"><a href="text-classification-models.html#supervised-learning-models"><i class="fa fa-check"></i><b>8.3</b> Supervised learning models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="text-classification-models.html"><a href="text-classification-models.html#naive-bayes-nb"><i class="fa fa-check"></i><b>8.3.1</b> Naive Bayes (NB)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="text-classification-models.html"><a href="text-classification-models.html#support-vector-machines-svm"><i class="fa fa-check"></i><b>8.3.2</b> Support Vector Machines (SVM)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-supervised-learning-model"><i class="fa fa-check"></i><b>8.3.3</b> Summarizing supervised learning model</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="text-classification-models.html"><a href="text-classification-models.html#ideological-difference-models"><i class="fa fa-check"></i><b>8.4</b> Ideological difference models</a></li>
+<li class="chapter" data-level="8.5" data-path="text-classification-models.html"><a href="text-classification-models.html#word-embedding-models"><i class="fa fa-check"></i><b>8.5</b> Word embeddings models</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="text-classification-models.html"><a href="text-classification-models.html#summarizing-word-embedding-model-methods"><i class="fa fa-check"></i><b>8.5.1</b> Summarizing word embedding model methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="text-classification-models.html"><a href="text-classification-models.html#summary-chapter-8"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.7" data-path="text-classification-models.html"><a href="text-classification-models.html#further-readings-7"><i class="fa fa-check"></i><b>8.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html"><i class="fa fa-check"></i><b>9</b> Knowledge Through Verse Network</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#tafseer-Ibnu-Katheer-as-knowledge-graphs"><i class="fa fa-check"></i><b>9.1</b> Tafseer Ibnu Katheer as Knowledge Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#preparing-the-data-and-settings"><i class="fa fa-check"></i><b>9.1.1</b> Preparing the data and settings</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#Katheer-graph-network"><i class="fa fa-check"></i><b>9.2</b> Katheer Graph network</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-visualizations"><i class="fa fa-check"></i><b>9.2.1</b> Katheer Graph visualizations</a></li>
+<li class="chapter" data-level="9.2.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-statistics"><i class="fa fa-check"></i><b>9.2.2</b> Katheer Graph network statistics</a></li>
+<li class="chapter" data-level="9.2.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-degree"><i class="fa fa-check"></i><b>9.2.3</b> Katheer Graph network degree</a></li>
+<li class="chapter" data-level="9.2.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#katheer-graph-network-paths-and-traversals"><i class="fa fa-check"></i><b>9.2.4</b> Katheer Graph network paths and traversals</a></li>
+<li class="chapter" data-level="9.2.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#network-traversals-using-statistical-properties"><i class="fa fa-check"></i><b>9.2.5</b> Network traversals using statistical properties</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-surah-al-alaa-traversals-in-surah-al-alaa"><i class="fa fa-check"></i><b>9.3</b> Traversals in Surah Al-A’laa {#traversals-in-Surah-Al-A’laa}</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#themes-of-surah-al-alaa"><i class="fa fa-check"></i><b>9.3.1</b> Themes of Surah Al-A’laa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#surah-al-alaa-network"><i class="fa fa-check"></i><b>9.3.2</b> Surah Al-A’laa network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#view-from-the-perspectives-of-the-entire-ibnu-katheer-network"><i class="fa fa-check"></i><b>9.3.3</b> View from the perspectives of the entire Ibnu Katheer network</a></li>
+<li class="chapter" data-level="9.3.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-1"><i class="fa fa-check"></i><b>9.3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversing-verse-13-surah-al-alaa-traversing-verse-13-surah-al-alaa"><i class="fa fa-check"></i><b>9.4</b> Traversing verse 13 Surah Al-A’laa {#traversing-verse-13-Surah-Al-A’laa}</a></li>
+<li class="chapter" data-level="9.5" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#traversals-in-verses-2:255-and-16:90"><i class="fa fa-check"></i><b>9.5</b> Traversals in verses 2:255 and 16:90</a></li>
+<li class="chapter" data-level="9.6" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#word-cooccurrences-from-Katheer-graph"><i class="fa fa-check"></i><b>9.6</b> Word cooccurrences from Katheer Graph</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#setting-the-text-data"><i class="fa fa-check"></i><b>9.6.1</b> Setting the text data</a></li>
+<li class="chapter" data-level="9.6.2" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#what-words-co-occur-together"><i class="fa fa-check"></i><b>9.6.2</b> What words co-occur together</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#summary-chapter-9"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#further-readings-8"><i class="fa fa-check"></i><b>9.8</b> Further readings</a></li>
+<li class="chapter" data-level="" data-path="knowledge-through-verse-network.html"><a href="knowledge-through-verse-network.html#appendix-1"><i class="fa fa-check"></i>Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="way-forward.html"><a href="way-forward.html"><i class="fa fa-check"></i><b>10</b> Way Forward</a>
+<ul>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#new-tools-for-studying-al-quran"><i class="fa fa-check"></i>New tools for studying Al-Quran</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#limitations"><i class="fa fa-check"></i>Limitations</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#direction-of-future-works"><i class="fa fa-check"></i>Direction of future works</a></li>
+<li class="chapter" data-level="" data-path="way-forward.html"><a href="way-forward.html#concluding-remarks"><i class="fa fa-check"></i>Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quran Analytics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="text-classification-models" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Text Classification Models<a href="text-classification-models.html#text-classification-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The NLP task for modeling classifications of words for complex subjects such as modeling content analysis of ideas, opinions, and sentiments from texts or speeches is difficult due to a few factors. Too little data renders the exercise prone to large errors but too much data infuse much noise (or entropy) which confounds the models’ measurement. Too much data with insufficient entropy causes the overfitting of models. There is no clear start and also there are no clear ends.</p>
+<p>For example, as we have shown in Chapter 3, sentiment scoring is clearly model-dependent; the results vary if we vary the model used. Whether a pre-built model is a good scoring method for Quran Analytics is yet to be ascertained.</p>
+<p>This chapter serves as an introduction to the subject of NLP text modeling, focused on a very specific model, “topic modeling”. This is among the easiest of the models involved. Expanding the task to other higher and more complex dimensions is beyond the scope of this book, as our intent is to introduce the subject and demonstrate some of the tools for Quran Analytics.</p>
+<p>We will introduce many tools for the task of NLP text modeling, which are: <em>quanteda.textmodels</em> <span class="citation">(<a href="#ref-quantedatextmodels">Benoit et al. 2020</a>)</span> package - which is an extension of <em>quanteda</em> as we have seen in Chapter 7. We will also introduce Structural Topic Model <em>stm</em> package <span class="citation">(<a href="#ref-stm">M. Roberts et al. 2020</a>)</span>, <em>topicmodels</em> <span class="citation">(<a href="#ref-topicmodels">Grün et al. 2020</a>)</span>, and <em>text2vec</em> <span class="citation">(<a href="#ref-text2vec">Selivanov, Bickel, and Wang 2020</a>)</span> package which is a similar wrapper to the famous Stanford NLP Group’s GloVe: Global Vectors for Word Representation,<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a> which is a word embedding tool, an extremely versatile tool for Machine Learning tasks in NLP.</p>
+<div id="brief-outline-of-text-modeling" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Brief outline of text modeling<a href="text-classification-models.html#brief-outline-of-text-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we present a brief outline of the task of modeling classifications and the position of each method within the larger NLP tasks framework. The summary provided here is from <span class="citation">(<a href="#ref-grimmer2013">Grimmer and Stewart 2013</a>)</span>.</p>
+<p>The tasks start with defining the research objective, which either involves ideological scaling or general classification. Under both areas, the methods will be divided into either supervised or unsupervised; and within each, there will be various possible methods of applications depending on whether the problem involves “known categories” (or labeling) or “unknown categories” (unknown labels).</p>
+<p>Labeling (or annotation) is a tedious manual process if it is humanly done, and humans are prone to errors and biased judgements. Automated labeling on the other hand is prone to algorithmic errors, which may remain undetected until later. Both methods require validations, and continuous updating and validations. However, with the advancement of computing and algorithms, the task is better left to computers than humans; except for extremely skewed cases if they come into consideration.</p>
+<p>Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both, modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig801"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig801-1.png" alt="Text modeling framework in NLP" width="1152" />
+<p class="caption">
+Figure 8.1: Text modeling framework in NLP
+</p>
+</div>
+<p>The chart in Figure <a href="text-classification-models.html#fig:ch8fig801">8.1</a> provides a full scenario of the possible paths of modeling.<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a></p>
+<div id="general-setting" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> General setting<a href="text-classification-models.html#general-setting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most standard text models are a form of generative probabilistic model, which requires a statistical estimation process based on optimization of a cost function. The objective of the process is to obtain a set of estimates (or estimators) that optimizes the cost (i.e. lowest cost) for a predefined loss function. The variations between a type of model to another are in:</p>
+<ol style="list-style-type: lower-alpha">
+<li>the choice of the loss function,</li>
+<li>the method of estimation,</li>
+<li>the type of estimators, and</li>
+<li>the statistical properties of the estimators.<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a></li>
+</ol>
+<p>The formal setting for the models are as follows:<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a></p>
+<ul>
+<li>a <em>word</em> is the basic unit of discrete data, indexed by a number for each word in the vocabulary derived for the entire dataset, as <span class="math inline">\(V = ({1,2,...,K})\)</span>. This is the basic category in the data.</li>
+<li>a <em>document</em> is an ordered sequence of <span class="math inline">\(N\)</span> <em>word</em>, <span class="math inline">\(w = ({w_1,w_2,...,w_N})\)</span> where <span class="math inline">\(w\)</span> are numbers in <span class="math inline">\(V\)</span></li>
+<li>a <em>corpus</em> is a collection of ordered <span class="math inline">\(M\)</span> <em>document</em>, consisting of ordered <em>word</em>, denoted by <span class="math inline">\(d = ({d_1,d_2,...,d_M})\)</span></li>
+</ul>
+<p>The first step for pre-processing the data involves converting the entire corpus into <em>data</em>. The steps are:
+a) tokenizing,
+b) create a vocabulary for the tokens present,
+c) create the metadata for the word, document, and corpus.</p>
+<p>All these steps were explained in previous chapters using pre-built functions in <em>tidytext</em> or <em>quanteda</em>.</p>
+<p>The texts, now in data format, are converted to vector representations, using the vocabulary <span class="math inline">\(V\)</span> as its look-up table (for converting back into textual form). Notationally they are as follows:</p>
+<p><span class="math display">\[C = set (D,W)\]</span></p>
+<p>A form of representation of <span class="math inline">\(C\)</span> is the Document Term Matrix (DTM) as we have seen before, and the Feature Co-occurrence Matrix (FCM) is a reduced compact form of <span class="math inline">\(C\)</span> based on co-occurrence representation.</p>
+<p>In statistical terms, what we have now are observations, <span class="math inline">\(w_i\)</span>, which are the individual <em>word</em>, and its measures are the location (observation) and its frequencies. At a higher level, the observations are <span class="math inline">\(d_j\)</span> and its measures are the numerical representation of it, which is its score. Given the setting, then the statistical problem is set as follows:</p>
+<p><span class="math display">\[F_{argmin}(\theta) = LOSS(X)\]</span></p>
+<p>We want to find an estimate of <span class="math inline">\(\theta\)</span> which minimizes the loss function. Once we obtain the estimate, called <span class="math inline">\(\hat{\theta}\)</span>, we can use it to infer and obtain the estimation. The estimation (or inference) will be numbers of probability (i.e. between 0 and 1), which are the “probability scores” based on the model.</p>
+<p>Different text models will use different model assumptions and loss functions. We provide a concise explanation for a few choices of text models that we will use in this book.</p>
+</div>
+<div id="supervised-and-unsupervised-learning-methods" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Supervised and unsupervised learning methods<a href="text-classification-models.html#supervised-and-unsupervised-learning-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The major difference between the supervised and unsupervised learning method is in whether the model assumes known categories (also called labels) or unknown categories (labels) of the texts under study. We can generally categorize supervised as pre-built language models, such as the one applied in the sentiment scoring example (in Chapter 3). Unsupervised models, on the other hand, utilize a generalized process of clustering, either using an in-built process of clustering (called fully automated clustering) or in-process clustering (using some algorithms) as part of the pre-processing of the data (called computer-assisted clustering).</p>
+<p>The latest development of the supervised versus unsupervised models involves infusion of both types into each other, which falls under the name of “headless AI”, “Unsupervised AI”. The process involves combining the steps of unsupervised learning as the start, then using the results to auto-generate the labels, which are then implied into supervised learning models.<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a> The main difference of the infused model is the process of labeling is entrusted to the algorithms rather than human.</p>
+<p>Since human language is a complex subject, the performance of any models, supervised, unsupervised, or both combined is still a subject that requires in-depth studies and testing. The encouraging part is, as we study more data as they become available, by way of big data, with better and faster computing power, our ability to deal with language through computational linguistics has improved tremendously.</p>
+</div>
+<div id="topic-modeling-for-quran-analytics" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Topic modeling for Quran Analytics<a href="text-classification-models.html#topic-modeling-for-quran-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this book, we will explore a specific task in NLP called “topic modeling”. This is an unsupervised machine learning method, suitable for the exploration of textual data. The calculation of topic models aims to determine the proportionate composition of a fixed number of topics in the documents of a collection. Since it is an unsupervised machine learning method, it is useful to experiment with different parameters in order to find the most suitable parameters for our own analysis needs.</p>
+<p>Topic Modeling often involves the following steps.<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a></p>
+<ol style="list-style-type: decimal">
+<li>Read in and preprocess text data,</li>
+<li>Calculate a topic model using a text model (using unsupervised learning model),</li>
+<li>Visualize the results from the calculated model and</li>
+<li>Select documents based on their topic composition.</li>
+</ol>
+<p>Topic modeling is an interesting aspect of NLP in the sense that, given a large amount of text data, which structures are not known offhand, and we want to extract information about the text, particularly what are the “headlines” or “themes” of the text in question. The general idea is, if a term is present in many of the sentences, in a certain particular structure, then we say that it has a high probability to be the key subject of the discussion. It implies that the word has a high probability to be in the headlines or themes, in the same way as to how we think a news headline should be. Putting it another way, given the text of news without the headlines, can we guess what the headline should be?</p>
+<p>For Quran Analytics, we know Al-Quran is arranged in a very deterministic manner (i.e. fixed permanently), and no change has occurred to the original text. Particularly each word, from the first to the last, is arranged in verses, from the first to the last (in 6,236 verses), in Surahs, from the first to the last (in 114 Surahs). Verses represent themes (or messages) of their own, and Surahs also represent a theme or combination of themes. The themes may be repeated in various words, or verses, or various parts within the Surahs, as well as various parts of the entire Al-Quran.</p>
+<p>To perform a thorough and complete task of uncovering themes from Al-Quran, based on translated texts, is no small feat. It should be a research subject by itself. Since the purpose of this book is to introduce the subject, we will scale it down to demonstrations of the various models and focus on a specific segment of Al-Quran, through a selected Surah, namely Surah Al-Kahf.</p>
+</div>
+</div>
+<div id="unsupervised-learning-models" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Unsupervised learning models<a href="text-classification-models.html#unsupervised-learning-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As explained earlier, unsupervised learning models assume that we do not know off-hand the labeling of the texts, such as the topics of the texts under study. Our task is to “uncover” those labels, which have a high probability to be the contents of the topics for the collection of texts.</p>
+<p>In this section we will cover some of the well known unsupervised learning models, namely:</p>
+<ol style="list-style-type: decimal">
+<li>Latent Dirichlet Allocation (LDA)</li>
+<li>Latent Semantic Analysis (LSA)</li>
+<li>Structural topic models (STM)</li>
+</ol>
+<p>First, we will provide a quick technical brief of the models.</p>
+<div id="latent-dirichlet-allocation-lda-model" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Latent Dirichlet Allocation (LDA) model<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a><a href="text-classification-models.html#latent-dirichlet-allocation-lda-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>LDA is a special class factorial multinomial probit model, conditioned on topic <span class="math inline">\(z_l\)</span>, where <span class="math inline">\(z_l\)</span> is drawn from a Poisson distribution; and the loss function is defined as <span class="math inline">\(Dir(\alpha)\)</span> as <span class="math inline">\(p(w_n|z_l,\beta)\)</span>, a multinomial probability over the space of <span class="math inline">\(\beta\)</span>. The Dirichlet function <span class="math inline">\(Dir\)</span> is the defining function of the model. The function relies on a method of sampling, which is pre-determined as part of the modeling process. In most applications, the standard method is “Gibbs” sampling.<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a></p>
+<p>The performance of LDA has shown promising results in various applications, in particular for topic modeling on some challenging aspects, such as in information extraction from text records, social media sentiment or aspect mining, and others.<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a></p>
+<p>In our work here, we will use the <em>topicmodels</em> package, which contains the <em>LDA()</em> function.</p>
+</div>
+<div id="structural-topic-models-stm" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Structural Topic Models (STM)<a href="text-classification-models.html#structural-topic-models-stm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The foundation of STM is provided by <span class="citation">(<a href="#ref-roberts2014">M. E. Roberts et al. 2014</a>)</span> and developed as an <strong>R</strong> package, <em>stm</em> <span class="citation">(<a href="#ref-stm">M. Roberts et al. 2020</a>)</span>, details of which are provided in its package article <span class="citation">(<a href="#ref-roberts2019">M. Roberts, Stewart, and Tingley 2019</a>)</span> and its webpage guide.<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a></p>
+<p>STM uses a Generalized Linear Model (GLM) framework by incorporating document meta-data into the topic modeling process. The process follows the same approach of LDA, where it is conditioned on topic <span class="math inline">\(z_l\)</span>. <span class="math inline">\(z_l\)</span> is drawn from a Logistic Normal; and the loss function is defined as <span class="math inline">\(p(w_{d,n}|z_{d,l},\beta_{d,k=z_{d,n}})\)</span>, a multinomial probability over the space of <span class="math inline">\(\beta\)</span>. The structure is the same, but with different assumptions of conditionality and probability distributions of LDA.</p>
+<p>In our work here, we will use the <em>stm</em> package, which contains many neat functions for visualization of the results.</p>
+</div>
+<div id="latent-semantic-analysis-model" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Latent Semantic Analysis model<a href="text-classification-models.html#latent-semantic-analysis-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>LSA was first introduced by <span class="citation">(<a href="#ref-landauer1998">Landauer, Foltz, and Laham 1998</a>)</span> and has been around a bit longer than LDA and STM. The objective of LSA is to replicate the human cognitive phenomena using a statistical learning model. It assumes that word-for-word, word-sentence (or passage), sentence(or passage)-for-sentence (or passage) relations are correlated in the way of association or semantic similarity, within textual data.</p>
+<p>The statistical process of LSA involves applying Single Value Decomposition (SVD) to the text matrix data (such as a DFM or DTM); from which it generates a new orthogonal space of factor values (based on the dimensions, which are the number of topics - a dimension reduction process). In the current time, the process has a resemblance to a Neural Network (for those who are familiar with it) - which is a non-parametric method of performing simultaneous multiple regression equations, and the final results will be a correlation matrix for the topics and the texts (and sentences).<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a></p>
+<p>In our work here, we will use the <em>quanteda.textmodels</em> function called <em>textmodel_lsa()</em>.</p>
+</div>
+<div id="labeling-the-data" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Labeling the data<a href="text-classification-models.html#labeling-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use Surah Al-Kahf as our text under study. We choose the Surah for a particular reason; it is a medium length Surah, containing six rather distinct sections:</p>
+<ol style="list-style-type: decimal">
+<li>the story of the cave dwellers (v1-v31),</li>
+<li>the story of two garden owners (v32-v44),</li>
+<li>a parable of worldly life (v45-v59),</li>
+<li>the story of Prophet Moses and Al-Khidh (v60-82),</li>
+<li>the story of Dhul-Qarnayn (v83-102), and</li>
+<li>about deeds (v103-v110).</li>
+</ol>
+<p>Based on the observation, we will label the verses according to our own interpretation and investigate the subject as we go along, first using unsupervised learning, then supervised learning. In unsupervised learning, we will use the labels as a check between the model against our assumption; and in the supervised model, we will use the model to check its accuracy, against what we assume as the actual situation.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="text-classification-models.html#cb199-1" tabindex="-1"></a>quran_all <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/quran_trans.csv&quot;</span>)</span>
+<span id="cb199-2"><a href="text-classification-models.html#cb199-2" tabindex="-1"></a>kahf <span class="ot">&lt;-</span> quran_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(surah_title_en <span class="sc">==</span> <span class="st">&quot;Al-Kahf&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb199-3"><a href="text-classification-models.html#cb199-3" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">Group =</span> <span class="fu">ifelse</span>(ayah <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">31</span>, <span class="st">&quot;cave&quot;</span>,</span>
+<span id="cb199-4"><a href="text-classification-models.html#cb199-4" tabindex="-1"></a>                               <span class="fu">ifelse</span>(ayah <span class="sc">%in%</span> <span class="dv">32</span><span class="sc">:</span><span class="dv">44</span>, <span class="st">&quot;garden&quot;</span>,</span>
+<span id="cb199-5"><a href="text-classification-models.html#cb199-5" tabindex="-1"></a>                               <span class="fu">ifelse</span>(ayah <span class="sc">%in%</span> <span class="dv">45</span><span class="sc">:</span><span class="dv">59</span>, <span class="st">&quot;life&quot;</span>,</span>
+<span id="cb199-6"><a href="text-classification-models.html#cb199-6" tabindex="-1"></a>                               <span class="fu">ifelse</span>(ayah <span class="sc">%in%</span> <span class="dv">60</span><span class="sc">:</span><span class="dv">82</span>, <span class="st">&quot;moses&quot;</span>,</span>
+<span id="cb199-7"><a href="text-classification-models.html#cb199-7" tabindex="-1"></a>                               <span class="fu">ifelse</span>(ayah <span class="sc">%in%</span> <span class="dv">83</span><span class="sc">:</span><span class="dv">102</span>, <span class="st">&quot;dhul&quot;</span>, </span>
+<span id="cb199-8"><a href="text-classification-models.html#cb199-8" tabindex="-1"></a>                               <span class="st">&quot;deeds&quot;</span>)))))) </span>
+<span id="cb199-9"><a href="text-classification-models.html#cb199-9" tabindex="-1"></a>dfm_kahf <span class="ot">&lt;-</span> kahf<span class="sc">$</span>saheeh <span class="sc">%&gt;%</span></span>
+<span id="cb199-10"><a href="text-classification-models.html#cb199-10" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb199-11"><a href="text-classification-models.html#cb199-11" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb199-12"><a href="text-classification-models.html#cb199-12" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, <span class="at">padding =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">dfm</span>()</span></code></pre></div>
+</div>
+<div id="latent-dirichlet-allocation-lda" class="section level3 hasAnchor" number="8.2.5">
+<h3><span class="header-section-number">8.2.5</span> Latent Dirichlet Allocation (LDA)<a href="text-classification-models.html#latent-dirichlet-allocation-lda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will start with the most common algorithm for topic modeling, namely <em>Latent Dirichlet Allocation (LDA)</em>. LDA is guided by two principles.</p>
+<ol style="list-style-type: decimal">
+<li>Every document is a mixture of topics. We imagine that each document may contain words from several topics in particular proportions. For example, in a two-topic model, we could say “Document 1 is 80% topic A and 20% topic B, while Document 2 is 40% topic A and 60% topic B.”</li>
+<li>Every topic is a mixture of words. Importantly, words can be shared between topics; a word like “deeds” might appear in both equally.</li>
+</ol>
+<p>LDA is a mathematical method for estimating both of these at the same time: finding the mixture of words that are associated with each topic, while also determining the mixture of topics that describes each document.</p>
+<p>For parameterized models such as LDA, the number of topics <span class="math inline">\(k\)</span> is the most important parameter to define in advance. How an optimal <span class="math inline">\(k\)</span> should be selected depends on various factors. If <span class="math inline">\(k\)</span> is too small, the collection is divided into a few very general semantic contexts. If <span class="math inline">\(k\)</span> is too large, the collection is divided into too many topics of which some may overlap and others are hardly interpretable.</p>
+<p>For our analysis, we choose a thematic “resolution” of <span class="math inline">\(k = 6\)</span> topics. In contrast to a resolution of 100 or more, 6 topics can be evaluated qualitatively very easily. We also set the seed for the random number generator to ensure reproducible results between repeated model inferences.</p>
+<p>We use the <em>LDA()</em> function from the <em>topicmodels</em> <span class="citation">(<a href="#ref-topicmodels">Grün et al. 2020</a>)</span> package, setting <span class="math inline">\(k = 6\)</span>, to create a six-topic LDA model. Almost any topic model in practice will use a larger k, but we will soon see that this analysis approach extends to a larger number of topics. The function returns an object containing the full details of the model fit, such as how words are associated with topics and how topics are associated with documents.</p>
+<p>We need to “clean” the Document Feature Matrix, <em>dfm</em> from empty rows and run the <em>LDA()</em> function as shown below:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="text-classification-models.html#cb200-1" tabindex="-1"></a><span class="fu">require</span>(topicmodels)</span>
+<span id="cb200-2"><a href="text-classification-models.html#cb200-2" tabindex="-1"></a>drop <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb200-3"><a href="text-classification-models.html#cb200-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(dfm_kahf)){</span>
+<span id="cb200-4"><a href="text-classification-models.html#cb200-4" tabindex="-1"></a>     count.non.zero <span class="ot">&lt;-</span> <span class="fu">sum</span>(dfm_kahf[i,]<span class="sc">!=</span><span class="dv">0</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb200-5"><a href="text-classification-models.html#cb200-5" tabindex="-1"></a>     drop <span class="ot">&lt;-</span> <span class="fu">c</span>(drop, count.non.zero <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb200-6"><a href="text-classification-models.html#cb200-6" tabindex="-1"></a>   }</span>
+<span id="cb200-7"><a href="text-classification-models.html#cb200-7" tabindex="-1"></a>dfm_kahf_clean <span class="ot">&lt;-</span> dfm_kahf[<span class="sc">!</span>drop <span class="sc">==</span> <span class="cn">TRUE</span>,]</span>
+<span id="cb200-8"><a href="text-classification-models.html#cb200-8" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb200-9"><a href="text-classification-models.html#cb200-9" tabindex="-1"></a>lda_kahf <span class="ot">&lt;-</span> topicmodels<span class="sc">::</span><span class="fu">LDA</span>(dfm_kahf_clean, k, <span class="at">method=</span><span class="st">&quot;Gibbs&quot;</span>, </span>
+<span id="cb200-10"><a href="text-classification-models.html#cb200-10" tabindex="-1"></a>            <span class="at">control=</span><span class="fu">list</span>(<span class="at">iter =</span> <span class="dv">300</span>, <span class="at">seed =</span> <span class="dv">1234</span>, <span class="at">verbose =</span> <span class="dv">25</span>))</span></code></pre></div>
+<p>Depending on the size of the vocabulary, the collection size, and the number <span class="math inline">\(k\)</span>, the inference of topic models can take a long time. This calculation may take several minutes. If it takes too long, reduce the vocabulary in the DTM by increasing the minimum frequency in the previous step.</p>
+<p>The topic model inference results in two (approximate) posterior probability distributions: a distribution theta over k topics within each document and a distribution <span class="math inline">\(\beta\)</span> over V terms within each topic, where V represents the length of the vocabulary of the Surah (V = 240).</p>
+<p>We take a look at the 7 most likely terms within the term probabilities <span class="math inline">\(\beta\)</span> of the inferred topics.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="text-classification-models.html#cb201-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb201-2"><a href="text-classification-models.html#cb201-2" tabindex="-1"></a>kahf_topics <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_kahf, <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb201-3"><a href="text-classification-models.html#cb201-3" tabindex="-1"></a>kahf_top_terms <span class="ot">&lt;-</span> kahf_topics <span class="sc">%&gt;%</span></span>
+<span id="cb201-4"><a href="text-classification-models.html#cb201-4" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb201-5"><a href="text-classification-models.html#cb201-5" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">7</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb201-6"><a href="text-classification-models.html#cb201-6" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb201-7"><a href="text-classification-models.html#cb201-7" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb201-8"><a href="text-classification-models.html#cb201-8" tabindex="-1"></a></span>
+<span id="cb201-9"><a href="text-classification-models.html#cb201-9" tabindex="-1"></a>kahf_top_terms <span class="sc">%&gt;%</span></span>
+<span id="cb201-10"><a href="text-classification-models.html#cb201-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb201-11"><a href="text-classification-models.html#cb201-11" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb201-12"><a href="text-classification-models.html#cb201-12" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb201-13"><a href="text-classification-models.html#cb201-13" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb201-14"><a href="text-classification-models.html#cb201-14" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>()<span class="sc">+</span></span>
+<span id="cb201-15"><a href="text-classification-models.html#cb201-15" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig802"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig802-1.png" alt="Top terms with LDA methods for Surah Al-Kahf" width="672" />
+<p class="caption">
+Figure 8.2: Top terms with LDA methods for Surah Al-Kahf
+</p>
+</div>
+<p>From Figure <a href="text-classification-models.html#fig:ch8fig802">8.2</a> we can see that the first topic contains the term “moses” and the second topic contains “cave”, and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term “al-khidh” appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.</p>
+<p>The reason why terms can be mixed between topics, despite we assuming that it shouldn’t happen (for example we know precisely that “al-khidh” appears only in the specific segment), is due to the fact that the model does not “know” the topics off-hand. It only assumes six topics which location within the texts is assumed to be of equal probability across the entire text. What LDA does is to coerce six dimensions onto the data and figure out how best the six dimensions “fit” the data. Whatever the outcome is the result of this process.</p>
+<p>Furthermore, LDA tries to generate a pecking order for the topics, by giving one of the dimensions (i.e. topic) the highest rank from any of the six possibilities, followed by the second dimension and so forth. We can check which topics have a “higher” hierarchical clustering by checking its similarity using a distance method (as explained in Chapter 7), such as a Euclidean distance.<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="text-classification-models.html#cb202-1" tabindex="-1"></a>lda.similarity <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(lda_kahf<span class="sc">@</span>beta) <span class="sc">%&gt;%</span></span>
+<span id="cb202-2"><a href="text-classification-models.html#cb202-2" tabindex="-1"></a>  <span class="fu">scale</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb202-3"><a href="text-classification-models.html#cb202-3" tabindex="-1"></a>  <span class="fu">dist</span>(<span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb202-4"><a href="text-classification-models.html#cb202-4" tabindex="-1"></a>  <span class="fu">hclust</span>(<span class="at">method =</span> <span class="st">&quot;ward.D2&quot;</span>)</span>
+<span id="cb202-5"><a href="text-classification-models.html#cb202-5" tabindex="-1"></a><span class="fu">plot</span>(lda.similarity, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig803"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig803-1.png" alt="LDA topic similarity by features for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.3: LDA topic similarity by features for Surah Al-Kahf
+</p>
+</div>
+<p>From Figure <a href="text-classification-models.html#fig:ch8fig803">8.3</a>, we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.</p>
+<p>Let’s take topic 4 as our sample (being the highest rank) and put the terms into a sentence as follows:</p>
+<blockquote>
+<p>people - bring - deeds - youths - truth - sea - heavens - dhul-qarnayn</p>
+</blockquote>
+<p>This is a typical output of text modeling exercise, where grammatically and semantically the subjects are necessarily clear for a reader. A careful reading of the text shows that the top terms within any topic do not follow exactly what we got from the text (i.e. the Saheeh translation of the Surah). Why this is the case, is a clear example of what has been noted by linguists, as “grammar leaks”, which in essence means that grammars are not easily captured within a textual analysis. This issue is particularly notable when we use most of the unsupervised learning methods, such as the LDA.</p>
+</div>
+<div id="structural-topic-models-stm-1" class="section level3 hasAnchor" number="8.2.6">
+<h3><span class="header-section-number">8.2.6</span> Structural Topic Models (STM)<a href="text-classification-models.html#structural-topic-models-stm-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us look at an alternative method dealing with topic modeling, namely <em>stm</em> or Structural Topic Models.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="text-classification-models.html#cb203-1" tabindex="-1"></a><span class="fu">library</span>(stm)</span>
+<span id="cb203-2"><a href="text-classification-models.html#cb203-2" tabindex="-1"></a>dfmkahf_stm <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">convert</span>(dfm_kahf, <span class="at">to =</span> <span class="st">&quot;stm&quot;</span>)</span>
+<span id="cb203-3"><a href="text-classification-models.html#cb203-3" tabindex="-1"></a>stm_kahf <span class="ot">&lt;-</span> <span class="fu">stm</span>(</span>
+<span id="cb203-4"><a href="text-classification-models.html#cb203-4" tabindex="-1"></a>  dfmkahf_stm<span class="sc">$</span>documents,</span>
+<span id="cb203-5"><a href="text-classification-models.html#cb203-5" tabindex="-1"></a>  dfmkahf_stm<span class="sc">$</span>vocab,</span>
+<span id="cb203-6"><a href="text-classification-models.html#cb203-6" tabindex="-1"></a>  <span class="at">K =</span> <span class="dv">6</span>,</span>
+<span id="cb203-7"><a href="text-classification-models.html#cb203-7" tabindex="-1"></a>  <span class="at">data =</span> dfmkahf_stm<span class="sc">$</span>meta,</span>
+<span id="cb203-8"><a href="text-classification-models.html#cb203-8" tabindex="-1"></a>  <span class="at">init.type =</span> <span class="st">&quot;Spectral&quot;</span></span>
+<span id="cb203-9"><a href="text-classification-models.html#cb203-9" tabindex="-1"></a>)</span></code></pre></div>
+<p>We can view the results of the model using the following codes:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="text-classification-models.html#cb204-1" tabindex="-1"></a><span class="fu">labelTopics</span>(stm_kahf, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>))</span></code></pre></div>
+<p>We can see from the output that there four different statistics which can be used to rank the terms for a topic; the highest probability, <em>FREX</em> (frequency), <em>Lift</em>, and <em>Score</em>. Different terms will rank higher if we use different measures and the ranking also changes with the measures. What we want to emphasize is that the “curse of dimensionality” is a major issue which we face in these types of analyses.</p>
+<p>Let us plot the top words in topics:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="text-classification-models.html#cb205-1" tabindex="-1"></a>kahf_topics2 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(stm_kahf, <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb205-2"><a href="text-classification-models.html#cb205-2" tabindex="-1"></a>kahf_top_terms <span class="ot">&lt;-</span> kahf_topics2 <span class="sc">%&gt;%</span></span>
+<span id="cb205-3"><a href="text-classification-models.html#cb205-3" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb205-4"><a href="text-classification-models.html#cb205-4" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">7</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb205-5"><a href="text-classification-models.html#cb205-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb205-6"><a href="text-classification-models.html#cb205-6" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb205-7"><a href="text-classification-models.html#cb205-7" tabindex="-1"></a></span>
+<span id="cb205-8"><a href="text-classification-models.html#cb205-8" tabindex="-1"></a>kahf_top_terms <span class="sc">%&gt;%</span></span>
+<span id="cb205-9"><a href="text-classification-models.html#cb205-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb205-10"><a href="text-classification-models.html#cb205-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb205-11"><a href="text-classification-models.html#cb205-11" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb205-12"><a href="text-classification-models.html#cb205-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb205-13"><a href="text-classification-models.html#cb205-13" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>()<span class="sc">+</span></span>
+<span id="cb205-14"><a href="text-classification-models.html#cb205-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig804"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig804-1.png" alt="STM topic shares for Surah Al-Kahf" width="672" />
+<p class="caption">
+Figure 8.4: STM topic shares for Surah Al-Kahf
+</p>
+</div>
+<p>We can see, from Figure <a href="text-classification-models.html#fig:ch8fig804">8.4</a> that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="text-classification-models.html#cb206-1" tabindex="-1"></a><span class="fu">plot</span>(stm_kahf, <span class="at">type =</span> <span class="st">&quot;summary&quot;</span>, <span class="at">text.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb206-2"><a href="text-classification-models.html#cb206-2" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Share estimation&quot;</span></span>
+<span id="cb206-3"><a href="text-classification-models.html#cb206-3" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig805"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig805-1.png" alt="STM topic shares for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.5: STM topic shares for Surah Al-Kahf
+</p>
+</div>
+<p>Figure <a href="text-classification-models.html#fig:ch8fig805">8.5</a> and the results for top-words in Figure <a href="text-classification-models.html#fig:ch8fig804">8.4</a> demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure <a href="text-classification-models.html#fig:ch8fig805">8.5</a>, about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.</p>
+<p>There are few other neat options within STM that are useful and we will demonstrate them here. One of the functions is <em>findThoughts()</em>, which is a tool to find the subjects of a topic within the texts. We will try to get two verses in which Topic 5 and Topic 2 are dominant, as a sample:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="text-classification-models.html#cb207-1" tabindex="-1"></a>thoughts4 <span class="ot">=</span> <span class="fu">findThoughts</span>(stm_kahf, <span class="at">n =</span> <span class="dv">2</span>,<span class="at">text =</span> kahf<span class="sc">$</span>saheeh[<span class="dv">1</span><span class="sc">:</span><span class="dv">107</span>], </span>
+<span id="cb207-2"><a href="text-classification-models.html#cb207-2" tabindex="-1"></a>                         <span class="at">topics =</span> <span class="dv">5</span>)<span class="sc">$</span>docs[[<span class="dv">1</span>]]</span>
+<span id="cb207-3"><a href="text-classification-models.html#cb207-3" tabindex="-1"></a>thoughts3 <span class="ot">=</span> <span class="fu">findThoughts</span>(stm_kahf, <span class="at">n =</span> <span class="dv">2</span>,<span class="at">text =</span> kahf<span class="sc">$</span>saheeh[<span class="dv">1</span><span class="sc">:</span><span class="dv">107</span>], </span>
+<span id="cb207-4"><a href="text-classification-models.html#cb207-4" tabindex="-1"></a>                         <span class="at">topics =</span> <span class="dv">2</span>)<span class="sc">$</span>docs[[<span class="dv">1</span>]]</span>
+<span id="cb207-5"><a href="text-classification-models.html#cb207-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),<span class="at">mar =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>, <span class="dv">1</span>, .<span class="dv">5</span>))</span>
+<span id="cb207-6"><a href="text-classification-models.html#cb207-6" tabindex="-1"></a><span class="fu">plotQuote</span>(thoughts4, <span class="at">width =</span> <span class="dv">45</span>, <span class="at">main =</span> <span class="st">&quot;Topic 5&quot;</span>)</span>
+<span id="cb207-7"><a href="text-classification-models.html#cb207-7" tabindex="-1"></a><span class="fu">plotQuote</span>(thoughts3, <span class="at">width =</span> <span class="dv">45</span>, <span class="at">main =</span> <span class="st">&quot;Topic 2&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig806"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig806-1.png" alt="Sample of verses highly associated with Topic 5 and Topic 2" width="768" />
+<p class="caption">
+Figure 8.6: Sample of verses highly associated with Topic 5 and Topic 2
+</p>
+</div>
+<p>We present the results in a wordcloud format in Figure <a href="text-classification-models.html#fig:ch8fig807">8.7</a>.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="text-classification-models.html#cb208-1" tabindex="-1"></a><span class="fu">cloud</span>(stm_kahf)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig807"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig807-1.png" alt="Top words from all topics in wordcloud from STM for Surah Al-Kahf" width="384" />
+<p class="caption">
+Figure 8.7: Top words from all topics in wordcloud from STM for Surah Al-Kahf
+</p>
+</div>
+<p>We can visualize the correlations between the topics in Figure <a href="text-classification-models.html#fig:ch8fig808">8.8</a>:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="text-classification-models.html#cb209-1" tabindex="-1"></a>stm_mod_corr <span class="ot">=</span> <span class="fu">topicCorr</span>(stm_kahf)</span>
+<span id="cb209-2"><a href="text-classification-models.html#cb209-2" tabindex="-1"></a><span class="fu">plot</span>(stm_mod_corr)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig808"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig808-1.png" alt="Graphical display of topic correlations from STM for Surah Al-Kahf" width="384" />
+<p class="caption">
+Figure 8.8: Graphical display of topic correlations from STM for Surah Al-Kahf
+</p>
+</div>
+<p>Figure <a href="text-classification-models.html#fig:ch8fig809">8.9</a> is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="text-classification-models.html#cb210-1" tabindex="-1"></a><span class="fu">plot</span>(stm_kahf, <span class="at">type =</span> <span class="st">&quot;perspectives&quot;</span>, <span class="at">topics =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig809"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig809-1.png" alt="Two perspective for topics from STM in Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.9: Two perspective for topics from STM in Surah Al-Kahf
+</p>
+</div>
+<p>Figure <a href="text-classification-models.html#fig:ch8fig809">8.9</a> shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.</p>
+<p>The important thing to note is that these models take words in the texts as “they are”, without altering their positions (except for stopwords removals) and capture their occurrences. From there on, the models apply statistical calculations based on the formula provided within the models. Statistically speaking, the results are how the data “speak for itself”. The exact meanings are for the human to interpret.</p>
+<p>The table below provides top-terms to top-terms comparison from both the STM and LDA results, by ranking order.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>STM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rank 1</td>
+<td>(Topic 5) allah, day, muhammad</td>
+</tr>
+<tr class="even">
+<td>Rank 2</td>
+<td>(Topic 1) lord, earth, mercy</td>
+</tr>
+<tr class="odd">
+<td>Rank 3</td>
+<td>(Topic 6) people, cave, sea</td>
+</tr>
+<tr class="even">
+<td>Rank 4</td>
+<td>(Topic 4) deeds, found, remained</td>
+</tr>
+<tr class="odd">
+<td>Rank 5</td>
+<td>(Topic 3) moses, righteous, life</td>
+</tr>
+<tr class="even">
+<td>Rank 6</td>
+<td>(Topic 2) moses, righteous, guidance</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>LDA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rank 1</td>
+<td>(Topic 4) people, bring, deeds</td>
+</tr>
+<tr class="even">
+<td>Rank 2</td>
+<td>(Topic 3) lord, found, earth</td>
+</tr>
+<tr class="odd">
+<td>Rank 3</td>
+<td>(Topic 6) day, muhammad, warn</td>
+</tr>
+<tr class="even">
+<td>Rank 4</td>
+<td>(Topic 2) cave, righteous, mention</td>
+</tr>
+<tr class="odd">
+<td>Rank 5</td>
+<td>(Topic 1) lord, moses, worldly</td>
+</tr>
+<tr class="even">
+<td>Rank 6</td>
+<td>(Topic 5) allah, remained, mercy</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the impact of text entropy on the results, where the method choice changes the outcome dramatically. Not only does the topic change its ranking, but the terms also change its ranking within a topic and across topics.</p>
+</div>
+<div id="latent-semantic-analysis-lsa" class="section level3 hasAnchor" number="8.2.7">
+<h3><span class="header-section-number">8.2.7</span> Latent Semantic Analysis (LSA)<a href="text-classification-models.html#latent-semantic-analysis-lsa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Latent Semantic Analysis is said to be better at capturing the “semantical” elements within the texts <span class="citation">(<a href="#ref-landauer1998">Landauer, Foltz, and Laham 1998</a>)</span>. We will see the results and compare them to the STM and LDA methods earlier.</p>
+<p>First, let us explain the approach of LSA. There are two different methods of vectorization which we can utilize: vectorization over the features (similar to LDA and STM) or vectorization over the verses. Both have their advantages and disadvantages, depending on our objective. For our purpose, we will do both, first by the features method, so that we can compare the results with STM and LDA. In both methods, we fix the number of topics to be six, by setting <em>nd = 6</em> (six dimensions).</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="text-classification-models.html#cb211-1" tabindex="-1"></a>lsa_kahf <span class="ot">=</span> quanteda.textmodels<span class="sc">::</span><span class="fu">textmodel_lsa</span>(dfm_kahf, <span class="at">nd =</span> <span class="dv">6</span>, <span class="at">margin =</span> <span class="st">&quot;both&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="text-classification-models.html#cb212-1" tabindex="-1"></a>topic1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb212-2"><a href="text-classification-models.html#cb212-2" tabindex="-1"></a>topic2[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<p>LSA works by calculating every individual word within the texts, it computes the score of a sentence (i.e., verses) in the texts, and computes the “distances” between the sentences (verses). These distances are captured through the dimensions of vectorized space of six dimensions (since we chose six topics as our target). The top words for each topic (i.e. dimensions) are the headers as printed above.</p>
+<p>Comparing with previous results from STM, LDA:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>STM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rank 1</td>
+<td>(Topic 5) allah, day, muhammad</td>
+</tr>
+<tr class="even">
+<td>Rank 2</td>
+<td>(Topic 1) lord, earth, mercy</td>
+</tr>
+<tr class="odd">
+<td>Rank 3</td>
+<td>(Topic 6) people, cave, sea</td>
+</tr>
+<tr class="even">
+<td>Rank 4</td>
+<td>(Topic 4) deeds, found, remained</td>
+</tr>
+<tr class="odd">
+<td>Rank 5</td>
+<td>(Topic 3) moses, righteous, life</td>
+</tr>
+<tr class="even">
+<td>Rank 6</td>
+<td>(Topic 2) moses, righteous, guidance</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>LDA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rank 1</td>
+<td>(Topic 4) people, bring, deeds</td>
+</tr>
+<tr class="even">
+<td>Rank 2</td>
+<td>(Topic 3) lord, found, earth</td>
+</tr>
+<tr class="odd">
+<td>Rank 3</td>
+<td>(Topic 6) day, muhammad, warn</td>
+</tr>
+<tr class="even">
+<td>Rank 4</td>
+<td>(Topic 2) cave, righteous, mention</td>
+</tr>
+<tr class="odd">
+<td>Rank 5</td>
+<td>(Topic 1) lord, moses, worldly</td>
+</tr>
+<tr class="even">
+<td>Rank 6</td>
+<td>(Topic 5) allah, remained, mercy</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>LSA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rank 1</td>
+<td>(Topic 1) lord, allah, mercy</td>
+</tr>
+<tr class="even">
+<td>Rank 2</td>
+<td>(Topic 5) adorned, resting, wills</td>
+</tr>
+<tr class="odd">
+<td>Rank 3</td>
+<td>(Topic 6) wills, truth, disbelieve</td>
+</tr>
+<tr class="even">
+<td>Rank 4</td>
+<td>(Topic 4) allah, cave, guide</td>
+</tr>
+<tr class="odd">
+<td>Rank 5</td>
+<td>(Topic 3) people, lord, mercy</td>
+</tr>
+<tr class="even">
+<td>Rank 6</td>
+<td>(Topic 2) lord, words, righteous</td>
+</tr>
+</tbody>
+</table>
+<p>To see how this looks, we plot the sentences scoring for each verse (denoted by the number), and across dimensions (we chose dim1 vs dim2, and dim1 vs dim 3, for illustration). Sentences that are “semantically” closer based on “topic a” vs “topic b” are clustered together. This is shown in Figure <a href="text-classification-models.html#fig:ch8fig810">8.10</a>.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="text-classification-models.html#cb213-1" tabindex="-1"></a>Name <span class="ot">=</span> <span class="fu">str_replace</span>(<span class="fu">rownames</span>(klsa_df),<span class="st">&quot;text&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb213-2"><a href="text-classification-models.html#cb213-2" tabindex="-1"></a>p1 <span class="ot">=</span> klsa_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2), <span class="at">label=</span> Name) <span class="sc">+</span> </span>
+<span id="cb213-3"><a href="text-classification-models.html#cb213-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> verses.color) <span class="sc">+</span></span>
+<span id="cb213-4"><a href="text-classification-models.html#cb213-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb213-5"><a href="text-classification-models.html#cb213-5" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Name,<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">vjust=</span><span class="dv">1</span>))</span>
+<span id="cb213-6"><a href="text-classification-models.html#cb213-6" tabindex="-1"></a>p2 <span class="ot">=</span> klsa_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V3), <span class="at">label=</span> Name) <span class="sc">+</span> </span>
+<span id="cb213-7"><a href="text-classification-models.html#cb213-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> verses.color) <span class="sc">+</span></span>
+<span id="cb213-8"><a href="text-classification-models.html#cb213-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb213-9"><a href="text-classification-models.html#cb213-9" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Name,<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">vjust=</span><span class="dv">1</span>))</span>
+<span id="cb213-10"><a href="text-classification-models.html#cb213-10" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig810"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig810-1.png" alt="Topics in dimensions for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.10: Topics in dimensions for Surah Al-Kahf
+</p>
+</div>
+<p>In Figure <a href="text-classification-models.html#fig:ch8fig810">8.10</a>, there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we “force” the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use.</p>
+<p>Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure <a href="text-classification-models.html#fig:ch8fig811">8.11</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig811"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig811-1.png" alt="3D plot of the scores from LSA model for topics in Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.11: 3D plot of the scores from LSA model for topics in Surah Al-Kahf
+</p>
+</div>
+<p>The plot shows that for Topic 1 (the highest-ranked topic), there are verses that have high positive scores. For Topic 5 and Topic 6, almost similar verses have high positive scores, while for Topic 3, the scores are highly opposite (i.e. negative) on some of the verses. This is not exactly the ideal method to extract the information from the model, since visualization of the complex dimensionality is not easy and clear. However, what we want to demonstrate is there are deeper level complexities that are not easy to identify by just eyeballing the visuals.</p>
+</div>
+<div id="summarizing-unsupervised-learning-model" class="section level3 hasAnchor" number="8.2.8">
+<h3><span class="header-section-number">8.2.8</span> Summarizing unsupervised learning model<a href="text-classification-models.html#summarizing-unsupervised-learning-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us summarize the lessons learned from the LDA, STM, and LSA models of Surah Al-Kahf.</p>
+<p>Firstly, we note that for the Surah Al-Kahf, we have 507 unique tokens (or vocabulary) from 110 documents (verses), which means that the matrix of data space of 55,770 observations (507 x 110), which is a sparse matrix of 0’s and 1’s. In the examples we went through, we are trying to estimate 3,549 parameters ((6+1) x 507). Statistically, we are facing an extremely small data set (due to sparsity) while trying to estimate a large number of parameters. This is the first part of the problem we are facing.</p>
+<p>Secondly, we need to mention a few notable problems. Is it justified to assume that words, lexically and semantically follow certain patterns and structures within Saheeh English translations of Al-Quran? In the English language, there are abundant works by linguists to deal with this issue. However, if the texts are translations from another language, which has its own grammatical, lexical, and semantical meaning, does the same thing hold? Naturally, the answer is not necessarily. This is particularly true for Quran Analytics since the narratives, stories, and expositions in Al-Quran are explicit and not in the normal human linguistic way.</p>
+<p>Summarizing the observations and results of the LDA, STM, and LSA models, we can generally say that the unsupervised learning model represented by the three, despite the sparse data situation, performed reasonably well in capturing some elements in the structure of the texts from statistical perspectives. The model variations could very well result from a small sample problem.</p>
+<p>Generally, we would say that, if more analysis is done, like, instead of relying on a single Surah (as we have done here), we could use the entire corpus of Saheeh, and augment the data with other translations (Yusuf Ali and other English translations available). This may help deal with the small sample/data problem. Furthermore, if data augmentation involves the original Arabic text combined with some refinement of the modeling approach, we believe that some interesting insights are possible. This is the more comprehensive Quran Analytics approach that we target. For now, we leave the subject as directions for future research.</p>
+</div>
+</div>
+<div id="supervised-learning-models" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Supervised learning models<a href="text-classification-models.html#supervised-learning-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A supervised learning model requires two sets of data, the training sample and the validation sample. Both samples must be labeled data, where the categories are pre-labeled, obtained from some other pre-worked dataset, or the user’s own labeling. Since we have attempted to label Surah Al-Kahf with six labels (i.e., topics), we want to test some of the supervised learning models and compare the performance and results.</p>
+<p>We will choose the simplest method, Naive Bayes (NB), followed by Support Vector Machines (SVM). We will then compare the methods at the end of this section.</p>
+<p>First, we create the labels for the data and split the samples for training and validation set as follows:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="text-classification-models.html#cb214-1" tabindex="-1"></a>label_index <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;index&quot;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">110</span>,</span>
+<span id="cb214-2"><a href="text-classification-models.html#cb214-2" tabindex="-1"></a>                         <span class="st">&quot;topics&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;cave&quot;</span>,(<span class="dv">31-1</span><span class="sc">+</span><span class="dv">1</span>)),</span>
+<span id="cb214-3"><a href="text-classification-models.html#cb214-3" tabindex="-1"></a>                                      <span class="fu">rep</span>(<span class="st">&quot;garden&quot;</span>,(<span class="dv">44-32</span><span class="sc">+</span><span class="dv">1</span>)),</span>
+<span id="cb214-4"><a href="text-classification-models.html#cb214-4" tabindex="-1"></a>                                      <span class="fu">rep</span>(<span class="st">&quot;life&quot;</span>,(<span class="dv">59-45</span><span class="sc">+</span><span class="dv">1</span>)),</span>
+<span id="cb214-5"><a href="text-classification-models.html#cb214-5" tabindex="-1"></a>                                      <span class="fu">rep</span>(<span class="st">&quot;moses&quot;</span>,(<span class="dv">82-60</span><span class="sc">+</span><span class="dv">1</span>)),</span>
+<span id="cb214-6"><a href="text-classification-models.html#cb214-6" tabindex="-1"></a>                                      <span class="fu">rep</span>(<span class="st">&quot;dhul&quot;</span>,(<span class="dv">102-83</span><span class="sc">+</span><span class="dv">1</span>)), </span>
+<span id="cb214-7"><a href="text-classification-models.html#cb214-7" tabindex="-1"></a>                                      <span class="fu">rep</span>(<span class="st">&quot;deeds&quot;</span>,<span class="fu">c</span>(<span class="dv">110-103</span><span class="sc">+</span><span class="dv">1</span>))))</span>
+<span id="cb214-8"><a href="text-classification-models.html#cb214-8" tabindex="-1"></a>train_index <span class="ot">=</span> <span class="fu">sample</span>(label_index<span class="sc">$</span>index,<span class="dv">55</span>)</span>
+<span id="cb214-9"><a href="text-classification-models.html#cb214-9" tabindex="-1"></a>kahf_full <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;text&quot;</span> <span class="ot">=</span> kahf<span class="sc">$</span>saheeh, <span class="st">&quot;label&quot;</span><span class="ot">=</span> label_index<span class="sc">$</span>topics)</span>
+<span id="cb214-10"><a href="text-classification-models.html#cb214-10" tabindex="-1"></a>kahf_train <span class="ot">=</span> kahf_full[train_index,]</span>
+<span id="cb214-11"><a href="text-classification-models.html#cb214-11" tabindex="-1"></a>kahf_valid <span class="ot">=</span> kahf_full[<span class="sc">-</span>train_index,]</span>
+<span id="cb214-12"><a href="text-classification-models.html#cb214-12" tabindex="-1"></a>label_train <span class="ot">=</span> kahf_train<span class="sc">$</span>label</span>
+<span id="cb214-13"><a href="text-classification-models.html#cb214-13" tabindex="-1"></a>label_valid <span class="ot">=</span> kahf_valid<span class="sc">$</span>label</span>
+<span id="cb214-14"><a href="text-classification-models.html#cb214-14" tabindex="-1"></a>dfm_train <span class="ot">=</span> kahf_train<span class="sc">$</span>text <span class="sc">%&gt;%</span> <span class="fu">tokens</span>(<span class="at">remove_punct =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb214-15"><a href="text-classification-models.html#cb214-15" tabindex="-1"></a>                <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb214-16"><a href="text-classification-models.html#cb214-16" tabindex="-1"></a>                <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, <span class="at">padding =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb214-17"><a href="text-classification-models.html#cb214-17" tabindex="-1"></a>                <span class="fu">dfm</span>()</span>
+<span id="cb214-18"><a href="text-classification-models.html#cb214-18" tabindex="-1"></a>dfm_valid <span class="ot">=</span> kahf_valid<span class="sc">$</span>text <span class="sc">%&gt;%</span>  <span class="fu">tokens</span>(<span class="at">remove_punct =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb214-19"><a href="text-classification-models.html#cb214-19" tabindex="-1"></a>                <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb214-20"><a href="text-classification-models.html#cb214-20" tabindex="-1"></a>                <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> stop_words<span class="sc">$</span>word, <span class="at">padding =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb214-21"><a href="text-classification-models.html#cb214-21" tabindex="-1"></a>                <span class="fu">dfm</span>()</span></code></pre></div>
+<div id="naive-bayes-nb" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Naive Bayes (NB)<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a><a href="text-classification-models.html#naive-bayes-nb" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Naive Bayes model for text classification is a simple “Bag-of-Words” model, where we assume a (prior) multinomial probability for six topics, which we assume by default. Each verse is assumed to have an equal probability of belonging to a topic. The model then will calculate the probability of a verse belonging to any one of the topics. By default, we know which verses are from which topics, as defined in the six labels that we have set before.</p>
+<p>The Naive Bayes model in <em>quanteda</em> is simply fitted and tested as follows:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="text-classification-models.html#cb215-1" tabindex="-1"></a>nb_kahf <span class="ot">=</span> quanteda.textmodels<span class="sc">::</span><span class="fu">textmodel_nb</span>(dfm_train,label_train)</span>
+<span id="cb215-2"><a href="text-classification-models.html#cb215-2" tabindex="-1"></a>table1 <span class="ot">=</span> <span class="fu">table</span>(<span class="fu">predict</span>(nb_kahf),label_train)</span>
+<span id="cb215-3"><a href="text-classification-models.html#cb215-3" tabindex="-1"></a>table1</span>
+<span id="cb215-4"><a href="text-classification-models.html#cb215-4" tabindex="-1"></a>dfm_matched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfm_valid, <span class="at">features =</span> <span class="fu">featnames</span>(dfm_train))</span>
+<span id="cb215-5"><a href="text-classification-models.html#cb215-5" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(nb_kahf, <span class="at">newdata =</span> dfm_matched)</span>
+<span id="cb215-6"><a href="text-classification-models.html#cb215-6" tabindex="-1"></a>table2 <span class="ot">=</span> <span class="fu">table</span>(pred, label_valid)</span>
+<span id="cb215-7"><a href="text-classification-models.html#cb215-7" tabindex="-1"></a>table2</span></code></pre></div>
+<p>We can see from the results in the confusion matrix table, <em>table1</em>, that in the training set, the Naive Bayes model has a perfect fit (almost all correct matches) with the accuracy of 100%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy drops down to 50.91%. We have an overfitting problem.</p>
+</div>
+<div id="support-vector-machines-svm" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Support Vector Machines (SVM)<a href="text-classification-models.html#support-vector-machines-svm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Support Vector Machines or SVM is among the basic multivariate regression models which are based on separating hyperplanes concept. The idea of SVM is to generate classifications across multi-labels by separating the data into separate “planes” of classes.</p>
+<p>In <em>quanteda</em>, the model can be applied using <em>textmodel_svm()</em> function.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="text-classification-models.html#cb216-1" tabindex="-1"></a>svm_kahf <span class="ot">=</span> quanteda.textmodels<span class="sc">::</span><span class="fu">textmodel_svm</span>(dfm_train,label_train, <span class="at">weight =</span> <span class="st">&quot;uniform&quot;</span>)</span>
+<span id="cb216-2"><a href="text-classification-models.html#cb216-2" tabindex="-1"></a>table3 <span class="ot">=</span> <span class="fu">table</span>(<span class="fu">predict</span>(svm_kahf),label_train)</span>
+<span id="cb216-3"><a href="text-classification-models.html#cb216-3" tabindex="-1"></a>table3</span>
+<span id="cb216-4"><a href="text-classification-models.html#cb216-4" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(svm_kahf, <span class="at">newdata =</span> dfm_matched)</span>
+<span id="cb216-5"><a href="text-classification-models.html#cb216-5" tabindex="-1"></a>table4 <span class="ot">=</span> <span class="fu">table</span>(pred, label_valid)</span>
+<span id="cb216-6"><a href="text-classification-models.html#cb216-6" tabindex="-1"></a>table4</span></code></pre></div>
+<p>We can see from the results of the table that in the training set, the SVM model fits with an accuracy of 100%. However, when fitted with the balance of the data (validation data), there are several mismatches, and the accuracy is at 4545%. It suffers the same problem as the Naive Bayes model, which is an overfitting problem.</p>
+</div>
+<div id="summarizing-supervised-learning-model" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Summarizing supervised learning model<a href="text-classification-models.html#summarizing-supervised-learning-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our excursion on the supervised learning model is very short, with unsatisfactory results. The problem we face is quite obvious, namely small sample data. We have only a few verses for each topic, and within each topic, we have only a small number of features. When we fit the model, it will easily get overfitted, which to a degree says that our labeling of the verses is precise within its own dataset whereby the model would detect it easily. However, we can never use the learned model to apply to verses beyond the actual training sample, which then renders the exercise practically useless.</p>
+</div>
+</div>
+<div id="ideological-difference-models" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Ideological difference models<a href="text-classification-models.html#ideological-difference-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>quanteda.texmodels</em> has a few other supervised learning models, such as <em>textmodel_wordscores()</em> and <em>textmodel_wordfish()</em>. Both models are useful for observing the “ideological” differences in texts. The concept of both models is to uncover if there are any differences ideologically speaking between the various topics. If there are “distinct” ideas, the model should be able to predict them. These types of models are in the category of “ideological scaling”, a supervised learning model (please see Figure <a href="text-classification-models.html#fig:ch8fig801">8.1</a>) at the beginning of the chapter.</p>
+<p>First, we will apply the <em>wordscores</em> model in the codes attached below, and tabulate the results.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="text-classification-models.html#cb217-1" tabindex="-1"></a>ws_kahf <span class="ot">=</span> <span class="fu">textmodel_wordscores</span>(dfm_train,</span>
+<span id="cb217-2"><a href="text-classification-models.html#cb217-2" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(label_train)))</span>
+<span id="cb217-3"><a href="text-classification-models.html#cb217-3" tabindex="-1"></a>table5 <span class="ot">=</span> <span class="fu">table</span>(<span class="fu">floor</span>(<span class="fu">predict</span>(ws_kahf)),</span>
+<span id="cb217-4"><a href="text-classification-models.html#cb217-4" tabindex="-1"></a>               <span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(label_train)))</span>
+<span id="cb217-5"><a href="text-classification-models.html#cb217-5" tabindex="-1"></a>table5</span>
+<span id="cb217-6"><a href="text-classification-models.html#cb217-6" tabindex="-1"></a>table6 <span class="ot">=</span> <span class="fu">table</span>(<span class="fu">floor</span>(<span class="fu">predict</span>(ws_kahf, <span class="at">newdata =</span> dfm_matched)), </span>
+<span id="cb217-7"><a href="text-classification-models.html#cb217-7" tabindex="-1"></a>               <span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(label_train)))</span>
+<span id="cb217-8"><a href="text-classification-models.html#cb217-8" tabindex="-1"></a>table6</span></code></pre></div>
+<p>From the tables printed above, we can say that in the training part <em>(table5)</em>, the model could clearly identify that the “ideas” within each topic are distinct enough to be detected with the accuracy of 38.18%. In <em>table6</em>, when we apply the model to the validation data, we can see that some of the topics (ideas) are dispersed through other topics (ideas).</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="text-classification-models.html#cb218-1" tabindex="-1"></a><span class="fu">textplot_scale1d</span>(ws_kahf, <span class="at">margin =</span> <span class="st">&quot;features&quot;</span>,</span>
+<span id="cb218-2"><a href="text-classification-models.html#cb218-2" tabindex="-1"></a>                 <span class="at">highlighted =</span> <span class="fu">c</span>(<span class="st">&quot;allah&quot;</span>,<span class="st">&quot;lord&quot;</span>,<span class="st">&quot;moses&quot;</span>,<span class="st">&quot;cave&quot;</span>,</span>
+<span id="cb218-3"><a href="text-classification-models.html#cb218-3" tabindex="-1"></a>                                 <span class="st">&quot;al-khidh&quot;</span>,<span class="st">&quot;gardens&quot;</span>),</span>
+<span id="cb218-4"><a href="text-classification-models.html#cb218-4" tabindex="-1"></a>                 <span class="at">highlighted_color =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig812"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig812-1.png" alt="Wordscores plot for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.12: Wordscores plot for Surah Al-Kahf
+</p>
+</div>
+<p>Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure <a href="text-classification-models.html#fig:ch8fig812">8.12</a>. From the plot we can visualize the relative positions of the key words for the various topics: “lord”, which rank highest in the Surah, followed by “allah” - both almost at the center; the word “moses” scores higher, but in the same “direction” as “al-khidh”, which is directly below “moses”. The word “cave” and “gardens” are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.</p>
+<p>Now we will apply <em>textmodel_wordfish()</em>, which in many ways, similar to <em>wordscores</em> model and plot the results.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="text-classification-models.html#cb219-1" tabindex="-1"></a>wf_kahf <span class="ot">=</span> <span class="fu">textmodel_wordfish</span>(dfm_train, <span class="at">dir =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb219-2"><a href="text-classification-models.html#cb219-2" tabindex="-1"></a><span class="fu">textplot_scale1d</span>(wf_kahf, <span class="at">margin =</span> <span class="st">&quot;features&quot;</span>,</span>
+<span id="cb219-3"><a href="text-classification-models.html#cb219-3" tabindex="-1"></a>                 <span class="at">highlighted =</span> <span class="fu">c</span>(<span class="st">&quot;allah&quot;</span>,<span class="st">&quot;lord&quot;</span>,<span class="st">&quot;moses&quot;</span>,<span class="st">&quot;cave&quot;</span>,</span>
+<span id="cb219-4"><a href="text-classification-models.html#cb219-4" tabindex="-1"></a>                                 <span class="st">&quot;al-khidh&quot;</span>,<span class="st">&quot;gardens&quot;</span>),</span>
+<span id="cb219-5"><a href="text-classification-models.html#cb219-5" tabindex="-1"></a>                 <span class="at">highlighted_color =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig813"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig813-1.png" alt="Wordfish plot for Surah Al-Kahf" width="576" />
+<p class="caption">
+Figure 8.13: Wordfish plot for Surah Al-Kahf
+</p>
+</div>
+<p><em>wordfish</em> scores which will show whether some of the topics are “diametrically” opposed to one another. Figure <a href="text-classification-models.html#fig:ch8fig813">8.13</a> demonstrates that all topics are pretty much “aligned” to each other from the word “lord”, down to “gardens”. An interesting observation is that “moses” is right after “lord” in the ranking, above “allah”.</p>
+</div>
+<div id="word-embedding-models" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Word embeddings models<a href="text-classification-models.html#word-embedding-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section we will introduce a powerful approach to dealing with text data, using a text embedding method known famously as GloVe: Global Vectors for Word Representation <span class="citation">(<a href="#ref-glove2014">Pennington, Socher, and Manning 2014</a>)</span>. It is “an unsupervised learning algorithm for obtaining vector representations for words”. The concept of word-vector representations is to develop a global word-word co-occurrence matrix that tabulates how frequently words co-occur with another one in a given corpus.<a href="#fn105" class="footnote-ref" id="fnref105"><sup>105</sup></a> The model first sets a pre-training on all the data within the corpus, allowing any utilization thereafter to be easy and fast.</p>
+<p>Mathematically what the GloVe algorithm does is to transform the corpus into a “flat” and “compact” matrix of features (row-wise) vectors. Each feature is represented as a vector of fixed length (known as the dimension) set by the algorithm. The concept is similar to hashing algorithms, where each vector is unique (representing a unique feature or word in the vocabulary). Normally the length of the vector is set to fifty, which is deemed to be sufficient for most large-size tasks. We introduce the concept here for purposes of illustrating the usage and convenience of the algorithm and demonstrate its potential for Quran Analytics.</p>
+<p>In <strong>R</strong>, the GloVe algorithm is implemented through the <em>text2vec</em> <span class="citation">(<a href="#ref-text2vec">Selivanov, Bickel, and Wang 2020</a>)</span> package.</p>
+<p>The steps in <em>text2vec</em> are as follows:<a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a></p>
+<ol style="list-style-type: decimal">
+<li><em>space_tokenizer()</em> and <em>itoken()</em> for tokenization of the corpus or texts, which includes any removal of unwanted items (stopwords, punctuations, etc.)</li>
+<li><em>create_vocabulary()</em> to create the vocabulary for the entire tokens (i.e. unique tokens)</li>
+<li><em>vocab_vectorizer()</em> to vectorized the vocabulary</li>
+<li><em>create_tcm()</em> to create the term-co-occurrence-matrix (tcm) and set the skip grams window</li>
+<li><em>GlobalVector$new()</em> to generate the matrix of vectors for each vocabulary item, and set the length of the vector (to 50)</li>
+<li><em>xxx$fit_transform()</em> to fit the GloVe model</li>
+<li>Use the model to predict</li>
+</ol>
+<p>Note that the package uses <em>data.table</em> syntax for <em>data.frame</em>, which is an extremely fast data processor in <strong>R</strong>.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="text-classification-models.html#cb220-1" tabindex="-1"></a><span class="do">## load the library</span></span>
+<span id="cb220-2"><a href="text-classification-models.html#cb220-2" tabindex="-1"></a><span class="fu">library</span>(text2vec)</span>
+<span id="cb220-3"><a href="text-classification-models.html#cb220-3" tabindex="-1"></a><span class="do">## clean the texts</span></span>
+<span id="cb220-4"><a href="text-classification-models.html#cb220-4" tabindex="-1"></a>quran_saheeh <span class="ot">=</span> <span class="fu">tolower</span>(quran_all<span class="sc">$</span>saheeh)</span>
+<span id="cb220-5"><a href="text-classification-models.html#cb220-5" tabindex="-1"></a>quran_saheeh <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&quot;[^[:alnum:]</span><span class="sc">\\</span><span class="st">-</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">s]&quot;</span>, <span class="st">&quot; &quot;</span>, quran_saheeh)</span>
+<span id="cb220-6"><a href="text-classification-models.html#cb220-6" tabindex="-1"></a>quran_saheeh <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;&quot;</span>, quran_saheeh)</span>
+<span id="cb220-7"><a href="text-classification-models.html#cb220-7" tabindex="-1"></a>quran_saheeh <span class="ot">=</span> <span class="fu">trimws</span>(quran_saheeh)</span>
+<span id="cb220-8"><a href="text-classification-models.html#cb220-8" tabindex="-1"></a><span class="do">## 1. tokenize</span></span>
+<span id="cb220-9"><a href="text-classification-models.html#cb220-9" tabindex="-1"></a>ktoks <span class="ot">=</span> <span class="fu">space_tokenizer</span>(quran_saheeh)</span>
+<span id="cb220-10"><a href="text-classification-models.html#cb220-10" tabindex="-1"></a>itktoks <span class="ot">=</span> <span class="fu">itoken</span>(ktoks, <span class="at">n_chunks =</span> 10L)</span>
+<span id="cb220-11"><a href="text-classification-models.html#cb220-11" tabindex="-1"></a>stopw <span class="ot">=</span> stop_words<span class="sc">$</span>word</span>
+<span id="cb220-12"><a href="text-classification-models.html#cb220-12" tabindex="-1"></a><span class="do">## 2. create vocabulary</span></span>
+<span id="cb220-13"><a href="text-classification-models.html#cb220-13" tabindex="-1"></a>kvocab <span class="ot">=</span> <span class="fu">create_vocabulary</span>(itktoks, <span class="at">stopwords =</span> stopw)</span>
+<span id="cb220-14"><a href="text-classification-models.html#cb220-14" tabindex="-1"></a><span class="do">## 3. vectorize the vocabulary</span></span>
+<span id="cb220-15"><a href="text-classification-models.html#cb220-15" tabindex="-1"></a>k2vec <span class="ot">=</span> <span class="fu">vocab_vectorizer</span>(kvocab)</span>
+<span id="cb220-16"><a href="text-classification-models.html#cb220-16" tabindex="-1"></a><span class="do">## 4. create the tcm</span></span>
+<span id="cb220-17"><a href="text-classification-models.html#cb220-17" tabindex="-1"></a>ktcm <span class="ot">=</span> <span class="fu">create_tcm</span>(itktoks, k2vec, <span class="at">skip_grams_window =</span> 5L)</span>
+<span id="cb220-18"><a href="text-classification-models.html#cb220-18" tabindex="-1"></a><span class="do">## 5. generate the Global Vector with rank = 50L</span></span>
+<span id="cb220-19"><a href="text-classification-models.html#cb220-19" tabindex="-1"></a>kglove <span class="ot">=</span> GlobalVectors<span class="sc">$</span><span class="fu">new</span>(<span class="at">rank =</span> <span class="dv">50</span>, <span class="at">x_max =</span> <span class="dv">6</span>)</span>
+<span id="cb220-20"><a href="text-classification-models.html#cb220-20" tabindex="-1"></a><span class="do">## 6. Fit the GloVE model</span></span>
+<span id="cb220-21"><a href="text-classification-models.html#cb220-21" tabindex="-1"></a>wv_main <span class="ot">=</span> kglove<span class="sc">$</span><span class="fu">fit_transform</span>(ktcm, <span class="at">n_iter =</span> <span class="dv">20</span>)</span>
+<span id="cb220-22"><a href="text-classification-models.html#cb220-22" tabindex="-1"></a><span class="do">## Use the model for prediction</span></span>
+<span id="cb220-23"><a href="text-classification-models.html#cb220-23" tabindex="-1"></a>wv_context <span class="ot">=</span> kglove<span class="sc">$</span>components</span>
+<span id="cb220-24"><a href="text-classification-models.html#cb220-24" tabindex="-1"></a><span class="do">## This is in data.table format</span></span>
+<span id="cb220-25"><a href="text-classification-models.html#cb220-25" tabindex="-1"></a>word_vec <span class="ot">=</span> wv_main <span class="sc">+</span> <span class="fu">t</span>(wv_context)</span>
+<span id="cb220-26"><a href="text-classification-models.html#cb220-26" tabindex="-1"></a><span class="do">## This is to convert to dplyr data.frame format</span></span>
+<span id="cb220-27"><a href="text-classification-models.html#cb220-27" tabindex="-1"></a>word_vec_df <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(word_vec))</span></code></pre></div>
+<p>The word-vector consists of vectors of unique frequencies for each word in the vocabulary. These frequencies are used for calculating the similarities or distances between the words. A plot of selected word frequencies in the word-vector is presented in Figure <a href="text-classification-models.html#fig:ch8fig814">8.14</a>, for the word “allah”, “lord”, “muhammad”, and “abraham”.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="text-classification-models.html#cb221-1" tabindex="-1"></a>word_vec_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">y=</span>allah), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb221-2"><a href="text-classification-models.html#cb221-2" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">y=</span>lord), <span class="at">color =</span><span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb221-3"><a href="text-classification-models.html#cb221-3" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">y=</span>muhammad), <span class="at">color =</span> <span class="st">&quot;magenta&quot;</span>) <span class="sc">+</span></span>
+<span id="cb221-4"><a href="text-classification-models.html#cb221-4" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">y=</span>abraham), <span class="at">color =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb221-5"><a href="text-classification-models.html#cb221-5" tabindex="-1"></a>                    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Dimensions&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Word Frequencies&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig814"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig814-1.png" alt="Word-vector frequencies for selected words" width="576" />
+<p class="caption">
+Figure 8.14: Word-vector frequencies for selected words
+</p>
+</div>
+<p>The frequencies do not have any meaning, except that it records the relative unique position of each word within a corpus. This method is a faster way of generating an unsupervised learning model for the data at hand, especially when the data (i.e., text corpus) is large and sparse.<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a></p>
+<p>The codes below show some examples of how the GloVe model is used.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="text-classification-models.html#cb222-1" tabindex="-1"></a>topic1 <span class="ot">=</span> word_vec[<span class="st">&quot;allah&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> </span>
+<span id="cb222-2"><a href="text-classification-models.html#cb222-2" tabindex="-1"></a>         word_vec[<span class="st">&quot;lord&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> </span>
+<span id="cb222-3"><a href="text-classification-models.html#cb222-3" tabindex="-1"></a>         word_vec[<span class="st">&quot;muhammad&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb222-4"><a href="text-classification-models.html#cb222-4" tabindex="-1"></a>         word_vec[<span class="st">&quot;abraham&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb222-5"><a href="text-classification-models.html#cb222-5" tabindex="-1"></a>topic1_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vec, <span class="at">y =</span> topic1, <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>)</span>
+<span id="cb222-6"><a href="text-classification-models.html#cb222-6" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(topic1_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> T),<span class="dv">7</span>)</span></code></pre></div>
+<p>Now we can see clearly the topical relevance of the words by rank, from “lord”, to “allah”, then “muhammad”, as a “messenger”, bringing the “truth” to be “believed” by the “people”, and so on. The word “abraham” (Prophet Ibrahim a.s.) appears much further down in the ranking.</p>
+<p>Now instead of us “fixing” the topics as in the LDA, STM, and LSA to six topics, we can use the words we think are relevant for the topic and observe the results. Let us imagine the story of the cave dwellers in Surah Al-Kahf, and try to pick out “cave” and “dwell” from the entire translation.</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="text-classification-models.html#cb223-1" tabindex="-1"></a>topic <span class="ot">=</span> word_vec[<span class="st">&quot;cave&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> word_vec[<span class="st">&quot;dwell&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb223-2"><a href="text-classification-models.html#cb223-2" tabindex="-1"></a>topic_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vec, <span class="at">y =</span> topic, <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>)</span>
+<span id="cb223-3"><a href="text-classification-models.html#cb223-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(topic_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> T),<span class="dv">7</span>)</span></code></pre></div>
+<p>As an exercise, let us look at “worship”,“allah” and “idols”.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="text-classification-models.html#cb224-1" tabindex="-1"></a>tt <span class="ot">=</span> word_vec[<span class="st">&quot;worship&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> <span class="sc">+</span> word_vec[<span class="st">&quot;allah&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb224-2"><a href="text-classification-models.html#cb224-2" tabindex="-1"></a>tt_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vec, <span class="at">y =</span> tt, <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>)</span>
+<span id="cb224-3"><a href="text-classification-models.html#cb224-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(tt_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> T),<span class="dv">7</span>)</span>
+<span id="cb224-4"><a href="text-classification-models.html#cb224-4" tabindex="-1"></a>tt <span class="ot">=</span> word_vec[<span class="st">&quot;worship&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> <span class="sc">+</span> word_vec[<span class="st">&quot;idols&quot;</span>,,drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb224-5"><a href="text-classification-models.html#cb224-5" tabindex="-1"></a>tt_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vec, <span class="at">y =</span> tt, <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>)</span>
+<span id="cb224-6"><a href="text-classification-models.html#cb224-6" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(tt_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> T),<span class="dv">7</span>)</span></code></pre></div>
+<p>Let us now go back to Surah Al-Kahf and redo the topic modeling exercise but instead, we will use the GloVe formulations and set the topic to be six (the same as before).</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="text-classification-models.html#cb225-1" tabindex="-1"></a>kahf_saheeh <span class="ot">=</span> quran_all <span class="sc">%&gt;%</span> </span>
+<span id="cb225-2"><a href="text-classification-models.html#cb225-2" tabindex="-1"></a>                  <span class="fu">filter</span>(surah_title_en<span class="sc">==</span><span class="st">&quot;Al-Kahf&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb225-3"><a href="text-classification-models.html#cb225-3" tabindex="-1"></a>                  <span class="fu">pull</span>(saheeh)</span>
+<span id="cb225-4"><a href="text-classification-models.html#cb225-4" tabindex="-1"></a>kahf_saheeh <span class="ot">=</span> <span class="fu">tolower</span>(kahf_saheeh)</span>
+<span id="cb225-5"><a href="text-classification-models.html#cb225-5" tabindex="-1"></a>kahf_saheeh <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&quot;[^[:alnum:]</span><span class="sc">\\</span><span class="st">-</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">s]&quot;</span>, <span class="st">&quot; &quot;</span>, kahf_saheeh)</span>
+<span id="cb225-6"><a href="text-classification-models.html#cb225-6" tabindex="-1"></a>kahf_saheeh <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;&quot;</span>, kahf_saheeh)</span>
+<span id="cb225-7"><a href="text-classification-models.html#cb225-7" tabindex="-1"></a>kahf_saheeh <span class="ot">=</span> <span class="fu">trimws</span>(kahf_saheeh)</span>
+<span id="cb225-8"><a href="text-classification-models.html#cb225-8" tabindex="-1"></a>tokens <span class="ot">=</span> <span class="fu">word_tokenizer</span>(kahf_saheeh)</span>
+<span id="cb225-9"><a href="text-classification-models.html#cb225-9" tabindex="-1"></a>it <span class="ot">=</span> <span class="fu">itoken</span>(tokens, <span class="at">ids =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(kahf_saheeh), </span>
+<span id="cb225-10"><a href="text-classification-models.html#cb225-10" tabindex="-1"></a>            <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb225-11"><a href="text-classification-models.html#cb225-11" tabindex="-1"></a>stopw <span class="ot">=</span> stop_words<span class="sc">$</span>word</span>
+<span id="cb225-12"><a href="text-classification-models.html#cb225-12" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">create_vocabulary</span>(it,<span class="at">stopwords =</span> stopw)</span>
+<span id="cb225-13"><a href="text-classification-models.html#cb225-13" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">prune_vocabulary</span>(v, </span>
+<span id="cb225-14"><a href="text-classification-models.html#cb225-14" tabindex="-1"></a>                     <span class="at">term_count_min =</span> <span class="dv">3</span>, </span>
+<span id="cb225-15"><a href="text-classification-models.html#cb225-15" tabindex="-1"></a>                     <span class="at">doc_proportion_max =</span> <span class="fl">0.2</span>)</span>
+<span id="cb225-16"><a href="text-classification-models.html#cb225-16" tabindex="-1"></a>vectorizer <span class="ot">=</span> <span class="fu">vocab_vectorizer</span>(v)</span>
+<span id="cb225-17"><a href="text-classification-models.html#cb225-17" tabindex="-1"></a>dtm <span class="ot">=</span> <span class="fu">create_dtm</span>(it, vectorizer, <span class="at">type =</span> <span class="st">&quot;dgTMatrix&quot;</span>)</span>
+<span id="cb225-18"><a href="text-classification-models.html#cb225-18" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb225-19"><a href="text-classification-models.html#cb225-19" tabindex="-1"></a>lda_model <span class="ot">=</span> text2vec<span class="sc">::</span>LDA<span class="sc">$</span><span class="fu">new</span>(<span class="at">n_topics =</span> <span class="dv">6</span>, </span>
+<span id="cb225-20"><a href="text-classification-models.html#cb225-20" tabindex="-1"></a>                              <span class="at">doc_topic_prior =</span> <span class="fl">0.1</span>, </span>
+<span id="cb225-21"><a href="text-classification-models.html#cb225-21" tabindex="-1"></a>                              <span class="at">topic_word_prior =</span> <span class="fl">0.01</span>)</span>
+<span id="cb225-22"><a href="text-classification-models.html#cb225-22" tabindex="-1"></a>doc_topic_distr <span class="ot">=</span> </span>
+<span id="cb225-23"><a href="text-classification-models.html#cb225-23" tabindex="-1"></a>  lda_model<span class="sc">$</span><span class="fu">fit_transform</span>(<span class="at">x =</span> dtm, <span class="at">n_iter =</span> <span class="dv">1000</span>, </span>
+<span id="cb225-24"><a href="text-classification-models.html#cb225-24" tabindex="-1"></a>                          <span class="at">convergence_tol =</span> <span class="fl">0.001</span>, </span>
+<span id="cb225-25"><a href="text-classification-models.html#cb225-25" tabindex="-1"></a>                          <span class="at">n_check_convergence =</span> <span class="dv">25</span>, </span>
+<span id="cb225-26"><a href="text-classification-models.html#cb225-26" tabindex="-1"></a>                          <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Figure <a href="text-classification-models.html#fig:ch8fig816">8.15</a> shows the prominence of the topics in Surah Al-Kahf. We can see better which topics rank higher, in fact, only a few of the topics are prominent compared to others.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="text-classification-models.html#cb226-1" tabindex="-1"></a><span class="fu">barplot</span>(doc_topic_distr[<span class="dv">1</span>, ], <span class="at">xlab =</span> <span class="st">&quot;topic&quot;</span>, </span>
+<span id="cb226-2"><a href="text-classification-models.html#cb226-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;proportion&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb226-3"><a href="text-classification-models.html#cb226-3" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(doc_topic_distr))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig816"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig816-1.png" alt="Topic bar plot for Surah Al-Kahf using GloVe model and LDA" width="576" />
+<p class="caption">
+Figure 8.15: Topic bar plot for Surah Al-Kahf using GloVe model and LDA
+</p>
+</div>
+<p>We can get the top words for each topic, sorted by probability ranking as follows:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="text-classification-models.html#cb227-1" tabindex="-1"></a>lda_model<span class="sc">$</span><span class="fu">get_top_words</span>(<span class="at">n=</span><span class="dv">7</span>, <span class="at">topic_number =</span> <span class="fu">c</span>(1L,2L,3L,4L,5L,6L), <span class="at">lambda =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Without knowing what are the topics in Surah Al-Kahf, it is amazing to see that indeed the six topics can be seen from the words: cave dwellers from Topic 5, the two owners of the gardens in Topic 3, Moses and Al-Khidh in Topic 6, and Dhul Qarnayn in Topic 4.</p>
+<p>We will fit the LSA model one more time, using the GloVe algorithm, and plot the results.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="text-classification-models.html#cb228-1" tabindex="-1"></a>lsa_model <span class="ot">=</span> text2vec<span class="sc">::</span>LSA<span class="sc">$</span><span class="fu">new</span>(<span class="at">n_topics =</span> <span class="dv">6</span>)</span>
+<span id="cb228-2"><a href="text-classification-models.html#cb228-2" tabindex="-1"></a>doc_topic_distr <span class="ot">=</span> </span>
+<span id="cb228-3"><a href="text-classification-models.html#cb228-3" tabindex="-1"></a>  lsa_model<span class="sc">$</span><span class="fu">fit_transform</span>(<span class="at">x =</span> dtm, <span class="at">n_iter =</span> <span class="dv">1000</span>, </span>
+<span id="cb228-4"><a href="text-classification-models.html#cb228-4" tabindex="-1"></a>                          <span class="at">convergence_tol =</span> <span class="fl">0.001</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ch8fig817"></span>
+<img src="11-Ch8TextClassModels_files/figure-html/ch8fig817-1.png" alt="Topics in dimensions for Surah Al-Kahf using LSA and GloVe" width="672" />
+<p class="caption">
+Figure 8.16: Topics in dimensions for Surah Al-Kahf using LSA and GloVe
+</p>
+</div>
+<p>The results in Figure <a href="text-classification-models.html#fig:ch8fig817">8.16</a> are different from the ones in Figure <a href="text-classification-models.html#fig:ch8fig810">8.10</a>, where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more “verbs” (such as “remained”, “found”, “killed”) appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.</p>
+<div id="summarizing-word-embedding-model-methods" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Summarizing word embedding model methods<a href="text-classification-models.html#summarizing-word-embedding-model-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The examples from this section on word embeddings using GloVe algorithms show promising results and demonstrate the strength of the method. It is a new generation of unsupervised learning methods for NLP tasks of finding topics, analyzing various language structures, and many others. The strength of GloVe lies in its simplicity and reliance on “closed and compact” space representations of text data, which allows us to deal with the problems of the Power Law distribution of Zipf’s law and many other statistical anomalies in text analysis. The strength of GloVe is proven by the fact that it is used heavily by Google (as it was originally developed together between Google and Stanford NLP Group).</p>
+</div>
+</div>
+<div id="summary-chapter-8" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Summary<a href="text-classification-models.html#summary-chapter-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The chapter explored the subject of text modeling by traversing through unsupervised and supervised learning models. We have demonstrated the uses and benefits of the models by applying them on topic modeling tasks applied on Surah Al-Kahf. Generally, we would say that any modeling for the English translations of Al-Quran using these models will suffer from “small sample” problems, due to sparsity structures within the data.</p>
+<p>In the case of the supervised model, despite the shortcoming of sample size problems (i.e., model overfitting), there is still a high potential of usage if annotations and labeling are obtained correctly. These annotations are available in the form of exegesis of Al-Quran, such as the Tafseer of Ibnu Katheer and others. The annotations can be used as training labels and hence the model can be improvised to better predict the data. This is one area of future research for Quran Analytics.</p>
+<p>On the other hand, classical and older versions of the unsupervised learning model, such as Latent Dirichlet Allocation (LDA) and Latent Semantic Analysis (LSA) are a bit arcane in the results; despite having potentials of further development along the lines forwarded by the model, conceptually. For Structural Topic Models (STM), there are many other potentials for improvements, since it has many flexibilities for changing and altering modeling assumptions.</p>
+<p>We have not covered another large area of supervised and unsupervised learning using Neural Network models, as well as Deep Learning models of Neural Networks. Similarly, there are also powerful models based on Hidden Markov Models (HMM), which we have not covered. HMM has been extremely successful in speech recognition modeling. All these areas are very large and require extensive work for which we envisage our Quran Analytics project to undertake.</p>
+<p>Lastly, we introduced the Word-to-Vector model of GloVe algorithms, which is an extremely useful tool with wide application potential. This is an example of a new generation of unsupervised learning models which is gaining popularity. Combining GloVe with Deep Learning is of course a venture that is among the latest in NLP research.</p>
+<p>Since there are too many areas to cover, we end the chapter by concluding that the area of applications of text models, machine learning models (supervised and unsupervised) in Quran Analytics is just at the beginning, there are lots more to be discovered.</p>
+</div>
+<div id="further-readings-7" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Further readings<a href="text-classification-models.html#further-readings-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>quanteda</em> package documentation (<a href="https://quanteda.io" class="uri">https://quanteda.io</a>).</p>
+<p><em>LDA</em> package references from <span class="citation">(<a href="#ref-blei2003">Blei, Ng, and Jordan 2003</a>)</span>.</p>
+<p><em>LSA</em> package references from <span class="citation">(<a href="#ref-landauer1998">Landauer, Foltz, and Laham 1998</a>)</span>.</p>
+<p><em>STM</em> package references from <span class="citation">(<a href="#ref-roberts2014">M. E. Roberts et al. 2014</a>)</span> and <span class="citation">(<a href="#ref-roberts2019">M. Roberts, Stewart, and Tingley 2019</a>)</span>.</p>
+<p><em>text2vec</em> package references (<a href="http://text2vec.org/index.html" class="uri">http://text2vec.org/index.html</a>)</p>
+<p><em>GloVE</em> references (<a href="https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html" class="uri">https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html</a>)</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-quantedatextmodels" class="csl-entry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Stefan Müller, Patrick O. Perry, Benjamin Lauderdale, Johannes Gruber, William Lowe, and Vikas Sindhwani. 2020. <em>Quanteda.textmodels: Scaling Models and Classifiers for Textual Data</em>. <a href="https://cran.r-project.org/web/packages/quanteda.textmodels/index.html">https://cran.r-project.org/web/packages/quanteda.textmodels/index.html</a>.
+</div>
+<div id="ref-blei2003" class="csl-entry">
+Blei, David M., Andrew Y. Ng, and Michael I. Jordan. 2003. <span>“Latent Dirichlet Allocation.”</span> <em>Journal of Machine Learning Research</em> 21 (3): 993–1022.
+</div>
+<div id="ref-grimmer2013" class="csl-entry">
+Grimmer, Justin, and Brandon M. Stewart. 2013. <span>“Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.”</span> <em>Political Analysis</em> 21 (3): 267–97. <a href="https://doi.org/10.1093/pan/mps028">https://doi.org/10.1093/pan/mps028</a>.
+</div>
+<div id="ref-topicmodels" class="csl-entry">
+Grün, Bettina, Kurt Hornik, David M Blei, John D Lafferty, Xuan-Hieu Phan, Makoto Matsumoto, Takuji Nishimura, and Shawn Cokus. 2020. <em>Topic Models</em>. <a href="https://cran.r-project.org/web/packages/topicmodels/index.html">https://cran.r-project.org/web/packages/topicmodels/index.html</a>.
+</div>
+<div id="ref-jelodar2019" class="csl-entry">
+Jelodar, Hamed, Yongli Wang, Chi Yuan, Xia Feng, Xiahui Jiang, Yanchao Li, and Liang Zhao. 2019. <span>“Latent Dirichlet Allocation (LDA) and Topic Modeling: Models, Applications, a Survey.”</span> <em>Multimedia Tools and Applications</em> 78 (11): 15169–211.
+</div>
+<div id="ref-landauer1998" class="csl-entry">
+Landauer, Thomas K., Peter W. Foltz, and Darrel Laham. 1998. <span>“An Introduction to Latent Semantic Analysis.”</span> <em>Discourse Processes</em> 25: 259–84.
+</div>
+<div id="ref-glove2014" class="csl-entry">
+Pennington, Jeffrey, Richard Socher, and Christopher D. Manning. 2014. <span>“GloVe: Global Vectors for Word Representation.”</span> In <em>Empirical Methods in Natural Language Processing (EMNLP)</em>, 1532–43. <a href="http://www.aclweb.org/anthology/D14-1162">http://www.aclweb.org/anthology/D14-1162</a>.
+</div>
+<div id="ref-roberts2014" class="csl-entry">
+Roberts, Margaret E., Brandon M. Stewart, Dustin Tingley, and Edoardo M. Airoldi. 2014. <span>“The Structural Topic Model and Applied Social Science.”</span> <em>American Journal of Political Science</em> 58: 1064–82.
+</div>
+<div id="ref-roberts2019" class="csl-entry">
+Roberts, Margaret, Brandon Stewart, and Dustin Tingley. 2019. <span>“Stm : An r Package for Structural Topic Models.”</span> <em>Journal of Statistical Software</em> 91 (October). <a href="https://doi.org/10.18637/jss.v091.i02">https://doi.org/10.18637/jss.v091.i02</a>.
+</div>
+<div id="ref-stm" class="csl-entry">
+Roberts, Margaret, Brandon Stewart, Dustin Tingley, and Kenneth Benoit. 2020. <em>Stm: Estimation of the Structural Topic Model</em>. <a href="https://cran.r-project.org/web/packages/stm/index.html">https://cran.r-project.org/web/packages/stm/index.html</a>.
+</div>
+<div id="ref-text2vec" class="csl-entry">
+Selivanov, Dmitriy, Manuel Bickel, and Qing Wang. 2020. <em>Text2vec: Modern Text Mining Framework for r</em>. <a href="https://cran.r-project.org/web/packages/text2vec/index.html">https://cran.r-project.org/web/packages/text2vec/index.html</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="92">
+<li id="fn92"><p>Please see <a href="https://nlp.stanford.edu/projects/glove/" class="uri">https://nlp.stanford.edu/projects/glove/</a> for details.<a href="text-classification-models.html#fnref92" class="footnote-back">↩︎</a></p></li>
+<li id="fn93"><p>This is our own remake of points from <span class="citation">(<a href="#ref-grimmer2013">Grimmer and Stewart 2013</a>)</span> paper.<a href="text-classification-models.html#fnref93" class="footnote-back">↩︎</a></p></li>
+<li id="fn94"><p>The basic setting is based on standard or canonical statistical inference methods.<a href="text-classification-models.html#fnref94" class="footnote-back">↩︎</a></p></li>
+<li id="fn95"><p>The notations here follow <span class="citation">(<a href="#ref-blei2003">Blei, Ng, and Jordan 2003</a>)</span>.<a href="text-classification-models.html#fnref95" class="footnote-back">↩︎</a></p></li>
+<li id="fn96"><p>An example of this approach is h2o.ai, <a href="https://www.h2o.ai" class="uri">https://www.h2o.ai</a><a href="text-classification-models.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p><a href="https://tm4ss.github.io/docs/Tutorial_6_Topic_Models.html" class="uri">https://tm4ss.github.io/docs/Tutorial_6_Topic_Models.html</a><a href="text-classification-models.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p>For a more detailed explanation, please refer to <span class="citation">(<a href="#ref-blei2003">Blei, Ng, and Jordan 2003</a>)</span>.<a href="text-classification-models.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p>For a reference on Gibbs sampling, please see: <a href="https://en.wikipedia.org/wiki/Gibbs_sampling" class="uri">https://en.wikipedia.org/wiki/Gibbs_sampling</a><a href="text-classification-models.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p>A comprehensive survey of LDA model applications is provided by <span class="citation">(<a href="#ref-jelodar2019">Jelodar et al. 2019</a>)</span>.<a href="text-classification-models.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p><a href="https://www.structuraltopicmodel.com" class="uri">https://www.structuraltopicmodel.com</a><a href="text-classification-models.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn102"><p>For detail exposition, please refer to <span class="citation">(<a href="#ref-landauer1998">Landauer, Foltz, and Laham 1998</a>)</span>.<a href="text-classification-models.html#fnref102" class="footnote-back">↩︎</a></p></li>
+<li id="fn103"><p>Mathematically what this means is that we measure the dimensional entropy across the six possible dimensions, and rank the dimension with the highest entropy first, followed by the next.<a href="text-classification-models.html#fnref103" class="footnote-back">↩︎</a></p></li>
+<li id="fn104"><p>For reference, please refer to <a href="https://quanteda.io/reference/textmodel_nb.html" class="uri">https://quanteda.io/reference/textmodel_nb.html</a><a href="text-classification-models.html#fnref104" class="footnote-back">↩︎</a></p></li>
+<li id="fn105"><p><a href="https://nlp.stanford.edu/projects/glove/" class="uri">https://nlp.stanford.edu/projects/glove/</a><a href="text-classification-models.html#fnref105" class="footnote-back">↩︎</a></p></li>
+<li id="fn106"><p>The model is compiled in C++ language and wrapped into <strong>R</strong>; which provides fast speed of computation and memory-efficient processes.<a href="text-classification-models.html#fnref106" class="footnote-back">↩︎</a></p></li>
+<li id="fn107"><p>Note that the matrix is a much more compact space than the DFM or FCM matrices we looked at earlier in <em>tidytext</em> and <em>quanteda</em>.<a href="text-classification-models.html#fnref107" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="text-network-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="knowledge-through-verse-network.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["QuranAnalytics.pdf", "QuranAnalytics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
