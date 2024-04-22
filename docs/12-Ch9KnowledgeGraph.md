@@ -54,10 +54,14 @@ In network analysis, we use various methods of display or visualization of the n
 
 1. _Fruchterman-Reingold_ layout visualization
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig901-1.png" alt="Ibnu Katheer verse network: Fructherman Reingold layout" width="384" />
-<p class="caption">(\#fig:ch9fig901)Ibnu Katheer verse network: Fructherman Reingold layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig901-1} 
+
+}
+
+\caption{Ibnu Katheer verse network: Fructherman Reingold layout}(\#fig:ch9fig901)
+\end{figure}
 
 First, we calculate the modularity classes for the network (based on a resolution scale of 1.0) and color each class distinctly. As observed in the image, the various 115 communities are spread out throughout the verses in the entire Al-Quran. What this implies is that the method of interpretations of Ibnu Katheer is expanding the grouping of verses which are interpreted by each other (i.e. networked with each other), spanning across a large space encompassing many verses from other parts of Al-Quran (e.g., from other verses within the same Surah as well as from other Surahs). The visuals also imply that it took many verses to explain a verse, or in another way, many verses linked together give a much wider interpretation of the verse, and vice-versa.
 
@@ -67,10 +71,14 @@ The largest modularity class, which stood at 5.65% of verses (nodes) is a group 
 
 2. Add _Force Atlas 2_ layout to existing graph
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig902-1.png" alt="Ibnu Katheer verse network: Force Atlas layout" width="384" />
-<p class="caption">(\#fig:ch9fig902)Ibnu Katheer verse network: Force Atlas layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig902-1} 
+
+}
+
+\caption{Ibnu Katheer verse network: Force Atlas layout}(\#fig:ch9fig902)
+\end{figure}
 
 Now we can observe that if we "re-arrange" the visualizations (by adding the Force Atlas algorithm), the groupings are more distinctly clearer. What this means is those different methods of visualizing provide views of various dimensions of the network. In fact, there are numerous methods of layout layerings that are easily applied within a network structure. All these layouts are based on certain "graph spring" algorithms, whereby each algorithm (logics) brings in another dimension to the graph (or knowledge representations). Again, we leave the subject for future work.
 
@@ -106,10 +114,14 @@ The degree of the network represents the concept of "links between ideas" (we wi
 
 The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This contrasts with normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig903-1.png" alt="Plot of the Katheer Graph degree" width="576" />
-<p class="caption">(\#fig:ch9fig903)Plot of the Katheer Graph degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig903-1} 
+
+}
+
+\caption{Plot of the Katheer Graph degree}(\#fig:ch9fig903)
+\end{figure}
 
 To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal, and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
 
@@ -119,17 +131,25 @@ What we have is a massively dense citation network. Every verse is an important 
 
 Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure \@ref(fig:ch9fig904). This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of 14.82. A verse on the network is about 15 links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig904-1.png" alt="Plot of the Katheer Graph path lengths distributions" width="576" />
-<p class="caption">(\#fig:ch9fig904)Plot of the Katheer Graph path lengths distributions</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig904-1} 
+
+}
+
+\caption{Plot of the Katheer Graph path lengths distributions}(\#fig:ch9fig904)
+\end{figure}
 
 To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure \@ref(fig:ch9fig905) says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig905-1.png" alt="Verse 6:25 distances from other verses" width="576" />
-<p class="caption">(\#fig:ch9fig905)Verse 6:25 distances from other verses</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig905-1} 
+
+}
+
+\caption{Verse 6:25 distances from other verses}(\#fig:ch9fig905)
+\end{figure}
 
 We emphasize again that this observation is important, the network exhibits the small world property. A simple estimate of the small world property is measured by $log(N)/mean(d)$, which is 3.55. It means that in real terms, a verse is only about 4 links or steps away from "each other".^[Note that distance is the measure of a verse from any other verse; whereas the small word property measure is "how far away" each verse truly is.]
 
@@ -143,19 +163,27 @@ Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 
 
 How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig906-1.png" alt="Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness" width="576" />
-<p class="caption">(\#fig:ch9fig906)Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig906-1} 
+
+}
+
+\caption{Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness}(\#fig:ch9fig906)
+\end{figure}
 
 __Verse 2_255__
 
 A plot of this is shown in Figure \@ref(fig:ch9fig906). We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Compared to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure \@ref(fig:ch9fig906)). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907-1.png" alt="Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority" width="576" />
-<p class="caption">(\#fig:ch9fig907)Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig907-1} 
+
+}
+
+\caption{Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority}(\#fig:ch9fig907)
+\end{figure}
 
 __Al-Rahman__
 
@@ -207,10 +235,14 @@ We cannot confirm either.
 
 How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure \@ref(fig:ch9fig908), which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig908-1.png" alt="Verses links towards verses in Surah Al-A'laa, up to 5 levels" width="576" />
-<p class="caption">(\#fig:ch9fig908)Verses links towards verses in Surah Al-A'laa, up to 5 levels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig908-1} 
+
+}
+
+\caption{Verses links towards verses in Surah Al-A'laa, up to 5 levels}(\#fig:ch9fig908)
+\end{figure}
 
 We create the graph using the _igraph_ function and tabulate the summary statistics:
 
@@ -271,10 +303,14 @@ On the other hand, verse 87:13 is pointed towards two verses: 20:74 and 43:77. N
 
 So far we have traversed through the first layer, which is a simulation of direct reading of Ibnu Katheer: read verse 87:13, look at the annotations, then read verse 35:36 and 43:77. We will only know that verse 87:13 is being referred to by verse 20:27 by reading verse 20:27 and finding its annotations, and similarly for verse 43:77. To go beyond this step, will involve repeating the process all over again from each verse mentioned. The process is tedious, lengthy, and maybe confusing, but that is what is exactly required without any shortcuts. We hope the readers appreciate the difficulty involved that we are trying to emphasize here.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909-1.png" alt="The verse map for V87:13" width="1152" />
-<p class="caption">(\#fig:ch9fig909)The verse map for V87:13</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig909-1} 
+
+}
+
+\caption{The verse map for V87:13}(\#fig:ch9fig909)
+\end{figure}
 
 Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure \@ref(fig:ch9fig909). We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
 
@@ -286,17 +322,25 @@ Furthermore, based on our earlier point of "small word properties" of Katheer Gr
 
 Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner from seeing other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907b-1.png" alt="Verse 87:13 ego network directed with clusters" width="768" />
-<p class="caption">(\#fig:ch9fig907b)Verse 87:13 ego network directed with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig907b-1} 
+
+}
+
+\caption{Verse 87:13 ego network directed with clusters}(\#fig:ch9fig907b)
+\end{figure}
 
 Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure \@ref(fig:ch9fig907b) using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909b-1.png" alt="Inverse of verse 87:13 ego network" width="1152" />
-<p class="caption">(\#fig:ch9fig909b)Inverse of verse 87:13 ego network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig909b-1} 
+
+}
+
+\caption{Inverse of verse 87:13 ego network}(\#fig:ch9fig909b)
+\end{figure}
 
 Figure \@ref(fig:ch9fig909b) uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
 
@@ -314,31 +358,47 @@ We will take a different approach where 2:255 will be an "outwardly" moving netw
 
 The "map from" 2:255 is in Figure \@ref(fig:ch9fig910). We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig910-1.png" alt="Verse 2:255 ego network outwardly" width="1152" />
-<p class="caption">(\#fig:ch9fig910)Verse 2:255 ego network outwardly</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig910-1} 
+
+}
+
+\caption{Verse 2:255 ego network outwardly}(\#fig:ch9fig910)
+\end{figure}
 
 The "map towards" 16:90 is in Figure \@ref(fig:ch9fig911). The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig911-1.png" alt="Verse 16:90 ego network inwardly" width="1152" />
-<p class="caption">(\#fig:ch9fig911)Verse 16:90 ego network inwardly</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig911-1} 
+
+}
+
+\caption{Verse 16:90 ego network inwardly}(\#fig:ch9fig911)
+\end{figure}
 
 We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure \@ref(fig:ch9fig912). Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig912-1.png" alt="Outwardly map from verse 2:255 towards verse 16:90" width="1152" />
-<p class="caption">(\#fig:ch9fig912)Outwardly map from verse 2:255 towards verse 16:90</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig912-1} 
+
+}
+
+\caption{Outwardly map from verse 2:255 towards verse 16:90}(\#fig:ch9fig912)
+\end{figure}
 
 Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure \@ref(fig:ch9fig913). The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig913-1.png" alt="Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree" width="1152" />
-<p class="caption">(\#fig:ch9fig913)Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig913-1} 
+
+}
+
+\caption{Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree}(\#fig:ch9fig913)
+\end{figure}
 
 __Summary__
 
@@ -367,48 +427,48 @@ __Inward network Surah Al-A'laa topical word co-occurrences__
 
 |  Topics  |  word cooccurrences         |
 |----------|-----------------------------|
-| "allah"  | allah, bring, knowing, messenger, forget, people, subjugator                  |
-| "lord"   | lord, desire, believed, truth, nearer, break, sky                 |
-| "living" | living, mention, revealed, eliminates, fine, unquestionably, bedouins                  |
-| "dying"  | dying, preceded, affairs, alteration, accepting, sharp, sheep                  |
-| "purify" | purify, dwellings, warners, intercession, orphans, resurrection, moderate                  |
-| "hell"   | hell, revelation, ruin, unquestionably, hoof, invented, needy                  |
-| combined | allah, lord, revealed, subjugator, believed, purify, dying                   |
+| "allah"  | allah, knowing, markets, hearing, bring, lord, believed                  |
+| "lord"   | lord, believed, allah, succeeded, truth, apparent, sperm                 |
+| "living" | living, covet, exalts, blessing, charitable, predestination, join                  |
+| "dying"  | dying, confessed, speech, conscious, friend, judged, chose                  |
+| "purify" | purify, disaster, weep, uncloven, qur, indications, difficulty                  |
+| "hell"   | hell, aided, age, sworn, abundant, rapidly, life                  |
+| combined | allah, lord, believed, unlawful, change, knowing, utter                   |
 \normalsize
 
-The results in the table above, say that for the words in the inward text networks, for example, _"allah, bring, knowing, messenger, forget, people, subjugator"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"bring" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
+The results in the table above, say that for the words in the inward text networks, for example, _"allah, knowing, markets, hearing, bring, lord, believed"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"knowing" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
 
 \footnotesize
 __Outward network Surah Al-A'laa topical word co-occurrences__
 
 |   Topics |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, reached, messenger, remember, soul, truth, forgiving                  |
-| "lord"   | lord, worlds, submissive, worship, exalted, gathering, kinds                 |
-| "living" | living, traveling, afford, dying, close, afternoon, creation                  |
-| "dying"  | dying, ra, heads, subside, month, increase, living                  |
-| "purify" | purify, stranded, desire, brought, heels, blame, revealed                  |
-| "hell"   | hell, load, fire, painful, patient, compulsion, beasts                  |
-| combined | allah, living, dying, fear, lord, purify, truth                   |
+| "allah"  | allah, messenger, fear, remembrance, severe, staying, people                  |
+| "lord"   | lord, truth, fear, inclining, erred, guided, fulfilled                 |
+| "living" | living, foundation, blown, deity, servants, sufficient, multiplies                  |
+| "dying"  | dying, animals, beasts, ahmad, defiantly, guardians, conclusions                  |
+| "purify" | purify, house, seed, adornment, bringing, offer, obligations                  |
+| "hell"   | hell, fire, scripture, draw, past, punishment, warned                  |
+| combined | living, lord, allah, truth, periods, worshipping, injustice                   |
 \normalsize
 
-The results in the table above, say that for the words in the outward text networks, for example, _"dying, ra, heads, subside, month, increase, living"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, ra, heads, subside"_. This is one way to look at it. Readers can see for themselves the remaining topics.
+The results in the table above, say that for the words in the outward text networks, for example, _"dying, animals, beasts, ahmad, defiantly, guardians, conclusions"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, animals, beasts, ahmad"_. This is one way to look at it. Readers can see for themselves the remaining topics.
 
 \footnotesize
 __Combined network Surah Al-A'laa topical word co-occurrences__
 
 | Topics   |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, people, knowing, enemy, change, messenger, bring                  |
-| "lord"   | lord, truth, inclining, return, fear, worlds, believed                 |
-| "living" | living, shaving, pardoned, submits, delusion, shout, extends                  |
-| "dying"  | dying, makkah, wandering, painful, lied, stories, exemplary                  |
-| "purify" | purify, told, mouths, seeking, dwellings, messenger, house                  |
-| "hell"   | hell, fire, relative, concluded, needy, designated, blessings                  |
-| combined | allah, lord, fear, inclining, truth, provision, intend                   |
+| "allah"  | allah, remembrance, messenger, people, protector, knowing, life                  |
+| "lord"   | lord, fear, return, truth, emigrants, believed, allah                 |
+| "living" | living, relative, returning, avoid, disgrace, disembark, bird                  |
+| "dying"  | dying, invents, afflict, manifest, subsided, performance, wandering                  |
+| "purify" | purify, directed, people, house, forbid, noon, prostrating                  |
+| "hell"   | hell, deny, fire, excessive, ansar, explanation, noah                  |
+| combined | allah, lord, abraham, people, truth, change, remembrance                   |
 \normalsize
 
-The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, fire, relative, concluded, needy, designated, blessings"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, fire, relative, concluded"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
+The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, deny, fire, excessive, ansar, explanation, noah"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, deny, fire, excessive"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
 
 It is not our intention to use all of these exercises to __interpret__ Surah Al-A'laa. What we show is just a methodology to extract information based on a defined objective. The objective is set based on the assumptions that words in a language tend to occur together, and jointly they provide semantical and ontological meaning to the subject of the texts.
 

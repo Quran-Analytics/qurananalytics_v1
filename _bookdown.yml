@@ -4,4 +4,4 @@ new_session: yes
 output_dir: docs
 rmd_files:
  html: ["index.Rmd", "01-Ch1Introduction.Rmd", "02-Part1.Rmd","03-Ch2WordFrequency.Rmd","04-Ch3WordScoring.Rmd","05-Part2.Rmd","06-Ch4WordLocCollCooc.Rmd","07-Ch5WordLocStatAnal.Rmd","08-Ch6WordLocNetAnal.Rmd","09-Part3.Rmd", "10-Ch7TextNetAnal.Rmd", "11-Ch8TextClassModels.Rmd","12-Ch9KnowledgeGraph.Rmd","13-WayForward.Rmd"]
- #  latex: ["index.Rmd", "01-Ch1Introduction.Rmd", "02-Part1.Rmd","03-Ch2WordFrequency.Rmd","04-Ch3WordScoring.Rmd","05-Part2.Rmd","06-Ch4WordLocCollCooc.Rmd","07-Ch5WordLocStatAnal.Rmd","08-Ch6WordLocNetAnal.Rmd","09-Part3.Rmd", "10-Ch7TextNetAnal.Rmd", "11-Ch8TextClassModels.Rmd","12-Ch9KnowledgeGraph.Rmd","13-WayForwards.Rmd"]
+ latex: ["index.Rmd", "01-Ch1Introduction.Rmd", "02-Part1.Rmd","03-Ch2WordFrequency.Rmd","04-Ch3WordScoring.Rmd","05-Part2.Rmd","06-Ch4WordLocCollCooc.Rmd","07-Ch5WordLocStatAnal.Rmd","08-Ch6WordLocNetAnal.Rmd","09-Part3.Rmd", "10-Ch7TextNetAnal.Rmd", "11-Ch8TextClassModels.Rmd","12-Ch9KnowledgeGraph.Rmd","13-WayForward.Rmd"]

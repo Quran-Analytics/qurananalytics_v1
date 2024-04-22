@@ -19,10 +19,14 @@ Labeling (or annotation) is a tedious manual process if it is humanly done, and 
 
 Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both, modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions.
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig801-1.png" alt="Text modeling framework in NLP" width="1152" />
-<p class="caption">(\#fig:ch8fig801)Text modeling framework in NLP</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig801-1} 
+
+}
+
+\caption{Text modeling framework in NLP}(\#fig:ch8fig801)
+\end{figure}
 
 The chart in Figure \@ref(fig:ch8fig801) provides a full scenario of the possible paths of modeling.^[This is our own remake of points from [@grimmer2013] paper.]
 
@@ -212,10 +216,14 @@ kahf_top_terms %>%
   theme(strip.background = element_rect(color = "black"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig802-1.png" alt="Top terms with LDA methods for Surah Al-Kahf" width="672" />
-<p class="caption">(\#fig:ch8fig802)Top terms with LDA methods for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig802-1} 
+
+}
+
+\caption{Top terms with LDA methods for Surah Al-Kahf}(\#fig:ch8fig802)
+\end{figure}
 
 
 From Figure \@ref(fig:ch8fig802) we can see that the first topic contains the term "moses" and the second topic contains "cave", and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term "al-khidh" appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.
@@ -233,10 +241,14 @@ lda.similarity <- as.data.frame(lda_kahf@beta) %>%
 plot(lda.similarity, xlab = "")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig803-1.png" alt="LDA topic similarity by features for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig803)LDA topic similarity by features for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig803-1} 
+
+}
+
+\caption{LDA topic similarity by features for Surah Al-Kahf}(\#fig:ch8fig803)
+\end{figure}
 
 From Figure \@ref(fig:ch8fig803), we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.
 
@@ -296,10 +308,14 @@ kahf_top_terms %>%
   theme(strip.background = element_rect(color = "black"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig804-1.png" alt="STM topic shares for Surah Al-Kahf" width="672" />
-<p class="caption">(\#fig:ch8fig804)STM topic shares for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig804-1} 
+
+}
+
+\caption{STM topic shares for Surah Al-Kahf}(\#fig:ch8fig804)
+\end{figure}
 
 
 We can see, from Figure \@ref(fig:ch8fig804) that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:
@@ -311,10 +327,14 @@ plot(stm_kahf, type = "summary", text.cex = 1,
 )
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig805-1.png" alt="STM topic shares for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig805)STM topic shares for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig805-1} 
+
+}
+
+\caption{STM topic shares for Surah Al-Kahf}(\#fig:ch8fig805)
+\end{figure}
 
 Figure \@ref(fig:ch8fig805) and the results for top-words in Figure \@ref(fig:ch8fig804) demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure \@ref(fig:ch8fig805), about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.
 
@@ -331,10 +351,14 @@ plotQuote(thoughts4, width = 45, main = "Topic 5")
 plotQuote(thoughts3, width = 45, main = "Topic 2")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig806-1.png" alt="Sample of verses highly associated with Topic 5 and Topic 2" width="768" />
-<p class="caption">(\#fig:ch8fig806)Sample of verses highly associated with Topic 5 and Topic 2</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig806-1} 
+
+}
+
+\caption{Sample of verses highly associated with Topic 5 and Topic 2}(\#fig:ch8fig806)
+\end{figure}
 
 We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
 
@@ -343,10 +367,14 @@ We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
 cloud(stm_kahf)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig807-1.png" alt="Top words from all topics in wordcloud from STM for Surah Al-Kahf" width="384" />
-<p class="caption">(\#fig:ch8fig807)Top words from all topics in wordcloud from STM for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig807-1} 
+
+}
+
+\caption{Top words from all topics in wordcloud from STM for Surah Al-Kahf}(\#fig:ch8fig807)
+\end{figure}
 
 We can visualize the correlations between the topics in Figure \@ref(fig:ch8fig808):
 
@@ -356,10 +384,14 @@ stm_mod_corr = topicCorr(stm_kahf)
 plot(stm_mod_corr)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig808-1.png" alt="Graphical display of topic correlations from STM for Surah Al-Kahf" width="384" />
-<p class="caption">(\#fig:ch8fig808)Graphical display of topic correlations from STM for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig808-1} 
+
+}
+
+\caption{Graphical display of topic correlations from STM for Surah Al-Kahf}(\#fig:ch8fig808)
+\end{figure}
 
 Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.
 
@@ -368,10 +400,14 @@ Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share
 plot(stm_kahf, type = "perspectives", topics = c(5,2))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig809-1.png" alt="Two perspective for topics from STM in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig809)Two perspective for topics from STM in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig809-1} 
+
+}
+
+\caption{Two perspective for topics from STM in Surah Al-Kahf}(\#fig:ch8fig809)
+\end{figure}
 
 Figure \@ref(fig:ch8fig809) shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.
 
@@ -473,10 +509,14 @@ p2 = klsa_df %>% ggplot(aes(x = V1, y = V3), label= Name) +
 cowplot::plot_grid(p1,p2, nrow = 1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig810-1.png" alt="Topics in dimensions for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig810)Topics in dimensions for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig810-1} 
+
+}
+
+\caption{Topics in dimensions for Surah Al-Kahf}(\#fig:ch8fig810)
+\end{figure}
 
 
 In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we "force" the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use.
@@ -484,10 +524,14 @@ In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dime
 Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure \@ref(fig:ch8fig811).
 
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig811-1.png" alt="3D plot of the scores from LSA model for topics in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig811)3D plot of the scores from LSA model for topics in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig811-1} 
+
+}
+
+\caption{3D plot of the scores from LSA model for topics in Surah Al-Kahf}(\#fig:ch8fig811)
+\end{figure}
 
 The plot shows that for Topic 1 (the highest-ranked topic), there are verses that have high positive scores. For Topic 5 and Topic 6, almost similar verses have high positive scores, while for Topic 3, the scores are highly opposite (i.e. negative) on some of the verses. This is not exactly the ideal method to extract the information from the model, since visualization of the complex dimensionality is not easy and clear. However, what we want to demonstrate is there are deeper level complexities that are not easy to identify by just eyeballing the visuals.
 
@@ -613,10 +657,14 @@ textplot_scale1d(ws_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig812-1.png" alt="Wordscores plot for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig812)Wordscores plot for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig812-1} 
+
+}
+
+\caption{Wordscores plot for Surah Al-Kahf}(\#fig:ch8fig812)
+\end{figure}
 
 
 Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure \@ref(fig:ch8fig812). From the plot we can visualize the relative positions of the key words for the various topics: "lord", which rank highest in the Surah, followed by "allah" - both almost at the center; the word "moses" scores higher, but in the same "direction" as "al-khidh", which is directly below "moses". The word "cave" and "gardens" are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.
@@ -632,10 +680,14 @@ textplot_scale1d(wf_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig813-1.png" alt="Wordfish plot for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig813)Wordfish plot for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig813-1} 
+
+}
+
+\caption{Wordfish plot for Surah Al-Kahf}(\#fig:ch8fig813)
+\end{figure}
 
 
 _wordfish_ scores which will show whether some of the topics are "diametrically" opposed to one another. Figure \@ref(fig:ch8fig813) demonstrates that all topics are pretty much "aligned" to each other from the word "lord", down to "gardens". An interesting observation is that "moses" is right after "lord" in the ranking, above "allah".
@@ -704,10 +756,14 @@ word_vec_df %>% ggplot() + geom_line(aes(x=1:50, y=allah), color = "red") +
                     labs(x = "Dimensions", y = "Word Frequencies")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig814-1.png" alt="Word-vector frequencies for selected words" width="576" />
-<p class="caption">(\#fig:ch8fig814)Word-vector frequencies for selected words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig814-1} 
+
+}
+
+\caption{Word-vector frequencies for selected words}(\#fig:ch8fig814)
+\end{figure}
 
 The frequencies do not have any meaning, except that it records the relative unique position of each word within a corpus. This method is a faster way of generating an unsupervised learning model for the data at hand, especially when the data (i.e., text corpus) is large and sparse.^[Note that the matrix is a much more compact space than the DFM or FCM matrices we looked at earlier in _tidytext_ and _quanteda_.]
 
@@ -795,10 +851,14 @@ barplot(doc_topic_distr[1, ], xlab = "topic",
         names.arg = 1:ncol(doc_topic_distr))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig816-1.png" alt="Topic bar plot for Surah Al-Kahf using GloVe model and LDA" width="576" />
-<p class="caption">(\#fig:ch8fig816)Topic bar plot for Surah Al-Kahf using GloVe model and LDA</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig816-1} 
+
+}
+
+\caption{Topic bar plot for Surah Al-Kahf using GloVe model and LDA}(\#fig:ch8fig816)
+\end{figure}
 
 We can get the top words for each topic, sorted by probability ranking as follows:
 
@@ -821,10 +881,14 @@ doc_topic_distr =
                           convergence_tol = 0.001)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig817-1.png" alt="Topics in dimensions for Surah Al-Kahf using LSA and GloVe" width="672" />
-<p class="caption">(\#fig:ch8fig817)Topics in dimensions for Surah Al-Kahf using LSA and GloVe</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig817-1} 
+
+}
+
+\caption{Topics in dimensions for Surah Al-Kahf using LSA and GloVe}(\#fig:ch8fig817)
+\end{figure}
 
 
 The results in Figure \@ref(fig:ch8fig817) are different from the ones in Figure \@ref(fig:ch8fig810), where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more "verbs" (such as "remained", "found", "killed") appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.

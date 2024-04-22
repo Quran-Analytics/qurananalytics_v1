@@ -61,10 +61,14 @@ ggraph(wordnetwork, layout = "kk") +
        subtitle = "Top 50 Nouns, Names, Adjectives, Verbs, Adverbs")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig601-1.png" alt="First plot of tutorial word network" width="768" />
-<p class="caption">(\#fig:ch6fig601)First plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig601-1} 
+
+}
+
+\caption{First plot of tutorial word network}(\#fig:ch6fig601)
+\end{figure}
 
 
 The base wordnetwork graph is a directed network with 41 nodes and 50 edges *(DN-- 41 50 -- )*. The nodes have the *name* attribute. The edges have the *cooc* attribute (+ attr: name (v/c), cooc (e/n))
@@ -111,10 +115,14 @@ We will use the two networks, *gu* and *gd*, that we created in this section. Fo
 
 Re-plotting of *gd* graph is in Figure \@ref(fig:ch6fig602).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig602-1.png" alt="Second plot of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch6fig602)Second plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig602-1} 
+
+}
+
+\caption{Second plot of tutorial word network}(\#fig:ch6fig602)
+\end{figure}
 
 ### Centrality measures (node-level measures)
 
@@ -141,10 +149,14 @@ There are many such centrality measures. It can be difficult to go through all o
 
 Figure \@ref(fig:ch6fig603) summarizes some of the centrality measures in a graphical format.
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig603-1.png" alt="Centrality summary" width="576" />
-<p class="caption">(\#fig:ch6fig603)Centrality summary</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig603-1} 
+
+}
+
+\caption{Centrality summary}(\#fig:ch6fig603)
+\end{figure}
 
 
 ### Degree and strength
@@ -167,10 +179,14 @@ ggraph(gd, layout = "kk") +
   geom_node_point(size = deg, color = "gold3")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig604-1.png" alt="Node size reflects degree" width="576" />
-<p class="caption">(\#fig:ch6fig604)Node size reflects degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig604-1} 
+
+}
+
+\caption{Node size reflects degree}(\#fig:ch6fig604)
+\end{figure}
 
 
 In weighted networks, we can also use node strength, which is the sum of the weight of edges connected to the node. Let us calculate node strength and plot the node sizes as proportional to these values.
@@ -190,10 +206,14 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(st >= 3), size=st*2, label=name), repel=F)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig605-1.png" alt="Node size reflects graph.strength" width="576" />
-<p class="caption">(\#fig:ch6fig605)Node size reflects graph.strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig605-1} 
+
+}
+
+\caption{Node size reflects graph.strength}(\#fig:ch6fig605)
+\end{figure}
 
 
 Compare the relative node sizes when plotting by *degree* vs. *strength*. What differences do you notice? The top six words are the same say (18), indeed (8), so (8), fire (7), Mose (4), Lord (4).
@@ -215,10 +235,14 @@ degree.distribution(gu)[6:10]
 hist(degree.distribution(gu))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig606-1.png" alt="Degree distribution of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch6fig606)Degree distribution of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig606-1} 
+
+}
+
+\caption{Degree distribution of tutorial word network}(\#fig:ch6fig606)
+\end{figure}
 
 ### Degree and degree distribution for directed graph
 
@@ -240,16 +264,24 @@ degree(gd,mode="out",loops = FALSE) %>% mean()
 hist(degree.distribution(gd, mode="in"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig607-1.png" alt="In degree distribution of directed word network" width="576" />
-<p class="caption">(\#fig:ch6fig607)In degree distribution of directed word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig607-1} 
+
+}
+
+\caption{In degree distribution of directed word network}(\#fig:ch6fig607)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig608-1.png" alt="Out degree distribution of directed word network" width="576" />
-<p class="caption">(\#fig:ch6fig608)Out degree distribution of directed word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig608-1} 
+
+}
+
+\caption{Out degree distribution of directed word network}(\#fig:ch6fig608)
+\end{figure}
 
 
 ### Why do we care about degree?
@@ -284,10 +316,14 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(betw >= 5), size=betw*2, label=name), repel=F)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig609-1.png" alt="Node size reflects betweenness centrality" width="576" />
-<p class="caption">(\#fig:ch6fig609)Node size reflects betweenness centrality</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig609-1} 
+
+}
+
+\caption{Node size reflects betweenness centrality}(\#fig:ch6fig609)
+\end{figure}
 
 
 We can see that there are three nodes (words = "say", "indeed", "fire") that have qualitatively higher betweenness values than all other nodes in the network. One way to interpret this is that these are nodes that tend to act as “bridges” between different clusters of nodes in the network.
@@ -406,10 +442,14 @@ pairs(~deg + close + betw + eigen[[1]] + page[[1]],
       data=dfu)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig610-1.png" alt="Simple Scatterplot Matrix" width="576" />
-<p class="caption">(\#fig:ch6fig610)Simple Scatterplot Matrix</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig610-1} 
+
+}
+
+\caption{Simple Scatterplot Matrix}(\#fig:ch6fig610)
+\end{figure}
 
 
 ### Assembling a dataset of node-level measures for gd network
@@ -437,20 +477,28 @@ dfd %>% ggplot(aes(x = strength, y = degree)) + geom_point() +
              y = "Degree",x = "Strength")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig611-1.png" alt="Relationship degree and strength" width="576" />
-<p class="caption">(\#fig:ch6fig611)Relationship degree and strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig611-1} 
+
+}
+
+\caption{Relationship degree and strength}(\#fig:ch6fig611)
+\end{figure}
 
 
 The straight line in Figure \@ref(fig:ch6fig611) obviously shows that these are correlated since strength is simply the weighted version of degree.
 
 How about the relationship between betweenness and strength?
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig612-1.png" alt="Relationship betweenness and strength" width="576" />
-<p class="caption">(\#fig:ch6fig612)Relationship betweenness and strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig612-1} 
+
+}
+
+\caption{Relationship betweenness and strength}(\#fig:ch6fig612)
+\end{figure}
 
 
 These are not well correlated, since they describe something different (as shown in Figure \@ref(fig:ch6fig612), points are not in a straight line). Again the common words "say" and "indeed" have a dominant role in Surah Taa-Haa that narrates the true story of Prophet Moses. The common adverb "so" is often used for emphasis^[https://www.macmillandictionary.com/dictionary/british/so_1] to stress some facts and lessons of the story.
@@ -498,10 +546,14 @@ components(gd)$no
 plot(gd)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig613-1.png" alt="Simple plot showing network components" width="576" />
-<p class="caption">(\#fig:ch6fig613)Simple plot showing network components</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig613-1} 
+
+}
+
+\caption{Simple plot showing network components}(\#fig:ch6fig613)
+\end{figure}
 
 
 The output shows the node membership, component sizes, and number of components. The numbers for _no_ (number of components, 4) and _csize_ (size for each component) can be confirmed from Figure \@ref(fig:ch6fig613).
@@ -510,30 +562,46 @@ The output shows the node membership, component sizes, and number of components.
 
 Degree distribution, the statistical distribution of node degrees in a network, is a common and often powerful way to describe a network. We can simply look at the degree distribution as a histogram of degrees. (See the plots in Figure \@ref(fig:ch6fig614) and Figure \@ref(fig:ch6fig615)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig614-1.png" alt="Histogram of gd degrees" width="576" />
-<p class="caption">(\#fig:ch6fig614)Histogram of gd degrees</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig614-1} 
+
+}
+
+\caption{Histogram of gd degrees}(\#fig:ch6fig614)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig615-1.png" alt="Histogram of gu degrees" width="576" />
-<p class="caption">(\#fig:ch6fig615)Histogram of gu degrees</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig615-1} 
+
+}
+
+\caption{Histogram of gu degrees}(\#fig:ch6fig615)
+\end{figure}
 
 
 However, if we want to compare the degree distributions of different networks, it might be more useful to plot the probability densities of each degree: i.e., what proportion of nodes has degree = 1, degree = 2, etc. We can do this by using the function _degree.distribution()_. The output of the plot is in Figure \@ref(fig:ch6fig616) and Figure \@ref(fig:ch6fig617).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig616-1.png" alt="Degree distribution of gd" width="576" />
-<p class="caption">(\#fig:ch6fig616)Degree distribution of gd</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig616-1} 
+
+}
+
+\caption{Degree distribution of gd}(\#fig:ch6fig616)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig617-1.png" alt="Degree distribution of gu" width="576" />
-<p class="caption">(\#fig:ch6fig617)Degree distribution of gu</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig617-1} 
+
+}
+
+\caption{Degree distribution of gu}(\#fig:ch6fig617)
+\end{figure}
 
 
 Degree and degree	distribution play an important role in understanding networks. A higher density changes the component structure of a network and impacts the diffusion and	learning properties. The degree also is an individual node’s	characteristic and reflects	its	position.
@@ -695,10 +763,14 @@ Modularity-based methods of community detection are not fool-proof. There is no 
 Our undirected word co-occurrence network *gu* appears to have a clear community structure from the earlier plots (see Figure \@ref(fig:ch6fig618)).
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig618-1.png" alt="Layout plot of gu" width="576" />
-<p class="caption">(\#fig:ch6fig618)Layout plot of gu</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig618-1} 
+
+}
+
+\caption{Layout plot of gu}(\#fig:ch6fig618)
+\end{figure}
 
 
 Because the community division in this example is clear, we can choose any of the community detection methods as described in the previous section and we are likely to come up with the same answer.
@@ -716,28 +788,40 @@ The resulting object is a 'communities object', which includes a few pieces of i
 
 We can also use this 'communities object' to show the community structure (see Figure \@ref(fig:ch6fig619)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig619-1.png" alt="Community structure using edge.betweenness.community()" width="576" />
-<p class="caption">(\#fig:ch6fig619)Community structure using edge.betweenness.community()</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig619-1} 
+
+}
+
+\caption{Community structure using edge.betweenness.community()}(\#fig:ch6fig619)
+\end{figure}
 
 
 We repeat with the Louvain method (see Figure \@ref(fig:ch6fig620)):
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig620-1.png" alt="Community structure using the Louvain method" width="576" />
-<p class="caption">(\#fig:ch6fig620)Community structure using the Louvain method</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig620-1} 
+
+}
+
+\caption{Community structure using the Louvain method}(\#fig:ch6fig620)
+\end{figure}
 
 
 Figures \@ref(fig:ch6fig619) and \@ref(fig:ch6fig620) show that the two different methods yield different results; one with 7 and the other 8 communities (groups).
 
 We can customize the plot. We use the *RColorBrewer* package to assign colors (see Figure \@ref(fig:ch6fig621)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig621-1.png" alt="Using the Louvain method with some color adjustments" width="576" />
-<p class="caption">(\#fig:ch6fig621)Using the Louvain method with some color adjustments</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig621-1} 
+
+}
+
+\caption{Using the Louvain method with some color adjustments}(\#fig:ch6fig621)
+\end{figure}
 
 
 ### Another example of clustering
@@ -798,10 +882,14 @@ V(gu)$size = 2*degree(gu)
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig622-1.png" alt="Node size reflecting its degree" width="576" />
-<p class="caption">(\#fig:ch6fig622)Node size reflecting its degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig622-1} 
+
+}
+
+\caption{Node size reflecting its degree}(\#fig:ch6fig622)
+\end{figure}
 
 ```r
 assortativity(gu, V(gu)$size, directed=F)
@@ -820,10 +908,14 @@ V(gu)$size.discrete = (V(gu)$size > 5) + 0
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig623-1.png" alt="Node size discrete" width="576" />
-<p class="caption">(\#fig:ch6fig623)Node size discrete</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig623-1} 
+
+}
+
+\caption{Node size discrete}(\#fig:ch6fig623)
+\end{figure}
 
 ```r
 assortativity(gu, V(gu)$size.discrete, directed=F)
@@ -842,10 +934,14 @@ plot(gu, layout=l, edge.color="black", vertex.size=V(gu)$random,
      vertex.shape="square")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig624-1.png" alt="Using different node shape" width="576" />
-<p class="caption">(\#fig:ch6fig624)Using different node shape</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig624-1} 
+
+}
+
+\caption{Using different node shape}(\#fig:ch6fig624)
+\end{figure}
 
 
 We can see that there is little assortment based on this trait.
@@ -886,10 +982,14 @@ ggraph(gt, layout = 'fr', weights = cooc) +
   geom_node_point()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig625-1.png" alt="Simple first plot example using tidygraph and ggraph" width="576" />
-<p class="caption">(\#fig:ch6fig625)Simple first plot example using tidygraph and ggraph</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig625-1} 
+
+}
+
+\caption{Simple first plot example using tidygraph and ggraph}(\#fig:ch6fig625)
+\end{figure}
 
 
 Now it is much easier to experiment with modifications to the node and edge parameters affecting layouts as it is not necessary to modify the underlying graph but only the plotting code (output in Figure \@ref(fig:ch6fig626)).
@@ -901,10 +1001,14 @@ ggraph(gt, layout = 'fr', weights = log(cooc)) +
   geom_node_point(color = "gold4", size = 3)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig626-1.png" alt="Adjusting node and edge plotting parameters" width="576" />
-<p class="caption">(\#fig:ch6fig626)Adjusting node and edge plotting parameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig626-1} 
+
+}
+
+\caption{Adjusting node and edge plotting parameters}(\#fig:ch6fig626)
+\end{figure}
 
 
 ### Use selected measures from _tidygraph_ and plot
@@ -935,30 +1039,46 @@ Now we plot the various measures from the resulting *node_measures* _data.frame_
 
 Plot _degree_, _degree_in_, and _degree_out_ together (output in Figure \@ref(fig:ch6fig628)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig627-1.png" alt="Degree for top 30 words" width="576" />
-<p class="caption">(\#fig:ch6fig627)Degree for top 30 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig627-1} 
+
+}
+
+\caption{Degree for top 30 words}(\#fig:ch6fig627)
+\end{figure}
 
 Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure \@ref(fig:ch6fig629)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig628-1.png" alt="Degree-in and degree-out for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig628)Degree-in and degree-out for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig628-1} 
+
+}
+
+\caption{Degree-in and degree-out for top 50 words}(\#fig:ch6fig628)
+\end{figure}
 
 Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure \@ref(fig:ch6fig630)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig629-1.png" alt="Degree and betweenness for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig629)Degree and betweenness for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig629-1} 
+
+}
+
+\caption{Degree and betweenness for top 50 words}(\#fig:ch6fig629)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig630-1.png" alt="Other measures for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig630)Other measures for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig630-1} 
+
+}
+
+\caption{Other measures for top 50 words}(\#fig:ch6fig630)
+\end{figure}
 
 Despite using *coord_cartesian(ylim = c(0, 1))* to scale the Measure coordinate, the values for br_score, and coreness are 0 or very small. Without any doubt "say", "Lord" together with "Allah" and "Mose" are the most influential and important words in Surah Taa-Haa.
 
@@ -982,17 +1102,25 @@ The following is an interesting example in true _tidyverse_ fashion that combine
 
 We can also convert our active node or edge table back to a _tibble_ and plot the output  (see Figure \@ref(fig:ch6fig631)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig631-1.png" alt="Nodes are colored by group" width="576" />
-<p class="caption">(\#fig:ch6fig631)Nodes are colored by group</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig631-1} 
+
+}
+
+\caption{Nodes are colored by group}(\#fig:ch6fig631)
+\end{figure}
 
 For the next plot, we define our own specific colors. The center-most characters are in red and the distance to the center is the node size (see Figure \@ref(fig:ch6fig632)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig632-1.png" alt="Nodes are colored by centeredness" width="576" />
-<p class="caption">(\#fig:ch6fig632)Nodes are colored by centeredness</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig632-1} 
+
+}
+
+\caption{Nodes are colored by centeredness}(\#fig:ch6fig632)
+\end{figure}
 
 Clearly, "say" is the _keyplayer_ for the main group.
 
@@ -1085,10 +1213,14 @@ network_ego1 %>%
   theme(legend.position = "none")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig633-1.png" alt="Top 10 word communities" width="576" />
-<p class="caption">(\#fig:ch6fig633)Top 10 word communities</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig633-1} 
+
+}
+
+\caption{Top 10 word communities}(\#fig:ch6fig633)
+\end{figure}
 
 __ego() function__
 
@@ -1150,47 +1282,71 @@ ggraph(jg1,layout = "focus", focus = focusnode) +
     theme(legend.position = "bottom")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig634-1.png" alt="Using draw circle layout with Mose as focus node" width="576" />
-<p class="caption">(\#fig:ch6fig634)Using draw circle layout with Mose as focus node</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig634-1} 
+
+}
+
+\caption{Using draw circle layout with Mose as focus node}(\#fig:ch6fig634)
+\end{figure}
 
 Repeat with a change of the focus node and displaying all the words (see the output in Figure \@ref(fig:ch6fig635)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig635-1.png" alt="Same layout with say as focus node and text labels" width="576" />
-<p class="caption">(\#fig:ch6fig635)Same layout with say as focus node and text labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig635-1} 
+
+}
+
+\caption{Same layout with say as focus node and text labels}(\#fig:ch6fig635)
+\end{figure}
 
 _layout_with_centrality()_ works similarly. We can specify any centrality index (or numeric vector) and create a concentric layout where the most central nodes are put in the center and the most peripheral nodes in the biggest circle. The numeric attribute used for the layout is specified with the cent parameter. Here, we use the weighted degree of the characters. See the output in Figure \@ref(fig:ch6fig636).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig636-1.png" alt="Weighted degree centrality layout" width="576" />
-<p class="caption">(\#fig:ch6fig636)Weighted degree centrality layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig636-1} 
+
+}
+
+\caption{Weighted degree centrality layout}(\#fig:ch6fig636)
+\end{figure}
 
 We repeat with _betweenness centrality_ (see the output in Figure \@ref(fig:ch6fig637)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig637-1.png" alt="Betweenness centrality layout with degree for node size" width="576" />
-<p class="caption">(\#fig:ch6fig637)Betweenness centrality layout with degree for node size</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig637-1} 
+
+}
+
+\caption{Betweenness centrality layout with degree for node size}(\#fig:ch6fig637)
+\end{figure}
 
 __Stress layout and clustering__
 
 We focus again on *gd* and *gu*. Some clustering functions do not work on directed graphs. We show two different examples here. The first one is a directed network (outputs in Figure \@ref(fig:ch6fig638)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig638-1.png" alt="Directed network with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig638)Directed network with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig638-1} 
+
+}
+
+\caption{Directed network with clusters}(\#fig:ch6fig638)
+\end{figure}
 
 The second one is the undirected graph *gu* and *cluster_louvain* which does not work with directed graphs. *gu* does not have edge properties so we remove the aes(width=cooc). The output is in Figure \@ref(fig:ch6fig639).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig639-1.png" alt="Undirected network with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig639)Undirected network with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig639-1} 
+
+}
+
+\caption{Undirected network with clusters}(\#fig:ch6fig639)
+\end{figure}
 
 Interestingly, the cluster functions give 4 for *gd* and 8 for *gu*.
 
@@ -1198,27 +1354,43 @@ __Focus layout and clustering - focus on selected words__
 
 Earlier, we have shown how _layout_with_focus()_ allows us to focus the network on a specific word and order all other nodes in concentric circles (depending on distance) around it. Here we combine it with clustering. The limitation is that it can only work with a fully connected network (see the output in Figure \@ref(fig:ch6fig640) and Figure \@ref(fig:ch6fig641)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig640-1.png" alt="Focus layout with only the focus word" width="576" />
-<p class="caption">(\#fig:ch6fig640)Focus layout with only the focus word</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig641-1.png" alt="Focus layout with all words" width="576" />
-<p class="caption">(\#fig:ch6fig641)Focus layout with all words</p>
-</div>
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig640-1} 
+
+}
+
+\caption{Focus layout with only the focus word}(\#fig:ch6fig640)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig641-1} 
+
+}
+
+\caption{Focus layout with all words}(\#fig:ch6fig641)
+\end{figure}
 
 _layout_with_centrality()_ is based on a similar principle. We have shown this earlier. But here, we repeat with clustering (using *gu*) and look at the coreness centrality measure. Earlier, we have seen that _cluster_louvain()_ gives different results than _clusters()_ (see output in Figure \@ref(fig:ch6fig642) and Figure \@ref(fig:ch6fig643)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig642-1.png" alt="Centrality layout : graph.strength with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig642)Centrality layout : graph.strength with clusters</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig643-1.png" alt="Centrality layout : graph.coreness with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig643)Centrality layout : graph.coreness with clusters</p>
-</div>
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig642-1} 
+
+}
+
+\caption{Centrality layout : graph.strength with clusters}(\#fig:ch6fig642)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig643-1} 
+
+}
+
+\caption{Centrality layout : graph.coreness with clusters}(\#fig:ch6fig643)
+\end{figure}
 
 ## Summary {#chapter-6-summary}
 

@@ -2,7 +2,7 @@
 title: "Quran Analytics with R"
 subtitle: "A Practical Introduction"
 author: "Wan M Hasni and Azman Hussin"
-date: "2024-04-21"
+date: "2024-04-22"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 always_allow_html: true
@@ -47,7 +47,8 @@ As in anything else, the starting point is the hardest; and I know that I cannot
 
 I welcome you on board this journey. The reward is from the owner of the Truth when you meet Him.
 
-<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-2-1} \end{center}
 
 # Preface From the Second Author {-}
 
@@ -59,7 +60,8 @@ We formally started our #qurananalytics project to accompany our #learnbydoing a
 
 Later, the learning and encouraging feedback we got from the blog postings led us to further explore the application of these tools on the classical works of Tafseer, the interpretation of the Quran. We had some ideas how #networkscience tools can help us visualize the classical method of Tafseer al-Quran bi al-Quran (Interpretation of the Quran with the Quran). It is considered the best method to interpret the verses of the Quran. We showed some features of network graphs that enable us to visualize aspects of the Tafseer that are almost impossible to do manually and difficult to do without a network graph model. We discuss this in Chapter 9 of this book where we present our preliminary findings using network analysis applied to the best of the classical works of Tafseer, Tafseer Ibnu Katheer. Simple network concepts like "in-degrees", "out-degrees" and "ego networks" proved valuable in analyzing Tafseer Ibnu Katheer.
 
-<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 Along the way, we also developed some customized tutorials on the tools that we used. These tutorials cover selected individual Surahs (Chapters) of the Quran like Surah Yusuf, Surah Taa Haa, and Surah Al-Kahfi - all of which are covered in different Chapters of the book. We hope our readers can learn the tools within the subject of "learning the Quran".
 
@@ -75,7 +77,8 @@ We can only express our sincere gratitude to our Lord and Creator for giving us 
 
 > "And our Lord is the Beneficent Allah, Whose help is sought" [Quran, 21:112]
 
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 # Preamble {-}
 
@@ -88,8 +91,6 @@ In this book, which we plan to be a series of books in the future, we will prese
 Our wish is for many other researchers to follow our track, collaborate with us in our efforts - especially for people with expertise or knowledge in one of the domains, but lacking expertise in the other domain. The journey is not that hard if a person already knows one of the domains. For example, many experts in the sciences of Al Quran do not have exposure to the computing environment, and hence do not understand NLP deeply; our argument is NLP is first and foremost is about linguistics, cast within computational linguistics. As far as __R__ programming language, despite being an uphill task for beginners to be familiar with its working environment, over the years of development, it had been made easy with many recent works on it, such as the __R Studio__ environment as its IDE. It is just like riding a bicycle, if you know how to ride one, then almost any bicycle is the same. R is among the simplest bicycles around.
 
 We plan this book to be an open-source concept. It is prepared using the bookdown package in R (https://bookdown.org/yihui/bookdown/). All the data and codes will be available at in a __github__ site to be added in the future. Some of our future works will be posted on the RPubs site (https://rpubs.com/azmanH/). Eventually, we will also produce some packages in R, which will be posted on CRAN.
-
-
 
 <!--chapter:end:index.Rmd-->
 
@@ -123,10 +124,7 @@ Written texts possess something that others do not, namely, it is a form of data
 
 Quran Analytics is a new term without a clear scholarly definition. We know that it is a combination of various disciplines - including Quranic sciences (Ulum Al-Quran), language and linguistics, and broader Islamic sciences. The relationship and interdependencies between these fields are both _complicated_ and _complex_. Our exploratory attempt to provide a diagrammatic relation between the various fields of knowledge is shown in Figure \@ref(fig:ch1fig1).
 
-<div class="figure">
-<img src="01-Ch1Introduction_files/figure-html/ch1fig1-1.png" alt="Complexity of Quran Analytics" width="672" />
-<p class="caption">(\#fig:ch1fig1)Complexity of Quran Analytics</p>
-</div>
+![(\#fig:ch1fig1)Complexity of Quran Analytics](01-Ch1Introduction_files/figure-latex/ch1fig1-1.pdf) 
 
 The "relationships" shown are examples of the relations and intersections of multi-disciplinary requirements for Quran Analytics.
 
@@ -417,21 +415,33 @@ tidyESI %>%
                  colors=brewer.pal(8,"Dark2")))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig201-1.png" alt="Wordcloud for Saheeh translation" width="384" />
-<p class="caption">(\#fig:ch2fig201)Wordcloud for Saheeh translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig201-1} 
+
+}
+
+\caption{Wordcloud for Saheeh translation}(\#fig:ch2fig201)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig202-1.png" alt="Wordcloud for Yusuf Ali translation" width="384" />
-<p class="caption">(\#fig:ch2fig202)Wordcloud for Yusuf Ali translation</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig203-1.png" alt="Wordcloud for Malay translation" width="384" />
-<p class="caption">(\#fig:ch2fig203)Wordcloud for Malay translation</p>
-</div>
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig202-1} 
+
+}
+
+\caption{Wordcloud for Yusuf Ali translation}(\#fig:ch2fig202)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig203-1} 
+
+}
+
+\caption{Wordcloud for Malay translation}(\#fig:ch2fig203)
+\end{figure}
 
 For Saheeh, the wordcloud plot is in Figure \@ref(fig:ch2fig201); for Yusuf Ali, the wordcloud plot is in Figure \@ref(fig:ch2fig202); and for the Malay, the wordcloud plot is in Figure \@ref(fig:ch2fig203).
 
@@ -523,58 +533,94 @@ tf_plotter = function(df,surah_group,title_label,x_lim){
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig204-1.png" alt="Short Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig204)Short Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig204-1} 
+
+}
+
+\caption{Short Surahs term frequency in Saheeh}(\#fig:ch2fig204)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig205-1.png" alt="Short Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig205)Short Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig205-1} 
+
+}
+
+\caption{Short Surahs term frequency in Yusuf Ali}(\#fig:ch2fig205)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig206-1.png" alt="Short Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig206)Short Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig206-1} 
+
+}
+
+\caption{Short Surahs term frequency in Malay}(\#fig:ch2fig206)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig207-1.png" alt="Hamim Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig207)Hamim Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig207-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Saheeh}(\#fig:ch2fig207)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig208-1.png" alt="Hamim Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig208)Hamim Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig208-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Yusuf Ali}(\#fig:ch2fig208)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig209-1.png" alt="Hamim Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig209)Hamim Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig209-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Malay}(\#fig:ch2fig209)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig210-1.png" alt="Long Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig210)Long Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig210-1} 
+
+}
+
+\caption{Long Surahs term frequency in Saheeh}(\#fig:ch2fig210)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig211-1.png" alt="Long Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig211)Long Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig211-1} 
+
+}
+
+\caption{Long Surahs term frequency in Yusuf Ali}(\#fig:ch2fig211)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig212-1.png" alt="Long Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig212)Long Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig212-1} 
+
+}
+
+\caption{Long Surahs term frequency in Malay}(\#fig:ch2fig212)
+\end{figure}
 
 
 From these plots of "term frequency" starting with the short Surahs (Figure \@ref(fig:ch2fig204), Figure \@ref(fig:ch2fig205), and Figure \@ref(fig:ch2fig206)), followed by the medium Surahs (Figure \@ref(fig:ch2fig207), Figure \@ref(fig:ch2fig208), and Figure \@ref(fig:ch2fig209)), and the long Surahs (Figure \@ref(fig:ch2fig210), Figure \@ref(fig:ch2fig211), and Figure \@ref(fig:ch2fig212)), there are many insights and lessons about the language of the translation of Al-Quran.
@@ -612,10 +658,14 @@ EQT_total_toks_melt %>% ggplot() +
   theme(panel.border = element_rect(colour = "black", fill=NA))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig213-1.png" alt="Percentage of unique words in the Surahs" width="576" />
-<p class="caption">(\#fig:ch2fig213)Percentage of unique words in the Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig213-1} 
+
+}
+
+\caption{Percentage of unique words in the Surahs}(\#fig:ch2fig213)
+\end{figure}
 
 
 The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure \@ref(fig:ch2fig213) shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
@@ -661,10 +711,14 @@ tfidf_plotter = function(df_plot,title_label,color){
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig214-1.png" alt="tf-idf for the translations" width="576" />
-<p class="caption">(\#fig:ch2fig214)tf-idf for the translations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig214-1} 
+
+}
+
+\caption{tf-idf for the translations}(\#fig:ch2fig214)
+\end{figure}
 
 We can see from Figure \@ref(fig:ch2fig214), the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
 
@@ -674,58 +728,94 @@ Let us look at a visualization for these high tf-idf words. These are shown in F
 
 \normalsize
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig215-1.png" alt="Short Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig215)Short Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig215-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Saheeh}(\#fig:ch2fig215)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig216-1.png" alt="Short Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig216)Short Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig216-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig216)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig217-1.png" alt="Short Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig217)Short Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig217-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Malay}(\#fig:ch2fig217)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig218-1.png" alt="Medium Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig218)Medium Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig218-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Saheeh}(\#fig:ch2fig218)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig219-1.png" alt="Medium Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig219)Medium Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig219-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig219)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig220-1.png" alt="Medium Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig220)Medium Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig220-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Malay}(\#fig:ch2fig220)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig221-1.png" alt="Long Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig221)Long Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig221-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Saheeh}(\#fig:ch2fig221)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig222-1.png" alt="Long Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig222)Long Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig222-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig222)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig223-1.png" alt="Long Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig223)Long Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig223-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Malay}(\#fig:ch2fig223)
+\end{figure}
 
 As measured by the tf-idf, these words are the most important to each Surah, and most readers would likely agree. It identifies words that are important to one document within a collection of documents. Furthermore, we can see that Saheeh's translation used different words than Yusuf Ali; this is obvious in the top tf_idf terms where they differ significantly.
 
@@ -775,10 +865,14 @@ p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig224-1.png" alt="Zipf's plot" width="576" />
-<p class="caption">(\#fig:ch2fig224)Zipf's plot</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig224-1} 
+
+}
+
+\caption{Zipf's plot}(\#fig:ch2fig224)
+\end{figure}
 
 Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
 
@@ -789,10 +883,14 @@ From the wordcloud plots in Figure \@ref(fig:ch2fig201), Figure \@ref(fig:ch2fig
 Most analyses of texts in English will take the option of removing these stopwords. While maybe acceptable in most circumstances, such an approach is not as straightforward when applied to Al-Quran translations. In the coming chapters, we will revisit the subject again. Let us redo Zipf's plot with all the stopwords removed and see what the removal of stopwords means.
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig225-1.png" alt="Zipf's plot without stopwords" width="576" />
-<p class="caption">(\#fig:ch2fig225)Zipf's plot without stopwords</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig225-1} 
+
+}
+
+\caption{Zipf's plot without stopwords}(\#fig:ch2fig225)
+\end{figure}
 
 
 From the plots in Figure \@ref(fig:ch2fig225), compared to the previous Zipf's plot in Figure \@ref(fig:ch2fig221), we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
@@ -817,10 +915,14 @@ Unique tokens are similar to vocabulary in some sense. It is the library of word
 As we have described before, in the corpora, few words occur in high frequencies, and few words occur in very low frequencies at both extremes. We will plot the statistical density of the distribution (in log scale) of the term frequencies in both translations to observe this phenomenon.
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig226-1.png" alt="Density plot of term frequency" width="576" />
-<p class="caption">(\#fig:ch2fig226)Density plot of term frequency</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig226-1} 
+
+}
+
+\caption{Density plot of term frequency}(\#fig:ch2fig226)
+\end{figure}
 
 
 The term frequencies (using a log scale for visualization) for both translations in Figure \@ref(fig:ch2fig226) show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
@@ -838,17 +940,18 @@ freq_by_rank_ESI %>% filter(word == "trustworthy")
 ```
 
 ```
-## # A tibble: 8 × 6
-##   surah_title_en word            n total  rank `term frequency`
-##   <chr>          <chr>       <int> <int> <int>            <dbl>
-## 1 Ash-Shu'araa   trustworthy     6   729    20         0.00823 
-## 2 Ad-Dukhaan     trustworthy     1   209   141         0.00478 
-## 3 Al-A'raaf      trustworthy     1  1838   764         0.000544
-## 4 Al-Baqara      trustworthy     1  3401  1166         0.000294
-## 5 Al-Qasas       trustworthy     1   753   388         0.00133 
-## 6 An-Naml        trustworthy     1   631   359         0.00158 
-## 7 At-Takwir      trustworthy     1    79    68         0.0127  
-## 8 Luqman         trustworthy     1   318   195         0.00314
+## # A tibble: 8 x 6
+##   surah_title_en word            n total  rank
+##   <chr>          <chr>       <int> <int> <int>
+## 1 Ash-Shu'araa   trustworthy     6   729    20
+## 2 Ad-Dukhaan     trustworthy     1   209   141
+## 3 Al-A'raaf      trustworthy     1  1838   764
+## 4 Al-Baqara      trustworthy     1  3401  1166
+## 5 Al-Qasas       trustworthy     1   753   388
+## 6 An-Naml        trustworthy     1   631   359
+## 7 At-Takwir      trustworthy     1    79    68
+## 8 Luqman         trustworthy     1   318   195
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -856,12 +959,13 @@ freq_by_rank_EYA %>% filter(word == "trustworthy")
 ```
 
 ```
-## # A tibble: 3 × 6
-##   surah_title_en word            n total  rank `term frequency`
-##   <chr>          <chr>       <int> <int> <int>            <dbl>
-## 1 Al-A'raaf      trustworthy     1  2326   925         0.000430
-## 2 Al-Baqara      trustworthy     1  4120  1383         0.000243
-## 3 Luqman         trustworthy     1   384   233         0.00260
+## # A tibble: 3 x 6
+##   surah_title_en word            n total  rank
+##   <chr>          <chr>       <int> <int> <int>
+## 1 Al-A'raaf      trustworthy     1  2326   925
+## 2 Al-Baqara      trustworthy     1  4120  1383
+## 3 Luqman         trustworthy     1   384   233
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -869,12 +973,13 @@ freq_by_rank_ESI %>% filter(word == "trust")
 ```
 
 ```
-## # A tibble: 3 × 6
-##   surah_title_en word      n total  rank `term frequency`
-##   <chr>          <chr> <int> <int> <int>            <dbl>
-## 1 Aal-i-Imraan   trust     1  2025   737         0.000494
-## 2 Al-Ahzaab      trust     1   793   387         0.00126 
-## 3 Al-Baqara      trust     1  3401  1165         0.000294
+## # A tibble: 3 x 6
+##   surah_title_en word      n total  rank
+##   <chr>          <chr> <int> <int> <int>
+## 1 Aal-i-Imraan   trust     1  2025   737
+## 2 Al-Ahzaab      trust     1   793   387
+## 3 Al-Baqara      trust     1  3401  1165
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -882,20 +987,21 @@ freq_by_rank_EYA %>% filter(word == "trust")
 ```
 
 ```
-## # A tibble: 27 × 6
-##    surah_title_en word      n total  rank `term frequency`
-##    <chr>          <chr> <int> <int> <int>            <dbl>
-##  1 Ash-Shu'araa   trust     6   929    26         0.00646 
-##  2 Aal-i-Imraan   trust     5  2448    88         0.00204 
-##  3 Yusuf          trust     5  1195    36         0.00418 
-##  4 Al-Anfaal      trust     4   893    36         0.00448 
-##  5 Al-Baqara      trust     4  4120   233         0.000971
-##  6 Ibrahim        trust     4   639    21         0.00626 
-##  7 Al-Ahzaab      trust     3   928    62         0.00323 
-##  8 Hud            trust     3  1314   108         0.00228 
-##  9 Yunus          trust     3  1171    97         0.00256 
-## 10 Al-Maaida      trust     2  1995   301         0.00100 
-## # ℹ 17 more rows
+## # A tibble: 27 x 6
+##    surah_title_en word      n total  rank
+##    <chr>          <chr> <int> <int> <int>
+##  1 Ash-Shu'araa   trust     6   929    26
+##  2 Aal-i-Imraan   trust     5  2448    88
+##  3 Yusuf          trust     5  1195    36
+##  4 Al-Anfaal      trust     4   893    36
+##  5 Al-Baqara      trust     4  4120   233
+##  6 Ibrahim        trust     4   639    21
+##  7 Al-Ahzaab      trust     3   928    62
+##  8 Hud            trust     3  1314   108
+##  9 Yunus          trust     3  1171    97
+## 10 Al-Maaida      trust     2  1995   301
+## # i 17 more rows
+## # i 1 more variable: `term frequency` <dbl>
 ```
 \normalsize
 
@@ -1034,10 +1140,14 @@ p2 = ch3_plotter1(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig301-1.png" alt="Top common words in the translations" width="576" />
-<p class="caption">(\#fig:ch3fig301)Top common words in the translations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig301-1} 
+
+}
+
+\caption{Top common words in the translations}(\#fig:ch3fig301)
+\end{figure}
 
 
 Now we can see from Figure \@ref(fig:ch3fig301) that the term "Allah" is indeed the highest occurring term by a large count, followed by the term "Lord". This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term "Muhammad" (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term "messenger" appears in both with different rankings. There are other observations in other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations. 
@@ -1110,10 +1220,14 @@ p2 = ch3_bing_plot(bing_word_counts_EYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig302-1.png" alt="Bing's top negative and positive words" width="768" />
-<p class="caption">(\#fig:ch3fig302)Bing's top negative and positive words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig302-1} 
+
+}
+
+\caption{Bing's top negative and positive words}(\#fig:ch3fig302)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig302) interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, "fear" and "evil", but for positive they differ: "merciful" and "righteous" for Saheeh, and "faith" and "mercy" for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.
@@ -1125,16 +1239,24 @@ This indicates that while translating from the same source, using the _bing_ sen
 Now let us compare with the _AFINN_ scoring model and observe if there are any major changes to the findings using the _bing_ model.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig303-1.png" alt="AFINN scoring model on Saheeh" width="576" />
-<p class="caption">(\#fig:ch3fig303)AFINN scoring model on Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig303-1} 
+
+}
+
+\caption{AFINN scoring model on Saheeh}(\#fig:ch3fig303)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig304-1.png" alt="AFINN scoring model on Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch3fig304)AFINN scoring model on Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig304-1} 
+
+}
+
+\caption{AFINN scoring model on Yusuf Ali}(\#fig:ch3fig304)
+\end{figure}
 
 
 We can see that the dimensions of sentiment are different in the _AFINN_ model as compared to _bing_. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure \@ref(fig:ch3fig303), the plots for Saheeh compared to Figure \@ref(fig:ch3fig304), the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply.
@@ -1185,10 +1307,14 @@ p2 = ch3_bing_plot2(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig305-1.png" alt="Negative Surahs scoring" width="576" />
-<p class="caption">(\#fig:ch3fig305)Negative Surahs scoring</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig305-1} 
+
+}
+
+\caption{Negative Surahs scoring}(\#fig:ch3fig305)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative" words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.
@@ -1196,10 +1322,14 @@ Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative
 Let us repeat for "positive" Surahs.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig306-1.png" alt="Positive Surahs scoring" width="576" />
-<p class="caption">(\#fig:ch3fig306)Positive Surahs scoring</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig306-1} 
+
+}
+
+\caption{Positive Surahs scoring}(\#fig:ch3fig306)
+\end{figure}
 
 
 It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure \@ref(fig:ch3fig306).
@@ -1231,10 +1361,14 @@ p2 = ch3_syplot(Surah_yusuf_EYAC,"Yusuf Ali","darkgreen")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig307-1.png" alt="Sentiment scoring within Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch3fig307)Sentiment scoring within Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig307-1} 
+
+}
+
+\caption{Sentiment scoring within Surah Yusuf}(\#fig:ch3fig307)
+\end{figure}
 
 
 Here in Figure \@ref(fig:ch3fig307), we use the _AFFIN_ model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.^[For example, see sentiment narrative in Jane Austen's novels in @silge2017.] If we take the meaning of giving "good tidings" (Basheeran) and "warnings" (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.
@@ -1257,16 +1391,24 @@ tidyESIC %>%
                    rot.per = 0.35)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig308-1.png" alt="Comparison cloud for Saheeh translation" width="384" />
-<p class="caption">(\#fig:ch3fig308)Comparison cloud for Saheeh translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig308-1} 
+
+}
+
+\caption{Comparison cloud for Saheeh translation}(\#fig:ch3fig308)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig309-1.png" alt="Comparison cloud for Yusuf Ali translation" width="384" />
-<p class="caption">(\#fig:ch3fig309)Comparison cloud for Yusuf Ali translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig309-1} 
+
+}
+
+\caption{Comparison cloud for Yusuf Ali translation}(\#fig:ch3fig309)
+\end{figure}
 
 
 The output for Saheeh is in Figure \@ref(fig:ch3fig308), and for Yusuf Ali is in Figure \@ref(fig:ch3fig309). We can observe clearly the words "fear", "evil", "hell", dominate the negative sentiments; while the words "faith", "righteous", "mercy" dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.
@@ -1366,10 +1508,14 @@ Sentiment scoring originates from the information theory of signaling. Each word
 Let us look into the entire corpus of Saheeh and the _bing_ sentiment model to visualize the signals.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig310-1.png" alt="Sentiment frequency in Saheeh corpus" width="576" />
-<p class="caption">(\#fig:ch3fig310)Sentiment frequency in Saheeh corpus</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig310-1} 
+
+}
+
+\caption{Sentiment frequency in Saheeh corpus}(\#fig:ch3fig310)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.^[We leave this subject as a research question.]
@@ -1377,10 +1523,14 @@ Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies 
 The signaling approach of sentiment analysis is also useful to investigate messages within a selected verse or group of verses, such as a Surah. Let us do this for a few selected Surahs: "Yaseen", "Al-Fath", "Al-Mulk", "Al-Muddaththir", "Al-Waaqia", and "Al-Qiyaama". We will choose Saheeh as our source of texts and _bing_ as our model.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig311-1.png" alt="Sentiment frequency in selected Surahs" width="576" />
-<p class="caption">(\#fig:ch3fig311)Sentiment frequency in selected Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig311-1} 
+
+}
+
+\caption{Sentiment frequency in selected Surahs}(\#fig:ch3fig311)
+\end{figure}
 
 
 We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, particularly Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known "strong" messages, such as Surah "Al-Waaqia" and "Al-Qiyaama". 
@@ -1539,19 +1689,27 @@ ESI_bigrams_filtered %>%
         count(surah_title_en, word2, sort = TRUE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig401-1.png" alt="Top words with 'Allah' in the Quran" width="576" />
-<p class="caption">(\#fig:ch4fig401)Top words with 'Allah' in the Quran</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig401-1} 
+
+}
+
+\caption{Top words with 'Allah' in the Quran}(\#fig:ch4fig401)
+\end{figure}
 \normalsize
 
 A bigram can also be treated as a term in a document in the same way that we treat individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure \@ref(fig:ch4fig402).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig402-1.png" alt="Top word pairs tf-idf in the long Surahs" width="768" />
-<p class="caption">(\#fig:ch4fig402)Top word pairs tf-idf in the long Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig402-1} 
+
+}
+
+\caption{Top word pairs tf-idf in the long Surahs}(\#fig:ch4fig402)
+\end{figure}
 
 
 There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or "sacred" separately). owever, the per-bigram counts are also sparser: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.
@@ -1578,10 +1736,14 @@ ESI_bigram_graph <- ESI_bigram_counts %>%
 _igraph_ has built-in plotting functions, but many other packages have developed better visualization methods for graph objects. The _ggraph_ package [@ggraph] implements these visualizations in terms of the grammar of graphics. We can convert an _igraph_ object into a _ggraph_ with the _ggraph_ function, after which we add layers to it, much like adding layers in _ggplot2_. For example, for a basic graph, we need to add three layers: nodes, edges, and text.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig403-1.png" alt="Common bi-grams in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig403)Common bi-grams in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig403-1} 
+
+}
+
+\caption{Common bi-grams in Saheeh}(\#fig:ch4fig403)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Saheeh's translation. From here we can make some observations, like the word "allah" having a dominant role, and some known concepts in Islam like "straight path" and "establish prayer". "perpetual residence", "rivers flow", "gardens beneath" are known rewards for those who "enter paradise".
@@ -1589,10 +1751,14 @@ Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Sahe
 We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure \@ref(fig:ch4fig404).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig404-1.png" alt="Common bi-grams in Saheeh with ggraph format" width="576" />
-<p class="caption">(\#fig:ch4fig404)Common bi-grams in Saheeh with ggraph format</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig404-1} 
+
+}
+
+\caption{Common bi-grams in Saheeh with ggraph format}(\#fig:ch4fig404)
+\end{figure}
 
 
 It may take some experimentation with ggraph to get your networks into a presentable format, but network visualization is a useful and flexible way to look at relational tidy data.
@@ -1629,7 +1795,7 @@ head(ESI_trigrams_united)
 ```
 
 ```
-## # A tibble: 6 × 2
+## # A tibble: 6 x 2
 ##   trigram                          n
 ##   <chr>                        <int>
 ## 1 al masjid al                    16
@@ -1663,10 +1829,14 @@ head(word_pairs)
 Let us create a graph network of these co-occurring words so we can see the relationships better. The filter will determine the size of the graph.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig405-1.png" alt="Common word pairs in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig405)Common word pairs in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig405-1} 
+
+}
+
+\caption{Common word pairs in Saheeh}(\#fig:ch4fig405)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig405) exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word "allah", "lord" as expected. However, we can see many other words (nodes) such as "prayer", which is highly linked to the center words (such as "allah"). Network visualization is a good starting point to make these types of observations.
@@ -1688,10 +1858,14 @@ keyword_cors <- surah_wordsESI %>%
 Let us visualize the network of keyword correlations.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig406-1.png" alt="Common keyword correlations in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig406)Common keyword correlations in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig406-1} 
+
+}
+
+\caption{Common keyword correlations in Saheeh}(\#fig:ch4fig406)
+\end{figure}
 
 
 From Figure \@ref(fig:ch4fig406), we can visualize all the keywords and their relations with other keywords. Note that the word "allah" and "lord" while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind "keyword in context" (kwic) which we will cover in a later part of the book.
@@ -1741,34 +1915,50 @@ The resulting _data.frame_ has a field called upos which is the Universal Parts 
 In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).^[For a detailed list of all POS tags, please visit https://universaldependencies.org/u/pos/index.html] The results of the frequencies are shown in Figure \@ref(fig:ch4fig407).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig407-1.png" alt="UPOS (Universal Parts of Speech) in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig407)UPOS (Universal Parts of Speech) in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig407-1} 
+
+}
+
+\caption{UPOS (Universal Parts of Speech) in Surah Yusuf}(\#fig:ch4fig407)
+\end{figure}
 
 
 Parts of Speech (POS) tags allow us to extract easily the words we like to plot. We may not need stopwords for doing this, we just select nouns or verbs or adjectives and we have the most relevant parts for basic frequency analysis.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig408-1.png" alt="Most occurring nouns in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig408)Most occurring nouns in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig408-1} 
+
+}
+
+\caption{Most occurring nouns in Surah Yusuf}(\#fig:ch4fig408)
+\end{figure}
 
 
 The NOUN and PROPN frequency plot in Figure \@ref(fig:ch4fig408) correctly reflect Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran [@alsuwaidan2021]. The noticeable noun missing in the plot is "prison". The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure \@ref(fig:ch4fig409) and Figure \@ref(fig:ch4fig410).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig409-1.png" alt="Most occuring adjectives in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig409)Most occuring adjectives in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig409-1} 
+
+}
+
+\caption{Most occuring adjectives in Surah Yusuf}(\#fig:ch4fig409)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig410-1.png" alt="Most occuring verbs in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig410)Most occuring verbs in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig410-1} 
+
+}
+
+\caption{Most occuring verbs in Surah Yusuf}(\#fig:ch4fig410)
+\end{figure}
 
 
 ## Word cooccurrences using POS {#word-cooccurrences-using-POS}
@@ -1792,10 +1982,14 @@ cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB", "ADJ"
 
 The result can be easily visualized using the _igraph_ and _ggraph_ packages. This is shown in Figure \@ref(fig:ch4fig411).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig411-1.png" alt="Co-occurence of Nouns, Names, Adjectives and Verbs" width="576" />
-<p class="caption">(\#fig:ch4fig411)Co-occurence of Nouns, Names, Adjectives and Verbs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig411-1} 
+
+}
+
+\caption{Co-occurence of Nouns, Names, Adjectives and Verbs}(\#fig:ch4fig411)
+\end{figure}
 
 
 The story is revealed by Allah (SWT). The main characters are Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez). So the verb "say" dominates since it is a narrated story. It is interesting to note the strong link and occurrence of "know" with "Allah".
@@ -1815,10 +2009,14 @@ cooccur <- cooccurrence(x$lemma,
 
 Once we have these co-occurrences, we can easily do the same plots as before. (See Figure \@ref(fig:ch4fig412)).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig412-1.png" alt="Words following one another in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig412)Words following one another in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig412-1} 
+
+}
+
+\caption{Words following one another in Surah Yusuf}(\#fig:ch4fig412)
+\end{figure}
 
 
 ### Word correlations using POS
@@ -1893,10 +2091,14 @@ stats <- keywords_rake(x = x,
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig413-1.png" alt="Keywords identified by RAKE in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig413)Keywords identified by RAKE in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig413-1} 
+
+}
+
+\caption{Keywords identified by RAKE in Surah Yusuf}(\#fig:ch4fig413)
+\end{figure}
 
 
 ### Using Pointwise Mutual Information Collocations
@@ -1914,10 +2116,14 @@ stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig414-1.png" alt="Keywords identified by PMI Collocation in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig414)Keywords identified by PMI Collocation in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig414-1} 
+
+}
+
+\caption{Keywords identified by PMI Collocation in Surah Yusuf}(\#fig:ch4fig414)
+\end{figure}
 
 
 ### Using a sequence of POS tags (noun phrases)
@@ -1968,10 +2174,14 @@ head(stats)
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig415-1.png" alt="Keywords - simple noun phrases in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig415)Keywords - simple noun phrases in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig415-1} 
+
+}
+
+\caption{Keywords - simple noun phrases in Surah Yusuf}(\#fig:ch4fig415)
+\end{figure}
 
 
 ### Textrank
@@ -2000,10 +2210,14 @@ head(stats)
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig416-1.png" alt="Textrank wordcloud for Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig416)Textrank wordcloud for Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig416-1} 
+
+}
+
+\caption{Textrank wordcloud for Surah Yusuf}(\#fig:ch4fig416)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig416) shows that the keywords combine words into multi-word expressions. Again, we see the dominance of the verb *"say"* since Surah Yusuf is a narrated story. It is welcoming to note that "fear Allah" and "do good" are in fact the top moral lessons from this Surah.
@@ -2051,10 +2265,14 @@ data.frame("keyword"= stats$keyword,"left" = stats$left,
 
 We can visualize the dependency in a wordcloud plot.
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig417-1.png" alt="Dependency parsing wordcloud for Surah Yusuf" width="384" />
-<p class="caption">(\#fig:ch4fig417)Dependency parsing wordcloud for Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig417-1} 
+
+}
+
+\caption{Dependency parsing wordcloud for Surah Yusuf}(\#fig:ch4fig417)
+\end{figure}
 
 
 The plot in Figure \@ref(fig:ch4fig417) confirms the comment we made earlier about "say". Another known moral lesson from Surah Yusuf, "patience fitting", now appears. 
@@ -2064,16 +2282,24 @@ We have shown how to use the _dep_rel_ parameter that is part of the annotation 
 
 We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure \@ref(fig:ch4fig418). And a longer verse, verse 12:31. (See Figure \@ref(fig:ch4fig419)).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig418-1.png" alt="Dependency parsing udpipe output Verse 12:16" width="576" />
-<p class="caption">(\#fig:ch4fig418)Dependency parsing udpipe output Verse 12:16</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig418-1} 
+
+}
+
+\caption{Dependency parsing udpipe output Verse 12:16}(\#fig:ch4fig418)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig419-1.png" alt="Dependency parsing udpipe output Verse 12:31" width="576" />
-<p class="caption">(\#fig:ch4fig419)Dependency parsing udpipe output Verse 12:31</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig419-1} 
+
+}
+
+\caption{Dependency parsing udpipe output Verse 12:31}(\#fig:ch4fig419)
+\end{figure}
 
 
 With dependency parsing, we can now see, for example, how nouns relate to the adjectives with nominal subject as the type of relationship.
@@ -2220,30 +2446,46 @@ pos_plotter = function(df_udp, surah_no_input,title_label){
 
 First, let us plot the POS percentages for the entire text.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig501-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for the entire text" width="768" />
-<p class="caption">(\#fig:ch5fig501)Percentage of POS categories in Saheeh and Yusuf Ali for the entire text</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig501-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for the entire text}(\#fig:ch5fig501)
+\end{figure}
 
 
 From Figure \@ref(fig:ch5fig501), we can see that both Saheeh and Yusuf Ali prominently use nouns, pronouns, verbs, and adpositions almost similarly (based on the observation for the texts, the full sample size). However, in the case of punctuation, Yusuf Ali tends to be higher than Saheeh. As indicated by linguists, usage of more punctuation indicates the possible difference between the literary English of Yusuf Ali compared to Saheeh (possibly due to the American English of Saheeh).
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig502-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig502)Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig502-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs}(\#fig:ch5fig502)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig503-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig503)Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig503-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs}(\#fig:ch5fig503)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig504-1.png" alt="Percentage of POS in Saheeh and Yusuf Ali for last Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig504)Percentage of POS in Saheeh and Yusuf Ali for last Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig504-1} 
+
+}
+
+\caption{Percentage of POS in Saheeh and Yusuf Ali for last Surahs}(\#fig:ch5fig504)
+\end{figure}
 
 
 The plots resulting from the codes are in Figure \@ref(fig:ch5fig502), Figure \@ref(fig:ch5fig503), and Figure \@ref(fig:ch5fig504). They refer to the long Surahs, medium Surahs, and short Surahs (the last few). We will make some observations based on just visualizing the plots. 
@@ -2279,30 +2521,46 @@ Yusuf Ali is consistently higher than Saheeh in most categories: punctuation, no
 Clearly, the English translation (represented by Saheeh and Yusuf Ali) is starkly different compared to the Arabic when it comes to the lexical composition (which is probably obvious, due to the difference between English and Arabic). However, is the difference due to the efforts of translating compact Arabic texts to English, or is it due to the compactness of meaning? The first difference is purely a question of lexical styles, whilst the second one is a question of semantics and pragmatics of the language and texts. The answer to this question is non-trivial and requires deeper research.
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig505-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the entire text" width="768" />
-<p class="caption">(\#fig:ch5fig505)Percentage of POS categories in Saheeh and Arabic for the entire text</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig505-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the entire text}(\#fig:ch5fig505)
+\end{figure}
 
 
 Based on the analysis here, we can provide some suggestions, which are evident (visually) through the plots of the statistics of the POS tags as presented in Figure \@ref(fig:ch5fig505). For this purpose, we made some comparisons between Saheeh and Arabic (we left out Yusuf Ali for brevity) and included comparisons for the various Surahs' groupings in Figure \@ref(fig:ch5fig506), Figure \@ref(fig:ch5fig507), and Figure \@ref(fig:ch5fig508) for the readers to make some sense out of it.
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig506-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the early Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig506)Percentage of POS categories in Saheeh and Arabic for the early Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig506-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the early Surahs}(\#fig:ch5fig506)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig507-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the middle Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig507)Percentage of POS categories in Saheeh and Arabic for the middle Surahs</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig508-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the last Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig508)Percentage of POS categories in Saheeh and Arabic for the last Surahs</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig507-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the middle Surahs}(\#fig:ch5fig507)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig508-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the last Surahs}(\#fig:ch5fig508)
+\end{figure}
 
 Finally, we leave with the following question: what do all these meant when translating the Quranic Arabic to the English language (and other languages for that matter)? At least we may say so from the semantic styles point of view, as indicated by many Islamic scholars that Al-Quran has a special language [@saeh2015]. But is it also true for lexical and syntactic styles? Furthermore, does the semantic richness of the Arabic used in Al-Quran, together with the lexical and syntactic richness combined, result in texts which produce higher-level meanings, implying that to learn Al-Quran, one must rely only on the original Arabic text?
 
@@ -2314,10 +2572,14 @@ Now we will explore in more detail the observations made in the previous section
 
 We will start by plotting the POS tags statistics for the Surah Yusuf from Saheeh and Yusuf Ali.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig509-1.png" alt="Percentage of POS categories in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5fig509)Percentage of POS categories in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig509-1} 
+
+}
+
+\caption{Percentage of POS categories in Surah Yusuf}(\#fig:ch5fig509)
+\end{figure}
 
 As evident from Figure \@ref(fig:ch5fig509), the differences in lexical styles between Saheeh and Yusuf Ali are not that obvious, except for the fact that Yusuf Ali used more punctuations, which is the same observation made for the entire Quran (as in Figure \@ref(fig:ch5fig501)).
 
@@ -2357,15 +2619,23 @@ gg_plotter1 = function(grf_plot){
 ```
 \normalsize
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig510-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig510)Co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig511-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig511)Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig510-1} 
+
+}
+
+\caption{Co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig510)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig511-1} 
+
+}
+
+\caption{Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig511)
+\end{figure}
 
 The plots in Figure \@ref(fig:ch5fig510) and Figure \@ref(fig:ch5fig511) are networks of words that co-occur frequently within Surah Yusuf. The nodes (the words), which are sized to their frequency of appearances, are linked by the edges, which are sized to the number of times the co-occurrence occurs. Clearly in the Saheeh and Yusuf Ali version, "say", "Allah" and "Joseph" are higher by both counts. This is similar to the bigrams we did earlier with one major difference: we tag the words in accordance to its dependency parser and no stopwords are removed from the texts.^[This is an important point to be made since we alluded to earlier that removal of stopwords while being practiced frequently in NLP analysis, is non-trivial; and should only be used as a last resort rather than by default.]
 
@@ -2382,24 +2652,36 @@ ggraph(QSI_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig512-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="384" />
-<p class="caption">(\#fig:ch5fig512)Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig513-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="384" />
-<p class="caption">(\#fig:ch5fig513)Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig512-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig512)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig513-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig513)
+\end{figure}
 
 Figure \@ref(fig:ch5fig512) and Figure \@ref(fig:ch5fig513), are "arc" layouts, which organize the links in a "conversational" manner. We can observe that Saheeh's groupings of relations differ from Yusuf Ali's (from the organization of the arcs). The question is which one is nearer to the original texts (as shown in Figure \@ref(fig:ch5fig514)). We let the readers make their own judgment!
 
 What we want to show is there are many tools besides pure statistical analysis to see the lexical styles of texts, and possibly the semantic styles, by just observations through visualizations.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig514-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic" width="384" />
-<p class="caption">(\#fig:ch5fig514)Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig514-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic}(\#fig:ch5fig514)
+\end{figure}
 
 ### Circular method of visualization
 
@@ -2414,24 +2696,36 @@ ggraph(QSI_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig515-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig515)Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig516-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig516)Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig515-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig515)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig516-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig516)
+\end{figure}
 
 Figure \@ref(fig:ch5fig515) and Figure \@ref(fig:ch5fig516), are circular layouts that provide another perspective of viewing, like a round-table discussion. Do the two "round tables" (Saheeh versus Yusuf Ali) look the same? We can say that they are close, but not  the same. This is an example of the subtle differences in the "semantic meaning" (and may also be pragmatic meaning) of the texts.
 
 For benchmarking, let us just compare both to the Arabic version in Figure \@ref(fig:ch5fig517) and we let the readers make their own judgment.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig517-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts" width="576" />
-<p class="caption">(\#fig:ch5fig517)Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig517-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts}(\#fig:ch5fig517)
+\end{figure}
 
 ### Grouping of co-occurences
 
@@ -2454,10 +2748,14 @@ plot(QSI_cooc_g, vertex.color=vertex_attr(QSI_cooc_g)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig518-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig518)Groupings by fastgreedy in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig518-1} 
+
+}
+
+\caption{Groupings by fastgreedy in Surah Yusuf for Saheeh}(\#fig:ch5fig518)
+\end{figure}
 
 
 
@@ -2474,10 +2772,14 @@ plot(QYA_cooc_g, vertex.color=vertex_attr(QYA_cooc_g)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig519-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig519)Groupings by fastgreedy in Surah Yusuf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig519-1} 
+
+}
+
+\caption{Groupings by fastgreedy in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig519)
+\end{figure}
 
 Figure \@ref(fig:ch5fig518) and Figure \@ref(fig:ch5fig519) show the groupings by the colors. To interpret these visuals, we use the analogy of people in a large ballroom having conversations or hearing conversations. Are there any groupings between the people (denoted by the color schemes)? The larger nodes represent people who speak more than the smaller nodes, and a set of colors represent the sub-groupings of people. Based on this analogy, we can see that Saheeh differs from Yusuf Ali to some degree. What this implies is that the differences between Saheeh and Yusuf Ali are beyond lexical, syntactic, and semantic, rather it goes towards pragmatic (i.e. dynamics of conversations) as well.
 
@@ -2519,10 +2821,14 @@ ggraph(wordnetwork, layout = "fr") +
        caption = "Surah Yusuf (Sahih International)")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut1-1.png" alt="Co-occurence within sentence" width="576" />
-<p class="caption">(\#fig:ch5tut1)Co-occurence within sentence</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut1-1} 
+
+}
+
+\caption{Co-occurence within sentence}(\#fig:ch5tut1)
+\end{figure}
 
 
 The network graph shows the main words used in the Surah as nodes. The nouns and proper nouns like Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez) make up the main characters in this revealed story. The strength or influence of each word (node) is visualized by the size of the circle representing the words (nodes) and the thickness of the links with other nodes. The verb "say" is a node that dominates since Surah Yusuf is a narrated story. It is interesting to see the strong link and occurrence of "know" with "Allah".
@@ -2616,10 +2922,14 @@ __Using igraph plots__
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut2-1.png" alt="First plot of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch5tut2)First plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut2-1} 
+
+}
+
+\caption{First plot of tutorial word network}(\#fig:ch5tut2)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut2).
 
@@ -2642,10 +2952,14 @@ __Plot with curved edges (edge.curved=.1) and reduce arrow size:__
 plot(gm, edge.arrow.size=.4, edge.curved=.1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut3-1.png" alt="Adjust some edge parameters" width="576" />
-<p class="caption">(\#fig:ch5tut3)Adjust some edge parameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut3-1} 
+
+}
+
+\caption{Adjust some edge parameters}(\#fig:ch5tut3)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut3).
 
@@ -2661,10 +2975,14 @@ plot(gm, edge.arrow.size=.2, edge.color="red",
       vertex.label=V(gm)$Label, vertex.label.color="black")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut4-1.png" alt="Adjust colors" width="576" />
-<p class="caption">(\#fig:ch5tut4)Adjust colors</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut4-1} 
+
+}
+
+\caption{Adjust colors}(\#fig:ch5tut4)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut4).
 
@@ -2678,10 +2996,14 @@ V(gm)$size <- deg
 plot(gm, vertex.label=V(gm)$Label)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut5-1.png" alt="Adjust node size based on its degree" width="576" />
-<p class="caption">(\#fig:ch5tut5)Adjust node size based on its degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut5-1} 
+
+}
+
+\caption{Adjust node size based on its degree}(\#fig:ch5tut5)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut5).
 
@@ -2692,10 +3014,14 @@ V(gm)$size <- deg
 plot(gm, vertex.size=igraph::degree(gm), vertex.label=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut6-1.png" alt="Remove node labels" width="576" />
-<p class="caption">(\#fig:ch5tut6)Remove node labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut6-1} 
+
+}
+
+\caption{Remove node labels}(\#fig:ch5tut6)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut6).
 
@@ -2709,10 +3035,14 @@ E(gm)$width[1:10]
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut7-1.png" alt="Adjust edge width based on number of co-occurrences" width="576" />
-<p class="caption">(\#fig:ch5tut7)Adjust edge width based on number of co-occurrences</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut7-1} 
+
+}
+
+\caption{Adjust edge width based on number of co-occurrences}(\#fig:ch5tut7)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut7).
 
@@ -2727,10 +3057,14 @@ graph_attr(gm, "layout") <- layout_with_fr
 plot(gm) 
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut8-1.png" alt="Adjust edge color and set layout" width="576" />
-<p class="caption">(\#fig:ch5tut8)Adjust edge color and set layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut8-1} 
+
+}
+
+\caption{Adjust edge color and set layout}(\#fig:ch5tut8)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut8).
 
@@ -2743,10 +3077,14 @@ plot(gm, vertex.shape="none", vertex.label=V(gm)$name,
       vertex.label.cex=.7, edge.color="gray85")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut9-1.png" alt="Adjust nodes highlighting only labels" width="576" />
-<p class="caption">(\#fig:ch5tut9)Adjust nodes highlighting only labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut9-1} 
+
+}
+
+\caption{Adjust nodes highlighting only labels}(\#fig:ch5tut9)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut9).
 
@@ -2763,10 +3101,14 @@ edge.col <- V(gm)$color[edge.start]
 plot(gm, edge.color=edge.col, edge.curved=.1)  
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut10-1.png" alt="Adjust edge color based on the source node" width="576" />
-<p class="caption">(\#fig:ch5tut10)Adjust edge color based on the source node</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut10-1} 
+
+}
+
+\caption{Adjust edge color based on the source node}(\#fig:ch5tut10)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut10).
 
@@ -2780,10 +3122,14 @@ E(gm)[cooc > 10]$color <- "green"
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut11-1.png" alt="Adjust edge color based on formula" width="576" />
-<p class="caption">(\#fig:ch5tut11)Adjust edge color based on formula</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut11-1} 
+
+}
+
+\caption{Adjust edge color based on formula}(\#fig:ch5tut11)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut11).
 
@@ -2794,10 +3140,14 @@ plot(gm, vertex.size=5,
      vertex.label=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut12-1.png" alt="Adjust layout and remove label" width="576" />
-<p class="caption">(\#fig:ch5tut12)Adjust layout and remove label</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut12-1} 
+
+}
+
+\caption{Adjust layout and remove label}(\#fig:ch5tut12)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut12).
 
@@ -2821,10 +3171,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
       layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut13-1.png" alt="Using dh layout" width="576" />
-<p class="caption">(\#fig:ch5tut13)Using dh layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut13-1} 
+
+}
+
+\caption{Using dh layout}(\#fig:ch5tut13)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut13).
 
@@ -2840,10 +3194,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,vertex.label=NA,
      layout=layout_in_circle, main="layout_in_circle")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut14-1.png" alt="Layout in circle" width="576" />
-<p class="caption">(\#fig:ch5tut14)Layout in circle</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut14-1} 
+
+}
+
+\caption{Layout in circle}(\#fig:ch5tut14)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut14).
 
@@ -2856,10 +3214,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_tree, main="layout_as_tree")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut15-1.png" alt="Layout as tree" width="576" />
-<p class="caption">(\#fig:ch5tut15)Layout as tree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut15-1} 
+
+}
+
+\caption{Layout as tree}(\#fig:ch5tut15)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut15).
 
@@ -2872,10 +3234,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_star, main="layout_as_star")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut16-1.png" alt="Layout as star" width="576" />
-<p class="caption">(\#fig:ch5tut16)Layout as star</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut16-1} 
+
+}
+
+\caption{Layout as star}(\#fig:ch5tut16)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut16).
 
@@ -2898,13 +3264,22 @@ for (layout in layouts) {
            main=layout) }
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-1.png" alt="Additional layouts" width="576" />
-<p class="caption">(\#fig:ch5tut17-1)Additional layouts</p>
-</div><div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-2.png" alt="Additional layouts" width="576" />
-<p class="caption">(\#fig:ch5tut17-2)Additional layouts</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut17-1} 
+
+}
+
+\caption{Additional layouts}(\#fig:ch5tut17-1)
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut17-2} 
+
+}
+
+\caption{Additional layouts}(\#fig:ch5tut17-2)
+\end{figure}
 
 __Fruchterman-Reingold:__
 
@@ -2926,10 +3301,14 @@ l <- layout_with_fr(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut18-1.png" alt="Using fr layout" width="576" />
-<p class="caption">(\#fig:ch5tut18)Using fr layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut18-1} 
+
+}
+
+\caption{Using fr layout}(\#fig:ch5tut18)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut18).
 
@@ -2939,10 +3318,14 @@ l <- layout_with_fr(gm, niter=50)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut19-1.png" alt="Using fr layout with 50 iterations" width="576" />
-<p class="caption">(\#fig:ch5tut19)Using fr layout with 50 iterations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut19-1} 
+
+}
+
+\caption{Using fr layout with 50 iterations}(\#fig:ch5tut19)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut19).
 
@@ -2953,10 +3336,14 @@ lw <- layout_with_fr(gm, weights=ws)
 plot(gm, layout=lw)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut20-1.png" alt="Using fr layout different weights" width="576" />
-<p class="caption">(\#fig:ch5tut20)Using fr layout different weights</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut20-1} 
+
+}
+
+\caption{Using fr layout different weights}(\#fig:ch5tut20)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut20).
 
@@ -2978,10 +3365,14 @@ plot(gm, layout=l)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut21-1.png" alt="Each fr layout call with different outcomes" width="576" />
-<p class="caption">(\#fig:ch5tut21)Each fr layout call with different outcomes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut21-1} 
+
+}
+
+\caption{Each fr layout call with different outcomes}(\#fig:ch5tut21)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut21).
 
@@ -2997,10 +3388,14 @@ plot(gm, rescale=F, layout=l*0.8)
 plot(gm, rescale=F, layout=l*1.0)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut22-1.png" alt="Using fr layout call with manual rescaling" width="576" />
-<p class="caption">(\#fig:ch5tut22)Using fr layout call with manual rescaling</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut22-1} 
+
+}
+
+\caption{Using fr layout call with manual rescaling}(\#fig:ch5tut22)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut22).
 
@@ -3015,10 +3410,14 @@ l <- layout_with_kk(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut23-1.png" alt="Using kk layout" width="576" />
-<p class="caption">(\#fig:ch5tut23)Using kk layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut23-1} 
+
+}
+
+\caption{Using kk layout}(\#fig:ch5tut23)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut23).
 
@@ -3038,10 +3437,14 @@ l <- layout_with_graphopt(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut24-1.png" alt="Using graphopt layout" width="576" />
-<p class="caption">(\#fig:ch5tut24)Using graphopt layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut24-1} 
+
+}
+
+\caption{Using graphopt layout}(\#fig:ch5tut24)
+\end{figure}
 Plot output is in Figure \@ref(fig:ch5tut24).
 
 The charge parameter below changes node repulsion:
@@ -3056,10 +3459,14 @@ plot(gm, layout=l1)
 plot(gm, layout=l2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut25-1.png" alt="Using graphopt layout with different charge" width="576" />
-<p class="caption">(\#fig:ch5tut25)Using graphopt layout with different charge</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut25-1} 
+
+}
+
+\caption{Using graphopt layout with different charge}(\#fig:ch5tut25)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut25).
 
@@ -3077,10 +3484,14 @@ plot(gm, layout=layout_with_lgl, root = 1)
 plot(gm, layout=layout_with_lgl, root = 5)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut26-1.png" alt="Using lgl layout with different roots" width="576" />
-<p class="caption">(\#fig:ch5tut26)Using lgl layout with different roots</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut26-1} 
+
+}
+
+\caption{Using lgl layout with different roots}(\#fig:ch5tut26)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut26).
 
@@ -3097,10 +3508,14 @@ __The MDS (multidimensional scaling) algorithm:__
 plot(gm, layout=layout_with_mds)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut27-1.png" alt="Using mds layout" width="576" />
-<p class="caption">(\#fig:ch5tut27)Using mds layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut27-1} 
+
+}
+
+\caption{Using mds layout}(\#fig:ch5tut27)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut27).
 
@@ -3133,10 +3548,14 @@ plot(gm1, vertex.color=vertex_attr(gm1)$cor,
      mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut28-1.png" alt="Communities or clusters in tutorial word network" width="576" />
-<p class="caption">(\#fig:ch5tut28)Communities or clusters in tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut28-1} 
+
+}
+
+\caption{Communities or clusters in tutorial word network}(\#fig:ch5tut28)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut28).
 
@@ -3162,10 +3581,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut29-1.png" alt="Path from one node to another" width="576" />
-<p class="caption">(\#fig:ch5tut29)Path from one node to another</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut29-1} 
+
+}
+
+\caption{Path from one node to another}(\#fig:ch5tut29)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut29).
 
@@ -3187,10 +3610,14 @@ ggraph(lay) +
   theme_graph()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut30-1.png" alt="Using ggraph with minimal parameters set" width="576" />
-<p class="caption">(\#fig:ch5tut30)Using ggraph with minimal parameters set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut30-1} 
+
+}
+
+\caption{Using ggraph with minimal parameters set}(\#fig:ch5tut30)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut30).
 
@@ -3205,10 +3632,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut31-1.png" alt="ggraph with node and edge parameters set" width="576" />
-<p class="caption">(\#fig:ch5tut31)ggraph with node and edge parameters set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut31-1} 
+
+}
+
+\caption{ggraph with node and edge parameters set}(\#fig:ch5tut31)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut31).
 
@@ -3224,10 +3655,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut32-1.png" alt="ggraph with node size and alpha based on degree" width="576" />
-<p class="caption">(\#fig:ch5tut32)ggraph with node size and alpha based on degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut32-1} 
+
+}
+
+\caption{ggraph with node size and alpha based on degree}(\#fig:ch5tut32)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut32).
 
@@ -3240,10 +3675,14 @@ ggraph(lay) +
   geom_node_point()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut33-1.png" alt="ggraph with edge width and alpha based on number of co-occurrences" width="576" />
-<p class="caption">(\#fig:ch5tut33)ggraph with edge width and alpha based on number of co-occurrences</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut33-1} 
+
+}
+
+\caption{ggraph with edge width and alpha based on number of co-occurrences}(\#fig:ch5tut33)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut33).
 
@@ -3267,10 +3706,14 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut34-1.png" alt="Using ggraph with layout kk" width="576" />
-<p class="caption">(\#fig:ch5tut34)Using ggraph with layout kk</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut34-1} 
+
+}
+
+\caption{Using ggraph with layout kk}(\#fig:ch5tut34)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut34).
 
@@ -3288,10 +3731,14 @@ ggraph(gm, layout = 'linear') +
     theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut35-1.png" alt="Using ggraph with linear layout and void theme" width="576" />
-<p class="caption">(\#fig:ch5tut35)Using ggraph with linear layout and void theme</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut35-1} 
+
+}
+
+\caption{Using ggraph with linear layout and void theme}(\#fig:ch5tut35)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut35).
 
@@ -3310,10 +3757,14 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut36-1.png" alt="Using ggraph with kk layout and aes setting" width="576" />
-<p class="caption">(\#fig:ch5tut36)Using ggraph with kk layout and aes setting</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut36-1} 
+
+}
+
+\caption{Using ggraph with kk layout and aes setting}(\#fig:ch5tut36)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut36).
 
@@ -3332,10 +3783,14 @@ ggraph(gm,  layout = 'kk') +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut37-1.png" alt="Using ggraph with various parameter settings" width="576" />
-<p class="caption">(\#fig:ch5tut37)Using ggraph with various parameter settings</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut37-1} 
+
+}
+
+\caption{Using ggraph with various parameter settings}(\#fig:ch5tut37)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut37).
 
@@ -3352,10 +3807,14 @@ ggraph(gm, layout = 'linear',  circular = TRUE) +
                     repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut38-1.png" alt="Using ggraph with linear layout" width="576" />
-<p class="caption">(\#fig:ch5tut38)Using ggraph with linear layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut38-1} 
+
+}
+
+\caption{Using ggraph with linear layout}(\#fig:ch5tut38)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut38).
 
@@ -3378,10 +3837,14 @@ ggraph(gm, layout = 'kk') +
                     repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut39-1.png" alt="Using ggraph with edge fan" width="576" />
-<p class="caption">(\#fig:ch5tut39)Using ggraph with edge fan</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut39-1} 
+
+}
+
+\caption{Using ggraph with edge fan}(\#fig:ch5tut39)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut39).
 
@@ -3399,10 +3862,14 @@ ggraph(gm, layout = 'kk') +
      geom_node_point(color="#de4e96", aes(size = igraph::degree(gm)))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut40-1.png" alt="Using ggraph with edge density" width="576" />
-<p class="caption">(\#fig:ch5tut40)Using ggraph with edge density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut40-1} 
+
+}
+
+\caption{Using ggraph with edge density}(\#fig:ch5tut40)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut40).
 
@@ -3421,10 +3888,14 @@ heatmap(netm[,17:1], Rowv = NA, Colv = NA, col = palf(100),
         scale="none", margins=c(10,10) )
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut41-1.png" alt="Heatmap of word network" width="576" />
-<p class="caption">(\#fig:ch5tut41)Heatmap of word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut41-1} 
+
+}
+
+\caption{Heatmap of word network}(\#fig:ch5tut41)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut41).
 
@@ -3440,10 +3911,14 @@ plot( x=0:max(degree(gm)), y=1-deg.dist, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut42-1.png" alt="Degree distribution of word network" width="576" />
-<p class="caption">(\#fig:ch5tut42)Degree distribution of word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut42-1} 
+
+}
+
+\caption{Degree distribution of word network}(\#fig:ch5tut42)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut42).
 
@@ -3465,10 +3940,14 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut43-1.png" alt="Larger network density with labels" width="576" />
-<p class="caption">(\#fig:ch5tut43)Larger network density with labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut43-1} 
+
+}
+
+\caption{Larger network density with labels}(\#fig:ch5tut43)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut43).
 
@@ -3482,10 +3961,14 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut44-1.png" alt="Larger network density without labels" width="576" />
-<p class="caption">(\#fig:ch5tut44)Larger network density without labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut44-1} 
+
+}
+
+\caption{Larger network density without labels}(\#fig:ch5tut44)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut44).
 
@@ -3500,10 +3983,14 @@ ggraph(gm1, layout = 'kk') +
                       colour = "#a83268", show.legend = FALSE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut45-1.png" alt="Digital art from Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5tut45)Digital art from Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut45-1} 
+
+}
+
+\caption{Digital art from Surah Yusuf}(\#fig:ch5tut45)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut45).
 
@@ -3520,10 +4007,14 @@ ggraph(gm1, layout = 'linear', circular = TRUE) +
      ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut46-1.png" alt="Word network with circular layout" width="576" />
-<p class="caption">(\#fig:ch5tut46)Word network with circular layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut46-1} 
+
+}
+
+\caption{Word network with circular layout}(\#fig:ch5tut46)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut46).
 
@@ -3544,10 +4035,14 @@ ggraph(jg, layout = 'kk') +
       ggtitle("Data Art of Top 2000 Coccurrences")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut47-1.png" alt="Larger word network with kk layout and edge density" width="576" />
-<p class="caption">(\#fig:ch5tut47)Larger word network with kk layout and edge density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut47-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge density}(\#fig:ch5tut47)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut47).
 
@@ -3569,10 +4064,14 @@ max(degree(jg, mode="all"))
 plot(degree.distribution(jg, mode="in"), log="xy")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut48-1.png" alt="Larger word network with kk layout and edge-in density" width="576" />
-<p class="caption">(\#fig:ch5tut48)Larger word network with kk layout and edge-in density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut48-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge-in density}(\#fig:ch5tut48)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut48).
 
@@ -3582,10 +4081,14 @@ Plot output is in Figure \@ref(fig:ch5tut48).
 plot(degree.distribution(jg, mode="out"), log="xy")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut49-1.png" alt="Larger word network with kk layout and edge-out density" width="576" />
-<p class="caption">(\#fig:ch5tut49)Larger word network with kk layout and edge-out density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut49-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge-out density}(\#fig:ch5tut49)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut49).
 
@@ -3600,10 +4103,14 @@ ggraph(lay) +
    geom_node_text(aes(label = name), size = 3)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut50-1.png" alt="One big cluster and unconnected nodes" width="576" />
-<p class="caption">(\#fig:ch5tut50)One big cluster and unconnected nodes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut50-1} 
+
+}
+
+\caption{One big cluster and unconnected nodes}(\#fig:ch5tut50)
+\end{figure}
 
 
 The rather ugly Figure \@ref(fig:ch5tut50) shows the 4 nodes. Let us delete and repeat the cluster analysis. But instead of using the delete_vertices() function like in an earlier example, we just use the main component. First, we find the components and then subset the graph based on those components. In _igraph_ the largest component is not always the first one with id == 1.
@@ -3647,10 +4154,14 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut51-1.png" alt="Communities within the large fully connected network" width="576" />
-<p class="caption">(\#fig:ch5tut51)Communities within the large fully connected network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut51-1} 
+
+}
+
+\caption{Communities within the large fully connected network}(\#fig:ch5tut51)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut51).
 
@@ -3682,10 +4193,14 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut52-1.png" alt="Another piece of art from Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5tut52)Another piece of art from Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut52-1} 
+
+}
+
+\caption{Another piece of art from Surah Yusuf}(\#fig:ch5tut52)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut52).
 
@@ -3780,10 +4295,14 @@ ggraph(wordnetwork, layout = "kk") +
        subtitle = "Top 50 Nouns, Names, Adjectives, Verbs, Adverbs")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig601-1.png" alt="First plot of tutorial word network" width="768" />
-<p class="caption">(\#fig:ch6fig601)First plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig601-1} 
+
+}
+
+\caption{First plot of tutorial word network}(\#fig:ch6fig601)
+\end{figure}
 
 
 The base wordnetwork graph is a directed network with 41 nodes and 50 edges *(DN-- 41 50 -- )*. The nodes have the *name* attribute. The edges have the *cooc* attribute (+ attr: name (v/c), cooc (e/n))
@@ -3830,10 +4349,14 @@ We will use the two networks, *gu* and *gd*, that we created in this section. Fo
 
 Re-plotting of *gd* graph is in Figure \@ref(fig:ch6fig602).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig602-1.png" alt="Second plot of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch6fig602)Second plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig602-1} 
+
+}
+
+\caption{Second plot of tutorial word network}(\#fig:ch6fig602)
+\end{figure}
 
 ### Centrality measures (node-level measures)
 
@@ -3860,10 +4383,14 @@ There are many such centrality measures. It can be difficult to go through all o
 
 Figure \@ref(fig:ch6fig603) summarizes some of the centrality measures in a graphical format.
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig603-1.png" alt="Centrality summary" width="576" />
-<p class="caption">(\#fig:ch6fig603)Centrality summary</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig603-1} 
+
+}
+
+\caption{Centrality summary}(\#fig:ch6fig603)
+\end{figure}
 
 
 ### Degree and strength
@@ -3886,10 +4413,14 @@ ggraph(gd, layout = "kk") +
   geom_node_point(size = deg, color = "gold3")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig604-1.png" alt="Node size reflects degree" width="576" />
-<p class="caption">(\#fig:ch6fig604)Node size reflects degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig604-1} 
+
+}
+
+\caption{Node size reflects degree}(\#fig:ch6fig604)
+\end{figure}
 
 
 In weighted networks, we can also use node strength, which is the sum of the weight of edges connected to the node. Let us calculate node strength and plot the node sizes as proportional to these values.
@@ -3909,10 +4440,14 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(st >= 3), size=st*2, label=name), repel=F)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig605-1.png" alt="Node size reflects graph.strength" width="576" />
-<p class="caption">(\#fig:ch6fig605)Node size reflects graph.strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig605-1} 
+
+}
+
+\caption{Node size reflects graph.strength}(\#fig:ch6fig605)
+\end{figure}
 
 
 Compare the relative node sizes when plotting by *degree* vs. *strength*. What differences do you notice? The top six words are the same say (18), indeed (8), so (8), fire (7), Mose (4), Lord (4).
@@ -3934,10 +4469,14 @@ degree.distribution(gu)[6:10]
 hist(degree.distribution(gu))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig606-1.png" alt="Degree distribution of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch6fig606)Degree distribution of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig606-1} 
+
+}
+
+\caption{Degree distribution of tutorial word network}(\#fig:ch6fig606)
+\end{figure}
 
 ### Degree and degree distribution for directed graph
 
@@ -3959,16 +4498,24 @@ degree(gd,mode="out",loops = FALSE) %>% mean()
 hist(degree.distribution(gd, mode="in"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig607-1.png" alt="In degree distribution of directed word network" width="576" />
-<p class="caption">(\#fig:ch6fig607)In degree distribution of directed word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig607-1} 
+
+}
+
+\caption{In degree distribution of directed word network}(\#fig:ch6fig607)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig608-1.png" alt="Out degree distribution of directed word network" width="576" />
-<p class="caption">(\#fig:ch6fig608)Out degree distribution of directed word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig608-1} 
+
+}
+
+\caption{Out degree distribution of directed word network}(\#fig:ch6fig608)
+\end{figure}
 
 
 ### Why do we care about degree?
@@ -4003,10 +4550,14 @@ ggraph(gd, layout = "kk") +
   geom_node_text(aes(filter=(betw >= 5), size=betw*2, label=name), repel=F)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig609-1.png" alt="Node size reflects betweenness centrality" width="576" />
-<p class="caption">(\#fig:ch6fig609)Node size reflects betweenness centrality</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig609-1} 
+
+}
+
+\caption{Node size reflects betweenness centrality}(\#fig:ch6fig609)
+\end{figure}
 
 
 We can see that there are three nodes (words = "say", "indeed", "fire") that have qualitatively higher betweenness values than all other nodes in the network. One way to interpret this is that these are nodes that tend to act as “bridges” between different clusters of nodes in the network.
@@ -4125,10 +4676,14 @@ pairs(~deg + close + betw + eigen[[1]] + page[[1]],
       data=dfu)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig610-1.png" alt="Simple Scatterplot Matrix" width="576" />
-<p class="caption">(\#fig:ch6fig610)Simple Scatterplot Matrix</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig610-1} 
+
+}
+
+\caption{Simple Scatterplot Matrix}(\#fig:ch6fig610)
+\end{figure}
 
 
 ### Assembling a dataset of node-level measures for gd network
@@ -4156,20 +4711,28 @@ dfd %>% ggplot(aes(x = strength, y = degree)) + geom_point() +
              y = "Degree",x = "Strength")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig611-1.png" alt="Relationship degree and strength" width="576" />
-<p class="caption">(\#fig:ch6fig611)Relationship degree and strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig611-1} 
+
+}
+
+\caption{Relationship degree and strength}(\#fig:ch6fig611)
+\end{figure}
 
 
 The straight line in Figure \@ref(fig:ch6fig611) obviously shows that these are correlated since strength is simply the weighted version of degree.
 
 How about the relationship between betweenness and strength?
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig612-1.png" alt="Relationship betweenness and strength" width="576" />
-<p class="caption">(\#fig:ch6fig612)Relationship betweenness and strength</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig612-1} 
+
+}
+
+\caption{Relationship betweenness and strength}(\#fig:ch6fig612)
+\end{figure}
 
 
 These are not well correlated, since they describe something different (as shown in Figure \@ref(fig:ch6fig612), points are not in a straight line). Again the common words "say" and "indeed" have a dominant role in Surah Taa-Haa that narrates the true story of Prophet Moses. The common adverb "so" is often used for emphasis^[https://www.macmillandictionary.com/dictionary/british/so_1] to stress some facts and lessons of the story.
@@ -4217,10 +4780,14 @@ components(gd)$no
 plot(gd)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig613-1.png" alt="Simple plot showing network components" width="576" />
-<p class="caption">(\#fig:ch6fig613)Simple plot showing network components</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig613-1} 
+
+}
+
+\caption{Simple plot showing network components}(\#fig:ch6fig613)
+\end{figure}
 
 
 The output shows the node membership, component sizes, and number of components. The numbers for _no_ (number of components, 4) and _csize_ (size for each component) can be confirmed from Figure \@ref(fig:ch6fig613).
@@ -4229,30 +4796,46 @@ The output shows the node membership, component sizes, and number of components.
 
 Degree distribution, the statistical distribution of node degrees in a network, is a common and often powerful way to describe a network. We can simply look at the degree distribution as a histogram of degrees. (See the plots in Figure \@ref(fig:ch6fig614) and Figure \@ref(fig:ch6fig615)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig614-1.png" alt="Histogram of gd degrees" width="576" />
-<p class="caption">(\#fig:ch6fig614)Histogram of gd degrees</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig614-1} 
+
+}
+
+\caption{Histogram of gd degrees}(\#fig:ch6fig614)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig615-1.png" alt="Histogram of gu degrees" width="576" />
-<p class="caption">(\#fig:ch6fig615)Histogram of gu degrees</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig615-1} 
+
+}
+
+\caption{Histogram of gu degrees}(\#fig:ch6fig615)
+\end{figure}
 
 
 However, if we want to compare the degree distributions of different networks, it might be more useful to plot the probability densities of each degree: i.e., what proportion of nodes has degree = 1, degree = 2, etc. We can do this by using the function _degree.distribution()_. The output of the plot is in Figure \@ref(fig:ch6fig616) and Figure \@ref(fig:ch6fig617).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig616-1.png" alt="Degree distribution of gd" width="576" />
-<p class="caption">(\#fig:ch6fig616)Degree distribution of gd</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig616-1} 
+
+}
+
+\caption{Degree distribution of gd}(\#fig:ch6fig616)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig617-1.png" alt="Degree distribution of gu" width="576" />
-<p class="caption">(\#fig:ch6fig617)Degree distribution of gu</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig617-1} 
+
+}
+
+\caption{Degree distribution of gu}(\#fig:ch6fig617)
+\end{figure}
 
 
 Degree and degree	distribution play an important role in understanding networks. A higher density changes the component structure of a network and impacts the diffusion and	learning properties. The degree also is an individual node’s	characteristic and reflects	its	position.
@@ -4414,10 +4997,14 @@ Modularity-based methods of community detection are not fool-proof. There is no 
 Our undirected word co-occurrence network *gu* appears to have a clear community structure from the earlier plots (see Figure \@ref(fig:ch6fig618)).
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig618-1.png" alt="Layout plot of gu" width="576" />
-<p class="caption">(\#fig:ch6fig618)Layout plot of gu</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig618-1} 
+
+}
+
+\caption{Layout plot of gu}(\#fig:ch6fig618)
+\end{figure}
 
 
 Because the community division in this example is clear, we can choose any of the community detection methods as described in the previous section and we are likely to come up with the same answer.
@@ -4435,28 +5022,40 @@ The resulting object is a 'communities object', which includes a few pieces of i
 
 We can also use this 'communities object' to show the community structure (see Figure \@ref(fig:ch6fig619)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig619-1.png" alt="Community structure using edge.betweenness.community()" width="576" />
-<p class="caption">(\#fig:ch6fig619)Community structure using edge.betweenness.community()</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig619-1} 
+
+}
+
+\caption{Community structure using edge.betweenness.community()}(\#fig:ch6fig619)
+\end{figure}
 
 
 We repeat with the Louvain method (see Figure \@ref(fig:ch6fig620)):
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig620-1.png" alt="Community structure using the Louvain method" width="576" />
-<p class="caption">(\#fig:ch6fig620)Community structure using the Louvain method</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig620-1} 
+
+}
+
+\caption{Community structure using the Louvain method}(\#fig:ch6fig620)
+\end{figure}
 
 
 Figures \@ref(fig:ch6fig619) and \@ref(fig:ch6fig620) show that the two different methods yield different results; one with 7 and the other 8 communities (groups).
 
 We can customize the plot. We use the *RColorBrewer* package to assign colors (see Figure \@ref(fig:ch6fig621)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig621-1.png" alt="Using the Louvain method with some color adjustments" width="576" />
-<p class="caption">(\#fig:ch6fig621)Using the Louvain method with some color adjustments</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig621-1} 
+
+}
+
+\caption{Using the Louvain method with some color adjustments}(\#fig:ch6fig621)
+\end{figure}
 
 
 ### Another example of clustering
@@ -4517,10 +5116,14 @@ V(gu)$size = 2*degree(gu)
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig622-1.png" alt="Node size reflecting its degree" width="576" />
-<p class="caption">(\#fig:ch6fig622)Node size reflecting its degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig622-1} 
+
+}
+
+\caption{Node size reflecting its degree}(\#fig:ch6fig622)
+\end{figure}
 
 ```r
 assortativity(gu, V(gu)$size, directed=F)
@@ -4539,10 +5142,14 @@ V(gu)$size.discrete = (V(gu)$size > 5) + 0
 plot(gu, layout=l, edge.color="black", repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig623-1.png" alt="Node size discrete" width="576" />
-<p class="caption">(\#fig:ch6fig623)Node size discrete</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig623-1} 
+
+}
+
+\caption{Node size discrete}(\#fig:ch6fig623)
+\end{figure}
 
 ```r
 assortativity(gu, V(gu)$size.discrete, directed=F)
@@ -4561,10 +5168,14 @@ plot(gu, layout=l, edge.color="black", vertex.size=V(gu)$random,
      vertex.shape="square")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig624-1.png" alt="Using different node shape" width="576" />
-<p class="caption">(\#fig:ch6fig624)Using different node shape</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig624-1} 
+
+}
+
+\caption{Using different node shape}(\#fig:ch6fig624)
+\end{figure}
 
 
 We can see that there is little assortment based on this trait.
@@ -4605,10 +5216,14 @@ ggraph(gt, layout = 'fr', weights = cooc) +
   geom_node_point()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig625-1.png" alt="Simple first plot example using tidygraph and ggraph" width="576" />
-<p class="caption">(\#fig:ch6fig625)Simple first plot example using tidygraph and ggraph</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig625-1} 
+
+}
+
+\caption{Simple first plot example using tidygraph and ggraph}(\#fig:ch6fig625)
+\end{figure}
 
 
 Now it is much easier to experiment with modifications to the node and edge parameters affecting layouts as it is not necessary to modify the underlying graph but only the plotting code (output in Figure \@ref(fig:ch6fig626)).
@@ -4620,10 +5235,14 @@ ggraph(gt, layout = 'fr', weights = log(cooc)) +
   geom_node_point(color = "gold4", size = 3)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig626-1.png" alt="Adjusting node and edge plotting parameters" width="576" />
-<p class="caption">(\#fig:ch6fig626)Adjusting node and edge plotting parameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig626-1} 
+
+}
+
+\caption{Adjusting node and edge plotting parameters}(\#fig:ch6fig626)
+\end{figure}
 
 
 ### Use selected measures from _tidygraph_ and plot
@@ -4654,30 +5273,46 @@ Now we plot the various measures from the resulting *node_measures* _data.frame_
 
 Plot _degree_, _degree_in_, and _degree_out_ together (output in Figure \@ref(fig:ch6fig628)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig627-1.png" alt="Degree for top 30 words" width="576" />
-<p class="caption">(\#fig:ch6fig627)Degree for top 30 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig627-1} 
+
+}
+
+\caption{Degree for top 30 words}(\#fig:ch6fig627)
+\end{figure}
 
 Plot _degree_ ( _degree-in_ + _degree-out_ ) and _betweenness_ together (output in Figure \@ref(fig:ch6fig629)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig628-1.png" alt="Degree-in and degree-out for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig628)Degree-in and degree-out for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig628-1} 
+
+}
+
+\caption{Degree-in and degree-out for top 50 words}(\#fig:ch6fig628)
+\end{figure}
 
 Plot _closeness_, _pg_rank_, _eigen_, _br_score_, and _coreness_ together (output in Figure \@ref(fig:ch6fig630)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig629-1.png" alt="Degree and betweenness for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig629)Degree and betweenness for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig629-1} 
+
+}
+
+\caption{Degree and betweenness for top 50 words}(\#fig:ch6fig629)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig630-1.png" alt="Other measures for top 50 words" width="576" />
-<p class="caption">(\#fig:ch6fig630)Other measures for top 50 words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig630-1} 
+
+}
+
+\caption{Other measures for top 50 words}(\#fig:ch6fig630)
+\end{figure}
 
 Despite using *coord_cartesian(ylim = c(0, 1))* to scale the Measure coordinate, the values for br_score, and coreness are 0 or very small. Without any doubt "say", "Lord" together with "Allah" and "Mose" are the most influential and important words in Surah Taa-Haa.
 
@@ -4701,17 +5336,25 @@ The following is an interesting example in true _tidyverse_ fashion that combine
 
 We can also convert our active node or edge table back to a _tibble_ and plot the output  (see Figure \@ref(fig:ch6fig631)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig631-1.png" alt="Nodes are colored by group" width="576" />
-<p class="caption">(\#fig:ch6fig631)Nodes are colored by group</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig631-1} 
+
+}
+
+\caption{Nodes are colored by group}(\#fig:ch6fig631)
+\end{figure}
 
 For the next plot, we define our own specific colors. The center-most characters are in red and the distance to the center is the node size (see Figure \@ref(fig:ch6fig632)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig632-1.png" alt="Nodes are colored by centeredness" width="576" />
-<p class="caption">(\#fig:ch6fig632)Nodes are colored by centeredness</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig632-1} 
+
+}
+
+\caption{Nodes are colored by centeredness}(\#fig:ch6fig632)
+\end{figure}
 
 Clearly, "say" is the _keyplayer_ for the main group.
 
@@ -4804,10 +5447,14 @@ network_ego1 %>%
   theme(legend.position = "none")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig633-1.png" alt="Top 10 word communities" width="576" />
-<p class="caption">(\#fig:ch6fig633)Top 10 word communities</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig633-1} 
+
+}
+
+\caption{Top 10 word communities}(\#fig:ch6fig633)
+\end{figure}
 
 __ego() function__
 
@@ -4869,47 +5516,71 @@ ggraph(jg1,layout = "focus", focus = focusnode) +
     theme(legend.position = "bottom")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig634-1.png" alt="Using draw circle layout with Mose as focus node" width="576" />
-<p class="caption">(\#fig:ch6fig634)Using draw circle layout with Mose as focus node</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig634-1} 
+
+}
+
+\caption{Using draw circle layout with Mose as focus node}(\#fig:ch6fig634)
+\end{figure}
 
 Repeat with a change of the focus node and displaying all the words (see the output in Figure \@ref(fig:ch6fig635)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig635-1.png" alt="Same layout with say as focus node and text labels" width="576" />
-<p class="caption">(\#fig:ch6fig635)Same layout with say as focus node and text labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig635-1} 
+
+}
+
+\caption{Same layout with say as focus node and text labels}(\#fig:ch6fig635)
+\end{figure}
 
 _layout_with_centrality()_ works similarly. We can specify any centrality index (or numeric vector) and create a concentric layout where the most central nodes are put in the center and the most peripheral nodes in the biggest circle. The numeric attribute used for the layout is specified with the cent parameter. Here, we use the weighted degree of the characters. See the output in Figure \@ref(fig:ch6fig636).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig636-1.png" alt="Weighted degree centrality layout" width="576" />
-<p class="caption">(\#fig:ch6fig636)Weighted degree centrality layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig636-1} 
+
+}
+
+\caption{Weighted degree centrality layout}(\#fig:ch6fig636)
+\end{figure}
 
 We repeat with _betweenness centrality_ (see the output in Figure \@ref(fig:ch6fig637)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig637-1.png" alt="Betweenness centrality layout with degree for node size" width="576" />
-<p class="caption">(\#fig:ch6fig637)Betweenness centrality layout with degree for node size</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig637-1} 
+
+}
+
+\caption{Betweenness centrality layout with degree for node size}(\#fig:ch6fig637)
+\end{figure}
 
 __Stress layout and clustering__
 
 We focus again on *gd* and *gu*. Some clustering functions do not work on directed graphs. We show two different examples here. The first one is a directed network (outputs in Figure \@ref(fig:ch6fig638)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig638-1.png" alt="Directed network with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig638)Directed network with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig638-1} 
+
+}
+
+\caption{Directed network with clusters}(\#fig:ch6fig638)
+\end{figure}
 
 The second one is the undirected graph *gu* and *cluster_louvain* which does not work with directed graphs. *gu* does not have edge properties so we remove the aes(width=cooc). The output is in Figure \@ref(fig:ch6fig639).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig639-1.png" alt="Undirected network with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig639)Undirected network with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig639-1} 
+
+}
+
+\caption{Undirected network with clusters}(\#fig:ch6fig639)
+\end{figure}
 
 Interestingly, the cluster functions give 4 for *gd* and 8 for *gu*.
 
@@ -4917,27 +5588,43 @@ __Focus layout and clustering - focus on selected words__
 
 Earlier, we have shown how _layout_with_focus()_ allows us to focus the network on a specific word and order all other nodes in concentric circles (depending on distance) around it. Here we combine it with clustering. The limitation is that it can only work with a fully connected network (see the output in Figure \@ref(fig:ch6fig640) and Figure \@ref(fig:ch6fig641)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig640-1.png" alt="Focus layout with only the focus word" width="576" />
-<p class="caption">(\#fig:ch6fig640)Focus layout with only the focus word</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig641-1.png" alt="Focus layout with all words" width="576" />
-<p class="caption">(\#fig:ch6fig641)Focus layout with all words</p>
-</div>
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig640-1} 
+
+}
+
+\caption{Focus layout with only the focus word}(\#fig:ch6fig640)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig641-1} 
+
+}
+
+\caption{Focus layout with all words}(\#fig:ch6fig641)
+\end{figure}
 
 _layout_with_centrality()_ is based on a similar principle. We have shown this earlier. But here, we repeat with clustering (using *gu*) and look at the coreness centrality measure. Earlier, we have seen that _cluster_louvain()_ gives different results than _clusters()_ (see output in Figure \@ref(fig:ch6fig642) and Figure \@ref(fig:ch6fig643)).
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig642-1.png" alt="Centrality layout : graph.strength with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig642)Centrality layout : graph.strength with clusters</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="08-Ch6WordLocNetAnal_files/figure-html/ch6fig643-1.png" alt="Centrality layout : graph.coreness with clusters" width="576" />
-<p class="caption">(\#fig:ch6fig643)Centrality layout : graph.coreness with clusters</p>
-</div>
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig642-1} 
+
+}
+
+\caption{Centrality layout : graph.strength with clusters}(\#fig:ch6fig642)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{08-Ch6WordLocNetAnal_files/figure-latex/ch6fig643-1} 
+
+}
+
+\caption{Centrality layout : graph.coreness with clusters}(\#fig:ch6fig643)
+\end{figure}
 
 ## Summary {#chapter-6-summary}
 
@@ -5175,20 +5862,28 @@ p4 = fcm_tpnplot(fcmQ, n = 200,vls = 0)
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig701-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig701)Growth of words co-occurrences network in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig701-1} 
+
+}
+
+\caption{Growth of words co-occurrences network in Saheeh}(\#fig:ch7fig701)
+\end{figure}
 
 
 ```r
 cowplot::plot_grid(p3,p4)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig702-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig702)Growth of words co-occurrences network in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig702-1} 
+
+}
+
+\caption{Growth of words co-occurrences network in Saheeh}(\#fig:ch7fig702)
+\end{figure}
 
 Figure \@ref(fig:ch7fig701) shows the network growing from 10 to 20 words; and Figure \@ref(fig:ch7fig702) is from 50 to 200 words.
 
@@ -5196,26 +5891,38 @@ We can observe that the word network grows centrally from the single word "Allah
 
 Here we enclose a sample of a full-blown word co-occurrence network from the novel Moby Dick (Chapter 1) as a comparison (in Figure \@ref(fig:ch7fig703)). It is a fully connected network, forming a single large network, but the network is not as dense as the network shown for Saheeh. In fact, if we do a similar step of checking the growth of the network, it is not the same as what we see in Saheeh.^[We do not enclose the plots here to save space. Readers can repeat the same exercise using the enclosed code to check the results for themselves.]
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig703-1.png" alt="Example of co-occurrence network in Chapter 1 of Moby Dick novel" width="384" />
-<p class="caption">(\#fig:ch7fig703)Example of co-occurrence network in Chapter 1 of Moby Dick novel</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig703-1} 
+
+}
+
+\caption{Example of co-occurrence network in Chapter 1 of Moby Dick novel}(\#fig:ch7fig703)
+\end{figure}
 
 Furthermore, a detailed look at the plot (which is not shown here) reveals that the early keywords seem to have some "themes" to it; namely about "allah", "lord", "believe", "day", "people", "muhammad", "messenger", and the themes grow out of these main themes. While these themes grow, the centrality of "allah" remains and grows stronger as the network size expand. This is termed the "emergent structure" of the network. Why this is true, is a subject that requires further research and analysis, which we encourage readers to pursue.
 
 And if we expand to all co-occurrences on the entire Saheeh corpus, we will get the picture in Figure \@ref(fig:ch7fig704)^[The figure is obtained from Gephi; since plotting a large network of this size is not efficient in __R__], which is amazingly interesting.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig704-1.png" alt="Saheeh entire corpus word co-occurence network" width="384" />
-<p class="caption">(\#fig:ch7fig704)Saheeh entire corpus word co-occurence network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig704-1} 
+
+}
+
+\caption{Saheeh entire corpus word co-occurence network}(\#fig:ch7fig704)
+\end{figure}
 
 The center of the network remains singly to "allah", and a zoomed view to the center is shown in Figure \@ref(fig:ch7fig705), which shows the central node, and all other major nodes (i.e., themes) - which are ordered as "allah", "lord", "people", "day", and so on. These "themes" interestingly coincide with the major "subject matters" as discussed by one of us through a qualitative analysis of the Quran.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig705-1.png" alt="Close up view of the center of the network" width="384" />
-<p class="caption">(\#fig:ch7fig705)Close up view of the center of the network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig705-1} 
+
+}
+
+\caption{Close up view of the center of the network}(\#fig:ch7fig705)
+\end{figure}
 
 ### Word co-occurrence network statistics
 
@@ -5288,10 +5995,14 @@ A degree is a link between two words, and the total number of links attached to 
 
 The codes below compute the degree for the Saheeh network and plot them.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig706-1.png" alt="Plot of the degree distribution for Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig706)Plot of the degree distribution for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig706-1} 
+
+}
+
+\caption{Plot of the degree distribution for Saheeh}(\#fig:ch7fig706)
+\end{figure}
 
 Figure \@ref(fig:ch7fig706) looks similar to the tf-idf plot for Saheeh in Figure 2.14 from Chapter 2 - which indicates that the degree follows Zipf's law, and hence is distributed following Power Law distributions. It shows the case where a very small number of words have a high degree of edges, whilst a very large number of words have an extremely small number of edges. 
 
@@ -5315,10 +6026,14 @@ For reference, we have seen examples of these clusterings earlier in Chapter 5 f
 
 The modularity algorithm is used to find _community structures_ or groupings of nodes and edges in large networks. In _igraph_, this is accomplished by applying the _cluster_walktrap()_ function. However, this approach has some shortcomings, mainly because it relies on a random walk approach in finding communities, which is sensitive to the starting position and is used mainly in undirected graphs. For this purpose, we rely instead on the "modularity class" function of Gephi for calculations. The results are shown in Figure \@ref(fig:ch7fig707).
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig707-1.png" alt="Modularity class" width="384" />
-<p class="caption">(\#fig:ch7fig707)Modularity class</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig707-1} 
+
+}
+
+\caption{Modularity class}(\#fig:ch7fig707)
+\end{figure}
 
 It is interesting to note that there are seven major modular classes with members of 300 or more, with the largest community having about 1,500 members.^[Modularity algorithm is dependent on its setting of resolution limits, which determines how small the communities we want to detect. In our case here we set it to 1, which is the standard limit.] In fact, the smaller classes are with members of less than ten, and can be ignored (classes of 8 and above). The percentage of nodes within each class is as follows: 33.63% (one-third of the nodes), 17.87%, 15.68%, 9.58%, 8.33%, 7.42%, and 6.33% (from the first to the seventh).
 
@@ -5328,27 +6043,43 @@ In this book, we will just show the visualizations of these classes (or grouping
 
 Figure \@ref(fig:ch7fig708) provides the total picture of the modularity classes within the network.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig708-1.png" alt="Modularity class by colors" width="384" />
-<p class="caption">(\#fig:ch7fig708)Modularity class by colors</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig708-1} 
+
+}
+
+\caption{Modularity class by colors}(\#fig:ch7fig708)
+\end{figure}
 
 Now let us check the structure of each of the various sub-groups. The largest grouping is shown in Figure \@ref(fig:ch7fig709), which has the same center as the entire network surrounded by words in the same modularity class. Figure \@ref(fig:ch7fig710) shows the second largest group, which has the same center as before but surrounded by another set of words. Figure \@ref(fig:ch7fig711) shows the third largest group is which has the same center as before but surrounded by another set of words.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig709-1.png" alt="Network of largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig709)Network of largest clique</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig710-1.png" alt="Network of second largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig710)Network of second largest clique</p>
-</div>
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig709-1} 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig711-1.png" alt="Network of third largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig711)Network of third largest clique</p>
-</div>
+}
+
+\caption{Network of largest clique}(\#fig:ch7fig709)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig710-1} 
+
+}
+
+\caption{Network of second largest clique}(\#fig:ch7fig710)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig711-1} 
+
+}
+
+\caption{Network of third largest clique}(\#fig:ch7fig711)
+\end{figure}
 
 We can move on to the fourth, fifth, and until the smallest grouping. The key point is what can we learn from these groups?
 
@@ -5464,10 +6195,14 @@ fcm_select(fcmKahf, pattern = featKahf) %>%
        subtitle = " ")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig712-1.png" alt="Network of top 50 words in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig712)Network of top 50 words in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig712-1} 
+
+}
+
+\caption{Network of top 50 words in Surah Al-Kahf}(\#fig:ch7fig712)
+\end{figure}
 
 
 
@@ -5512,10 +6247,14 @@ fcm_select(fcmMaryam, pattern = featMaryam) %>%
        subtitle = " ") 
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig713-1.png" alt="Network of top 50 words in Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig713)Network of top 50 words in Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig713-1} 
+
+}
+
+\caption{Network of top 50 words in Surah Maryam}(\#fig:ch7fig713)
+\end{figure}
 
 
 For both Surahs, as shown in the figures, the most prominent word at the center is "lord"; however the surrounding topics are different. In Al-Kahf words such as "cave", "youth", "al-khidh", "moses" emerge, while in Surah Maryam "merciful", "jesus" appear.
@@ -5581,7 +6320,8 @@ tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
 ```
 
 ```
-## [1] "righteous deeds" "worldly life"    "heavens earth"   "lord knowing"
+## [1] "righteous deeds" "worldly life"   
+## [3] "heavens earth"   "lord knowing"
 ```
 \normalsize
 
@@ -5597,7 +6337,8 @@ tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
 ```
 
 ```
-## [1] "mercy prepare affair"     "believed righteous deeds"
+## [1] "mercy prepare affair"    
+## [2] "believed righteous deeds"
 ```
 \normalsize
 
@@ -5629,7 +6370,8 @@ tscMaryam[tscMaryam$count == max(tscMaryam$count),]$collocation
 ```
 
 ```
-## [1] "peace day born"   "day raised alive" "day born day"     "trunk palm tree"
+## [1] "peace day born"   "day raised alive"
+## [3] "day born day"     "trunk palm tree"
 ```
 \normalsize
 
@@ -5714,10 +6456,14 @@ textplot_keyness(tstat2, color = c("steelblue", "tomato"), n = 20)+
   labs(title = "Keyness For Surah Maryam and Surah Al-Kahf")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig714-1.png" alt="Keyness plot for Surah Maryam and Al-Kahf" width="768" />
-<p class="caption">(\#fig:ch7fig714)Keyness plot for Surah Maryam and Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig714-1} 
+
+}
+
+\caption{Keyness plot for Surah Maryam and Al-Kahf}(\#fig:ch7fig714)
+\end{figure}
 
 
 The keyness plot shows and confirms what is known about the two Surahs. In Surah Al-Kahf, the word "found" relates to the cave-dwellers and al-khidh (Khidir) as well as Dhul-Qarnayn. In Surah Maryam, the key message is "merciful", an attribute of Allah, and Maryam (Mary) and her son Isa (AS) as signs of His mercy.
@@ -5743,10 +6489,14 @@ p2 = ggplot() + geom_point(aes(x = 1:nrow(maryam_lexdiv),
 cowplot::plot_grid(p1,p2, nrow = 1,align = "v")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig715-1.png" alt="Lexical diversity scores for Surah Al-Kahf and Maryam" width="768" />
-<p class="caption">(\#fig:ch7fig715)Lexical diversity scores for Surah Al-Kahf and Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig715-1} 
+
+}
+
+\caption{Lexical diversity scores for Surah Al-Kahf and Maryam}(\#fig:ch7fig715)
+\end{figure}
 
 
 We can observe from Figure \@ref(fig:ch7fig715) that the verses in Surah Al-Kahf are much more diverse in their lexical diversity, throughout the Surah; whereas Surah Maryam's later verses (after verse 50) show more variety. What this implies is that the vocabulary structure in the verses of Surah Al-Kahf is different from Surah Maryam.
@@ -5765,10 +6515,14 @@ textplot_xray(kwic(corp, pattern = "allah"), kwic(corp, pattern = "lord"),
                     strip.background = element_rect(color = "black", size = 1))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig716-1.png" alt="Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'" width="672" />
-<p class="caption">(\#fig:ch7fig716)Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig716-1} 
+
+}
+
+\caption{Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'}(\#fig:ch7fig716)
+\end{figure}
 
 The plots in Figure \@ref(fig:ch7fig716) display the frequency of the selected keyword and its appearance within the various verses ("texts"). Lexical dispersion demonstrates the richness of emphasis of the whole document regarding the message, via frequencies of occurrence relative to the sentences (verses) within the document.
 
@@ -5782,16 +6536,24 @@ We would like to end by presenting another tool that is useful for viewing a lar
 
 Let us show the results for both Surahs.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig717-1.png" alt="Dendrogram for clusters in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig717)Dendrogram for clusters in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig717-1} 
+
+}
+
+\caption{Dendrogram for clusters in Surah Al-Kahf}(\#fig:ch7fig717)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig718-1.png" alt="Dendrogram for clusters in Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig718)Dendrogram for clusters in Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig718-1} 
+
+}
+
+\caption{Dendrogram for clusters in Surah Maryam}(\#fig:ch7fig718)
+\end{figure}
 
 
 We can see from Figure \@ref(fig:ch7fig717) and Figure \@ref(fig:ch7fig718) that there are clusterings or groupings in the cooccurrences words; in fact there are about three large groupings in Surah Al-Kahf and Surah Maryam. We can extract out the data for the groupings and do further analysis as needed and required. We leave the subject as it is for our work here.
@@ -5830,10 +6592,14 @@ ggplot() +
   theme(plot.subtitle = element_markdown())
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig719-1.png" alt="Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures" width="576" />
-<p class="caption">(\#fig:ch7fig719)Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig719-1} 
+
+}
+
+\caption{Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures}(\#fig:ch7fig719)
+\end{figure}
 
 
 Figure \@ref(fig:ch7fig719) shows the plot for three measures namely _correlation_ (red), _cosine_ (blue), _jaccard_ (green). Two verses are 100% similar textually, word-for-word, and a good number with a similarity score above 25% (i.e. more than a quarter of the words). What do all these numbers mean depends on how interpretations are made; for example, it can be said that these verses explain each other.
@@ -5853,25 +6619,37 @@ ggraph(igph_kahfcos, layout = "kk") +
   labs(title = "Verses with High Similarity for Surah Al-Kahf")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig720-1.png" alt="Verses with high similarities for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig720)Verses with high similarities for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig720-1} 
+
+}
+
+\caption{Verses with high similarities for Surah Al-Kahf}(\#fig:ch7fig720)
+\end{figure}
 
 The best way is to view them as an _igraph_ plot using _ggraph_ (as discussed in the previous chapter). Figure \@ref(fig:ch7fig720) shows clusters of verses that are linked. If we check further, the verses around v65 to v78, are repeated conversations between Moses and Khidh. The other cluster surrounding v38, is about the story of the cave dwellers. What we have shown is how statistical tools in NLP are used to find related sentences (or verses) in a large text (if we apply them to the entire translation).
 
 For completeness, we will show similar plots for Surah Maryam (Figures \@ref(fig:ch7fig721) and \@ref(fig:ch7fig722)). We leave the readers to check why the verses are linked in this manner for the Surah.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig721-1.png" alt="Verses similarity for Surah Maryam using correlation, cosine and jaccard measures" width="576" />
-<p class="caption">(\#fig:ch7fig721)Verses similarity for Surah Maryam using correlation, cosine and jaccard measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig721-1} 
+
+}
+
+\caption{Verses similarity for Surah Maryam using correlation, cosine and jaccard measures}(\#fig:ch7fig721)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig722-1.png" alt="Verses with high similarities for Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig722)Verses with high similarities for Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig722-1} 
+
+}
+
+\caption{Verses with high similarities for Surah Maryam}(\#fig:ch7fig722)
+\end{figure}
 
 
 ## Words dissimilarity in verses {#words-dissimilarity-in-verses}
@@ -5895,16 +6673,24 @@ ggplot() + geom_point(
                    subtitle = "Using Manhattan Measures")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig723-1.png" alt="Verses distance for Surah Al-Kahf using manhattan measures" width="576" />
-<p class="caption">(\#fig:ch7fig723)Verses distance for Surah Al-Kahf using manhattan measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig723-1} 
+
+}
+
+\caption{Verses distance for Surah Al-Kahf using manhattan measures}(\#fig:ch7fig723)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig724-1.png" alt="Verses with high distances for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig724)Verses with high distances for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig724-1} 
+
+}
+
+\caption{Verses with high distances for Surah Al-Kahf}(\#fig:ch7fig724)
+\end{figure}
 
 
 Figures \@ref(fig:ch7fig723) and \@ref(fig:ch7fig724) guide us to check why verse 45 is very different than verse 29. Many similar exercises are possible by extracting out the data (as plotted) and analyzing them in whichever ways a researcher deems suitable.
@@ -5958,10 +6744,14 @@ Labeling (or annotation) is a tedious manual process if it is humanly done, and 
 
 Furthermore, all models involve statistical inferencing and causality analysis. As we have shown in Chapter 2, the distributional properties of word frequencies follow fat-tail or non-gaussian statistical distributions, specifically, it follows the Power Law structure. The presence of these properties in the data causes many other issues within inferencing, namely errors in both, modeling errors and errors in the model. Hence, due care is required in dealing with any models which are based on the standard assumptions.
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig801-1.png" alt="Text modeling framework in NLP" width="1152" />
-<p class="caption">(\#fig:ch8fig801)Text modeling framework in NLP</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig801-1} 
+
+}
+
+\caption{Text modeling framework in NLP}(\#fig:ch8fig801)
+\end{figure}
 
 The chart in Figure \@ref(fig:ch8fig801) provides a full scenario of the possible paths of modeling.^[This is our own remake of points from [@grimmer2013] paper.]
 
@@ -6151,10 +6941,14 @@ kahf_top_terms %>%
   theme(strip.background = element_rect(color = "black"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig802-1.png" alt="Top terms with LDA methods for Surah Al-Kahf" width="672" />
-<p class="caption">(\#fig:ch8fig802)Top terms with LDA methods for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig802-1} 
+
+}
+
+\caption{Top terms with LDA methods for Surah Al-Kahf}(\#fig:ch8fig802)
+\end{figure}
 
 
 From Figure \@ref(fig:ch8fig802) we can see that the first topic contains the term "moses" and the second topic contains "cave", and so on along the lines of the six topics we assumed. However, we see the various terms are mixed within the topics. As an example, the term "al-khidh" appears in a few of the top terms in two of the topics, and various other terms crisscrossing among the topics.
@@ -6172,10 +6966,14 @@ lda.similarity <- as.data.frame(lda_kahf@beta) %>%
 plot(lda.similarity, xlab = "")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig803-1.png" alt="LDA topic similarity by features for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig803)LDA topic similarity by features for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig803-1} 
+
+}
+
+\caption{LDA topic similarity by features for Surah Al-Kahf}(\#fig:ch8fig803)
+\end{figure}
 
 From Figure \@ref(fig:ch8fig803), we can say that the topic at the highest level is Topic 4, followed by Topic 3, Topic 6, Topic 2, and finally Topic 1 and Topic 5.
 
@@ -6235,10 +7033,14 @@ kahf_top_terms %>%
   theme(strip.background = element_rect(color = "black"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig804-1.png" alt="STM topic shares for Surah Al-Kahf" width="672" />
-<p class="caption">(\#fig:ch8fig804)STM topic shares for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig804-1} 
+
+}
+
+\caption{STM topic shares for Surah Al-Kahf}(\#fig:ch8fig804)
+\end{figure}
 
 
 We can see, from Figure \@ref(fig:ch8fig804) that STM brings different results compared to LDA. Which one is more accurate, is impossible to tell from the results. We can produce the same hierarchical plot as we did for the LDA as follows:
@@ -6250,10 +7052,14 @@ plot(stm_kahf, type = "summary", text.cex = 1,
 )
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig805-1.png" alt="STM topic shares for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig805)STM topic shares for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig805-1} 
+
+}
+
+\caption{STM topic shares for Surah Al-Kahf}(\#fig:ch8fig805)
+\end{figure}
 
 Figure \@ref(fig:ch8fig805) and the results for top-words in Figure \@ref(fig:ch8fig804) demonstrate clearly that STM methods apply a different dimensionality reduction approach than the LDA. From the plot of share estimation in Figure \@ref(fig:ch8fig805), about 45% of the texts are explained by Topic 5, followed by about 16% by Topic 1 and Topic 6.
 
@@ -6270,10 +7076,14 @@ plotQuote(thoughts4, width = 45, main = "Topic 5")
 plotQuote(thoughts3, width = 45, main = "Topic 2")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig806-1.png" alt="Sample of verses highly associated with Topic 5 and Topic 2" width="768" />
-<p class="caption">(\#fig:ch8fig806)Sample of verses highly associated with Topic 5 and Topic 2</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig806-1} 
+
+}
+
+\caption{Sample of verses highly associated with Topic 5 and Topic 2}(\#fig:ch8fig806)
+\end{figure}
 
 We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
 
@@ -6282,10 +7092,14 @@ We present the results in a wordcloud format in Figure \@ref(fig:ch8fig807).
 cloud(stm_kahf)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig807-1.png" alt="Top words from all topics in wordcloud from STM for Surah Al-Kahf" width="384" />
-<p class="caption">(\#fig:ch8fig807)Top words from all topics in wordcloud from STM for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig807-1} 
+
+}
+
+\caption{Top words from all topics in wordcloud from STM for Surah Al-Kahf}(\#fig:ch8fig807)
+\end{figure}
 
 We can visualize the correlations between the topics in Figure \@ref(fig:ch8fig808):
 
@@ -6295,10 +7109,14 @@ stm_mod_corr = topicCorr(stm_kahf)
 plot(stm_mod_corr)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig808-1.png" alt="Graphical display of topic correlations from STM for Surah Al-Kahf" width="384" />
-<p class="caption">(\#fig:ch8fig808)Graphical display of topic correlations from STM for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig808-1} 
+
+}
+
+\caption{Graphical display of topic correlations from STM for Surah Al-Kahf}(\#fig:ch8fig808)
+\end{figure}
 
 Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share estimate, Topic 2, against the highest, Topic 5.
 
@@ -6307,10 +7125,14 @@ Figure \@ref(fig:ch8fig809) is a perspective comparison between the lowest share
 plot(stm_kahf, type = "perspectives", topics = c(5,2))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig809-1.png" alt="Two perspective for topics from STM in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig809)Two perspective for topics from STM in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig809-1} 
+
+}
+
+\caption{Two perspective for topics from STM in Surah Al-Kahf}(\#fig:ch8fig809)
+\end{figure}
 
 Figure \@ref(fig:ch8fig809) shows that all that the computer sees are numbers and their dimensions (i.e. model); where all the texts are represented by probabilities (by the sizes of the texts) and distances (by positions of the texts). It is not easy to convert these numbers and dimensions into a humanly readable format.
 
@@ -6412,10 +7234,14 @@ p2 = klsa_df %>% ggplot(aes(x = V1, y = V3), label= Name) +
 cowplot::plot_grid(p1,p2, nrow = 1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig810-1.png" alt="Topics in dimensions for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig810)Topics in dimensions for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig810-1} 
+
+}
+
+\caption{Topics in dimensions for Surah Al-Kahf}(\#fig:ch8fig810)
+\end{figure}
 
 
 In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dimensions (which are topics). Semantically, we can see that on Topic 1 and Topic 2, as well as Topic 1 and Topic 3, the groupings and the distances between the groupings are not as clear and lumpy in nature. This is due to the fact that we "force" the number of topics to be six by choice. This is the problem of choosing parameters for the model because it dictates the final results based on the assumptions we use.
@@ -6423,10 +7249,14 @@ In Figure \@ref(fig:ch8fig810), there are (supposed to be) six groupings of dime
 Now let us present the results from another perspective, that is to view the scores for the topics across the verses. Since it is not easy for us to print the scores and visualize them, we plot the scores in a 3D plotter and present the plot output in Figure \@ref(fig:ch8fig811).
 
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig811-1.png" alt="3D plot of the scores from LSA model for topics in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig811)3D plot of the scores from LSA model for topics in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig811-1} 
+
+}
+
+\caption{3D plot of the scores from LSA model for topics in Surah Al-Kahf}(\#fig:ch8fig811)
+\end{figure}
 
 The plot shows that for Topic 1 (the highest-ranked topic), there are verses that have high positive scores. For Topic 5 and Topic 6, almost similar verses have high positive scores, while for Topic 3, the scores are highly opposite (i.e. negative) on some of the verses. This is not exactly the ideal method to extract the information from the model, since visualization of the complex dimensionality is not easy and clear. However, what we want to demonstrate is there are deeper level complexities that are not easy to identify by just eyeballing the visuals.
 
@@ -6552,10 +7382,14 @@ textplot_scale1d(ws_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig812-1.png" alt="Wordscores plot for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig812)Wordscores plot for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig812-1} 
+
+}
+
+\caption{Wordscores plot for Surah Al-Kahf}(\#fig:ch8fig812)
+\end{figure}
 
 
 Now we will plot the scores from the model together with some words to be highlighted. The plot is shown in Figure \@ref(fig:ch8fig812). From the plot we can visualize the relative positions of the key words for the various topics: "lord", which rank highest in the Surah, followed by "allah" - both almost at the center; the word "moses" scores higher, but in the same "direction" as "al-khidh", which is directly below "moses". The word "cave" and "gardens" are figuratively apart. Similar exercises can be performed for various selections of key terms and we can observe its relative position within the whole text.
@@ -6571,10 +7405,14 @@ textplot_scale1d(wf_kahf, margin = "features",
                  highlighted_color = "darkred")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig813-1.png" alt="Wordfish plot for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch8fig813)Wordfish plot for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig813-1} 
+
+}
+
+\caption{Wordfish plot for Surah Al-Kahf}(\#fig:ch8fig813)
+\end{figure}
 
 
 _wordfish_ scores which will show whether some of the topics are "diametrically" opposed to one another. Figure \@ref(fig:ch8fig813) demonstrates that all topics are pretty much "aligned" to each other from the word "lord", down to "gardens". An interesting observation is that "moses" is right after "lord" in the ranking, above "allah".
@@ -6643,10 +7481,14 @@ word_vec_df %>% ggplot() + geom_line(aes(x=1:50, y=allah), color = "red") +
                     labs(x = "Dimensions", y = "Word Frequencies")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig814-1.png" alt="Word-vector frequencies for selected words" width="576" />
-<p class="caption">(\#fig:ch8fig814)Word-vector frequencies for selected words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig814-1} 
+
+}
+
+\caption{Word-vector frequencies for selected words}(\#fig:ch8fig814)
+\end{figure}
 
 The frequencies do not have any meaning, except that it records the relative unique position of each word within a corpus. This method is a faster way of generating an unsupervised learning model for the data at hand, especially when the data (i.e., text corpus) is large and sparse.^[Note that the matrix is a much more compact space than the DFM or FCM matrices we looked at earlier in _tidytext_ and _quanteda_.]
 
@@ -6734,10 +7576,14 @@ barplot(doc_topic_distr[1, ], xlab = "topic",
         names.arg = 1:ncol(doc_topic_distr))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig816-1.png" alt="Topic bar plot for Surah Al-Kahf using GloVe model and LDA" width="576" />
-<p class="caption">(\#fig:ch8fig816)Topic bar plot for Surah Al-Kahf using GloVe model and LDA</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig816-1} 
+
+}
+
+\caption{Topic bar plot for Surah Al-Kahf using GloVe model and LDA}(\#fig:ch8fig816)
+\end{figure}
 
 We can get the top words for each topic, sorted by probability ranking as follows:
 
@@ -6760,10 +7606,14 @@ doc_topic_distr =
                           convergence_tol = 0.001)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="11-Ch8TextClassModels_files/figure-html/ch8fig817-1.png" alt="Topics in dimensions for Surah Al-Kahf using LSA and GloVe" width="672" />
-<p class="caption">(\#fig:ch8fig817)Topics in dimensions for Surah Al-Kahf using LSA and GloVe</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{11-Ch8TextClassModels_files/figure-latex/ch8fig817-1} 
+
+}
+
+\caption{Topics in dimensions for Surah Al-Kahf using LSA and GloVe}(\#fig:ch8fig817)
+\end{figure}
 
 
 The results in Figure \@ref(fig:ch8fig817) are different from the ones in Figure \@ref(fig:ch8fig810), where instead of the verses, we plot it over the words. As noted in many experiments using the LSA model, while it can generate distinctions between the topical relations, it is very hard to interpret the output. We can see that more "verbs" (such as "remained", "found", "killed") appear to be further from the main clustering, which semantically carries more meaning than just proper nouns or names.
@@ -6858,10 +7708,14 @@ In network analysis, we use various methods of display or visualization of the n
 
 1. _Fruchterman-Reingold_ layout visualization
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig901-1.png" alt="Ibnu Katheer verse network: Fructherman Reingold layout" width="384" />
-<p class="caption">(\#fig:ch9fig901)Ibnu Katheer verse network: Fructherman Reingold layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig901-1} 
+
+}
+
+\caption{Ibnu Katheer verse network: Fructherman Reingold layout}(\#fig:ch9fig901)
+\end{figure}
 
 First, we calculate the modularity classes for the network (based on a resolution scale of 1.0) and color each class distinctly. As observed in the image, the various 115 communities are spread out throughout the verses in the entire Al-Quran. What this implies is that the method of interpretations of Ibnu Katheer is expanding the grouping of verses which are interpreted by each other (i.e. networked with each other), spanning across a large space encompassing many verses from other parts of Al-Quran (e.g., from other verses within the same Surah as well as from other Surahs). The visuals also imply that it took many verses to explain a verse, or in another way, many verses linked together give a much wider interpretation of the verse, and vice-versa.
 
@@ -6871,10 +7725,14 @@ The largest modularity class, which stood at 5.65% of verses (nodes) is a group 
 
 2. Add _Force Atlas 2_ layout to existing graph
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig902-1.png" alt="Ibnu Katheer verse network: Force Atlas layout" width="384" />
-<p class="caption">(\#fig:ch9fig902)Ibnu Katheer verse network: Force Atlas layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig902-1} 
+
+}
+
+\caption{Ibnu Katheer verse network: Force Atlas layout}(\#fig:ch9fig902)
+\end{figure}
 
 Now we can observe that if we "re-arrange" the visualizations (by adding the Force Atlas algorithm), the groupings are more distinctly clearer. What this means is those different methods of visualizing provide views of various dimensions of the network. In fact, there are numerous methods of layout layerings that are easily applied within a network structure. All these layouts are based on certain "graph spring" algorithms, whereby each algorithm (logics) brings in another dimension to the graph (or knowledge representations). Again, we leave the subject for future work.
 
@@ -6910,10 +7768,14 @@ The degree of the network represents the concept of "links between ideas" (we wi
 
 The scatter plot of the distribution (Figure A) and the shape of the (log-log) ranked degree distribution of the network (Figure B) proves one key point: the network degree distributions seem not to conform to Zipf's Law. This contrasts with normal word and word co-occurrence networks (see discussions in Chapter 2). If the network does not follow a Power Law distribution structure, then what is the form of the network structure?
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig903-1.png" alt="Plot of the Katheer Graph degree" width="576" />
-<p class="caption">(\#fig:ch9fig903)Plot of the Katheer Graph degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig903-1} 
+
+}
+
+\caption{Plot of the Katheer Graph degree}(\#fig:ch9fig903)
+\end{figure}
 
 To make sense of this phenomenon, just think of the citation network for scientific literature, where each verse is a journal, and the links are the citations.^[A bibliographical reference is an example of citation networks. The Web of Science by Clarivent is a well-known example of citation networks. https://clarivate.com/webofsciencegroup/solutions/web-of-science/] What we observe for citation networks is the case where only a few journal papers are cited with high frequencies and many papers with few or little citations or no citations. Those papers with a high number of citations hold some prestigious information (or knowledge), whilst the others are of lesser importance. The shape of a typical citation network degree distribution is a downward curved "L" shape. But what we see here for _Katheer Graph_ is an extremely amplified version of a citation network; where many verses are cited by at least one other verse, and yet, if we trace further, those verses which are not cited directly are cited through the next layers of the network (as explained in the "paths" discussion before). 
 
@@ -6923,17 +7785,25 @@ What we have is a massively dense citation network. Every verse is an important 
 
 Let us begin our discussion with the plot of the frequency distributions of _distance_, which is the measure of the number of "hops" in any path of the network. The plot is shown in Figure \@ref(fig:ch9fig904). This is an awesome discovery. The path distributions look like a normally distributed shape, with the average distance of 14.82. A verse on the network is about 15 links or hops away from any other verse, on average; or a message is never too far away from any other message. This is the "linear view" of it. 
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig904-1.png" alt="Plot of the Katheer Graph path lengths distributions" width="576" />
-<p class="caption">(\#fig:ch9fig904)Plot of the Katheer Graph path lengths distributions</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig904-1} 
+
+}
+
+\caption{Plot of the Katheer Graph path lengths distributions}(\#fig:ch9fig904)
+\end{figure}
 
 To appreciate the concept of distance better, let us ask the question how far is, say verse 6:25 (picked randomly), from any other verse in the network (picked randomly)? The plot in Figure \@ref(fig:ch9fig905) says that it is distributed like a normal distribution.^[An important point to make is that it is a rare case when we see a well-behaved probability distribution for the paths of any network since most follow the Power Law structure.]
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig905-1.png" alt="Verse 6:25 distances from other verses" width="576" />
-<p class="caption">(\#fig:ch9fig905)Verse 6:25 distances from other verses</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig905-1} 
+
+}
+
+\caption{Verse 6:25 distances from other verses}(\#fig:ch9fig905)
+\end{figure}
 
 We emphasize again that this observation is important, the network exhibits the small world property. A simple estimate of the small world property is measured by $log(N)/mean(d)$, which is 3.55. It means that in real terms, a verse is only about 4 links or steps away from "each other".^[Note that distance is the measure of a verse from any other verse; whereas the small word property measure is "how far away" each verse truly is.]
 
@@ -6947,19 +7817,27 @@ Some verses are "prestigious" or "highly influential" (ie., $eigen centrality > 
 
 How about verses that are important in interpreting other verses as a carrier of the interpretation of verses to other verses? This is what's measured by _betweenness centrality_. Out of 6,000 over verses, more than 3,700 verses play this type of role as presented in the above plot. Again, this is an amazing observation. There are so many short verses in Al-Quran. And probably many of these short verses are actually links to other short (and also long) verses, and if taken together bring a new dimension of meanings to it.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig906-1.png" alt="Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness" width="576" />
-<p class="caption">(\#fig:ch9fig906)Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig906-1} 
+
+}
+
+\caption{Centrality measures of verses in Ibnu Katheer: Prestige vs Betweeness}(\#fig:ch9fig906)
+\end{figure}
 
 __Verse 2_255__
 
 A plot of this is shown in Figure \@ref(fig:ch9fig906). We can observe clearly verse V2_255 is high, both in terms of "prestige" and "betweenness". What is verse 2:255? It is Ayah Al-Kursi. Compared to the verses from Al-Fatihah (opening Surah of Al-Quran), they rank lower on both counts (bottom left of the plot in Figure \@ref(fig:ch9fig906)). Further checks reveal that indeed V2:255 has 16 in-degree (interpreted by 16 other verses) and 15 out-degree (interprets 16 other verses). But that is not the only fact, these 16 in-degree verses and 15 out-degree verses, in turn, have high in-degrees and out-degrees as well, for V2:255 to have high betweenness and prestige centrality. We will delve into the details of this in the latter part of the chapter.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907-1.png" alt="Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority" width="576" />
-<p class="caption">(\#fig:ch9fig907)Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig907-1} 
+
+}
+
+\caption{Centrality measures of verses in Ibnu Katheer: Pageranks vs Authority}(\#fig:ch9fig907)
+\end{figure}
 
 __Al-Rahman__
 
@@ -7011,10 +7889,14 @@ We cannot confirm either.
 
 How does the Surah Al-A'laa network look like with five inward-pointing levels? This is shown in Figure \@ref(fig:ch9fig908), which is obtained from _Gephi_ in order to provide a much clearer view of the network. The verses from Surah Al-A'laa are spread all over the network, as they are present within its own sub-network of verses interpreting it. By way of modularity grouping (as explained in earlier chapters), we colored the various "clusters" distinctly. This is the same basis as _cluster_fastgreedy_ or _cluster_louvain_ for finding _cliques_ in the network.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig908-1.png" alt="Verses links towards verses in Surah Al-A'laa, up to 5 levels" width="576" />
-<p class="caption">(\#fig:ch9fig908)Verses links towards verses in Surah Al-A'laa, up to 5 levels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig908-1} 
+
+}
+
+\caption{Verses links towards verses in Surah Al-A'laa, up to 5 levels}(\#fig:ch9fig908)
+\end{figure}
 
 We create the graph using the _igraph_ function and tabulate the summary statistics:
 
@@ -7075,10 +7957,14 @@ On the other hand, verse 87:13 is pointed towards two verses: 20:74 and 43:77. N
 
 So far we have traversed through the first layer, which is a simulation of direct reading of Ibnu Katheer: read verse 87:13, look at the annotations, then read verse 35:36 and 43:77. We will only know that verse 87:13 is being referred to by verse 20:27 by reading verse 20:27 and finding its annotations, and similarly for verse 43:77. To go beyond this step, will involve repeating the process all over again from each verse mentioned. The process is tedious, lengthy, and maybe confusing, but that is what is exactly required without any shortcuts. We hope the readers appreciate the difficulty involved that we are trying to emphasize here.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909-1.png" alt="The verse map for V87:13" width="1152" />
-<p class="caption">(\#fig:ch9fig909)The verse map for V87:13</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig909-1} 
+
+}
+
+\caption{The verse map for V87:13}(\#fig:ch9fig909)
+\end{figure}
 
 Fortunately, this is all easily presented like a "map" using the network graph. We present this as an ego plot, in Figure \@ref(fig:ch9fig909). We can see that indeed, inward-looking, there are only three verses in the first layer (i.e. manual reading). However, beyond the first layer, there is a massive complex network that emanates from these three verses (35:36, 20:74, and 43:77). Behind 43:77 lies another massively complex network of its own going further into the layers, and similarly for 35:36. 
 
@@ -7090,17 +7976,25 @@ Furthermore, based on our earlier point of "small word properties" of Katheer Gr
 
 Additionally, even though a four layers analysis for verse 87:13 may suffice, it does not prevent a learner from seeing other systems "evolving". As an example, the ego network of 87:13 converges in the outer layer, layer 9, when the network starting from 35:36 and 43:77 > 35:37 meets again via verses 87:14 and 87:15 - which are direct neighbours of 87:13. What does this imply?
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig907b-1.png" alt="Verse 87:13 ego network directed with clusters" width="768" />
-<p class="caption">(\#fig:ch9fig907b)Verse 87:13 ego network directed with clusters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig907b-1} 
+
+}
+
+\caption{Verse 87:13 ego network directed with clusters}(\#fig:ch9fig907b)
+\end{figure}
 
 Now let us move further, to understand the network based on _betweenness centrality_ measures (the concept of which we deliberated in earlier chapters). "Map" wise, we plot as in Figure \@ref(fig:ch9fig907b) using the tools provided from earlier chapters. What can we say about it? The verses in the outer layers are organized in some peculiar settings - some verses serve as major connectors (as go-between) for other verses on the network. The large size nodes on the maps represent high connectivities compared to smaller size nodes. What messages it carries as go-betweenness is a subject a learner can go into.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig909b-1.png" alt="Inverse of verse 87:13 ego network" width="1152" />
-<p class="caption">(\#fig:ch9fig909b)Inverse of verse 87:13 ego network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig909b-1} 
+
+}
+
+\caption{Inverse of verse 87:13 ego network}(\#fig:ch9fig909b)
+\end{figure}
 
 Figure \@ref(fig:ch9fig909b) uses _cluster_louvain()_ as the clustering algorithm. We can see that the coloring schemes (labels) generated some groupings, which can be thought of as groups of distinct messages or themes. If a learner wants to understand them, then he should investigate each of the groupings and discover what are the themes which emerge as the significant elements within each. For a start, we can see that the center of the ego-network is no longer verse 87:13, instead, it is verse 17:15. Why this is the case? This is a classic "inversion" issue - that is when we invert the roles by importance within the entire network, another node becomes the "actual ego center". 
 
@@ -7118,31 +8012,47 @@ We will take a different approach where 2:255 will be an "outwardly" moving netw
 
 The "map from" 2:255 is in Figure \@ref(fig:ch9fig910). We can see that verse 2:255 interprets many other verses directly (nodes in layer 1), from layer 2 onwards, there are some groupings or clusterings of verses as we move outwardly, about four groupings. These groupings may well be "themes", "words" or any specific linkages - the subject of which will be known once we delve deeper into the verses and the linkages.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig910-1.png" alt="Verse 2:255 ego network outwardly" width="1152" />
-<p class="caption">(\#fig:ch9fig910)Verse 2:255 ego network outwardly</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig910-1} 
+
+}
+
+\caption{Verse 2:255 ego network outwardly}(\#fig:ch9fig910)
+\end{figure}
 
 The "map towards" 16:90 is in Figure \@ref(fig:ch9fig911). The picture is a bit different, where we have many verses converging from many directions (hence sources) towards the center, verse 16:90. Possibly there are no unified themes involved.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig911-1.png" alt="Verse 16:90 ego network inwardly" width="1152" />
-<p class="caption">(\#fig:ch9fig911)Verse 16:90 ego network inwardly</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig911-1} 
+
+}
+
+\caption{Verse 16:90 ego network inwardly}(\#fig:ch9fig911)
+\end{figure}
 
 We will combine these 2 ego graphs, where we have an outwardly 2:255 and inwardly 16:90. This is displayed in Figure \@ref(fig:ch9fig912). Now, we can see that verse 16:90 is in the outer layer, grouped under verse 4:48, connected via verse 31:13. Therefore, we can say that verse 16:90 (be fair and just) is part of the "larger" message of verse 2:255 (Ayah Al Kursi), through verse 31:13; and the message of which is contained in verse 31:13.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig912-1.png" alt="Outwardly map from verse 2:255 towards verse 16:90" width="1152" />
-<p class="caption">(\#fig:ch9fig912)Outwardly map from verse 2:255 towards verse 16:90</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig912-1} 
+
+}
+
+\caption{Outwardly map from verse 2:255 towards verse 16:90}(\#fig:ch9fig912)
+\end{figure}
 
 Now we invert the position, and make verse 16:90 the center and obtain the "map" in Figure \@ref(fig:ch9fig913). The inverted message, from verse 16:90, traversed through verse 31:13, which is the same verse as before (in non-inverted position). However, verse 20:211 becomes the only go-between to the remaining clusters of verse 2:255. The inverted message (of be fair and just) now pass through a "messenger" in-between to the larger message (Ayah Al-Kursi). Note that what we meant by inverted here is the orders are reversed.
 
-<div class="figure" style="text-align: center">
-<img src="12-Ch9KnowledgeGraph_files/figure-html/ch9fig913-1.png" alt="Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree" width="1152" />
-<p class="caption">(\#fig:ch9fig913)Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{12-Ch9KnowledgeGraph_files/figure-latex/ch9fig913-1} 
+
+}
+
+\caption{Verse 2:255 and 16:90 ego network union with 16:90 as focus node: first degree}(\#fig:ch9fig913)
+\end{figure}
 
 __Summary__
 
@@ -7171,48 +8081,48 @@ __Inward network Surah Al-A'laa topical word co-occurrences__
 
 |  Topics  |  word cooccurrences         |
 |----------|-----------------------------|
-| "allah"  | allah, bring, knowing, messenger, forget, people, subjugator                  |
-| "lord"   | lord, desire, believed, truth, nearer, break, sky                 |
-| "living" | living, mention, revealed, eliminates, fine, unquestionably, bedouins                  |
-| "dying"  | dying, preceded, affairs, alteration, accepting, sharp, sheep                  |
-| "purify" | purify, dwellings, warners, intercession, orphans, resurrection, moderate                  |
-| "hell"   | hell, revelation, ruin, unquestionably, hoof, invented, needy                  |
-| combined | allah, lord, revealed, subjugator, believed, purify, dying                   |
+| "allah"  | allah, knowing, markets, hearing, bring, lord, believed                  |
+| "lord"   | lord, believed, allah, succeeded, truth, apparent, sperm                 |
+| "living" | living, covet, exalts, blessing, charitable, predestination, join                  |
+| "dying"  | dying, confessed, speech, conscious, friend, judged, chose                  |
+| "purify" | purify, disaster, weep, uncloven, qur, indications, difficulty                  |
+| "hell"   | hell, aided, age, sworn, abundant, rapidly, life                  |
+| combined | allah, lord, believed, unlawful, change, knowing, utter                   |
 \normalsize
 
-The results in the table above, say that for the words in the inward text networks, for example, _"allah, bring, knowing, messenger, forget, people, subjugator"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"bring" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
+The results in the table above, say that for the words in the inward text networks, for example, _"allah, knowing, markets, hearing, bring, lord, believed"_ which co-occurs with the word "allah", are the "inward" messages coming into Surah Al-A'laa. It is about _"knowing" and "allah"_. This is one way to look at it. Readers can see for themselves for the rest of the topics.
 
 \footnotesize
 __Outward network Surah Al-A'laa topical word co-occurrences__
 
 |   Topics |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, reached, messenger, remember, soul, truth, forgiving                  |
-| "lord"   | lord, worlds, submissive, worship, exalted, gathering, kinds                 |
-| "living" | living, traveling, afford, dying, close, afternoon, creation                  |
-| "dying"  | dying, ra, heads, subside, month, increase, living                  |
-| "purify" | purify, stranded, desire, brought, heels, blame, revealed                  |
-| "hell"   | hell, load, fire, painful, patient, compulsion, beasts                  |
-| combined | allah, living, dying, fear, lord, purify, truth                   |
+| "allah"  | allah, messenger, fear, remembrance, severe, staying, people                  |
+| "lord"   | lord, truth, fear, inclining, erred, guided, fulfilled                 |
+| "living" | living, foundation, blown, deity, servants, sufficient, multiplies                  |
+| "dying"  | dying, animals, beasts, ahmad, defiantly, guardians, conclusions                  |
+| "purify" | purify, house, seed, adornment, bringing, offer, obligations                  |
+| "hell"   | hell, fire, scripture, draw, past, punishment, warned                  |
+| combined | living, lord, allah, truth, periods, worshipping, injustice                   |
 \normalsize
 
-The results in the table above, say that for the words in the outward text networks, for example, _"dying, ra, heads, subside, month, increase, living"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, ra, heads, subside"_. This is one way to look at it. Readers can see for themselves the remaining topics.
+The results in the table above, say that for the words in the outward text networks, for example, _"dying, animals, beasts, ahmad, defiantly, guardians, conclusions"_ which co-occurs with the word "dying", are the "outward" messages coming from Surah Al-A'laa. It is about _"dying, animals, beasts, ahmad"_. This is one way to look at it. Readers can see for themselves the remaining topics.
 
 \footnotesize
 __Combined network Surah Al-A'laa topical word co-occurrences__
 
 | Topics   |  word cooccurrences          |
 |----------|------------------------------|
-| "allah"  | allah, people, knowing, enemy, change, messenger, bring                  |
-| "lord"   | lord, truth, inclining, return, fear, worlds, believed                 |
-| "living" | living, shaving, pardoned, submits, delusion, shout, extends                  |
-| "dying"  | dying, makkah, wandering, painful, lied, stories, exemplary                  |
-| "purify" | purify, told, mouths, seeking, dwellings, messenger, house                  |
-| "hell"   | hell, fire, relative, concluded, needy, designated, blessings                  |
-| combined | allah, lord, fear, inclining, truth, provision, intend                   |
+| "allah"  | allah, remembrance, messenger, people, protector, knowing, life                  |
+| "lord"   | lord, fear, return, truth, emigrants, believed, allah                 |
+| "living" | living, relative, returning, avoid, disgrace, disembark, bird                  |
+| "dying"  | dying, invents, afflict, manifest, subsided, performance, wandering                  |
+| "purify" | purify, directed, people, house, forbid, noon, prostrating                  |
+| "hell"   | hell, deny, fire, excessive, ansar, explanation, noah                  |
+| combined | allah, lord, abraham, people, truth, change, remembrance                   |
 \normalsize
 
-The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, fire, relative, concluded, needy, designated, blessings"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, fire, relative, concluded"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
+The results in the table above say that for the words in the combined inward and outward text networks, for example, _"hell, deny, fire, excessive, ansar, explanation, noah"_ which co-occurs with the word "hell", are the full traversed messages for Surah Al-A'laa. It is about _"hell, deny, fire, excessive"_. This is one way to look at it. The readers should be able to figure out themselves for the rest of the topics.
 
 It is not our intention to use all of these exercises to __interpret__ Surah Al-A'laa. What we show is just a methodology to extract information based on a defined objective. The objective is set based on the assumptions that words in a language tend to occur together, and jointly they provide semantical and ontological meaning to the subject of the texts.
 

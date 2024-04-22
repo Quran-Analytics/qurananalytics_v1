@@ -77,10 +77,14 @@ p2 = ch3_plotter1(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig301-1.png" alt="Top common words in the translations" width="576" />
-<p class="caption">(\#fig:ch3fig301)Top common words in the translations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig301-1} 
+
+}
+
+\caption{Top common words in the translations}(\#fig:ch3fig301)
+\end{figure}
 
 
 Now we can see from Figure \@ref(fig:ch3fig301) that the term "Allah" is indeed the highest occurring term by a large count, followed by the term "Lord". This is not surprising since both terms are indeed part of one major theme of Al-Quran. An interesting observation is the term "Muhammad" (SAW) does not appear in Yusuf Ali among the top terms but appears in Sahih. However, the term "messenger" appears in both with different rankings. There are other observations in other terms or words; since this is not the focus of the current analysis, we will leave it to the readers to make their own observations. 
@@ -153,10 +157,14 @@ p2 = ch3_bing_plot(bing_word_counts_EYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig302-1.png" alt="Bing's top negative and positive words" width="768" />
-<p class="caption">(\#fig:ch3fig302)Bing's top negative and positive words</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig302-1} 
+
+}
+
+\caption{Bing's top negative and positive words}(\#fig:ch3fig302)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig302) interestingly shows that for both translations, the shape is identical for both negative and positive plots. Again, we can see that the top two words for negative are the same for both translations, "fear" and "evil", but for positive they differ: "merciful" and "righteous" for Saheeh, and "faith" and "mercy" for Yusuf Ali. The scoring for other words differs quite significantly, which implies that the style of writing for the translations is not the same.
@@ -168,16 +176,24 @@ This indicates that while translating from the same source, using the _bing_ sen
 Now let us compare with the _AFINN_ scoring model and observe if there are any major changes to the findings using the _bing_ model.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig303-1.png" alt="AFINN scoring model on Saheeh" width="576" />
-<p class="caption">(\#fig:ch3fig303)AFINN scoring model on Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig303-1} 
+
+}
+
+\caption{AFINN scoring model on Saheeh}(\#fig:ch3fig303)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig304-1.png" alt="AFINN scoring model on Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch3fig304)AFINN scoring model on Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig304-1} 
+
+}
+
+\caption{AFINN scoring model on Yusuf Ali}(\#fig:ch3fig304)
+\end{figure}
 
 
 We can see that the dimensions of sentiment are different in the _AFINN_ model as compared to _bing_. Furthermore, the scoring numbers and the terms, as well as the counts for the two translations, show major differences (as observed from Figure \@ref(fig:ch3fig303), the plots for Saheeh compared to Figure \@ref(fig:ch3fig304), the plots Yusuf Ali). Again we want to note that what we have shown is just an exploratory view of the sentiment analysis using various models and what they may imply.
@@ -228,10 +244,14 @@ p2 = ch3_bing_plot2(tidyEYAC,"Yusuf Ali")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig305-1.png" alt="Negative Surahs scoring" width="576" />
-<p class="caption">(\#fig:ch3fig305)Negative Surahs scoring</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig305-1} 
+
+}
+
+\caption{Negative Surahs scoring}(\#fig:ch3fig305)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative" words, normalized for the number of words in the Surah. The Surahs in Saheeh differ from the ones in Yusuf Ali. There are some similarities and differences between the translations, which very likely is dependent on the exact words used in the Surahs and the scores applied.
@@ -239,10 +259,14 @@ Figure \@ref(fig:ch3fig305) shows the Surahs or chapters with the most "negative
 Let us repeat for "positive" Surahs.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig306-1.png" alt="Positive Surahs scoring" width="576" />
-<p class="caption">(\#fig:ch3fig306)Positive Surahs scoring</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig306-1} 
+
+}
+
+\caption{Positive Surahs scoring}(\#fig:ch3fig306)
+\end{figure}
 
 
 It is interesting to note the similarities and differences between Saheeh and Yusuf Ali for the categorization of Surahs as demonstrated in Figure \@ref(fig:ch3fig306).
@@ -274,10 +298,14 @@ p2 = ch3_syplot(Surah_yusuf_EYAC,"Yusuf Ali","darkgreen")
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig307-1.png" alt="Sentiment scoring within Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch3fig307)Sentiment scoring within Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig307-1} 
+
+}
+
+\caption{Sentiment scoring within Surah Yusuf}(\#fig:ch3fig307)
+\end{figure}
 
 
 Here in Figure \@ref(fig:ch3fig307), we use the _AFFIN_ model for scoring and tracking the scores as we move from one word to the next in Surah Yusuf. As we can see from the plot, the sentiments (as indicated by the scores), change alternatingly like a wave throughout the Surah, from a series of positives to a series of negatives. This is the narrative view of the sentiments within the flow of the texts. This observation deserves some attention since, in most normal texts such as novels, the sentiments are not as alternating as we see here.^[For example, see sentiment narrative in Jane Austen's novels in @silge2017.] If we take the meaning of giving "good tidings" (Basheeran) and "warnings" (Nazeeran) of Al Quran, the alternating scores probably reflect it. The same analysis can be repeated for any Surah by changing the Surah title.
@@ -300,16 +328,24 @@ tidyESIC %>%
                    rot.per = 0.35)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig308-1.png" alt="Comparison cloud for Saheeh translation" width="384" />
-<p class="caption">(\#fig:ch3fig308)Comparison cloud for Saheeh translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig308-1} 
+
+}
+
+\caption{Comparison cloud for Saheeh translation}(\#fig:ch3fig308)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig309-1.png" alt="Comparison cloud for Yusuf Ali translation" width="384" />
-<p class="caption">(\#fig:ch3fig309)Comparison cloud for Yusuf Ali translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig309-1} 
+
+}
+
+\caption{Comparison cloud for Yusuf Ali translation}(\#fig:ch3fig309)
+\end{figure}
 
 
 The output for Saheeh is in Figure \@ref(fig:ch3fig308), and for Yusuf Ali is in Figure \@ref(fig:ch3fig309). We can observe clearly the words "fear", "evil", "hell", dominate the negative sentiments; while the words "faith", "righteous", "mercy" dominate the positive sentiments in both Saheeh and Yusuf Ali. The difference between the two sources is probably due to the choice of words used in the translations.
@@ -409,10 +445,14 @@ Sentiment scoring originates from the information theory of signaling. Each word
 Let us look into the entire corpus of Saheeh and the _bing_ sentiment model to visualize the signals.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig310-1.png" alt="Sentiment frequency in Saheeh corpus" width="576" />
-<p class="caption">(\#fig:ch3fig310)Sentiment frequency in Saheeh corpus</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig310-1} 
+
+}
+
+\caption{Sentiment frequency in Saheeh corpus}(\#fig:ch3fig310)
+\end{figure}
 
 
 Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies from the first verse till the last verse for the entire Saheeh corpus. There are verses of abnormally high negative signal (largest score of minus 15) and abnormally high positive signal (largest score of plus 10). It is unclear what to make out of the observations unless a deeper analysis is done together with the Sciences of Al-Quran.^[We leave this subject as a research question.]
@@ -420,10 +460,14 @@ Figure \@ref(fig:ch3fig310) clearly shows the "signals" in terms of frequencies 
 The signaling approach of sentiment analysis is also useful to investigate messages within a selected verse or group of verses, such as a Surah. Let us do this for a few selected Surahs: "Yaseen", "Al-Fath", "Al-Mulk", "Al-Muddaththir", "Al-Waaqia", and "Al-Qiyaama". We will choose Saheeh as our source of texts and _bing_ as our model.
 
 
-<div class="figure" style="text-align: center">
-<img src="04-Ch3WordScoring_files/figure-html/ch3fig311-1.png" alt="Sentiment frequency in selected Surahs" width="576" />
-<p class="caption">(\#fig:ch3fig311)Sentiment frequency in selected Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{04-Ch3WordScoring_files/figure-latex/ch3fig311-1} 
+
+}
+
+\caption{Sentiment frequency in selected Surahs}(\#fig:ch3fig311)
+\end{figure}
 
 
 We chose the selected Surahs for a few reasons. Firstly, they are the Surahs being recited often in daily prayers, particularly Surah Yaseen (for Malaysians), Al-Mulk (for its known virtues). Secondly, they are Surahs with known "strong" messages, such as Surah "Al-Waaqia" and "Al-Qiyaama". 

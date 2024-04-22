@@ -2,7 +2,7 @@
 title: "Quran Analytics with R"
 subtitle: "A Practical Introduction"
 author: "Wan M Hasni and Azman Hussin"
-date: "2024-04-21"
+date: "2024-04-22"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 always_allow_html: true
@@ -47,7 +47,8 @@ As in anything else, the starting point is the hardest; and I know that I cannot
 
 I welcome you on board this journey. The reward is from the owner of the Truth when you meet Him.
 
-<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-2-1} \end{center}
 
 # Preface From the Second Author {-}
 
@@ -59,7 +60,8 @@ We formally started our #qurananalytics project to accompany our #learnbydoing a
 
 Later, the learning and encouraging feedback we got from the blog postings led us to further explore the application of these tools on the classical works of Tafseer, the interpretation of the Quran. We had some ideas how #networkscience tools can help us visualize the classical method of Tafseer al-Quran bi al-Quran (Interpretation of the Quran with the Quran). It is considered the best method to interpret the verses of the Quran. We showed some features of network graphs that enable us to visualize aspects of the Tafseer that are almost impossible to do manually and difficult to do without a network graph model. We discuss this in Chapter 9 of this book where we present our preliminary findings using network analysis applied to the best of the classical works of Tafseer, Tafseer Ibnu Katheer. Simple network concepts like "in-degrees", "out-degrees" and "ego networks" proved valuable in analyzing Tafseer Ibnu Katheer.
 
-<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 Along the way, we also developed some customized tutorials on the tools that we used. These tutorials cover selected individual Surahs (Chapters) of the Quran like Surah Yusuf, Surah Taa Haa, and Surah Al-Kahfi - all of which are covered in different Chapters of the book. We hope our readers can learn the tools within the subject of "learning the Quran".
 
@@ -75,7 +77,8 @@ We can only express our sincere gratitude to our Lord and Creator for giving us 
 
 > "And our Lord is the Beneficent Allah, Whose help is sought" [Quran, 21:112]
 
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="384" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{index_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 # Preamble {-}
 
@@ -88,5 +91,3 @@ In this book, which we plan to be a series of books in the future, we will prese
 Our wish is for many other researchers to follow our track, collaborate with us in our efforts - especially for people with expertise or knowledge in one of the domains, but lacking expertise in the other domain. The journey is not that hard if a person already knows one of the domains. For example, many experts in the sciences of Al Quran do not have exposure to the computing environment, and hence do not understand NLP deeply; our argument is NLP is first and foremost is about linguistics, cast within computational linguistics. As far as __R__ programming language, despite being an uphill task for beginners to be familiar with its working environment, over the years of development, it had been made easy with many recent works on it, such as the __R Studio__ environment as its IDE. It is just like riding a bicycle, if you know how to ride one, then almost any bicycle is the same. R is among the simplest bicycles around.
 
 We plan this book to be an open-source concept. It is prepared using the bookdown package in R (https://bookdown.org/yihui/bookdown/). All the data and codes will be available at in a __github__ site to be added in the future. Some of our future works will be posted on the RPubs site (https://rpubs.com/azmanH/). Eventually, we will also produce some packages in R, which will be posted on CRAN.
-
-

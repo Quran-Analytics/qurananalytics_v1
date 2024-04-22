@@ -139,20 +139,28 @@ p4 = fcm_tpnplot(fcmQ, n = 200,vls = 0)
 cowplot::plot_grid(p1,p2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig701-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig701)Growth of words co-occurrences network in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig701-1} 
+
+}
+
+\caption{Growth of words co-occurrences network in Saheeh}(\#fig:ch7fig701)
+\end{figure}
 
 
 ```r
 cowplot::plot_grid(p3,p4)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig702-1.png" alt="Growth of words co-occurrences network in Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig702)Growth of words co-occurrences network in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig702-1} 
+
+}
+
+\caption{Growth of words co-occurrences network in Saheeh}(\#fig:ch7fig702)
+\end{figure}
 
 Figure \@ref(fig:ch7fig701) shows the network growing from 10 to 20 words; and Figure \@ref(fig:ch7fig702) is from 50 to 200 words.
 
@@ -160,26 +168,38 @@ We can observe that the word network grows centrally from the single word "Allah
 
 Here we enclose a sample of a full-blown word co-occurrence network from the novel Moby Dick (Chapter 1) as a comparison (in Figure \@ref(fig:ch7fig703)). It is a fully connected network, forming a single large network, but the network is not as dense as the network shown for Saheeh. In fact, if we do a similar step of checking the growth of the network, it is not the same as what we see in Saheeh.^[We do not enclose the plots here to save space. Readers can repeat the same exercise using the enclosed code to check the results for themselves.]
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig703-1.png" alt="Example of co-occurrence network in Chapter 1 of Moby Dick novel" width="384" />
-<p class="caption">(\#fig:ch7fig703)Example of co-occurrence network in Chapter 1 of Moby Dick novel</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig703-1} 
+
+}
+
+\caption{Example of co-occurrence network in Chapter 1 of Moby Dick novel}(\#fig:ch7fig703)
+\end{figure}
 
 Furthermore, a detailed look at the plot (which is not shown here) reveals that the early keywords seem to have some "themes" to it; namely about "allah", "lord", "believe", "day", "people", "muhammad", "messenger", and the themes grow out of these main themes. While these themes grow, the centrality of "allah" remains and grows stronger as the network size expand. This is termed the "emergent structure" of the network. Why this is true, is a subject that requires further research and analysis, which we encourage readers to pursue.
 
 And if we expand to all co-occurrences on the entire Saheeh corpus, we will get the picture in Figure \@ref(fig:ch7fig704)^[The figure is obtained from Gephi; since plotting a large network of this size is not efficient in __R__], which is amazingly interesting.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig704-1.png" alt="Saheeh entire corpus word co-occurence network" width="384" />
-<p class="caption">(\#fig:ch7fig704)Saheeh entire corpus word co-occurence network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig704-1} 
+
+}
+
+\caption{Saheeh entire corpus word co-occurence network}(\#fig:ch7fig704)
+\end{figure}
 
 The center of the network remains singly to "allah", and a zoomed view to the center is shown in Figure \@ref(fig:ch7fig705), which shows the central node, and all other major nodes (i.e., themes) - which are ordered as "allah", "lord", "people", "day", and so on. These "themes" interestingly coincide with the major "subject matters" as discussed by one of us through a qualitative analysis of the Quran.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig705-1.png" alt="Close up view of the center of the network" width="384" />
-<p class="caption">(\#fig:ch7fig705)Close up view of the center of the network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig705-1} 
+
+}
+
+\caption{Close up view of the center of the network}(\#fig:ch7fig705)
+\end{figure}
 
 ### Word co-occurrence network statistics
 
@@ -252,10 +272,14 @@ A degree is a link between two words, and the total number of links attached to 
 
 The codes below compute the degree for the Saheeh network and plot them.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig706-1.png" alt="Plot of the degree distribution for Saheeh" width="576" />
-<p class="caption">(\#fig:ch7fig706)Plot of the degree distribution for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig706-1} 
+
+}
+
+\caption{Plot of the degree distribution for Saheeh}(\#fig:ch7fig706)
+\end{figure}
 
 Figure \@ref(fig:ch7fig706) looks similar to the tf-idf plot for Saheeh in Figure 2.14 from Chapter 2 - which indicates that the degree follows Zipf's law, and hence is distributed following Power Law distributions. It shows the case where a very small number of words have a high degree of edges, whilst a very large number of words have an extremely small number of edges. 
 
@@ -279,10 +303,14 @@ For reference, we have seen examples of these clusterings earlier in Chapter 5 f
 
 The modularity algorithm is used to find _community structures_ or groupings of nodes and edges in large networks. In _igraph_, this is accomplished by applying the _cluster_walktrap()_ function. However, this approach has some shortcomings, mainly because it relies on a random walk approach in finding communities, which is sensitive to the starting position and is used mainly in undirected graphs. For this purpose, we rely instead on the "modularity class" function of Gephi for calculations. The results are shown in Figure \@ref(fig:ch7fig707).
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig707-1.png" alt="Modularity class" width="384" />
-<p class="caption">(\#fig:ch7fig707)Modularity class</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig707-1} 
+
+}
+
+\caption{Modularity class}(\#fig:ch7fig707)
+\end{figure}
 
 It is interesting to note that there are seven major modular classes with members of 300 or more, with the largest community having about 1,500 members.^[Modularity algorithm is dependent on its setting of resolution limits, which determines how small the communities we want to detect. In our case here we set it to 1, which is the standard limit.] In fact, the smaller classes are with members of less than ten, and can be ignored (classes of 8 and above). The percentage of nodes within each class is as follows: 33.63% (one-third of the nodes), 17.87%, 15.68%, 9.58%, 8.33%, 7.42%, and 6.33% (from the first to the seventh).
 
@@ -292,27 +320,43 @@ In this book, we will just show the visualizations of these classes (or grouping
 
 Figure \@ref(fig:ch7fig708) provides the total picture of the modularity classes within the network.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig708-1.png" alt="Modularity class by colors" width="384" />
-<p class="caption">(\#fig:ch7fig708)Modularity class by colors</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig708-1} 
+
+}
+
+\caption{Modularity class by colors}(\#fig:ch7fig708)
+\end{figure}
 
 Now let us check the structure of each of the various sub-groups. The largest grouping is shown in Figure \@ref(fig:ch7fig709), which has the same center as the entire network surrounded by words in the same modularity class. Figure \@ref(fig:ch7fig710) shows the second largest group, which has the same center as before but surrounded by another set of words. Figure \@ref(fig:ch7fig711) shows the third largest group is which has the same center as before but surrounded by another set of words.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig709-1.png" alt="Network of largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig709)Network of largest clique</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig710-1.png" alt="Network of second largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig710)Network of second largest clique</p>
-</div>
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig709-1} 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig711-1.png" alt="Network of third largest clique" width="384" />
-<p class="caption">(\#fig:ch7fig711)Network of third largest clique</p>
-</div>
+}
+
+\caption{Network of largest clique}(\#fig:ch7fig709)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig710-1} 
+
+}
+
+\caption{Network of second largest clique}(\#fig:ch7fig710)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig711-1} 
+
+}
+
+\caption{Network of third largest clique}(\#fig:ch7fig711)
+\end{figure}
 
 We can move on to the fourth, fifth, and until the smallest grouping. The key point is what can we learn from these groups?
 
@@ -428,10 +472,14 @@ fcm_select(fcmKahf, pattern = featKahf) %>%
        subtitle = " ")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig712-1.png" alt="Network of top 50 words in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig712)Network of top 50 words in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig712-1} 
+
+}
+
+\caption{Network of top 50 words in Surah Al-Kahf}(\#fig:ch7fig712)
+\end{figure}
 
 
 
@@ -476,10 +524,14 @@ fcm_select(fcmMaryam, pattern = featMaryam) %>%
        subtitle = " ") 
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig713-1.png" alt="Network of top 50 words in Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig713)Network of top 50 words in Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig713-1} 
+
+}
+
+\caption{Network of top 50 words in Surah Maryam}(\#fig:ch7fig713)
+\end{figure}
 
 
 For both Surahs, as shown in the figures, the most prominent word at the center is "lord"; however the surrounding topics are different. In Al-Kahf words such as "cave", "youth", "al-khidh", "moses" emerge, while in Surah Maryam "merciful", "jesus" appear.
@@ -545,7 +597,8 @@ tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
 ```
 
 ```
-## [1] "righteous deeds" "worldly life"    "heavens earth"   "lord knowing"
+## [1] "righteous deeds" "worldly life"   
+## [3] "heavens earth"   "lord knowing"
 ```
 \normalsize
 
@@ -561,7 +614,8 @@ tscKahf[tscKahf$count == max(tscKahf$count),]$collocation
 ```
 
 ```
-## [1] "mercy prepare affair"     "believed righteous deeds"
+## [1] "mercy prepare affair"    
+## [2] "believed righteous deeds"
 ```
 \normalsize
 
@@ -593,7 +647,8 @@ tscMaryam[tscMaryam$count == max(tscMaryam$count),]$collocation
 ```
 
 ```
-## [1] "peace day born"   "day raised alive" "day born day"     "trunk palm tree"
+## [1] "peace day born"   "day raised alive"
+## [3] "day born day"     "trunk palm tree"
 ```
 \normalsize
 
@@ -678,10 +733,14 @@ textplot_keyness(tstat2, color = c("steelblue", "tomato"), n = 20)+
   labs(title = "Keyness For Surah Maryam and Surah Al-Kahf")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig714-1.png" alt="Keyness plot for Surah Maryam and Al-Kahf" width="768" />
-<p class="caption">(\#fig:ch7fig714)Keyness plot for Surah Maryam and Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig714-1} 
+
+}
+
+\caption{Keyness plot for Surah Maryam and Al-Kahf}(\#fig:ch7fig714)
+\end{figure}
 
 
 The keyness plot shows and confirms what is known about the two Surahs. In Surah Al-Kahf, the word "found" relates to the cave-dwellers and al-khidh (Khidir) as well as Dhul-Qarnayn. In Surah Maryam, the key message is "merciful", an attribute of Allah, and Maryam (Mary) and her son Isa (AS) as signs of His mercy.
@@ -707,10 +766,14 @@ p2 = ggplot() + geom_point(aes(x = 1:nrow(maryam_lexdiv),
 cowplot::plot_grid(p1,p2, nrow = 1,align = "v")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig715-1.png" alt="Lexical diversity scores for Surah Al-Kahf and Maryam" width="768" />
-<p class="caption">(\#fig:ch7fig715)Lexical diversity scores for Surah Al-Kahf and Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig715-1} 
+
+}
+
+\caption{Lexical diversity scores for Surah Al-Kahf and Maryam}(\#fig:ch7fig715)
+\end{figure}
 
 
 We can observe from Figure \@ref(fig:ch7fig715) that the verses in Surah Al-Kahf are much more diverse in their lexical diversity, throughout the Surah; whereas Surah Maryam's later verses (after verse 50) show more variety. What this implies is that the vocabulary structure in the verses of Surah Al-Kahf is different from Surah Maryam.
@@ -729,10 +792,14 @@ textplot_xray(kwic(corp, pattern = "allah"), kwic(corp, pattern = "lord"),
                     strip.background = element_rect(color = "black", size = 1))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig716-1.png" alt="Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'" width="672" />
-<p class="caption">(\#fig:ch7fig716)Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig716-1} 
+
+}
+
+\caption{Keyword in context (kwic) plot for Surah Maryam and Al-Kahf for the word 'Allah' and 'Lord'}(\#fig:ch7fig716)
+\end{figure}
 
 The plots in Figure \@ref(fig:ch7fig716) display the frequency of the selected keyword and its appearance within the various verses ("texts"). Lexical dispersion demonstrates the richness of emphasis of the whole document regarding the message, via frequencies of occurrence relative to the sentences (verses) within the document.
 
@@ -746,16 +813,24 @@ We would like to end by presenting another tool that is useful for viewing a lar
 
 Let us show the results for both Surahs.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig717-1.png" alt="Dendrogram for clusters in Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig717)Dendrogram for clusters in Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig717-1} 
+
+}
+
+\caption{Dendrogram for clusters in Surah Al-Kahf}(\#fig:ch7fig717)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig718-1.png" alt="Dendrogram for clusters in Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig718)Dendrogram for clusters in Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig718-1} 
+
+}
+
+\caption{Dendrogram for clusters in Surah Maryam}(\#fig:ch7fig718)
+\end{figure}
 
 
 We can see from Figure \@ref(fig:ch7fig717) and Figure \@ref(fig:ch7fig718) that there are clusterings or groupings in the cooccurrences words; in fact there are about three large groupings in Surah Al-Kahf and Surah Maryam. We can extract out the data for the groupings and do further analysis as needed and required. We leave the subject as it is for our work here.
@@ -794,10 +869,14 @@ ggplot() +
   theme(plot.subtitle = element_markdown())
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig719-1.png" alt="Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures" width="576" />
-<p class="caption">(\#fig:ch7fig719)Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig719-1} 
+
+}
+
+\caption{Verses similarity for Surah Al-Kahf using correlation, cosine and jaccard measures}(\#fig:ch7fig719)
+\end{figure}
 
 
 Figure \@ref(fig:ch7fig719) shows the plot for three measures namely _correlation_ (red), _cosine_ (blue), _jaccard_ (green). Two verses are 100% similar textually, word-for-word, and a good number with a similarity score above 25% (i.e. more than a quarter of the words). What do all these numbers mean depends on how interpretations are made; for example, it can be said that these verses explain each other.
@@ -817,25 +896,37 @@ ggraph(igph_kahfcos, layout = "kk") +
   labs(title = "Verses with High Similarity for Surah Al-Kahf")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig720-1.png" alt="Verses with high similarities for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig720)Verses with high similarities for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig720-1} 
+
+}
+
+\caption{Verses with high similarities for Surah Al-Kahf}(\#fig:ch7fig720)
+\end{figure}
 
 The best way is to view them as an _igraph_ plot using _ggraph_ (as discussed in the previous chapter). Figure \@ref(fig:ch7fig720) shows clusters of verses that are linked. If we check further, the verses around v65 to v78, are repeated conversations between Moses and Khidh. The other cluster surrounding v38, is about the story of the cave dwellers. What we have shown is how statistical tools in NLP are used to find related sentences (or verses) in a large text (if we apply them to the entire translation).
 
 For completeness, we will show similar plots for Surah Maryam (Figures \@ref(fig:ch7fig721) and \@ref(fig:ch7fig722)). We leave the readers to check why the verses are linked in this manner for the Surah.
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig721-1.png" alt="Verses similarity for Surah Maryam using correlation, cosine and jaccard measures" width="576" />
-<p class="caption">(\#fig:ch7fig721)Verses similarity for Surah Maryam using correlation, cosine and jaccard measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig721-1} 
+
+}
+
+\caption{Verses similarity for Surah Maryam using correlation, cosine and jaccard measures}(\#fig:ch7fig721)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig722-1.png" alt="Verses with high similarities for Surah Maryam" width="576" />
-<p class="caption">(\#fig:ch7fig722)Verses with high similarities for Surah Maryam</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig722-1} 
+
+}
+
+\caption{Verses with high similarities for Surah Maryam}(\#fig:ch7fig722)
+\end{figure}
 
 
 ## Words dissimilarity in verses {#words-dissimilarity-in-verses}
@@ -859,16 +950,24 @@ ggplot() + geom_point(
                    subtitle = "Using Manhattan Measures")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig723-1.png" alt="Verses distance for Surah Al-Kahf using manhattan measures" width="576" />
-<p class="caption">(\#fig:ch7fig723)Verses distance for Surah Al-Kahf using manhattan measures</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig723-1} 
+
+}
+
+\caption{Verses distance for Surah Al-Kahf using manhattan measures}(\#fig:ch7fig723)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="10-Ch7TextNetAnal_files/figure-html/ch7fig724-1.png" alt="Verses with high distances for Surah Al-Kahf" width="576" />
-<p class="caption">(\#fig:ch7fig724)Verses with high distances for Surah Al-Kahf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-Ch7TextNetAnal_files/figure-latex/ch7fig724-1} 
+
+}
+
+\caption{Verses with high distances for Surah Al-Kahf}(\#fig:ch7fig724)
+\end{figure}
 
 
 Figures \@ref(fig:ch7fig723) and \@ref(fig:ch7fig724) guide us to check why verse 45 is very different than verse 29. Many similar exercises are possible by extracting out the data (as plotted) and analyzing them in whichever ways a researcher deems suitable.

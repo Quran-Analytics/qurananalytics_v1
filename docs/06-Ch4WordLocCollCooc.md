@@ -79,19 +79,27 @@ ESI_bigrams_filtered %>%
         count(surah_title_en, word2, sort = TRUE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig401-1.png" alt="Top words with 'Allah' in the Quran" width="576" />
-<p class="caption">(\#fig:ch4fig401)Top words with 'Allah' in the Quran</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig401-1} 
+
+}
+
+\caption{Top words with 'Allah' in the Quran}(\#fig:ch4fig401)
+\end{figure}
 \normalsize
 
 A bigram can also be treated as a term in a document in the same way that we treat individual words. For example, we can look at the tf-idf of bigrams across Surahs. These tf-idf values can be visualized within each long surah, just as we did for words in Chapter 2. This is shown in Figure \@ref(fig:ch4fig402).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig402-1.png" alt="Top word pairs tf-idf in the long Surahs" width="768" />
-<p class="caption">(\#fig:ch4fig402)Top word pairs tf-idf in the long Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig402-1} 
+
+}
+
+\caption{Top word pairs tf-idf in the long Surahs}(\#fig:ch4fig402)
+\end{figure}
 
 
 There are advantages and disadvantages to examining the tf-idf of bigrams rather than individual words. Pairs of consecutive words might capture structure that isn’t present when we are just counting single words and may provide context that makes tokens more understandable (for example, “sacred house”, in Al-Maaida, is more informative than “house” or "sacred" separately). owever, the per-bigram counts are also sparser: a typical two-word pair is rarer than either of its component words. Thus, bigrams can be especially useful when you have a very large text dataset.
@@ -118,10 +126,14 @@ ESI_bigram_graph <- ESI_bigram_counts %>%
 _igraph_ has built-in plotting functions, but many other packages have developed better visualization methods for graph objects. The _ggraph_ package [@ggraph] implements these visualizations in terms of the grammar of graphics. We can convert an _igraph_ object into a _ggraph_ with the _ggraph_ function, after which we add layers to it, much like adding layers in _ggplot2_. For example, for a basic graph, we need to add three layers: nodes, edges, and text.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig403-1.png" alt="Common bi-grams in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig403)Common bi-grams in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig403-1} 
+
+}
+
+\caption{Common bi-grams in Saheeh}(\#fig:ch4fig403)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Saheeh's translation. From here we can make some observations, like the word "allah" having a dominant role, and some known concepts in Islam like "straight path" and "establish prayer". "perpetual residence", "rivers flow", "gardens beneath" are known rewards for those who "enter paradise".
@@ -129,10 +141,14 @@ Figure \@ref(fig:ch4fig403) shows all the top bi-grams (count above 10) for Sahe
 We conclude with some polishing steps to make a nicer plot and at the same time reflect the attributes within the plot, such as re-sizing the edges to reflect the weights of the relations. The codes are presented below and the resulting plot is in Figure \@ref(fig:ch4fig404).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig404-1.png" alt="Common bi-grams in Saheeh with ggraph format" width="576" />
-<p class="caption">(\#fig:ch4fig404)Common bi-grams in Saheeh with ggraph format</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig404-1} 
+
+}
+
+\caption{Common bi-grams in Saheeh with ggraph format}(\#fig:ch4fig404)
+\end{figure}
 
 
 It may take some experimentation with ggraph to get your networks into a presentable format, but network visualization is a useful and flexible way to look at relational tidy data.
@@ -169,7 +185,7 @@ head(ESI_trigrams_united)
 ```
 
 ```
-## # A tibble: 6 × 2
+## # A tibble: 6 x 2
 ##   trigram                          n
 ##   <chr>                        <int>
 ## 1 al masjid al                    16
@@ -203,10 +219,14 @@ head(word_pairs)
 Let us create a graph network of these co-occurring words so we can see the relationships better. The filter will determine the size of the graph.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig405-1.png" alt="Common word pairs in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig405)Common word pairs in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig405-1} 
+
+}
+
+\caption{Common word pairs in Saheeh}(\#fig:ch4fig405)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig405) exhibits the words (nodes) and their links (edges) to their pairs (other nodes) in the word pairs network for Saheeh. The size of the nodes indicates the degree of connections it has. The thickness of the links indicates the frequencies of links. At the center is the word "allah", "lord" as expected. However, we can see many other words (nodes) such as "prayer", which is highly linked to the center words (such as "allah"). Network visualization is a good starting point to make these types of observations.
@@ -228,10 +248,14 @@ keyword_cors <- surah_wordsESI %>%
 Let us visualize the network of keyword correlations.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig406-1.png" alt="Common keyword correlations in Saheeh" width="576" />
-<p class="caption">(\#fig:ch4fig406)Common keyword correlations in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig406-1} 
+
+}
+
+\caption{Common keyword correlations in Saheeh}(\#fig:ch4fig406)
+\end{figure}
 
 
 From Figure \@ref(fig:ch4fig406), we can visualize all the keywords and their relations with other keywords. Note that the word "allah" and "lord" while being major keywords are less correlated to each other and other words. It shows that major keywords do not necessarily have high correlations with other keywords. This is the idea behind "keyword in context" (kwic) which we will cover in a later part of the book.
@@ -281,34 +305,50 @@ The resulting _data.frame_ has a field called upos which is the Universal Parts 
 In most languages, nouns (NOUN) are the most common types of words, next to verbs (VERB). These are the most relevant for analytic purposes, next to the adjectives (ADJ) and proper nouns (PROPN).^[For a detailed list of all POS tags, please visit https://universaldependencies.org/u/pos/index.html] The results of the frequencies are shown in Figure \@ref(fig:ch4fig407).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig407-1.png" alt="UPOS (Universal Parts of Speech) in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig407)UPOS (Universal Parts of Speech) in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig407-1} 
+
+}
+
+\caption{UPOS (Universal Parts of Speech) in Surah Yusuf}(\#fig:ch4fig407)
+\end{figure}
 
 
 Parts of Speech (POS) tags allow us to extract easily the words we like to plot. We may not need stopwords for doing this, we just select nouns or verbs or adjectives and we have the most relevant parts for basic frequency analysis.
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig408-1.png" alt="Most occurring nouns in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig408)Most occurring nouns in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig408-1} 
+
+}
+
+\caption{Most occurring nouns in Surah Yusuf}(\#fig:ch4fig408)
+\end{figure}
 
 
 The NOUN and PROPN frequency plot in Figure \@ref(fig:ch4fig408) correctly reflect Allah (SWT) (also the words Lord, Him) as the central dominant subject matter of the Quran [@alsuwaidan2021]. The noticeable noun missing in the plot is "prison". The others are all recognizable to those familiar with Surah Yusuf. These are shown in Figure \@ref(fig:ch4fig409) and Figure \@ref(fig:ch4fig410).
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig409-1.png" alt="Most occuring adjectives in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig409)Most occuring adjectives in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig409-1} 
+
+}
+
+\caption{Most occuring adjectives in Surah Yusuf}(\#fig:ch4fig409)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig410-1.png" alt="Most occuring verbs in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig410)Most occuring verbs in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig410-1} 
+
+}
+
+\caption{Most occuring verbs in Surah Yusuf}(\#fig:ch4fig410)
+\end{figure}
 
 
 ## Word cooccurrences using POS {#word-cooccurrences-using-POS}
@@ -332,10 +372,14 @@ cooccur <- cooccurrence(x = subset(x, upos %in% c("NOUN", "PROPN", "VERB", "ADJ"
 
 The result can be easily visualized using the _igraph_ and _ggraph_ packages. This is shown in Figure \@ref(fig:ch4fig411).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig411-1.png" alt="Co-occurence of Nouns, Names, Adjectives and Verbs" width="576" />
-<p class="caption">(\#fig:ch4fig411)Co-occurence of Nouns, Names, Adjectives and Verbs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig411-1} 
+
+}
+
+\caption{Co-occurence of Nouns, Names, Adjectives and Verbs}(\#fig:ch4fig411)
+\end{figure}
 
 
 The story is revealed by Allah (SWT). The main characters are Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez). So the verb "say" dominates since it is a narrated story. It is interesting to note the strong link and occurrence of "know" with "Allah".
@@ -355,10 +399,14 @@ cooccur <- cooccurrence(x$lemma,
 
 Once we have these co-occurrences, we can easily do the same plots as before. (See Figure \@ref(fig:ch4fig412)).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig412-1.png" alt="Words following one another in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig412)Words following one another in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig412-1} 
+
+}
+
+\caption{Words following one another in Surah Yusuf}(\#fig:ch4fig412)
+\end{figure}
 
 
 ### Word correlations using POS
@@ -433,10 +481,14 @@ stats <- keywords_rake(x = x,
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig413-1.png" alt="Keywords identified by RAKE in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig413)Keywords identified by RAKE in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig413-1} 
+
+}
+
+\caption{Keywords identified by RAKE in Surah Yusuf}(\#fig:ch4fig413)
+\end{figure}
 
 
 ### Using Pointwise Mutual Information Collocations
@@ -454,10 +506,14 @@ stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig414-1.png" alt="Keywords identified by PMI Collocation in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig414)Keywords identified by PMI Collocation in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig414-1} 
+
+}
+
+\caption{Keywords identified by PMI Collocation in Surah Yusuf}(\#fig:ch4fig414)
+\end{figure}
 
 
 ### Using a sequence of POS tags (noun phrases)
@@ -508,10 +564,14 @@ head(stats)
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig415-1.png" alt="Keywords - simple noun phrases in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig415)Keywords - simple noun phrases in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig415-1} 
+
+}
+
+\caption{Keywords - simple noun phrases in Surah Yusuf}(\#fig:ch4fig415)
+\end{figure}
 
 
 ### Textrank
@@ -540,10 +600,14 @@ head(stats)
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig416-1.png" alt="Textrank wordcloud for Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch4fig416)Textrank wordcloud for Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig416-1} 
+
+}
+
+\caption{Textrank wordcloud for Surah Yusuf}(\#fig:ch4fig416)
+\end{figure}
 
 
 Figure \@ref(fig:ch4fig416) shows that the keywords combine words into multi-word expressions. Again, we see the dominance of the verb *"say"* since Surah Yusuf is a narrated story. It is welcoming to note that "fear Allah" and "do good" are in fact the top moral lessons from this Surah.
@@ -591,10 +655,14 @@ data.frame("keyword"= stats$keyword,"left" = stats$left,
 
 We can visualize the dependency in a wordcloud plot.
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig417-1.png" alt="Dependency parsing wordcloud for Surah Yusuf" width="384" />
-<p class="caption">(\#fig:ch4fig417)Dependency parsing wordcloud for Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig417-1} 
+
+}
+
+\caption{Dependency parsing wordcloud for Surah Yusuf}(\#fig:ch4fig417)
+\end{figure}
 
 
 The plot in Figure \@ref(fig:ch4fig417) confirms the comment we made earlier about "say". Another known moral lesson from Surah Yusuf, "patience fitting", now appears. 
@@ -604,16 +672,24 @@ We have shown how to use the _dep_rel_ parameter that is part of the annotation 
 
 We can now call the function as follows to plot verse 12:16 in Surah Yusuf. See Figure \@ref(fig:ch4fig418). And a longer verse, verse 12:31. (See Figure \@ref(fig:ch4fig419)).
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig418-1.png" alt="Dependency parsing udpipe output Verse 12:16" width="576" />
-<p class="caption">(\#fig:ch4fig418)Dependency parsing udpipe output Verse 12:16</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig418-1} 
+
+}
+
+\caption{Dependency parsing udpipe output Verse 12:16}(\#fig:ch4fig418)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="06-Ch4WordLocCollCooc_files/figure-html/ch4fig419-1.png" alt="Dependency parsing udpipe output Verse 12:31" width="576" />
-<p class="caption">(\#fig:ch4fig419)Dependency parsing udpipe output Verse 12:31</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{06-Ch4WordLocCollCooc_files/figure-latex/ch4fig419-1} 
+
+}
+
+\caption{Dependency parsing udpipe output Verse 12:31}(\#fig:ch4fig419)
+\end{figure}
 
 
 With dependency parsing, we can now see, for example, how nouns relate to the adjectives with nominal subject as the type of relationship.

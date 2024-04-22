@@ -53,30 +53,46 @@ pos_plotter = function(df_udp, surah_no_input,title_label){
 
 First, let us plot the POS percentages for the entire text.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig501-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for the entire text" width="768" />
-<p class="caption">(\#fig:ch5fig501)Percentage of POS categories in Saheeh and Yusuf Ali for the entire text</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig501-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for the entire text}(\#fig:ch5fig501)
+\end{figure}
 
 
 From Figure \@ref(fig:ch5fig501), we can see that both Saheeh and Yusuf Ali prominently use nouns, pronouns, verbs, and adpositions almost similarly (based on the observation for the texts, the full sample size). However, in the case of punctuation, Yusuf Ali tends to be higher than Saheeh. As indicated by linguists, usage of more punctuation indicates the possible difference between the literary English of Yusuf Ali compared to Saheeh (possibly due to the American English of Saheeh).
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig502-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig502)Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig502-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for early Surahs}(\#fig:ch5fig502)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig503-1.png" alt="Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig503)Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig503-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Yusuf Ali for middle Surahs}(\#fig:ch5fig503)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig504-1.png" alt="Percentage of POS in Saheeh and Yusuf Ali for last Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig504)Percentage of POS in Saheeh and Yusuf Ali for last Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig504-1} 
+
+}
+
+\caption{Percentage of POS in Saheeh and Yusuf Ali for last Surahs}(\#fig:ch5fig504)
+\end{figure}
 
 
 The plots resulting from the codes are in Figure \@ref(fig:ch5fig502), Figure \@ref(fig:ch5fig503), and Figure \@ref(fig:ch5fig504). They refer to the long Surahs, medium Surahs, and short Surahs (the last few). We will make some observations based on just visualizing the plots. 
@@ -112,30 +128,46 @@ Yusuf Ali is consistently higher than Saheeh in most categories: punctuation, no
 Clearly, the English translation (represented by Saheeh and Yusuf Ali) is starkly different compared to the Arabic when it comes to the lexical composition (which is probably obvious, due to the difference between English and Arabic). However, is the difference due to the efforts of translating compact Arabic texts to English, or is it due to the compactness of meaning? The first difference is purely a question of lexical styles, whilst the second one is a question of semantics and pragmatics of the language and texts. The answer to this question is non-trivial and requires deeper research.
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig505-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the entire text" width="768" />
-<p class="caption">(\#fig:ch5fig505)Percentage of POS categories in Saheeh and Arabic for the entire text</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig505-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the entire text}(\#fig:ch5fig505)
+\end{figure}
 
 
 Based on the analysis here, we can provide some suggestions, which are evident (visually) through the plots of the statistics of the POS tags as presented in Figure \@ref(fig:ch5fig505). For this purpose, we made some comparisons between Saheeh and Arabic (we left out Yusuf Ali for brevity) and included comparisons for the various Surahs' groupings in Figure \@ref(fig:ch5fig506), Figure \@ref(fig:ch5fig507), and Figure \@ref(fig:ch5fig508) for the readers to make some sense out of it.
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig506-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the early Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig506)Percentage of POS categories in Saheeh and Arabic for the early Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig506-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the early Surahs}(\#fig:ch5fig506)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig507-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the middle Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig507)Percentage of POS categories in Saheeh and Arabic for the middle Surahs</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig508-1.png" alt="Percentage of POS categories in Saheeh and Arabic for the last Surahs" width="768" />
-<p class="caption">(\#fig:ch5fig508)Percentage of POS categories in Saheeh and Arabic for the last Surahs</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig507-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the middle Surahs}(\#fig:ch5fig507)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig508-1} 
+
+}
+
+\caption{Percentage of POS categories in Saheeh and Arabic for the last Surahs}(\#fig:ch5fig508)
+\end{figure}
 
 Finally, we leave with the following question: what do all these meant when translating the Quranic Arabic to the English language (and other languages for that matter)? At least we may say so from the semantic styles point of view, as indicated by many Islamic scholars that Al-Quran has a special language [@saeh2015]. But is it also true for lexical and syntactic styles? Furthermore, does the semantic richness of the Arabic used in Al-Quran, together with the lexical and syntactic richness combined, result in texts which produce higher-level meanings, implying that to learn Al-Quran, one must rely only on the original Arabic text?
 
@@ -147,10 +179,14 @@ Now we will explore in more detail the observations made in the previous section
 
 We will start by plotting the POS tags statistics for the Surah Yusuf from Saheeh and Yusuf Ali.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig509-1.png" alt="Percentage of POS categories in Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5fig509)Percentage of POS categories in Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig509-1} 
+
+}
+
+\caption{Percentage of POS categories in Surah Yusuf}(\#fig:ch5fig509)
+\end{figure}
 
 As evident from Figure \@ref(fig:ch5fig509), the differences in lexical styles between Saheeh and Yusuf Ali are not that obvious, except for the fact that Yusuf Ali used more punctuations, which is the same observation made for the entire Quran (as in Figure \@ref(fig:ch5fig501)).
 
@@ -190,15 +226,23 @@ gg_plotter1 = function(grf_plot){
 ```
 \normalsize
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig510-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig510)Co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig511-1.png" alt="Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig511)Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig510-1} 
+
+}
+
+\caption{Co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig510)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig511-1} 
+
+}
+
+\caption{Co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig511)
+\end{figure}
 
 The plots in Figure \@ref(fig:ch5fig510) and Figure \@ref(fig:ch5fig511) are networks of words that co-occur frequently within Surah Yusuf. The nodes (the words), which are sized to their frequency of appearances, are linked by the edges, which are sized to the number of times the co-occurrence occurs. Clearly in the Saheeh and Yusuf Ali version, "say", "Allah" and "Joseph" are higher by both counts. This is similar to the bigrams we did earlier with one major difference: we tag the words in accordance to its dependency parser and no stopwords are removed from the texts.^[This is an important point to be made since we alluded to earlier that removal of stopwords while being practiced frequently in NLP analysis, is non-trivial; and should only be used as a last resort rather than by default.]
 
@@ -215,24 +259,36 @@ ggraph(QSI_cooc_g, layout = 'linear') +
     theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig512-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="384" />
-<p class="caption">(\#fig:ch5fig512)Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig513-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="384" />
-<p class="caption">(\#fig:ch5fig513)Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig512-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig512)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig513-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig513)
+\end{figure}
 
 Figure \@ref(fig:ch5fig512) and Figure \@ref(fig:ch5fig513), are "arc" layouts, which organize the links in a "conversational" manner. We can observe that Saheeh's groupings of relations differ from Yusuf Ali's (from the organization of the arcs). The question is which one is nearer to the original texts (as shown in Figure \@ref(fig:ch5fig514)). We let the readers make their own judgment!
 
 What we want to show is there are many tools besides pure statistical analysis to see the lexical styles of texts, and possibly the semantic styles, by just observations through visualizations.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig514-1.png" alt="Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic" width="384" />
-<p class="caption">(\#fig:ch5fig514)Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig514-1} 
+
+}
+
+\caption{Arc view of co-occurrence network for top relations in Surah Yusuf for Arabic}(\#fig:ch5fig514)
+\end{figure}
 
 ### Circular method of visualization
 
@@ -247,24 +303,36 @@ ggraph(QSI_cooc_g, layout = 'linear', circular = TRUE) +
      theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig515-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig515)Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig516-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig516)Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali</p>
-</div>
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig515-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Saheeh}(\#fig:ch5fig515)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig516-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig516)
+\end{figure}
 
 Figure \@ref(fig:ch5fig515) and Figure \@ref(fig:ch5fig516), are circular layouts that provide another perspective of viewing, like a round-table discussion. Do the two "round tables" (Saheeh versus Yusuf Ali) look the same? We can say that they are close, but not  the same. This is an example of the subtle differences in the "semantic meaning" (and may also be pragmatic meaning) of the texts.
 
 For benchmarking, let us just compare both to the Arabic version in Figure \@ref(fig:ch5fig517) and we let the readers make their own judgment.
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig517-1.png" alt="Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts" width="576" />
-<p class="caption">(\#fig:ch5fig517)Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig517-1} 
+
+}
+
+\caption{Circular view of co-occurrence network for top relations in Surah Yusuf for Arabic texts}(\#fig:ch5fig517)
+\end{figure}
 
 ### Grouping of co-occurences
 
@@ -287,10 +355,14 @@ plot(QSI_cooc_g, vertex.color=vertex_attr(QSI_cooc_g)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig518-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch5fig518)Groupings by fastgreedy in Surah Yusuf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig518-1} 
+
+}
+
+\caption{Groupings by fastgreedy in Surah Yusuf for Saheeh}(\#fig:ch5fig518)
+\end{figure}
 
 
 
@@ -307,10 +379,14 @@ plot(QYA_cooc_g, vertex.color=vertex_attr(QYA_cooc_g)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5fig519-1.png" alt="Groupings by fastgreedy in Surah Yusuf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch5fig519)Groupings by fastgreedy in Surah Yusuf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5fig519-1} 
+
+}
+
+\caption{Groupings by fastgreedy in Surah Yusuf for Yusuf Ali}(\#fig:ch5fig519)
+\end{figure}
 
 Figure \@ref(fig:ch5fig518) and Figure \@ref(fig:ch5fig519) show the groupings by the colors. To interpret these visuals, we use the analogy of people in a large ballroom having conversations or hearing conversations. Are there any groupings between the people (denoted by the color schemes)? The larger nodes represent people who speak more than the smaller nodes, and a set of colors represent the sub-groupings of people. Based on this analogy, we can see that Saheeh differs from Yusuf Ali to some degree. What this implies is that the differences between Saheeh and Yusuf Ali are beyond lexical, syntactic, and semantic, rather it goes towards pragmatic (i.e. dynamics of conversations) as well.
 
@@ -352,10 +428,14 @@ ggraph(wordnetwork, layout = "fr") +
        caption = "Surah Yusuf (Sahih International)")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut1-1.png" alt="Co-occurence within sentence" width="576" />
-<p class="caption">(\#fig:ch5tut1)Co-occurence within sentence</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut1-1} 
+
+}
+
+\caption{Co-occurence within sentence}(\#fig:ch5tut1)
+\end{figure}
 
 
 The network graph shows the main words used in the Surah as nodes. The nouns and proper nouns like Joseph, his father, his brothers, the king, and the wife of the minister (al-'Azeez) make up the main characters in this revealed story. The strength or influence of each word (node) is visualized by the size of the circle representing the words (nodes) and the thickness of the links with other nodes. The verb "say" is a node that dominates since Surah Yusuf is a narrated story. It is interesting to see the strong link and occurrence of "know" with "Allah".
@@ -449,10 +529,14 @@ __Using igraph plots__
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut2-1.png" alt="First plot of tutorial word network" width="576" />
-<p class="caption">(\#fig:ch5tut2)First plot of tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut2-1} 
+
+}
+
+\caption{First plot of tutorial word network}(\#fig:ch5tut2)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut2).
 
@@ -475,10 +559,14 @@ __Plot with curved edges (edge.curved=.1) and reduce arrow size:__
 plot(gm, edge.arrow.size=.4, edge.curved=.1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut3-1.png" alt="Adjust some edge parameters" width="576" />
-<p class="caption">(\#fig:ch5tut3)Adjust some edge parameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut3-1} 
+
+}
+
+\caption{Adjust some edge parameters}(\#fig:ch5tut3)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut3).
 
@@ -494,10 +582,14 @@ plot(gm, edge.arrow.size=.2, edge.color="red",
       vertex.label=V(gm)$Label, vertex.label.color="black")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut4-1.png" alt="Adjust colors" width="576" />
-<p class="caption">(\#fig:ch5tut4)Adjust colors</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut4-1} 
+
+}
+
+\caption{Adjust colors}(\#fig:ch5tut4)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut4).
 
@@ -511,10 +603,14 @@ V(gm)$size <- deg
 plot(gm, vertex.label=V(gm)$Label)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut5-1.png" alt="Adjust node size based on its degree" width="576" />
-<p class="caption">(\#fig:ch5tut5)Adjust node size based on its degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut5-1} 
+
+}
+
+\caption{Adjust node size based on its degree}(\#fig:ch5tut5)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut5).
 
@@ -525,10 +621,14 @@ V(gm)$size <- deg
 plot(gm, vertex.size=igraph::degree(gm), vertex.label=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut6-1.png" alt="Remove node labels" width="576" />
-<p class="caption">(\#fig:ch5tut6)Remove node labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut6-1} 
+
+}
+
+\caption{Remove node labels}(\#fig:ch5tut6)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut6).
 
@@ -542,10 +642,14 @@ E(gm)$width[1:10]
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut7-1.png" alt="Adjust edge width based on number of co-occurrences" width="576" />
-<p class="caption">(\#fig:ch5tut7)Adjust edge width based on number of co-occurrences</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut7-1} 
+
+}
+
+\caption{Adjust edge width based on number of co-occurrences}(\#fig:ch5tut7)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut7).
 
@@ -560,10 +664,14 @@ graph_attr(gm, "layout") <- layout_with_fr
 plot(gm) 
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut8-1.png" alt="Adjust edge color and set layout" width="576" />
-<p class="caption">(\#fig:ch5tut8)Adjust edge color and set layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut8-1} 
+
+}
+
+\caption{Adjust edge color and set layout}(\#fig:ch5tut8)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut8).
 
@@ -576,10 +684,14 @@ plot(gm, vertex.shape="none", vertex.label=V(gm)$name,
       vertex.label.cex=.7, edge.color="gray85")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut9-1.png" alt="Adjust nodes highlighting only labels" width="576" />
-<p class="caption">(\#fig:ch5tut9)Adjust nodes highlighting only labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut9-1} 
+
+}
+
+\caption{Adjust nodes highlighting only labels}(\#fig:ch5tut9)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut9).
 
@@ -596,10 +708,14 @@ edge.col <- V(gm)$color[edge.start]
 plot(gm, edge.color=edge.col, edge.curved=.1)  
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut10-1.png" alt="Adjust edge color based on the source node" width="576" />
-<p class="caption">(\#fig:ch5tut10)Adjust edge color based on the source node</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut10-1} 
+
+}
+
+\caption{Adjust edge color based on the source node}(\#fig:ch5tut10)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut10).
 
@@ -613,10 +729,14 @@ E(gm)[cooc > 10]$color <- "green"
 plot(gm)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut11-1.png" alt="Adjust edge color based on formula" width="576" />
-<p class="caption">(\#fig:ch5tut11)Adjust edge color based on formula</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut11-1} 
+
+}
+
+\caption{Adjust edge color based on formula}(\#fig:ch5tut11)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut11).
 
@@ -627,10 +747,14 @@ plot(gm, vertex.size=5,
      vertex.label=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut12-1.png" alt="Adjust layout and remove label" width="576" />
-<p class="caption">(\#fig:ch5tut12)Adjust layout and remove label</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut12-1} 
+
+}
+
+\caption{Adjust layout and remove label}(\#fig:ch5tut12)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut12).
 
@@ -654,10 +778,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
       layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut13-1.png" alt="Using dh layout" width="576" />
-<p class="caption">(\#fig:ch5tut13)Using dh layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut13-1} 
+
+}
+
+\caption{Using dh layout}(\#fig:ch5tut13)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut13).
 
@@ -673,10 +801,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,vertex.label=NA,
      layout=layout_in_circle, main="layout_in_circle")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut14-1.png" alt="Layout in circle" width="576" />
-<p class="caption">(\#fig:ch5tut14)Layout in circle</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut14-1} 
+
+}
+
+\caption{Layout in circle}(\#fig:ch5tut14)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut14).
 
@@ -689,10 +821,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_tree, main="layout_as_tree")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut15-1.png" alt="Layout as tree" width="576" />
-<p class="caption">(\#fig:ch5tut15)Layout as tree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut15-1} 
+
+}
+
+\caption{Layout as tree}(\#fig:ch5tut15)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut15).
 
@@ -705,10 +841,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=layout_as_star, main="layout_as_star")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut16-1.png" alt="Layout as star" width="576" />
-<p class="caption">(\#fig:ch5tut16)Layout as star</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut16-1} 
+
+}
+
+\caption{Layout as star}(\#fig:ch5tut16)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut16).
 
@@ -731,13 +871,22 @@ for (layout in layouts) {
            main=layout) }
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-1.png" alt="Additional layouts" width="576" />
-<p class="caption">(\#fig:ch5tut17-1)Additional layouts</p>
-</div><div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut17-2.png" alt="Additional layouts" width="576" />
-<p class="caption">(\#fig:ch5tut17-2)Additional layouts</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut17-1} 
+
+}
+
+\caption{Additional layouts}(\#fig:ch5tut17-1)
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut17-2} 
+
+}
+
+\caption{Additional layouts}(\#fig:ch5tut17-2)
+\end{figure}
 
 __Fruchterman-Reingold:__
 
@@ -759,10 +908,14 @@ l <- layout_with_fr(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut18-1.png" alt="Using fr layout" width="576" />
-<p class="caption">(\#fig:ch5tut18)Using fr layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut18-1} 
+
+}
+
+\caption{Using fr layout}(\#fig:ch5tut18)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut18).
 
@@ -772,10 +925,14 @@ l <- layout_with_fr(gm, niter=50)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut19-1.png" alt="Using fr layout with 50 iterations" width="576" />
-<p class="caption">(\#fig:ch5tut19)Using fr layout with 50 iterations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut19-1} 
+
+}
+
+\caption{Using fr layout with 50 iterations}(\#fig:ch5tut19)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut19).
 
@@ -786,10 +943,14 @@ lw <- layout_with_fr(gm, weights=ws)
 plot(gm, layout=lw)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut20-1.png" alt="Using fr layout different weights" width="576" />
-<p class="caption">(\#fig:ch5tut20)Using fr layout different weights</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut20-1} 
+
+}
+
+\caption{Using fr layout different weights}(\#fig:ch5tut20)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut20).
 
@@ -811,10 +972,14 @@ plot(gm, layout=l)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut21-1.png" alt="Each fr layout call with different outcomes" width="576" />
-<p class="caption">(\#fig:ch5tut21)Each fr layout call with different outcomes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut21-1} 
+
+}
+
+\caption{Each fr layout call with different outcomes}(\#fig:ch5tut21)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut21).
 
@@ -830,10 +995,14 @@ plot(gm, rescale=F, layout=l*0.8)
 plot(gm, rescale=F, layout=l*1.0)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut22-1.png" alt="Using fr layout call with manual rescaling" width="576" />
-<p class="caption">(\#fig:ch5tut22)Using fr layout call with manual rescaling</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut22-1} 
+
+}
+
+\caption{Using fr layout call with manual rescaling}(\#fig:ch5tut22)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut22).
 
@@ -848,10 +1017,14 @@ l <- layout_with_kk(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut23-1.png" alt="Using kk layout" width="576" />
-<p class="caption">(\#fig:ch5tut23)Using kk layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut23-1} 
+
+}
+
+\caption{Using kk layout}(\#fig:ch5tut23)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut23).
 
@@ -871,10 +1044,14 @@ l <- layout_with_graphopt(gm)
 plot(gm, layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut24-1.png" alt="Using graphopt layout" width="576" />
-<p class="caption">(\#fig:ch5tut24)Using graphopt layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut24-1} 
+
+}
+
+\caption{Using graphopt layout}(\#fig:ch5tut24)
+\end{figure}
 Plot output is in Figure \@ref(fig:ch5tut24).
 
 The charge parameter below changes node repulsion:
@@ -889,10 +1066,14 @@ plot(gm, layout=l1)
 plot(gm, layout=l2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut25-1.png" alt="Using graphopt layout with different charge" width="576" />
-<p class="caption">(\#fig:ch5tut25)Using graphopt layout with different charge</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut25-1} 
+
+}
+
+\caption{Using graphopt layout with different charge}(\#fig:ch5tut25)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut25).
 
@@ -910,10 +1091,14 @@ plot(gm, layout=layout_with_lgl, root = 1)
 plot(gm, layout=layout_with_lgl, root = 5)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut26-1.png" alt="Using lgl layout with different roots" width="576" />
-<p class="caption">(\#fig:ch5tut26)Using lgl layout with different roots</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut26-1} 
+
+}
+
+\caption{Using lgl layout with different roots}(\#fig:ch5tut26)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut26).
 
@@ -930,10 +1115,14 @@ __The MDS (multidimensional scaling) algorithm:__
 plot(gm, layout=layout_with_mds)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut27-1.png" alt="Using mds layout" width="576" />
-<p class="caption">(\#fig:ch5tut27)Using mds layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut27-1} 
+
+}
+
+\caption{Using mds layout}(\#fig:ch5tut27)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut27).
 
@@ -966,10 +1155,14 @@ plot(gm1, vertex.color=vertex_attr(gm1)$cor,
      mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut28-1.png" alt="Communities or clusters in tutorial word network" width="576" />
-<p class="caption">(\#fig:ch5tut28)Communities or clusters in tutorial word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut28-1} 
+
+}
+
+\caption{Communities or clusters in tutorial word network}(\#fig:ch5tut28)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut28).
 
@@ -995,10 +1188,14 @@ plot(gm, vertex.color=vertex_attr(gm)$cor,
      layout=l)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut29-1.png" alt="Path from one node to another" width="576" />
-<p class="caption">(\#fig:ch5tut29)Path from one node to another</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut29-1} 
+
+}
+
+\caption{Path from one node to another}(\#fig:ch5tut29)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut29).
 
@@ -1020,10 +1217,14 @@ ggraph(lay) +
   theme_graph()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut30-1.png" alt="Using ggraph with minimal parameters set" width="576" />
-<p class="caption">(\#fig:ch5tut30)Using ggraph with minimal parameters set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut30-1} 
+
+}
+
+\caption{Using ggraph with minimal parameters set}(\#fig:ch5tut30)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut30).
 
@@ -1038,10 +1239,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut31-1.png" alt="ggraph with node and edge parameters set" width="576" />
-<p class="caption">(\#fig:ch5tut31)ggraph with node and edge parameters set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut31-1} 
+
+}
+
+\caption{ggraph with node and edge parameters set}(\#fig:ch5tut31)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut31).
 
@@ -1057,10 +1262,14 @@ ggraph(lay) +
     geom_edge_link(aes(color = cooc))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut32-1.png" alt="ggraph with node size and alpha based on degree" width="576" />
-<p class="caption">(\#fig:ch5tut32)ggraph with node size and alpha based on degree</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut32-1} 
+
+}
+
+\caption{ggraph with node size and alpha based on degree}(\#fig:ch5tut32)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut32).
 
@@ -1073,10 +1282,14 @@ ggraph(lay) +
   geom_node_point()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut33-1.png" alt="ggraph with edge width and alpha based on number of co-occurrences" width="576" />
-<p class="caption">(\#fig:ch5tut33)ggraph with edge width and alpha based on number of co-occurrences</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut33-1} 
+
+}
+
+\caption{ggraph with edge width and alpha based on number of co-occurrences}(\#fig:ch5tut33)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut33).
 
@@ -1100,10 +1313,14 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut34-1.png" alt="Using ggraph with layout kk" width="576" />
-<p class="caption">(\#fig:ch5tut34)Using ggraph with layout kk</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut34-1} 
+
+}
+
+\caption{Using ggraph with layout kk}(\#fig:ch5tut34)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut34).
 
@@ -1121,10 +1338,14 @@ ggraph(gm, layout = 'linear') +
     theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut35-1.png" alt="Using ggraph with linear layout and void theme" width="576" />
-<p class="caption">(\#fig:ch5tut35)Using ggraph with linear layout and void theme</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut35-1} 
+
+}
+
+\caption{Using ggraph with linear layout and void theme}(\#fig:ch5tut35)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut35).
 
@@ -1143,10 +1364,14 @@ ggraph(gm, layout="kk") +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut36-1.png" alt="Using ggraph with kk layout and aes setting" width="576" />
-<p class="caption">(\#fig:ch5tut36)Using ggraph with kk layout and aes setting</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut36-1} 
+
+}
+
+\caption{Using ggraph with kk layout and aes setting}(\#fig:ch5tut36)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut36).
 
@@ -1165,10 +1390,14 @@ ggraph(gm,  layout = 'kk') +
   theme_void()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut37-1.png" alt="Using ggraph with various parameter settings" width="576" />
-<p class="caption">(\#fig:ch5tut37)Using ggraph with various parameter settings</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut37-1} 
+
+}
+
+\caption{Using ggraph with various parameter settings}(\#fig:ch5tut37)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut37).
 
@@ -1185,10 +1414,14 @@ ggraph(gm, layout = 'linear',  circular = TRUE) +
                     repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut38-1.png" alt="Using ggraph with linear layout" width="576" />
-<p class="caption">(\#fig:ch5tut38)Using ggraph with linear layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut38-1} 
+
+}
+
+\caption{Using ggraph with linear layout}(\#fig:ch5tut38)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut38).
 
@@ -1211,10 +1444,14 @@ ggraph(gm, layout = 'kk') +
                     repel=T)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut39-1.png" alt="Using ggraph with edge fan" width="576" />
-<p class="caption">(\#fig:ch5tut39)Using ggraph with edge fan</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut39-1} 
+
+}
+
+\caption{Using ggraph with edge fan}(\#fig:ch5tut39)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut39).
 
@@ -1232,10 +1469,14 @@ ggraph(gm, layout = 'kk') +
      geom_node_point(color="#de4e96", aes(size = igraph::degree(gm)))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut40-1.png" alt="Using ggraph with edge density" width="576" />
-<p class="caption">(\#fig:ch5tut40)Using ggraph with edge density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut40-1} 
+
+}
+
+\caption{Using ggraph with edge density}(\#fig:ch5tut40)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut40).
 
@@ -1254,10 +1495,14 @@ heatmap(netm[,17:1], Rowv = NA, Colv = NA, col = palf(100),
         scale="none", margins=c(10,10) )
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut41-1.png" alt="Heatmap of word network" width="576" />
-<p class="caption">(\#fig:ch5tut41)Heatmap of word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut41-1} 
+
+}
+
+\caption{Heatmap of word network}(\#fig:ch5tut41)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut41).
 
@@ -1273,10 +1518,14 @@ plot( x=0:max(degree(gm)), y=1-deg.dist, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut42-1.png" alt="Degree distribution of word network" width="576" />
-<p class="caption">(\#fig:ch5tut42)Degree distribution of word network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut42-1} 
+
+}
+
+\caption{Degree distribution of word network}(\#fig:ch5tut42)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut42).
 
@@ -1298,10 +1547,14 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut43-1.png" alt="Larger network density with labels" width="576" />
-<p class="caption">(\#fig:ch5tut43)Larger network density with labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut43-1} 
+
+}
+
+\caption{Larger network density with labels}(\#fig:ch5tut43)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut43).
 
@@ -1315,10 +1568,14 @@ ggraph(gm1, layout = 'kk') +
       ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut44-1.png" alt="Larger network density without labels" width="576" />
-<p class="caption">(\#fig:ch5tut44)Larger network density without labels</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut44-1} 
+
+}
+
+\caption{Larger network density without labels}(\#fig:ch5tut44)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut44).
 
@@ -1333,10 +1590,14 @@ ggraph(gm1, layout = 'kk') +
                       colour = "#a83268", show.legend = FALSE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut45-1.png" alt="Digital art from Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5tut45)Digital art from Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut45-1} 
+
+}
+
+\caption{Digital art from Surah Yusuf}(\#fig:ch5tut45)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut45).
 
@@ -1353,10 +1614,14 @@ ggraph(gm1, layout = 'linear', circular = TRUE) +
      ggtitle("Network of Top 100 Words")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut46-1.png" alt="Word network with circular layout" width="576" />
-<p class="caption">(\#fig:ch5tut46)Word network with circular layout</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut46-1} 
+
+}
+
+\caption{Word network with circular layout}(\#fig:ch5tut46)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut46).
 
@@ -1377,10 +1642,14 @@ ggraph(jg, layout = 'kk') +
       ggtitle("Data Art of Top 2000 Coccurrences")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut47-1.png" alt="Larger word network with kk layout and edge density" width="576" />
-<p class="caption">(\#fig:ch5tut47)Larger word network with kk layout and edge density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut47-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge density}(\#fig:ch5tut47)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut47).
 
@@ -1402,10 +1671,14 @@ max(degree(jg, mode="all"))
 plot(degree.distribution(jg, mode="in"), log="xy")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut48-1.png" alt="Larger word network with kk layout and edge-in density" width="576" />
-<p class="caption">(\#fig:ch5tut48)Larger word network with kk layout and edge-in density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut48-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge-in density}(\#fig:ch5tut48)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut48).
 
@@ -1415,10 +1688,14 @@ Plot output is in Figure \@ref(fig:ch5tut48).
 plot(degree.distribution(jg, mode="out"), log="xy")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut49-1.png" alt="Larger word network with kk layout and edge-out density" width="576" />
-<p class="caption">(\#fig:ch5tut49)Larger word network with kk layout and edge-out density</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut49-1} 
+
+}
+
+\caption{Larger word network with kk layout and edge-out density}(\#fig:ch5tut49)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut49).
 
@@ -1433,10 +1710,14 @@ ggraph(lay) +
    geom_node_text(aes(label = name), size = 3)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut50-1.png" alt="One big cluster and unconnected nodes" width="576" />
-<p class="caption">(\#fig:ch5tut50)One big cluster and unconnected nodes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut50-1} 
+
+}
+
+\caption{One big cluster and unconnected nodes}(\#fig:ch5tut50)
+\end{figure}
 
 
 The rather ugly Figure \@ref(fig:ch5tut50) shows the 4 nodes. Let us delete and repeat the cluster analysis. But instead of using the delete_vertices() function like in an earlier example, we just use the main component. First, we find the components and then subset the graph based on those components. In _igraph_ the largest component is not always the first one with id == 1.
@@ -1480,10 +1761,14 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut51-1.png" alt="Communities within the large fully connected network" width="576" />
-<p class="caption">(\#fig:ch5tut51)Communities within the large fully connected network</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut51-1} 
+
+}
+
+\caption{Communities within the large fully connected network}(\#fig:ch5tut51)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut51).
 
@@ -1515,10 +1800,14 @@ plot(jg2, vertex.color=vertex_attr(jg2)$cor,
       mark.border=NA)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="07-Ch5WordLocStatAnal_files/figure-html/ch5tut52-1.png" alt="Another piece of art from Surah Yusuf" width="576" />
-<p class="caption">(\#fig:ch5tut52)Another piece of art from Surah Yusuf</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{07-Ch5WordLocStatAnal_files/figure-latex/ch5tut52-1} 
+
+}
+
+\caption{Another piece of art from Surah Yusuf}(\#fig:ch5tut52)
+\end{figure}
 
 Plot output is in Figure \@ref(fig:ch5tut52).
 

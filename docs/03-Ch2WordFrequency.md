@@ -65,21 +65,33 @@ tidyESI %>%
                  colors=brewer.pal(8,"Dark2")))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig201-1.png" alt="Wordcloud for Saheeh translation" width="384" />
-<p class="caption">(\#fig:ch2fig201)Wordcloud for Saheeh translation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig201-1} 
+
+}
+
+\caption{Wordcloud for Saheeh translation}(\#fig:ch2fig201)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig202-1.png" alt="Wordcloud for Yusuf Ali translation" width="384" />
-<p class="caption">(\#fig:ch2fig202)Wordcloud for Yusuf Ali translation</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig203-1.png" alt="Wordcloud for Malay translation" width="384" />
-<p class="caption">(\#fig:ch2fig203)Wordcloud for Malay translation</p>
-</div>
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig202-1} 
+
+}
+
+\caption{Wordcloud for Yusuf Ali translation}(\#fig:ch2fig202)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig203-1} 
+
+}
+
+\caption{Wordcloud for Malay translation}(\#fig:ch2fig203)
+\end{figure}
 
 For Saheeh, the wordcloud plot is in Figure \@ref(fig:ch2fig201); for Yusuf Ali, the wordcloud plot is in Figure \@ref(fig:ch2fig202); and for the Malay, the wordcloud plot is in Figure \@ref(fig:ch2fig203).
 
@@ -171,58 +183,94 @@ tf_plotter = function(df,surah_group,title_label,x_lim){
 ```
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig204-1.png" alt="Short Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig204)Short Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig204-1} 
+
+}
+
+\caption{Short Surahs term frequency in Saheeh}(\#fig:ch2fig204)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig205-1.png" alt="Short Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig205)Short Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig205-1} 
+
+}
+
+\caption{Short Surahs term frequency in Yusuf Ali}(\#fig:ch2fig205)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig206-1.png" alt="Short Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig206)Short Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig206-1} 
+
+}
+
+\caption{Short Surahs term frequency in Malay}(\#fig:ch2fig206)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig207-1.png" alt="Hamim Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig207)Hamim Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig207-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Saheeh}(\#fig:ch2fig207)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig208-1.png" alt="Hamim Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig208)Hamim Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig208-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Yusuf Ali}(\#fig:ch2fig208)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig209-1.png" alt="Hamim Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig209)Hamim Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig209-1} 
+
+}
+
+\caption{Hamim Surahs term frequency in Malay}(\#fig:ch2fig209)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig210-1.png" alt="Long Surahs term frequency in Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig210)Long Surahs term frequency in Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig210-1} 
+
+}
+
+\caption{Long Surahs term frequency in Saheeh}(\#fig:ch2fig210)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig211-1.png" alt="Long Surahs term frequency in Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig211)Long Surahs term frequency in Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig211-1} 
+
+}
+
+\caption{Long Surahs term frequency in Yusuf Ali}(\#fig:ch2fig211)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig212-1.png" alt="Long Surahs term frequency in Malay" width="576" />
-<p class="caption">(\#fig:ch2fig212)Long Surahs term frequency in Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig212-1} 
+
+}
+
+\caption{Long Surahs term frequency in Malay}(\#fig:ch2fig212)
+\end{figure}
 
 
 From these plots of "term frequency" starting with the short Surahs (Figure \@ref(fig:ch2fig204), Figure \@ref(fig:ch2fig205), and Figure \@ref(fig:ch2fig206)), followed by the medium Surahs (Figure \@ref(fig:ch2fig207), Figure \@ref(fig:ch2fig208), and Figure \@ref(fig:ch2fig209)), and the long Surahs (Figure \@ref(fig:ch2fig210), Figure \@ref(fig:ch2fig211), and Figure \@ref(fig:ch2fig212)), there are many insights and lessons about the language of the translation of Al-Quran.
@@ -260,10 +308,14 @@ EQT_total_toks_melt %>% ggplot() +
   theme(panel.border = element_rect(colour = "black", fill=NA))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig213-1.png" alt="Percentage of unique words in the Surahs" width="576" />
-<p class="caption">(\#fig:ch2fig213)Percentage of unique words in the Surahs</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig213-1} 
+
+}
+
+\caption{Percentage of unique words in the Surahs}(\#fig:ch2fig213)
+\end{figure}
 
 
 The percentage of "unique words" over "total words" is a measure of the lexical variety within a sub-set of texts (i.e., Surah). The plot in Figure \@ref(fig:ch2fig213) shows that the lexical variety in the shorter Surahs varies more than the longer Surahs. It is quite rare in any regular text collection that a shorter group of sentences (such as chapters) display more outstanding lexical varieties. The case is different here.
@@ -309,10 +361,14 @@ tfidf_plotter = function(df_plot,title_label,color){
 \normalsize
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig214-1.png" alt="tf-idf for the translations" width="576" />
-<p class="caption">(\#fig:ch2fig214)tf-idf for the translations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig214-1} 
+
+}
+
+\caption{tf-idf for the translations}(\#fig:ch2fig214)
+\end{figure}
 
 We can see from Figure \@ref(fig:ch2fig214), the structure for all the translations looks similar; the differences are due to the number of words in each translation. What is striking is despite all the variety of words and language used, the structure of tf_idf is almost perfectly the same (and in fact, they are the same if we normalize the scale by the number of total words). It is clear that there are some words which used rarely (the curves on the left side, with high tf_idf), the numbers of which are not that many, and there are words that are used extremely frequently (the curves on the right side, with low tf_idf), the numbers of which are not that many; and the rest of the words are used moderately (in between).
 
@@ -322,58 +378,94 @@ Let us look at a visualization for these high tf-idf words. These are shown in F
 
 \normalsize
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig215-1.png" alt="Short Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig215)Short Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig215-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Saheeh}(\#fig:ch2fig215)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig216-1.png" alt="Short Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig216)Short Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig216-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig216)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig217-1.png" alt="Short Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig217)Short Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig217-1} 
+
+}
+
+\caption{Short Surahs tf-idf for Malay}(\#fig:ch2fig217)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig218-1.png" alt="Medium Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig218)Medium Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig218-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Saheeh}(\#fig:ch2fig218)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig219-1.png" alt="Medium Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig219)Medium Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig219-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig219)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig220-1.png" alt="Medium Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig220)Medium Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig220-1} 
+
+}
+
+\caption{Medium Surahs tf-idf for Malay}(\#fig:ch2fig220)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig221-1.png" alt="Long Surahs tf-idf for Saheeh" width="576" />
-<p class="caption">(\#fig:ch2fig221)Long Surahs tf-idf for Saheeh</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig221-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Saheeh}(\#fig:ch2fig221)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig222-1.png" alt="Long Surahs tf-idf for Yusuf Ali" width="576" />
-<p class="caption">(\#fig:ch2fig222)Long Surahs tf-idf for Yusuf Ali</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig222-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Yusuf Ali}(\#fig:ch2fig222)
+\end{figure}
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig223-1.png" alt="Long Surahs tf-idf for Malay" width="576" />
-<p class="caption">(\#fig:ch2fig223)Long Surahs tf-idf for Malay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig223-1} 
+
+}
+
+\caption{Long Surahs tf-idf for Malay}(\#fig:ch2fig223)
+\end{figure}
 
 As measured by the tf-idf, these words are the most important to each Surah, and most readers would likely agree. It identifies words that are important to one document within a collection of documents. Furthermore, we can see that Saheeh's translation used different words than Yusuf Ali; this is obvious in the top tf_idf terms where they differ significantly.
 
@@ -423,10 +515,14 @@ p3 = zipf_plotter(freq_by_rank_MAB,"Malay")
 cowplot::plot_grid(p1,p2,p3, nrow = 1)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig224-1.png" alt="Zipf's plot" width="576" />
-<p class="caption">(\#fig:ch2fig224)Zipf's plot</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig224-1} 
+
+}
+
+\caption{Zipf's plot}(\#fig:ch2fig224)
+\end{figure}
 
 Note that the plot in Figure \@ref(fig:ch2fig224) is on a log-log scale (for testing Power Law), whereby if the lines are close to the inverse 45-degree line, then the law holds. We can see that all plots indicate a broad indication of adherence to Zipf's law. Based on this, we can conclude that all translations explain the same subject in broad terms, despite earlier indications of differences of styles. A visual test of the power-law is insufficient, and a full and proper test is required to prove this point, which is beyond the current scope of this book.
 
@@ -437,10 +533,14 @@ From the wordcloud plots in Figure \@ref(fig:ch2fig201), Figure \@ref(fig:ch2fig
 Most analyses of texts in English will take the option of removing these stopwords. While maybe acceptable in most circumstances, such an approach is not as straightforward when applied to Al-Quran translations. In the coming chapters, we will revisit the subject again. Let us redo Zipf's plot with all the stopwords removed and see what the removal of stopwords means.
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig225-1.png" alt="Zipf's plot without stopwords" width="576" />
-<p class="caption">(\#fig:ch2fig225)Zipf's plot without stopwords</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig225-1} 
+
+}
+
+\caption{Zipf's plot without stopwords}(\#fig:ch2fig225)
+\end{figure}
 
 
 From the plots in Figure \@ref(fig:ch2fig225), compared to the previous Zipf's plot in Figure \@ref(fig:ch2fig221), we can observe significant changes when we removed the stopwords. Putting the three translations together indicates that while removing the stopwords changes the texts' structure, it might not change the texts' meaning since the translations demonstrate similarities after their removal. In other words, the translations' texts are robust to changes due to these connector words. This is the nature of the English language as explained by Zipf [@zipf1949], and probably it is the same for the Malay language. However, are we sure that the meanings are retained? This must be proven beyond doubt for it to be conclusively accepted.
@@ -465,10 +565,14 @@ Unique tokens are similar to vocabulary in some sense. It is the library of word
 As we have described before, in the corpora, few words occur in high frequencies, and few words occur in very low frequencies at both extremes. We will plot the statistical density of the distribution (in log scale) of the term frequencies in both translations to observe this phenomenon.
 
 
-<div class="figure" style="text-align: center">
-<img src="03-Ch2WordFrequency_files/figure-html/ch2fig226-1.png" alt="Density plot of term frequency" width="576" />
-<p class="caption">(\#fig:ch2fig226)Density plot of term frequency</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{03-Ch2WordFrequency_files/figure-latex/ch2fig226-1} 
+
+}
+
+\caption{Density plot of term frequency}(\#fig:ch2fig226)
+\end{figure}
 
 
 The term frequencies (using a log scale for visualization) for both translations in Figure \@ref(fig:ch2fig226) show striking similarities, despite the style difference. On the left are the terms which occur infrequently, and as we add more terms to the vocabulary (as we move to the right), the density curve peaked at few distinct modes until it flattens out to the right as we bring into the vocabulary words frequently used. If we check what are the words on the left, examples would be "harut", "marut", "iram"  (which are unique names), and in the middle are words like "food", "eat", "makan" (which are common words), and finally in the far right are words like "with", "the", "yang" (which are the stopwords).
@@ -486,17 +590,18 @@ freq_by_rank_ESI %>% filter(word == "trustworthy")
 ```
 
 ```
-## # A tibble: 8 × 6
-##   surah_title_en word            n total  rank `term frequency`
-##   <chr>          <chr>       <int> <int> <int>            <dbl>
-## 1 Ash-Shu'araa   trustworthy     6   729    20         0.00823 
-## 2 Ad-Dukhaan     trustworthy     1   209   141         0.00478 
-## 3 Al-A'raaf      trustworthy     1  1838   764         0.000544
-## 4 Al-Baqara      trustworthy     1  3401  1166         0.000294
-## 5 Al-Qasas       trustworthy     1   753   388         0.00133 
-## 6 An-Naml        trustworthy     1   631   359         0.00158 
-## 7 At-Takwir      trustworthy     1    79    68         0.0127  
-## 8 Luqman         trustworthy     1   318   195         0.00314
+## # A tibble: 8 x 6
+##   surah_title_en word            n total  rank
+##   <chr>          <chr>       <int> <int> <int>
+## 1 Ash-Shu'araa   trustworthy     6   729    20
+## 2 Ad-Dukhaan     trustworthy     1   209   141
+## 3 Al-A'raaf      trustworthy     1  1838   764
+## 4 Al-Baqara      trustworthy     1  3401  1166
+## 5 Al-Qasas       trustworthy     1   753   388
+## 6 An-Naml        trustworthy     1   631   359
+## 7 At-Takwir      trustworthy     1    79    68
+## 8 Luqman         trustworthy     1   318   195
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -504,12 +609,13 @@ freq_by_rank_EYA %>% filter(word == "trustworthy")
 ```
 
 ```
-## # A tibble: 3 × 6
-##   surah_title_en word            n total  rank `term frequency`
-##   <chr>          <chr>       <int> <int> <int>            <dbl>
-## 1 Al-A'raaf      trustworthy     1  2326   925         0.000430
-## 2 Al-Baqara      trustworthy     1  4120  1383         0.000243
-## 3 Luqman         trustworthy     1   384   233         0.00260
+## # A tibble: 3 x 6
+##   surah_title_en word            n total  rank
+##   <chr>          <chr>       <int> <int> <int>
+## 1 Al-A'raaf      trustworthy     1  2326   925
+## 2 Al-Baqara      trustworthy     1  4120  1383
+## 3 Luqman         trustworthy     1   384   233
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -517,12 +623,13 @@ freq_by_rank_ESI %>% filter(word == "trust")
 ```
 
 ```
-## # A tibble: 3 × 6
-##   surah_title_en word      n total  rank `term frequency`
-##   <chr>          <chr> <int> <int> <int>            <dbl>
-## 1 Aal-i-Imraan   trust     1  2025   737         0.000494
-## 2 Al-Ahzaab      trust     1   793   387         0.00126 
-## 3 Al-Baqara      trust     1  3401  1165         0.000294
+## # A tibble: 3 x 6
+##   surah_title_en word      n total  rank
+##   <chr>          <chr> <int> <int> <int>
+## 1 Aal-i-Imraan   trust     1  2025   737
+## 2 Al-Ahzaab      trust     1   793   387
+## 3 Al-Baqara      trust     1  3401  1165
+## # i 1 more variable: `term frequency` <dbl>
 ```
 
 ```r
@@ -530,20 +637,21 @@ freq_by_rank_EYA %>% filter(word == "trust")
 ```
 
 ```
-## # A tibble: 27 × 6
-##    surah_title_en word      n total  rank `term frequency`
-##    <chr>          <chr> <int> <int> <int>            <dbl>
-##  1 Ash-Shu'araa   trust     6   929    26         0.00646 
-##  2 Aal-i-Imraan   trust     5  2448    88         0.00204 
-##  3 Yusuf          trust     5  1195    36         0.00418 
-##  4 Al-Anfaal      trust     4   893    36         0.00448 
-##  5 Al-Baqara      trust     4  4120   233         0.000971
-##  6 Ibrahim        trust     4   639    21         0.00626 
-##  7 Al-Ahzaab      trust     3   928    62         0.00323 
-##  8 Hud            trust     3  1314   108         0.00228 
-##  9 Yunus          trust     3  1171    97         0.00256 
-## 10 Al-Maaida      trust     2  1995   301         0.00100 
-## # ℹ 17 more rows
+## # A tibble: 27 x 6
+##    surah_title_en word      n total  rank
+##    <chr>          <chr> <int> <int> <int>
+##  1 Ash-Shu'araa   trust     6   929    26
+##  2 Aal-i-Imraan   trust     5  2448    88
+##  3 Yusuf          trust     5  1195    36
+##  4 Al-Anfaal      trust     4   893    36
+##  5 Al-Baqara      trust     4  4120   233
+##  6 Ibrahim        trust     4   639    21
+##  7 Al-Ahzaab      trust     3   928    62
+##  8 Hud            trust     3  1314   108
+##  9 Yunus          trust     3  1171    97
+## 10 Al-Maaida      trust     2  1995   301
+## # i 17 more rows
+## # i 1 more variable: `term frequency` <dbl>
 ```
 \normalsize
 
